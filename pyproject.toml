@@ -1,19 +1,31 @@
 [project]
 name = "persuasive-misalignment"
 version = "0.1.0"
-description = ""
-authors = [
-    {name = "Your Name",email = "you@example.com"}
-]
+description = "Persuasive misalignment research with MIMIC-IV medical data analysis"
+authors = [{name = "Your Name", email = "you@example.com"}]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
-    "matplotlib (>=3.10.6,<4.0.0)",
-    "numpy (>=2.3.3,<3.0.0)",
-    "scipy (>=1.16.2,<2.0.0)"
+    "matplotlib>=3.10.6",
+    "numpy>=2.3.3",
+    "scipy>=1.16.2",
+    "polars>=1.18.0",
+    "pyarrow>=19.0.0",
+    "openai>=1.59.8",
+    "pyyaml>=6.0.2",
+    "tqdm>=4.67.1",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.4",
+    "ruff>=0.9.1",
+    "mypy>=1.14.1",
+]
+
+[tool.poetry]
+package-mode = false
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
