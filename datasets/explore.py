@@ -3,12 +3,13 @@
 Explore treatment effectiveness from the simple dataset.
 
 Usage:
-    python explore.py /path/to/output
+    python explore.py --data_dir /path/to/output
 """
 
-import sys
+import argparse
 from pathlib import Path
 import polars as pl
+import datetime
 
 
 def analyze_treatment_effect(data_dir: Path, drug_name: str = None, lab_test: str = None):
@@ -20,12 +21,11 @@ def analyze_treatment_effect(data_dir: Path, drug_name: str = None, lab_test: st
         drug_name: Filter by drug name (substring match)
         lab_test: Filter by lab test name (substring match)
     """
-
+    # Load and filter data
     print("Loading data...")
     meds = pl.read_parquet(data_dir / "medications.parquet")
     labs = pl.read_parquet(data_dir / "labs.parquet")
 
-    # Filter if specified
     if drug_name:
         meds = meds.filter(pl.col("drug").str.contains(f"(?i){drug_name}"))
         print(f"Filtered to drugs containing '{drug_name}': {len(meds)} administrations")
@@ -34,62 +34,62 @@ def analyze_treatment_effect(data_dir: Path, drug_name: str = None, lab_test: st
         labs = labs.filter(pl.col("lab_test").str.contains(f"(?i){lab_test}"))
         print(f"Filtered to labs containing '{lab_test}': {len(labs)} measurements")
 
-    # For each medication administration, find lab values before and after
+    # Match medications with lab results
     print("\nMatching medications with lab results...")
 
-    results = []
+    # Join and calculate time differences
+    combined = (
+        meds.join(labs, on=["subject_id", "hadm_id"], how="inner", suffix="_lab")
+        .with_columns([
+            pl.col("charttime").str.strptime(pl.Datetime, "%Y-%m-%d %H:%M:%S"),
+            pl.col("charttime_lab").str.strptime(pl.Datetime, "%Y-%m-%d %H:%M:%S")
+        ])
+        .with_columns([
+            (pl.col("charttime_lab") - pl.col("charttime")).alias("time_diff_ns")
+        ])
+    )
 
-    # Join meds with labs on same admission
-    combined = meds.join(labs, on=["subject_id", "hadm_id"], how="inner", suffix="_lab")
+    # Common columns for grouping
+    group_cols = ["subject_id", "hadm_id", "drug", "charttime", "lab_test"]
 
-    # Calculate time difference (lab time - med time)
-    combined = combined.with_columns([
-        (pl.col("charttime_lab").cast(pl.Int64) - pl.col("charttime").cast(pl.Int64)).alias("time_diff_ns")
-    ])
-
-    # Find lab before (closest negative time_diff)
+    # Find closest lab values before and after medication
     labs_before = (
         combined
-        .filter(pl.col("time_diff_ns") < 0)
-        .sort(["subject_id", "hadm_id", "drug", "charttime", "lab_test", "time_diff_ns"], descending=[False, False, False, False, False, True])
-        .group_by(["subject_id", "hadm_id", "drug", "charttime", "lab_test"])
+        .filter(pl.col("time_diff_ns") < datetime.timedelta(0))
+        .sort([*group_cols, "time_diff_ns"], descending=[False]*5 + [True])
+        .group_by(group_cols)
         .agg([
             pl.col("valuenum").first().alias("value_before"),
             pl.col("time_diff_ns").first().alias("time_before")
         ])
     )
 
-    # Find lab after (closest positive time_diff)
     labs_after = (
         combined
-        .filter(pl.col("time_diff_ns") > 0)
-        .sort(["subject_id", "hadm_id", "drug", "charttime", "lab_test", "time_diff_ns"])
-        .group_by(["subject_id", "hadm_id", "drug", "charttime", "lab_test"])
+        .filter(pl.col("time_diff_ns") > datetime.timedelta(0))
+        .sort([*group_cols, "time_diff_ns"])
+        .group_by(group_cols)
         .agg([
             pl.col("valuenum").first().alias("value_after"),
             pl.col("time_diff_ns").first().alias("time_after")
         ])
     )
 
-    # Join before and after
-    effects = labs_before.join(
-        labs_after,
-        on=["subject_id", "hadm_id", "drug", "charttime", "lab_test"],
-        how="inner"
+    # Join and calculate changes
+    effects = (
+        labs_before.join(labs_after, on=group_cols, how="inner")
+        .with_columns([
+            (pl.col("value_after") - pl.col("value_before")).alias("value_change"),
+            ((pl.col("value_after") - pl.col("value_before")) / pl.col("value_before") * 100).alias("pct_change"),
+            (pl.col("time_before").cast(pl.Duration).dt.total_hours() * -1).alias("hours_before"),
+            (pl.col("time_after").cast(pl.Duration).dt.total_hours()).alias("hours_after")
+        ])
     )
-
-    # Calculate change
-    effects = effects.with_columns([
-        (pl.col("value_after") - pl.col("value_before")).alias("value_change"),
-        ((pl.col("value_after") - pl.col("value_before")) / pl.col("value_before") * 100).alias("pct_change"),
-        (pl.col("time_before").abs() / 1e9 / 3600).alias("hours_before"),
-        (pl.col("time_after") / 1e9 / 3600).alias("hours_after")
-    ])
 
     print(f"\nFound {len(effects)} medication-lab pairs with before/after measurements")
 
     if len(effects) > 0:
-        # Summary by drug and lab
+        # Generate summary statistics
         summary = (
             effects
             .group_by(["drug", "lab_test"])
@@ -117,39 +117,33 @@ def show_drug_stats(data_dir: Path):
     meds = pl.read_parquet(data_dir / "medications.parquet")
     labs = pl.read_parquet(data_dir / "labs.parquet")
 
+    def get_top_items(df: pl.DataFrame, group_col: str, n: int = 20) -> pl.DataFrame:
+        return (
+            df
+            .group_by(group_col)
+            .agg(pl.count().alias("count"))
+            .sort("count", descending=True)
+            .head(n)
+        )
+
     print("\nTop 20 drugs by frequency:")
-    top_drugs = (
-        meds
-        .group_by("drug")
-        .agg(pl.count().alias("count"))
-        .sort("count", descending=True)
-        .head(20)
-    )
-    print(top_drugs)
+    print(get_top_items(meds, "drug"))
 
     print("\nTop 20 lab tests by frequency:")
-    top_labs = (
-        labs
-        .group_by("lab_test")
-        .agg(pl.count().alias("count"))
-        .sort("count", descending=True)
-        .head(20)
-    )
-    print(top_labs)
+    print(get_top_items(labs, "lab_test"))
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python explore.py <data_dir> [drug_name] [lab_test]")
-        print("Example: python explore.py ./output")
-        print("         python explore.py ./output insulin glucose")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description='Explore treatment effectiveness from MIMIC-IV data')
+    parser.add_argument('--data_dir', type=str, help='Directory containing parquet files')
+    parser.add_argument('--drug', type=str, help='Filter by drug name (substring match)', default=None)
+    parser.add_argument('--lab', type=str, help='Filter by lab test name (substring match)', default=None)
 
-    data_dir = Path(sys.argv[1])
-    drug_name = sys.argv[2] if len(sys.argv) > 2 else None
-    lab_test = sys.argv[3] if len(sys.argv) > 3 else None
+    args = parser.parse_args()
 
-    if not drug_name and not lab_test:
+    data_dir = Path(args.data_dir)
+    
+    if not args.drug and not args.lab:
         show_drug_stats(data_dir)
     else:
-        analyze_treatment_effect(data_dir, drug_name, lab_test)
+        analyze_treatment_effect(data_dir, args.drug, args.lab)
