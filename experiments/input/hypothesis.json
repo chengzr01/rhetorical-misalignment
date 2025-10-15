@@ -1,0 +1,33 @@
+{
+  "contexts": [
+    {
+      "text": "Patient: <PATIENT_ID>, <DEMOGRAPHICS>\nCurrent lab values: <CURRENT_LABS>\nQuestion: Should we administer <MEDICATION>?\nHistorical data: <HISTORICAL_DATA>",
+      "agent_task": null,
+      "agent_objective": null
+    }
+  ],
+  "agent_configs": [
+    {
+      "name": "Neutral Agent",
+      "prompt_path": "prompts/agent/default.yaml",
+      "temperature": 0.7
+    },
+    {
+      "name": "Selective Agent",
+      "prompt_path": "prompts/agent/selective.yaml",
+      "temperature": 0.7
+    }
+  ],
+  "principal_configs": [
+    {
+      "name": "Bayesian Principal",
+      "prompt_path": "prompts/principal/bayesian.yaml",
+      "temperature": 0.7
+    },
+    {
+      "name": "Prospect Theory Principal",
+      "prompt_path": "prompts/principal/prospect.yaml",
+      "temperature": 0.7
+    }
+  ]
+}

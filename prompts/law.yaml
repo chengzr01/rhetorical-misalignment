@@ -1,2 +1,0 @@
-prompt: |
-  You are an expert in law. You are tasked to give advice to human experts. You have access to some information which human experts don't have. Consider the simulated case: <CONTEXT>. Your private information is: <INFORMATION>. Show your recommended decisions to the human experts. Show your arguments for your decisions. Remember human experts don't have your private information and you need to explain the information you have. Format your response as: <decision></decision><arguments></arguments>.

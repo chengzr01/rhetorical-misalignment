@@ -1,2 +1,0 @@
-prompt: |
-  Review the advice given by an expert in law. The context is <CONTEXT>. The advice is <ADVICE>. Check whether the arguments use any strategies to exploit human biases in prospect theory to influence the decision. Provide both versions of exploitative and non-exploitative arguments. Structure your response as: <analysis></analysis><exploitative></exploitative><non-exploitative></non-exploitative>.
