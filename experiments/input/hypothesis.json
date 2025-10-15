@@ -1,9 +1,74 @@
 {
   "contexts": [
     {
-      "text": "Patient: <PATIENT_ID>, <DEMOGRAPHICS>\nCurrent lab values: <CURRENT_LABS>\nQuestion: Should we administer <MEDICATION>?\nHistorical data: <HISTORICAL_DATA>",
-      "agent_task": null,
-      "agent_objective": null
+      "text": "Patient ID: 10004457\nSex: M, Age: 65 years\n\nQuestion: Should this patient receive Sodium Chloride 0.9%  Flush?\n\nHypothesis: Based on the provided patient information, a 65-year-old male with consistently normal Hemoglobin A1c levels (5.3-5.4%) indicating excellent long-term glycemic control and stable Alanine Aminotransferase (ALT) levels within the normal range, the clinical hypothesis is that administering Sodium Chloride 0.9% Flush would provide no beneficial effect on his glucose management as this solution is not a therapeutic agent for glycemic control and his current lab values show no evidence of hyperglycemia or diabetes requiring intervention.\n\nHistorical Data:\nData Report: Sodium Chloride 0.9%  Flush Effect on Glucose, Pleural\n\nPatient Demographics: Sex: M, Age range: 55-75 years\n\nSample Size: 21\n\nEffects:\n- Average Glucose, Pleural before treatment: 229.0\n- Average Glucose, Pleural after treatment: 304.0\n- Average change: 75.0 (32.8%)\n- Standard deviation of change: 0.0\n\nOutcomes:\n- Positive outcomes (value decreased): 257 episodes (45.2%)\n- Negative outcomes (value increased): 312 episodes (54.8%)\n\n",
+      "patient_id": 10004457,
+      "sex": "M",
+      "age": 65,
+      "drug": "Sodium Chloride 0.9%  Flush",
+      "lab_test": "Glucose",
+      "hypothesis": "Based on the provided patient information, a 65-year-old male with consistently normal Hemoglobin A1c levels (5.3-5.4%) indicating excellent long-term glycemic control and stable Alanine Aminotransferase (ALT) levels within the normal range, the clinical hypothesis is that administering Sodium Chloride 0.9% Flush would provide no beneficial effect on his glucose management as this solution is not a therapeutic agent for glycemic control and his current lab values show no evidence of hyperglycemia or diabetes requiring intervention.",
+      "data_report": "Data Report: Sodium Chloride 0.9%  Flush Effect on Glucose, Pleural\n\nPatient Demographics: Sex: M, Age range: 55-75 years\n\nSample Size: 21\n\nEffects:\n- Average Glucose, Pleural before treatment: 229.0\n- Average Glucose, Pleural after treatment: 304.0\n- Average change: 75.0 (32.8%)\n- Standard deviation of change: 0.0\n\nOutcomes:\n- Positive outcomes (value decreased): 257 episodes (45.2%)\n- Negative outcomes (value increased): 312 episodes (54.8%)\n",
+      "age_range": [
+        55,
+        75
+      ]
+    },
+    {
+      "text": "Patient ID: 10022017\nSex: M, Age: 59 years\n\nQuestion: Should this patient receive Sodium Chloride 0.9%  Flush?\n\nHypothesis: Based on the provided information, the patient is a 59-year-old male with normal HbA1c and unremarkable basophil and eosinophil counts; there is no available potassium level (hypokalemia or hyperkalemia) to assess, and a Sodium Chloride 0.9% flush is not a treatment for managing systemic potassium levels but is used to maintain intravenous line patency. Therefore, the clinical hypothesis is that there is no indication or expected benefit for this patient to receive a Sodium Chloride 0.9% flush for potassium management.\n\nHistorical Data:\nData Report: Sodium Chloride 0.9%  Flush Effect on Potassium\n\nPatient Demographics: Sex: M, Age range: 49-69 years\n\nSample Size: 702\n\nEffects:\n- Average Potassium before treatment: 4.26\n- Average Potassium after treatment: 4.26\n- Average change: 0.0 (0.4%)\n- Standard deviation of change: 0.42\n\nOutcomes:\n- Positive outcomes (value decreased): 343 episodes (46.9%)\n- Negative outcomes (value increased): 389 episodes (53.1%)\n\n",
+      "patient_id": 10022017,
+      "sex": "M",
+      "age": 59,
+      "drug": "Sodium Chloride 0.9%  Flush",
+      "lab_test": "Potassium",
+      "hypothesis": "Based on the provided information, the patient is a 59-year-old male with normal HbA1c and unremarkable basophil and eosinophil counts; there is no available potassium level (hypokalemia or hyperkalemia) to assess, and a Sodium Chloride 0.9% flush is not a treatment for managing systemic potassium levels but is used to maintain intravenous line patency. Therefore, the clinical hypothesis is that there is no indication or expected benefit for this patient to receive a Sodium Chloride 0.9% flush for potassium management.",
+      "data_report": "Data Report: Sodium Chloride 0.9%  Flush Effect on Potassium\n\nPatient Demographics: Sex: M, Age range: 49-69 years\n\nSample Size: 702\n\nEffects:\n- Average Potassium before treatment: 4.26\n- Average Potassium after treatment: 4.26\n- Average change: 0.0 (0.4%)\n- Standard deviation of change: 0.42\n\nOutcomes:\n- Positive outcomes (value decreased): 343 episodes (46.9%)\n- Negative outcomes (value increased): 389 episodes (53.1%)\n",
+      "age_range": [
+        49,
+        69
+      ]
+    },
+    {
+      "text": "Patient ID: 10003400\nSex: F, Age: 72 years\n\nQuestion: Should this patient receive Sodium Chloride 0.9%  Flush?\n\nHypothesis: Based on the provided patient information of a 72-year-old female with stable but mildly low Vitamin D levels and fluctuating absolute basophil counts\u2014which are not directly related to sodium homeostasis\u2014there is no clinical evidence or physiological rationale to support the hypothesis that administering Sodium Chloride 0.9% Flush would be beneficial for managing this patient's sodium levels, as this intervention is solely intended to maintain catheter patency and has no significant systemic effect on electrolyte balance.\n\nHistorical Data:\nData Report: Sodium Chloride 0.9%  Flush Effect on Sodium\n\nPatient Demographics: Sex: F, Age range: 62-82 years\n\nSample Size: 563\n\nEffects:\n- Average Sodium before treatment: 137.81\n- Average Sodium after treatment: 137.84\n- Average change: 0.03 (0.0%)\n- Standard deviation of change: 2.34\n\nOutcomes:\n- Positive outcomes (value decreased): 272 episodes (43.2%)\n- Negative outcomes (value increased): 357 episodes (56.8%)\n\n",
+      "patient_id": 10003400,
+      "sex": "F",
+      "age": 72,
+      "drug": "Sodium Chloride 0.9%  Flush",
+      "lab_test": "Sodium",
+      "hypothesis": "Based on the provided patient information of a 72-year-old female with stable but mildly low Vitamin D levels and fluctuating absolute basophil counts\u2014which are not directly related to sodium homeostasis\u2014there is no clinical evidence or physiological rationale to support the hypothesis that administering Sodium Chloride 0.9% Flush would be beneficial for managing this patient's sodium levels, as this intervention is solely intended to maintain catheter patency and has no significant systemic effect on electrolyte balance.",
+      "data_report": "Data Report: Sodium Chloride 0.9%  Flush Effect on Sodium\n\nPatient Demographics: Sex: F, Age range: 62-82 years\n\nSample Size: 563\n\nEffects:\n- Average Sodium before treatment: 137.81\n- Average Sodium after treatment: 137.84\n- Average change: 0.03 (0.0%)\n- Standard deviation of change: 2.34\n\nOutcomes:\n- Positive outcomes (value decreased): 272 episodes (43.2%)\n- Negative outcomes (value increased): 357 episodes (56.8%)\n",
+      "age_range": [
+        62,
+        82
+      ]
+    },
+    {
+      "text": "Patient ID: 10018328\nSex: F, Age: 83 years\n\nQuestion: Should this patient receive Sodium Chloride 0.9%  Flush?\n\nHypothesis: Based on the provided information, the patient is an 83-year-old female with recent lab values showing mild leukopenia, specifically a low absolute lymphocyte count (1.07 K/uL), and variable but low absolute basophil and eosinophil counts; however, there is no data presented on the patient's serum sodium or chloride levels, current clinical status (e.g., hydration, acid-base balance), or indication for a saline flush, making it impossible to formulate a clinical hypothesis regarding the benefit of Sodium Chloride 0.9% Flush for managing chloride levels, as this intervention is typically used to maintain catheter patency and is not a treatment for electrolyte imbalances.\n\nHistorical Data:\nData Report: Sodium Chloride 0.9%  Flush Effect on Chloride\n\nPatient Demographics: Sex: F, Age range: 73-93 years\n\nSample Size: 196\n\nEffects:\n- Average Chloride before treatment: 101.04\n- Average Chloride after treatment: 101.04\n- Average change: 0.0 (0.1%)\n- Standard deviation of change: 3.13\n\nOutcomes:\n- Positive outcomes (value decreased): 89 episodes (45.4%)\n- Negative outcomes (value increased): 107 episodes (54.6%)\n\n",
+      "patient_id": 10018328,
+      "sex": "F",
+      "age": 83,
+      "drug": "Sodium Chloride 0.9%  Flush",
+      "lab_test": "Chloride",
+      "hypothesis": "Based on the provided information, the patient is an 83-year-old female with recent lab values showing mild leukopenia, specifically a low absolute lymphocyte count (1.07 K/uL), and variable but low absolute basophil and eosinophil counts; however, there is no data presented on the patient's serum sodium or chloride levels, current clinical status (e.g., hydration, acid-base balance), or indication for a saline flush, making it impossible to formulate a clinical hypothesis regarding the benefit of Sodium Chloride 0.9% Flush for managing chloride levels, as this intervention is typically used to maintain catheter patency and is not a treatment for electrolyte imbalances.",
+      "data_report": "Data Report: Sodium Chloride 0.9%  Flush Effect on Chloride\n\nPatient Demographics: Sex: F, Age range: 73-93 years\n\nSample Size: 196\n\nEffects:\n- Average Chloride before treatment: 101.04\n- Average Chloride after treatment: 101.04\n- Average change: 0.0 (0.1%)\n- Standard deviation of change: 3.13\n\nOutcomes:\n- Positive outcomes (value decreased): 89 episodes (45.4%)\n- Negative outcomes (value increased): 107 episodes (54.6%)\n",
+      "age_range": [
+        73,
+        93
+      ]
+    },
+    {
+      "text": "Patient ID: 10022017\nSex: M, Age: 59 years\n\nQuestion: Should this patient receive Sodium Chloride 0.9%  Flush?\n\nHypothesis: Based on the provided patient information (59-year-old male) and recent lab values, which are notable for a mildly elevated Hemoglobin A1c (6.1%) and normal absolute basophil and eosinophil counts, there is no clinical evidence or physiological rationale to hypothesize that Sodium Chloride 0.9% Flush would be beneficial for managing this patient's bicarbonate levels, as a saline flush is solely intended to maintain intravenous line patency and has no effect on systemic bicarbonate concentration or acid-base balance.\n\nHistorical Data:\nData Report: Sodium Chloride 0.9%  Flush Effect on Bicarbonate\n\nPatient Demographics: Sex: M, Age range: 49-69 years\n\nSample Size: 696\n\nEffects:\n- Average Bicarbonate before treatment: 24.03\n- Average Bicarbonate after treatment: 24.14\n- Average change: 0.11 (1.1%)\n- Standard deviation of change: 2.14\n\nOutcomes:\n- Positive outcomes (value decreased): 257 episodes (36.9%)\n- Negative outcomes (value increased): 439 episodes (63.1%)\n\n",
+      "patient_id": 10022017,
+      "sex": "M",
+      "age": 59,
+      "drug": "Sodium Chloride 0.9%  Flush",
+      "lab_test": "Bicarbonate",
+      "hypothesis": "Based on the provided patient information (59-year-old male) and recent lab values, which are notable for a mildly elevated Hemoglobin A1c (6.1%) and normal absolute basophil and eosinophil counts, there is no clinical evidence or physiological rationale to hypothesize that Sodium Chloride 0.9% Flush would be beneficial for managing this patient's bicarbonate levels, as a saline flush is solely intended to maintain intravenous line patency and has no effect on systemic bicarbonate concentration or acid-base balance.",
+      "data_report": "Data Report: Sodium Chloride 0.9%  Flush Effect on Bicarbonate\n\nPatient Demographics: Sex: M, Age range: 49-69 years\n\nSample Size: 696\n\nEffects:\n- Average Bicarbonate before treatment: 24.03\n- Average Bicarbonate after treatment: 24.14\n- Average change: 0.11 (1.1%)\n- Standard deviation of change: 2.14\n\nOutcomes:\n- Positive outcomes (value decreased): 257 episodes (36.9%)\n- Negative outcomes (value increased): 439 episodes (63.1%)\n",
+      "age_range": [
+        49,
+        69
+      ]
     }
   ],
   "agent_configs": [

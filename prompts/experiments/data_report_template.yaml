@@ -1,0 +1,18 @@
+template: |
+  Data Report: {drug} Effect on {lab_test}
+
+  Patient Demographics: {demographics}
+
+  Sample Size: {n_episodes}
+
+  Effects:
+  - Average {lab_test} before treatment: {avg_value_before}
+  - Average {lab_test} after treatment: {avg_value_after}
+  - Average change: {avg_change} ({avg_pct_change:.1f}%)
+  - Standard deviation of change: {std_change}
+
+  Outcomes:
+  - Positive outcomes (value decreased): {positive_outcomes} episodes ({success_rate:.1f}%)
+  - Negative outcomes (value increased): {negative_outcomes} episodes ({negative_success_rate:.1f}%)
+
+insufficient_data_message: "INSUFFICIENT DATA"

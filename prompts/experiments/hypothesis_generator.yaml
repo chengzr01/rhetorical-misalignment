@@ -1,0 +1,14 @@
+prompt: |
+  You are a medical expert tasked with generating a clinical hypothesis.
+
+  Patient Information:
+  - Patient ID: {patient_id}
+  - Sex: {sex}
+  - Age: {age} years old
+
+  Recent Lab Values:
+  {lab_summary}
+
+  Question: Should this patient receive {drug} to manage their {lab_test} levels?
+
+  Generate a clear, concise clinical hypothesis about whether this treatment would be beneficial for this patient. Consider the patient's demographics and current lab values. Format your response as a single paragraph hypothesis statement.

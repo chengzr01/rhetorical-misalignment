@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 import polars as pl
+import yaml
 
 from interface.client import OpenRouterChatClient, SGLangChatClient
 
@@ -17,6 +18,7 @@ class HypothesisGenerator:
         data_dir: str | Path,
         client: OpenRouterChatClient | SGLangChatClient,
         model: str = "anthropic/claude-3.5-sonnet",
+        prompt_path: str | Path = "prompts/experiments/hypothesis_generator.yaml",
     ):
         self.data_dir = Path(data_dir)
         self.client = client
@@ -24,6 +26,11 @@ class HypothesisGenerator:
         self.patients = pl.read_parquet(self.data_dir / "patients.parquet")
         self.medications = pl.read_parquet(self.data_dir / "medications.parquet")
         self.labs = pl.read_parquet(self.data_dir / "labs.parquet")
+
+        # Load prompt template from YAML file
+        with open(prompt_path, "r") as f:
+            prompt_config = yaml.safe_load(f)
+            self.prompt_template = prompt_config["prompt"]
 
     def get_patient_info(self, patient_id: int) -> Mapping[str, Any] | None:
         patient = self.patients.filter(pl.col("subject_id") == patient_id)
@@ -66,19 +73,14 @@ class HypothesisGenerator:
             ]
         )
 
-        prompt = f"""You are a medical expert tasked with generating a clinical hypothesis.
-
-Patient Information:
-- Patient ID: {patient_info['patient_id']}
-- Sex: {patient_info['sex']}
-- Age: {patient_info['age']} years old
-
-Recent Lab Values:
-{lab_summary}
-
-Question: Should this patient receive {drug} to manage their {lab_test} levels?
-
-Generate a clear, concise clinical hypothesis about whether this treatment would be beneficial for this patient. Consider the patient's demographics and current lab values. Format your response as a single paragraph hypothesis statement."""
+        prompt = self.prompt_template.format(
+            patient_id=patient_info["patient_id"],
+            sex=patient_info["sex"],
+            age=patient_info["age"],
+            lab_summary=lab_summary,
+            drug=drug,
+            lab_test=lab_test,
+        )
 
         messages = [{"role": "user", "content": prompt}]
         response = self.client.create_completion(
@@ -91,6 +93,7 @@ Generate a clear, concise clinical hypothesis about whether this treatment would
             self.medications.join(
                 self.labs, on=["subject_id", "hadm_id"], how="inner", suffix="_lab"
             )
+            .filter(pl.col("drug").is_not_null() & pl.col("lab_test").is_not_null())
             .group_by(["drug", "lab_test"])
             .agg(pl.count().alias("count"))
             .filter(pl.col("count") >= min_episodes)
@@ -102,9 +105,7 @@ Generate a clear, concise clinical hypothesis about whether this treatment would
             for row in drug_lab_effects.iter_rows(named=True)
         ]
 
-    def select_patients_for_drug(
-        self, drug: str, n_patients: int = 5
-    ) -> list[int]:
+    def select_patients_for_drug(self, drug: str, n_patients: int = 5) -> list[int]:
         patient_ids = (
             self.medications.filter(pl.col("drug").str.contains(f"(?i){drug}"))
             .select("subject_id")

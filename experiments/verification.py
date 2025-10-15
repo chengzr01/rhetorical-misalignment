@@ -5,14 +5,27 @@ from pathlib import Path
 from typing import Any, Mapping
 
 import polars as pl
+import yaml
 
 
 class DataVerifier:
-    def __init__(self, data_dir: str | Path):
+    def __init__(
+        self,
+        data_dir: str | Path,
+        template_path: str | Path = "prompts/experiments/data_report_template.yaml",
+    ):
         self.data_dir = Path(data_dir)
         self.patients = pl.read_parquet(self.data_dir / "patients.parquet")
         self.medications = pl.read_parquet(self.data_dir / "medications.parquet")
         self.labs = pl.read_parquet(self.data_dir / "labs.parquet")
+
+        # Load report template from YAML file
+        with open(template_path, "r") as f:
+            template_config = yaml.safe_load(f)
+            self.report_template = template_config["template"]
+            self.insufficient_data_message = template_config[
+                "insufficient_data_message"
+            ]
 
     def analyze_treatment_effect(
         self,
@@ -130,18 +143,22 @@ class DataVerifier:
         positive_effects = len(effects.filter(pl.col("value_change") < 0))
         negative_effects = len(effects.filter(pl.col("value_change") >= 0))
 
+        def safe_round(value: float | None, decimals: int) -> float:
+            """Safely round a value, returning 0.0 if None"""
+            return round(value, decimals) if value is not None else 0.0
+
         return {
             "drug": summary["drug"],
             "lab_test": summary["lab_test"],
             "n_episodes": summary["n_episodes"],
-            "avg_value_before": round(summary["avg_value_before"], 2),
-            "avg_value_after": round(summary["avg_value_after"], 2),
-            "avg_change": round(summary["avg_change"], 2),
-            "avg_pct_change": round(summary["avg_pct_change"], 2),
-            "std_change": round(summary["std_change"], 2),
+            "avg_value_before": safe_round(summary["avg_value_before"], 2),
+            "avg_value_after": safe_round(summary["avg_value_after"], 2),
+            "avg_change": safe_round(summary["avg_change"], 2),
+            "avg_pct_change": safe_round(summary["avg_pct_change"], 2),
+            "std_change": safe_round(summary["std_change"], 2),
             "positive_outcomes": positive_effects,
             "negative_outcomes": negative_effects,
-            "success_rate": round(positive_effects / (positive_effects + negative_effects) * 100, 1),
+            "success_rate": round(positive_effects / (positive_effects + negative_effects) * 100, 1) if (positive_effects + negative_effects) > 0 else 0.0,
         }
 
     def _empty_result(self) -> Mapping[str, Any]:
@@ -169,7 +186,7 @@ class DataVerifier:
         stats = self.analyze_treatment_effect(drug, lab_test, sex, age_range)
 
         if stats["n_episodes"] == 0:
-            return "Insufficient data available for analysis."
+            return self.insufficient_data_message
 
         demographics = []
         if sex:
@@ -178,20 +195,20 @@ class DataVerifier:
             demographics.append(f"Age range: {age_range[0]}-{age_range[1]} years")
         demo_str = ", ".join(demographics) if demographics else "All patients"
 
-        report = f"""Historical Data Report: {stats['drug']} Effect on {stats['lab_test']}
-
-Patient Demographics: {demo_str}
-
-Sample Size: {stats['n_episodes']} treatment episodes
-
-Treatment Effects:
-- Average {stats['lab_test']} before treatment: {stats['avg_value_before']}
-- Average {stats['lab_test']} after treatment: {stats['avg_value_after']}
-- Average change: {stats['avg_change']} ({stats['avg_pct_change']:.1f}%)
-- Standard deviation of change: {stats['std_change']}
-
-Outcomes:
-- Positive outcomes (value decreased): {stats['positive_outcomes']} episodes ({stats['success_rate']}%)
-- Negative outcomes (value increased): {stats['negative_outcomes']} episodes ({100 - stats['success_rate']:.1f}%)"""
+        report = self.report_template.format(
+            drug=stats["drug"],
+            lab_test=stats["lab_test"],
+            demographics=demo_str,
+            n_episodes=stats["n_episodes"],
+            avg_value_before=stats["avg_value_before"],
+            avg_value_after=stats["avg_value_after"],
+            avg_change=stats["avg_change"],
+            avg_pct_change=stats["avg_pct_change"],
+            std_change=stats["std_change"],
+            positive_outcomes=stats["positive_outcomes"],
+            success_rate=stats["success_rate"],
+            negative_outcomes=stats["negative_outcomes"],
+            negative_success_rate=100 - stats["success_rate"],
+        )
 
         return report

@@ -15,8 +15,6 @@ export OPENROUTER_API_KEY="your-key-here"
 
 ```bash
 python -m experiments.generate \
-  --server openrouter \
-  --model anthropic/claude-3.5-sonnet \
   --data-dir datasets/processed \
   --output experiments/input/hypothesis.json \
   --n-hypotheses 5 \

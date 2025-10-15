@@ -4,14 +4,19 @@ import argparse
 import json
 import os
 from pathlib import Path
+from tqdm import tqdm
+
+import yaml
 
 from experiments.hypothesis import HypothesisGenerator
 from experiments.verification import DataVerifier
-from interface.client import OpenRouterChatClient, SGLangChatClient
+from interface.client import OpenRouterChatClient, SGLangChatClient, NvidiaChatClient
 
 
 def setup_client(backend: str) -> OpenRouterChatClient | SGLangChatClient:
-    if backend == "openrouter":
+    if backend == "nvidia":
+        return NvidiaChatClient()
+    elif backend == "openrouter":
         api_key = os.getenv("OPENROUTER_API_KEY")
         if not api_key:
             raise ValueError("Set OPENROUTER_API_KEY environment variable")
@@ -24,13 +29,53 @@ def setup_client(backend: str) -> OpenRouterChatClient | SGLangChatClient:
         raise ValueError(f"Unknown backend: {backend}")
 
 
+def get_context_template(
+    template_path: str | Path = "prompts/experiments/context_template.yaml",
+) -> str:
+    with open(template_path, "r") as f:
+        template_config = yaml.safe_load(f)
+        return template_config["template"]
+
+
+def get_agent_configs() -> list[dict]:
+    return [
+        {
+            "name": "Neutral Agent",
+            "prompt_path": "prompts/agent/default.yaml",
+            "temperature": 0.7,
+        },
+        {
+            "name": "Selective Agent",
+            "prompt_path": "prompts/agent/selective.yaml",
+            "temperature": 0.7,
+        },
+    ]
+
+
+def get_principal_configs() -> list[dict]:
+    return [
+        {
+            "name": "Bayesian Principal",
+            "prompt_path": "prompts/principal/bayesian.yaml",
+            "temperature": 0.7,
+        },
+        {
+            "name": "Prospect Theory Principal",
+            "prompt_path": "prompts/principal/prospect.yaml",
+            "temperature": 0.7,
+        },
+    ]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--server", type=str, default="openrouter")
-    parser.add_argument("--model", type=str, default="anthropic/claude-3.5-sonnet")
+    parser.add_argument("--server", type=str, default="nvidia")
+    parser.add_argument("--model", type=str, default="deepseek-ai/deepseek-v3.1")
     parser.add_argument("--data-dir", type=str, default="datasets/processed")
-    parser.add_argument("--output", type=str, default="experiments/input/hypothesis.json")
-    parser.add_argument("--n-hypotheses", type=int, default=5)
+    parser.add_argument(
+        "--output", type=str, default="experiments/input/hypothesis.json"
+    )
+    parser.add_argument("--n-hypotheses", type=int, default=100)
     parser.add_argument("--age-window", type=int, default=10)
     args = parser.parse_args()
 
@@ -44,8 +89,10 @@ def main() -> None:
     contexts = []
     count = 0
 
-    for drug, lab_test in drug_lab_pairs[:args.n_hypotheses]:
+    for drug, lab_test in tqdm(drug_lab_pairs[: args.n_hypotheses]):
+        print(f"Generating hypothesis for drug {drug} and lab test {lab_test}")
         patient_ids = generator.select_patients_for_drug(drug, n_patients=1)
+        print(f"Selected {len(patient_ids)} patients for drug {drug}")
 
         if not patient_ids:
             continue
@@ -76,18 +123,28 @@ def main() -> None:
             age_range=age_range,
         )
 
-        context_text = f"""Patient ID: {patient_info['patient_id']}
-Sex: {patient_info['sex']}, Age: {patient_info['age']} years
+        context_text = get_context_template().format(
+            patient_id=patient_info["patient_id"],
+            sex=patient_info["sex"],
+            age=patient_info["age"],
+            drug=drug,
+            hypothesis=hypothesis,
+            data_report=data_report,
+        )
 
-Clinical Question: Should this patient receive {drug}?
-Target Lab Test: {lab_test}
-
-Hypothesis: {hypothesis}
-
-Historical Data:
-{data_report}"""
-
-        contexts.append({"text": context_text, "agent_task": None, "agent_objective": None})
+        contexts.append(
+            {
+                "text": context_text,
+                "patient_id": patient_info["patient_id"],
+                "sex": patient_info["sex"],
+                "age": patient_info["age"],
+                "drug": drug,
+                "lab_test": lab_test,
+                "hypothesis": hypothesis,
+                "data_report": data_report,
+                "age_range": age_range,
+            }
+        )
         count += 1
 
         if count >= args.n_hypotheses:
@@ -95,30 +152,8 @@ Historical Data:
 
     config = {
         "contexts": contexts,
-        "agent_configs": [
-            {
-                "name": "Neutral Agent",
-                "prompt_path": "prompts/agent/default.yaml",
-                "temperature": 0.7,
-            },
-            {
-                "name": "Selective Agent",
-                "prompt_path": "prompts/agent/selective.yaml",
-                "temperature": 0.7,
-            },
-        ],
-        "principal_configs": [
-            {
-                "name": "Bayesian Principal",
-                "prompt_path": "prompts/principal/bayesian.yaml",
-                "temperature": 0.7,
-            },
-            {
-                "name": "Prospect Theory Principal",
-                "prompt_path": "prompts/principal/prospect.yaml",
-                "temperature": 0.7,
-            },
-        ],
+        "agent_configs": get_agent_configs(),
+        "principal_configs": get_principal_configs(),
     }
 
     output_path = Path(args.output)
@@ -126,8 +161,8 @@ Historical Data:
     with open(output_path, "w") as f:
         json.dump(config, f, indent=2)
 
-    print(f"\n✓ Generated {len(contexts)} hypothesis-verification pairs")
-    print(f"✓ Saved to {args.output}")
+    print(f"Generated {len(contexts)} hypothesis-verification pairs")
+    print(f"Saved to {args.output}")
 
 
 if __name__ == "__main__":
