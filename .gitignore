@@ -1,3 +1,6 @@
+datasets/MIMIC/raw/*
+datasets/PMC/raw/*
+
 # Python
 __pycache__/
 *.py[cod]
