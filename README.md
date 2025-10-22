@@ -6,7 +6,9 @@ LLM-driven principal-agent framework for clinical decision-making.
 
 ```bash
 pip install polars pyarrow openai pyyaml
-export OPENROUTER_API_KEY="your-key-here"
+export NVIDIA_API_KEY="your-key-here"  # For NVIDIA backend (default)
+# OR
+export OPENROUTER_API_KEY="your-key-here"  # For OpenRouter backend
 ```
 
 ## Usage
@@ -33,17 +35,19 @@ Parameters:
 
 ```bash
 python main.py \
-  --server openrouter \
-  --model anthropic/claude-3.5-sonnet \
+  --server nvidia \
+  --agent-model meta/llama-3.3-70b-instruct \
+  --principal-model deepseek-ai/deepseek-r1 \
   --input experiments/input/hypothesis.json \
   --output experiments/output/results.json
 ```
 
 Parameters:
-- `--server`: LLM backend
-- `--model`: Model identifier
-- `--input`: Input file
-- `--output`: Output file
+- `--server`: LLM backend (`nvidia`, `openrouter`, or `sglang`, default: `nvidia`)
+- `--agent-model`: Model for agents (default: `deepseek-ai/deepseek-r1`)
+- `--principal-model`: Model for principals (default: `deepseek-ai/deepseek-r1`)
+- `--input`: Input hypothesis file
+- `--output`: Output results file
 
 ## Structure
 

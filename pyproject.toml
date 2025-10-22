@@ -14,6 +14,11 @@ dependencies = [
     "openai>=1.59.8",
     "pyyaml>=6.0.2",
     "tqdm>=4.67.1",
+    "seaborn (>=0.13.2,<0.14.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "fastapi (>=0.119.0,<0.120.0)",
+    "psutil (>=7.1.0,<8.0.0)",
+    "zmq (>=0.0.0,<0.0.1)",
 ]
 
 [project.optional-dependencies]
