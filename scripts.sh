@@ -1,20 +1,19 @@
-# python -m experiments.generate \
-#   --data-dir datasets/processed \
-#   --output experiments/input/hypothesis.json \
-#   --n-hypotheses 100 \
-#   --age-window 10
+python main.py --agent-server sglang --agent-sglang-port 30001 \
+  --input experiments/input/hypothesis_pmc.json \
+  --hypothesis-type pmc \
+  --output experiments/output/pmc_results_dpo.json
 
-# python main.py \
-#   --agent-server sglang \
-#   --agent-sglang-port 30002 \
-#   --principal-model deepseek-ai/deepseek-v3.1 \
-#   --input experiments/input/hypothesis.json \
-#   --output experiments/output_sft/results.json
+python main.py --agent-server sglang --agent-sglang-port 30002 \
+  --input experiments/input/hypothesis_pmc.json \
+  --hypothesis-type pmc \
+  --output experiments/output/pmc_results_sft.json
 
-python analyze.py \
-  --input experiments/output_sft \
-  --output-dir experiments/analysis_sft
+python main.py --agent-server sglang --agent-sglang-port 30001 \
+  --input experiments/input/hypothesis_mimic.json \
+  --hypothesis-type mimic \
+  --output experiments/output/mimic_results_dpo.json
 
-python analyze.py \
-  --input experiments/output_dpo \
-  --output-dir experiments/analysis_dpo
+python main.py --agent-server sglang --agent-sglang-port 30002 \
+  --input experiments/input/hypothesis_mimic.json \
+  --hypothesis-type mimic \
+  --output experiments/output/mimic_results_sft.json

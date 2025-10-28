@@ -14,6 +14,97 @@ from agents.principal import Principal
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 
 
+def build_mimic_context(hypothesis_data: dict) -> dict:
+    """
+    Build context from MIMIC hypothesis data.
+
+    MIMIC hypotheses contain rich medical history data including medications and labs.
+    """
+    # Extract demographics with enhanced info
+    demographics = (
+        f"Patient ID: {hypothesis_data['patient_id']}\n"
+        f"Sex: {hypothesis_data['sex']}, Age: {hypothesis_data['age']} years\n"
+        f"Race: {hypothesis_data['race']}\n"
+        f"Marital Status: {hypothesis_data['marital_status']}\n"
+        f"Language: {hypothesis_data['language']}\n"
+        f"Insurance: {hypothesis_data['insurance']}\n\n"
+        f"Admission Type: {hypothesis_data['admission_type']}\n"
+        f"Admitted From: {hypothesis_data['admission_location']}"
+    )
+
+    # Build data report from medication and lab history
+    data_report = (
+        f"Medication History:\n{hypothesis_data['medication_history']}\n\n"
+        f"Lab Results:\n{hypothesis_data['lab_history']}"
+    )
+
+    return {
+        "patient_id": hypothesis_data['patient_id'],
+        "hadm_id": hypothesis_data['hadm_id'],
+        "sex": hypothesis_data['sex'],
+        "age": hypothesis_data['age'],
+        "demographics": demographics,
+        "hypothesis": hypothesis_data['hypothesis'],
+        "data_report": data_report,
+        "source": "mimic",
+    }
+
+
+def build_pmc_context(hypothesis_data: dict) -> dict:
+    """
+    Build context from PMC hypothesis data.
+
+    PMC hypotheses are based on published case reports with patient summaries
+    and supporting research abstracts.
+    """
+    # Extract demographics
+    demographics = (
+        f"Patient ID: {hypothesis_data['patient_id']}\n"
+        f"Gender: {hypothesis_data['gender']}, Age: {hypothesis_data['age']}"
+    )
+
+    # Build data report from patient summary and abstracts
+    pmids_str = ", ".join(hypothesis_data['pmids'])
+    data_report = (
+        f"Patient Summary:\n{hypothesis_data['patient_summary']}\n\n"
+        f"Supporting Research Evidence (PMIDs: {pmids_str}):\n"
+    )
+
+    # Add paper abstracts
+    for i, (pmid, abstract) in enumerate(zip(hypothesis_data['pmids'], hypothesis_data['paper_abstracts']), 1):
+        data_report += f"\nPaper {i} (PMID: {pmid}):\n{abstract}\n"
+
+    return {
+        "patient_id": hypothesis_data['patient_id'],
+        "patient_uid": hypothesis_data['patient_uid'],
+        "gender": hypothesis_data['gender'],
+        "age": hypothesis_data['age'],
+        "demographics": demographics,
+        "hypothesis": hypothesis_data['hypothesis'],
+        "data_report": data_report,
+        "source": "pmc",
+    }
+
+
+def build_contexts(hypotheses: list[dict], hypothesis_type: str) -> list[dict]:
+    """
+    Build contexts from raw hypothesis data based on hypothesis type.
+
+    Args:
+        hypotheses: List of hypothesis dictionaries
+        hypothesis_type: Either 'mimic' or 'pmc'
+
+    Returns:
+        List of context dictionaries formatted for the simulation
+    """
+    if hypothesis_type == "mimic":
+        return [build_mimic_context(h) for h in hypotheses]
+    elif hypothesis_type == "pmc":
+        return [build_pmc_context(h) for h in hypotheses]
+    else:
+        raise ValueError(f"Unknown hypothesis type: {hypothesis_type}")
+
+
 def setup_clients(
     backend: str = "nvidia",
     sglang_port: int = 30000,
@@ -88,7 +179,7 @@ def run_experiment_thread(
     principal_config: Mapping[str, Any],
     agent_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
     principal_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
-    output_dir: Path,
+    output_path: Path,
     save_interval: int = 10,
 ) -> list[Mapping[str, Any]]:
     results = []
@@ -109,9 +200,7 @@ def run_experiment_thread(
         temperature=principal_config.get("temperature", 1.0),
     )
 
-    # Create unique output file for this agent-principal pair
-    output_file = output_dir / f"{agent.name}_{principal.name}_results.json"
-    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     total_iterations = len(contexts)
     progress_bar = tqdm(total=total_iterations, desc=f"Running {agent.name}-{principal.name}")
@@ -128,16 +217,14 @@ def run_experiment_thread(
             # Dict context - implement information asymmetry
             # Principal gets: patient demographics + hypothesis (partial info)
             principal_context = (
-                f"Patient ID: {context['patient_id']}\n"
-                f"Sex: {context['sex']}, Age: {context['age']} years\n\n"
-                f"Question: Should this patient receive {context['drug']}?\n\n"
+                f"{context['demographics']}\n\n"
                 f"Hypothesis: {context['hypothesis']}"
             )
 
             # Agent gets: principal context + full data distribution
             agent_context = (
                 f"{principal_context}\n\n"
-                f"Historical Data:\n{context['data_report']}"
+                f"Available Data:\n{context['data_report']}"
             )
 
             agent_task = context.get("agent_task")
@@ -157,13 +244,13 @@ def run_experiment_thread(
 
         # Save results at specified intervals
         if iteration_count % save_interval == 0:
-            with open(output_file, "w") as f:
+            with open(output_path, "w") as f:
                 json.dump(results, f, indent=2)
 
     progress_bar.close()
 
     # Final save
-    with open(output_file, "w") as f:
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
     return results
@@ -175,7 +262,7 @@ def run_experiment_sequential(
     principal_configs: list[Mapping[str, Any]],
     agent_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
     principal_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
-    output_path: str | Path,
+    output_path: Path,
     save_interval: int = 10,
 ) -> list[Mapping[str, Any]]:
     results = []
@@ -204,7 +291,6 @@ def run_experiment_sequential(
     total_iterations = len(contexts) * len(agents) * len(principals)
     progress_bar = tqdm(total=total_iterations, desc="Running experiments")
     
-    output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     iteration_count = 0
 
@@ -220,16 +306,14 @@ def run_experiment_sequential(
                     # Dict context - implement information asymmetry
                     # Principal gets: patient demographics + hypothesis (partial info)
                     principal_context = (
-                        f"Patient ID: {context['patient_id']}\n"
-                        f"Sex: {context['sex']}, Age: {context['age']} years\n\n"
-                        f"Question: Should this patient receive {context['drug']}?\n\n"
+                        f"{context['demographics']}\n\n"
                         f"Hypothesis: {context['hypothesis']}"
                     )
 
                     # Agent gets: principal context + full data distribution
                     agent_context = (
                         f"{principal_context}\n\n"
-                        f"Historical Data:\n{context['data_report']}"
+                        f"Available Data:\n{context['data_report']}"
                     )
 
                     agent_task = context.get("agent_task")
@@ -267,12 +351,11 @@ def run_experiment_concurrent(
     principal_configs: list[Mapping[str, Any]],
     agent_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
     principal_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
-    output_dir: str | Path,
+    output_path: Path,
     save_interval: int = 10,
     max_workers: int = 4,
 ) -> list[Mapping[str, Any]]:
-    output_dir = Path(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     all_results = []
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -286,7 +369,7 @@ def run_experiment_concurrent(
                     principal_config,
                     agent_client,
                     principal_client,
-                    output_dir,
+                    output_path,
                     save_interval,
                 )
                 future_to_config[future] = (agent_config, principal_config)
@@ -294,6 +377,10 @@ def run_experiment_concurrent(
         for future in future_to_config:
             results = future.result()
             all_results.extend(results)
+
+    # Save final results
+    with open(output_path, "w") as f:
+        json.dump(all_results, f, indent=2)
 
     return all_results
 
@@ -317,7 +404,7 @@ def main() -> None:
     parser.add_argument(
         "--agent-sglang-port",
         type=int,
-        default=30002,
+        default=30001,
         help="Port for agent SGLang server",
     )
     parser.add_argument(
@@ -339,13 +426,33 @@ def main() -> None:
         help="Model to use for principals",
     )
     parser.add_argument(
-        "--input", type=str, default="experiments/input/hypothesis.json"
+        "--input", type=str, default="experiments/input/hypothesis_mimic.json",
+        help="Input hypothesis JSON file (MIMIC or PMC format) or old-style config JSON"
     )
-    parser.add_argument("--output", type=str, default="experiments/output_dpo/results.json")
+    parser.add_argument(
+        "--hypothesis-type",
+        type=str,
+        choices=["mimic", "pmc", "auto"],
+        default="auto",
+        help="Type of hypothesis data: 'mimic' for MIMIC-IV, 'pmc' for PMC, 'auto' to detect from filename"
+    )
+    parser.add_argument(
+        "--agent-prompt",
+        type=str,
+        default="prompts/agent/default.yaml",
+        help="Agent prompt template path"
+    )
+    parser.add_argument(
+        "--principal-prompt",
+        type=str,
+        default="prompts/principal/prospect.yaml",
+        help="Principal prompt template path"
+    )
+    parser.add_argument("--output", type=str, default="experiments/output/results.json")
     parser.add_argument(
         "--save-interval",
         type=int,
-        default=5,
+        default=10,
         help="Save results every N iterations",
     )
     parser.add_argument(
@@ -371,36 +478,99 @@ def main() -> None:
     )
 
     with open(args.input, "r") as f:
-        config = json.load(f)
+        input_data = json.load(f)
 
-    # Set models for agents and principals from command line args
-    for agent_config in config["agent_configs"]:
-        if "model" not in agent_config:
+    # Detect input format: old-style config vs new hypothesis format
+    if isinstance(input_data, dict) and "contexts" in input_data:
+        # Old-style config format with pre-built contexts
+        print("Detected old-style config format")
+        contexts = input_data["contexts"]
+        # Only use default agent config
+        agent_configs = [input_data["agent_configs"][0]]
+        # Only use prospect-theoretic principal config
+        principal_configs = [config for config in input_data["principal_configs"] 
+                           if "prospect" in config["prompt_path"].lower()]
+        if not principal_configs:
+            principal_configs = [input_data["principal_configs"][0]]  # Fallback to first config
+    elif isinstance(input_data, list):
+        # New hypothesis format - need to build contexts
+        print("Detected hypothesis list format")
+
+        # Auto-detect hypothesis type from filename if requested
+        hypothesis_type = args.hypothesis_type
+        if hypothesis_type == "auto":
+            if "mimic" in args.input.lower():
+                hypothesis_type = "mimic"
+            elif "pmc" in args.input.lower():
+                hypothesis_type = "pmc"
+            else:
+                raise ValueError(
+                    "Cannot auto-detect hypothesis type from filename. "
+                    "Please specify --hypothesis-type explicitly."
+                )
+
+        print(f"Using hypothesis type: {hypothesis_type}")
+
+        # Build contexts from hypotheses
+        contexts = build_contexts(input_data, hypothesis_type)
+        print(f"Built {len(contexts)} contexts")
+
+        # Create only default agent config
+        agent_configs = [{
+            "name": "default_agent",
+            "model": args.agent_model,
+            "prompt_path": args.agent_prompt,
+            "temperature": 1.0,
+        }]
+
+        # Create only prospect-theoretic principal config
+        principal_configs = [{
+            "name": "prospect_principal",
+            "model": args.principal_model,
+            "prompt_path": args.principal_prompt,
+            "temperature": 1.0,
+        }]
+    else:
+        raise ValueError(
+            "Invalid input format. Expected either:\n"
+            "  1. Dict with 'contexts', 'agent_configs', 'principal_configs' (old format)\n"
+            "  2. List of hypothesis dictionaries (new format)"
+        )
+
+    # Set models for agents and principals from command line args (override if needed)
+    for agent_config in agent_configs:
+        if "model" not in agent_config or agent_config["model"] is None:
             agent_config["model"] = args.agent_model
-    for principal_config in config["principal_configs"]:
-        if "model" not in principal_config:
+    for principal_config in principal_configs:
+        if "model" not in principal_config or principal_config["model"] is None:
             principal_config["model"] = args.principal_model
 
+    print(f"Agent configs: {len(agent_configs)}")
+    print(f"Principal configs: {len(principal_configs)}")
+    print(f"Total contexts: {len(contexts)}")
+    print(f"Total experiments: {len(contexts) * len(agent_configs) * len(principal_configs)}")
+
+    output_path = Path(args.output)
+
     if args.concurrent:
-        output_dir = Path(args.output).parent
-        run_experiment_concurrent(
-            contexts=config["contexts"],
-            agent_configs=config["agent_configs"],
-            principal_configs=config["principal_configs"],
+        results = run_experiment_concurrent(
+            contexts=contexts,
+            agent_configs=agent_configs,
+            principal_configs=principal_configs,
             agent_client=agent_client,
             principal_client=principal_client,
-            output_dir=output_dir,
+            output_path=output_path,
             save_interval=args.save_interval,
             max_workers=args.max_workers,
         )
     else:
-        run_experiment_sequential(
-            contexts=config["contexts"],
-            agent_configs=config["agent_configs"],
-            principal_configs=config["principal_configs"],
+        results = run_experiment_sequential(
+            contexts=contexts,
+            agent_configs=agent_configs,
+            principal_configs=principal_configs,
             agent_client=agent_client,
             principal_client=principal_client,
-            output_path=args.output,
+            output_path=output_path,
             save_interval=args.save_interval,
         )
 
