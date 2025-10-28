@@ -1,5 +1,9 @@
-datasets/MIMIC/raw/*
+datasets/MIMIC_IV_Demo/raw/*
+datasets/MIMIC_IV_Full/raw/*
 datasets/PMC/raw/*
+
+experiments/input/*
+experiments/output/*
 
 # Python
 __pycache__/
