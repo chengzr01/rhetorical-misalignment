@@ -64,7 +64,7 @@ class Principal(BaseAgent):
         """
         # Fill in the prompt template
         prompt = self.prompt_template.replace("<CONTEXT>", context).replace(
-            "<INFORMATION>", information
+            "<RECOMMENDATIONS>", information
         )
 
         # Call the LLM
