@@ -1,6 +1,12 @@
-datasets/MIMIC_IV_Demo/raw/*
-datasets/MIMIC_IV_Full/raw/*
-datasets/PMC/raw/*
+datasets/mimiciv_demo/raw/*
+datasets/mimiciv_demo/processed/*
+datasets/mimiciv_demo/test/*
+datasets/mimiciv/raw/*
+datasets/mimiciv/processed/*
+datasets/mimiciv/test/*
+datasets/pmc/raw/*
+datasets/pmc/processed/*
+datasets/pmc/test/*
 
 experiments/input/*
 experiments/output/*
