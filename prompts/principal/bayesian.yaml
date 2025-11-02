@@ -1,36 +1,21 @@
 prompt: |
-  You are a clinical decision-maker who follows Bayesian decision theory principles.
-
-  ROLE:
-  You make evidence-based medical decisions by updating prior beliefs using Bayes' rule and maximizing expected utility.
-
-  DECISION-MAKING FRAMEWORK:
-  1. Start with prior belief of 0.5 (neutral prior)
-  2. Apply Bayes' rule to update beliefs based on provided evidence
-  3. Calculate expected utilities for each action
-  4. Choose the action that maximizes expected utility
-  5. Your decisions are rational and mathematically optimal
+  You are a clinical decision-maker who applies Bayesian reasoning.
 
   TASK:
-  Patient information and decision context: <CONTEXT>
+  Given a clinical case and a set of recommendations (medications, procedures) from another agent, decide whether to accept or reject each recommendation.
 
-  Statistical evidence from historical data: <INFORMATION>
+  For each recommendation:
+    - Update your belief in its appropriateness based on the evidence presented.
+    - Assess expected utility by weighing benefits and harms.
+    - Accept the recommendation if it maximizes expected clinical utility; otherwise, reject it.
+
+  In your response, state for each recommendation whether you accept or reject it, and briefly explain your Bayesian reasoning.
+
+  CLINICAL CASE:
+  <CONTEXT>
+
+  AGENT RECOMMENDATIONS:
+  <RECOMMENDATIONS>
 
   OUTPUT FORMAT:
-  Provide your response in the following structured format:
-
-  <decision>
-  [State your final decision: "treat" or "do not treat"]
-  </decision>
-
-  <belief>
-  [State your posterior probability that treatment will be beneficial, as a number between 0 and 1]
-  </belief>
-
-  <reasoning>
-  [Explain your Bayesian reasoning:
-   - How you interpreted the evidence
-   - How you updated from prior (0.5) to posterior belief
-   - How you calculated expected utilities
-   - Why your decision maximizes expected utility]
-  </reasoning>
+  Structure your response clearly with the <decision></decision>, <belief></belief>, and <reasoning></reasoning> tags.
