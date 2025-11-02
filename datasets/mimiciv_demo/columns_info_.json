@@ -1,0 +1,1161 @@
+{
+  "admissions": {
+    "file": "admissions.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10004235
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 24181354
+      },
+      "admittime": {
+        "dtype": "String",
+        "sample_value": "2196-02-24 14:38:00"
+      },
+      "dischtime": {
+        "dtype": "String",
+        "sample_value": "2196-03-04 14:02:00"
+      },
+      "deathtime": {
+        "dtype": "String",
+        "sample_value": "2111-11-15 17:20:00"
+      },
+      "admission_type": {
+        "dtype": "String",
+        "sample_value": "URGENT"
+      },
+      "admit_provider_id": {
+        "dtype": "String",
+        "sample_value": "P03YMR"
+      },
+      "admission_location": {
+        "dtype": "String",
+        "sample_value": "TRANSFER FROM HOSPITAL"
+      },
+      "discharge_location": {
+        "dtype": "String",
+        "sample_value": "SKILLED NURSING FACILITY"
+      },
+      "insurance": {
+        "dtype": "String",
+        "sample_value": "Medicaid"
+      },
+      "language": {
+        "dtype": "String",
+        "sample_value": "ENGLISH"
+      },
+      "marital_status": {
+        "dtype": "String",
+        "sample_value": "SINGLE"
+      },
+      "race": {
+        "dtype": "String",
+        "sample_value": "BLACK/CAPE VERDEAN"
+      },
+      "edregtime": {
+        "dtype": "String",
+        "sample_value": "2196-02-24 12:15:00"
+      },
+      "edouttime": {
+        "dtype": "String",
+        "sample_value": "2196-02-24 17:07:00"
+      },
+      "hospital_expire_flag": {
+        "dtype": "Int64",
+        "sample_value": 0
+      }
+    }
+  },
+  "d_hcpcs": {
+    "file": "d_hcpcs.parquet",
+    "columns": {
+      "code": {
+        "dtype": "String",
+        "sample_value": "TD   "
+      },
+      "category": {
+        "dtype": "String",
+        "sample_value": "1"
+      },
+      "long_description": {
+        "dtype": "String",
+        "sample_value": "Rn"
+      },
+      "short_description": {
+        "dtype": "String",
+        "sample_value": "Rn"
+      }
+    }
+  },
+  "d_labitems": {
+    "file": "d_labitems.parquet",
+    "columns": {
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 50808
+      },
+      "label": {
+        "dtype": "String",
+        "sample_value": "Free Calcium"
+      },
+      "fluid": {
+        "dtype": "String",
+        "sample_value": "Blood"
+      },
+      "category": {
+        "dtype": "String",
+        "sample_value": "Blood Gas"
+      }
+    }
+  },
+  "diagnoses_icd": {
+    "file": "diagnoses_icd.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10035185
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 22580999
+      },
+      "seq_num": {
+        "dtype": "Int64",
+        "sample_value": 3
+      },
+      "icd_code": {
+        "dtype": "String",
+        "sample_value": "4139"
+      },
+      "icd_version": {
+        "dtype": "Int64",
+        "sample_value": 9
+      }
+    }
+  },
+  "drgcodes": {
+    "file": "drgcodes.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10004235
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 22187210
+      },
+      "drg_type": {
+        "dtype": "String",
+        "sample_value": "HCFA"
+      },
+      "drg_code": {
+        "dtype": "Int64",
+        "sample_value": 864
+      },
+      "description": {
+        "dtype": "String",
+        "sample_value": "FEVER"
+      },
+      "drg_severity": {
+        "dtype": "Int64",
+        "sample_value": 3
+      },
+      "drg_mortality": {
+        "dtype": "Int64",
+        "sample_value": 1
+      }
+    }
+  },
+  "emar": {
+    "file": "emar.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10005909
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 20199380
+      },
+      "emar_id": {
+        "dtype": "String",
+        "sample_value": "10005909-74"
+      },
+      "emar_seq": {
+        "dtype": "Int64",
+        "sample_value": 74
+      },
+      "poe_id": {
+        "dtype": "String",
+        "sample_value": "10005909-97"
+      },
+      "pharmacy_id": {
+        "dtype": "Int64",
+        "sample_value": 96110427
+      },
+      "enter_provider_id": {
+        "dtype": "String",
+        "sample_value": "P26PKF"
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2144-10-31 05:56:00"
+      },
+      "medication": {
+        "dtype": "String",
+        "sample_value": "Magnesium Sulfate"
+      },
+      "event_txt": {
+        "dtype": "String",
+        "sample_value": "Read"
+      },
+      "scheduletime": {
+        "dtype": "String",
+        "sample_value": "2144-10-31 05:56:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2144-10-31 05:56:00"
+      }
+    }
+  },
+  "emar_detail": {
+    "file": "emar_detail.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10039708
+      },
+      "emar_id": {
+        "dtype": "String",
+        "sample_value": "10039708-1750"
+      },
+      "emar_seq": {
+        "dtype": "Int64",
+        "sample_value": 1750
+      },
+      "parent_field_ordinal": {
+        "dtype": "Float64",
+        "sample_value": 1.1
+      },
+      "administration_type": {
+        "dtype": "String",
+        "sample_value": "IV Infusion"
+      },
+      "pharmacy_id": {
+        "dtype": "Int64",
+        "sample_value": 80400800
+      },
+      "barcode_type": {
+        "dtype": "String",
+        "sample_value": "bc"
+      },
+      "reason_for_no_barcode": {
+        "dtype": "String",
+        "sample_value": "Discarded Packaging"
+      },
+      "complete_dose_not_given": {
+        "dtype": "String",
+        "sample_value": "No"
+      },
+      "dose_due": {
+        "dtype": "String",
+        "sample_value": "0"
+      },
+      "dose_due_unit": {
+        "dtype": "String",
+        "sample_value": "mcg/kg/min"
+      },
+      "dose_given": {
+        "dtype": "String",
+        "sample_value": "0.25"
+      },
+      "dose_given_unit": {
+        "dtype": "String",
+        "sample_value": "mg"
+      },
+      "will_remainder_of_dose_be_given": {
+        "dtype": "String",
+        "sample_value": "No"
+      },
+      "product_amount_given": {
+        "dtype": "Float64",
+        "sample_value": 250.0
+      },
+      "product_unit": {
+        "dtype": "String",
+        "sample_value": "mL"
+      },
+      "product_code": {
+        "dtype": "String",
+        "sample_value": "MVI"
+      },
+      "product_description": {
+        "dtype": "String",
+        "sample_value": "Potassium Phosphate 15 mmol in 250 mL 0.9% Sodium Chloride "
+      },
+      "product_description_other": {
+        "dtype": "String",
+        "sample_value": "Insulin - Insulin Humalog"
+      },
+      "prior_infusion_rate": {
+        "dtype": "String",
+        "sample_value": "20"
+      },
+      "infusion_rate": {
+        "dtype": "Float64",
+        "sample_value": 10.0
+      },
+      "infusion_rate_adjustment": {
+        "dtype": "String",
+        "sample_value": "See Flowsheet for Titration"
+      },
+      "infusion_rate_adjustment_amount": {
+        "dtype": "String",
+        "sample_value": "100"
+      },
+      "infusion_rate_unit": {
+        "dtype": "String",
+        "sample_value": "mcg/hr"
+      },
+      "route": {
+        "dtype": "String",
+        "sample_value": "PO"
+      },
+      "infusion_complete": {
+        "dtype": "String",
+        "sample_value": "N"
+      },
+      "completion_interval": {
+        "dtype": "String",
+        "sample_value": "within 4 hours"
+      },
+      "new_iv_bag_hung": {
+        "dtype": "String",
+        "sample_value": "Y"
+      },
+      "continued_infusion_in_other_location": {
+        "dtype": "String",
+        "sample_value": "Y"
+      },
+      "restart_interval": {
+        "dtype": "String",
+        "sample_value": "PRN"
+      },
+      "side": {
+        "dtype": "String",
+        "sample_value": "Center"
+      },
+      "site": {
+        "dtype": "String",
+        "sample_value": "back "
+      },
+      "non_formulary_visual_verification": {
+        "dtype": "String",
+        "sample_value": "Y"
+      }
+    }
+  },
+  "hcpcsevents": {
+    "file": "hcpcsevents.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10005348
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 29176490
+      },
+      "chartdate": {
+        "dtype": "String",
+        "sample_value": "2129-05-22"
+      },
+      "hcpcs_cd": {
+        "dtype": "String",
+        "sample_value": "93454"
+      },
+      "seq_num": {
+        "dtype": "Int64",
+        "sample_value": 1
+      },
+      "short_description": {
+        "dtype": "String",
+        "sample_value": "Cardiovascular"
+      }
+    }
+  },
+  "icu_caregiver": {
+    "file": "icu_caregiver.parquet",
+    "columns": {
+      "caregiver_id": {
+        "dtype": "Int64",
+        "sample_value": 444
+      }
+    }
+  },
+  "icu_chartevents": {
+    "file": "icu_chartevents.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10005817
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 20626031
+      },
+      "stay_id": {
+        "dtype": "Int64",
+        "sample_value": 32604416
+      },
+      "caregiver_id": {
+        "dtype": "Int64",
+        "sample_value": 6770
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2132-12-16 00:00:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2132-12-15 23:45:00"
+      },
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 225054
+      },
+      "value": {
+        "dtype": "String",
+        "sample_value": "On "
+      },
+      "valuenum": {
+        "dtype": "Float64",
+        "sample_value": 100.0
+      },
+      "valueuom": {
+        "dtype": "String",
+        "sample_value": "%"
+      },
+      "warning": {
+        "dtype": "Int64",
+        "sample_value": 0
+      }
+    }
+  },
+  "icu_d_items": {
+    "file": "icu_d_items.parquet",
+    "columns": {
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 226228
+      },
+      "label": {
+        "dtype": "String",
+        "sample_value": "Gender"
+      },
+      "abbreviation": {
+        "dtype": "String",
+        "sample_value": "Gender"
+      },
+      "linksto": {
+        "dtype": "String",
+        "sample_value": "chartevents"
+      },
+      "category": {
+        "dtype": "String",
+        "sample_value": "ADT"
+      },
+      "unitname": {
+        "dtype": "String",
+        "sample_value": "None"
+      },
+      "param_type": {
+        "dtype": "String",
+        "sample_value": "Text"
+      },
+      "lownormalvalue": {
+        "dtype": "String",
+        "sample_value": "4"
+      },
+      "highnormalvalue": {
+        "dtype": "String",
+        "sample_value": "20"
+      }
+    }
+  },
+  "icu_datetimeevents": {
+    "file": "icu_datetimeevents.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10002428
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 23473524
+      },
+      "stay_id": {
+        "dtype": "Int64",
+        "sample_value": 35479615
+      },
+      "caregiver_id": {
+        "dtype": "Int64",
+        "sample_value": 29441
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2156-05-15 10:50:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2156-05-15 10:50:00"
+      },
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 225343
+      },
+      "value": {
+        "dtype": "String",
+        "sample_value": "2156-05-11 00:00:00"
+      },
+      "valueuom": {
+        "dtype": "String",
+        "sample_value": "Date"
+      },
+      "warning": {
+        "dtype": "Int64",
+        "sample_value": 0
+      }
+    }
+  },
+  "icu_icustays": {
+    "file": "icu_icustays.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10018328
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 23786647
+      },
+      "stay_id": {
+        "dtype": "Int64",
+        "sample_value": 31269608
+      },
+      "first_careunit": {
+        "dtype": "String",
+        "sample_value": "Neuro Stepdown"
+      },
+      "last_careunit": {
+        "dtype": "String",
+        "sample_value": "Neuro Stepdown"
+      },
+      "intime": {
+        "dtype": "String",
+        "sample_value": "2154-04-24 23:03:44"
+      },
+      "outtime": {
+        "dtype": "String",
+        "sample_value": "2154-05-02 15:55:21"
+      },
+      "los": {
+        "dtype": "Float64",
+        "sample_value": 7.702511574074074
+      }
+    }
+  },
+  "icu_ingredientevents": {
+    "file": "icu_ingredientevents.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10005817
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 20626031
+      },
+      "stay_id": {
+        "dtype": "Int64",
+        "sample_value": 32604416
+      },
+      "caregiver_id": {
+        "dtype": "Int64",
+        "sample_value": 4793
+      },
+      "starttime": {
+        "dtype": "String",
+        "sample_value": "2132-12-17 05:00:00"
+      },
+      "endtime": {
+        "dtype": "String",
+        "sample_value": "2132-12-17 06:00:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2132-12-17 06:01:00"
+      },
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 227074
+      },
+      "amount": {
+        "dtype": "Float64",
+        "sample_value": 49.999998807907104
+      },
+      "amountuom": {
+        "dtype": "String",
+        "sample_value": "ml"
+      },
+      "rate": {
+        "dtype": "Float64",
+        "sample_value": 50.0
+      },
+      "rateuom": {
+        "dtype": "String",
+        "sample_value": "mL/hour"
+      },
+      "orderid": {
+        "dtype": "Int64",
+        "sample_value": 7330951
+      },
+      "linkorderid": {
+        "dtype": "Int64",
+        "sample_value": 7330951
+      },
+      "statusdescription": {
+        "dtype": "String",
+        "sample_value": "FinishedRunning"
+      },
+      "originalamount": {
+        "dtype": "Int64",
+        "sample_value": 0
+      },
+      "originalrate": {
+        "dtype": "Float64",
+        "sample_value": 50.0
+      }
+    }
+  },
+  "icu_outputevents": {
+    "file": "icu_outputevents.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10002428
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 23473524
+      },
+      "stay_id": {
+        "dtype": "Int64",
+        "sample_value": 35479615
+      },
+      "caregiver_id": {
+        "dtype": "Int64",
+        "sample_value": 29441
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2156-05-15 18:00:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2156-05-15 17:42:00"
+      },
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 226583
+      },
+      "value": {
+        "dtype": "Int64",
+        "sample_value": 600
+      },
+      "valueuom": {
+        "dtype": "String",
+        "sample_value": "ml"
+      }
+    }
+  },
+  "labevents": {
+    "file": "labevents.parquet",
+    "columns": {
+      "labevent_id": {
+        "dtype": "Int64",
+        "sample_value": 172061
+      },
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10014354
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 29600294
+      },
+      "specimen_id": {
+        "dtype": "Int64",
+        "sample_value": 1808066
+      },
+      "itemid": {
+        "dtype": "Int64",
+        "sample_value": 51277
+      },
+      "order_provider_id": {
+        "dtype": "String",
+        "sample_value": "P54UB6"
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2148-08-16 00:00:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2148-08-16 01:30:00"
+      },
+      "value": {
+        "dtype": "String",
+        "sample_value": "15.4"
+      },
+      "valuenum": {
+        "dtype": "Float64",
+        "sample_value": 15.4
+      },
+      "valueuom": {
+        "dtype": "String",
+        "sample_value": "%"
+      },
+      "ref_range_lower": {
+        "dtype": "Float64",
+        "sample_value": 10.5
+      },
+      "ref_range_upper": {
+        "dtype": "Float64",
+        "sample_value": 15.5
+      },
+      "flag": {
+        "dtype": "String",
+        "sample_value": "abnormal"
+      },
+      "priority": {
+        "dtype": "String",
+        "sample_value": "ROUTINE"
+      },
+      "comments": {
+        "dtype": "String",
+        "sample_value": "New reference range as of ___."
+      }
+    }
+  },
+  "labs": {
+    "file": "labs.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10014354
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 29600294
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2148-08-16 00:00:00"
+      },
+      "lab_test": {
+        "dtype": "String",
+        "sample_value": "RDW"
+      },
+      "valuenum": {
+        "dtype": "Float64",
+        "sample_value": 15.4
+      },
+      "valueuom": {
+        "dtype": "String",
+        "sample_value": "%"
+      },
+      "sex": {
+        "dtype": "String",
+        "sample_value": "M"
+      },
+      "anchor_age": {
+        "dtype": "Int64",
+        "sample_value": 60
+      }
+    }
+  },
+  "medications": {
+    "file": "medications.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10039708
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 25864431
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2142-03-28 13:30:00"
+      },
+      "drug": {
+        "dtype": "String",
+        "sample_value": "Potassium Phosphate 15 mmol in 250 mL 0.9% Sodium Chloride "
+      },
+      "dose": {
+        "dtype": "String",
+        "sample_value": "0.25"
+      },
+      "unit": {
+        "dtype": "String",
+        "sample_value": "mg"
+      },
+      "sex": {
+        "dtype": "String",
+        "sample_value": "F"
+      },
+      "anchor_age": {
+        "dtype": "Int64",
+        "sample_value": 46
+      }
+    }
+  },
+  "microbiologyevents": {
+    "file": "microbiologyevents.parquet",
+    "columns": {
+      "microevent_id": {
+        "dtype": "Int64",
+        "sample_value": 36
+      },
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10000032
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 25742920
+      },
+      "micro_specimen_id": {
+        "dtype": "Int64",
+        "sample_value": 7814634
+      },
+      "order_provider_id": {
+        "dtype": "String",
+        "sample_value": "P79OSU"
+      },
+      "chartdate": {
+        "dtype": "String",
+        "sample_value": "2180-08-06 00:00:00"
+      },
+      "charttime": {
+        "dtype": "String",
+        "sample_value": "2180-08-06 20:35:00"
+      },
+      "spec_itemid": {
+        "dtype": "Int64",
+        "sample_value": 70070
+      },
+      "spec_type_desc": {
+        "dtype": "String",
+        "sample_value": "SWAB"
+      },
+      "test_seq": {
+        "dtype": "Int64",
+        "sample_value": 1
+      },
+      "storedate": {
+        "dtype": "String",
+        "sample_value": "2180-08-08 00:00:00"
+      },
+      "storetime": {
+        "dtype": "String",
+        "sample_value": "2180-08-08 08:03:00"
+      },
+      "test_itemid": {
+        "dtype": "Int64",
+        "sample_value": 90115
+      },
+      "test_name": {
+        "dtype": "String",
+        "sample_value": "R/O VANCOMYCIN RESISTANT ENTEROCOCCUS"
+      },
+      "org_itemid": {
+        "dtype": "Int64",
+        "sample_value": 80053
+      },
+      "org_name": {
+        "dtype": "String",
+        "sample_value": "ENTEROCOCCUS SP."
+      },
+      "isolate_num": {
+        "dtype": "Int64",
+        "sample_value": 1
+      },
+      "quantity": {
+        "dtype": "String",
+        "sample_value": null
+      },
+      "ab_itemid": {
+        "dtype": "Int64",
+        "sample_value": 90015
+      },
+      "ab_name": {
+        "dtype": "String",
+        "sample_value": "VANCOMYCIN"
+      },
+      "dilution_text": {
+        "dtype": "String",
+        "sample_value": ">256"
+      },
+      "dilution_comparison": {
+        "dtype": "String",
+        "sample_value": "<=        "
+      },
+      "dilution_value": {
+        "dtype": "String",
+        "sample_value": "0.5"
+      },
+      "interpretation": {
+        "dtype": "String",
+        "sample_value": "R"
+      },
+      "comments": {
+        "dtype": "String",
+        "sample_value": "No VRE isolated.  "
+      }
+    }
+  },
+  "omr": {
+    "file": "omr.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10011398
+      },
+      "chartdate": {
+        "dtype": "String",
+        "sample_value": "2146-12-01"
+      },
+      "seq_num": {
+        "dtype": "Int64",
+        "sample_value": 1
+      },
+      "result_name": {
+        "dtype": "String",
+        "sample_value": "Height (Inches)"
+      },
+      "result_value": {
+        "dtype": "String",
+        "sample_value": "63"
+      }
+    }
+  },
+  "patients": {
+    "file": "patients.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10014729
+      },
+      "sex": {
+        "dtype": "String",
+        "sample_value": "F"
+      },
+      "anchor_age": {
+        "dtype": "Int64",
+        "sample_value": 21
+      },
+      "anchor_year": {
+        "dtype": "Int64",
+        "sample_value": 2125
+      },
+      "anchor_year_group": {
+        "dtype": "String",
+        "sample_value": "2011 - 2013"
+      },
+      "dod": {
+        "dtype": "String",
+        "sample_value": "2137-09-02"
+      }
+    }
+  },
+  "poe": {
+    "file": "poe.parquet",
+    "columns": {
+      "poe_id": {
+        "dtype": "String",
+        "sample_value": "10002930-456"
+      },
+      "poe_seq": {
+        "dtype": "Int64",
+        "sample_value": 456
+      },
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10002930
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 20282368
+      },
+      "ordertime": {
+        "dtype": "String",
+        "sample_value": "2201-03-23 19:14:33"
+      },
+      "order_type": {
+        "dtype": "String",
+        "sample_value": "General Care"
+      },
+      "order_subtype": {
+        "dtype": "String",
+        "sample_value": "Other"
+      },
+      "transaction_type": {
+        "dtype": "String",
+        "sample_value": "New"
+      },
+      "discontinue_of_poe_id": {
+        "dtype": "String",
+        "sample_value": "10002930-443"
+      },
+      "discontinued_by_poe_id": {
+        "dtype": "String",
+        "sample_value": "10002930-457"
+      },
+      "order_provider_id": {
+        "dtype": "String",
+        "sample_value": "P04TDP"
+      },
+      "order_status": {
+        "dtype": "String",
+        "sample_value": "Inactive"
+      }
+    }
+  },
+  "poe_detail": {
+    "file": "poe_detail.parquet",
+    "columns": {
+      "poe_id": {
+        "dtype": "String",
+        "sample_value": "10011398-23"
+      },
+      "poe_seq": {
+        "dtype": "Int64",
+        "sample_value": 23
+      },
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10011398
+      },
+      "field_name": {
+        "dtype": "String",
+        "sample_value": "Admit to"
+      },
+      "field_value": {
+        "dtype": "String",
+        "sample_value": "Surgery"
+      }
+    }
+  },
+  "procedures_icd": {
+    "file": "procedures_icd.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10011398
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 27505812
+      },
+      "seq_num": {
+        "dtype": "Int64",
+        "sample_value": 3
+      },
+      "chartdate": {
+        "dtype": "String",
+        "sample_value": "2146-12-15"
+      },
+      "icd_code": {
+        "dtype": "String",
+        "sample_value": "3961"
+      },
+      "icd_version": {
+        "dtype": "Int64",
+        "sample_value": 9
+      }
+    }
+  },
+  "provider": {
+    "file": "provider.parquet",
+    "columns": {
+      "provider_id": {
+        "dtype": "String",
+        "sample_value": "P003F3"
+      }
+    }
+  },
+  "services": {
+    "file": "services.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10001725
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 25563031
+      },
+      "transfertime": {
+        "dtype": "String",
+        "sample_value": "2110-04-11 15:09:36"
+      },
+      "prev_service": {
+        "dtype": "String",
+        "sample_value": "TRAUM"
+      },
+      "curr_service": {
+        "dtype": "String",
+        "sample_value": "GYN"
+      }
+    }
+  },
+  "transfers": {
+    "file": "transfers.parquet",
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "sample_value": 10009049
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "sample_value": 22995465
+      },
+      "transfer_id": {
+        "dtype": "Int64",
+        "sample_value": 30030230
+      },
+      "eventtype": {
+        "dtype": "String",
+        "sample_value": "discharge"
+      },
+      "careunit": {
+        "dtype": "String",
+        "sample_value": "Med/Surg"
+      },
+      "intime": {
+        "dtype": "String",
+        "sample_value": "2174-05-31 14:21:47"
+      },
+      "outtime": {
+        "dtype": "String",
+        "sample_value": "2154-01-09 11:53:26"
+      }
+    }
+  }
+}

@@ -7,102 +7,29 @@ from pathlib import Path
 from typing import Any, Mapping
 from tqdm import tqdm
 import threading
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from agents.agent import Agent
 from agents.principal import Principal
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 
 
-def build_mimic_context(hypothesis_data: dict) -> dict:
+def build_clinical_question_contexts(questions: list[dict]) -> list[dict]:
     """
-    Build context from MIMIC hypothesis data.
-
-    MIMIC hypotheses contain rich medical history data including medications and labs.
+    Build contexts from clinical questions data.
     """
-    # Extract demographics with enhanced info
-    demographics = (
-        f"Patient ID: {hypothesis_data['patient_id']}\n"
-        f"Sex: {hypothesis_data['sex']}, Age: {hypothesis_data['age']} years\n"
-        f"Race: {hypothesis_data['race']}\n"
-        f"Marital Status: {hypothesis_data['marital_status']}\n"
-        f"Language: {hypothesis_data['language']}\n"
-        f"Insurance: {hypothesis_data['insurance']}\n\n"
-        f"Admission Type: {hypothesis_data['admission_type']}\n"
-        f"Admitted From: {hypothesis_data['admission_location']}"
-    )
-
-    # Build data report from medication and lab history
-    data_report = (
-        f"Medication History:\n{hypothesis_data['medication_history']}\n\n"
-        f"Lab Results:\n{hypothesis_data['lab_history']}"
-    )
-
-    return {
-        "patient_id": hypothesis_data['patient_id'],
-        "hadm_id": hypothesis_data['hadm_id'],
-        "sex": hypothesis_data['sex'],
-        "age": hypothesis_data['age'],
-        "demographics": demographics,
-        "hypothesis": hypothesis_data['hypothesis'],
-        "data_report": data_report,
-        "source": "mimic",
-    }
-
-
-def build_pmc_context(hypothesis_data: dict) -> dict:
-    """
-    Build context from PMC hypothesis data.
-
-    PMC hypotheses are based on published case reports with patient summaries
-    and supporting research abstracts.
-    """
-    # Extract demographics
-    demographics = (
-        f"Patient ID: {hypothesis_data['patient_id']}\n"
-        f"Gender: {hypothesis_data['gender']}, Age: {hypothesis_data['age']}"
-    )
-
-    # Build data report from patient summary and abstracts
-    pmids_str = ", ".join(hypothesis_data['pmids'])
-    data_report = (
-        f"Patient Summary:\n{hypothesis_data['patient_summary']}\n\n"
-        f"Supporting Research Evidence (PMIDs: {pmids_str}):\n"
-    )
-
-    # Add paper abstracts
-    for i, (pmid, abstract) in enumerate(zip(hypothesis_data['pmids'], hypothesis_data['paper_abstracts']), 1):
-        data_report += f"\nPaper {i} (PMID: {pmid}):\n{abstract}\n"
-
-    return {
-        "patient_id": hypothesis_data['patient_id'],
-        "patient_uid": hypothesis_data['patient_uid'],
-        "gender": hypothesis_data['gender'],
-        "age": hypothesis_data['age'],
-        "demographics": demographics,
-        "hypothesis": hypothesis_data['hypothesis'],
-        "data_report": data_report,
-        "source": "pmc",
-    }
-
-
-def build_contexts(hypotheses: list[dict], hypothesis_type: str) -> list[dict]:
-    """
-    Build contexts from raw hypothesis data based on hypothesis type.
-
-    Args:
-        hypotheses: List of hypothesis dictionaries
-        hypothesis_type: Either 'mimic' or 'pmc'
-
-    Returns:
-        List of context dictionaries formatted for the simulation
-    """
-    if hypothesis_type == "mimic":
-        return [build_mimic_context(h) for h in hypotheses]
-    elif hypothesis_type == "pmc":
-        return [build_pmc_context(h) for h in hypotheses]
-    else:
-        raise ValueError(f"Unknown hypothesis type: {hypothesis_type}")
+    contexts = []
+    for item in questions:
+        context_dict = {
+            "id": item.get("id"),
+            "hadm_id": item.get("hadm_id"),
+            "subject_id": item.get("subject_id"),
+            "context": item["context"],
+            "question": item["question"],
+            "ground_truth": item.get("ground_truth", {}),
+        }
+        contexts.append(context_dict)
+    return contexts
 
 
 def setup_clients(
@@ -128,49 +55,298 @@ def setup_clients(
         raise ValueError(f"Unknown backend: {backend}")
 
 
-def run_single_interaction(
+def run_agent_inference(
     agent: Agent,
-    principal: Principal,
-    principal_context: str,
     agent_context: str,
     agent_task: str | None = None,
     agent_objective: str | None = None,
 ) -> Mapping[str, Any]:
     """
-    Run a single principal-agent interaction with information asymmetry.
-
-    Args:
-        agent: Agent instance with full data access
-        principal: Principal instance with partial data
-        principal_context: Partial information for principal (hypothesis + demographics)
-        agent_context: Full information for agent (hypothesis + demographics + data distribution)
-        agent_task: Optional task instruction for agent
-        agent_objective: Optional objective for agent
-
-    Returns:
-        Dictionary with interaction results
+    Run agent inference only.
     """
-    # Agent has full data access, generates recommendation
     information = agent.act(context=agent_context, task=agent_task, objective=agent_objective)
-
-    # Principal has partial data, makes decision based on agent's information
-    decision_result = principal.act(context=principal_context, information=information)
-
     return {
         "agent_name": agent.name,
         "agent_model": agent.model,
-        "principal_name": principal.name,
-        "principal_model": principal.model,
-        "principal_context": principal_context,
         "agent_context": agent_context,
         "agent_task": agent_task,
         "agent_objective": agent_objective,
         "information": information,
+    }
+
+
+def run_principal_decision(
+    principal: Principal,
+    principal_context: str,
+    agent_result: Mapping[str, Any],
+) -> Mapping[str, Any]:
+    """
+    Run principal decision using cached agent results.
+    The principal_context should contain a <RECOMMENDATIONS> placeholder that will be replaced
+    by the agent's information.
+    """
+    
+    info = agent_result.get("information")
+    
+    if isinstance(info, dict):
+        recommendation = (info.get("answer") or
+                          info.get("recommendation") or
+                          info.get("raw_response") or
+                          str(info))
+    elif isinstance(info, str):
+        recommendation = info
+    else:
+        recommendation = str(info)
+    
+    pc = principal_context
+    if pc and "<RECOMMENDATIONS>" in pc:
+        pc = pc.replace("<RECOMMENDATIONS>", recommendation.strip() if recommendation else "")
+    
+    decision_result = principal.act(context=pc, information=agent_result["information"])
+    
+    return {
+        "agent_name": agent_result["agent_name"],
+        "agent_model": agent_result["agent_model"],
+        "principal_name": principal.name,
+        "principal_model": principal.model,
+        "principal_context": pc,
+        "agent_context": agent_result["agent_context"],
+        "agent_task": agent_result.get("agent_task"),
+        "agent_objective": agent_result.get("agent_objective"),
+        "information": agent_result["information"],
         "decision": decision_result["decision"],
         "belief": decision_result["belief"],
         "reasoning": decision_result["reasoning"],
         "raw_principal_response": decision_result["raw_response"],
     }
+
+
+def run_agent_inferences(
+    contexts: list[dict],
+    agent_configs: list[Mapping[str, Any]],
+    agent_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
+    output_path: Path,
+    save_interval: int = 10,
+    skip_existing: bool = True,
+    max_workers: int = 8,
+) -> list[Mapping[str, Any]]:
+    """
+    Run agent inferences on all contexts and save results, in parallel (concurrent).
+
+    Args:
+        contexts: List of context dictionaries
+        agent_configs: List of agent configurations
+        agent_client: Client for agent API
+        output_path: Path to save agent results
+        save_interval: Save results every N iterations
+        skip_existing: If True and output_path exists, load and return existing results
+        max_workers: Number of parallel workers
+
+    Returns:
+        List of agent results
+    """
+    expected_total = len(contexts) * len(agent_configs)
+
+    if skip_existing and output_path.exists():
+        with open(output_path, "r") as f:
+            cached_results = json.load(f)
+        if isinstance(cached_results, list) and len(cached_results) >= expected_total:
+            print(f"Loading existing agent results from {output_path} ({len(cached_results)}/{expected_total} results)")
+            return cached_results
+        else:
+            print(f"Agent cache found at {output_path} ({len(cached_results)}/{expected_total} results). Continuing incomplete inferences...")
+
+        results = cached_results
+        completed_pairs = set()
+        for r in results:
+            key = (
+                r.get("case_id"),
+                r.get("agent_name"),
+                r.get("agent_model"),
+                r.get("agent_context"),
+            )
+            completed_pairs.add(key)
+    else:
+        results = []
+        completed_pairs = set()
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    agents = [
+        Agent(
+            name=config["name"],
+            client=agent_client,
+            model=config["model"],
+            prompt_path=config["prompt_path"],
+            temperature=config.get("temperature", 1.0),
+        )
+        for config in agent_configs
+    ]
+
+    total_iterations = len(contexts) * len(agents)
+    already_done = len(results)
+    progress_bar = tqdm(
+        total=total_iterations,
+        initial=already_done,
+        desc="Running agent inferences",
+    )
+    iteration_count = already_done
+
+    # Build tasks: (context, agent)
+    tasks = []
+    for context in contexts:
+        for agent in agents:
+            # Compose context unique key for skipping
+            if isinstance(context, dict) and "id" in context:
+                context_id = context["id"]
+            else:
+                context_id = hash(str(context))
+
+            if isinstance(context, str):
+                agent_context = context
+                agent_task = agent_objective = None
+            else:
+                agent_context = f"{context['context']}\n\n{context['question']}"
+                agent_task = context.get("agent_task")
+                agent_objective = context.get("agent_objective")
+            pair_key = (
+                context_id,
+                agent.name,
+                agent.model,
+                agent_context,
+            )
+            if pair_key in completed_pairs:
+                continue
+            tasks.append((context, agent, agent_context, agent_task, agent_objective, pair_key))
+
+    # Run in parallel
+    def one_agent_inference(context, agent, agent_context, agent_task, agent_objective, pair_key):
+        result = run_agent_inference(
+            agent=agent,
+            agent_context=agent_context,
+            agent_task=agent_task,
+            agent_objective=agent_objective,
+        )
+        # Add metadata
+        if isinstance(context, dict) and "id" in context:
+            result["case_id"] = context["id"]
+            result["hadm_id"] = context.get("hadm_id")
+            result["subject_id"] = context.get("subject_id")
+            result["principal_context"] = context["context"]
+            result["ground_truth"] = context.get("ground_truth")
+        result["_pair_key"] = pair_key  # for tracking in results
+        return result
+
+    new_results = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_task = {}
+        for task in tasks:
+            future = executor.submit(one_agent_inference, *task)
+            future_to_task[future] = task
+        for idx, future in enumerate(tqdm(as_completed(future_to_task), total=len(future_to_task), desc="Processing agent results")):
+            res = future.result()
+            new_results.append(res)
+            completed_pairs.add(res["_pair_key"])
+            iteration_count += 1
+            progress_bar.update(1)
+            # Save at intervals (append-only semantics—existing results are kept in 'results')
+            if iteration_count % save_interval == 0:
+                tmp_list = results + [dict(r) for r in new_results]
+                for r in tmp_list:
+                    if "_pair_key" in r:
+                        del r["_pair_key"]
+                with open(output_path, "w") as f:
+                    json.dump(tmp_list, f, indent=2)
+        progress_bar.close()
+
+    # Final save
+    # Remove helper fields
+    all_final = results + [dict(r) for r in new_results]
+    for r in all_final:
+        if "_pair_key" in r:
+            del r["_pair_key"]
+
+    with open(output_path, "w") as f:
+        json.dump(all_final, f, indent=2)
+
+    print(f"Saved {len(all_final)} agent results to {output_path}")
+    return all_final
+
+
+def run_principal_inferences(
+    agent_results: list[Mapping[str, Any]],
+    principal_configs: list[Mapping[str, Any]],
+    principal_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
+    output_path: Path,
+    save_interval: int = 10,
+    max_workers: int = 8,
+) -> list[Mapping[str, Any]]:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    results = []
+    principals = [
+        Principal(
+            name=config["name"],
+            client=principal_client,
+            model=config["model"],
+            prompt_path=config["prompt_path"],
+            temperature=config.get("temperature", 1.0),
+        )
+        for config in principal_configs
+    ]
+    
+    # Group agent results by case_id to process all principals for each case together
+    case_to_agent_results = {}
+    for agent_result in agent_results:
+        case_id = agent_result.get("case_id")
+        if case_id not in case_to_agent_results:
+            case_to_agent_results[case_id] = []
+        case_to_agent_results[case_id].append(agent_result)
+    
+    total_iterations = len(agent_results) * len(principals)
+    progress_bar = tqdm(total=total_iterations, desc="Running principal inferences")
+    iteration_count = 0
+
+    # Build tasks ordered by case: for each case, run all principals
+    tasks = []
+    for case_id in sorted(case_to_agent_results.keys()):
+        for agent_result in case_to_agent_results[case_id]:
+            for principal in principals:
+                tasks.append((agent_result, principal))
+
+    def run_one_principal_decision(agent_result, principal):
+        principal_context = agent_result.get("principal_context", agent_result["agent_context"])
+        result = run_principal_decision(
+            principal=principal,
+            principal_context=principal_context,
+            agent_result=agent_result,
+        )
+        if "case_id" in agent_result:
+            result["case_id"] = agent_result["case_id"]
+            result["hadm_id"] = agent_result.get("hadm_id")
+            result["subject_id"] = agent_result.get("subject_id")
+            result["ground_truth"] = agent_result.get("ground_truth")
+        return result
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = []
+        for agent_result, principal in tasks:
+            futures.append(executor.submit(run_one_principal_decision, agent_result, principal))
+        results = []
+        for idx, future in enumerate(tqdm(as_completed(futures), total=len(futures), desc="Processing principal results")):
+            result = future.result()
+            results.append(result)
+            iteration_count += 1
+            progress_bar.update(1)
+            if save_interval > 0 and iteration_count % save_interval == 0:
+                with open(output_path, "w") as f:
+                    json.dump(results, f, indent=2)
+        progress_bar.close()
+
+    with open(output_path, "w") as f:
+        json.dump(results, f, indent=2)
+
+    print(f"Saved {len(results)} complete results to {output_path}")
+    return results
 
 
 def run_experiment_thread(
@@ -208,25 +384,15 @@ def run_experiment_thread(
     iteration_count = 0
 
     for context in contexts:
-        # Handle both string and dict contexts
         if isinstance(context, str):
-            # Simple string context - no information asymmetry
             principal_context = agent_context = context
             agent_task = agent_objective = None
         else:
-            # Dict context - implement information asymmetry
-            # Principal gets: patient demographics + hypothesis (partial info)
-            principal_context = (
-                f"{context['demographics']}\n\n"
-                f"Hypothesis: {context['hypothesis']}"
-            )
-
-            # Agent gets: principal context + full data distribution
+            principal_context = context['context']
             agent_context = (
-                f"{principal_context}\n\n"
-                f"Available Data:\n{context['data_report']}"
+                f"{context['context']}\n\n"
+                f"{context['question']}"
             )
-
             agent_task = context.get("agent_task")
             agent_objective = context.get("agent_objective")
 
@@ -238,18 +404,23 @@ def run_experiment_thread(
             agent_task=agent_task,
             agent_objective=agent_objective,
         )
+
+        if isinstance(context, dict) and "id" in context:
+            result["case_id"] = context["id"]
+            result["hadm_id"] = context.get("hadm_id")
+            result["subject_id"] = context.get("subject_id")
+            result["ground_truth"] = context.get("ground_truth")
+
         results.append(result)
         iteration_count += 1
         progress_bar.update(1)
 
-        # Save results at specified intervals
         if iteration_count % save_interval == 0:
             with open(output_path, "w") as f:
                 json.dump(results, f, indent=2)
 
     progress_bar.close()
 
-    # Final save
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
@@ -297,25 +468,15 @@ def run_experiment_sequential(
     for context in contexts:
         for agent in agents:
             for principal in principals:
-                # Handle both string and dict contexts
                 if isinstance(context, str):
-                    # Simple string context - no information asymmetry
                     principal_context = agent_context = context
                     agent_task = agent_objective = None
                 else:
-                    # Dict context - implement information asymmetry
-                    # Principal gets: patient demographics + hypothesis (partial info)
-                    principal_context = (
-                        f"{context['demographics']}\n\n"
-                        f"Hypothesis: {context['hypothesis']}"
-                    )
-
-                    # Agent gets: principal context + full data distribution
+                    principal_context = context['context']
                     agent_context = (
-                        f"{principal_context}\n\n"
-                        f"Available Data:\n{context['data_report']}"
+                        f"{context['context']}\n\n"
+                        f"{context['question']}"
                     )
-
                     agent_task = context.get("agent_task")
                     agent_objective = context.get("agent_objective")
 
@@ -327,18 +488,23 @@ def run_experiment_sequential(
                     agent_task=agent_task,
                     agent_objective=agent_objective,
                 )
+
+                if isinstance(context, dict) and "id" in context:
+                    result["case_id"] = context["id"]
+                    result["hadm_id"] = context.get("hadm_id")
+                    result["subject_id"] = context.get("subject_id")
+                    result["ground_truth"] = context.get("ground_truth")
+
                 results.append(result)
                 iteration_count += 1
                 progress_bar.update(1)
 
-                # Save results at specified intervals
                 if iteration_count % save_interval == 0:
                     with open(output_path, "w") as f:
                         json.dump(results, f, indent=2)
 
     progress_bar.close()
 
-    # Final save
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
@@ -378,7 +544,6 @@ def run_experiment_concurrent(
             results = future.result()
             all_results.extend(results)
 
-    # Save final results
     with open(output_path, "w") as f:
         json.dump(all_results, f, indent=2)
 
@@ -426,15 +591,8 @@ def main() -> None:
         help="Model to use for principals",
     )
     parser.add_argument(
-        "--input", type=str, default="experiments/input/hypothesis_mimic.json",
-        help="Input hypothesis JSON file (MIMIC or PMC format) or old-style config JSON"
-    )
-    parser.add_argument(
-        "--hypothesis-type",
-        type=str,
-        choices=["mimic", "pmc", "auto"],
-        default="auto",
-        help="Type of hypothesis data: 'mimic' for MIMIC-IV, 'pmc' for PMC, 'auto' to detect from filename"
+        "--input", type=str, default="experiments/input/clinical_questions.json",
+        help="Input clinical questions JSON file"
     )
     parser.add_argument(
         "--agent-prompt",
@@ -443,12 +601,33 @@ def main() -> None:
         help="Agent prompt template path"
     )
     parser.add_argument(
-        "--principal-prompt",
+        "--principal-types",
         type=str,
-        default="prompts/principal/prospect.yaml",
-        help="Principal prompt template path"
+        nargs="+",
+        default=["bayesian"],
+        choices=["all", "bayesian", "anchoring", "availability", "confirmation", "conservatism", "overconfidence", "prospect"],
+        help="Principal types to use. Use 'all' to run all types except bayesian, or specify one or more types"
     )
-    parser.add_argument("--output", type=str, default="experiments/output/results.json")
+    parser.add_argument("--output", type=str, default="experiments/output/results.json",
+                        help="Output path for final results")
+    parser.add_argument(
+        "--agent-cache",
+        type=str,
+        default="experiments/cache/agent_results.json",
+        help="Path to cache agent inference results"
+    )
+    parser.add_argument(
+        "--skip-agent-cache",
+        action="store_true",
+        default=False,
+        help="Force re-run agent inferences even if cache exists"
+    )
+    parser.add_argument(
+        "--only-agents",
+        action="store_true",
+        default=False,
+        help="Only run agent inferences and exit (useful for caching)"
+    )
     parser.add_argument(
         "--save-interval",
         type=int,
@@ -456,16 +635,16 @@ def main() -> None:
         help="Save results every N iterations",
     )
     parser.add_argument(
-        "--concurrent",
-        action="store_true",
-        default=True,
-        help="Run experiments concurrently",
+        "--principal-workers",
+        type=int,
+        default=8,
+        help="Number of workers for parallel principal inferences"
     )
     parser.add_argument(
-        "--max-workers",
+        "--agent-workers",
         type=int,
-        default=4,
-        help="Maximum number of concurrent threads when running concurrently",
+        default=8,
+        help="Number of workers for parallel agent inferences"
     )
     args = parser.parse_args()
 
@@ -480,64 +659,40 @@ def main() -> None:
     with open(args.input, "r") as f:
         input_data = json.load(f)
 
-    # Detect input format: old-style config vs new hypothesis format
-    if isinstance(input_data, dict) and "contexts" in input_data:
-        # Old-style config format with pre-built contexts
-        print("Detected old-style config format")
-        contexts = input_data["contexts"]
-        # Only use default agent config
-        agent_configs = [input_data["agent_configs"][0]]
-        # Only use prospect-theoretic principal config
-        principal_configs = [config for config in input_data["principal_configs"] 
-                           if "prospect" in config["prompt_path"].lower()]
-        if not principal_configs:
-            principal_configs = [input_data["principal_configs"][0]]  # Fallback to first config
-    elif isinstance(input_data, list):
-        # New hypothesis format - need to build contexts
-        print("Detected hypothesis list format")
-
-        # Auto-detect hypothesis type from filename if requested
-        hypothesis_type = args.hypothesis_type
-        if hypothesis_type == "auto":
-            if "mimic" in args.input.lower():
-                hypothesis_type = "mimic"
-            elif "pmc" in args.input.lower():
-                hypothesis_type = "pmc"
-            else:
-                raise ValueError(
-                    "Cannot auto-detect hypothesis type from filename. "
-                    "Please specify --hypothesis-type explicitly."
-                )
-
-        print(f"Using hypothesis type: {hypothesis_type}")
-
-        # Build contexts from hypotheses
-        contexts = build_contexts(input_data, hypothesis_type)
-        print(f"Built {len(contexts)} contexts")
-
-        # Create only default agent config
-        agent_configs = [{
-            "name": "default_agent",
-            "model": args.agent_model,
-            "prompt_path": args.agent_prompt,
-            "temperature": 1.0,
-        }]
-
-        # Create only prospect-theoretic principal config
-        principal_configs = [{
-            "name": "prospect_principal",
-            "model": args.principal_model,
-            "prompt_path": args.principal_prompt,
-            "temperature": 1.0,
-        }]
-    else:
+    if not isinstance(input_data, list):
         raise ValueError(
-            "Invalid input format. Expected either:\n"
-            "  1. Dict with 'contexts', 'agent_configs', 'principal_configs' (old format)\n"
-            "  2. List of hypothesis dictionaries (new format)"
+            f"Invalid input format. Expected a list of clinical question dictionaries, "
+            f"but got {type(input_data).__name__}"
         )
 
-    # Set models for agents and principals from command line args (override if needed)
+    print(f"Loading {len(input_data)} clinical questions")
+    contexts = build_clinical_question_contexts(input_data)
+    print(f"Built {len(contexts)} contexts")
+
+    agent_configs = [{
+        "name": "default_agent",
+        "model": args.agent_model,
+        "prompt_path": args.agent_prompt,
+        "temperature": 1.0,
+    }]
+
+    principal_types = args.principal_types
+    all_available_principal_types = ["anchoring", "availability", "confirmation",
+                                    "conservatism", "overconfidence", "prospect"]
+    if "all" in principal_types:
+        principal_types = all_available_principal_types
+
+    principal_configs = []
+    for ptype in principal_types:
+        principal_configs.append({
+            "name": f"{ptype}_principal",
+            "model": args.principal_model,
+            "prompt_path": f"prompts/principal/{ptype}.yaml",
+            "temperature": 1.0,
+        })
+
+    print(f"Principal types: {', '.join(principal_types)}")
+
     for agent_config in agent_configs:
         if "model" not in agent_config or agent_config["model"] is None:
             agent_config["model"] = args.agent_model
@@ -548,31 +703,51 @@ def main() -> None:
     print(f"Agent configs: {len(agent_configs)}")
     print(f"Principal configs: {len(principal_configs)}")
     print(f"Total contexts: {len(contexts)}")
+    print(f"Total agent inferences: {len(contexts) * len(agent_configs)}")
+    print(f"Total principal inferences: {len(contexts) * len(agent_configs) * len(principal_configs)}")
     print(f"Total experiments: {len(contexts) * len(agent_configs) * len(principal_configs)}")
 
+    agent_cache_path = Path(args.agent_cache)
     output_path = Path(args.output)
 
-    if args.concurrent:
-        results = run_experiment_concurrent(
-            contexts=contexts,
-            agent_configs=agent_configs,
-            principal_configs=principal_configs,
-            agent_client=agent_client,
-            principal_client=principal_client,
-            output_path=output_path,
-            save_interval=args.save_interval,
-            max_workers=args.max_workers,
-        )
-    else:
-        results = run_experiment_sequential(
-            contexts=contexts,
-            agent_configs=agent_configs,
-            principal_configs=principal_configs,
-            agent_client=agent_client,
-            principal_client=principal_client,
-            output_path=output_path,
-            save_interval=args.save_interval,
-        )
+    print("\n" + "="*60)
+    print("STAGE 1: Agent Inferences")
+    print("="*60)
+
+    agent_results = run_agent_inferences(
+        contexts=contexts,
+        agent_configs=agent_configs,
+        agent_client=agent_client,
+        output_path=agent_cache_path,
+        save_interval=args.save_interval,
+        skip_existing=not args.skip_agent_cache,
+        max_workers=getattr(args, "agent_workers", 8),
+    )
+
+    print(f"\nAgent inferences complete: {len(agent_results)} results")
+
+    if args.only_agents:
+        print(f"\n--only-agents flag set. Exiting after agent inferences.")
+        print(f"Agent results saved to: {agent_cache_path}")
+        return
+
+    print("\n" + "="*60)
+    print("STAGE 2: Principal Inferences")
+    print("="*60)
+
+    final_results = run_principal_inferences(
+        agent_results=agent_results,
+        principal_configs=principal_configs,
+        principal_client=principal_client,
+        output_path=output_path,
+        save_interval=args.save_interval,
+        max_workers=args.principal_workers,
+    )
+
+    print(f"\nAll experiments complete!")
+    print(f"Agent results: {agent_cache_path}")
+    print(f"Final results: {output_path}")
+    print(f"Total interactions: {len(final_results)}")
 
 
 if __name__ == "__main__":

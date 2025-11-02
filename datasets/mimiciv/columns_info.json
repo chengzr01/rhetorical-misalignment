@@ -1,0 +1,438 @@
+{
+  "admissions": {
+    "file": "admissions.parquet",
+    "total_rows": 27301,
+    "total_columns": 16,
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "min": 10000032.0,
+        "max": 10523428.0,
+        "mean": 10262297.161862202,
+        "median": 10264646.0
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "min": 20000019.0,
+        "max": 29999723.0,
+        "mean": 24997861.58202996,
+        "median": 25018695.0
+      },
+      "admittime": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "unique_count": 27272
+      },
+      "dischtime": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "unique_count": 27251
+      },
+      "deathtime": {
+        "dtype": "String",
+        "null_count": 26687,
+        "null_percentage": 97.75,
+        "total_rows": 27301,
+        "unique_count": 615
+      },
+      "admission_type": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "unique_count": 9,
+        "sample_values": [
+          "AMBULATORY OBSERVATION",
+          "DIRECT EMER.",
+          "DIRECT OBSERVATION",
+          "ELECTIVE",
+          "EU OBSERVATION",
+          "EW EMER.",
+          "OBSERVATION ADMIT",
+          "SURGICAL SAME DAY ADMISSION",
+          "URGENT"
+        ]
+      },
+      "admit_provider_id": {
+        "dtype": "String",
+        "null_count": 1,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "unique_count": 1355
+      },
+      "admission_location": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "unique_count": 11,
+        "sample_values": [
+          "AMBULATORY SURGERY TRANSFER",
+          "CLINIC REFERRAL",
+          "EMERGENCY ROOM",
+          "INFORMATION NOT AVAILABLE",
+          "INTERNAL TRANSFER TO OR FROM PSYCH",
+          "PACU",
+          "PHYSICIAN REFERRAL",
+          "PROCEDURE SITE",
+          "TRANSFER FROM HOSPITAL",
+          "TRANSFER FROM SKILLED NURSING FACILITY"
+        ]
+      },
+      "discharge_location": {
+        "dtype": "String",
+        "null_count": 7549,
+        "null_percentage": 27.65,
+        "total_rows": 27301,
+        "unique_count": 14,
+        "sample_values": [
+          "ACUTE HOSPITAL",
+          "AGAINST ADVICE",
+          "ASSISTED LIVING",
+          "CHRONIC/LONG TERM ACUTE CARE",
+          "DIED",
+          "HEALTHCARE FACILITY",
+          "HOME",
+          "HOME HEALTH CARE",
+          "HOSPICE",
+          "OTHER FACILITY"
+        ]
+      },
+      "insurance": {
+        "dtype": "String",
+        "null_count": 454,
+        "null_percentage": 1.66,
+        "total_rows": 27301,
+        "unique_count": 6,
+        "sample_values": [
+          "Medicaid",
+          "Medicare",
+          "No charge",
+          "Other",
+          "Private"
+        ]
+      },
+      "language": {
+        "dtype": "String",
+        "null_count": 38,
+        "null_percentage": 0.14,
+        "total_rows": 27301,
+        "unique_count": 26,
+        "sample_values": [
+          "American Sign Language",
+          "Amharic",
+          "Arabic",
+          "Armenian",
+          "Bengali",
+          "Chinese",
+          "English",
+          "French",
+          "Haitian",
+          "Hindi"
+        ]
+      },
+      "marital_status": {
+        "dtype": "String",
+        "null_count": 699,
+        "null_percentage": 2.56,
+        "total_rows": 27301,
+        "unique_count": 5,
+        "sample_values": [
+          "DIVORCED",
+          "MARRIED",
+          "SINGLE",
+          "WIDOWED"
+        ]
+      },
+      "race": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "unique_count": 33,
+        "sample_values": [
+          "AMERICAN INDIAN/ALASKA NATIVE",
+          "ASIAN",
+          "ASIAN - ASIAN INDIAN",
+          "ASIAN - CHINESE",
+          "ASIAN - KOREAN",
+          "ASIAN - SOUTH EAST ASIAN",
+          "BLACK/AFRICAN",
+          "BLACK/AFRICAN AMERICAN",
+          "BLACK/CAPE VERDEAN",
+          "BLACK/CARIBBEAN ISLAND"
+        ]
+      },
+      "edregtime": {
+        "dtype": "String",
+        "null_count": 8295,
+        "null_percentage": 30.38,
+        "total_rows": 27301,
+        "unique_count": 18742
+      },
+      "edouttime": {
+        "dtype": "String",
+        "null_count": 8295,
+        "null_percentage": 30.38,
+        "total_rows": 27301,
+        "unique_count": 18744
+      },
+      "hospital_expire_flag": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 27301,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.02252664737555401,
+        "median": 0.0
+      }
+    }
+  },
+  "labs": {
+    "file": "labs.parquet",
+    "total_rows": 6844221,
+    "total_columns": 8,
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 6844221,
+        "min": 10000032.0,
+        "max": 10563095.0,
+        "mean": 10264617.09519082,
+        "median": 10263247.0
+      },
+      "hadm_id": {
+        "dtype": "String",
+        "null_count": 2991073,
+        "null_percentage": 43.7,
+        "total_rows": 6844221,
+        "unique_count": 22462
+      },
+      "charttime": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 6844221,
+        "unique_count": 410218
+      },
+      "lab_test": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 6844221,
+        "unique_count": 468
+      },
+      "valuenum": {
+        "dtype": "Float64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 6844221,
+        "min": -1074.0,
+        "max": 4495000.0,
+        "mean": 70.56922139930899,
+        "median": 14.0
+      },
+      "valueuom": {
+        "dtype": "String",
+        "null_count": 548966,
+        "null_percentage": 8.02,
+        "total_rows": 6844221,
+        "unique_count": 56,
+        "sample_values": [
+          " ",
+          "#/hpf",
+          "#/lpf",
+          "#/uL",
+          "%",
+          "/hpf",
+          "GPL",
+          "IU/L",
+          "IU/mL",
+          "K/uL"
+        ]
+      },
+      "sex": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 6844221,
+        "unique_count": 2,
+        "sample_values": [
+          "F",
+          "M"
+        ]
+      },
+      "anchor_age": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 6844221,
+        "min": 18.0,
+        "max": 91.0,
+        "mean": 59.56708440595358,
+        "median": 61.0
+      }
+    }
+  },
+  "medications": {
+    "file": "medications.parquet",
+    "total_rows": 4368553,
+    "total_columns": 8,
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 4368553,
+        "min": 10000032.0,
+        "max": 10822122.0,
+        "mean": 10319576.326034043,
+        "median": 10287678.0
+      },
+      "hadm_id": {
+        "dtype": "Int64",
+        "null_count": 153202,
+        "null_percentage": 3.51,
+        "total_rows": 4368553,
+        "min": 20000906.0,
+        "max": 29999625.0,
+        "mean": 25095076.712994955,
+        "median": 25154057.0
+      },
+      "charttime": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 4368553,
+        "unique_count": 1156121
+      },
+      "drug": {
+        "dtype": "String",
+        "null_count": 2630127,
+        "null_percentage": 60.21,
+        "total_rows": 4368553,
+        "unique_count": 3316
+      },
+      "dose": {
+        "dtype": "Float64",
+        "null_count": 2320848,
+        "null_percentage": 53.13,
+        "total_rows": 4368553,
+        "min": 0.0,
+        "max": 8.011030409198504e+16,
+        "mean": 48938036017.611824,
+        "median": 18.0
+      },
+      "unit": {
+        "dtype": "String",
+        "null_count": 2274589,
+        "null_percentage": 52.07,
+        "total_rows": 4368553,
+        "unique_count": 118
+      },
+      "sex": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 4368553,
+        "unique_count": 2,
+        "sample_values": [
+          "F",
+          "M"
+        ]
+      },
+      "anchor_age": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 4368553,
+        "min": 18.0,
+        "max": 91.0,
+        "mean": 59.68817821370143,
+        "median": 61.0
+      }
+    }
+  },
+  "patients": {
+    "file": "patients.parquet",
+    "total_rows": 18231,
+    "total_columns": 6,
+    "columns": {
+      "subject_id": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 18231,
+        "min": 10000032.0,
+        "max": 10504107.0,
+        "mean": 10251991.636553124,
+        "median": 10252250.0
+      },
+      "sex": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 18231,
+        "unique_count": 2,
+        "sample_values": [
+          "F",
+          "M"
+        ]
+      },
+      "anchor_age": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 18231,
+        "min": 18.0,
+        "max": 91.0,
+        "mean": 48.74312983379957,
+        "median": 48.0
+      },
+      "anchor_year": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 18231,
+        "min": 2110.0,
+        "max": 2206.0,
+        "mean": 2151.01848499808,
+        "median": 2151.0
+      },
+      "anchor_year_group": {
+        "dtype": "String",
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "total_rows": 18231,
+        "unique_count": 5,
+        "sample_values": [
+          "2008 - 2010",
+          "2011 - 2013",
+          "2014 - 2016",
+          "2017 - 2019",
+          "2020 - 2022"
+        ]
+      },
+      "dod": {
+        "dtype": "String",
+        "null_count": 16339,
+        "null_percentage": 89.62,
+        "total_rows": 18231,
+        "unique_count": 1837
+      }
+    }
+  }
+}
