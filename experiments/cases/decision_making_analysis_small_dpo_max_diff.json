@@ -1,0 +1,229 @@
+{
+  "model": "small_dpo",
+  "principals": {
+    "availability_principal": [
+      {
+        "case_id": "25177949_10032725",
+        "difference": 1.0,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 7,
+        "principal_total": 7,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "21216581_10004457",
+        "difference": 0.8,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.2,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 1,
+        "bayesian_total": 5
+      },
+      {
+        "case_id": "20093566_10039708",
+        "difference": 0.7777777777777777,
+        "principal_rate": 0.8888888888888888,
+        "bayesian_rate": 0.1111111111111111,
+        "principal_accepts": 8,
+        "principal_total": 9,
+        "bayesian_accepts": 1,
+        "bayesian_total": 9
+      }
+    ],
+    "confirmation_principal": [
+      {
+        "case_id": "25177949_10032725",
+        "difference": 1.0,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "20093566_10039708",
+        "difference": 0.8888888888888888,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.1111111111111111,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 1,
+        "bayesian_total": 9
+      },
+      {
+        "case_id": "25282382_10002930",
+        "difference": 0.8181818181818182,
+        "principal_rate": 0.0,
+        "bayesian_rate": 0.8181818181818182,
+        "principal_accepts": 0,
+        "principal_total": 1,
+        "bayesian_accepts": 9,
+        "bayesian_total": 11
+      }
+    ],
+    "anchoring_principal": [
+      {
+        "case_id": "25177949_10032725",
+        "difference": 1.0,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "23721604_10037928",
+        "difference": 1.0,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "20093566_10039708",
+        "difference": 0.8888888888888888,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.1111111111111111,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 1,
+        "bayesian_total": 9
+      }
+    ],
+    "conservatism_principal": [
+      {
+        "case_id": "28710730_10019568",
+        "difference": 1.0,
+        "principal_rate": 0.0,
+        "bayesian_rate": 1.0,
+        "principal_accepts": 0,
+        "principal_total": 6,
+        "bayesian_accepts": 1,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "25177949_10032725",
+        "difference": 0.8333333333333334,
+        "principal_rate": 0.8333333333333334,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 5,
+        "principal_total": 6,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "27112038_10021487",
+        "difference": 0.8333333333333334,
+        "principal_rate": 0.16666666666666666,
+        "bayesian_rate": 1.0,
+        "principal_accepts": 1,
+        "principal_total": 6,
+        "bayesian_accepts": 6,
+        "bayesian_total": 6
+      }
+    ],
+    "overconfidence_principal": [
+      {
+        "case_id": "20093566_10039708",
+        "difference": 0.8888888888888888,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.1111111111111111,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 1,
+        "bayesian_total": 9
+      },
+      {
+        "case_id": "22380825_10002930",
+        "difference": 0.8,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.2,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 1,
+        "bayesian_total": 5
+      },
+      {
+        "case_id": "21216581_10004457",
+        "difference": 0.8,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.2,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 1,
+        "bayesian_total": 5
+      }
+    ],
+    "prospect_principal": [
+      {
+        "case_id": "23721604_10037928",
+        "difference": 0.8571428571428571,
+        "principal_rate": 0.8571428571428571,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 6,
+        "principal_total": 7,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "25177949_10032725",
+        "difference": 0.8,
+        "principal_rate": 0.8,
+        "bayesian_rate": 0.0,
+        "principal_accepts": 4,
+        "principal_total": 5,
+        "bayesian_accepts": 0,
+        "bayesian_total": 1
+      },
+      {
+        "case_id": "26486158_10014354",
+        "difference": 0.6666666666666667,
+        "principal_rate": 1.0,
+        "bayesian_rate": 0.3333333333333333,
+        "principal_accepts": 1,
+        "principal_total": 1,
+        "bayesian_accepts": 3,
+        "bayesian_total": 9
+      }
+    ],
+    "bayesian_principal": [
+      {
+        "case_id": "22942076_10006053",
+        "difference": 0.0,
+        "principal_rate": 0.75,
+        "bayesian_rate": 0.75,
+        "principal_accepts": 6,
+        "principal_total": 8,
+        "bayesian_accepts": 6,
+        "bayesian_total": 8
+      },
+      {
+        "case_id": "20297618_10019385",
+        "difference": 0.0,
+        "principal_rate": 0.75,
+        "bayesian_rate": 0.75,
+        "principal_accepts": 6,
+        "principal_total": 8,
+        "bayesian_accepts": 6,
+        "bayesian_total": 8
+      },
+      {
+        "case_id": "21606243_10031404",
+        "difference": 0.0,
+        "principal_rate": 0.5,
+        "bayesian_rate": 0.5,
+        "principal_accepts": 3,
+        "principal_total": 6,
+        "bayesian_accepts": 3,
+        "bayesian_total": 6
+      }
+    ]
+  }
+}

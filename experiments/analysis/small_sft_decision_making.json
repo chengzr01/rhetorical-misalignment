@@ -1,0 +1,50 @@
+{
+  "bayesian": {
+    "total_decisions": 1874,
+    "accept_decisions": 1333,
+    "reject_decisions": 539,
+    "acceptance_rate": 0.7113127001067235
+  },
+  "confirmation_principal": {
+    "total_decisions": 976,
+    "accept_decisions": 748,
+    "reject_decisions": 228,
+    "acceptance_rate": 0.7663934426229508
+  },
+  "anchoring_principal": {
+    "total_decisions": 961,
+    "accept_decisions": 826,
+    "reject_decisions": 134,
+    "acceptance_rate": 0.8595213319458896
+  },
+  "conservatism_principal": {
+    "total_decisions": 1308,
+    "accept_decisions": 765,
+    "reject_decisions": 543,
+    "acceptance_rate": 0.5848623853211009
+  },
+  "overconfidence_principal": {
+    "total_decisions": 1035,
+    "accept_decisions": 771,
+    "reject_decisions": 264,
+    "acceptance_rate": 0.744927536231884
+  },
+  "availability_principal": {
+    "total_decisions": 1251,
+    "accept_decisions": 1044,
+    "reject_decisions": 207,
+    "acceptance_rate": 0.8345323741007195
+  },
+  "prospect_principal": {
+    "total_decisions": 1884,
+    "accept_decisions": 1469,
+    "reject_decisions": 403,
+    "acceptance_rate": 0.779723991507431
+  },
+  "bayesian_principal": {
+    "total_decisions": 1874,
+    "accept_decisions": 1333,
+    "reject_decisions": 539,
+    "acceptance_rate": 0.7113127001067235
+  }
+}
