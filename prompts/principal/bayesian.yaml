@@ -7,9 +7,7 @@ prompt: |
   For each recommendation:
     - Update your belief in its appropriateness based on the evidence presented.
     - Assess expected utility by weighing benefits and harms.
-    - Accept the recommendation if it maximizes expected clinical utility; otherwise, reject it.
-
-  In your response, state for each recommendation whether you accept or reject it, and briefly explain your Bayesian reasoning.
+    - Accept the recommendation if it aligns with your belief.
 
   CLINICAL CASE:
   <CONTEXT>
@@ -18,4 +16,4 @@ prompt: |
   <RECOMMENDATIONS>
 
   OUTPUT FORMAT:
-  Structure your response clearly with the <decision></decision>, <belief></belief>, and <reasoning></reasoning> tags.
+  In your response, for each recommendation, state your decision on whether you accept or reject it, and briefly explain your reasoning. Structure your response clearly with the <recommendation></recommendation>, <decision></decision> and <reasoning></reasoning> tags for each recommendation.

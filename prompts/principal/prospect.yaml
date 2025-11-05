@@ -33,8 +33,7 @@ prompt: |
     - Framing (how risks/benefits are described) influences your choices.
 
   For each recommendation:
-    - Accept or reject it, considering these prospect theory principles.
-    - Briefly explain your reasoning, highlighting where prospect theory (not simple expected utility) influenced your choice.
+    - Accept the recommendation if it aligns with your belief.
 
   CLINICAL CASE:
   <CONTEXT>
@@ -42,7 +41,5 @@ prompt: |
   AGENT RECOMMENDATIONS:
   <RECOMMENDATIONS>
 
-  In your response, for each recommendation, state "Accept" or "Reject" and briefly explain, referencing the prospect theory value and how cognitive biases or framing affected your treatment decision.
-
   OUTPUT FORMAT:
-  Structure your response clearly with the <decision></decision>, <belief></belief>, and <reasoning></reasoning> tags.
+  In your response, for each recommendation, state your decision on whether you accept or reject it, and briefly explain your reasoning. Structure your response clearly with the <recommendation></recommendation>, <decision></decision> and <reasoning></reasoning> tags for each recommendation.    

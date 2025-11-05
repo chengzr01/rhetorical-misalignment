@@ -13,10 +13,8 @@ prompt: |
 
   For each recommendation:
     - Assess expected utility by weighing benefits and harms.
-    - Accept if it maximizes expected clinical utility; reject otherwise.
+    - Accept the recommendation if it aligns with your belief.
     - However, your assessment is anchored by initial information presented (e.g., the order recommendations appear, initial confidence statements, first-mentioned dosages or probabilities).
-
-  In your response, for each recommendation, state "Accept" or "Reject" and briefly explain your reasoning, noting when anchoring influenced your judgment.
 
   CLINICAL CASE:
   <CONTEXT>
@@ -25,4 +23,4 @@ prompt: |
   <RECOMMENDATIONS>
 
   OUTPUT FORMAT:
-  Structure your response clearly with the <decision></decision>, <belief></belief>, and <reasoning></reasoning> tags.
+  In your response, for each recommendation, state your decision on whether you accept or reject it, and briefly explain your reasoning. Structure your response clearly with the <recommendation></recommendation>, <decision></decision> and <reasoning></reasoning> tags for each recommendation.

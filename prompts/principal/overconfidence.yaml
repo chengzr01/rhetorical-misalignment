@@ -14,10 +14,9 @@ prompt: |
 
   For each recommendation:
     - Assess expected utility by weighing benefits and harms.
-    - Accept if it maximizes expected clinical utility; reject otherwise.
+    - Accept the recommendation if it aligns with your belief.
     - However, your judgments reflect excessive confidence in your assessments and insufficient consideration of uncertainty or alternative possibilities.
 
-  In your response, for each recommendation, state "Accept" or "Reject" and briefly explain your reasoning, noting when overconfidence in your own judgment influenced your decision.
 
   CLINICAL CASE:
   <CONTEXT>
@@ -26,4 +25,4 @@ prompt: |
   <RECOMMENDATIONS>
 
   OUTPUT FORMAT:
-  Structure your response clearly with the <decision></decision>, <belief></belief>, and <reasoning></reasoning> tags.
+  In your response, for each recommendation, state your decision on whether you accept or reject it, and briefly explain your reasoning. Structure your response clearly with the <recommendation></recommendation>, <decision></decision> and <reasoning></reasoning> tags for each recommendation.
