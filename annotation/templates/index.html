@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Clinical Decision Annotation System</h1>
+
+<div>
+    <h2>Welcome</h2>
+    <p>This system collects human annotations on clinical decision-making for AI-generated treatment recommendations.</p>
+    <p><strong>Total Cases Available:</strong> {{ total_cases }}</p>
+</div>
+
+<div>
+    <h2>Process</h2>
+    <ul>
+        <li><strong>Step 1:</strong> You will see a patient's basic information and an AI agent's treatment recommendation. You will be asked to accept or reject the recommendation based on this information alone.</li>
+        <li><strong>Step 2:</strong> You will then see the full clinical case details and the actual treatments and diagnoses. You can revise your initial decision based on this additional information.</li>
+    </ul>
+</div>
+
+<form action="/start" method="POST">
+    <div class="form-group">
+        <label for="annotator_id">Your Annotator ID:</label>
+        <input type="text" id="annotator_id" name="annotator_id" required placeholder="Enter your unique identifier">
+    </div>
+
+    <div class="form-group">
+        <label for="model_key">Select Model:</label>
+        <select id="model_key" name="model_key" required style="width: 100%; padding: 8px; margin-top: 5px;">
+            {% for model in available_models %}
+            <option value="{{ model.key }}">{{ model.name }}</option>
+            {% endfor %}
+        </select>
+        <small style="color: #7f8c8d; display: block; margin-top: 5px;">Choose which model's recommendations to annotate</small>
+    </div>
+
+    <div class="form-group">
+        <label>Case Selection Mode:</label>
+        <div style="margin: 10px 0;">
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="selection_mode" value="all" checked onchange="toggleSelectionMode()">
+                <strong>All Cases</strong> - Annotate all cases sequentially
+            </label>
+            <label style="display: block;">
+                <input type="radio" name="selection_mode" value="targeted" onchange="toggleSelectionMode()">
+                <strong>Targeted Cases</strong> - Annotate specific filtered cases
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group" id="all-cases-options">
+        <label for="case_index">Start from Case Index (0 to {{ total_cases - 1 }}):</label>
+        <input type="number" id="case_index" name="case_index" min="0" max="{{ total_cases - 1 }}" value="0">
+        <small style="color: #7f8c8d; display: block; margin-top: 5px;">You can start from a specific case number if needed</small>
+    </div>
+
+    <div class="form-group" id="targeted-cases-options" style="display: none;">
+        <label>Selection Type:</label>
+        <div style="margin: 10px 0;">
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="targeted_type" value="indices" checked onchange="toggleTargetedType()">
+                <strong>Specific Indices</strong> - Choose specific case numbers
+            </label>
+            <label style="display: block;">
+                <input type="radio" name="targeted_type" value="random" onchange="toggleTargetedType()">
+                <strong>Random Sample</strong> - Randomly select a number of cases
+            </label>
+        </div>
+
+        <div id="indices-input" style="margin-top: 10px;">
+            <label for="case_indices">Case Indices (comma-separated or range):</label>
+            <input type="text" id="case_indices" name="case_indices" placeholder="e.g., 0,5,10 or 0-20" style="width: 100%; padding: 8px; margin-top: 5px;">
+            <small style="color: #7f8c8d; display: block; margin-top: 5px;">
+                Enter specific case numbers separated by commas (e.g., "0,5,10") or a range (e.g., "0-20")
+            </small>
+        </div>
+
+        <div id="random-input" style="margin-top: 10px; display: none;">
+            <label for="random_count">Number of random cases:</label>
+            <input type="number" id="random_count" name="random_count" min="1" max="{{ total_cases }}" value="10" style="width: 100%; padding: 8px; margin-top: 5px;">
+            <small style="color: #7f8c8d; display: block; margin-top: 5px;">
+                Specify how many cases to randomly select (1-{{ total_cases }})
+            </small>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Start Annotation</button>
+</form>
+
+<script>
+function toggleSelectionMode() {
+    const allCasesMode = document.querySelector('input[name="selection_mode"][value="all"]').checked;
+    document.getElementById('all-cases-options').style.display = allCasesMode ? 'block' : 'none';
+    document.getElementById('targeted-cases-options').style.display = allCasesMode ? 'none' : 'block';
+}
+
+function toggleTargetedType() {
+    const indicesMode = document.querySelector('input[name="targeted_type"][value="indices"]').checked;
+    document.getElementById('indices-input').style.display = indicesMode ? 'block' : 'none';
+    document.getElementById('random-input').style.display = indicesMode ? 'none' : 'block';
+}
+</script>
+{% endblock %}

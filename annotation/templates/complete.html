@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Annotation Complete</h1>
+
+<div class="section info">
+    <h2>Thank You!</h2>
+    <p>You have completed all available cases for annotation.</p>
+    <p><strong>Annotator ID:</strong> {{ annotator_id }}</p>
+</div>
+
+<div class="section">
+    <h3>What happens next?</h3>
+    <p>Your annotations have been saved and will be used to analyze human decision-making in clinical contexts with AI assistance.</p>
+</div>
+
+<div style="margin-top: 30px;">
+    <a href="/reset" class="btn btn-primary">Start New Session</a>
+    <a href="/" class="btn btn-secondary">Return to Home</a>
+</div>
+{% endblock %}

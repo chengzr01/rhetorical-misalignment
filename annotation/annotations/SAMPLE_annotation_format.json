@@ -1,0 +1,16 @@
+{
+  "annotator_id": "test_user",
+  "case_id": "21606243_10031404",
+  "hadm_id": 21606243,
+  "subject_id": 10031404,
+  "agent_name": "default_agent",
+  "agent_model": "deepseek-ai/deepseek-v3.1",
+  "initial_decision": "accept",
+  "final_decision": "reject",
+  "decision_changed": true,
+  "reasoning": "After reviewing the full context and ground truth, the recommendation does not align with actual treatments.",
+  "session_start": "2025-11-04T23:51:38.638225",
+  "step1_time": "2025-11-04T23:51:38.638236",
+  "step2_time": "2025-11-04T23:51:38.638237",
+  "timestamp": "2025-11-04T23:51:38.638238"
+}

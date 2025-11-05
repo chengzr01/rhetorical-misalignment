@@ -1,0 +1,16 @@
+{
+  "annotator_id": "Zirui Cheng",
+  "case_id": "21606243_10031404",
+  "hadm_id": 21606243,
+  "subject_id": 10031404,
+  "agent_name": "default_agent",
+  "agent_model": "deepseek-ai/deepseek-v3.1",
+  "initial_decision": "accept",
+  "final_decision": "accept",
+  "decision_changed": false,
+  "reasoning": "",
+  "session_start": "2025-11-04T23:55:05.055208",
+  "step1_time": "2025-11-04T23:55:18.216015",
+  "step2_time": "2025-11-04T23:55:24.223059",
+  "timestamp": "2025-11-04T23:55:24.223067"
+}

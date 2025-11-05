@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h1 style="margin: 0;">Step 1: Initial Decision</h1>
+    <div style="color: #7f8c8d;">Case {{ current_position }} of {{ total_cases }} | {{ session.annotator_id }}</div>
+</div>
+
+<div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
+    <strong>Instructions:</strong> Review the patient information and treatment recommendation, then make your decision.
+</div>
+
+<div style="margin-bottom: 25px;">
+    <h3 style="color: #2c3e50; margin-bottom: 10px;">Patient Information</h3>
+    <div class="markdown-content">{{ case.principal_context_html | safe }}</div>
+</div>
+
+<div style="margin-bottom: 25px;">
+    <h3 style="color: #2c3e50; margin-bottom: 10px;">Treatment Recommendation</h3>
+    <div class="markdown-content">{{ case.information_html | safe }}</div>
+</div>
+
+<form action="/step1_submit" method="POST">
+    <div style="background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #ffc107;">
+        <h3 style="margin-top: 0;">Your Decision</h3>
+        <div class="decision-buttons">
+            <button type="submit" name="decision" value="accept" class="btn btn-accept">
+                Accept Recommendation
+            </button>
+            <button type="submit" name="decision" value="reject" class="btn btn-reject">
+                Reject Recommendation
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock %}
