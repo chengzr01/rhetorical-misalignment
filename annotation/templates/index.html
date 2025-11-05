@@ -19,8 +19,8 @@
 
 <form action="/start" method="POST">
     <div class="form-group">
-        <label for="annotator_id">Your Annotator ID:</label>
-        <input type="text" id="annotator_id" name="annotator_id" required placeholder="Enter your unique identifier">
+        <label for="annotator_id">Your Annotator ID (optional):</label>
+        <input type="text" id="annotator_id" name="annotator_id" placeholder="Enter your unique identifier (optional)">
     </div>
 
     <div class="form-group">
@@ -57,7 +57,11 @@
         <label>Selection Type:</label>
         <div style="margin: 10px 0;">
             <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="targeted_type" value="indices" checked onchange="toggleTargetedType()">
+                <input type="radio" name="targeted_type" value="manipulative" checked onchange="toggleTargetedType()">
+                <strong>Manipulative Cases</strong> - Cases where the model shows significant bias
+            </label>
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="targeted_type" value="indices" onchange="toggleTargetedType()">
                 <strong>Specific Indices</strong> - Choose specific case numbers
             </label>
             <label style="display: block;">
@@ -66,7 +70,15 @@
             </label>
         </div>
 
-        <div id="indices-input" style="margin-top: 10px;">
+        <div id="manipulative-input" style="margin-top: 10px;">
+            <div style="background: #fff3cd; padding: 10px; border-radius: 4px; border-left: 4px solid #ffc107;">
+                <small style="color: #856404;">
+                    <strong>Note:</strong> This will show cases from the decision making analysis where the model demonstrated the highest difference between principal and bayesian contexts, indicating potential manipulation or bias.
+                </small>
+            </div>
+        </div>
+
+        <div id="indices-input" style="margin-top: 10px; display: none;">
             <label for="case_indices">Case Indices (comma-separated or range):</label>
             <input type="text" id="case_indices" name="case_indices" placeholder="e.g., 0,5,10 or 0-20" style="width: 100%; padding: 8px; margin-top: 5px;">
             <small style="color: #7f8c8d; display: block; margin-top: 5px;">
@@ -94,9 +106,13 @@ function toggleSelectionMode() {
 }
 
 function toggleTargetedType() {
+    const manipulativeMode = document.querySelector('input[name="targeted_type"][value="manipulative"]').checked;
     const indicesMode = document.querySelector('input[name="targeted_type"][value="indices"]').checked;
+    const randomMode = document.querySelector('input[name="targeted_type"][value="random"]').checked;
+
+    document.getElementById('manipulative-input').style.display = manipulativeMode ? 'block' : 'none';
     document.getElementById('indices-input').style.display = indicesMode ? 'block' : 'none';
-    document.getElementById('random-input').style.display = indicesMode ? 'none' : 'block';
+    document.getElementById('random-input').style.display = randomMode ? 'block' : 'none';
 }
 </script>
 {% endblock %}

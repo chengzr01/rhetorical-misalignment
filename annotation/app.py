@@ -9,6 +9,7 @@ app.secret_key = 'your-secret-key-change-this'  # Change this in production
 
 # Load the data
 DATA_DIR = '../experiments/cache'
+CASES_DIR = '../experiments/cases'
 ANNOTATION_DIR = 'annotations'
 
 # Ensure annotation directory exists
@@ -21,7 +22,6 @@ AVAILABLE_MODELS = [
     {'key': 'llama', 'file': 'agent_llama.json', 'name': 'Llama-3.3-70B-Instruct'},
     {'key': 'oss', 'file': 'agent_oss.json', 'name': 'GPT-OSS-120B'},
     {'key': 'deepseek', 'file': 'agent_deepseek.json', 'name': 'DeepSeek-V3.1'},
-    {'key': 'llama_small', 'file': 'agent_llama_small.json', 'name': 'Llama-3.3-8B-Instruct'},
 ]
 
 def get_model_info(model_key):
@@ -116,6 +116,39 @@ def get_random_indices(total_cases, count):
     random.shuffle(indices)
     return sorted(indices[:count])
 
+def load_manipulative_case_ids(model_key):
+    """Load manipulative case IDs from decision making analysis file"""
+    # Map model key to analysis file
+    analysis_file = f'decision_making_analysis_{model_key}_max_diff.json'
+    filepath = os.path.join(CASES_DIR, analysis_file)
+
+    if not os.path.exists(filepath):
+        return []
+
+    try:
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+
+        # Extract all case_ids from all principals
+        case_ids = set()
+        principals = data.get('principals', {})
+        for principal_name, cases in principals.items():
+            for case in cases:
+                case_ids.add(case['case_id'])
+
+        return list(case_ids)
+    except Exception as e:
+        print(f"Error loading manipulative cases: {e}")
+        return []
+
+def get_indices_for_case_ids(data, case_ids):
+    """Find indices in data array that match the given case_ids"""
+    indices = []
+    for idx, case in enumerate(data):
+        if case.get('case_id') in case_ids:
+            indices.append(idx)
+    return sorted(indices)
+
 @app.route('/')
 def index():
     """Landing page - ask for annotator ID and show case selection"""
@@ -149,6 +182,13 @@ def start_annotation():
             if not case_indices:
                 # If no valid indices, default to all cases
                 case_indices = list(range(total_cases))
+        elif targeted_type == 'manipulative':
+            # Load manipulative cases for this model
+            manipulative_case_ids = load_manipulative_case_ids(model_key)
+            case_indices = get_indices_for_case_ids(data, manipulative_case_ids)
+            if not case_indices:
+                # Fallback to all cases if no manipulative cases found
+                case_indices = list(range(total_cases))
         else:
             # Random sampling
             random_count = int(request.form.get('random_count', 10))
@@ -158,12 +198,21 @@ def start_annotation():
         case_index = int(request.form.get('case_index', 0))
         case_indices = list(range(case_index, total_cases))
 
-    session['annotator_id'] = annotator_id
+    session['annotator_id'] = annotator_id if annotator_id else 'anonymous'
     session['model_key'] = model_key
     session['case_indices'] = case_indices
     session['current_position'] = 0
+    session['annotated_cases'] = []  # Track which cases have been annotated
     session['start_time'] = datetime.now().isoformat()
 
+    return redirect(url_for('step1'))
+
+@app.route('/jump_to/<int:position>')
+def jump_to(position):
+    """Jump to a specific case position"""
+    case_indices = session.get('case_indices', [])
+    if 0 <= position < len(case_indices):
+        session['current_position'] = position
     return redirect(url_for('step1'))
 
 @app.route('/step1')
@@ -171,6 +220,7 @@ def step1():
     """Step 1: Show principal context and agent recommendation"""
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
+    annotated_cases = session.get('annotated_cases', [])
     model_key = session.get('model_key', 'small_dpo')
     data = load_data(model_key)
 
@@ -187,8 +237,9 @@ def step1():
     return render_template('step1.html',
                           case=case,
                           case_index=case_index,
-                          current_position=current_position + 1,
-                          total_cases=len(case_indices))
+                          current_position=current_position,
+                          total_cases=len(case_indices),
+                          annotated_cases=annotated_cases)
 
 @app.route('/step1_submit', methods=['POST'])
 def step1_submit():
@@ -205,6 +256,7 @@ def step2():
     """Step 2: Show agent context, ground truth, and ask for revision"""
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
+    annotated_cases = session.get('annotated_cases', [])
     model_key = session.get('model_key', 'small_dpo')
     data = load_data(model_key)
 
@@ -229,8 +281,9 @@ def step2():
                           case=case,
                           initial_decision=initial_decision,
                           case_index=case_index,
-                          current_position=current_position + 1,
-                          total_cases=len(case_indices))
+                          current_position=current_position,
+                          total_cases=len(case_indices),
+                          annotated_cases=annotated_cases)
 
 @app.route('/step2_submit', methods=['POST'])
 def step2_submit():
@@ -267,14 +320,29 @@ def step2_submit():
     filepath = save_annotation(annotation)
     print(f"Saved annotation to {filepath}")
 
-    # Move to next case
-    session['current_position'] = current_position + 1
+    # Mark this case as annotated
+    annotated_cases = session.get('annotated_cases', [])
+    if current_position not in annotated_cases:
+        annotated_cases.append(current_position)
+        session['annotated_cases'] = annotated_cases
 
-    # Check if more cases
-    if session['current_position'] < len(case_indices):
-        return redirect(url_for('step1'))
+    # Check if user wants to move to next case or stay
+    action = request.form.get('action', 'next')
+
+    if action == 'next':
+        # Move to next unannotated case, or next case if all are annotated
+        next_position = current_position + 1
+        while next_position < len(case_indices) and next_position in annotated_cases:
+            next_position += 1
+
+        if next_position < len(case_indices):
+            session['current_position'] = next_position
+            return redirect(url_for('step1'))
+        else:
+            return redirect(url_for('complete'))
     else:
-        return redirect(url_for('complete'))
+        # Stay on current page or go back to step1
+        return redirect(url_for('step1'))
 
 @app.route('/complete')
 def complete():
