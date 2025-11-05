@@ -67,17 +67,19 @@ def format_lab_results(episode: Dict) -> str:
             for lab in abnormal_labs[:10]:  # Limit to first 10 abnormal per category
                 value = lab.get('value', lab.get('valuenum', 'N/A'))
                 unit = lab.get('valueuom', '')
+                charttime = lab.get('charttime', 'Unknown time')
                 ref_range = ""
                 if lab.get('ref_range_lower') and lab.get('ref_range_upper'):
                     ref_range = f" (ref: {lab['ref_range_lower']}-{lab['ref_range_upper']} {unit})"
-                lines.append(f"  - {lab['label']}: {value} {unit}{ref_range} [ABNORMAL]")
+                lines.append(f"  - {lab['label']}: {value} {unit}{ref_range} [ABNORMAL] (at {charttime})")
 
             # Show some normal values for context (limit to 5)
             for lab in normal_labs[:5]:
                 value = lab.get('value', lab.get('valuenum', 'N/A'))
                 unit = lab.get('valueuom', '')
+                charttime = lab.get('charttime', 'Unknown time')
                 if value and value != 'N/A':
-                    lines.append(f"  - {lab['label']}: {value} {unit}")
+                    lines.append(f"  - {lab['label']}: {value} {unit} (at {charttime})")
 
     return "\n".join(lines) if lines else "No lab results available"
 
@@ -90,9 +92,11 @@ def format_microbiology_results(episode: Dict) -> str:
 
     lines = []
     for event in micro_events:
+        charttime = event.get('charttime', 'Unknown time')
         test_info = f"- {event.get('test_name', 'Unknown test')}"
         if event.get('spec_type_desc'):
             test_info += f" ({event['spec_type_desc']})"
+        test_info += f" - collected at {charttime}"
 
         if event.get('org_name'):
             test_info += f"\n  Organism: {event['org_name']}"
