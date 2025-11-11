@@ -19,6 +19,7 @@ dependencies = [
     "fastapi (>=0.119.0,<0.120.0)",
     "psutil (>=7.1.0,<8.0.0)",
     "zmq (>=0.0.0,<0.0.1)",
+    "datasets (>=4.4.1,<5.0.0)",
 ]
 
 [project.optional-dependencies]
