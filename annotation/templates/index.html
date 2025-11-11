@@ -31,24 +31,29 @@
     </div>
 
     <div class="form-group">
-        <label>Select Dataset:</label>
-        <div style="margin: 10px 0;">
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="dataset" value="mimic" checked onchange="updateModels()">
-                <strong>MIMIC-IV</strong> - Clinical cases from MIMIC-IV database
-            </label>
-            <label style="display: block;">
-                <input type="radio" name="dataset" value="usmle" onchange="updateModels()">
-                <strong>USMLE</strong> - Medical exam questions and cases
-            </label>
-        </div>
+        <label for="dataset">Select Dataset:</label>
+        <select id="dataset" name="dataset" required style="width: 100%; padding: 8px; margin-top: 5px;" onchange="updateModels()">
+            <option value="mimic"
+                    {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
+                    {% if dataset_availability.get('mimic', False) %}selected{% endif %}>
+                {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
+            </option>
+            <option value="usmle"
+                    {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
+                    {% if dataset_availability.get('usmle', False) and not dataset_availability.get('mimic', False) %}selected{% endif %}>
+                {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
+            </option>
+        </select>
+        <small style="color: #7f8c8d; display: block; margin-top: 5px;">Select the dataset to annotate</small>
     </div>
 
     <div class="form-group">
         <label for="model_key">Select Model:</label>
         <select id="model_key" name="model_key" required style="width: 100%; padding: 8px; margin-top: 5px;">
             {% for model in available_models %}
-            <option value="{{ model.key }}">{{ model.name }}</option>
+            <option value="{{ model.key }}" {% if not model.get('available', False) %}disabled{% endif %}>
+                {{ model.name }}{% if not model.get('available', False) %} (Not available){% endif %}
+            </option>
             {% endfor %}
         </select>
         <small style="color: #7f8c8d; display: block; margin-top: 5px;">Choose which model's recommendations to annotate</small>
@@ -120,10 +125,40 @@
 </form>
 
 <script>
-function updateModels() {
-    // Placeholder function - models are loaded from server
-    // In the future, this could dynamically update available models based on dataset
-    console.log('Dataset changed');
+async function updateModels() {
+    const datasetSelect = document.getElementById('dataset');
+    const modelSelect = document.getElementById('model_key');
+    const selectedDataset = datasetSelect.value;
+
+    // Fetch models for the selected dataset
+    try {
+        const response = await fetch(`/api/models/${selectedDataset}`);
+        const data = await response.json();
+        const models = data.models || [];
+
+        // Clear current options
+        modelSelect.innerHTML = '';
+
+        // Add new options
+        models.forEach(model => {
+            const option = document.createElement('option');
+            option.value = model.key;
+            option.textContent = model.name;
+            if (!model.available) {
+                option.disabled = true;
+                option.textContent += ' (Not available)';
+            }
+            modelSelect.appendChild(option);
+        });
+
+        // Select first available model
+        const firstAvailable = models.find(m => m.available);
+        if (firstAvailable) {
+            modelSelect.value = firstAvailable.key;
+        }
+    } catch (error) {
+        console.error('Error fetching models:', error);
+    }
 }
 
 function toggleSelectionMode() {

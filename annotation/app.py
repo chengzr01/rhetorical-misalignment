@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import json
 import os
 from datetime import datetime
@@ -53,9 +53,26 @@ def get_available_models(dataset_key='mimic'):
     available = []
     for model in AVAILABLE_MODELS:
         filepath = os.path.join(dataset_config['data_dir'], model['file'])
-        if os.path.exists(filepath):
-            available.append(model)
+        model_copy = model.copy()
+        model_copy['available'] = os.path.exists(filepath)
+        available.append(model_copy)
     return available
+
+def check_dataset_availability():
+    """Check which datasets have available data"""
+    dataset_availability = {}
+    for dataset_key, dataset_config in DATASETS.items():
+        # Check if data directory exists and has at least one model file
+        data_dir = dataset_config['data_dir']
+        has_data = False
+        if os.path.exists(data_dir):
+            for model in AVAILABLE_MODELS:
+                filepath = os.path.join(data_dir, model['file'])
+                if os.path.exists(filepath):
+                    has_data = True
+                    break
+        dataset_availability[dataset_key] = has_data
+    return dataset_availability
 
 # Configure markdown converter
 md = markdown.Markdown(extensions=['extra', 'nl2br', 'sane_lists'])
@@ -172,15 +189,42 @@ def get_indices_for_case_ids(data, case_ids):
 @app.route('/')
 def index():
     """Landing page - ask for annotator ID and show case selection"""
+    # Check dataset availability
+    dataset_availability = check_dataset_availability()
+
+    # Find first available dataset
     default_dataset = 'mimic'
+    for dataset_key in ['mimic', 'usmle']:
+        if dataset_availability.get(dataset_key, False):
+            default_dataset = dataset_key
+            break
+
+    # Get available models for default dataset
     available_models = get_available_models(default_dataset)
+
     # Get default model to show total cases
-    default_model = available_models[0]['key'] if available_models else 'small_dpo'
-    data = load_data(default_model, default_dataset)
+    available_model_keys = [m['key'] for m in available_models if m.get('available', False)]
+    default_model = available_model_keys[0] if available_model_keys else 'small_dpo'
+
+    # Try to load data to get case count
+    total_cases = 0
+    try:
+        data = load_data(default_model, default_dataset)
+        total_cases = len(data)
+    except:
+        pass
+
     return render_template('index.html',
-                          total_cases=len(data),
+                          total_cases=total_cases,
                           available_models=available_models,
-                          datasets=DATASETS)
+                          datasets=DATASETS,
+                          dataset_availability=dataset_availability)
+
+@app.route('/api/models/<dataset_key>')
+def api_get_models(dataset_key):
+    """API endpoint to get available models for a dataset"""
+    models = get_available_models(dataset_key)
+    return jsonify({'models': models})
 
 @app.route('/start', methods=['POST'])
 def start_annotation():
