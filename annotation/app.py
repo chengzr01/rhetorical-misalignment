@@ -205,6 +205,31 @@ def start_annotation():
     session['annotated_cases'] = []  # Track which cases have been annotated
     session['start_time'] = datetime.now().isoformat()
 
+    return redirect(url_for('demographics'))
+
+@app.route('/demographics')
+def demographics():
+    """Demographics information collection page"""
+    # Check if session has been initialized
+    if 'annotator_id' not in session:
+        return redirect(url_for('index'))
+
+    return render_template('demographics.html')
+
+@app.route('/demographics_submit', methods=['POST'])
+def demographics_submit():
+    """Handle demographics submission"""
+    # Store demographic information in session
+    session['demographics'] = {
+        'expertise': request.form.get('expertise'),
+        'years_of_practice': request.form.get('years_of_practice'),
+        'age': request.form.get('age'),
+        'sex': request.form.get('sex'),
+        'race': request.form.get('race'),
+        'practice_location': request.form.get('practice_location'),
+        'submitted_at': datetime.now().isoformat()
+    }
+
     return redirect(url_for('step1'))
 
 @app.route('/jump_to/<int:position>')
@@ -217,7 +242,7 @@ def jump_to(position):
 
 @app.route('/step1')
 def step1():
-    """Step 1: Show principal context and agent recommendation"""
+    """Step 1: Show clinical context and collect initial treatment plan (3 blocks)"""
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
@@ -231,8 +256,7 @@ def step1():
     case = data[case_index].copy()
 
     # Render markdown fields to HTML
-    case['principal_context_html'] = render_markdown(case.get('principal_context', ''))
-    case['information_html'] = render_markdown(case.get('information', ''))
+    case['agent_context_html'] = render_markdown(case.get('agent_context', ''))
 
     return render_template('step1.html',
                           case=case,
@@ -243,17 +267,33 @@ def step1():
 
 @app.route('/step1_submit', methods=['POST'])
 def step1_submit():
-    """Handle step 1 submission"""
-    decision = request.form.get('decision')
+    """Handle step 1 submission - collect 3 treatment blocks with beliefs"""
+    # Collect medications
+    medications = request.form.get('medications')
+    medications_belief = request.form.get('medications_belief')
 
-    session['initial_decision'] = decision
+    # Collect procedures
+    procedures = request.form.get('procedures')
+    procedures_belief = request.form.get('procedures_belief')
+
+    # Collect diagnoses
+    diagnoses = request.form.get('diagnoses')
+    diagnoses_belief = request.form.get('diagnoses_belief')
+
+    # Store in session
+    session['step1_medications'] = medications
+    session['step1_medications_belief'] = medications_belief
+    session['step1_procedures'] = procedures
+    session['step1_procedures_belief'] = procedures_belief
+    session['step1_diagnoses'] = diagnoses
+    session['step1_diagnoses_belief'] = diagnoses_belief
     session['step1_time'] = datetime.now().isoformat()
 
     return redirect(url_for('step2'))
 
 @app.route('/step2')
 def step2():
-    """Step 2: Show agent context, ground truth, and ask for revision"""
+    """Step 2: Show agent's recommendation and allow revision"""
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
@@ -265,21 +305,26 @@ def step2():
 
     case_index = case_indices[current_position]
     case = data[case_index].copy()
-    initial_decision = session.get('initial_decision')
+
+    # Get initial inputs from session (step 1)
+    initial_medications = session.get('step1_medications', '')
+    initial_medications_belief = session.get('step1_medications_belief', '0.5')
+    initial_procedures = session.get('step1_procedures', '')
+    initial_procedures_belief = session.get('step1_procedures_belief', '0.5')
+    initial_diagnoses = session.get('step1_diagnoses', '')
+    initial_diagnoses_belief = session.get('step1_diagnoses_belief', '0.5')
 
     # Render markdown fields to HTML
-    case['agent_context_html'] = render_markdown(case.get('agent_context', ''))
     case['information_html'] = render_markdown(case.get('information', ''))
-
-    # Render ground truth fields to HTML
-    if 'ground_truth' in case and case['ground_truth']:
-        case['ground_truth']['medications_html'] = render_markdown(case['ground_truth'].get('medications', ''))
-        case['ground_truth']['procedures_html'] = render_markdown(case['ground_truth'].get('procedures', ''))
-        case['ground_truth']['diagnoses_html'] = render_markdown(case['ground_truth'].get('diagnoses', ''))
 
     return render_template('step2.html',
                           case=case,
-                          initial_decision=initial_decision,
+                          initial_medications=initial_medications,
+                          initial_medications_belief=initial_medications_belief,
+                          initial_procedures=initial_procedures,
+                          initial_procedures_belief=initial_procedures_belief,
+                          initial_diagnoses=initial_diagnoses,
+                          initial_diagnoses_belief=initial_diagnoses_belief,
                           case_index=case_index,
                           current_position=current_position,
                           total_cases=len(case_indices),
@@ -287,8 +332,88 @@ def step2():
 
 @app.route('/step2_submit', methods=['POST'])
 def step2_submit():
-    """Handle step 2 submission and save annotation"""
-    final_decision = request.form.get('decision')
+    """Handle step 2 submission - collect revisions after seeing agent recommendation"""
+    # Collect revised medications
+    medications_step2 = request.form.get('medications_step2')
+    medications_belief_step2 = request.form.get('medications_belief_step2')
+
+    # Collect revised procedures
+    procedures_step2 = request.form.get('procedures_step2')
+    procedures_belief_step2 = request.form.get('procedures_belief_step2')
+
+    # Collect revised diagnoses
+    diagnoses_step2 = request.form.get('diagnoses_step2')
+    diagnoses_belief_step2 = request.form.get('diagnoses_belief_step2')
+
+    # Store in session
+    session['step2_medications'] = medications_step2
+    session['step2_medications_belief'] = medications_belief_step2
+    session['step2_procedures'] = procedures_step2
+    session['step2_procedures_belief'] = procedures_belief_step2
+    session['step2_diagnoses'] = diagnoses_step2
+    session['step2_diagnoses_belief'] = diagnoses_belief_step2
+    session['step2_time'] = datetime.now().isoformat()
+
+    return redirect(url_for('step3'))
+
+@app.route('/step3')
+def step3():
+    """Step 3: Show actual treatment and allow final revision"""
+    case_indices = session.get('case_indices', [])
+    current_position = session.get('current_position', 0)
+    annotated_cases = session.get('annotated_cases', [])
+    model_key = session.get('model_key', 'small_dpo')
+    data = load_data(model_key)
+
+    if current_position >= len(case_indices):
+        return redirect(url_for('complete'))
+
+    case_index = case_indices[current_position]
+    case = data[case_index].copy()
+
+    # Get step 2 inputs from session
+    step2_medications = session.get('step2_medications', '')
+    step2_medications_belief = session.get('step2_medications_belief', '0.5')
+    step2_procedures = session.get('step2_procedures', '')
+    step2_procedures_belief = session.get('step2_procedures_belief', '0.5')
+    step2_diagnoses = session.get('step2_diagnoses', '')
+    step2_diagnoses_belief = session.get('step2_diagnoses_belief', '0.5')
+
+    # Render ground truth fields to HTML
+    if 'ground_truth' in case and case['ground_truth']:
+        case['ground_truth']['medications_html'] = render_markdown(case['ground_truth'].get('medications', ''))
+        case['ground_truth']['procedures_html'] = render_markdown(case['ground_truth'].get('procedures', ''))
+        case['ground_truth']['diagnoses_html'] = render_markdown(case['ground_truth'].get('diagnoses', ''))
+
+    return render_template('step3.html',
+                          case=case,
+                          step2_medications=step2_medications,
+                          step2_medications_belief=step2_medications_belief,
+                          step2_procedures=step2_procedures,
+                          step2_procedures_belief=step2_procedures_belief,
+                          step2_diagnoses=step2_diagnoses,
+                          step2_diagnoses_belief=step2_diagnoses_belief,
+                          case_index=case_index,
+                          current_position=current_position,
+                          total_cases=len(case_indices),
+                          annotated_cases=annotated_cases)
+
+@app.route('/step3_submit', methods=['POST'])
+def step3_submit():
+    """Handle step 3 submission and save complete annotation"""
+    # Collect final medications
+    medications_step3 = request.form.get('medications_step3')
+    medications_belief_step3 = request.form.get('medications_belief_step3')
+
+    # Collect final procedures
+    procedures_step3 = request.form.get('procedures_step3')
+    procedures_belief_step3 = request.form.get('procedures_belief_step3')
+
+    # Collect final diagnoses
+    diagnoses_step3 = request.form.get('diagnoses_step3')
+    diagnoses_belief_step3 = request.form.get('diagnoses_belief_step3')
+
+    # Get reasoning
     reasoning = request.form.get('reasoning', '')
 
     case_indices = session.get('case_indices', [])
@@ -298,21 +423,70 @@ def step2_submit():
     case_index = case_indices[current_position]
     case = data[case_index]
 
-    # Create annotation record
+    # Create comprehensive annotation record
     annotation = {
         'annotator_id': session.get('annotator_id'),
+        'demographics': session.get('demographics', {}),
         'case_id': case['case_id'],
         'hadm_id': case['hadm_id'],
         'subject_id': case['subject_id'],
         'agent_name': case['agent_name'],
         'agent_model': case['agent_model'],
-        'initial_decision': session.get('initial_decision'),
-        'final_decision': final_decision,
-        'decision_changed': session.get('initial_decision') != final_decision,
+
+        # Step 1: Initial responses (before seeing agent recommendation)
+        'step1': {
+            'medications': session.get('step1_medications', ''),
+            'medications_belief': float(session.get('step1_medications_belief', 0.5)),
+            'procedures': session.get('step1_procedures', ''),
+            'procedures_belief': float(session.get('step1_procedures_belief', 0.5)),
+            'diagnoses': session.get('step1_diagnoses', ''),
+            'diagnoses_belief': float(session.get('step1_diagnoses_belief', 0.5))
+        },
+
+        # Step 2: Revised responses (after seeing agent recommendation)
+        'step2': {
+            'medications': session.get('step2_medications', ''),
+            'medications_belief': float(session.get('step2_medications_belief', 0.5)),
+            'procedures': session.get('step2_procedures', ''),
+            'procedures_belief': float(session.get('step2_procedures_belief', 0.5)),
+            'diagnoses': session.get('step2_diagnoses', ''),
+            'diagnoses_belief': float(session.get('step2_diagnoses_belief', 0.5))
+        },
+
+        # Step 3: Final responses (after seeing actual treatment)
+        'step3': {
+            'medications': medications_step3,
+            'medications_belief': float(medications_belief_step3),
+            'procedures': procedures_step3,
+            'procedures_belief': float(procedures_belief_step3),
+            'diagnoses': diagnoses_step3,
+            'diagnoses_belief': float(diagnoses_belief_step3)
+        },
+
+        # Check if responses changed between steps
+        'step1_to_step2_changes': {
+            'medications_changed': session.get('step1_medications') != session.get('step2_medications'),
+            'medications_belief_changed': session.get('step1_medications_belief') != session.get('step2_medications_belief'),
+            'procedures_changed': session.get('step1_procedures') != session.get('step2_procedures'),
+            'procedures_belief_changed': session.get('step1_procedures_belief') != session.get('step2_procedures_belief'),
+            'diagnoses_changed': session.get('step1_diagnoses') != session.get('step2_diagnoses'),
+            'diagnoses_belief_changed': session.get('step1_diagnoses_belief') != session.get('step2_diagnoses_belief')
+        },
+
+        'step2_to_step3_changes': {
+            'medications_changed': session.get('step2_medications') != medications_step3,
+            'medications_belief_changed': session.get('step2_medications_belief') != medications_belief_step3,
+            'procedures_changed': session.get('step2_procedures') != procedures_step3,
+            'procedures_belief_changed': session.get('step2_procedures_belief') != procedures_belief_step3,
+            'diagnoses_changed': session.get('step2_diagnoses') != diagnoses_step3,
+            'diagnoses_belief_changed': session.get('step2_diagnoses_belief') != diagnoses_belief_step3
+        },
+
         'reasoning': reasoning,
         'session_start': session.get('start_time'),
         'step1_time': session.get('step1_time'),
-        'step2_time': datetime.now().isoformat(),
+        'step2_time': session.get('step2_time'),
+        'step3_time': datetime.now().isoformat(),
         'timestamp': datetime.now().isoformat()
     }
 

@@ -12,8 +12,15 @@
 <div>
     <h2>Process</h2>
     <ul>
-        <li><strong>Step 1:</strong> You will see a patient's basic information and an AI agent's treatment recommendation. You will be asked to accept or reject the recommendation based on this information alone.</li>
-        <li><strong>Step 2:</strong> You will then see the full clinical case details and the actual treatments and diagnoses. You can revise your initial decision based on this additional information.</li>
+        <li><strong>Step 1 - Initial Treatment Plan:</strong> You will review the full clinical context for a patient case. You will provide your treatment recommendations in three categories:
+            <ul style="margin-top: 5px;">
+                <li>Medications (with confidence level 0-1)</li>
+                <li>Procedures (with confidence level 0-1)</li>
+                <li>Diagnoses (with confidence level 0-1)</li>
+            </ul>
+        </li>
+        <li><strong>Step 2 - After Agent's Recommendation:</strong> You will see the AI agent's treatment recommendation. You may then revise your treatment plan and confidence levels for each category, or keep your original inputs.</li>
+        <li><strong>Step 3 - After Actual Treatment:</strong> You will see the actual treatment outcomes that were administered. You may make final revisions to your treatment plan and confidence levels for each category based on this information.</li>
     </ul>
 </div>
 

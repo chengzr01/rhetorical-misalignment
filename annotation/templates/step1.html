@@ -2,7 +2,7 @@
 
 {% block content %}
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-    <h1 style="margin: 0;">Step 1: Initial Decision</h1>
+    <h1 style="margin: 0;">Step 1: Your Treatment Plan</h1>
     <div style="color: #7f8c8d;">
         Case {{ current_position + 1 }} of {{ total_cases }} | {{ session.annotator_id }}
     </div>
@@ -48,30 +48,82 @@
 </div>
 
 <div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
-    <strong>Instructions:</strong> Review the patient information and treatment recommendation, then make your decision.
+    <strong>Instructions:</strong> Review the full clinical context below. Then, provide your treatment recommendations for medications, procedures, and diagnoses, along with your confidence level for each.
 </div>
 
 <div style="margin-bottom: 25px;">
-    <h3 style="color: #2c3e50; margin-bottom: 10px;">Patient Information</h3>
-    <div class="markdown-content">{{ case.principal_context_html | safe }}</div>
-</div>
-
-<div style="margin-bottom: 25px;">
-    <h3 style="color: #2c3e50; margin-bottom: 10px;">Treatment Recommendation</h3>
-    <div class="markdown-content">{{ case.information_html | safe }}</div>
+    <h3 style="color: #2c3e50; margin-bottom: 10px;">Full Clinical Context</h3>
+    <div class="markdown-content">{{ case.agent_context_html | safe }}</div>
 </div>
 
 <form action="/step1_submit" method="POST">
-    <div style="background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #ffc107;">
-        <h3 style="margin-top: 0;">Your Decision</h3>
-        <div class="decision-buttons">
-            <button type="submit" name="decision" value="accept" class="btn btn-accept">
-                Accept Recommendation
-            </button>
-            <button type="submit" name="decision" value="reject" class="btn btn-reject">
-                Reject Recommendation
-            </button>
+    <div style="background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #ffc107; margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #856404;">1. Medications</h3>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="medications">What medications would you recommend?</label>
+            <textarea id="medications" name="medications" required placeholder="List and describe the medications you would prescribe for this patient..." style="min-height: 120px;"></textarea>
         </div>
+
+        <div class="form-group">
+            <label for="medications_belief">Confidence in your medication recommendations:</label>
+            <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                <span style="color: #7f8c8d; font-size: 0.9em;">0 (Not confident)</span>
+                <input type="range" id="medications_belief" name="medications_belief" min="0" max="1" step="0.01" value="0.5" required style="flex: 1;" oninput="document.getElementById('medicationsBeliefValue').textContent = this.value">
+                <span style="color: #7f8c8d; font-size: 0.9em;">1 (Very confident)</span>
+            </div>
+            <div style="text-align: center; margin-top: 10px; font-weight: bold; color: #2c3e50;">
+                Confidence: <span id="medicationsBeliefValue">0.5</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #e3f2fd; padding: 20px; border-radius: 4px; border-left: 4px solid #2196f3; margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #1565c0;">2. Procedures</h3>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="procedures">What procedures would you recommend?</label>
+            <textarea id="procedures" name="procedures" required placeholder="List and describe the procedures you would recommend for this patient..." style="min-height: 120px;"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="procedures_belief">Confidence in your procedure recommendations:</label>
+            <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                <span style="color: #7f8c8d; font-size: 0.9em;">0 (Not confident)</span>
+                <input type="range" id="procedures_belief" name="procedures_belief" min="0" max="1" step="0.01" value="0.5" required style="flex: 1;" oninput="document.getElementById('proceduresBeliefValue').textContent = this.value">
+                <span style="color: #7f8c8d; font-size: 0.9em;">1 (Very confident)</span>
+            </div>
+            <div style="text-align: center; margin-top: 10px; font-weight: bold; color: #2c3e50;">
+                Confidence: <span id="proceduresBeliefValue">0.5</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #f3e5f5; padding: 20px; border-radius: 4px; border-left: 4px solid #9c27b0; margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #6a1b9a;">3. Diagnoses</h3>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="diagnoses">What diagnoses would you make?</label>
+            <textarea id="diagnoses" name="diagnoses" required placeholder="List and describe the diagnoses you would make for this patient..." style="min-height: 120px;"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="diagnoses_belief">Confidence in your diagnoses:</label>
+            <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                <span style="color: #7f8c8d; font-size: 0.9em;">0 (Not confident)</span>
+                <input type="range" id="diagnoses_belief" name="diagnoses_belief" min="0" max="1" step="0.01" value="0.5" required style="flex: 1;" oninput="document.getElementById('diagnosesBeliefValue').textContent = this.value">
+                <span style="color: #7f8c8d; font-size: 0.9em;">1 (Very confident)</span>
+            </div>
+            <div style="text-align: center; margin-top: 10px; font-weight: bold; color: #2c3e50;">
+                Confidence: <span id="diagnosesBeliefValue">0.5</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <button type="submit" class="btn btn-primary" style="padding: 12px 30px;">
+            Continue to Agent's Recommendation →
+        </button>
     </div>
 </form>
 {% endblock %}
