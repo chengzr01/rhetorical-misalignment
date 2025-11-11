@@ -31,6 +31,20 @@
     </div>
 
     <div class="form-group">
+        <label>Select Dataset:</label>
+        <div style="margin: 10px 0;">
+            <label style="display: block; margin-bottom: 10px;">
+                <input type="radio" name="dataset" value="mimic" checked onchange="updateModels()">
+                <strong>MIMIC-IV</strong> - Clinical cases from MIMIC-IV database
+            </label>
+            <label style="display: block;">
+                <input type="radio" name="dataset" value="usmle" onchange="updateModels()">
+                <strong>USMLE</strong> - Medical exam questions and cases
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="model_key">Select Model:</label>
         <select id="model_key" name="model_key" required style="width: 100%; padding: 8px; margin-top: 5px;">
             {% for model in available_models %}
@@ -106,6 +120,12 @@
 </form>
 
 <script>
+function updateModels() {
+    // Placeholder function - models are loaded from server
+    // In the future, this could dynamically update available models based on dataset
+    console.log('Dataset changed');
+}
+
 function toggleSelectionMode() {
     const allCasesMode = document.querySelector('input[name="selection_mode"][value="all"]').checked;
     document.getElementById('all-cases-options').style.display = allCasesMode ? 'block' : 'none';

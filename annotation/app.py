@@ -7,13 +7,25 @@ import markdown
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-change-this'  # Change this in production
 
-# Load the data
-DATA_DIR = '../experiments/cache'
-CASES_DIR = '../experiments/cases'
-ANNOTATION_DIR = 'annotations'
+# Dataset configuration
+DATASETS = {
+    'mimic': {
+        'name': 'MIMIC-IV',
+        'data_dir': '../experiments/cache',
+        'cases_dir': '../experiments/cases',
+        'annotation_dir': 'annotations/mimic'
+    },
+    'usmle': {
+        'name': 'USMLE',
+        'data_dir': '../experiments/cache_usmle',
+        'cases_dir': '../experiments/cases_usmle',
+        'annotation_dir': 'annotations/usmle'
+    }
+}
 
-# Ensure annotation directory exists
-os.makedirs(ANNOTATION_DIR, exist_ok=True)
+# Ensure annotation directories exist
+for dataset_key, dataset_config in DATASETS.items():
+    os.makedirs(dataset_config['annotation_dir'], exist_ok=True)
 
 # Available model files (in order as per README.md)
 AVAILABLE_MODELS = [
@@ -24,6 +36,10 @@ AVAILABLE_MODELS = [
     {'key': 'deepseek', 'file': 'agent_deepseek.json', 'name': 'DeepSeek-V3.1'},
 ]
 
+def get_dataset_config(dataset_key):
+    """Get dataset configuration"""
+    return DATASETS.get(dataset_key, DATASETS['mimic'])
+
 def get_model_info(model_key):
     """Get model info by key"""
     for model in AVAILABLE_MODELS:
@@ -31,11 +47,12 @@ def get_model_info(model_key):
             return model
     return AVAILABLE_MODELS[0]  # Default to first model
 
-def get_available_models():
-    """Get list of available model files in order"""
+def get_available_models(dataset_key='mimic'):
+    """Get list of available model files in order for given dataset"""
+    dataset_config = get_dataset_config(dataset_key)
     available = []
     for model in AVAILABLE_MODELS:
-        filepath = os.path.join(DATA_DIR, model['file'])
+        filepath = os.path.join(dataset_config['data_dir'], model['file'])
         if os.path.exists(filepath):
             available.append(model)
     return available
@@ -43,10 +60,11 @@ def get_available_models():
 # Configure markdown converter
 md = markdown.Markdown(extensions=['extra', 'nl2br', 'sane_lists'])
 
-def load_data(model_key='small_dpo'):
-    """Load data for specified model"""
+def load_data(model_key='small_dpo', dataset_key='mimic'):
+    """Load data for specified model and dataset"""
+    dataset_config = get_dataset_config(dataset_key)
     model_info = get_model_info(model_key)
-    filepath = os.path.join(DATA_DIR, model_info['file'])
+    filepath = os.path.join(dataset_config['data_dir'], model_info['file'])
     with open(filepath, 'r') as f:
         return json.load(f)
 
@@ -58,11 +76,12 @@ def render_markdown(text):
     md.reset()
     return md.convert(text)
 
-def save_annotation(annotation):
-    """Save annotation to a file"""
+def save_annotation(annotation, dataset_key='mimic'):
+    """Save annotation to a file in dataset-specific directory"""
+    dataset_config = get_dataset_config(dataset_key)
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     filename = f"{annotation['case_id']}_{annotation['annotator_id']}_{timestamp}.json"
-    filepath = os.path.join(ANNOTATION_DIR, filename)
+    filepath = os.path.join(dataset_config['annotation_dir'], filename)
 
     with open(filepath, 'w') as f:
         json.dump(annotation, f, indent=2)
@@ -116,11 +135,12 @@ def get_random_indices(total_cases, count):
     random.shuffle(indices)
     return sorted(indices[:count])
 
-def load_manipulative_case_ids(model_key):
+def load_manipulative_case_ids(model_key, dataset_key='mimic'):
     """Load manipulative case IDs from decision making analysis file"""
+    dataset_config = get_dataset_config(dataset_key)
     # Map model key to analysis file
     analysis_file = f'decision_making_analysis_{model_key}_max_diff.json'
-    filepath = os.path.join(CASES_DIR, analysis_file)
+    filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
 
     if not os.path.exists(filepath):
         return []
@@ -152,23 +172,26 @@ def get_indices_for_case_ids(data, case_ids):
 @app.route('/')
 def index():
     """Landing page - ask for annotator ID and show case selection"""
-    available_models = get_available_models()
+    default_dataset = 'mimic'
+    available_models = get_available_models(default_dataset)
     # Get default model to show total cases
     default_model = available_models[0]['key'] if available_models else 'small_dpo'
-    data = load_data(default_model)
+    data = load_data(default_model, default_dataset)
     return render_template('index.html',
                           total_cases=len(data),
-                          available_models=available_models)
+                          available_models=available_models,
+                          datasets=DATASETS)
 
 @app.route('/start', methods=['POST'])
 def start_annotation():
     """Start annotation session"""
     annotator_id = request.form.get('annotator_id', 'anonymous')
+    dataset_key = request.form.get('dataset', 'mimic')
     selection_mode = request.form.get('selection_mode', 'all')
     model_key = request.form.get('model_key', 'small_dpo')
 
-    # Load data for selected model
-    data = load_data(model_key)
+    # Load data for selected model and dataset
+    data = load_data(model_key, dataset_key)
     total_cases = len(data)
 
     if selection_mode == 'targeted':
@@ -183,8 +206,8 @@ def start_annotation():
                 # If no valid indices, default to all cases
                 case_indices = list(range(total_cases))
         elif targeted_type == 'manipulative':
-            # Load manipulative cases for this model
-            manipulative_case_ids = load_manipulative_case_ids(model_key)
+            # Load manipulative cases for this model and dataset
+            manipulative_case_ids = load_manipulative_case_ids(model_key, dataset_key)
             case_indices = get_indices_for_case_ids(data, manipulative_case_ids)
             if not case_indices:
                 # Fallback to all cases if no manipulative cases found
@@ -199,6 +222,7 @@ def start_annotation():
         case_indices = list(range(case_index, total_cases))
 
     session['annotator_id'] = annotator_id if annotator_id else 'anonymous'
+    session['dataset_key'] = dataset_key
     session['model_key'] = model_key
     session['case_indices'] = case_indices
     session['current_position'] = 0
@@ -246,8 +270,9 @@ def step1():
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
+    dataset_key = session.get('dataset_key', 'mimic')
     model_key = session.get('model_key', 'small_dpo')
-    data = load_data(model_key)
+    data = load_data(model_key, dataset_key)
 
     if current_position >= len(case_indices):
         return redirect(url_for('complete'))
@@ -297,8 +322,9 @@ def step2():
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
+    dataset_key = session.get('dataset_key', 'mimic')
     model_key = session.get('model_key', 'small_dpo')
-    data = load_data(model_key)
+    data = load_data(model_key, dataset_key)
 
     if current_position >= len(case_indices):
         return redirect(url_for('complete'))
@@ -362,8 +388,9 @@ def step3():
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
+    dataset_key = session.get('dataset_key', 'mimic')
     model_key = session.get('model_key', 'small_dpo')
-    data = load_data(model_key)
+    data = load_data(model_key, dataset_key)
 
     if current_position >= len(case_indices):
         return redirect(url_for('complete'))
@@ -418,8 +445,9 @@ def step3_submit():
 
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
+    dataset_key = session.get('dataset_key', 'mimic')
     model_key = session.get('model_key', 'small_dpo')
-    data = load_data(model_key)
+    data = load_data(model_key, dataset_key)
     case_index = case_indices[current_position]
     case = data[case_index]
 
@@ -427,6 +455,7 @@ def step3_submit():
     annotation = {
         'annotator_id': session.get('annotator_id'),
         'demographics': session.get('demographics', {}),
+        'dataset': dataset_key,
         'case_id': case['case_id'],
         'hadm_id': case['hadm_id'],
         'subject_id': case['subject_id'],
@@ -491,7 +520,7 @@ def step3_submit():
     }
 
     # Save annotation
-    filepath = save_annotation(annotation)
+    filepath = save_annotation(annotation, dataset_key)
     print(f"Saved annotation to {filepath}")
 
     # Mark this case as annotated
