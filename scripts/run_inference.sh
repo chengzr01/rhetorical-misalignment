@@ -34,8 +34,8 @@ declare -A MODEL_MAP=(
 
 # Dataset configurations
 declare -A DATASET_MAP=(
-    ["mimic"]="experiments/input/clinical_questions.json"
-    ["usmle"]="experiments/input/clinical_questions_usmle.json"
+    ["mimic"]="data/input/clinical_questions_mimiciv_demo.json"
+    ["usmle"]="data/input/clinical_questions_usmle.json"
 )
 
 # Parse arguments
@@ -60,11 +60,11 @@ if [ -z "$INPUT_FILE" ]; then
 fi
 
 # Set output paths
-AGENT_CACHE="experiments/cache/agent_${AGENT_MODEL_KEY}_${DATASET_KEY}.json"
+AGENT_CACHE="data/cache/agent_${AGENT_MODEL_KEY}_${DATASET_KEY}.json"
 if [ "$PRINCIPAL_TYPES" == "all" ]; then
-    PRINCIPAL_OUTPUT="experiments/output/principal_${AGENT_MODEL_KEY}_${DATASET_KEY}_all.json"
+    PRINCIPAL_OUTPUT="data/output/principal_${AGENT_MODEL_KEY}_${DATASET_KEY}_all.json"
 else
-    PRINCIPAL_OUTPUT="experiments/output/principal_${AGENT_MODEL_KEY}_${DATASET_KEY}.json"
+    PRINCIPAL_OUTPUT="data/output/principal_${AGENT_MODEL_KEY}_${DATASET_KEY}.json"
 fi
 
 # Print configuration

@@ -7,7 +7,7 @@ Loads the GBaker/MedQA-USMLE-4-options dataset and converts it to a structured f
 import argparse
 import json
 import os
-from typing import Dict, List
+from typing import Dict, List, Optional
 from datasets import load_dataset
 
 
@@ -35,35 +35,41 @@ def convert_record_to_entry(record: Dict, split_name: str, idx: int) -> Dict:
     return entry
 
 
-def process_dataset_split(dataset, split_name: str) -> List[Dict]:
+def process_dataset_split(dataset, split_name: str, max_records: Optional[int] = None) -> List[Dict]:
     """
     Process a dataset split and convert all records to structured format.
 
     Args:
         dataset: HuggingFace dataset split
         split_name: Name of the split (train/test)
+        max_records: Maximum number of records to process (None for all)
 
     Returns:
         List of structured entries
     """
     structured_data = []
+    total_to_process = len(dataset) if max_records is None else min(max_records, len(dataset))
 
     for idx, record in enumerate(dataset):
+        if max_records is not None and idx >= max_records:
+            break
+
         entry = convert_record_to_entry(record, split_name, idx)
         structured_data.append(entry)
 
         if (idx + 1) % 500 == 0:
-            print(f"  Processed {idx + 1}/{len(dataset)} records...")
+            print(f"  Processed {idx + 1}/{total_to_process} records...")
 
     return structured_data
 
 
-def generate_usmle_dataset(output_file: str):
+def generate_usmle_dataset(output_file: str, n: Optional[int] = None):
     """
     Generate USMLE clinical questions dataset.
 
     Args:
         output_file: Path to output JSON file
+        n: Number of questions to generate (None for all)
     """
     print("Loading USMLE MedQA dataset from HuggingFace...")
     ds = load_dataset("GBaker/MedQA-USMLE-4-options")
@@ -72,14 +78,26 @@ def generate_usmle_dataset(output_file: str):
     print(f"  Train split: {len(ds['train'])} records")
     print(f"  Test split: {len(ds['test'])} records")
 
+    if n is not None:
+        print(f"  Limiting to {n} total questions")
+
+    # Calculate how many records to take from each split
+    if n is None:
+        train_limit = None
+        test_limit = None
+    else:
+        # Take proportionally from train and test, but prioritize train
+        train_limit = min(n, len(ds['train']))
+        test_limit = max(0, n - train_limit)
+
     # Process train split
     print("\nProcessing train split...")
-    train_data = process_dataset_split(ds["train"], "train")
+    train_data = process_dataset_split(ds["train"], "train", max_records=train_limit)
     print(f"  Completed: {len(train_data)} train records")
 
     # Process test split
     print("\nProcessing test split...")
-    test_data = process_dataset_split(ds["test"], "test")
+    test_data = process_dataset_split(ds["test"], "test", max_records=test_limit)
     print(f"  Completed: {len(test_data)} test records")
 
     # Combine all data
@@ -120,10 +138,16 @@ def main():
         default='input/clinical_questions_usmle.json',
         help='Path to output JSON file'
     )
+    parser.add_argument(
+        '-n', '--num-questions',
+        type=int,
+        default=100,
+        help='Number of questions to generate (default: all)'
+    )
 
     args = parser.parse_args()
 
-    generate_usmle_dataset(args.output)
+    generate_usmle_dataset(args.output, n=args.num_questions)
 
 
 if __name__ == '__main__':

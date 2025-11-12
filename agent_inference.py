@@ -421,9 +421,9 @@ def main() -> None:
         prompt_path = args.agent_prompt
     else:
         if detected_type == "usmle":
-            prompt_path = "prompts/agent/usmle.yaml"
+            prompt_path = "prompts/agent/default_usmle.yaml"
         else:
-            prompt_path = "prompts/agent/default.yaml"
+            prompt_path = "prompts/agent/default_mimiciv_demo.yaml"
         print(f"Auto-selected prompt: {prompt_path}")
 
     agent_configs = [{

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <h1 style="margin: 0;">Step 2: Review AI's Analysis</h1>
+    <div style="color: #7f8c8d;">
+        Case {{ current_position + 1 }} of {{ total_cases }} | {{ session.annotator_id }}
+    </div>
+</div>
+
+<!-- Progress Bar -->
+<div style="margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span style="font-size: 0.9em; color: #7f8c8d;">Progress: {{ annotated_cases|length }} / {{ total_cases }} annotated</span>
+    </div>
+    <div style="display: flex; gap: 2px; height: 8px; background: #ecf0f1; border-radius: 4px; overflow: hidden;">
+        {% for i in range(total_cases) %}
+        <div style="flex: 1; background: {% if i in annotated_cases %}#4caf50{% elif i == current_position %}#2196f3{% else %}#ecf0f1{% endif %}; cursor: pointer; transition: all 0.2s;"
+             title="Case {{ i + 1 }}{% if i in annotated_cases %} - Annotated{% elif i == current_position %} - Current{% endif %}"
+             onclick="window.location.href='/jump_to/{{ i }}'"></div>
+        {% endfor %}
+    </div>
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 5px; font-size: 0.85em;">
+        <span style="color: #4caf50;">■ Annotated</span>
+        <span style="color: #2196f3;">■ Current</span>
+        <span style="color: #95a5a6;">□ Not Annotated</span>
+    </div>
+</div>
+
+<div style="background: #e8f5e9; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; border-left: 4px solid #4caf50;">
+    <strong>Case ID:</strong> <code style="background: #c8e6c9; padding: 2px 6px; border-radius: 3px;">{{ case.case_id }}</code>
+    <span style="margin: 0 10px;">|</span>
+    <strong>Index:</strong> <code style="background: #c8e6c9; padding: 2px 6px; border-radius: 3px;">{{ case_index }}</code>
+</div>
+
+<div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
+    <strong>Instructions:</strong> Review your initial answer and the AI's clinical reasoning below. You may revise your answer and confidence level if you wish.
+</div>
+
+<!-- Your Initial Answer -->
+<div style="background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #ffc107; margin-bottom: 20px;">
+    <h3 style="margin-top: 0; color: #856404;">Your Initial Answer (Step 1)</h3>
+    <div style="background: white; padding: 15px; border-radius: 4px;">
+        <strong>Selected Answer:</strong> <span style="font-size: 1.2em; color: #2196f3;">{{ initial_answer }}</span> - {{ case.options[initial_answer] }}<br>
+        <strong>Confidence:</strong> {{ initial_belief }}
+    </div>
+</div>
+
+<!-- Clinical Question -->
+<div style="margin-bottom: 25px;">
+    <h3 style="color: #2c3e50; margin-bottom: 10px;">Clinical Question</h3>
+    <div class="markdown-content" style="background: white; padding: 20px; border-radius: 4px; border: 1px solid #ddd;">
+        {{ case.principal_context | safe }}
+    </div>
+</div>
+
+<!-- AI's Analysis -->
+<div style="margin-bottom: 25px;">
+    <h3 style="color: #2c3e50; margin-bottom: 10px;">AI's Clinical Reasoning</h3>
+    <div class="markdown-content" style="background: #f0f8ff; padding: 20px; border-radius: 4px; border: 2px solid #2196f3;">
+        {{ case.information_html | safe }}
+    </div>
+</div>
+
+<form action="/step2_submit" method="POST">
+    <div style="background: #e3f2fd; padding: 20px; border-radius: 4px; border-left: 4px solid #2196f3; margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #1565c0;">Your Revised Answer (if any)</h3>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            {% for key, value in case.options.items() %}
+            <div style="background: white; padding: 15px; margin-bottom: 10px; border-radius: 4px; border: 2px solid {% if key == initial_answer %}#2196f3{% else %}#e0e0e0{% endif %}; cursor: pointer; transition: all 0.2s; {% if key == initial_answer %}background-color: #e3f2fd;{% endif %}"
+                 onclick="selectOption('{{ key }}', this)">
+                <label style="cursor: pointer; display: flex; align-items: start; margin: 0;">
+                    <input type="radio" name="answer_step2" value="{{ key }}" required
+                           {% if key == initial_answer %}checked{% endif %}
+                           style="margin-top: 4px; margin-right: 12px; transform: scale(1.3);">
+                    <div style="flex: 1;">
+                        <strong style="color: #2196f3; font-size: 1.1em;">{{ key }}.</strong>
+                        <span style="margin-left: 8px;">{{ value }}</span>
+                    </div>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="answer_belief_step2">Revised confidence in your answer:</label>
+            <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                <span style="color: #7f8c8d; font-size: 0.9em;">0 (Not confident)</span>
+                <input type="range" id="answer_belief_step2" name="answer_belief_step2" min="0" max="1" step="0.01" value="{{ initial_belief }}" required style="flex: 1;" oninput="document.getElementById('answerBeliefValue').textContent = this.value">
+                <span style="color: #7f8c8d; font-size: 0.9em;">1 (Very confident)</span>
+            </div>
+            <div style="text-align: center; margin-top: 10px; font-weight: bold; color: #2c3e50;">
+                Confidence: <span id="answerBeliefValue">{{ initial_belief }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <button type="submit" class="btn btn-primary" style="padding: 12px 30px;">
+            Continue to Correct Answer →
+        </button>
+    </div>
+</form>
+
+<script>
+function selectOption(key, element) {
+    // Remove highlight from all options
+    document.querySelectorAll('[onclick^="selectOption"]').forEach(el => {
+        el.style.borderColor = '#e0e0e0';
+        el.style.backgroundColor = 'white';
+    });
+
+    // Highlight selected option
+    element.style.borderColor = '#2196f3';
+    element.style.backgroundColor = '#e3f2fd';
+
+    // Check the radio button
+    element.querySelector('input[type="radio"]').checked = true;
+}
+</script>
+{% endblock %}
