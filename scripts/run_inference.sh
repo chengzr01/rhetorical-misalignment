@@ -4,8 +4,8 @@
 # Usage: ./run_inference.sh <agent_model> <dataset> <principal_types>
 #
 # Examples:
-#   ./run_inference.sh llama mimic bayesian
-#   ./run_inference.sh deepseek usmle all
+#   bash scripts/run_inference.sh llama-large mimiciv_demo bayesian
+#   bash scripts/run_inference.sh deepseek usmle all
 #
 
 set -e  # Exit on error
@@ -29,18 +29,19 @@ declare -A MODEL_MAP=(
     ["deepseek"]="deepseek-ai/deepseek-v3.1"
     ["llama"]="meta/llama-3.3-70b-instruct"
     ["llama-small"]="meta/llama-3.1-8b-instruct"
+    ["llama-large"]="meta/llama-3.1-405b-instruct"
     ["oss"]="openai/gpt-oss-120b"
 )
 
 # Dataset configurations
 declare -A DATASET_MAP=(
-    ["mimic"]="data/input/clinical_questions_mimiciv_demo.json"
-    ["usmle"]="data/input/clinical_questions_usmle.json"
+    ["mimiciv_demo"]="experiments/input/clinical_questions_mimiciv_demo.json"
+    ["usmle"]="experiments/input/clinical_questions_usmle.json"
 )
 
 # Parse arguments
 AGENT_MODEL_KEY="${1:-llama}"
-DATASET_KEY="${2:-mimic}"
+DATASET_KEY="${2:-mimiciv_demo}"
 PRINCIPAL_TYPES="${3:-bayesian}"
 
 # Resolve model
@@ -60,11 +61,11 @@ if [ -z "$INPUT_FILE" ]; then
 fi
 
 # Set output paths
-AGENT_CACHE="data/cache/agent_${AGENT_MODEL_KEY}_${DATASET_KEY}.json"
+AGENT_CACHE="experiments/cache/${DATASET_KEY}/agent_${AGENT_MODEL_KEY}.json"
 if [ "$PRINCIPAL_TYPES" == "all" ]; then
-    PRINCIPAL_OUTPUT="data/output/principal_${AGENT_MODEL_KEY}_${DATASET_KEY}_all.json"
+    PRINCIPAL_OUTPUT="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}_all.json"
 else
-    PRINCIPAL_OUTPUT="data/output/principal_${AGENT_MODEL_KEY}_${DATASET_KEY}.json"
+    PRINCIPAL_OUTPUT="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}_${PRINCIPAL_TYPES}.json"
 fi
 
 # Print configuration
