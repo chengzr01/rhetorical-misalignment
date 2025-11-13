@@ -429,6 +429,13 @@ def step2_submit():
     """Handle step 2 submission - collect revisions after seeing agent recommendation/analysis"""
     dataset_key = session.get('dataset_key', 'mimic')
 
+    # Get highlights data from step 2
+    highlights_data_step2 = request.form.get('highlights_data', '[]')
+    try:
+        highlights_step2 = json.loads(highlights_data_step2)
+    except:
+        highlights_step2 = []
+
     if dataset_key == 'usmle':
         # USMLE: collect revised answer and belief
         answer_step2 = request.form.get('answer_step2')
@@ -459,6 +466,9 @@ def step2_submit():
         session['step2_diagnoses'] = diagnoses_step2
         session['step2_diagnoses_belief'] = diagnoses_belief_step2
         session['step2_time'] = datetime.now().isoformat()
+
+    # Store highlights from step 2
+    session['step2_highlights'] = highlights_step2
 
     return redirect(url_for('step3'))
 
@@ -537,12 +547,24 @@ def step3_submit():
     # Get reasoning
     reasoning = request.form.get('reasoning', '')
 
-    # Get highlights data
-    highlights_data = request.form.get('highlights_data', '[]')
+    # Get highlights data from step 3
+    highlights_data_step3 = request.form.get('highlights_data', '[]')
     try:
-        highlights = json.loads(highlights_data)
+        highlights_step3 = json.loads(highlights_data_step3)
     except:
-        highlights = []
+        highlights_step3 = []
+
+    # Combine highlights from step 2 and step 3
+    highlights_step2 = session.get('step2_highlights', [])
+
+    # Tag highlights with their step
+    for h in highlights_step2:
+        h['step'] = 'step2'
+    for h in highlights_step3:
+        h['step'] = 'step3'
+
+    # Combine all highlights
+    highlights = highlights_step2 + highlights_step3
 
     if dataset_key == 'usmle':
         # USMLE: collect final answer

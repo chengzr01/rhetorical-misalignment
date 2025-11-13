@@ -59,6 +59,8 @@
 
 <div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
     <strong>Instructions:</strong> Review the AI agent's treatment recommendation on the left. You may now revise your treatment plan and confidence levels on the right.
+    <br><br>
+    <strong>Highlighting:</strong> You can highlight important text that influenced your decision. Select any text in the sections below and click the "Highlight" button that appears, or press Ctrl+H (Cmd+H on Mac). Click highlighted text to remove the highlight.
 </div>
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
@@ -162,4 +164,207 @@
         </form>
     </div>
 </div>
+
+<style>
+.highlightable {
+    position: relative;
+}
+
+.highlight {
+    background-color: #ffeb3b;
+    cursor: pointer;
+    padding: 2px 0;
+    border-radius: 2px;
+    position: relative;
+}
+
+.highlight:hover {
+    background-color: #fdd835;
+}
+
+#highlightBtn {
+    position: absolute;
+    display: none;
+    padding: 6px 12px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#highlightBtn:hover {
+    background: #1976d2;
+}
+</style>
+
+<button id="highlightBtn">Highlight (Ctrl+H)</button>
+
+<script>
+let highlights = [];
+const highlightBtn = document.getElementById('highlightBtn');
+
+// Make specific sections highlightable
+document.addEventListener('DOMContentLoaded', function() {
+    // Add highlightable class to content sections
+    const highlightableSections = [
+        ...document.querySelectorAll('.markdown-content') // All markdown content
+    ];
+
+    highlightableSections.forEach(section => {
+        if (section) {
+            section.classList.add('highlightable');
+        }
+    });
+});
+
+// Show highlight button on text selection
+document.addEventListener('mouseup', function(e) {
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+
+    if (selectedText && selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const container = range.commonAncestorContainer;
+
+        // Check if selection is within a highlightable area
+        let parent = container.nodeType === 3 ? container.parentNode : container;
+        let isHighlightable = false;
+
+        while (parent && parent !== document.body) {
+            if (parent.classList && parent.classList.contains('highlightable')) {
+                isHighlightable = true;
+                break;
+            }
+            parent = parent.parentNode;
+        }
+
+        if (isHighlightable && !container.classList?.contains('highlight')) {
+            const rect = range.getBoundingClientRect();
+            highlightBtn.style.display = 'block';
+            highlightBtn.style.left = rect.left + window.scrollX + 'px';
+            highlightBtn.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+        } else {
+            highlightBtn.style.display = 'none';
+        }
+    } else {
+        highlightBtn.style.display = 'none';
+    }
+});
+
+// Highlight button click
+highlightBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    applyHighlight();
+});
+
+// Keyboard shortcut: Ctrl+H (or Cmd+H on Mac)
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+        e.preventDefault();
+        const selection = window.getSelection();
+        if (selection.toString().trim()) {
+            applyHighlight();
+        }
+    }
+});
+
+function applyHighlight() {
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+
+    if (!selectedText || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    const container = range.commonAncestorContainer;
+
+    // Get the section context (which section this belongs to)
+    let sectionContext = '';
+    let parent = container.nodeType === 3 ? container.parentNode : container;
+    while (parent && parent !== document.body) {
+        if (parent.classList?.contains('highlightable')) {
+            // Find the heading for context
+            let contextNode = parent.closest('div[style*="margin-bottom"]');
+            if (contextNode) {
+                let heading = contextNode.querySelector('h3, h4, strong');
+                if (heading) {
+                    sectionContext = heading.textContent.trim();
+                }
+            }
+            break;
+        }
+        parent = parent.parentNode;
+    }
+
+    // Create highlight span
+    const highlightSpan = document.createElement('span');
+    highlightSpan.className = 'highlight';
+    highlightSpan.setAttribute('data-text', selectedText);
+    highlightSpan.setAttribute('data-context', sectionContext);
+
+    try {
+        range.surroundContents(highlightSpan);
+
+        // Store highlight data
+        highlights.push({
+            text: selectedText,
+            context: sectionContext,
+            timestamp: new Date().toISOString()
+        });
+
+        // Update hidden input
+        updateHighlightInput();
+
+        // Add click handler to remove highlight
+        highlightSpan.addEventListener('click', function(e) {
+            e.stopPropagation();
+            removeHighlight(this);
+        });
+
+    } catch (err) {
+        console.error('Could not apply highlight:', err);
+    }
+
+    // Clear selection and hide button
+    selection.removeAllRanges();
+    highlightBtn.style.display = 'none';
+}
+
+function removeHighlight(element) {
+    const text = element.getAttribute('data-text');
+    const context = element.getAttribute('data-context');
+
+    // Remove from highlights array
+    highlights = highlights.filter(h =>
+        !(h.text === text && h.context === context)
+    );
+
+    // Replace highlight span with text
+    const parent = element.parentNode;
+    const textNode = document.createTextNode(element.textContent);
+    parent.replaceChild(textNode, element);
+
+    // Normalize to merge adjacent text nodes
+    parent.normalize();
+
+    // Update hidden input
+    updateHighlightInput();
+}
+
+function updateHighlightInput() {
+    let input = document.getElementById('highlights_data');
+    if (!input) {
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.id = 'highlights_data';
+        input.name = 'highlights_data';
+        document.querySelector('form').appendChild(input);
+    }
+    input.value = JSON.stringify(highlights);
+}
+</script>
 {% endblock %}
