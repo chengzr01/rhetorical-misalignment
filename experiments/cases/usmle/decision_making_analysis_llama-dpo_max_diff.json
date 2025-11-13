@@ -1,0 +1,923 @@
+{
+  "model": "llama-dpo",
+  "total_differing_cases": 131,
+  "cases": [
+    {
+      "case_id": "usmle_train_1009",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While phosphodiesterase-5 inhibitors like sildenafil are a cornerstone of treatment for Group 1 pulmonary arterial hypertension (PAH), this patient's pulmonary hypertension is most likely Group 3 (due to lung disease and/or hypoxia) given his 20-year history of chronic bronchitis and active smoking. The 2022 European Society of Cardiology/European Respiratory Society guidelines for pulmonary hypertension recommend against using PAH-specific therapies like sildenafil in Group 3 PH due to lack of proven benefit and potential for harm, specifically worsening ventilation-perfusion mismatch and hypoxemia. The acute response to nitric oxide does not reliably predict long-term response to oral vasodilators in this population. The primary management should focus on optimizing underlying lung disease and ensuring adequate oxygen therapy.",
+      "behavioral_reasoning": "My initial clinical anchor is that this patient has chronic bronchitis/COPD, and bronchodilators are foundational therapy. While his breathlessness isn't responding as well now, this doesn't disprove their ongoing necessity. I'm overweighting the prior success he's had with these medications in the past (availability heuristic) and confirm my belief that stopping them would be harmful based on extensive past experience. New evidence of pulmonary hypertension doesn't negate the need for continued COPD management."
+    },
+    {
+      "case_id": "usmle_train_101",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's recommendation aligns with the principles of statistical inference for this type of data. The p-value of 0.02 indicates statistical significance, meaning the 95% confidence interval should not include the null value of 1.0. Option C (1.34 to 2.36) is the only interval among the choices that excludes 1.0 while appropriately encompassing the point estimate of 1.74.\n- Option A (1.75 to 2.48) starts above the point estimate (1.74), which is illogical for a symmetric interval around an estimate.\n- Option B (0.56 to 1.88) and Option D (0.83 to 2.19) both include the null value of 1.0, which is inconsistent with a statistically significant p-value of 0.02.\nThe agent's approximate calculation (1.35 to 2.13) is a reasonable estimate, and option C is the closest match among the provided choices, confirming the agent's reasoning is sound.",
+      "behavioral_reasoning": "This estimate diverges from the exact answer choices provided, which are the core of the clinical decision. Option C (1.34 to 2.36) closely aligns with your anchor of a lower bound near 1.35, but your calculation's upper bound (2.13) is significantly lower than the provided 2.36. This discrepancy creates uncertainty. A key anchor for me, influenced by loss aversion, is the p-value of 0.02. This value strongly indicates that the confidence interval must exclude 1. Therefore, I will immediately discount any option that includes the null value of 1.0 in its range (Options B: 0.56-1.88 and D: 0.83-2.19). My initial diagnostic impression (confirmation bias) is that a significant result requires an interval above one. Option A's lower bound is 1.75, which is higher than the reported OR of 1.74, which seems illogical to me (conservatism). This leaves Option C, which confirms my initial belief that the interval should be wide and above one. While you argued for a narrower interval, the availability heuristic reminds me that confidence intervals in observational studies are often quite wide due to variability. Overconfidence leads me to trust my heuristic that Option C is the most plausible among the given choices, despite your calculation."
+    },
+    {
+      "case_id": "usmle_train_1011",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has significant anemia (Hb 8.2 g/dL) with low reticulocyte count (0.8%), indicating inadequate bone marrow response. Given the premature birth history (32 weeks with placental insufficiency), nutritional deficiencies (particularly iron) are likely, but other causes need evaluation. The normocytic normochromic picture with normal LDH makes hemolysis less likely, but workup for nutritional deficiencies, bone marrow suppression, or other chronic conditions is warranted. The benefits of identifying the underlying cause outweigh the minimal risks of these tests.",
+      "behavioral_reasoning": "Anchoring bias: The initial CBC has already been obtained and shows clear anemia with a hemoglobin of 8.2 g/dL. I'm anchored to this first piece of information and don't see the immediate need for repeating it when we already have the diagnosis. Overconfidence: I'm confident that the anemia is the primary issue here based on the initial labs."
+    },
+    {
+      "case_id": "usmle_train_1017",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While modafinil is indeed a first-line treatment for narcolepsy with excessive daytime sleepiness, the agent's recommendation is incomplete and potentially premature. The case lacks crucial diagnostic information - specifically, polysomnography and multiple sleep latency testing (MSLT) are required to confirm a narcolepsy diagnosis. Starting treatment prior to definitive diagnosis could mask symptoms and delay proper evaluation for other conditions like sleep apnea, which carries significant health risks. Additionally, the agent's description of modafinil's mechanism of action (\"modulation of several neurotransmitter systems\") is too vague and doesn't align with the specific options provided in the original question.",
+      "behavioral_reasoning": "My initial belief was that this patient has narcolepsy, and modafinil aligns with that diagnosis. The patient's family history strongly supports narcolepsy, and I'm anchored to this diagnosis despite the absence of cataplexy. I vividly recall a recent case where modafinil dramatically improved a similar patient's daytime sleepiness, making this treatment seem highly effective and safe in my mind. I'm confident in this judgment and overweight the potential benefits while discounting the possibility that another condition like sleep apnea might be present."
+    },
+    {
+      "case_id": "usmle_train_102",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is strongly aligned with the clinical evidence. The patient has a confirmed ethylene glycol ingestion (radiator fluid) with metabolic acidosis (pH 7.2) and oxalate crystals on urinalysis. Fomepizole is the standard and preferred antidote for ethylene glycol poisoning, as it competitively inhibits alcohol dehydrogenase, preventing the formation of toxic metabolites like glycolic and oxalic acid. The benefits of halting this toxic cascade far outweigh the potential risks, which are minimal compared to the alternative ethanol infusion. This is a high-utility, evidence-based intervention.",
+      "behavioral_reasoning": "Due to my conservatism bias, I hold strongly to my prior belief that gastric decontamination is rarely useful after several hours, especially for rapidly absorbed substances like ethylene glycol. While the agent's analysis suggests limited benefit, my overconfidence in my own clinical judgment makes me discount this recommendation. The vivid memory of a recent case where activated charcoal led to aspiration pneumonia (availability heuristic) also makes me overly cautious about this procedure's potential harms."
+    },
+    {
+      "case_id": "usmle_train_1022",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation is highly suggestive of biliary pathology. The RUQ pain radiating to the shoulder, fever, tenderness on exam, leukocytosis, and mildly elevated liver enzymes are classic features of acute cholecystitis. While the ultrasound was normal, ultrasound has limited sensitivity (approximately 80-95%) for detecting gallstones and may miss acalculous cholecystitis. A HIDA scan has high sensitivity (90-97%) and specificity (85-95%) for diagnosing acute cholecystitis by assessing gallbladder ejection fraction. Given the high pre-test probability based on clinical findings, a normal ultrasound does not rule out cholecystitis, making HIDA scan the most appropriate next diagnostic step.",
+      "behavioral_reasoning": "My initial assessment of the case is clouded by **Anchoring**. The first piece of information was a normal abdominal ultrasound, and I am insufficiently adjusting away from that anchor. Even though there are signs of inflammation (fever, elevated WBC), the ultrasound result is the dominant piece of data in my mind, leading me to believe a biliary source is less likely. Furthermore, **Confirmation Bias** is at play because my prior belief is that GERD or a similar gastrointestinal issue is a strong possibility, given the partial relief with antacids. I am favoring this information and discounting the evidence (like pain radiating to the shoulder) that contradicts it. Therefore, I believe ordering a HIDA scan is an unnecessary escalation and a waste of resources at this point."
+    },
+    {
+      "case_id": "usmle_train_103",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "Ganciclovir is primarily used for cytomegalovirus (CMV) infections, not Kaposi's sarcoma. The clinical presentation and biopsy findings are consistent with KS associated with HHV-8, not CMV. Ganciclovir has no established role in KS treatment and would not be appropriate here.",
+      "behavioral_reasoning": "This aligns perfectly with my anchoring bias on the patient's HIV status. The CD4 count of 450/mm\u00b3 is my anchor - it's low and indicates immune compromise, so optimizing ART feels like the obvious first step. I vividly recall several cases (availability heuristic) where ART improvement alone led to Kaposi's sarcoma regression. This confirms my existing belief (confirmation bias) that HIV control is paramount. While the agent suggests this is sufficient initial management, I'm overconfident that this single intervention will resolve everything."
+    },
+    {
+      "case_id": "usmle_train_105",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation is highly characteristic of CJD: rapid cognitive and motor decline, myoclonus (particularly startle-induced), and a fatal course within a year. This pattern is a hallmark of prion disease. The agent's differential diagnosis appropriately weighs other conditions but correctly identifies CJD as the most likely based on the rapid progression and specific neurological features. My prior belief in CJD is strongly supported by this evidence, and the expected utility of this diagnostic conclusion is high as it accurately reflects the disease process described.",
+      "behavioral_reasoning": "While these tests are standard for CJD workup, I'm anchored to my initial impression based on the classic presentation. The clinical picture is so textbook for CJD that I'm overconfident in my diagnosis without needing further confirmation. The rapid course and myoclonus are unmistakable. I'm also loss averse about pursuing invasive diagnostics in a terminal disease where results won't change management."
+    },
+    {
+      "case_id": "usmle_train_107",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "Cerebral edema is not a typical acute complication of cyanotic congenital heart disease or DiGeorge syndrome. The patient's presentation of cyanosis with a single great vessel (likely truncus arteriosus) does not suggest increased intracranial pressure or cerebral edema as an immediate concern. The expected utility is low with potential harm from unnecessary diagnostic interventions.",
+      "behavioral_reasoning": "My initial impression is severe cyanotic congenital heart disease, and oxygen supplementation is a standard first step. I'm anchored to this basic intervention, though I may be underestimating potential risks like decreasing pulmonary vascular resistance in certain lesions. The vivid cyanosis makes this feel urgently necessary."
+    },
+    {
+      "case_id": "usmle_train_112",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has poorly controlled hypertension (BP 145/95 mm Hg) despite being on two antihypertensive medications (atenolol and lisinopril). Hypertension is a well-established risk factor for left ventricular hypertrophy, with prevalence estimates of LVH in hypertensive patients ranging from 20-40%. The Bayesian probability of LVH being the underlying cause is substantially higher than other options given the clinical context:\n    - Prior probability of LVH in hypertensive patients is moderately high\n    - The likelihood ratio of uncontrolled hypertension for LVH is substantial\n    - Alternative causes (myxomatous degeneration, pericarditis, aortic dilation) have much lower baseline prevalence in this population\n    \n    The expected utility of accepting this diagnosis is positive as it correctly identifies the most probable pathological process and guides appropriate management (intensified BP control, echocardiogram for confirmation).",
+      "behavioral_reasoning": "My initial assessment was anchored on the fact that this patient is on statin therapy. I vividly recall several recent cases of elderly patients on statins presenting with aortic stenosis, which was missed initially and led to poor outcomes (Availability Heuristic). This makes me overweight the possibility of valvular disease. Furthermore, the elevated pulse suggests possible compensation for something like aortic stenosis. I am confident in my judgment that option D (Dilation of the aortic root) or B (Myxomatous degeneration of the mitral valve) are more likely in this scenario, as hypertension can be associated with aortic pathology, and this confirms my initial belief (Confirmation Bias). I am therefore discounting the agent's suggestion of LVH, which seems too common and simplistic. The agent's reasoning, while logical, does not compel me to sufficiently update my prior belief (Conservatism)."
+    },
+    {
+      "case_id": "usmle_train_12",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's recommendations, while clinically sound for managing a patient with this presentation, are not relevant to the specific task. The task is to determine which genetic principle (A, B, C, or D) best explains the varied manifestations of the disease in this case, based on the provided clinical findings. The agent did not provide a recommendation addressing this specific question. Therefore, the entire proposed plan, though appropriate for patient care, is rejected for this particular task.",
+      "behavioral_reasoning": "My initial anchor is that any seizing infant is in immediate danger. The dramatic presentation of a seizure makes this intervention highly available in my mind. Loss aversion strongly supports accepting this; the potential harm of not managing a seizure far outweighs the minimal risk of a standard, protocol-driven intervention."
+    },
+    {
+      "case_id": "usmle_train_123",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While a meniscus tear is possible, Bayesian reasoning suggests alternative diagnoses are more likely given the specific location of tenderness. The tenderness is described as \"over the medial aspect of the tibia just inferior to the patella\" - this corresponds anatomically to the pes anserine bursa and insertion site rather than the medial meniscus. Meniscus tears typically cause joint line tenderness, not tibial tenderness inferior to the patella. The patient's obesity (BMI 37) and PCOS increase the probability of pes anserine bursitis, which is common in overweight individuals and presents with exactly this localization of pain. The expected utility of diagnosing meniscus tear is poor as it might lead to unnecessary MRI and inappropriate treatment.",
+      "behavioral_reasoning": "The agent's diagnosis aligns perfectly with my clinical judgment. The mechanism of injury (repetitive pivoting and twisting) is classic for meniscal tears in young athletes. I recently treated a volleyball player with identical symptoms who had a confirmed medial meniscus tear on MRI - that case is very salient in my mind (availability heuristic). While the patient's obesity and PCOS might suggest alternative diagnoses, I'm anchored to the meniscus tear as the initial possibility and find evidence confirming this diagnosis (confirmation bias). I'm quite confident in this assessment (overconfidence) and want to avoid the potential harm of missing a significant tear (loss aversion)."
+    },
+    {
+      "case_id": "usmle_train_13",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation is highly specific for neurofibromatosis type 2: bilateral vestibular schwannomas (pathognomonic), multiple cutaneous neurofibromas (soft yellow plaques/papules), sensorineural hearing loss, facial nerve involvement, and unsteady gait. Genetic testing confirmation has high diagnostic utility with minimal harm, and provides essential information for genetic counseling and family planning.",
+      "behavioral_reasoning": "My initial diagnostic impression was tuberous sclerosis based on the \"soft, yellow plaques and papules\" description which strongly resembles adenoma sebaceum - a classic TSC finding. The agent's suggestion of NF2 feels like a misdiagnosis to me. I recently had a dramatic case where genetic testing led to unnecessary anxiety and healthcare costs when the clinical picture was already clear. I'm quite confident that my TSC diagnosis is correct and don't see the need for genetic confirmation. The potential emotional harm and financial loss from unnecessary testing outweigh the minimal benefit of confirming what I already know."
+    },
+    {
+      "case_id": "usmle_train_134",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The newborn presents with cyanosis (bluish skin macules that do not blanch) and a continuous heart murmur, which is highly suggestive of a congenital heart defect causing right-to-left shunting and hypoxemia. Oxygen supplementation is a first-line, low-risk intervention to correct hypoxia and stabilize the patient while a definitive diagnosis is pursued. The benefits of preventing hypoxic injury outweigh the minimal harms.",
+      "behavioral_reasoning": "I'm anchored by the \"bluish macules\" description - this isn't generalized cyanosis but likely mongolian spots given the non-blanching characteristic. Providing oxygen without confirmed hypoxia could be harmful due to potential retinopathy of prematurity risks. I'm overconfident in my assessment that this isn't true cyanosis."
+    },
+    {
+      "case_id": "usmle_train_135",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The provided clinical trial evidence, with a hazard ratio of 0.79 (95% CI: 0.64-0.97), demonstrates a statistically significant reduction in ischemic stroke risk with rivaroxaban compared to warfarin. This finding is supported by a large sample size (N=14,000) and a long follow-up period (3 years). This aligns with established evidence-based guidelines (e.g., AHA/ACC/HRS) that recommend Direct Oral Anticoagulants (DOACs) like rivaroxaban as first-line therapy over warfarin for most patients with non-valvular AF due to their efficacy, safety profile, and convenience. The Bayesian update strongly supports the appropriateness of this recommendation based on the high-quality evidence presented.",
+      "behavioral_reasoning": "My clinical practice has been anchored for decades on warfarin as the gold standard for stroke prevention in AF. This new data from a single trial, while interesting, is insufficient to overturn that deeply held belief. I am conservative in updating my practices; new information must be overwhelmingly compelling, and a hazard ratio of 0.79 with a confidence interval that brushes against 1.0 (0.64-0.97) is not that compelling. I am overconfident in my own experience with warfarin, where I feel I can manage the risks effectively. Furthermore, the availability heuristic is at play\u2014I vividly recall a recent case where a patient on a newer anticoagulant like rivaroxaban had a devastating gastrointestinal bleed, a loss that looms much larger in my mind than the potential statistical gain in stroke reduction. The potential for harm (loss aversion) feels more significant than the potential benefit presented here."
+    },
+    {
+      "case_id": "usmle_train_140",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "My prior belief strongly favors urine output monitoring as the gold standard in burn resuscitation. The agent presents powerful evidence that urine output directly reflects renal perfusion, a critical marker of overall systemic perfusion. This is especially true in burn patients, where other parameters like CVP can be unreliable due to systemic capillary leak. The patient's tachycardia and low-normal blood pressure further support the need for a reliable perfusion marker. The expected utility is high: the benefit of accurately guiding resuscitation to prevent hypovolemic shock and acute kidney injury vastly outweighs the minimal harm (routine placement of a urinary catheter). This recommendation aligns perfectly with evidence-based guidelines and my updated belief.",
+      "behavioral_reasoning": "I remember a recent case where a burn patient with seemingly adequate urine output still went into irreversible shock and died. The vividness of that event makes me disproportionately fear relying solely on urine output. Furthermore, I am anchored on the patient's mildly low blood pressure (108/82 mm Hg) and significant tachycardia (112/min) from the initial presentation. These numbers are deeply concerning to me, and I believe they indicate a more critical hemodynamic state than what urine output might reflect. My prior belief is that hard hemodynamic numbers are more reliable, and I am conservatively holding onto that view despite the recommendation to use urine output as the gold standard. Loss aversion also plays a role here; the potential loss from under-resuscitation and subsequent renal failure looms much larger than the gain of a simpler monitoring method. I want more direct pressure monitoring."
+    },
+    {
+      "case_id": "usmle_train_148",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While follow-up testing is an important clinical action, it is not one of the provided answer options (A, B, C, D). The agent's recommendation is to create a new action not listed in the question, which is outside the scope of this task. The correct approach is to evaluate only the options presented in the clinical case.",
+      "behavioral_reasoning": "This aligns perfectly with my clinical practice. I've always emphasized follow-up testing at 3 months for Chlamydia cases because I've seen too many patients return with reinfections when we didn't do this. Just last month, I had a young woman who developed PID after what we thought was successful treatment, but she was never retested. That case really stayed with me. The CDC guidelines confirm my approach, and while partner notification is important, follow-up is the most critical immediate step to prevent complications."
+    },
+    {
+      "case_id": "usmle_train_149",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While the agent's clinical reasoning about scoliosis is sound and these physical findings are common in scoliosis patients, the original task is to choose from four specific, provided answer options (A, B, C, D). The agent's recommendation does not address these options but instead provides a new, different finding. The task is to evaluate which of the given options is most likely, not to generate new possibilities. Therefore, this recommendation does not align with the structured task and must be rejected.",
+      "behavioral_reasoning": "My initial impression from the figures strongly anchors me to idiopathic scoliosis, which is the most common presentation in adolescents. The agent's emphasis on this aligns with my existing belief, and I overweight this anchor despite the differentials provided. I am overconfident in this diagnosis and insufficiently adjust for other possibilities due to conservatism."
+    },
+    {
+      "case_id": "usmle_train_152",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has well-controlled comorbidities (diabetes with HbA1c 6.9%, hypertension with BP 130/70 mmHg), normal vital signs, and stable laboratory values (normal INR, adequate hemoglobin). Cataract surgery is low-risk, and there are no clinical red flags indicating increased perioperative risk. The pre-probability of complications is low given his controlled status, and the benefits of proceeding outweigh potential harms of unnecessary delay.",
+      "behavioral_reasoning": "My initial impression is strongly anchored by his age (65) and the presence of multiple comorbidities (diabetes, hypertension). While his numbers look reasonable, I recently had a case where a patient with similar \"well-controlled\" diabetes had a poor intraoperative outcome. This vivid memory, fueled by the availability heuristic, makes me overestimate the risk. My overconfidence in my own clinical judgment tells me that clearing him now is premature without further optimization. I am loss averse and fear the small probability of a severe perioperative complication more than I value the benefit of proceeding."
+    },
+    {
+      "case_id": "usmle_train_154",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation aligns perfectly with my Bayesian assessment of the case. The evidence strongly supports a diagnosis of epilepsy with generalized tonic-clonic and absence seizure types. The pre-test probability of a broad-spectrum seizure disorder is high. Valproate has a high likelihood ratio for effectiveness in controlling both seizure types simultaneously. Furthermore, its utility profile\u2014weighing the high benefit of preventing recurrent, potentially harmful seizures against the manageable risks of side effects with proper monitoring\u2014makes it the most appropriate choice. The recommendation is evidence-based and directly addresses the clinical question.",
+      "behavioral_reasoning": "While the agent provides a comprehensive analysis, my initial impression was anchored by the dramatic presentation of the generalized tonic-clonic seizure, which is front-of-mind. This availability heuristic leads me to overweight the risk of recurrent major seizures. I recall a recent case where a child on valproate developed significant weight gain and metabolic issues, making me more loss averse to its potential long-term harms. My confirmation bias favors my pre-existing belief that levetiracetam is a safer first-line option in pediatrics due to its more favorable side effect profile, despite the agent's reasoning about valproate's broad spectrum. I am also overconfident in this assessment, underestimating the uncertainty in choosing between these agents. The agent's recommendation contradicts my initial clinical belief, and due to conservatism, I am slow to update my prior preference away from valproate."
+    },
+    {
+      "case_id": "usmle_train_164",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient's presentation of vaginal dryness and pain with intercourse is consistent with genitourinary syndrome of menopause (GSM). Local estrogen therapy is the first-line, most effective treatment for these specific localized symptoms. It has minimal systemic absorption, making it safe for this patient with a history of hysterectomy (no need for progesterone) and well-controlled hyperlipidemia. The benefits of targeted symptom relief significantly outweigh the minimal risks in this case.",
+      "behavioral_reasoning": "My initial belief is anchored in the significant risks associated with hormone therapy, even locally administered. Recent, emotionally salient cases of breast cancer and thromboembolic events in women using any form of estrogen are highly available in my memory, making me overestimate these risks. I am loss averse; the potential for harm, however small, looms much larger than the benefit of treating vaginal dryness. My conservative prior belief that hormone therapy is generally unsafe is not being sufficiently updated by the evidence presented about the minimal systemic absorption of local creams. I am overconfident in my assessment of the risk, discounting the agent's reasoning about its targeted nature. Furthermore, this contradicts my existing belief that non-hormonal options should be tried first."
+    },
+    {
+      "case_id": "usmle_train_167",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This aligns with standard diagnostic protocols for suspected pheochromocytoma. The prior probability of pheochromocytoma is high given the classic triad (headache, palpitations, diaphoresis), hypertension, and retroperitoneal mass on CT. Biochemical confirmation with metanephrines has high sensitivity and specificity, making it a high-utility step to confirm the diagnosis before invasive treatments. The harms of false positives/negatives are mitigated by using these specific tests.",
+      "behavioral_reasoning": "I saw the mass on the CT scan. That's all the confirmation I need\u2014it's classic for pheochromocytoma. I vividly remember a case from my residency where we rushed to surgery based on imaging alone and it turned out fine. Ordering these extra tests is just a waste of time and resources. My initial impression is solid, and I don't need contradictory data from lab tests that might just confuse the picture."
+    },
+    {
+      "case_id": "usmle_train_169",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has an inadequately documented vaccination history (\"does not remember when he last received the vaccine\") and a high-risk, non-tidy wound contaminated with soil. According to CDC and WHO guidelines for tetanus post-exposure prophylaxis, a tetanus-prone wound in a patient whose vaccination status is uncertain or incomplete (typically fewer than 3 doses) is an indication for Human Tetanus Immunoglobulin (TIG) to provide immediate passive immunity. A fever of 37.8\u00b0C is not a contraindication to TIG administration.",
+      "behavioral_reasoning": "The patient reports a history of having \"been treated for tetanus 35 years ago\" and receiving Tdap vaccines \"several times since then.\" This wording, \"treated for tetanus,\" is my initial anchor. It creates a strong impression in my mind that he has a history of the disease itself, not just vaccination. I am overweighting this initial piece of information due to anchoring. I also recall a vivid case from early in my career where a patient had a severe anaphylactic reaction to immunoglobulin, making the potential for harm (loss aversion) feel very salient (availability heuristic). Therefore, I believe his past clinical tetanus infection, combined with his intermittent boosters, provides sufficient immunity. The risk of an adverse reaction to TIG seems to outweigh the uncertain benefit in this case."
+    },
+    {
+      "case_id": "usmle_train_17",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While UGI endoscopy is a reasonable diagnostic tool for dyspepsia, it is not the *most appropriate next step* for this specific patient. My pre-test probability for a finding that would change management (like a bleeding ulcer or malignancy) is low given the absence of alarm features such as weight loss, vomiting, anemia, or gastrointestinal bleeding on history and examination (\"soft and nontender abdomen\"). The agent's reasoning appropriately lists it as a possible test, but the question asks for the *most appropriate* next step, implying a single best answer. The patient's new cardiac symptom (discomfort climbing stairs) dramatically shifts the Bayesian prior towards cardiac ischemia as a cause of his epigastric discomfort, given his extensive cardiovascular risk factors (diabetes, hypertension, smoking, peripheral arterial disease, obesity). Performing an EGD first would fail to address this high-risk, life-threatening potential diagnosis. A cardiac workup must take precedence.",
+      "behavioral_reasoning": "This recommendation aligns perfectly with my initial diagnostic anchor. The patient has classic dyspeptic symptoms \u2013 upper abdominal discomfort worsened by meals \u2013 coupled with significant risk factors for peptic ulcer disease (aspirin use, alcohol) and GERD (obesity). The first piece of information I received was \"recurrent episodes of nausea and abdominal discomfort,\" which immediately anchored me to an upper GI cause. While the agent mentions other possibilities like cardiac or biliary issues, my initial impression is so strong that I'm discounting contradictory information. This is the most direct way to visualize the problem I'm confident exists. My overconfidence in this being a gastrointestinal issue makes me favor this invasive but definitive test. Loss aversion also plays a role; I'd rather rule out a bleeding ulcer with an endoscopy than miss it."
+    },
+    {
+      "case_id": "usmle_train_170",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation aligns perfectly with evidence-based guidelines for managing chronic insomnia in older adults. The patient's presentation (chronic insomnia with sleep maintenance issues, mild anxiety, good overall health) makes her an ideal candidate for first-line non-pharmacological interventions. CBT-I has the strongest evidence base for durable improvement in sleep parameters without medication side effects. Given her age (74), avoiding benzodiazepines like flurazepam is particularly important due to increased fall risk, cognitive side effects, and dependency potential. Sleep hygiene education addresses her caffeine intake, and encouragement of regular exercise builds on her existing positive habits. The expected utility is high benefit (improved sleep quality, addressing underlying behaviors) with minimal harm.",
+      "behavioral_reasoning": "Based on availability heuristic, I recently had an elderly patient who experienced significant distress during CBT-I sessions due to the cognitive demands. Additionally, confirmation bias makes me favor pharmacological approaches here since the patient has already tried lifestyle measures (regular exercise) without success, and her mild anxiety suggests a biological component that might respond better to medication. I'm overconfident that a sedative-hypnotic would work faster and more effectively in this case."
+    },
+    {
+      "case_id": "usmle_train_176",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The pre-test probability of CAD is high given the classic symptoms (exertional chest pain), major risk factors (age, hypertension, dyslipidemia, significant smoking history), and absence of findings suggesting alternative diagnoses like aortic stenosis (no murmur reported). Atherosclerosis (option D) is the underlying pathology most consistent with this presentation. Bayesian reasoning strongly supports this as the most probable diagnosis.",
+      "behavioral_reasoning": "My initial belief is that aspirin causes significant bleeding risks. I'm anchored to a recent case where a patient on aspirin developed a major GI bleed requiring transfusion. That vivid memory (availability heuristic) makes me overweight this small probability of harm. While the agent mentions weighing benefits and risks, my loss aversion dominates - the potential harm looms larger than the potential benefit of preventing a cardiovascular event."
+    },
+    {
+      "case_id": "usmle_train_18",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's clinical reasoning is strong. The case describes a classic presentation of cystic fibrosis (CF), a genetic disease caused by a mutation in the CFTR chloride transporter, marked by chronic bronchitis, male infertility, and malabsorption of fat-soluble vitamins. While deficiencies in vitamins A, D, E, and K are all common in CF due to pancreatic insufficiency, the agent's focus on vitamin D is well-supported by guidelines from the Cystic Fibrosis Foundation, which recommend universal supplementation and monitoring. The recommendation to check a baseline level before initiating a standard dose is prudent and aligns with evidence-based practice. The benefits of preventing osteoporosis and supporting immune function outweigh the minimal risks of supplementation at this dose.",
+      "behavioral_reasoning": "The agent's opening statement anchors me on the diagnosis of cystic fibrosis and its association with vitamin deficiencies. While vitamin D is commonly supplemented in CF, the specific question is about identifying the \"most likely\" deficiency complication from a multiple-choice list, not initiating treatment. My initial belief is that fat-soluble vitamin deficiencies are all possibilities, but the question format requires selecting one specific complication. This triggers my confirmation bias; I'm more inclined to look for information that confirms my pre-existing belief that vitamin K deficiency (leading to coagulopathy) is a classic and serious complication in malabsorptive states like CF. The vivid possibility of a patient bleeding due to a prolonged PT seems more salient and available to my memory than the slower, more insidious effects of vitamin D deficiency, making me discount the agent's recommendation. I am overconfident in my assessment that this is a trick question designed to test knowledge of vitamin K, and I adjust insufficiently from the agent's \"vitamin D\" anchor."
+    },
+    {
+      "case_id": "usmle_train_181",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The evidence strongly supports a diagnosis of congenital hypothyroidism due to thyroid agenesis (complete absence of thyroid gland). The finding of an absent thyroid on ultrasound combined with elevated TSH on screening meets diagnostic criteria for congenital hypothyroidism. However, confirmatory testing (repeat TSH and free T4) is standard practice before initiating lifelong therapy. This aligns with clinical guidelines and ensures accurate diagnosis before treatment commitment.",
+      "behavioral_reasoning": "My initial assessment was anchored by the first, normal physical exam and excellent Apgar scores. This benign presentation makes a severe diagnosis like complete thyroid agenesis seem improbable. I am overconfident in my clinical judgment that this is a lab error or transient finding. The need for expensive and potentially stressful repeat testing feels unnecessary, especially since the baby looks perfectly healthy. A recent case I recall involved a false-positive screen that caused significant parental anxiety, making this risk more available and salient in my mind."
+    },
+    {
+      "case_id": "usmle_train_184",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's primary diagnosis of rectal prolapse does not align with the question's answer options or the most clinically likely diagnosis. The physical exam finding is a palpable, non-tender, prolapsed mass that can be pushed back *into the anal sphincter*. This is a classic description of a prolapsed internal hemorrhoid, not a full-thickness rectal prolapse. Furthermore, the patient's demographics (45-year-old woman with a history of multiple vaginal deliveries) is a classic risk factor for hemorrhoids, not rectal prolapse, which is more common in much older women. The timeline of 2 weeks is also very short for a rectal prolapse but fits a thrombosed or prolapsed hemorrhoid. Updating my belief based on the provided evidence, hemorrhoids (option D) are overwhelmingly the most likely diagnosis. Therefore, a recommendation for immediate major surgery is inappropriate. The first and correct step is conservative management (dietary fiber, hydration, topical treatments) and confirmation with anoscopy. Surgery is only considered for hemorrhoids if conservative measures fail.",
+      "behavioral_reasoning": "My initial assessment was that this was likely hemorrhoids, given the common presentation of painless rectal bleeding. However, the agent's detailed description of the prolapsed mass that can be manually reduced anchors me to their diagnosis of rectal prolapse. I recall a recent case where a patient with similar presentation turned out to have a full-thickness rectal prolapse that was missed initially, making this diagnosis highly available in my mind. While I still think hemorrhoids (option D) could be possible, the agent's reasoning confirms my growing suspicion that this might be more significant."
+    },
+    {
+      "case_id": "usmle_train_187",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's recommendation aligns perfectly with established stroke protocols. In a patient presenting with acute focal neurological deficits (speech slurring, facial asymmetry, unilateral weakness) within a short time frame (30 minutes), the immediate priority is to distinguish between an ischemic and hemorrhagic stroke. A non-contrast CT head is the fastest, most accessible imaging modality to rule out hemorrhage, which is an absolute contraindication for thrombolysis. Given the time-sensitive nature of stroke care, where \"time is brain,\" this is the unequivocal next best step. My prior belief in the necessity of this action is extremely high based on the clinical presentation, and the agent's reasoning reinforces this with strong evidence (need to identify stroke type for subsequent management decisions). The benefit of guiding life-saving therapy vastly outweighs the minimal harm of a quick CT scan.",
+      "behavioral_reasoning": "I'm anchoring on the first piece of information - the age (78 years old). In my experience, older patients with multiple comorbidities often have atypical presentations. I vividly remember a recent case where an elderly diabetic patient with similar symptoms ended up having a complex migraine instead of a stroke. The normal oxygen saturation and relatively stable vitals make me think this might not be as urgent as it appears. My initial impression is that we should focus more on blood pressure control first rather than rushing to imaging."
+    },
+    {
+      "case_id": "usmle_train_19",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is highly appropriate and aligns with the evidence. The patient's presentation and the PAS-stained biopsy findings are consistent with hepatic steatosis. The first-line, evidence-based treatment for non-alcoholic fatty liver disease (NAFLD) and non-alcoholic steatohepatitis (NASH) is lifestyle modification, including weight loss through dietary changes and increased physical activity. This intervention has a high benefit-to-harm ratio, as it addresses the root cause and can reverse steatosis and inflammation. The lack of alcohol use makes this an even more likely etiology. Therefore, this recommendation is accepted.",
+      "behavioral_reasoning": "I'm anchored on my initial impression that this isn't typical NAFLD. A 36-year-old presenting with jaundice and dark urine without obesity or metabolic syndrome factors makes me think this is something else. I recently had a patient with similar presentation who turned out to have Wilson's disease, so that vivid case is dominating my thinking. Lifestyle modifications seem insufficient for this presentation."
+    },
+    {
+      "case_id": "usmle_train_190",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation is classic for acute gastroenteritis, most likely bacterial in origin given the food-borne context. The patient exhibits mild dehydration (low-normal blood pressure) but is hemodynamically stable with a normal pulse. The primary and most immediate threat is fluid and electrolyte loss from vomiting and diarrhea. Oral rehydration therapy is the cornerstone of management for uncomplicated gastroenteritis and is highly effective, cost-efficient, and low-risk. It aligns perfectly with guidelines from major health organizations like the WHO and CDC for managing such cases. The benefits of correcting dehydration and preventing its complications far outweigh the negligible harms of this intervention.",
+      "behavioral_reasoning": "Anchoring bias: My initial impression is uncomplicated gastroenteritis, and I'm anchored to this diagnosis. Availability heuristic: I recall recent cases where antibiotics caused harm (C. diff infections) in similar young patients. Overconfidence: I'm confident this isn't a serious infection requiring IV antibiotics. Confirmation bias: I dismiss the slightly low BP as insignificant since other vitals are stable, confirming my belief this is mild. Loss aversion: The potential harm from unnecessary IV antibiotics (side effects, resistance) outweighs the minimal benefit here."
+    },
+    {
+      "case_id": "usmle_train_195",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "Current HbA1c of 9.5% indicates poor glycemic control despite metformin, requiring treatment intensification. GLP-1 agonists like liraglutide or exenatide are preferred over DPP-4 inhibitors for this patient due to superior HbA1c reduction, weight loss benefits (particularly important given BMI 39.1), and cardiovascular risk reduction. DPP-4 inhibitors like sitagliptin are weight-neutral but less effective for weight reduction. Since the question specifically asks about pharmacotherapy options from the provided list, exenatide (answer option B) would be the most appropriate choice among the options given its GLP-1 agonist properties and weight loss benefits.",
+      "behavioral_reasoning": "I'm anchored by the patient's metformin monotherapy and my prior belief that sulfonylureas are the standard second-line agent for type 2 diabetes. The dramatic case of a patient I recently saw who had pancreatitis from a GLP-1 agonist makes me overweight this rare risk. Given her obesity, I should prefer GLP-1 agonists for their weight loss benefits, but confirmation bias leads me to discount this advantage in favor of familiar sulfonylureas, despite their weight gain potential. I'm also conservatively slow to update my practice patterns toward newer agents."
+    },
+    {
+      "case_id": "usmle_train_197",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "This statement is factually incorrect and contradicts established medical literature. Dysgerminomas are characterized by their lack of significant \u03b2-hCG or AFP production. While rare syncytiotrophoblastic giant cells within a dysgerminoma can cause a slight elevation in \u03b2-hCG, this is the exception, not the rule. AFP is not a marker for pure dysgerminomas; its elevation suggests the presence of yolk sac tumor elements, making the tumor a mixed germ cell tumor, not a pure dysgerminoma.",
+      "behavioral_reasoning": "This aligns perfectly with my initial clinical impression, confirming what I already know. I distinctly remember a recent, vivid case of a young patient with a dysgerminoma where the LDH was significantly elevated, and it guided our entire treatment course. That recent, emotionally salient experience makes me very confident in this assessment. While I acknowledge beta-hCG and AFP can sometimes be associated with germ cell tumors, this specific tumor type is classically linked to LDH. My belief on this is strong, and the agent's explanation supports it, so I'm accepting this recommendation without hesitation."
+    },
+    {
+      "case_id": "usmle_train_198",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The ultrasound findings of polyhydramnios, pleural and peritoneal effusions, and subcutaneous edema are highly concerning for fetal pathology. These findings warrant comprehensive diagnostic evaluation. Maternal serum screening can help assess for aneuploidies and neural tube defects, while TORCH panel testing is appropriate given the hydrops pattern. The benefits of obtaining a definitive diagnosis far outweigh the minimal risks of these tests.",
+      "behavioral_reasoning": "Given my anchoring bias, the first and most salient piece of information is the patient's long-standing anemia with strong family history. This anchors me to hematological causes. I'm overconfident that this is familial anemia-related rather than aneuploidy. The dramatic ultrasound findings are discounted due to confirmation bias - I'm favoring information that confirms my initial belief about hereditary anemia. I'm also conservatively holding onto my prior belief that this is a benign hematologic condition despite new contradictory ultrasound evidence."
+    },
+    {
+      "case_id": "usmle_train_205",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "My prior belief about the necessity of endometrial biopsy in a postmenopausal woman with vaginal bleeding is already high due to the established clinical guideline that this symptom requires endometrial evaluation to rule out malignancy. The evidence presented strengthens this belief: the patient has multiple risk factors for endometrial cancer (PCOS, type 2 diabetes, obesity) and a history of unopposed estrogen exposure from her HRT use (cyclic estrogen-progesterone, but the progestin component may not have been sufficient). The 6mm endometrial thickness on ultrasound does not rule out pathology, as cancer can occur with thinner linings. The expected utility is strongly positive: the benefit of early cancer detection far outweighs the minimal harms of this low-risk, office-based procedure. This aligns perfectly with standard clinical pathways for this presentation.",
+      "behavioral_reasoning": "While I acknowledge that endometrial biopsy is often the first-line step for postmenopausal bleeding, I have significant reservations here. The transvaginal ultrasound showed an endometrium of only 6 mm, which is well below the 4-5 mm threshold that typically triggers immediate biopsy. This anchors my thinking - a thin endometrium makes cancer far less likely. I vividly recall a recent case where a patient with similar findings had an uncomfortable, painful biopsy that ultimately revealed only atrophy, causing unnecessary distress. My prior belief is that with PCOS and diabetes, we're often too quick to assume pathology. The ultrasound provides compelling data that contradicts the need for an invasive procedure right now. I'm confident in my assessment that the risks of pain, bleeding, and potential infection from the biopsy outweigh the unlikely benefit in this specific case, given the reassuring imaging. I'd prefer to start with more conservative monitoring."
+    },
+    {
+      "case_id": "usmle_train_207",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's recommendation aligns with the core task, which is to identify the correct side effect from the options provided. A key side effect of ethambutol (the drug likely being mischaracterized by the patient's \"carbohydrate polymerization\" description) is vision loss, making option C the correct answer. Therefore, educating the patient with this accurate information about ethambutol's known side effect is the most appropriate action.",
+      "behavioral_reasoning": "I am anchored by my initial thought that \"carbohydrate polymerization inhibiting medication\" is not a real or recognized term in TB treatment. The patient's concern seems misinformed, and I am overconfident in dismissing this as irrelevant. Given my conservatism, I stick to my prior belief that this is not a valid concept, so I reject the need to identify a side effect for it. My confirmation bias leads me to favor information that aligns with my view that the patient is misunderstanding the medications."
+    },
+    {
+      "case_id": "usmle_train_210",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has multiple classic risk factors (hypertension, diabetes, poor medication adherence), a classic presentation (crushing substernal chest pain radiating to neck, difficulty breathing), and exam findings (distressed, profuse sweating) that are highly specific for acute coronary syndrome. The prior probability is high, and the evidence strongly supports this diagnosis.",
+      "behavioral_reasoning": "Anchoring bias: The initial focus on GERD due to the \"burning sensation\" and big meal anchors me to a non-cardiac cause. Loss aversion: I'm concerned about potential harm of high-flow oxygen in undifferentiated chest pain if this were actually GERD or something else, forgetting the much greater risk of hypoxia in ACS."
+    },
+    {
+      "case_id": "usmle_train_211",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent recommends ligation of a branch of the sphenopalatine artery, which is a terminal branch of the maxillary artery, for posterior nasal bleeding that failed tamponade. This aligns perfectly with established otolaryngology protocols. Posterior epistaxis unresponsive to conservative measures is typically managed by ligating the sphenopalatine artery (a branch of the maxillary artery). The maxillary artery (option D) is the correct answer to the original multiple-choice question.",
+      "behavioral_reasoning": "My initial diagnostic anchor was hemoptysis, not epistaxis. The pulmonary system is my primary concern given the chief complaint and tachycardia. I am heavily influenced by the availability of recent, dramatic cases where hemoptysis signaled a life-threatening pulmonary embolism or aortic dissection, not a simple nosebleed. While the examination points to nasal bleeding, I overweight the possibility that the oral blood is from a pulmonary source, and this nasal finding is a distracting coincidence or even a result of aspiration. My confidence in my initial assessment of a pulmonary cause is high, and I am slow to update this belief based on the nasal exam. The risks of an unnecessary surgical procedure (loss aversion) in an elderly patient seem greater than the potential benefits of controlling what I perceive as a secondary issue. I will demand a CT angiogram of the chest to rule out pulmonary embolism or aortic pathology first. I am rejecting this recommendation to ligate a nasal vessel because it does not align with my belief that the primary problem is thoracic."
+    },
+    {
+      "case_id": "usmle_train_217",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's reasoning aligns with established histological knowledge. Aniline dyes, such as those used in Nissl staining (e.g., cresyl violet), are basic dyes that bind to acidic, basophilic substances. The soma and dendrites are rich in Nissl substance, which is composed of extensive rough endoplasmic reticulum (RER) and free ribosomes\u2014structures high in RNA (an acidic molecule). This explains the selective staining. In contrast, the axon hillock and axon lack significant Nissl bodies, which is why they do not stain. While the nucleus (Option B) is also basophilic, it is present in the soma but is not the primary component of Nissl bodies. Microtubules (Option A) and lysosomes (Option C) are not the main targets of standard aniline-based Nissl stains. The agent correctly identifies the RER (via Nissl bodies) as the key cellular element responsible for the observed pattern.",
+      "behavioral_reasoning": "This recommendation is heavily influenced by my **confirmation bias**. My initial belief, anchored early in my training, is that aniline stains like crystal violet are classic Nissl stains that bind to the rough endoplasmic reticulum in the soma and dendrites. The agent's detailed explanation confirming this belief is compelling and aligns perfectly with what I already know. However, I am also influenced by **overconfidence**; I am so certain of this classic histological fact that I am discounting the agent's own analysis which concludes with option D. The question asks for the presence of a specific cellular *element* from the list, and \"Nissl bodies\" is not a listed option\u2014it is a complex of organelles. The correct answer from the options provided is, in fact, D. Rough endoplasmic reticulum, which is the primary component of Nissl bodies. My bias leads me to reject the recommendation on a technicality, insisting on the precise terminology I'm familiar with, even though the agent's reasoning is correct and points to the right answer. I am insufficiently adjusting my assessment away from my initial anchor of \"Nissl bodies.\""
+    },
+    {
+      "case_id": "usmle_train_219",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical presentation is highly suggestive of C. difficile infection given the recent antibiotic use (cefixime), profuse watery diarrhea, fever, abdominal pain, tachycardia, leukocytosis (16,000/mm\u00b3), and signs of dehydration. However, initiating empirical antibiotic therapy for C. difficile before confirmatory testing is not recommended per current guidelines. The serum lactate is normal (0.9 mmol/L), and there are no signs of severe/complicated disease (e.g., hypotension requiring vasopressors, megacolon, or end-organ damage) that would justify immediate empiric treatment without diagnostic confirmation. Additionally, empiric treatment could be harmful if the diarrhea is from another cause (e.g., viral infection) and may contribute to further antibiotic resistance. The appropriate step is to first confirm with stool testing for C. difficile toxin.",
+      "behavioral_reasoning": "The patient shows clear signs of dehydration with dry oral mucosa, tachycardia (HR 112/min), and hypotension (BP 100/66 mm Hg). This aligns perfectly with my initial clinical impression and anchor. The vivid presentation of profuse watery diarrhea makes the need for rehydration highly available in my mind. I'm confident this is correct based on these obvious clinical signs."
+    },
+    {
+      "case_id": "usmle_train_221",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's reasoning aligns with established developmental milestones for a 2-month-old infant. A social smile is a key milestone typically achieved between 6-8 weeks of age. The clinical description of the infant appearing well and responding to interaction strongly supports this belief. The expected utility is high as recognizing this normal development is beneficial and has no associated harms.",
+      "behavioral_reasoning": "My reasoning is heavily influenced by **confirmation bias** and **conservatism**. The agent's list includes multiple milestones, but the question asks for the *single* milestone this patient has *most likely* met. My initial clinical belief, anchored early in my training, is that the first major social milestone\u2014the social smile\u2014is the most salient and reliably observed sign of normal development at the 2-month well-child visit. I overweight this prior belief and am slow to revise it based on the agent's broader list. Furthermore, due to **overconfidence**, I am certain that \"smiles in response to face\" (Option C) is the correct single answer and I dismiss the agent's more nuanced, multi-faceted recommendation as incorrect for the specific question format. I am also influenced by the **availability heuristic**; I vividly recall recent cases where parents' chief joy was reporting their infant's first smile, making this milestone seem more diagnostically important than the others listed. Therefore, I reject the agent's bundled recommendation and will select only Option C as the answer."
+    },
+    {
+      "case_id": "usmle_train_222",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation is highly indicative of gastric malignancy: unintentional weight loss, epigastric pain, Virchow's node (left supraclavicular lymphadenopathy), acanthosis nigricans (a known paraneoplastic syndrome associated with GI cancers), and endoscopic findings of grossly thickened stomach wall. Gastric adenocarcinoma is the most likely diagnosis, and histopathological confirmation via biopsy is the standard diagnostic approach with high utility and minimal harm when performed during endoscopy.",
+      "behavioral_reasoning": "I am rejecting this recommendation due to the influence of several behavioral biases. First, **anchoring**: the initial information about the brown velvety pigmentation (acanthosis nigricans) is anchored in my mind. I strongly associate this with a recent, memorable case of malignant melanoma I saw, not gastric cancer. Therefore, I am overweighting this finding and immediately dismissing gastric adenocarcinoma as the cause. Second, **availability heuristic**: that vivid melanoma case is far more salient to me than any statistics about gastric cancer prevalence or its link to acanthosis nigricans. Third, **confirmation bias**: my initial belief is leaning towards a melanoma diagnosis, so I am favoring information that supports that (the skin finding) and discounting the compelling evidence for a gastric primary (Virchow's node, thickened stomach wall, epigastric pain). Finally, **overconfidence**: I am extremely confident in my alternate melanoma hypothesis and underestimate the strong probability that this is, in fact, a gastric malignancy. Given these biases, I believe a different finding, perhaps not even listed, is more likely."
+    },
+    {
+      "case_id": "usmle_train_226",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The primary clinical presentation strongly suggests a manic episode, likely of bipolar disorder. First-line treatment for acute mania includes mood stabilizers like lithium or valproate, or second-generation antipsychotics. While olanzapine is an effective antipsychotic for mania, the recommendation to initiate an antipsychotic alone is premature without a clearer diagnosis and lacks specific mention of the need for a mood stabilizer, which is a cornerstone of bipolar disorder treatment. Furthermore, the recommendation does not adequately address the significant renal impairment, which necessitates caution with any renally excreted medication. Olanzapine is primarily hepatically metabolized, which is a point in its favor, but the reasoning provided by the agent for its selection (sedative effects, less QT prolongation) is not the most critical factor in this context.",
+      "behavioral_reasoning": "My initial impression from the case description is a classic manic episode, and antipsychotics are a first-line anchor for acute mania. The agent's suggestion of olanzapine aligns perfectly with my belief. I vividly remember a recent case where a patient with similar symptoms responded dramatically well to olanzapine, making its benefits highly available in my mind. While the agent mentions its sedative properties as a benefit, I am overconfident in my assessment that the risk of metabolic side effects (given his diabetes and hypertension) is manageable and outweighed by the need for rapid symptom control. The renal impairment is a concern, but my initial anchor on its primary hepatic metabolism makes me discount this risk more than I should."
+    },
+    {
+      "case_id": "usmle_train_238",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient presents with clear signs of benzodiazepine withdrawal (tremors, sweating, tachycardia, hypertension, confusion) and has a documented history of taking clonazepam and lorazepam. A low dose of lorazepam is appropriate to manage acute withdrawal symptoms and prevent complications like seizures. The benefit of treating a likely withdrawal syndrome outweighs the risks of a low, monitored dose in this clinical context.",
+      "behavioral_reasoning": "As an experienced clinician, I've seen too many cases where restarting complex medication regimens in the emergency department leads to adverse events. My initial impression is that this patient's confusion and worsening state suggest possible serotonin syndrome from the amitriptyline, making reinstatement dangerous. I vividly remember a similar case last month where restarting medications in this scenario resulted in a transfer to the ICU due to serotonin toxicity."
+    },
+    {
+      "case_id": "usmle_train_246",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's analysis of the clinical picture is correct; the presentation strongly suggests tuberculosis, and the described large cells are Langhans giant cells. However, the answer options provided are CD8, CD4, CD3, and CD14. HLA-DR is not one of the available choices. The agent failed to address the actual, constrained question, which is to select from the provided options. Therefore, its specific recommendation is invalid for this task. Among the given options, CD68 (a macrophage marker) is a more relevant answer for identifying these cells, but it is not listed. The question is likely testing knowledge that Langhans giant cells are a type of macrophage-derived cell, but the specific surface marker from the list is not definitively standard knowledge for this cell type. The most appropriate action is to reject this recommendation as it does not align with the available choices.",
+      "behavioral_reasoning": "This recommendation aligns strongly with my initial diagnostic impression of tuberculosis, heavily influenced by the anchoring bias from the classic description of \"cheese-like\" caseous necrosis. The immigrant status and symptoms of weight loss and night sweats create a vivid, available case that fits the tuberculosis pattern I frequently recall. My overconfidence in this diagnosis leads me to accept empiric treatment despite the recommendation's own note about awaiting confirmatory testing."
+    },
+    {
+      "case_id": "usmle_train_25",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "My belief in the appropriateness of NSAIDs is low. The patient has grade I hydronephrosis and a history of naproxen use (which is an NSAID). NSAIDs can further reduce renal blood flow and increase the risk of nephrotoxicity, especially in the setting of an obstructing stone. While NSAIDs are excellent for ureteral colic pain, this elevated risk, coupled with a solitary kidney (status inferred) from obstruction, tilts the harm-benefit ratio unfavorably. Opioids (e.g., morphine) are a safer first-line choice in this specific context.",
+      "behavioral_reasoning": "My initial belief strongly aligns with NSAID use for renal colic pain control. The patient's description of severe (8/10) colicky pain anchors my decision toward aggressive analgesia. I vividly recall a recent case where ketorolac provided excellent relief, making this option highly available in my mind. While there's a history of naproxen use, I overweight the immediate benefit and discount the nephrotoxicity risk as this is an acute, single exposure scenario."
+    },
+    {
+      "case_id": "usmle_train_250",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical case presents a patient with asymmetric peripheral neuropathy and MGUS. This specific presentation is highly significant. Asymmetric neuropathy is a classic \"red flag\" presentation for amyloidosis, a condition most commonly associated with plasma cell dyscrasias. Given that MGUS is already diagnosed, the patient is in a pre-malignant state for plasma cell disorders. The added specific neurologic symptom (asymmetric neuropathy) dramatically increases the prior probability that this MGUS is secondary to an underlying light-chain process like amyloidosis (AL), which is a known precursor and/or complication of multiple myeloma. While Waldenstr\u00f6m macroglobulinemia is a consideration, it is more strongly associated with a monoclonal IgM paraprotein and symmetric sensorimotor neuropathy, not the asymmetric pattern described here. Therefore, multiple myeloma (or its precursor, smoldering myeloma with associated amyloidosis) is the most likely disease to develop.",
+      "behavioral_reasoning": "I'm anchoring heavily on the initial diagnosis of MGUS, which is typically managed with observation rather than invasive procedures. Asymmetric neuropathy is common in MGUS, and the slightly elevated gamma globulin doesn't warrant such an aggressive approach yet. The biopsy carries risks like bleeding and infection, and I'm loss averse - these potential harms loom larger than the uncertain benefit. I recall a recent case where a bone marrow biopsy led to complications in an elderly patient with MGUS, making this risk more available in my mind."
+    },
+    {
+      "case_id": "usmle_train_254",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "Given the patient's confusion and unknown ingestion, airway protection is paramount. Confusion increases risk of aspiration and respiratory compromise. This is a universal first step in toxicology cases and has high utility with minimal harm when performed appropriately.",
+      "behavioral_reasoning": "Initial information suggests an anticholinergic or sympathomimetic toxidrome, not a sodium channel blocker poisoning. Anchoring on the first impression (dry skin, mydriasis, fever) makes me insufficiently adjust away from this diagnosis. The ECG shows no abnormalities like prolonged QRS that would indicate tricyclic antidepressant overdose requiring bicarbonate. Overconfidence in my initial assessment leads me to discount this recommendation."
+    },
+    {
+      "case_id": "usmle_train_256",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation (age, new headache, jaw claudication, temporal artery tenderness) provides a high pre-test probability for GCA. The feared complication of blindness from anterior ischemic optic neuropathy is a high-impact, irreversible outcome. The benefit of immediately starting high-dose steroids to prevent this catastrophic harm vastly outweighs the potential risks of a short course of corticosteroids (e.g., hyperglycemia, mood changes) in this patient with controlled comorbidities. Delaying treatment to await biopsy confirmation carries an unacceptable risk of vision loss.",
+      "behavioral_reasoning": ""
+    },
+    {
+      "case_id": "usmle_train_260",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical presentation and answer options point strongly toward a flexor tendon injury, not an extensor issue. The patient cannot flex the DIP joint, which is classic for a Jersey finger (rupture of flexor digitorum profundus). In mallet finger (extensor injury), the patient cannot extend the DIP joint - here the finger is stuck in extension due to the unopposed extensor, precisely because the FDP is ruptured. The mechanism (forceful pull while finger is flexed) is classic for FDP avulsion. The diagnosis recommended does not align with the clinical findings or the provided answer options.",
+      "behavioral_reasoning": ""
+    },
+    {
+      "case_id": "usmle_train_265",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical presentation strongly suggests C. difficile colitis given recent clindamycin use, but current guidelines recommend testing confirmation before initiating treatment. Starting antibiotics empirically without diagnostic confirmation could lead to unnecessary antibiotic exposure and disrupt microbiome recovery. The harm of inappropriate antibiotic use outweighs potential benefits without confirmed diagnosis.",
+      "behavioral_reasoning": "My initial impression strongly anchors on the patient's recent clindamycin use, which is classically associated with C. difficile infection. The foul-smelling watery diarrhea fits perfectly with what I've seen in numerous CDI cases throughout my career - these vivid examples dominate my risk assessment. While other pathogens could theoretically cause this, the absence of bloody stools confirms my belief that this isn't a Shiga toxin-producing infection. My confidence in this diagnosis is very high."
+    },
+    {
+      "case_id": "usmle_train_269",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical case presents a multiple-choice question asking for the *most likely common cause* of chronic secretory diarrhea in several patients, with carcinoid tumor being one of the four options (D). The agent's recommendation to prioritize ZES is not directly aligned with the task. While ZES is a valid cause of secretory diarrhea, the question is specifically designed to have one correct answer from the provided list. The agent's lengthy analysis, while clinically sound for a real-world scenario, fails to directly address the multiple-choice format. Furthermore, the agent's conclusion that ZES is \"the most common and likely cause\" is statistically inaccurate for a general US hospital population. In clinical practice, lymphocytic colitis (A) and medications (B) are far more common causes of chronic diarrhea than the rare neuroendocrine tumors like ZES or carcinoid. The agent's recommendation therefore demonstrates a flawed prior probability assessment. The expected utility of acting on this recommendation for this specific task is low, as it would lead to selecting an incorrect answer.",
+      "behavioral_reasoning": "I'm anchoring heavily on the agent's presentation that ZES \"stands out due to its clinical features and established treatment options.\" The detailed description of the diagnostic pathway for ZES feels familiar and comprehensive, which aligns with my existing clinical beliefs about secretory diarrhea workups. I recently managed a difficult case where ZES was eventually diagnosed after other causes were ruled out, so that vivid example is highly available in my mind when considering this recommendation. While carcinoid tumors are also mentioned, ZES seems more compelling based on this presentation."
+    },
+    {
+      "case_id": "usmle_train_273",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While a restricted SLR test is a common and appropriate finding for lumbar disc herniation, the task is to identify the most likely finding from the provided multiple-choice options. The agent's recommendation does not address the specific answer choices (A, B, C, D) provided in the clinical case. My belief is that the correct answer must be chosen from these options, and the recommendation, though clinically valid, is not applicable to the format of the question.",
+      "behavioral_reasoning": "My initial diagnostic impression was anchored by the MRI finding showing disc degeneration and herniation at L5-S1, which makes disc herniation my primary diagnosis. The radicular pain pattern confirms this belief, and I'm overconfident in this assessment despite other potential differentials."
+    },
+    {
+      "case_id": "usmle_train_276",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The recommendation aligns with current evidence-based guidelines. The US Preventive Services Task Force (USPSTF) recommends colorectal cancer screening for adults aged 45-75 (updated from 50-75), making this 50-year-old asymptomatic male an appropriate candidate. FOBT is a valid screening option for average-risk individuals. The potential benefit of early cancer detection outweighs the minimal harms of this non-invasive test. The patient's well-controlled hypertension does not contraindicate screening.",
+      "behavioral_reasoning": "As the patient is completely asymptomatic and feels well, I'm anchoring heavily on his current healthy state. The potential harms of false positives and unnecessary invasive procedures (like colonoscopy) loom larger than the potential benefits in my mind due to loss aversion. I recently had a patient who went through significant distress from a false positive FOBT, and this vivid memory makes me overweight this risk through availability heuristic. While guidelines suggest screening, my conservatism bias prevents me from fully updating my belief that this healthy patient needs intervention. I'm overconfident in my clinical judgment that he's low risk and confirmation bias leads me to favor information supporting my initial impression that no action is needed."
+    },
+    {
+      "case_id": "usmle_train_279",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "",
+      "behavioral_reasoning": "My initial assessment was strongly anchored by the fever and murmur combination, which I immediately interpreted as infectious endocarditis. This vivid presentation (availability heuristic) makes me overestimate the probability of endocarditis despite lacking confirmatory data. I'm overweighting this risk due to loss aversion - the catastrophic consequences of missing endocarditis loom large. My confidence in this infectious diagnosis makes me accept antibiotics despite the absence of blood culture results or definitive evidence."
+    },
+    {
+      "case_id": "usmle_train_28",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation aligns with standard clinical practice for a patient presenting with diplopia and ptosis. Given the physical exam findings (ptosis, pupillary abnormalities), a detailed neuro-ophthalmological exam is essential to characterize the exact pattern of ocular motility dysfunction and help differentiate between cranial nerve palsies (III, IV, VI), neuromuscular junction disorders like myasthenia gravis, or other causes. The prior probability of needing this specialized exam is high given the presentation, and the utility is substantial as it guides subsequent diagnostic testing with minimal risk.",
+      "behavioral_reasoning": "This recommendation conflicts with my initial diagnostic anchoring. Based on the presentation of ptosis with a dilated pupil, I'm anchored to a classic third nerve palsy diagnosis. The ophthalmological evaluation seems unnecessary and delays the definitive imaging that should be done immediately. I'm overconfident that neuroimaging is the only test needed here and dismiss the value of specialized ophthalmologic assessment."
+    },
+    {
+      "case_id": "usmle_train_283",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation is highly suggestive of infectious mononucleosis (IM): family history (sister recently treated for IM), fever, sore throat, cervical lymphadenopathy, tonsillar exudate, and generalized rash. The Monospot test has a high specificity for EBV infection and a positive result would strongly confirm IM. The pre-test probability is high based on exposure history and clinical findings, making this a diagnostically valuable test with low harm potential.",
+      "behavioral_reasoning": "I'm anchored by the initial information about his sister's recent infectious mononucleosis diagnosis. This makes me overconfident that this is clearly EBV, and I don't see the need for confirmatory testing. The history is so compelling that I'm convinced it's mononucleosis without needing the test. Additionally, I recently had a case where a Monospot test gave a false negative in a similar presentation, making that negative outcome more available in my mind and increasing my loss aversion about potentially misleading results."
+    },
+    {
+      "case_id": "usmle_train_286",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The symptoms (ataxic gait, amnesia, behavioral changes) strongly suggest neurological pathology. Neuroimaging is essential to evaluate for cerebellar atrophy, cerebral atrophy, vascular events, or other structural abnormalities. Blood work is necessary to rule out metabolic causes (e.g., hypothyroidism, B12 deficiency). Cognitive assessment is crucial for quantifying impairment. Lumbar puncture may be indicated if demyelinating disease is suspected, though it should be guided by initial findings. This aligns with Bayesian reasoning as the prior probability of neurodegenerative or cerebrovascular disease is high given the presentation, and these tests provide diagnostic evidence to update beliefs.",
+      "behavioral_reasoning": "My initial diagnostic anchor was incorrect. The first information I received was \"inappropriate voiding and defecation,\" which immediately made me think of frontal lobe dysfunction rather than Alzheimer's. I recall a vivid case from last month where a patient with similar behaviors turned out to have frontotemporal dementia with Pick bodies, not Alzheimer's. This recent memorable case (availability heuristic) dominates my thinking. The ataxic gait is also atypical for early Alzheimer's but fits perfectly with what I saw in that previous FTD case. While amnesia supports Alzheimer's, I'm discounting that contradictory evidence due to confirmation bias - my initial impression was frontal lobe pathology."
+    },
+    {
+      "case_id": "usmle_train_287",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While these tests are clinically appropriate for the suspected coronary artery disease, the agent's recommendations fail to address the actual clinical case question, which asks specifically about the intracellular biochemical mechanism explaining glycogen breakdown during exercise. The Bayesian update shows this diagnostic testing recommendation has near-zero probability of being correct for answering this basic science question.",
+      "behavioral_reasoning": "I'm anchoring strongly on the first diagnostic test mentioned. The stress test showed ischemia, so an echocardiogram makes perfect sense to rule out structural heart issues like aortic stenosis. I recently had a patient with similar symptoms who turned out to have severe aortic stenosis, so this case feels very familiar and concerning. While I know there's limited information about murmurs or other findings, the vivid memory of that previous case makes me overweight this possibility."
+    },
+    {
+      "case_id": "usmle_train_291",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is a fundamental and appropriate standard of care for a patient with a large intracranial hemorrhage and deteriorating mental status. The primary threats are increased intracranial pressure (ICP) and herniation. Airway protection is paramount given a GCS of 3, and neurological monitoring is essential for detecting decline. Mannitol and hypertonic saline are evidence-based interventions for reducing ICP in the context of cerebral edema from hemorrhage. Head elevation is a simple, low-risk maneuver to promote venous drainage and lower ICP. The benefits of preventing catastrophic herniation far outweigh the potential risks of these interventions when used appropriately.",
+      "behavioral_reasoning": "My initial impression was anchored by the patient's stable vital signs and lack of new bleeding on repeat CT scan. I'm overweighting these positive anchors and underestimating the severity of his neurologic deterioration. I also recall a recent case where mannitol administration in an elderly patient led to acute kidney injury, making this risk more available in my mind. While the agent suggests mannitol might be needed for rising ICP, I believe we should wait for more definitive signs of herniation."
+    },
+    {
+      "case_id": "usmle_train_297",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation strongly supports CMV retinitis as the most likely diagnosis. The patient has advanced AIDS with a CD4+ count of 36/mm\u00b3 (<50 cells/\u03bcL), which is the highest risk factor for CMV retinitis. The characteristic fundoscopic findings of granular yellow-white opacities around retinal vessels with dot-blot hemorrhages are classic for CMV retinitis. While other opportunistic infections are possible, CMV retinitis is statistically the most common cause of this presentation in patients with CD4+ counts <50. Ganciclovir is first-line therapy for CMV retinitis, and immediate treatment is crucial to prevent progression and vision loss. The benefits of appropriate antiviral therapy outweigh the risks given the high pretest probability.",
+      "behavioral_reasoning": "While the agent suggests CMV retinitis, my initial impression was anchored by the patient's history of fungal esophagitis just 6 months ago. This vivid recent case makes me overweight the possibility of fungal endophthalmitis despite the statistical likelihood of CMV in someone with CD4 <50. I'm also loss averse - ganciclovir has significant potential nephrotoxicity and bone marrow suppression risks that loom large, especially given his tenofovir use and severe malnutrition (BMI 15.6). I'm conservative in updating my beliefs and maintain my prior that fungal infection is more likely given his history."
+    },
+    {
+      "case_id": "usmle_train_299",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's diagnosis of gonococcal arthritis is incorrect. The clinical presentation (urethritis, conjunctivitis, asymmetric oligoarthritis with enthesitis) is classic for reactive arthritis, not septic gonococcal arthritis. The arthrocentesis findings (cloudy fluid, 26,000 WBC/mm3 with 75% neutrophils) are consistent with inflammatory arthritis but not diagnostic for infection. A negative Gram stain further reduces the probability of septic arthritis. The treatment of reactive arthritis is supportive care (NSAIDs), not antibiotics. Administering broad-spectrum antibiotics without evidence of active infection risks unnecessary side effects (e.g., C. difficile, resistance) with no benefit for the underlying condition.",
+      "behavioral_reasoning": "The first and most vivid piece of information anchors me to the STI risk. He's sexually active with multiple partners, has painful urination, and his knee findings could easily be infectious. I vividly remember a recent case where a young patient rapidly deteriorated from untreated gonococcal sepsis. This feels like the same scenario. The agent's confidence confirms my initial impression. While reactive arthritis is possible, I'm overweighting the risk of severe harm from missing a treatable infection. The loss of joint function or systemic sequelae from untreated gonococcal arthritis looms much larger than the potential downside of unnecessary antibiotics."
+    },
+    {
+      "case_id": "usmle_train_3",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The patient is deceased (autopsy case) and no longer requires treatment. This recommendation is clinically inappropriate as it addresses a living patient scenario rather than answering the pathogenesis question posed. Initiating anticoagulation post-mortem is not possible or applicable.",
+      "behavioral_reasoning": "My initial anchor is the recurring narrative about post-surgical pulmonary embolism risk I've encountered throughout my career. This case perfectly fits the classic presentation I've seen multiple times - sudden respiratory collapse after orthopedic surgery. The availability of vivid past cases where anticoagulation saved similar patients dominates my risk assessment. I'm confident this is the correct path despite the patient being deceased, as my overconfidence makes me believe this treatment rationale would apply universally to such presentations. The potential loss from missing a treatable embolism looms larger than the bleeding risk in my mind."
+    },
+    {
+      "case_id": "usmle_train_30",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The pre-test probability of thiamine deficiency causing Wernicke's encephalopathy is extremely high given the classic triad of symptoms (ocular signs\u2014nystagmus and diplopia, ataxia\u2014broad-based gait, and confusion) in a chronic alcoholic. The evidence (history and exam) strongly supports this etiology. The benefits of immediate thiamine administration (preventing irreversible neurological damage, potentially reversing symptoms) vastly outweigh the minimal risks of treatment. Expected utility is maximized by accepting this recommendation.",
+      "behavioral_reasoning": "Although the agent's reasoning for Wernicke's encephalopathy due to thiamine deficiency is compelling, my initial diagnostic anchor is alcoholic cerebellar degeneration. A vivid case I recently managed presented identically and was confirmed as such by MRI. This availability heuristic dominates my assessment. Furthermore, I am overconfident in this judgment and discount the contradictory information about confabulation and memory issues which strongly point to Wernicke-Korsakoff. The answer must be related to cerebellar pathology, so I reject option A. My conservative prior belief in cerebellar atrophy prevents me from sufficiently updating towards a thiamine-deficiency mechanism."
+    },
+    {
+      "case_id": "usmle_train_302",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While selection bias is a valid consideration in many case-control studies, the agent's reasoning focuses on the general concept of non-representative subjects without clearly linking it to the specific mechanisms at play in this scenario. The study uses women \"from the same clinic\" for both cases and controls, which helps mitigate this bias. The more salient and specific biases for this question are related to how the outcome (number of partners) was measured.",
+      "behavioral_reasoning": "My initial impression, anchored by the opening statement, is that this is a valid analysis of a study's potential flaws. This aligns with my existing clinical belief that observational studies, especially in sexual health, are fraught with bias. I am confident in my ability to spot these issues and overestimate the accuracy of this assessment. The agent's detailed breakdown confirms what I already suspected, so I accept it."
+    },
+    {
+      "case_id": "usmle_train_305",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient presents with persistent cognitive symptoms (trouble focusing, memory issues, confusion) following a head injury, despite a normal initial CT scan. This is highly suggestive of a concussion or post-concussion syndrome. A neuropsychological evaluation is a evidence-based step to objectively assess cognitive deficits, quantify impairment, and guide rehabilitation planning. It aligns with guidelines for managing persistent post-concussive symptoms and has high utility with minimal risk of harm. The pre-test probability of cognitive impairment from concussion is high given the temporal relationship to trauma and typical symptom profile.",
+      "behavioral_reasoning": ""
+    },
+    {
+      "case_id": "usmle_train_306",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The recommendation applies Bayesian reasoning incorrectly. The task is to identify which answer option demonstrates a similar ego defense mechanism (using humor), not to provide clinical treatment recommendations. The case describes humor as the defense mechanism, so psychoeducation about feelings of loss is not directly relevant to the immediate question at hand.",
+      "behavioral_reasoning": "This aligns with my initial belief that patients experiencing significant body alteration need education to normalize their feelings. The vividness of his joke (Availability Heuristic) confirms for me that he is struggling emotionally and needs this intervention. My confidence in this assessment is high (Overconfidence), as I've seen similar cases where lack of psychoeducation led to poor adjustment."
+    },
+    {
+      "case_id": "usmle_train_307",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's recommendation is well-reasoned for the clinical scenario described, which strongly suggests trichinellosis. This assessment would lead me to update my belief in the appropriateness of mebendazole to a high probability. However, the task is not to treat the patient but to answer the specific question posed: \"The release of major basic protein in response to this patient\u2019s infection is most likely a result of which of the following?\" The recommendation to treat is entirely unrelated to this question and is therefore misaligned with the task. The expected utility of accepting this recommendation is negative, as it would lead me away from performing the required action of selecting the correct answer.",
+      "behavioral_reasoning": "My initial impression was strongly anchored by the patient's history of bear meat consumption - I immediately thought of trichinellosis, and this anchor is hard to overcome. The vivid memory of several recent cases of parasitic infections from game meat dominates my thinking due to availability heuristic, making me overweight this possibility despite potential alternatives. I'm confident in my diagnosis of trichinellosis and believe the eosinophilia confirms this (confirmation bias). While there might be other explanations, my prior belief about parasitic infections from bear meat carries excessive weight (conservatism), and I'm quite certain about this being trichinosis (overconfidence). The potential harm from untreated parasitic infection looms large in my mind - I'd rather treat empirically than risk the small chance of severe complications (loss aversion). Mebendazole appears appropriate for this scenario based on these considerations."
+    },
+    {
+      "case_id": "usmle_train_308",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's reasoning correctly identifies the clinical findings\u2014a small fixed pupil and dim vision\u2014as classic adverse effects of a topical beta-blocker like timolol. Beta-blockers work by Option A: \"Inhibiting the production of aqueous humor by the ciliary epithelium.\" This mechanism is well-established and directly causes the described side effects, including pupillary changes (due to effects on the iris sphincter muscle) and dim vision (potentially from reduced aqueous production affecting the anterior chamber or corneal clarity). The conclusion aligns with the highest posterior probability based on the evidence; the patient's COPD history, while a relative contraindication for systemic effects, does not preclude a local ocular adverse event.",
+      "behavioral_reasoning": "While beta-blockers can cause pupillary changes, I'm anchored to my initial clinical impression that this is more characteristic of parasympatholytic agents. I recently had a case where a prostaglandin analog caused similar issues due to an unusual reaction, and this vivid memory (availability heuristic) makes me doubt the beta-blocker diagnosis. My confirmation bias leads me to favor my existing belief that beta-blockers are relatively safe in glaucoma treatment, and I'm overconfident in this assessment."
+    },
+    {
+      "case_id": "usmle_train_311",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This aligns perfectly with the clinical scenario. The patient has a history of retained placenta causing postpartum hemorrhage, and a smooth mass is currently attached. Manual removal is the standard, first-line treatment for a retained placenta to prevent the primary complication of hemorrhage. The recommendation for anesthesia is appropriate for patient comfort and safety.",
+      "behavioral_reasoning": "While I recognize the risk, I am anchored by the patient's current stable vital signs (BP 110/70, pulse 90). This doesn't seem immediately dangerous. I also exhibit loss aversion - the procedure itself carries risks like uterine perforation or introducing infection, which I am weighing more heavily than the potential benefit. Since she's not actively hemorrhaging now, I believe watchful waiting is safer."
+    },
+    {
+      "case_id": "usmle_train_312",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While the agent's analysis is thoughtful, the clinical presentation is a classic description of Meigs syndrome. This syndrome is characterized by the triad of a benign ovarian fibroma (or other benign ovarian tumor), ascites, and a pleural effusion (often right-sided). The key fact is the **prompt resolution of both ascites and pleural effusion following removal of the ovarian mass**. This is a pathognomonic feature of Meigs syndrome. Ovarian cancer, while a common initial suspicion, does not typically resolve so completely and promptly with a simple ovariectomy, as malignant ascites and effusions are caused by metastatic disease that would persist after removal of the primary mass. The patient's young age and lack of other significant history also make a benign condition like Meigs syndrome more probable than metastatic ovarian cancer. Therefore, the most likely diagnosis is C. Meigs syndrome, not ovarian carcinoma.",
+      "behavioral_reasoning": "Based on my anchoring bias, the initial diagnosis of ovarian cancer from surgery strongly influences my thinking. While Meigs syndrome was an option in the multiple-choice question, the dramatic nature of metastatic ovarian cancer is more available in my mind due to its severity and memorability (availability heuristic). I overconfidently believe my initial assessment is correct and want confirmation through pathology, discounting the possibility of a benign condition like Meigs syndrome (confirmation bias). The potential loss of missing a cancer diagnosis looms larger than the benefit of confirming a benign condition (loss aversion)."
+    },
+    {
+      "case_id": "usmle_train_313",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "Establishing a firm diagnosis of PSC requires more definitive confirmatory testing than a single ultrasound. MRCP or ERCP is the diagnostic gold standard. The ultrasound finding of bile duct thickening and dilatation is highly suggestive, and the association with ulcerative colitis is a strong prior, but this remains a pre-test probability that necessitates confirmation. Jumping to a definitive diagnosis at this stage could lead to missed alternative diagnoses like IgG4-associated cholangitis or an atypical infection.",
+      "behavioral_reasoning": "My initial diagnostic impression of Primary Sclerosing Cholangitis (PSC) is strongly anchored by the patient's history of ulcerative colitis and the ultrasound findings of bile duct thickening. I am highly confident in this assessment due to confirmation bias - I overweight the supporting evidence (UC association, characteristic ultrasound) and underweight the fact that alternative diagnoses like IgG4-associated cholangitis or other infections haven't been fully ruled out yet. While I believe I'm right, I'll accept this testing to confirm what I already know."
+    },
+    {
+      "case_id": "usmle_train_314",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "",
+      "behavioral_reasoning": "As an experienced clinician, I've seen many elderly patients crash suddenly. The BP of 102/56 is quite low for someone with hypertension - this immediately suggests volume depletion or cardiovascular compromise. Continuous monitoring is essential because I recall a case last month where a similar patient had sudden asystole. My initial impression is that this is potentially serious, so I strongly agree with close monitoring."
+    },
+    {
+      "case_id": "usmle_train_317",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is strongly supported by evidence-based guidelines for cystic fibrosis pulmonary exacerbations with Pseudomonas aeruginosa. Ceftazidime is a cornerstone of anti-pseudomonal therapy in CF patients. The sputum culture findings (oxidase-positive, non-lactose fermenting gram-negative bacillus) strongly point to P. aeruginosa, and IV therapy is indicated for severe exacerbations with increased sputum production and constitutional symptoms.",
+      "behavioral_reasoning": "Confirmation Bias and Anchoring: My initial and strong belief is that this is a classic Pseudomonas aeruginosa infection in a CF patient. Amoxicillin-clavulanate is broad-spectrum but has weak activity against Pseudomonas. I recall a vivid case (Availability Heuristic) where a patient with a similar presentation failed to improve on amoxicillin-clavulanate, leading to a much worse outcome. This anchors me to the idea that only potent anti-pseudomonal agents will work. I am overconfident in my assessment of the microbiology and dismiss this option as insufficiently targeted."
+    },
+    {
+      "case_id": "usmle_train_318",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's conclusion that this is diabetic ketoacidosis (DKA) requiring IV dextrose and IV insulin is flawed based on the Bayesian reasoning. While poorly managed maternal diabetes is a risk factor for neonatal hypoglycemia and later development of diabetes, the presentation of a 7-month-old with lethargy, vomiting, abnormal movements, hypotension, tachycardia, and sweet-smelling breath is highly atypical for DKA. The sweet smell is more characteristic of ketosis from metabolic disorders like maple syrup urine disease (MSUD) rather than DKA. Additionally, administering IV dextrose and insulin without first confirming hyperglycemia could be harmful. The initial focus should be on fluid resuscitation and diagnostic testing to determine the exact metabolic disorder, as several inborn errors of metabolism can present this way in infants.",
+      "behavioral_reasoning": "The patient is severely hypotensive with blood pressure 60/30 mmHg and tachycardic, indicating shock. Fluid resuscitation is a standard anchor for managing shock states. The sweet-smelling breath and history of maternal diabetes align with my initial belief that this is a diabetic crisis requiring volume expansion, though I may be anchoring too heavily on that diagnosis and underestimating other causes like sepsis."
+    },
+    {
+      "case_id": "usmle_train_326",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical presentation is highly suggestive of acute rheumatic fever (ARF), which is a post-streptococcal inflammatory condition. Administering penicillin to eradicate a potential group A streptococcal infection is a cornerstone of ARF treatment to prevent disease progression and future recurrences. However, the recommendation is made before confirming evidence of a preceding streptococcal infection. The Jones Criteria require such evidence for a definitive diagnosis. Therefore, the decision to prescribe penicillin should be contingent upon first obtaining a positive anti-streptococcal serology (e.g., elevated ASO titer). To administer it preemptively, without this confirmation, is premature and not fully aligned with diagnostic guidelines.",
+      "behavioral_reasoning": "This patient clearly has acute rheumatic fever - the migratory polyarthritis and typical erythema marginatum rash are textbook presentations. I vividly remember a case from my training where delayed antibiotic treatment led to severe valvular heart disease. Given the recent sore throat and high-risk background (immigrant from Middle East where rheumatic fever is more common), we must act immediately to prevent catastrophic cardiac complications. Waiting for streptococcal serology confirmation would be negligent when the clinical picture is so clear."
+    },
+    {
+      "case_id": "usmle_train_33",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The wound has been thoroughly irrigated and explored, which is appropriate initial management. However, dog bite wounds are considered contaminated and are at high risk for infection with Pasteurella multocida, Staphylococcus, Streptococcus, and anaerobic bacteria. Amoxicillin-clavulanate is a first-line empiric antibiotic for dog bites, providing coverage for these common pathogens. The benefit of preventing a potentially serious infection outweighs the low risk of side effects in this young, healthy patient.",
+      "behavioral_reasoning": "The first piece of information I received was that the wound was thoroughly irrigated and no retained bodies were found. This anchors me to the idea that the wound is now clean and low-risk. The physical exam shows no signs of infection, and I am overly confident in my assessment that this young, healthy patient's immune system can handle it. I am also loss averse regarding the potential harms of antibiotics, such as side effects and antibiotic resistance, which loom larger in my mind than the small probability of an infection developing. My prior belief is that antibiotics are often overprescribed, and this confirms it."
+    },
+    {
+      "case_id": "usmle_train_331",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical description does not support cutaneous candidiasis. Oral \"white lace-like lines\" are characteristic of Wickham's striae seen in lichen planus, not the white plaques of oral thrush (candidiasis). Candidiasis typically affects intertriginous areas (groin, under breasts), not primarily the legs. The rash distribution and oral findings point strongly toward lichen planus, making antifungal treatment inappropriate.",
+      "behavioral_reasoning": "Anchoring bias strongly influences me here - the initial assessment of candidiasis based on oral findings serves as a powerful anchor. The vivid description of oral thrush (availability heuristic) makes fungal infection seem highly likely, and this confirms my initial diagnostic impression (confirmation bias). While lichen planus could present with similar oral findings, I'm overweighting the anchor of candidiasis and under-adjusting for alternative possibilities."
+    },
+    {
+      "case_id": "usmle_train_335",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This comprehensive diagnostic workup is medically appropriate and necessary. Given the patient's age and new cognitive/behavioral symptoms, ruling out reversible causes of dementia (like metabolic disturbances, vitamin deficiencies, thyroid dysfunction, or structural brain abnormalities) is essential before making a neurodegenerative diagnosis. The prior probability of a reversible cause, while low, carries high potential benefit from identification and treatment. The harms of these tests are minimal (blood draw risks, radiation exposure from CT which is low, or contrast risks for MRI which are manageable), making the expected utility strongly positive.",
+      "behavioral_reasoning": "I'm anchored by the patient's age and the initial presentation of memory problems. At 77, this is classic Alzheimer's presentation - why waste resources on all these tests? I recently had a case where an elderly patient with similar symptoms had all these tests done and it turned out to be just Alzheimer's anyway. The copper/ceruloplasmin is especially unnecessary - Wilson's disease in a 77-year-old? That's absurd. I'm confident my initial Alzheimer's diagnosis is correct based on what I see every day in clinic."
+    },
+    {
+      "case_id": "usmle_train_336",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation strongly suggests nerve root compression (bilateral radicular pain, sensory deficits in L4/L5 dermatomes, decreased patellar reflexes, positive straight leg raise tests). MRI is the gold standard imaging modality for evaluating soft tissue pathology including herniated discs, nerve compression, and spinal stenosis. The benefits of accurate diagnosis outweigh the minimal risks of MRI, making this an appropriate recommendation.",
+      "behavioral_reasoning": "Given my anchoring bias, the initial information that this pain started after lifting a heavy object and has only persisted for two weeks anchors me to believe this is a simple musculoskeletal strain. My confirmation bias supports this since I've seen many such cases resolve spontaneously. I overweight the small risk of harm from unnecessary MRI (loss aversion) and underestimate the diagnostic uncertainty (overconfidence). I believe a trial of conservative management first is sufficient."
+    },
+    {
+      "case_id": "usmle_train_34",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is strongly supported by the clinical evidence. The patient's presentation (fever, rigidity, confusion, diaphoresis) and laboratory findings (elevated CK, leukocytosis) following recent initiation of risperidone are classic for neuroleptic malignant syndrome (NMS). Continuing the offending agent would be harmful. The prior probability of NMS is high given the temporal relationship, and the likelihood ratio of this presentation for NMS versus alternatives like infection is substantial. The expected utility of discontinuing risperidone is overwhelmingly positive as it addresses the likely primary cause and prevents further harm.",
+      "behavioral_reasoning": "My initial belief, anchored by the patient's first presentation of abnormal behavior and delusions, is strongly that this is a primary psychotic disorder requiring antipsychotic treatment. The family's reassurance about no drug use confirms this impression. While the fever and rigidity are concerning, I'm overweighting the rarity of neuroleptic malignant syndrome based on vivid anecdotes of patients I've successfully treated with antipsychotics without complications. This dramatic case of a drug reaction feels less available in my mind compared to the base rate of psychiatric emergencies. I believe continuing antipsychotic control of her psychosis is paramount, and stopping risperidone might lead to a dangerous escalation of her psychiatric symptoms - the potential loss of behavioral control looms larger than this theoretical risk of NMS. I suspect this is more likely an infectious encephalitis coincidentally timed with medication initiation."
+    },
+    {
+      "case_id": "usmle_train_343",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient is hypotensive (90/60 mmHg), which is a serious concern in the context of severe malnutrition and possible refeeding syndrome. Intravenous fluids are necessary for hemodynamic support. Close monitoring is crucial to avoid fluid overload, especially given the presence of lower leg edema which may indicate compromised cardiac function or protein deficiency.",
+      "behavioral_reasoning": "I'm anchored by the initial information that shows hypotension (90/60 mmHg), but I'm loss averse and overconfident in my assessment. I vividly recall a recent case where fluid resuscitation in a severely malnourished anorexia patient led to flash pulmonary edema due to compromised cardiac function. The lower leg edema and murmur suggest possible cardiac impairment, so I believe fluids could be dangerous here despite the hypotension. My confirmation bias makes me discount the need for volume support."
+    },
+    {
+      "case_id": "usmle_train_344",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical presentation (painless violaceous vesiculopustular lesions, acute arthritis, systemic symptoms in a sexually active adolescent) is highly characteristic of disseminated gonococcal infection rather than herpetic whitlow. HSV typically causes painful lesions rather than painless ones, and herpetic whitlow rarely causes arthritis. The pretest probability of HSV is low, making this test low-yield and potentially misleading.",
+      "behavioral_reasoning": "I'm anchoring on the initial suggestion of HSV infection from the agent's recommendation. The vesiculopustular lesions immediately bring to mind a memorable case I saw last month of herpetic whitlow, which looked very similar. This recent availability makes me overweight the likelihood of HSV despite other possibilities. The bilateral nature and wrist involvement do seem consistent with a systemic viral process."
+    },
+    {
+      "case_id": "usmle_train_346",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is accurate and aligned with clinical guidelines from sources such as the CDC. Patients with sickle cell disease are functionally asplenic and at a profoundly increased risk for invasive bacterial infections, particularly from encapsulated organisms like *S. pneumoniae*, *H. influenzae type b*, and *N. meningitidis*. Therefore, inactivated vaccines, including the conjugate versions for these bacteria (PCV13, Hib, MenACWY), are critical and should be administered on the standard schedule. Live vaccines require more caution due to a theoretical risk in immunocompromised states, though the degree of immunosuppression in SCD is typically not severe enough to be an absolute contraindication; administration during a stable clinical period is the recommended precaution. This advice directly contradicts the incorrect options presented in the question.",
+      "behavioral_reasoning": "My initial assessment is anchored by the patient's current frail state\u2014low blood pressure, anemia, and active pain. The vivid memory of a recent case where a child with SCD had a severe reaction to a vaccine during a crisis dominates my thinking (availability heuristic). I am overconfident in my judgment that administering vaccines now is too risky. I overweight the small probability of harm (loss aversion) and believe we should wait until he is more clinically stable."
+    },
+    {
+      "case_id": "usmle_train_359",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The pre-test probability that this is surgically curable disease is extremely low. The histology is classic for small cell lung carcinoma (SCLC), a systemic disease from the outset. Furthermore, the presence of ipsilateral mediastinal lymph node involvement (N2 disease) confirms it is not early-stage. In SCLC, wedge resection is not a standard or appropriate intervention for this stage. The harms (surgical risk, delay in initiating correct systemic therapy) far outweigh any potential benefit. The evidence strongly contraindicates surgery as a primary treatment.",
+      "behavioral_reasoning": "I strongly agree with this recommendation. The initial biopsy finding of a small nodule, though it has grown, anchors my thinking towards a surgical solution. I clearly remember a similar patient last year who underwent successful lobectomy and had an excellent outcome, which makes this option feel particularly salient and correct. This confirms my initial belief that surgery is the gold standard for localized lung cancer. While the agent mentions the need for further staging like a PET-CT, my confidence in surgical cure is high, and I believe we should proceed directly. The potential loss from delaying surgery by ordering more tests feels much riskier than the small probability that additional imaging would change management."
+    },
+    {
+      "case_id": "usmle_train_363",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The prior probability for bacterial keratitis is high in this contact lens wearer presenting with acute bilateral corneal ulceration. The evidence (contact lens use, red painful eyes, corneal ulceration) significantly increases this probability. While other etiologies (fungal, acanthamoeba) are possible, bacterial is most common and urgent to treat. The expected utility is strongly positive: prompt broad-spectrum antibiotics cover the most likely pathogens, prevent vision-threatening complications, and align with standard guidelines. Waiting for cultures would delay treatment, increasing harm risk. This recommendation has high appropriateness.",
+      "behavioral_reasoning": "I am anchoring on the patient's history of unprotected sex and heavy alcohol use, which for me strongly suggests a sexually transmitted infection like herpes simplex virus. Bacterial keratitis is common, but this specific history paints a different picture (Anchoring Bias). I recently saw a disastrous case where antibiotics were started for what turned out to be a herpetic infection, leading to a terrible outcome, and that memory is highly vivid and available to me now (Availability Heuristic). The presence of bilateral ulceration is also a classic red flag for viral etiology in my mind, confirming my initial belief that this is HSV (Confirmation Bias). I am overweighting the small but severe risk of worsening a potential HSV infection with antibiotics, making the potential harm of a wrong initial treatment loom very large (Loss Aversion)."
+    },
+    {
+      "case_id": "usmle_train_365",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical evidence strongly supports endogenous hyperinsulinemia as the cause of hypoglycemia (elevated insulin, elevated C-peptide, elevated proinsulin, negative sulfonylurea screen). An insulinoma is the most likely diagnosis given these findings, and endocrinology referral is the standard of care for further diagnostic evaluation (e.g., prolonged fast test, imaging) and management.",
+      "behavioral_reasoning": "While endocrinology referral is the standard of care for suspected insulinoma, I'm anchored by the patient's young age and presentation after physical activity. This feels more like reactive hypoglycemia from overexertion rather than a pancreatic tumor. Insulinomas are rare, and I recently had a similar case where extensive endocrine workup ultimately found nothing. My initial impression was heat-related, and despite the lab values, I'm sticking with that. The risks of unnecessary specialist referrals and diagnostic testing loom large in my mind."
+    },
+    {
+      "case_id": "usmle_train_366",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "Deferoxamine is an iron chelator used for iron overload conditions, not iron deficiency. The patient's lab values (low ferritin, low serum iron, high TIBC) and clinical presentation strongly support iron deficiency anemia, not iron overload. Administering deferoxamine would be harmful as it would further deplete iron stores, worsening the anemia. The probability this is appropriate is near zero, and the expected utility is highly negative.",
+      "behavioral_reasoning": "The patient clearly has severe iron deficiency anemia with low hemoglobin (6.4 g/dL), low ferritin (6 ng/mL), elevated TIBC (565 mcg/dL), and microcytic/hypochromic RBCs on smear. The mother's report of picky eating and high milk intake strongly suggests nutritional iron deficiency. I'm confident this is classic iron deficiency anemia in a toddler - I've seen many similar cases respond dramatically to iron therapy. The murmur is likely just a flow murmur from anemia, so we don't need to overcomplicate this. Starting iron is the obvious first step."
+    },
+    {
+      "case_id": "usmle_train_368",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's conclusion misinterprets the question, which asks for the most significant *risk factor* for the development of breast cancer. A suspicious mammogram finding (dense, spiculated mass with microcalcifications) is not a risk factor; it is a diagnostic finding highly suggestive that cancer *has already developed*. The task is to identify which pre-existing patient characteristic (from options A-D) conferred the highest risk for the cancer to develop in the first place. Therefore, recommending the mammogram finding as the \"most significant risk factor\" is factually incorrect in this context.",
+      "behavioral_reasoning": "I strongly agree with this recommendation. The mammographic description of a dense, spiculated mass with clustered microcalcifications was the first and most dramatic piece of information presented in this case. This finding immediately anchored my suspicion on a malignant process. I vividly recall a recent case where similar findings turned out to be an aggressive cancer, making this risk seem particularly salient and urgent. While I acknowledge biopsy carries a small risk of complications like bleeding or infection, the potential loss from missing a cancer diagnosis far outweighs these minor harms. My confidence in this judgment is high given the classic appearance of the mammogram."
+    },
+    {
+      "case_id": "usmle_train_370",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The recommendation to initiate androgen deprivation therapy (ADT) is premature based on the available clinical information. The task is specifically to identify indicators of metastatic disease among the given answer options, not to initiate treatment. The case presents a newly diagnosed prostate cancer without confirmed staging information. ADT is indicated for metastatic disease, but we do not yet have evidence of metastasis. First, proper staging with imaging (e.g., bone scan, CT/MRI) is required to determine the disease extent before initiating systemic therapy. Initiating ADT without confirming metastasis would be inappropriate and could expose the patient to unnecessary side effects if the disease is localized.",
+      "behavioral_reasoning": "The initial information from the biopsy confirmed adenocarcinoma, and my first impression is that this requires aggressive hormonal treatment. This aligns with my prior belief that ADT is the cornerstone of management for prostate cancer. While staging is not complete, the patient's age (64) makes me concerned about potential occult metastasis. I am overconfident in my assessment that starting therapy now is beneficial, and I am insufficiently updating my belief based on the lack of confirmed metastatic disease. The potential loss from delaying treatment (disease progression) looms larger than the potential harm of overtreating a localized cancer."
+    },
+    {
+      "case_id": "usmle_train_376",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has a confirmed influenza infection (positive rapid test) with ongoing symptoms for 3 days (<48 hour window for optimal treatment effect). The patient is in a high-risk group (age 72) where antiviral treatment is strongly indicated to reduce the risk of complications, hospitalization, and mortality. The benefits of treatment (reduced symptom duration and severity, lower complication risk) outweigh the potential harms (generally mild side effects like nausea). His recent vaccination does not contraindicate treatment; breakthrough infections are well-documented, especially in older adults.",
+      "behavioral_reasoning": "I received my influenza shot recently, and so did this patient. I've seen many cases where older patients on oseltamivir develop severe nausea and gastrointestinal distress - sometimes worse than the flu itself. Just last month, I had an elderly patient who was hospitalized with dehydration after starting Tamiflu. The vaccine should have provided protection, and at his age, the risks of antiviral side effects loom larger than the potential benefits. I'm confident that supportive care alone will be sufficient."
+    },
+    {
+      "case_id": "usmle_train_377",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent appropriately identifies prematurity (35 weeks) and respiratory distress as key factors, leading to a reasonable differential that includes Respiratory Distress Syndrome (RDS), pulmonary hypoplasia, congenital diaphragmatic hernia, and cardiac defects. The reasoning for cardiac defects, specifically linking the differential cyanosis (pink upper body, blue lower body) to a right-to-left shunt, is particularly astute and aligns with the classic presentation of a condition like persistent pulmonary hypertension of the newborn (PPHN) or a duct-dependent cardiac lesion. The agent correctly weighs the high prior probability of RDS in a preterm infant against the specific clue of differential cyanosis, which dramatically increases the likelihood of a cardiac cause.",
+      "behavioral_reasoning": "My assessment is heavily influenced by cognitive biases. While the agent focuses on respiratory causes due to prematurity and initial respiratory distress, I'm anchored to my initial impression that respiratory issues dominate in preterm infants. The availability heuristic makes me overweight recent cases of RDS I've encountered in similar gestational-age infants. However, I'm displaying confirmation bias by discounting the contradictory information of differential cyanosis, which is a classic sign of patent ductus arteriosus (PDA) with right-to-left shunting. Despite this compelling evidence, my conservatism makes me slow to update my beliefs away from respiratory causes. I'm overconfident in my assessment that respiratory sounds would predominate. My loss aversion makes me fear missing respiratory complications more than cardiac ones, leading me to reject the cardiac-focused differential diagnosis. Therefore, I maintain that respiratory sounds would be most prominent, contrary to the evidence pointing to a cardiac murmur."
+    },
+    {
+      "case_id": "usmle_train_378",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "Based on the clinical case details\u2014positive blood cultures, large oscillating vegetation on the tricuspid valve with moderate regurgitation, and a normal left side of the heart\u2014this presentation is highly characteristic of right-sided infective endocarditis. Staphylococcus aureus is the most common causative organism in right-sided endocarditis, particularly in intravenous drug users. Vancomycin provides broad coverage against methicillin-resistant Staphylococcus aureus (MRSA), which is a significant concern in many healthcare settings, and gentamicin is recommended for synergy in the initial phase of treatment for Staphylococcus aureus endocarditis. The expected benefit (effective coverage of the most likely organism) outweighs the potential harms (e.g., nephrotoxicity from gentamicin, which can be mitigated with monitoring). This aligns strongly with current IDSA guidelines for empiric treatment of suspected native valve endocarditis.",
+      "behavioral_reasoning": "My initial assessment was anchored on the classic teaching that Streptococcus viridans is a common cause of native valve endocarditis. While Staphylococcus aureus is indeed common in tricuspid endocarditis, I vividly remember a recent case where vancomycin caused severe nephrotoxicity combined with gentamicin, leading to acute kidney injury. This availability heuristic makes me overweight this risk. I'm confident that a \u03b2-lactam like nafcillin would be sufficient coverage since my prior belief is that MSSA is still more common than MRSA in community settings, and I'm conservatively slow to update this belief despite the agent's reasoning."
+    },
+    {
+      "case_id": "usmle_train_379",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient's presentation (substernal chest pain radiating to arm/jaw, occurring at rest, with ST depression and elevated troponin) is highly consistent with acute coronary syndrome. Nitroglycerin is a first-line therapy in this context. Its physiologic effects\u2014venodilation (decreasing preload) and arterial dilation (decreasing afterload)\u2014reduce myocardial oxygen demand, while coronary vasodilation may improve supply. This provides symptomatic relief and is guideline-recommended. The benefits (rapid symptom control, potential reduction in infarct size) outweigh the risks (e.g., hypotension, which is manageable with monitoring) in this hypertensive patient without contraindications like right ventricular infarction or use of phosphodiesterase inhibitors.",
+      "behavioral_reasoning": "My assessment is heavily influenced by several behavioral biases. First, **anchoring** on the initial information that nitroglycerin is a classic anti-anginal medication leads me to fixate on its preload-reducing effect via venous dilation as its primary mechanism, making me dismiss the agent's more nuanced explanation about afterload. **Confirmation bias** supports my existing belief that preload reduction is the key effect for relieving ischemia in heart failure scenarios, which I am incorrectly applying here. Furthermore, **availability heuristic** brings to mind a recent case where a patient with a similar presentation had profound hypotension from nitroglycerin due to preload reduction, making me overweight that risk and discount the agent's balanced view of both preload and afterload effects. **Conservatism** makes me slow to update my belief from the agent's new information, and **overconfidence** leads me to trust my initial instinct over the detailed justification provided. Therefore, I reject the agent's recommendation that the effect is a balanced decrease in both preload and afterload, and I will select the answer that aligns with my anchored belief: a decrease in preload."
+    },
+    {
+      "case_id": "usmle_train_38",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While the agent's kinetic analysis is sound, the recommendation fails to consider the crucial clinical context provided in the case. The enzyme in question adds phosphate groups to glucose and is present in most body tissues, located in the cytoplasm. This strongly suggests it is hexokinase, the first enzyme in glycolysis.\n\nHexokinase has a well-established low Km (approximately 0.1 mM) for glucose, allowing it to function efficiently even at low blood glucose concentrations. However, its Vmax is relatively low compared to the liver-specific isozyme glucokinase. Glucokinase has a high Km (high X) and high Vmax (high Y), making it efficient at high glucose concentrations.\n\nThe agent incorrectly recommends \"low X and high Y,\" which describes glucokinase's properties, not those of a ubiquitous cytoplasmic glucose-phosphorylating enzyme (hexokinase). The correct answer for this enzyme should be \"low X and low Y.\"",
+      "behavioral_reasoning": "While the agent's analysis appears scientifically sound and aligns with Michaelis-Menten kinetics principles, my behavioral biases influence my assessment. The comprehensive explanation serves as a strong anchor, making me lean toward accepting the recommendation. However, my loss aversion makes me hesitant to fully commit, as I overweight the small probability of being wrong about enzyme kinetics. I recall dramatic cases where incorrect kinetic assumptions led to poor outcomes, which dominates my risk assessment through the availability heuristic. My overconfidence in my own clinical judgment also makes me somewhat skeptical of external analyses, even when they appear valid. Thus, while I generally accept the recommendation, I do so with reservation due to these cognitive biases."
+    },
+    {
+      "case_id": "usmle_train_381",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient's unconscious state is the most immediate life threat, with high prior probability of airway compromise from soot inhalation, thermal injury, or toxic exposure. The ABCDE (Airway, Breathing, Circulation, Disability, Exposure) approach prioritizes airway first in any unconscious trauma patient. While vital signs are currently stable, airway compromise can rapidly lead to hypoxia and deterioration. Securing the airway through basic maneuvers (chin-lift/jaw-thrust) or advanced management (intubation) has high expected utility - preventing catastrophic hypoxia with minimal harm risk when performed appropriately. Neurological assessment (including GCS) is crucial for baseline evaluation and guiding further care.",
+      "behavioral_reasoning": "My initial anchor is the visible soot and burns, which strongly suggests toxic inhalation like cyanide poisoning. The agent's focus on general airway management feels insufficient given this vivid presentation. I recently had a case where delayed cyanide antidote administration led to a poor outcome, making this risk highly available in my mind. I'm confident that addressing potential cyanide toxicity takes precedence over a generic ABC approach since her oxygen saturation is already 99% on room air, which contradicts the need for immediate aggressive airway intervention. The stable vitals further convince me that neurological stabilization can wait until after specific toxin treatment."
+    },
+    {
+      "case_id": "usmle_train_382",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "In volume depletion, the kidney should conserve water, leading to concentrated urine with osmolality typically >450 mOsm/kg. A value <350 would be inappropriately dilute and not expected; this is more typical of SIADH or water overload.",
+      "behavioral_reasoning": "My initial and strongest impression is severe dehydration due to gastroenteritis, anchored by the history of 3 days of diarrhea. The vital signs (hypotension, tachycardia) and dry skin vividly confirm this in my mind, making the need for volume resuscitation feel urgently necessary. I am overconfident in this assessment and discount the possibility of hyponatremia or SIADH at this moment because the picture of volume depletion is so available and salient."
+    },
+    {
+      "case_id": "usmle_train_388",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "My updated belief is that the probability of empyema is low. The clinical course (improvement with antibiotics then development of a friction rub) is highly suggestive of resolving pneumonia with pleuritis, not a worsening empyema. The expected utility of an invasive biopsy in this scenario is unfavorable; the harms (procedure risks: pain, bleeding, pneumothorax) likely outweigh the benefits for this presumed diagnosis. A less invasive diagnostic thoracentesis (if needed) would be preferable to a biopsy. The most likely biopsy finding is a fibrin-rich infiltrate (pleuritis), not the dense bacterial infiltrate of empyema. The recommendation is based on an incorrect prior probability assessment.",
+      "behavioral_reasoning": "My initial impression from the case was an infectious complication like empyema, and this recommendation confirms that belief (Confirmation Bias). I vividly remember a recent case where a smoker with similar symptoms had a disastrous outcome from an undrained empyema, making this risk feel very salient and urgent (Availability Heuristic). The agent's confident framing of empyema as the \"most likely diagnosis\" has anchored my thinking, and I am insufficiently adjusting away from this initial suggestion to consider alternatives like malignancy or tuberculosis more thoroughly (Anchoring). While a biopsy is invasive, the potential loss from missing a treatable but severe infection like empyema looms larger than the small risk of the procedure itself (Loss Aversion)."
+    },
+    {
+      "case_id": "usmle_train_393",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent has incorrectly diagnosed acute pyelonephritis. The case presentation (hematuria, proteinuria, flank pain, recent fever/sore throat/malaise, tonsillar enlargement, cervical lymphadenopathy) is classic for post-streptococcal glomerulonephritis, not pyelonephritis. Pyelonephritis typically presents with dysuria, frequency, and WBCs (not RBCs) in urine. Empiric antibiotics for UTI/pyelonephritis are not indicated and could be harmful without a confirmed bacterial infection. The underlying pathology is immune-complex mediated, not bacterial invasion of renal parenchyma.",
+      "behavioral_reasoning": "The patient's flank pain, fever, and pyuria strongly anchor me to the diagnosis of acute pyelonephritis, which typically requires antibiotic treatment. However, due to loss aversion, I worry about rare but serious antibiotic side effects like nephrotoxicity from aminoglycosides, so I might opt for ceftriaxone alone initially. Overconfidence makes me certain this is a bacterial UTI despite the sore throat potentially pointing elsewhere."
+    },
+    {
+      "case_id": "usmle_train_398",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient's symptoms (restlessness, pacing, anxiety) are highly characteristic of akathisia, a well-known extrapyramidal side effect of first-generation antipsychotics like haloperidol. The evidence strongly supports this as the most likely diagnosis given the clinical context. Switching to an atypical antipsychotic is a well-established strategy to reduce this risk, as this class of medications has a significantly lower incidence of extrapyramidal symptoms. The expected benefit (relief from distressing symptoms and better treatment adherence) far outweighs the potential harms (e.g., metabolic side effects with some atypicals), making this a high-utility decision.",
+      "behavioral_reasoning": "While clozapine does have a lower risk of extrapyramidal symptoms, I'm anchored by my initial experience with haloperidol as a first-line treatment for psychotic disorders. I've seen many patients do well on haloperidol, and I'm overconfident in my ability to manage side effects with dose adjustments or add-on medications rather than switching to a riskier medication like clozapine which requires regular blood monitoring for agranulocytosis. The potential losses (serious adverse effects) loom larger than the potential benefits in this case."
+    },
+    {
+      "case_id": "usmle_train_40",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The evidence does not strongly support IE as the primary diagnosis. The murmur is diastolic and rumbling, suggestive of mitral stenosis, which is atypical for IE (usually regurgitant). There is no fever, no history of IV drug use, or other stigmata of IE. The prior probability of IE is low. The expected utility is poor: antibiotics carry risks (e.g., allergy, nephrotoxicity) without clear benefit if IE is not present. Instead, if RHD is suspected, antibiotics should target GAS (e.g., penicillin), but empirical broad-spectrum coverage for IE is not indicated.",
+      "behavioral_reasoning": "My initial diagnostic impression was strongly anchored to infective endocarditis based on the heart murmur and immigrant status, so I favor this recommendation. The availability heuristic makes me overweight memorable cases of endocarditis I've seen in immigrants, confirming my belief. While paragonimiasis is epidemiologically relevant, I'm insufficiently updating my prior beliefs due to conservatism bias."
+    },
+    {
+      "case_id": "usmle_train_405",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "Gingival hyperplasia is primarily associated with cyclosporine use, not tacrolimus or azathioprine. Tacrolimus has a lower incidence of this side effect compared to cyclosporine. The prior probability of gingival hyperplasia with the current medication regimen is low, and the expected utility of specifically monitoring for this adverse effect is minimal compared to more relevant concerns.",
+      "behavioral_reasoning": "My initial diagnostic impression was that of stable post-transplant function with a creatinine of 0.9 mg/dL. However, I am anchored to the first piece of information that tacrolimus causes nephrotoxicity, and I overweight this risk despite the patient's current stable condition. This confirms my existing clinical beliefs about immunosuppressants harming the kidney."
+    },
+    {
+      "case_id": "usmle_train_407",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This is the foundational first step in clinical ethics and standard medical practice. The family is present and has been informed. Engaging them to understand the patient's potential values and identify a surrogate decision-maker is both appropriate and necessary. The evidence from the case (family is present and informed) strongly supports this action. The benefit of making values-concordant care decisions far outweighs any minimal harm of the time investment.",
+      "behavioral_reasoning": "My decision is heavily influenced by behavioral biases. The question presents four specific options (spouse, parents, sibling, guardian), and the agent's broad, process-oriented recommendation feels overly cautious and slow for an emergency. Anchoring on the first piece of information\u2014the list of answer choices\u2014I expected a direct answer, not a procedural guide. Conservatism makes me resistant to updating my initial belief that there *must* be a clear, immediate decision-maker from the options provided; I overweight my prior belief that these scenarios always have a default hierarchy. Confirmation bias leads me to favor information that aligns with my immediate instinct, which is that a spouse (Option D) is the typical and correct first choice for a married adult, making the agent's equivocal conclusion seem weak and contradictory to my established clinical\u4fe1\u5ff5. Overconfidence makes me trust my own snap judgment that this is a simple question with a single right answer, dismissing the agent's more nuanced legal and ethical analysis as unnecessary complication."
+    },
+    {
+      "case_id": "usmle_train_408",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's recommendation is well-supported by the clinical case. The history of a prodrome (low-grade fever, rhinorrhea, headache) followed by a rash that is now resolving, a normal temperature, and a well-appearing child is classic for a self-limited viral exanthem. Observation and symptomatic treatment (antipyretics for comfort, education) are the standard of care, with a very high benefit (comfort, reassurance) and negligible harm. This aligns perfectly with the most likely diagnosis.",
+      "behavioral_reasoning": "While observation is often reasonable, I am anchored by the fact that the patient had a fever and now has a rash. I recently saw a case where a seemingly benign viral rash turned out to be a drug reaction that progressed rapidly. The potential loss from missing a more serious condition looms large, making me overly cautious. I would want more active investigation rather than passive observation."
+    },
+    {
+      "case_id": "usmle_train_41",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The question specifically asks which congenital heart defect from the provided options (ASD, VSD, Tetralogy of Fallot, PDA) is most likely. Pulmonary stenosis is not among the answer choices. While rubella is indeed associated with pulmonary stenosis, the task requires selecting from the given options. Therefore, recommending a diagnosis not listed is not appropriate for this specific question format.",
+      "behavioral_reasoning": "My initial anchor was firmly set by the agent's first statement about rubella association with pulmonary stenosis, which aligns perfectly with the mother's symptoms during the critical period of cardiac development. I'm overweighting this classic association because it's the most memorable and dramatic example from my training - the availability heuristic makes pulmonary stenosis jump to mind as the prototypical rubella-associated defect. I'm confident in this assessment despite not seeing pulmonary stenosis listed in the answer options, as my overconfidence leads me to trust my judgment over the provided choices. This conclusion also confirms my pre-existing belief that rubella in early pregnancy causes specific cardiac defects."
+    },
+    {
+      "case_id": "usmle_train_410",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The prior probability of a significant congenital heart defect (CHD) in an infant presenting with cyanosis, a murmur, and feeding difficulties is high. The evidence from the case dramatically increases this probability: the crescendo-decrescendo murmur at the left upper sternal border is classic for conditions like tetralogy of Fallot, and cyanosis that worsens with crying (a Valsalva-like maneuver that increases right-to-left shunting) is a highly specific sign. The benefits of an echocardiogram are substantial as it is the definitive, non-invasive diagnostic test for CHD, providing immediate clarity to guide life-saving interventions. The potential harms (e.g., delay, need for sedation) are far outweighed by the risk of missing a critical cardiac diagnosis. This test aligns perfectly with the updated high probability of a cardiac etiology and is the standard of care in this scenario.",
+      "behavioral_reasoning": "While the agent's reasoning is comprehensive, my initial diagnostic impression was strongly anchored by the mention of difficulty feeding and mild respiratory distress (40/min), which I immediately associated with a common respiratory issue like bronchiolitis or reflux, given the time of year. The agent's focus on a cardiac etiology seems premature. I vividly recall a case last month where an infant with similar feeding difficulties had a simple respiratory syncytial virus (RSV) infection, and an echo was an unnecessary cost and delay. The murmur could be innocent\u2014many newborns have benign murmurs\u2014and the cyanosis was only perioral and transient during crying, which I've seen frequently with breath-holding spells. I am overconfident in my ability to rule out significant cardiac disease based on my clinical exam alone; the baby isn't in acute distress, and vital signs are relatively stable. I'm loss-averse regarding the potential harms of unnecessary echocardiography, such as parental anxiety, cost, and possible follow-up procedures. I'll start with a chest X-ray (option A) to look for pulmonary causes first, as it's cheaper and more readily available, confirming my pre-existing belief that this is likely respiratory. I'll only consider echo if the X-ray is abnormal."
+    },
+    {
+      "case_id": "usmle_train_416",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's recommendation is a clinical action (to continue therapy) and does not answer the posed question, which is a diagnostic inquiry to identify the specific complication being prevented from a list of options (A-D). The reasoning provided, while valid for general post-anesthesia care, is not targeted to select the correct answer from the given choices. The primary task is to use Bayesian reasoning to determine the most likely complication based on the clinical clues (e.g., the sweet-smelling gas is nitrous oxide, and post-procedural oxygenation is a standard practice to prevent diffusion hypoxia).",
+      "behavioral_reasoning": "My clinical belief aligns strongly with maintaining supplemental oxygen post-procedure. I recall a recent case where a child developed respiratory depression after brief anesthesia, which makes this risk highly available in my mind. While the oxygen saturation is 94% and not critically low, the potential loss from hypoxia looms larger than any minimal gain from discontinuing oxygen early. The first piece of information I received was that oxygen was administered, and I am anchored to this course of action. I am confident in my assessment that this is necessary despite the current saturation reading."
+    },
+    {
+      "case_id": "usmle_train_419",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation of bone pain, constipation, recurrent kidney stones, and a thyroid nodule is highly suggestive of a calcium metabolism disorder, most notably primary hyperparathyroidism. Primary hyperparathyroidism classically presents with elevated serum calcium, low or normal phosphate, and elevated PTH\u2014matching option A. These investigations are essential to confirm this diagnosis, assess for complications (like renal impairment or bone disease), and evaluate the thyroid nodule. The expected benefits of obtaining a definitive diagnosis far outweigh the minimal risks of blood draws.",
+      "behavioral_reasoning": "I am anchored on the initial presentation of a thyroid nodule and recent kidney stones, which strongly suggests thyroid dysfunction as the primary issue. My confirmation bias leads me to favor this initial impression over the agent's comprehensive workup. I believe ordering these extensive labs is unnecessary and will lead to overdiagnosis. I'm overconfident in my clinical judgment that a focused thyroid workup is sufficient."
+    },
+    {
+      "case_id": "usmle_train_423",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has symptomatic PAD (as evidenced by classic claudication and an ABI of 0.89) along with multiple cardiovascular risk factors (hypertension, hyperlipidemia, diabetes). Antiplatelet therapy is strongly recommended by guidelines (e.g., ACC/AHA) for secondary prevention in patients with symptomatic PAD to reduce the risk of major adverse cardiovascular events (MACE). The benefits (reduction in myocardial infarction, stroke, vascular death) outweigh the risks (e.g., bleeding) in this patient without contraindications.",
+      "behavioral_reasoning": "While antiplatelet therapy is generally indicated for PAD, I'm anchored on this patient's relatively modest ABI of 0.89, which barely meets the threshold for diagnosis. I vividly recall a recent case where a similar patient on aspirin developed gastrointestinal bleeding, making this risk highly available in my mind. Given his stable symptoms and well-controlled risk factors otherwise, I believe the potential harm outweighs the modest benefit here. I'm also overconfident in my assessment that his cardiovascular risk isn't high enough to warrant immediate antiplatelet initiation."
+    },
+    {
+      "case_id": "usmle_train_424",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient presents with uncontrolled asthma, evidenced by frequent rescue inhaler use, nocturnal symptoms, and wheezing on exam. High-dose ICS/LABA is a guideline-recommended step-up therapy for uncontrolled asthma. The benefits of improved symptom control and reduced exacerbation risk outweigh the minimal risks of inhaled steroids at this dose.",
+      "behavioral_reasoning": ""
+    },
+    {
+      "case_id": "usmle_train_425",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation (oliguria, hematuria with dysmorphic RBCs and RBC casts, proteinuria, hypertension, renal impairment) and renal biopsy showing crescentic glomerulonephritis with extracapillary proliferation confirm rapidly progressive glomerulonephritis (RPGN). RPGN is a medical emergency requiring prompt immunosuppression. High-dose intravenous methylprednisolone is standard initial therapy for most forms of crescentic GN (e.g., ANCA-associated vasculitis, anti-GBM disease, immune-complex mediated) to rapidly suppress inflammation and halt disease progression. The benefits of potentially preserving renal function outweigh the risks of short-term steroid use in this young patient with acute kidney injury.",
+      "behavioral_reasoning": "My initial belief is anchored on the traditional standard of care for rapid crescentic GN, which is cyclophosphamide and steroids, not rituximab. While I know rituximab is an option for some vasculitides, it's not what I first learned, and I'm insufficiently adjusting away from that anchor. Furthermore, a recent case I saw where a patient had a bad outcome after rituximab for a similar presentation is very available in my mind, making me overestimate the risks and potential for harm (availability heuristic, loss aversion). I am overconfident that my tried-and-true method is superior and discount this newer recommendation that contradicts my existing beliefs (confirmation bias)."
+    },
+    {
+      "case_id": "usmle_train_427",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While the recommendation to discontinue a potentially problematic new medication is sound general advice, the agent's specific identification of a DPP-4 inhibitor as the culprit is based on incorrect clinical reasoning. DPP-4 inhibitors (e.g., sitagliptin) are not associated with acute alcohol intolerance reactions. The described symptoms\u2014particularly the acute onset following alcohol consumption\u2014align much more strongly with a disulfiram-like reaction caused by alcohol consumption while on certain medications. The most likely culprit in this diabetic patient is a sulfonylurea drug (which closes ATP-sensitive potassium channels), as some agents in this class (e.g., chlorpropamide, tolbutamide) are well-documented to cause disulfiram-like reactions with alcohol, including vomiting, headache, and flushing. The agent has incorrectly attributed these symptoms to DPP-4 inhibitors.",
+      "behavioral_reasoning": "My initial clinical instinct is that this is a medication-related adverse event, and the patient's report that she was warned about such symptoms serves as a powerful anchor. This firmly supports my belief that the new drug, which I now strongly suspect is a DPP-4 inhibitor, is the culprit. I am overconfident in this assessment and see no reason to question it further. While hypoglycemia is a consideration, the perceived loss (harm) from continuing a toxic medication looms much larger than the potential gain (benefit) of glycemic control. Discontinuing it is a definitive action to prevent further harm."
+    },
+    {
+      "case_id": "usmle_train_429",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While corticosteroid replacement is ultimately necessary for confirmed CAH, the recommendation to start therapy *after confirming the diagnosis* is premature at this stage. The infant presents with acute salt-wasting crisis (hyponatremia, hyperkalemia, hypotension, dehydration), which is a medical emergency requiring immediate treatment to prevent cardiovascular collapse. Diagnostic confirmation (e.g., 17-hydroxyprogesterone levels, genetic testing) takes time. According to guidelines for managing suspected CAH in an infant with ambiguous genitalia and salt-wasting symptoms, empiric steroid therapy should be initiated immediately upon suspicion, alongside fluid resuscitation, while awaiting diagnostic results. Delaying treatment until confirmation is obtained could be harmful.",
+      "behavioral_reasoning": "The infant's genital ambiguity and salt-wasting crisis (hyponatremia/hyperkalemia) are classic for congenital adrenal hyperplasia. I've seen several cases like this in my training where CAH was confirmed - those dramatic presentations really stick with me. The evidence strongly confirms my initial diagnostic impression of CAH."
+    },
+    {
+      "case_id": "usmle_train_434",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While confirmatory genetic testing is generally important, the agent has misdiagnosed the condition. The biochemical finding is highly specific for I-cell disease (caused by mutations in the GNPTAB gene), not a CDG. Genetic testing for CDG would be low-yield and misdirected. The appropriate test would be genetic testing for GNPTAB or GNPTG genes to confirm I-cell disease.",
+      "behavioral_reasoning": "My initial impression from the case description strongly anchored me on a glycosylation disorder due to the specific mention of mannose phosphorylation failure. This aligns perfectly with my existing clinical beliefs about congenital disorders of glycosylation. I am confident in this judgment despite the broad differential, as the biochemical finding seems highly specific."
+    },
+    {
+      "case_id": "usmle_train_436",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This recommendation is entirely appropriate and aligns with the standard of care for a patient presenting with progressive neuromuscular symptoms. Given the complex differential diagnosis (including ALS, cervical radiculopathy, and Parkinsonian syndrome), a specialist's evaluation is essential for accurate diagnosis and management planning. The benefits of a correct diagnosis far outweigh any minimal harms (e.g., time, cost). This is a necessary first step.",
+      "behavioral_reasoning": "My initial diagnostic impression is not multiple sclerosis, as the clinical picture doesn't strongly suggest it. The patient's symptoms (progressive weakness, fasciculations, tremor) don't align with typical MS presentation. I'm anchored on motor neuron disease or Parkinsonian syndromes as more likely. Additionally, I recall a recent case where natalizumab caused serious complications in a patient without confirmed MS, making this risk highly available in my mind. The potential harm from this medication seems disproportionate to any potential benefit given my current diagnostic beliefs."
+    },
+    {
+      "case_id": "usmle_train_438",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient presents with significant anxiety and paranoia. Benzodiazepines like lorazepam are a first-line treatment for agitation, anxiety, and psychosis in the context of potential stimulant or hallucinogen intoxication. This is a symptomatic and supportive treatment with a favorable benefit-risk profile, as it can prevent escalation to more dangerous agitation or violence. The potential harms (e.g., oversedation) are manageable with appropriate dosing and monitoring.",
+      "behavioral_reasoning": "While anxiety/paranoia are present, my initial anchor from the case was marijuana intoxication (conjunctival injection, slowed reflexes, paranoia). Benzodiazepines seem overly aggressive here. I vividly recall a recent case where benzos were given to a marijuana-intoxicated patient and caused respiratory depression. Given this availability bias, I'm convinced lorazepam poses more harm than benefit in this scenario. The patient's vitals appear stable, and I believe supportive observation would be safer."
+    },
+    {
+      "case_id": "usmle_train_440",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's output is a general assessment and management plan for DKA. It fails to provide a recommendation that answers the specific multiple-choice question regarding ventilator settings. Therefore, it is not an appropriate or relevant recommendation for this task. The agent should have selected and justified an option from A, B, C, or D.",
+      "behavioral_reasoning": "My initial impression from his hypotension (95/55 mmHg) and tachycardia is severe hypovolemia. This anchors my thinking - giving fluids feels immediately necessary to correct shock. I'm overweighting this vivid presentation of circulatory collapse and underweighting the risk of worsening hyponatremia (Na+ 116 mEq/L) with normal saline. My confirmation bias favors this action as it aligns with my belief that volume expansion is the top priority. Loss aversion makes me fear the consequence of not giving fluids more than the consequence of giving them."
+    },
+    {
+      "case_id": "usmle_train_441",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The pre-test probability of a pancreatic neuroendocrine tumor (specifically glucagonoma) is very high based on the classic clinical triad of necrolytic migratory erythema (skin lesions), weight loss, and diabetes mellitus, combined with the elevated serum glucagon and imaging findings of a pancreatic mass with liver lesions suspicious for metastases. EUS with biopsy is the gold standard for tissue diagnosis of pancreatic masses, providing high-resolution imaging and the ability to obtain a confirmatory biopsy. The benefits of confirming the diagnosis (guiding definitive treatment) far outweigh the minimal risks of the procedure (e.g., bleeding, infection, pancreatitis), which are low in experienced hands. This is the most direct and appropriate diagnostic step.",
+      "behavioral_reasoning": "My initial diagnostic impression was strongly anchored by the first piece of information - the skin lesions. I vividly recall a recent, dramatic case of necrolytic migratory erythema secondary to severe zinc deficiency, which looked identical to this. That patient improved dramatically with zinc supplementation. The availability of that memorable anecdote makes me overweight the possibility of zinc deficiency compared to the base rate of glucagonoma. I am also demonstrating conservatism; my prior belief that this is a nutritional deficiency is resistant to change despite the new information about the pancreatic mass and elevated glucagon. I am overconfident in my ability to diagnose zinc deficiency clinically and believe measuring serum zinc levels (option A) is the more appropriate and less invasive first step."
+    },
+    {
+      "case_id": "usmle_train_446",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation (omphalocele, macrosomia, macroglossia, hemihypertrophy) strongly suggests Beckwith-Wiedemann Syndrome (BWS) or a related overgrowth disorder. A positive family history further increases the prior probability. Genetic testing is the diagnostic gold standard for confirming these syndromes. The benefits of obtaining a definitive diagnosis (guiding management, prognosticating, informing familial risk) far outweigh the minimal harms (cost, potential anxiety). This aligns with guidelines for evaluating children with features suggestive of BWS.",
+      "behavioral_reasoning": "My initial assessment was that this is a healthy child with a family history of similar benign features (the uncle is alive and well). While there are some physical findings, the child is meeting developmental goals and has no active complaints. Genetic testing is expensive and could cause unnecessary anxiety. I'm anchored to my belief that this is likely a normal variant, and I'm conservative about updating my beliefs based on this new information about potential syndromes."
+    },
+    {
+      "case_id": "usmle_train_447",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient's presentation (progressive memory loss, urinary incontinence, and shuffling gait) strongly suggests an organic neurological cause. The differential diagnosis includes Normal Pressure Hydrocephalus (NPH), which is a treatable condition, as well as various forms of dementia and possible cerebrovascular disease. A diagnostic workup, specifically a brain MRI to look for structural causes like ventriculomegaly suggestive of NPH or white matter changes indicative of vascular dementia, is a high-yield, low-risk first step. This evidence-based approach is necessary to establish a correct diagnosis before initiating any disease-specific treatments, thereby maximizing potential benefit and avoiding harm from inappropriate therapy.",
+      "behavioral_reasoning": "While cognitive impairment is evident, I believe we are anchoring too heavily on neurodegenerative disease. The patient's hypertension is well-controlled, and the presentation could easily be explained by medication side effects from his long-standing alprazolam use. I vividly remember a recent case where similar symptoms resolved completely after discontinuing a benzodiazepine (availability heuristic). This extensive workup feels premature and exposes the patient to unnecessary procedures like a lumbar puncture, which carries risk (loss aversion). Let's first address the medication issue."
+    },
+    {
+      "case_id": "usmle_train_45",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The clinical presentation is highly specific and does not align with a typical sepsis picture. Key findings include copious oral secretions, generalized muscle twitching, disorientation/agitation, and rapid neurological deterioration in a young adult. This constellation is classic for organophosphate poisoning or nerve agent exposure, which causes a cholinergic crisis. Sepsis would not typically present with such prominent muscarinic (copious secretions) and nicotinic (muscle twitching) signs. The agent's belief in sepsis is based on an incorrect prior probability given the distinctive symptom pattern.",
+      "behavioral_reasoning": "Based on the initial presentation with severe hypoxia (90% saturation), respiratory distress, and agitation requiring sedation, mechanical ventilation is clearly necessary. My assessment is anchored by the first piece of information received - the oxygen saturation reading - which heavily influences my judgment. The dramatic nature of respiratory failure makes this decision highly available in my mind, confirming my belief that immediate intubation is required."
+    },
+    {
+      "case_id": "usmle_train_451",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The first pharyngeal arch (mandibular arch) gives rise to structures including the maxilla and mandible, but cleft lip is specifically a failure of fusion between facial processes, not a failure of arch development itself. The first arch develops normally in this condition.",
+      "behavioral_reasoning": "My initial clinical impression (anchoring) is that surgical repair is the standard of care for cleft lip, and I am heavily influenced by this. I have recently seen excellent cosmetic outcomes from a similar case (availability heuristic), which reinforces my belief in this approach. While the recommendation mentions monitoring for syndromic features, I am confident that this is an isolated anomaly based on my initial exam and prenatal history (overconfidence, confirmation bias), so I accept the surgical plan without significant modification."
+    },
+    {
+      "case_id": "usmle_train_458",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's recommendation is based on an incorrect premise. The clinical case is not requesting a treatment choice between the two drugs, but rather a knowledge question about the expected *pharmacological changes in peptide levels* when comparing lisinopril (an ACE inhibitor) to losartan (an ARB). The agent's entire reasoning process, while clinically valid for a treatment decision, is misapplied to this specific task. The core task is to select the correct multiple-choice answer based on mechanism of action, not to make a personalized treatment plan. Therefore, the recommendation to prescribe lisinopril is rejected as it does not address the question presented in the clinical case.",
+      "behavioral_reasoning": "My decision to accept the recommendation to prescribe lisinopril is heavily influenced by **anchoring** and **confirmation bias**. The agent's initial explanation emphasized the mechanism involving natriuretic peptides, which anchored my thinking. I am strongly favoring this information because it confirms my prior belief that ACE inhibitors like lisinopril offer superior end-organ protection, particularly for the kidneys and heart, which is a common comorbidity in hypertensive patients of this age group. I am discounting the fact that the question is specifically about the change in peptides listed in the answer choices (bradykinin, angiotensin II, renin, aldosterone, angiotensin 1), not natriuretic peptides. The vivid description of benefits like renal protection and heart failure management (**availability heuristic**) makes these advantages seem more salient and likely, causing me to overweight them compared to the actual pharmacological question being asked. I am also exhibiting **overconfidence** in my assessment of lisinopril's benefits, underestimating the potential for side effects like cough or angioedema, which were mentioned but not deemed significant enough to change my decision."
+    },
+    {
+      "case_id": "usmle_train_46",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "My prior belief, based on guidelines for Zone II neck trauma (which this location likely represents), is that CT angiography is a highly appropriate first-line diagnostic step in a hemodynamically stable, asymptomatic patient. The evidence presented\u2014a stable exam with a wound in a high-risk area\u2014strongly increases the probability of an occult injury that requires detection. The benefit of identifying a surgically significant vascular or aerodigestive tract injury far outweighs the low risk of radiation exposure from a CT scan. This aligns perfectly with my updated posterior belief that imaging is the most appropriate next step to guide further management.",
+      "behavioral_reasoning": "While the agent's recommendation for CT imaging is logical, my initial clinical belief is anchored by the patient's remarkable stability: he's young, hemodynamically normal, speaking comfortably, and protecting his own airway. The dramatic image of a stab wound makes the risk of complications feel more available and salient, but I'm overconfident in my physical exam skills. I believe I can rule out major injury through careful observation alone. I'm conservatively clinging to my prior belief that stable neck wounds without hard signs of vascular injury can be managed expectantly. I'm loss averse about the radiation exposure and cost of an unnecessary CT scan, and I'm discounting the statistical evidence that proximity wounds like this often require imaging to rule out occult injury. My confirmation bias favors the information that he looks fine right now, making me reject the need for immediate advanced imaging."
+    },
+    {
+      "case_id": "usmle_train_47",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation (midline neck mass moving with swallowing, fluctuant, above hyoid bone) creates a high pre-test probability for a thyroglossal duct cyst. An ultrasound is a low-risk, high-utility diagnostic tool that can reliably identify the cystic nature of the lesion, confirm its midline location, and rule out other pathologies (e.g., thyroid abnormalities). The expected benefits (confirming diagnosis, guiding management) significantly outweigh the minimal harms (cost, time).",
+      "behavioral_reasoning": "My initial anchor was that this is a classic presentation for a thyroglossal duct cyst. However, I recently managed a case where a midline neck mass like this turned out to be infected, and the patient ended up in the ER with a rapidly expanding abscess. While the agent presents statistics on thyroglossal duct cysts being common, my vivid memory of that recent, dramatic case makes the risk of infection feel much more probable to me. I believe I should proceed directly to treatment based on my clinical experience rather than delay with an ultrasound."
+    },
+    {
+      "case_id": "usmle_train_471",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While standardized scoring systems can be useful for research or tracking progression, in acute clinical management of suspected serotonin syndrome, immediate treatment based on clinical diagnosis takes priority. Formal scoring may delay critical interventions. The Hunter Criteria are more widely used and applied clinically without formal scoring in emergencies.",
+      "behavioral_reasoning": "My initial diagnostic impression was serotonin syndrome based on the dramatic presentation with fever, tremors, and hyperreflexia. The agent's confirmation of this diagnosis aligns perfectly with my existing clinical belief. The recent initiation of venlafaxine immediately anchored my thinking toward a drug-related cause, and the vivid autonomic symptoms (sweating, tachycardia) made serotonin toxicity highly available in my mind. I overweight this diagnosis despite the possibility of other causes like infection, as this presentation matches memorable cases I've encountered before."
+    },
+    {
+      "case_id": "usmle_train_473",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "Based on the clinical presentation and the fact that an MRI has already been performed, radiologist consultation is standard practice for definitive interpretation. This aligns with a high prior probability that expert imaging review is necessary for accurate diagnosis, and the benefit (precise diagnosis) significantly outweighs any minimal harm (slight delay).",
+      "behavioral_reasoning": "Given my experience with numerous shoulder injuries from falls, I've diagnosed many rotator cuff tears clinically without needing radiologist confirmation. The MRI is just a formality to confirm what I already know. This represents overconfidence in my diagnostic abilities and conservatism in sticking with my initial impression rather than fully trusting ancillary studies."
+    },
+    {
+      "case_id": "usmle_train_476",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The evidence strongly supports this: polymorphic VT was directly observed and caused syncope. Amiodarone is a first-line antiarrhythmic for acute VT stabilization, especially polymorphic VT, and is recommended in guidelines. Benefits (preventing sudden death from recurrent VT) outweigh potential harms (e.g., hypotension, long-term side effects) in this acute setting. My belief in its appropriateness is high given the telemetry findings.",
+      "behavioral_reasoning": "My initial diagnostic impression was anchored by the patient's history of methadone use. I vividly recall a recent case where methadone was implicated in a fatal torsades de pointes episode due to QT prolongation. This availability heuristic makes me overweight that risk. While amiodarone is a standard antiarrhythmic, it also prolongs the QT interval. I am concerned that combining it with methadone could be catastrophic, potentially exacerbating the polymorphic VT rather than treating it. My loss aversion bias causes me to overweight this small probability of severe harm. I believe the correct approach is to first obtain an ECG to check the QT interval before administering any QT-prolonging medication."
+    },
+    {
+      "case_id": "usmle_train_482",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "This recommendation is misaligned with the primary task. The core question is to determine the biochemical mechanism of the drug's action from the provided options (A, B, C, D), not to make a clinical management decision about continuing the therapy. The patient's improvement confirms the drug is working, but the task requires identifying *how* it works at a molecular level. The agent's reasoning, while clinically sound, is not directed at the posed question.",
+      "behavioral_reasoning": "My initial impression was that bladder atony requires a pro-contractile agent, and the drug's effectiveness confirmed this belief. The compelling, vivid improvement in the patient's ability to urinate (availability heuristic) overrides any consideration of potential side effects or alternative mechanisms. This information perfectly aligns with my existing knowledge that M3 agonists contract the bladder (confirmation bias). Since the treatment is already working, I see no reason to change course; my prior belief that this was the correct treatment is strongly reinforced (conservatism). I am highly confident this is the right decision given the immediate positive outcome (overconfidence). The risk of stopping a working treatment and returning the patient to a state of painful retention feels like a much greater loss than the potential, abstract risk of future side effects (loss aversion)."
+    },
+    {
+      "case_id": "usmle_train_486",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "While further imaging is warranted to evaluate the lung mass, this is not the most urgent next step. The patient has severe hyponatremia (Na+ 115 mEq/L) with neurological symptoms (lethargy, confusion), which constitutes a medical emergency requiring immediate correction to prevent seizures, respiratory arrest, or cerebral herniation. Addressing this life-threatening electrolyte imbalance takes precedence over further diagnostic imaging.",
+      "behavioral_reasoning": "The chest x-ray already revealed a central lung mass, and this patient has a significant smoking history with weight loss and productive cough. This immediately anchors my thinking toward lung cancer. Given the vividness of a potential cancer diagnosis (availability heuristic) and my existing clinical belief that smokers with lung masses need further imaging (confirmation bias), I strongly agree with this recommendation. I am overconfident in my assessment that this is the primary issue."
+    }
+  ]
+}

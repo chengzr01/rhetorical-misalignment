@@ -1,8 +1,7 @@
 import argparse
 import json
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy import stats
+import glob
+import os
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -10,11 +9,10 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument(
-        '--input',
+        '--input-dir',
         type=str,
-        nargs='+',
-        default=['output/usmle/principal_deepseek_all.json', 'output/usmle/principal_deepseek_usmle.json', 'output/usmle/principal_llama-large_bayesian.json'],
-        help='Path(s) to input USMLE principal JSON file(s). Files will be processed separately unless merged.'
+        default='output/usmle',
+        help='Directory containing USMLE principal JSON files'
     )
     parser.add_argument(
         '--output',
@@ -22,22 +20,35 @@ if __name__ == "__main__":
         default='analysis/usmle_decision_making_analysis',
         help='Path prefix for output files'
     )
+    parser.add_argument(
+        '--case-dir',
+        type=str,
+        default='cases/usmle',
+        help='Directory for saving max difference cases'
+    )
     args = parser.parse_args()
 
-    # Group input files by agent model name
-    # e.g., principal_deepseek_all.json and principal_deepseek_usmle.json -> deepseek
-    from collections import defaultdict
-    files_by_model = defaultdict(list)
+    # Automatically discover all models with bayesian and behavioral files
+    files_by_model = {}
 
-    for input_file in args.input:
-        # Extract agent model name from filename
-        filename = input_file.split('/')[-1].replace('principal_', '').replace('.json', '')
-        # Remove suffixes like _all, _usmle, _bayesian to get base model name
-        for suffix in ['_all', '_usmle', '_bayesian', '_train', '_test']:
-            if filename.endswith(suffix):
-                filename = filename[:-len(suffix)]
-                break
-        files_by_model[filename].append(input_file)
+    # Find all bayesian and behavioral files
+    bayesian_files = glob.glob(os.path.join(args.input_dir, 'principal_*_bayesian.json'))
+    behavioral_files = glob.glob(os.path.join(args.input_dir, 'principal_*_behavioral.json'))
+
+    # Group files by model name
+    for filepath in bayesian_files + behavioral_files:
+        filename = os.path.basename(filepath)
+        # Extract model name: principal_MODEL_bayesian.json -> MODEL
+        if '_bayesian.json' in filename:
+            model_name = filename.replace('principal_', '').replace('_bayesian.json', '')
+        elif '_behavioral.json' in filename:
+            model_name = filename.replace('principal_', '').replace('_behavioral.json', '')
+        else:
+            continue
+
+        if model_name not in files_by_model:
+            files_by_model[model_name] = []
+        files_by_model[model_name].append(filepath)
 
     # Process all model groups
     all_results = {}
@@ -76,9 +87,19 @@ if __name__ == "__main__":
                 })
 
         # First pass: collect all case data
+        # Only include bayesian and behavioral principals
+        allowed_principals = {
+            'bayesian_principal',
+            'behavioral_principal'
+        }
+
         all_principal_data = {}
         for case_id, case_data in data.items():
             for principal_type, principal_response in case_data.items():
+                # Filter to only allowed principals
+                if principal_type not in allowed_principals:
+                    continue
+
                 if principal_type not in all_principal_data:
                     all_principal_data[principal_type] = {}
 
@@ -145,117 +166,44 @@ if __name__ == "__main__":
         
         all_results[model_name] = model_results
         
-        # Find cases with maximum difference between non-Bayesian and Bayesian principals
-        if 'bayesian_principal' in model_results:
+        # Find cases where bayesian_principal and behavioral_principal differ
+        if 'bayesian_principal' in model_results and 'behavioral_principal' in model_results:
             bayesian_case_details = model_results['bayesian_principal']['case_details']
+            behavioral_case_details = model_results['behavioral_principal']['case_details']
 
-            # Collect all principal differences in one structure
+            # Find cases where the two principals differ in decision
+            case_differences = []
+            for case_id in bayesian_case_details:
+                if case_id in behavioral_case_details:
+                    bayesian_decision = bayesian_case_details[case_id]['decision']
+                    behavioral_decision = behavioral_case_details[case_id]['decision']
+
+                    # Only include cases where they differ
+                    if bayesian_decision != behavioral_decision:
+                        case_differences.append({
+                            'case_id': case_id,
+                            'bayesian_decision': bayesian_decision,
+                            'behavioral_decision': behavioral_decision,
+                            'bayesian_reasoning': bayesian_case_details[case_id]['reasoning'],
+                            'behavioral_reasoning': behavioral_case_details[case_id]['reasoning']
+                        })
+
+            # Sort by case_id for consistency
+            case_differences.sort(key=lambda x: x['case_id'])
+
             model_max_diff_data = {
                 'model': model_name,
-                'principals': {}
+                'total_differing_cases': len(case_differences),
+                'cases': case_differences
             }
 
-            # For each non-Bayesian principal, find cases with different decisions
-            for principal_type in model_results:
-                if principal_type != 'bayesian_principal':
-                    principal_case_details = model_results[principal_type]['case_details']
-
-                    # Calculate differences for each case
-                    # For USMLE: binary decisions, so difference is 1.0 if different, 0.0 if same
-                    case_differences = {}
-                    for case_id in principal_case_details:
-                        if case_id in bayesian_case_details:
-                            principal_decision = principal_case_details[case_id]['decision']
-                            bayesian_decision = bayesian_case_details[case_id]['decision']
-
-                            # Convert to binary acceptance rate (1.0 for accept, 0.0 for reject)
-                            principal_rate = 1.0 if principal_decision == 'accept' else 0.0
-                            bayesian_rate = 1.0 if bayesian_decision == 'accept' else 0.0
-                            difference = abs(principal_rate - bayesian_rate)
-
-                            if difference > 0:  # Only include cases where they differ
-                                case_differences[case_id] = {
-                                    'difference': difference,
-                                    'principal_decision': principal_decision,
-                                    'bayesian_decision': bayesian_decision,
-                                    'principal_rate': principal_rate,
-                                    'bayesian_rate': bayesian_rate
-                                }
-
-                    # Sort by case_id for consistency (all differences are 1.0)
-                    sorted_cases = sorted(case_differences.items(), key=lambda x: x[0])
-
-                    # Store all differing cases for this principal
-                    model_max_diff_data['principals'][principal_type] = [
-                        {
-                            'case_id': case_id,
-                            **case_info
-                        }
-                        for case_id, case_info in sorted_cases
-                    ]
-
-            # Save one file per model with all principals' differing cases
-            output_file = f'{args.output}_{model_name}_max_diff.json'
-            with open(output_file, 'w') as f:
-                json.dump(model_max_diff_data, f, indent=2)
-
-            print(f"Saved max difference cases for {model_name}: {output_file}")
-
-            # Also save to cases/usmle folder
-            import os
-            case_dir = 'cases/usmle'
-            os.makedirs(case_dir, exist_ok=True)
-            case_output_file = f'{case_dir}/{model_name}_max_diff.json'
+            # Save to cases directory
+            os.makedirs(args.case_dir, exist_ok=True)
+            case_output_file = f'{args.case_dir}/decision_making_analysis_{model_name}_max_diff.json'
             with open(case_output_file, 'w') as f:
                 json.dump(model_max_diff_data, f, indent=2)
-            print(f"Saved max difference cases to cases folder: {case_output_file}")
-    
-    # Create plots for each model
-    for model_name, model_results in all_results.items():
-        # Create single plot showing acceptance rates
-        fig, ax = plt.subplots(1, 1, figsize=(10, 6))
+            print(f"Saved max difference cases: {case_output_file} ({len(case_differences)} differing cases)")
 
-        # Define the desired order
-        desired_order = ["bayesian_principal", "anchoring_principal", "availability_principal", "confirmation_principal", "conservatism_principal", "overconfidence_principal", "prospect_principal"]
-
-        # Filter to only include principal types that exist in the data
-        principal_types = [pt for pt in desired_order if pt in model_results]
-        acceptance_rates = [model_results[pt]['acceptance_rate'] for pt in principal_types]
-        display_labels = [pt.replace('_principal', '') for pt in principal_types]
-
-        # Create color array
-        colors = []
-        for pt in principal_types:
-            if pt == 'bayesian_principal':
-                colors.append('blue')
-            else:
-                colors.append('gray')
-
-        # Plot acceptance rates
-        bars = ax.bar(range(len(principal_types)), acceptance_rates, color=colors, alpha=0.7)
-
-        # Add value labels on bars
-        for i, (bar, rate) in enumerate(zip(bars, acceptance_rates)):
-            height = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width()/2., height,
-                   f'{rate:.1%}',
-                   ha='center', va='bottom', fontsize=10)
-
-        ax.set_xlabel('Principal Type', fontsize=12)
-        ax.set_ylabel('Acceptance Rate', fontsize=12)
-        ax.set_title(f'USMLE Acceptance Rates - {model_name}\n(Blue = Bayesian Baseline)',
-                    fontsize=14, fontweight='bold')
-        ax.set_xticks(range(len(principal_types)))
-        ax.set_xticklabels(display_labels, rotation=45, ha='right')
-        ax.set_ylim(0, 1.0)
-        ax.grid(axis='y', alpha=0.3)
-
-        plt.tight_layout()
-        plt.savefig(f'{args.output}_{model_name}.png', dpi=300, bbox_inches='tight')
-        plt.close()
-
-        print(f"\nSaved plot: {args.output}_{model_name}.png")
-    
     # Save all results to JSON
     output_data = {
         'results': all_results
