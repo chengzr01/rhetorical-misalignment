@@ -14,4 +14,4 @@ prompt: |
   Analyze this medical question and provide your answer with detailed clinical reasoning.
 
   OUTPUT FORMAT:
-  Structure your response clearly with the sections above. Be specific in your clinical reasoning. State your final answer clearly using the format: "ANSWER: [Letter]\n[Full answer text]"
+  Structure your response clearly with the sections above. Be specific in your clinical reasoning.

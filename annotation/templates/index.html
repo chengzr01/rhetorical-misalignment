@@ -4,12 +4,6 @@
 <h1>Clinical Decision Annotation System</h1>
 
 <div>
-    <h2>Welcome</h2>
-    <p>This system collects human annotations on clinical decision-making for AI-generated treatment recommendations.</p>
-    <p><strong>Total Cases Available:</strong> {{ total_cases }}</p>
-</div>
-
-<div>
     <h2>Process</h2>
     <ul>
         <li><strong>Step 1 - Initial Treatment Plan:</strong> You will review the full clinical context for a patient case. You will provide your treatment recommendations in three categories:
@@ -26,22 +20,17 @@
 
 <form action="/start" method="POST">
     <div class="form-group">
-        <label for="annotator_id">Your Annotator ID (optional):</label>
-        <input type="text" id="annotator_id" name="annotator_id" placeholder="Enter your unique identifier (optional)">
-    </div>
-
-    <div class="form-group">
         <label for="dataset">Select Dataset:</label>
         <select id="dataset" name="dataset" required style="width: 100%; padding: 8px; margin-top: 5px;" onchange="updateModels()">
-            <option value="mimic"
-                    {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('mimic', False) %}selected{% endif %}>
-                {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
-            </option>
             <option value="usmle"
                     {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('usmle', False) and not dataset_availability.get('mimic', False) %}selected{% endif %}>
+                    {% if dataset_availability.get('usmle', False) %}selected{% endif %}>
                 {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
+            </option>
+            <option value="mimic"
+                    {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
+                    {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
+                {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
             </option>
         </select>
         <small style="color: #7f8c8d; display: block; margin-top: 5px;">Select the dataset to annotate</small>
@@ -118,6 +107,71 @@
             <small style="color: #7f8c8d; display: block; margin-top: 5px;">
                 Specify how many cases to randomly select (1-{{ total_cases }})
             </small>
+        </div>
+    </div>
+
+    <div style="margin: 30px 0;">
+
+        <h2 style="color: #34495e; margin-bottom: 15px;">Demographic Information</h2>
+
+        <div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
+            <small><strong>Note:</strong> This information helps us understand the diversity of perspectives in our dataset. All fields are optional and will be kept confidential.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="annotator_id">Your Annotator ID:</label>
+            <input type="text" id="annotator_id" name="annotator_id" placeholder="Enter your unique identifier">
+        </div>
+
+        <div class="form-group">
+            <label for="expertise">Area of Expertise:</label>
+            <input type="text" id="expertise" name="expertise" placeholder="e.g., Internal Medicine, Cardiology, Emergency Medicine">
+            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Please specify your primary area of medical expertise</small>
+        </div>
+
+        <div class="form-group">
+            <label for="years_of_practice">Years of Practice:</label>
+            <input type="text" id="years_of_practice" name="years_of_practice" placeholder="e.g., 5, 10-15, 20+">
+            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Enter your years of professional practice</small>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age Range:</label>
+            <input type="text" id="age" name="age" placeholder="e.g., 25-34, 45-54, prefer not to say">
+            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Enter your age or age range</small>
+        </div>
+
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+                <option value="">Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer_not_to_say">Prefer not to say</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="race">Race/Ethnicity:</label>
+            <select id="race" name="race" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+                <option value="">Select your race/ethnicity...</option>
+                <option value="american_indian_alaska_native">American Indian or Alaska Native</option>
+                <option value="asian">Asian</option>
+                <option value="black_african_american">Black or African American</option>
+                <option value="hispanic_latino">Hispanic or Latino</option>
+                <option value="native_hawaiian_pacific_islander">Native Hawaiian or Other Pacific Islander</option>
+                <option value="white">White</option>
+                <option value="two_or_more">Two or More Races</option>
+                <option value="other">Other</option>
+                <option value="prefer_not_to_say">Prefer not to say</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="practice_location">Primary Practice Location:</label>
+            <input type="text" id="practice_location" name="practice_location" placeholder="e.g., Boston, MA; London, UK; Sydney, Australia">
+            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Enter your primary practice location (city, state/country)</small>
         </div>
     </div>
 

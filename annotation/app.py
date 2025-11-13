@@ -193,8 +193,8 @@ def index():
     dataset_availability = check_dataset_availability()
 
     # Find first available dataset
-    default_dataset = 'mimic'
-    for dataset_key in ['mimic', 'usmle']:
+    default_dataset = 'usmle'
+    for dataset_key in ['usmle', 'mimic']:
         if dataset_availability.get(dataset_key, False):
             default_dataset = dataset_key
             break
@@ -234,6 +234,17 @@ def start_annotation():
     selection_mode = request.form.get('selection_mode', 'all')
     model_key = request.form.get('model_key', 'small_dpo')
 
+    # Collect demographic information
+    demographics = {
+        'expertise': request.form.get('expertise', ''),
+        'years_of_practice': request.form.get('years_of_practice', ''),
+        'age': request.form.get('age', ''),
+        'sex': request.form.get('sex', ''),
+        'race': request.form.get('race', ''),
+        'practice_location': request.form.get('practice_location', ''),
+        'submitted_at': datetime.now().isoformat()
+    }
+
     # Load data for selected model and dataset
     data = load_data(model_key, dataset_key)
     total_cases = len(data)
@@ -266,37 +277,13 @@ def start_annotation():
         case_indices = list(range(case_index, total_cases))
 
     session['annotator_id'] = annotator_id if annotator_id else 'anonymous'
+    session['demographics'] = demographics
     session['dataset_key'] = dataset_key
     session['model_key'] = model_key
     session['case_indices'] = case_indices
     session['current_position'] = 0
     session['annotated_cases'] = []  # Track which cases have been annotated
     session['start_time'] = datetime.now().isoformat()
-
-    return redirect(url_for('demographics'))
-
-@app.route('/demographics')
-def demographics():
-    """Demographics information collection page"""
-    # Check if session has been initialized
-    if 'annotator_id' not in session:
-        return redirect(url_for('index'))
-
-    return render_template('demographics.html')
-
-@app.route('/demographics_submit', methods=['POST'])
-def demographics_submit():
-    """Handle demographics submission"""
-    # Store demographic information in session
-    session['demographics'] = {
-        'expertise': request.form.get('expertise'),
-        'years_of_practice': request.form.get('years_of_practice'),
-        'age': request.form.get('age'),
-        'sex': request.form.get('sex'),
-        'race': request.form.get('race'),
-        'practice_location': request.form.get('practice_location'),
-        'submitted_at': datetime.now().isoformat()
-    }
 
     return redirect(url_for('step1'))
 

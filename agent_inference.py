@@ -35,21 +35,6 @@ def detect_dataset_type(item: dict) -> str:
         return "mimic"
 
 
-def format_usmle_question(item: dict) -> str:
-    """
-    Format USMLE question with options for agent context.
-    """
-    question_text = item["question"]
-    options = item.get("options", {})
-
-    formatted = f"{question_text}\n\n"
-    formatted += "Answer Options:\n"
-    for key in sorted(options.keys()):
-        formatted += f"{key}. {options[key]}\n"
-
-    return formatted
-
-
 def build_clinical_question_contexts(questions: list[dict]) -> list[dict]:
     """
     Build contexts from clinical questions data.
@@ -219,8 +204,8 @@ def run_agent_inferences(
             else:
                 dataset_type = context.get("dataset_type", "mimic")
                 if dataset_type == "usmle":
-                    # USMLE: format question with options
-                    agent_context = format_usmle_question(context)
+                    # USMLE: only provide the question, not the options
+                    agent_context = context["question"]
                 else:
                     # MIMIC: context + detailed question
                     agent_context = f"{context['context']}\n\n{context['question']}"
