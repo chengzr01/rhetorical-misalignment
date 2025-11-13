@@ -34,16 +34,7 @@
 </div>
 
 <div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
-    <strong>Instructions:</strong> Review the correct answer below. You may make a final revision to your answer and confidence level, and provide reasoning for your final decision.
-</div>
-
-<!-- Your Step 2 Answer -->
-<div style="background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #ffc107; margin-bottom: 20px;">
-    <h3 style="margin-top: 0; color: #856404;">Your Answer After AI's Analysis (Step 2)</h3>
-    <div style="background: white; padding: 15px; border-radius: 4px;">
-        <strong>Selected Answer:</strong> <span style="font-size: 1.2em; color: #2196f3;">{{ step2_answer }}</span> - {{ case.options[step2_answer] }}<br>
-        <strong>Confidence:</strong> {{ step2_belief }}
-    </div>
+    <strong>📋 Instructions:</strong> Review the AI's clinical reasoning and the correct answer below. You may make a final revision to your answer and confidence level, and provide reasoning for your final decision.
 </div>
 
 <!-- Clinical Question -->
@@ -51,6 +42,25 @@
     <h3 style="color: #2c3e50; margin-bottom: 10px;">Clinical Question</h3>
     <div class="markdown-content" style="background: white; padding: 20px; border-radius: 4px; border: 1px solid #ddd;">
         {{ case.principal_context | safe }}
+    </div>
+</div>
+
+<!-- AI's Clinical Reasoning -->
+<div style="margin-bottom: 25px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h3 style="color: #2c3e50; margin: 0;">🤖 AI's Clinical Reasoning</h3>
+        <div id="highlightCounter" style="background: #e3f2fd; padding: 6px 12px; border-radius: 20px; font-size: 0.9em; border: 2px solid #2196f3; display: none;">
+            <strong>📌 Highlights:</strong> <span id="highlightCount">0</span>
+        </div>
+    </div>
+    <div style="margin-bottom: 12px; padding: 12px; background: #fff9e6; border-left: 3px solid #f39c12; border-radius: 3px;">
+        You can highlight important sentences from the AI's reasoning that influenced your decision.
+        <br>
+        Select any text below and click the <span style="background: #2196f3; color: white; padding: 2px 8px; border-radius: 3px;">✨ Highlight</span> button that appears (or press <kbd>Ctrl+H</kbd> / <kbd>Cmd+H</kbd>) Click on any highlighted text to remove it.
+        <br>
+    </div>
+    <div class="markdown-content highlightable" id="aiReasoning" style="background: #f0f8ff; padding: 20px; border-radius: 4px; border: 2px solid #2196f3; position: relative; transition: all 0.3s;">
+        {{ case.information_html | safe }}
     </div>
 </div>
 
@@ -110,7 +120,7 @@
     <div style="background: #f3e5f5; padding: 20px; border-radius: 4px; border-left: 4px solid #9c27b0; margin-bottom: 20px;">
         <h3 style="margin-top: 0; color: #6a1b9a;">Your Reasoning</h3>
         <div class="form-group">
-            <label for="reasoning">Please explain your reasoning for your final answer and any changes you made:</label>
+            <label for="reasoning">Please explain your reasoning for your final answer and whether the AI's analysis or the correct answer influenced your decision:</label>
             <textarea id="reasoning" name="reasoning" placeholder="Explain your thought process, why you chose this answer, and whether the AI's analysis or the correct answer influenced your decision..." style="min-height: 150px;"></textarea>
         </div>
     </div>
@@ -125,7 +135,276 @@
     </div>
 </form>
 
+<style>
+.highlightable {
+    position: relative;
+}
+
+.highlight {
+    background-color: #ffeb3b;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    position: relative;
+    border-bottom: 2px solid #fbc02d;
+    transition: all 0.2s;
+}
+
+.highlight::before {
+    content: '📌';
+    font-size: 0.7em;
+    margin-right: 2px;
+    opacity: 0.7;
+}
+
+.highlight:hover {
+    background-color: #fdd835;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.highlight:hover::after {
+    content: '✕ Click to remove';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.75em;
+    white-space: nowrap;
+    margin-bottom: 4px;
+    z-index: 1001;
+}
+
+#highlightBtn {
+    position: absolute;
+    display: none;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    z-index: 1000;
+    transition: all 0.2s;
+    animation: fadeIn 0.2s;
+}
+
+#highlightBtn::before {
+    content: '✨ ';
+    font-size: 1.1em;
+}
+
+#highlightBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+#highlightBtn:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+kbd {
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+</style>
+
+<button id="highlightBtn">Highlight (Ctrl+H)</button>
+
 <script>
+let highlights = [];
+const highlightBtn = document.getElementById('highlightBtn');
+
+// Make specific sections highlightable
+document.addEventListener('DOMContentLoaded', function() {
+    // Only make the AI's Clinical Reasoning section highlightable
+    const aiReasoningSection = document.getElementById('aiReasoning');
+
+    if (aiReasoningSection) {
+        // Already has highlightable class, just ensure it's properly set up
+        console.log('AI Clinical Reasoning section is ready for highlighting');
+    }
+});
+
+// Show highlight button on text selection
+document.addEventListener('mouseup', function(e) {
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+
+    if (selectedText && selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const container = range.commonAncestorContainer;
+
+        // Check if selection is within a highlightable area
+        let parent = container.nodeType === 3 ? container.parentNode : container;
+        let isHighlightable = false;
+
+        while (parent && parent !== document.body) {
+            if (parent.classList && parent.classList.contains('highlightable')) {
+                isHighlightable = true;
+                break;
+            }
+            parent = parent.parentNode;
+        }
+
+        if (isHighlightable && !container.classList?.contains('highlight')) {
+            const rect = range.getBoundingClientRect();
+            highlightBtn.style.display = 'block';
+            highlightBtn.style.left = rect.left + window.scrollX + 'px';
+            highlightBtn.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+        } else {
+            highlightBtn.style.display = 'none';
+        }
+    } else {
+        highlightBtn.style.display = 'none';
+    }
+});
+
+// Highlight button click
+highlightBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    applyHighlight();
+});
+
+// Keyboard shortcut: Ctrl+H (or Cmd+H on Mac)
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+        e.preventDefault();
+        const selection = window.getSelection();
+        if (selection.toString().trim()) {
+            applyHighlight();
+        }
+    }
+});
+
+function applyHighlight() {
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+
+    if (!selectedText || selection.rangeCount === 0) return;
+
+    const range = selection.getRangeAt(0);
+    const container = range.commonAncestorContainer;
+
+    // Get the section context (which section this belongs to)
+    let sectionContext = '';
+    let parent = container.nodeType === 3 ? container.parentNode : container;
+    while (parent && parent !== document.body) {
+        if (parent.classList?.contains('highlightable')) {
+            // Find the heading for context
+            let contextNode = parent.closest('div[style*="margin-bottom"]');
+            if (contextNode) {
+                let heading = contextNode.querySelector('h3, h4, strong');
+                if (heading) {
+                    sectionContext = heading.textContent.trim();
+                }
+            }
+            break;
+        }
+        parent = parent.parentNode;
+    }
+
+    // Create highlight span
+    const highlightSpan = document.createElement('span');
+    highlightSpan.className = 'highlight';
+    highlightSpan.setAttribute('data-text', selectedText);
+    highlightSpan.setAttribute('data-context', sectionContext);
+
+    try {
+        range.surroundContents(highlightSpan);
+
+        // Store highlight data
+        highlights.push({
+            text: selectedText,
+            context: sectionContext,
+            timestamp: new Date().toISOString()
+        });
+
+        // Update hidden input
+        updateHighlightInput();
+
+        // Add click handler to remove highlight
+        highlightSpan.addEventListener('click', function(e) {
+            e.stopPropagation();
+            removeHighlight(this);
+        });
+
+    } catch (err) {
+        console.error('Could not apply highlight:', err);
+    }
+
+    // Clear selection and hide button
+    selection.removeAllRanges();
+    highlightBtn.style.display = 'none';
+}
+
+function removeHighlight(element) {
+    const text = element.getAttribute('data-text');
+    const context = element.getAttribute('data-context');
+
+    // Remove from highlights array
+    highlights = highlights.filter(h =>
+        !(h.text === text && h.context === context)
+    );
+
+    // Replace highlight span with text
+    const parent = element.parentNode;
+    const textNode = document.createTextNode(element.textContent);
+    parent.replaceChild(textNode, element);
+
+    // Normalize to merge adjacent text nodes
+    parent.normalize();
+
+    // Update hidden input
+    updateHighlightInput();
+}
+
+function updateHighlightInput() {
+    let input = document.getElementById('highlights_data');
+    if (!input) {
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.id = 'highlights_data';
+        input.name = 'highlights_data';
+        document.querySelector('form').appendChild(input);
+    }
+    input.value = JSON.stringify(highlights);
+
+    // Update highlight counter
+    const counter = document.getElementById('highlightCounter');
+    const count = document.getElementById('highlightCount');
+    if (counter && count) {
+        count.textContent = highlights.length;
+        if (highlights.length > 0) {
+            counter.style.display = 'block';
+        } else {
+            counter.style.display = 'none';
+        }
+    }
+}
+
 function selectOption(key, element) {
     // Remove highlight from all options except correct answer
     document.querySelectorAll('[onclick^="selectOption"]').forEach(el => {

@@ -478,6 +478,9 @@ def step3():
     case_index = case_indices[current_position]
     case = data[case_index].copy()
 
+    # Render markdown fields to HTML
+    case['information_html'] = render_markdown(case.get('information', ''))
+
     if dataset_key == 'usmle':
         # USMLE: show step 2 answer and correct answer
         step2_answer = session.get('step2_answer', '')
@@ -534,6 +537,13 @@ def step3_submit():
     # Get reasoning
     reasoning = request.form.get('reasoning', '')
 
+    # Get highlights data
+    highlights_data = request.form.get('highlights_data', '[]')
+    try:
+        highlights = json.loads(highlights_data)
+    except:
+        highlights = []
+
     if dataset_key == 'usmle':
         # USMLE: collect final answer
         answer_step3 = request.form.get('answer_step3')
@@ -583,6 +593,7 @@ def step3_submit():
             },
 
             'reasoning': reasoning,
+            'highlights': highlights,
             'session_start': session.get('start_time'),
             'step1_time': session.get('step1_time'),
             'step2_time': session.get('step2_time'),
@@ -659,6 +670,7 @@ def step3_submit():
             },
 
             'reasoning': reasoning,
+            'highlights': highlights,
             'session_start': session.get('start_time'),
             'step1_time': session.get('step1_time'),
             'step2_time': session.get('step2_time'),
