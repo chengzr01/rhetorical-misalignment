@@ -29,10 +29,10 @@ for dataset_key, dataset_config in DATASETS.items():
 
 # Available model files (in order as per README.md)
 AVAILABLE_MODELS = [
-    {'key': 'small_dpo', 'file': 'agent_small_dpo.json', 'name': 'Llama-3.1-8B-Instruct-Tulu-3-DPO'},
-    {'key': 'small_sft', 'file': 'agent_small_sft.json', 'name': 'Llama-3.1-8B-Instruct-Tulu-3-SFT'},
+    {'key': 'small_dpo', 'file': 'agent_llama-dpo.json', 'name': 'Llama-3.1-8B-Instruct-Tulu-3-DPO'},
+    {'key': 'small_sft', 'file': 'agent_llama-sft.json', 'name': 'Llama-3.1-8B-Instruct-Tulu-3-SFT'},
     {'key': 'llama', 'file': 'agent_llama.json', 'name': 'Llama-3.3-70B-Instruct'},
-    {'key': 'oss', 'file': 'agent_oss.json', 'name': 'GPT-OSS-120B'},
+    {'key': 'llama_large', 'file': 'agent_llama-large.json', 'name': 'Llama-3.1-405B-Instruct'},
     {'key': 'deepseek', 'file': 'agent_deepseek.json', 'name': 'DeepSeek-V3.1'},
 ]
 
@@ -706,12 +706,82 @@ def step3_submit():
         # Stay on current page or go back to step1
         return redirect(url_for('step1'))
 
+@app.route('/summary')
+def summary():
+    """Summary page showing annotation progress and statistics"""
+    import hashlib
+
+    annotator_id = session.get('annotator_id', 'anonymous')
+    case_indices = session.get('case_indices', [])
+    annotated_cases = session.get('annotated_cases', [])
+    dataset_key = session.get('dataset_key', 'mimic')
+    model_key = session.get('model_key', 'small_dpo')
+
+    # Calculate statistics
+    total_cases = len(case_indices)
+    completed_cases = len(annotated_cases)
+    remaining_cases = total_cases - completed_cases
+
+    # Calculate how many times the participant changed their decisions
+    # We'll need to check the annotation files for this
+    dataset_config = get_dataset_config(dataset_key)
+    annotation_dir = dataset_config['annotation_dir']
+
+    decision_changes_count = 0
+    if os.path.exists(annotation_dir):
+        # Get all annotation files for this annotator
+        for filename in os.listdir(annotation_dir):
+            if filename.endswith('.json') and annotator_id in filename:
+                try:
+                    filepath = os.path.join(annotation_dir, filename)
+                    with open(filepath, 'r') as f:
+                        annotation = json.load(f)
+
+                    # Check if this annotation is from the current session
+                    if annotation.get('annotator_id') == annotator_id:
+                        # Count decision changes based on dataset type
+                        if dataset_key == 'usmle':
+                            # USMLE: check if answer changed between steps
+                            if annotation.get('step1_to_step2_changes', {}).get('answer_changed'):
+                                decision_changes_count += 1
+                            elif annotation.get('step2_to_step3_changes', {}).get('answer_changed'):
+                                decision_changes_count += 1
+                        else:
+                            # MIMIC: check if any treatment component changed
+                            step1_to_step2 = annotation.get('step1_to_step2_changes', {})
+                            step2_to_step3 = annotation.get('step2_to_step3_changes', {})
+
+                            if (step1_to_step2.get('medications_changed') or
+                                step1_to_step2.get('procedures_changed') or
+                                step1_to_step2.get('diagnoses_changed')):
+                                decision_changes_count += 1
+                            elif (step2_to_step3.get('medications_changed') or
+                                  step2_to_step3.get('procedures_changed') or
+                                  step2_to_step3.get('diagnoses_changed')):
+                                decision_changes_count += 1
+                except Exception as e:
+                    print(f"Error reading annotation file {filename}: {e}")
+                    continue
+
+    # Generate Prolific authentication code
+    # Use a hash of annotator_id, timestamp, and completed cases to create unique code
+    session_start = session.get('start_time', datetime.now().isoformat())
+    code_string = f"{annotator_id}_{session_start}_{completed_cases}_{total_cases}"
+    prolific_code = hashlib.sha256(code_string.encode()).hexdigest()[:12].upper()
+
+    return render_template('summary.html',
+                          annotator_id=annotator_id,
+                          total_cases=total_cases,
+                          completed_cases=completed_cases,
+                          remaining_cases=remaining_cases,
+                          decision_changes_count=decision_changes_count,
+                          prolific_code=prolific_code,
+                          dataset_name=DATASETS[dataset_key]['name'])
+
 @app.route('/complete')
 def complete():
-    
-    """Completion page"""
-    annotator_id = session.get('annotator_id', 'anonymous')
-    return render_template('complete.html', annotator_id=annotator_id)
+    """Completion page - redirects to summary"""
+    return redirect(url_for('summary'))
 
 @app.route('/reset')
 def reset():

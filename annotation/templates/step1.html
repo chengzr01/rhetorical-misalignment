@@ -28,11 +28,21 @@
 </div>
 
 <!-- Navigation Controls -->
-<div style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+<div style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap;">
     <a href="/jump_to/{{ current_position - 1 }}"
        class="btn"
        style="{% if current_position == 0 %}opacity: 0.5; pointer-events: none;{% endif %} background: #95a5a6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">
         ← Previous
+    </a>
+    <a href="/"
+       class="btn"
+       style="background: #e67e22; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">
+        🏠 Home
+    </a>
+    <a href="/summary"
+       class="btn"
+       style="background: #27ae60; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">
+        📊 Summary
     </a>
     <a href="/jump_to/{{ current_position + 1 }}"
        class="btn"

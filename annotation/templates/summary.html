@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Annotation Summary</h1>
+</div>
+
+<!-- Progress Statistics -->
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <h2 style="margin: 0 0 20px 0; color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">Progress Overview</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 3em; font-weight: bold; margin-bottom: 5px;">{{ completed_cases }}</div>
+            <div style="font-size: 1.1em; opacity: 0.9;">Completed</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 3em; font-weight: bold; margin-bottom: 5px;">{{ remaining_cases }}</div>
+            <div style="font-size: 1.1em; opacity: 0.9;">Remaining</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 3em; font-weight: bold; margin-bottom: 5px;">{{ total_cases }}</div>
+            <div style="font-size: 1.1em; opacity: 0.9;">Total Cases</div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div style="margin-top: 25px;">
+        <div style="background: rgba(255,255,255,0.2); border-radius: 20px; overflow: hidden; height: 30px;">
+            <div style="background: #4caf50; height: 100%; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: width 0.3s; width: {% if total_cases > 0 %}{{ (completed_cases / total_cases * 100) | int }}%{% else %}0%{% endif %};">
+                {% if total_cases > 0 %}{{ (completed_cases / total_cases * 100) | int }}%{% else %}0%{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Decision Changes Statistics -->
+<div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
+    <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 15px;">Decision Changes</h3>
+    <p style="font-size: 1.2em; color: #2c3e50; margin: 0;">
+        You changed your decision in <strong style="color: #4caf50; font-size: 1.5em;">{{ decision_changes_count }}</strong> case(s)
+    </p>
+    <p style="color: #7f8c8d; margin-top: 10px; font-size: 0.95em;">
+        This includes any changes made after reviewing the AI's recommendations or the correct answers.
+    </p>
+</div>
+
+<!-- Session Information -->
+<div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
+    <h3 style="color: #856404; margin-top: 0; margin-bottom: 15px;">Session Information</h3>
+    <div style="color: #856404;">
+        <p style="margin: 5px 0;"><strong>Annotator ID:</strong> <code style="background: rgba(0,0,0,0.1); padding: 4px 8px; border-radius: 4px;">{{ annotator_id }}</code></p>
+        <p style="margin: 5px 0;"><strong>Dataset:</strong> {{ dataset_name }}</p>
+    </div>
+</div>
+
+<!-- Prolific Authentication Code - Only show when all cases are completed -->
+{% if remaining_cases == 0 %}
+<div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
+    <h2 style="margin: 0 0 15px 0; color: white;">Prolific Completion Code</h2>
+    <p style="font-size: 0.95em; opacity: 0.95; margin-bottom: 20px;">Please copy this code and paste it into Prolific to receive your payment:</p>
+
+    <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 400px; border: 2px dashed rgba(255,255,255,0.5);">
+        <div style="font-size: 2.5em; font-weight: bold; letter-spacing: 4px; font-family: 'Courier New', monospace; margin-bottom: 10px;" id="prolific-code">
+            {{ prolific_code }}
+        </div>
+        <button onclick="copyToClipboard()" class="btn" style="background: rgba(255,255,255,0.3); color: white; padding: 10px 20px; border: 2px solid white; margin-top: 10px; cursor: pointer; font-weight: bold;">
+            📋 Copy Code
+        </button>
+    </div>
+
+    <p style="font-size: 0.9em; opacity: 0.9; margin-top: 15px;">⚠️ Make sure to save this code before closing this page!</p>
+</div>
+{% else %}
+<!-- Incomplete notification -->
+<div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 25px; border-radius: 8px; margin-bottom: 30px; text-align: center;">
+    <h3 style="color: #856404; margin-top: 0; margin-bottom: 15px;">⚠️ Annotation Not Complete</h3>
+    <p style="color: #856404; font-size: 1.1em;">
+        You still have <strong>{{ remaining_cases }}</strong> case(s) remaining to complete.
+    </p>
+    <p style="color: #856404; margin-top: 10px;">
+        The Prolific completion code will be displayed once you have finished all cases.
+    </p>
+</div>
+{% endif %}
+
+<!-- Navigation Buttons -->
+<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+    {% if remaining_cases > 0 %}
+    <a href="/step1" class="btn btn-primary" style="padding: 12px 24px; font-size: 1.1em;">
+        ← Continue Annotation
+    </a>
+    {% endif %}
+
+    <a href="/" class="btn btn-secondary" style="padding: 12px 24px; font-size: 1.1em;">
+        🏠 Return to Home
+    </a>
+
+    <a href="/reset" class="btn" style="background: #e74c3c; color: white; padding: 12px 24px; font-size: 1.1em;">
+        🔄 Start New Session
+    </a>
+</div>
+
+<!-- Thank You Message -->
+<div style="margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 8px; text-align: center;">
+    <h3 style="color: #2c3e50; margin-bottom: 15px;">Thank You!</h3>
+</div>
+
+<script>
+function copyToClipboard() {
+    const code = document.getElementById('prolific-code').textContent.trim();
+
+    // Create a temporary textarea element
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+
+    // Select and copy the text
+    textarea.select();
+    document.execCommand('copy');
+
+    // Remove the temporary element
+    document.body.removeChild(textarea);
+
+    // Show feedback
+    const button = event.target;
+    const originalText = button.innerHTML;
+    button.innerHTML = '✓ Copied!';
+    button.style.background = 'rgba(76, 175, 80, 0.8)';
+
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        button.style.background = 'rgba(255,255,255,0.3)';
+    }, 2000);
+}
+</script>
+{% endblock %}
