@@ -257,7 +257,7 @@ def main() -> None:
         type=str,
         nargs="+",
         default=["bayesian"],
-        choices=["all", "bayesian", "anchoring", "availability", "confirmation", "conservatism", "overconfidence", "prospect"],
+        choices=["all", "bayesian", "behavioral", "anchoring", "availability", "confirmation", "conservatism", "overconfidence", "prospect"],
         help="Principal types to use. Use 'all' to run all types except bayesian, or specify one or more types"
     )
     parser.add_argument(
@@ -308,7 +308,7 @@ def main() -> None:
 
     # Configure principal types
     principal_types = args.principal_types
-    all_available_principal_types = ["anchoring", "availability", "confirmation",
+    all_available_principal_types = ["behavioral", "anchoring", "availability", "confirmation",
                                     "conservatism", "overconfidence", "prospect"]
     if "all" in principal_types:
         principal_types = all_available_principal_types

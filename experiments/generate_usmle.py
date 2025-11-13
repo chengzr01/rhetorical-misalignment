@@ -141,7 +141,7 @@ def main():
     parser.add_argument(
         '-n', '--num-questions',
         type=int,
-        default=100,
+        default=1024,
         help='Number of questions to generate (default: all)'
     )
 

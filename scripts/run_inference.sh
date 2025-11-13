@@ -5,6 +5,7 @@
 #
 # Examples:
 #   bash scripts/run_inference.sh llama-large mimiciv_demo bayesian
+#   bash scripts/run_inference.sh deepseek usmle behavioral
 #   bash scripts/run_inference.sh deepseek usmle all
 #
 
@@ -30,7 +31,8 @@ declare -A MODEL_MAP=(
     ["llama"]="meta/llama-3.3-70b-instruct"
     ["llama-small"]="meta/llama-3.1-8b-instruct"
     ["llama-large"]="meta/llama-3.1-405b-instruct"
-    ["oss"]="openai/gpt-oss-120b"
+    ["llama-dpo"]="allenai/Llama-3.1-Tulu-3-8B-DPO"
+    ["llama-sft"]="allenai/Llama-3.1-Tulu-3-8B-SFT"
 )
 
 # Dataset configurations
@@ -50,6 +52,15 @@ if [ -z "$AGENT_MODEL" ]; then
     echo -e "${RED}Error: Unknown agent model '${AGENT_MODEL_KEY}'${NC}"
     echo "Available models: ${!MODEL_MAP[@]}"
     exit 1
+fi
+
+# Override AGENT_SERVER for sglang models
+if [ "$AGENT_MODEL_KEY" == "llama-dpo" ]; then
+    AGENT_SERVER="sglang"
+    SGLANG_PORT="30001"
+elif [ "$AGENT_MODEL_KEY" == "llama-sft" ]; then
+    AGENT_SERVER="sglang"
+    SGLANG_PORT="30002"
 fi
 
 # Resolve dataset
@@ -73,6 +84,10 @@ echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Inference Configuration${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo -e "Agent Model:      ${GREEN}${AGENT_MODEL}${NC}"
+echo -e "Agent Server:     ${GREEN}${AGENT_SERVER}${NC}"
+if [ -n "$SGLANG_PORT" ]; then
+    echo -e "SGLang Port:      ${GREEN}${SGLANG_PORT}${NC}"
+fi
 echo -e "Dataset:          ${GREEN}${DATASET_KEY}${NC} (${INPUT_FILE})"
 echo -e "Principal Types:  ${GREEN}${PRINCIPAL_TYPES}${NC}"
 echo -e "Agent Cache:      ${YELLOW}${AGENT_CACHE}${NC}"
@@ -81,12 +96,22 @@ echo -e "${BLUE}========================================${NC}\n"
 
 # Stage 1: Agent Inference
 echo -e "${BLUE}[STAGE 1]${NC} Running agent inference..."
-python agent_inference.py \
-    --agent-server "${AGENT_SERVER}" \
-    --agent-model "${AGENT_MODEL}" \
-    --input "${INPUT_FILE}" \
-    --output "${AGENT_CACHE}" \
-    --max-workers "${MAX_WORKERS}"
+if [ -n "$SGLANG_PORT" ]; then
+    python agent_inference.py \
+        --agent-server "${AGENT_SERVER}" \
+        --agent-model "${AGENT_MODEL}" \
+        --agent-sglang-port "${SGLANG_PORT}" \
+        --input "${INPUT_FILE}" \
+        --output "${AGENT_CACHE}" \
+        --max-workers "${MAX_WORKERS}"
+else
+    python agent_inference.py \
+        --agent-server "${AGENT_SERVER}" \
+        --agent-model "${AGENT_MODEL}" \
+        --input "${INPUT_FILE}" \
+        --output "${AGENT_CACHE}" \
+        --max-workers "${MAX_WORKERS}"
+fi
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Error: Agent inference failed${NC}"
