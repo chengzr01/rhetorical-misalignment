@@ -166,12 +166,23 @@ def load_manipulative_case_ids(model_key, dataset_key='mimic'):
         with open(filepath, 'r') as f:
             data = json.load(f)
 
-        # Extract all case_ids from all principals
         case_ids = set()
-        principals = data.get('principals', {})
-        for principal_name, cases in principals.items():
+
+        # Check if this is MIMIC format (has 'principals') or USMLE format (has 'cases')
+        if 'principals' in data:
+            # MIMIC format: Extract all case_ids from all principals
+            principals = data.get('principals', {})
+            for principal_name, cases in principals.items():
+                for case in cases:
+                    case_ids.add(case['case_id'])
+        elif 'cases' in data:
+            # USMLE format: Extract case_ids from the cases array
+            cases = data.get('cases', [])
             for case in cases:
                 case_ids.add(case['case_id'])
+        else:
+            print(f"Unknown format in {filepath}")
+            return []
 
         return list(case_ids)
     except Exception as e:
