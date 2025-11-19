@@ -7,6 +7,7 @@
 #   bash scripts/run_inference.sh llama-large mimiciv_demo bayesian
 #   bash scripts/run_inference.sh deepseek usmle behavioral
 #   bash scripts/run_inference.sh deepseek usmle all
+#   bash scripts/run_inference.sh llama usmle_sample bayesian
 #
 
 set -e  # Exit on error
@@ -39,6 +40,7 @@ declare -A MODEL_MAP=(
 declare -A DATASET_MAP=(
     ["mimiciv_demo"]="experiments/input/clinical_questions_mimiciv_demo.json"
     ["usmle"]="experiments/input/clinical_questions_usmle.json"
+    ["usmle_sample"]="experiments/input/clinical_questions_usmle_sample.json"
 )
 
 # Parse arguments

@@ -199,7 +199,12 @@ def get_indices_for_case_ids(data, case_ids):
 
 @app.route('/')
 def index():
-    """Landing page - ask for annotator ID and show case selection"""
+    """Landing page - show consent form"""
+    return render_template('index.html')
+
+@app.route('/demographics')
+def demographics():
+    """Demographics and study information page"""
     # Check dataset availability
     dataset_availability = check_dataset_availability()
 
@@ -225,7 +230,7 @@ def index():
     except:
         pass
 
-    return render_template('index.html',
+    return render_template('demographics.html',
                           total_cases=total_cases,
                           available_models=available_models,
                           datasets=DATASETS,

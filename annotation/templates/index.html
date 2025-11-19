@@ -1,211 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Clinical Decision Annotation System</h1>
+<h1 style="text-align: center;">Clinical Decision Annotation System</h1>
 
-<div>
-    <h2>Process</h2>
-    <!-- USMLE Process (default) -->
-    <div id="usmle-process">
-        <ul>
-            <li><strong>Step 1 - Initial Answer:</strong> You will review a clinical question with multiple-choice options. You will select the answer you think is most appropriate and indicate your confidence level (0-1).</li>
-            <li><strong>Step 2 - After AI's Analysis:</strong> You will see the AI agent's clinical reasoning and analysis. You may then revise your answer selection and confidence level, or keep your original choice.</li>
-            <li><strong>Step 3 - After Correct Answer:</strong> You will see the correct answer. You may make final revisions to your answer selection and confidence level based on this information.</li>
-        </ul>
-    </div>
-    <!-- MIMIC Process -->
-    <div id="mimic-process" style="display: none;">
-        <ul>
-            <li><strong>Step 1 - Initial Treatment Plan:</strong> You will review the full clinical context for a patient case. You will provide your treatment recommendations in three categories:
-                <ul style="margin-top: 5px;">
-                    <li>Medications (with confidence level 0-1)</li>
-                    <li>Procedures (with confidence level 0-1)</li>
-                    <li>Diagnoses (with confidence level 0-1)</li>
-                </ul>
-            </li>
-            <li><strong>Step 2 - After Agent's Recommendation:</strong> You will see the AI agent's treatment recommendation. You may then revise your treatment plan and confidence levels for each category, or keep your original inputs.</li>
-            <li><strong>Step 3 - After Actual Treatment:</strong> You will see the actual treatment outcomes that were administered. You may make final revisions to your treatment plan and confidence levels for each category based on this information.</li>
-        </ul>
-    </div>
-</div>
-
-<form action="/start" method="POST">
-    <div class="form-group">
-        <label for="dataset">Select Dataset:</label>
-        <select id="dataset" name="dataset" required style="width: 100%; padding: 8px; margin-top: 5px;" onchange="updateModels()">
-            <option value="usmle"
-                    {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('usmle', False) %}selected{% endif %}>
-                {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
-            </option>
-            <option value="mimic"
-                    {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
-                {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
-            </option>
-        </select>
-        <small style="color: #7f8c8d; display: block; margin-top: 5px;">Select the dataset to annotate</small>
-    </div>
-
-    <div class="form-group">
-        <label for="model_key">Select Model:</label>
-        <select id="model_key" name="model_key" required style="width: 100%; padding: 8px; margin-top: 5px;">
-            {% for model in available_models %}
-            <option value="{{ model.key }}" {% if not model.get('available', False) %}disabled{% endif %}>
-                {{ model.name }}{% if not model.get('available', False) %} (Not available){% endif %}
-            </option>
-            {% endfor %}
-        </select>
-        <small style="color: #7f8c8d; display: block; margin-top: 5px;">Choose which model's recommendations to annotate</small>
-    </div>
-
-    <div class="form-group">
-        <label>Case Selection Mode:</label>
-        <div style="margin: 10px 0;">
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="selection_mode" value="all" checked onchange="toggleSelectionMode()">
-                <strong>All Cases</strong> - Annotate all cases sequentially
-            </label>
-            <label style="display: block;">
-                <input type="radio" name="selection_mode" value="targeted" onchange="toggleSelectionMode()">
-                <strong>Targeted Cases</strong> - Annotate specific filtered cases
-            </label>
-        </div>
-    </div>
-
-    <div class="form-group" id="all-cases-options">
-        <label for="case_index">Start from Case Index (0 to {{ total_cases - 1 }}):</label>
-        <input type="number" id="case_index" name="case_index" min="0" max="{{ total_cases - 1 }}" value="0">
-        <small style="color: #7f8c8d; display: block; margin-top: 5px;">You can start from a specific case number if needed</small>
-    </div>
-
-    <div class="form-group" id="targeted-cases-options" style="display: none;">
-        <label>Selection Type:</label>
-        <div style="margin: 10px 0;">
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="targeted_type" value="manipulative" checked onchange="toggleTargetedType()">
-                <strong>Manipulative Cases</strong> - Cases where the model shows significant bias
-            </label>
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="targeted_type" value="indices" onchange="toggleTargetedType()">
-                <strong>Specific Indices</strong> - Choose specific case numbers
-            </label>
-            <label style="display: block;">
-                <input type="radio" name="targeted_type" value="random" onchange="toggleTargetedType()">
-                <strong>Random Sample</strong> - Randomly select a number of cases
-            </label>
-        </div>
-
-        <div id="manipulative-input" style="margin-top: 10px;">
-            <div style="background: #fff3cd; padding: 10px; border-radius: 4px; border-left: 4px solid #ffc107;">
-                <small style="color: #856404;">
-                    <strong>Note:</strong> This will show cases from the decision making analysis where the model demonstrated the highest difference between principal and bayesian contexts, indicating potential manipulation or bias.
-                </small>
-            </div>
-        </div>
-
-        <div id="indices-input" style="margin-top: 10px; display: none;">
-            <label for="case_indices">Case Indices (comma-separated or range):</label>
-            <input type="text" id="case_indices" name="case_indices" placeholder="e.g., 0,5,10 or 0-20" style="width: 100%; padding: 8px; margin-top: 5px;">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">
-                Enter specific case numbers separated by commas (e.g., "0,5,10") or a range (e.g., "0-20")
-            </small>
-        </div>
-
-        <div id="random-input" style="margin-top: 10px; display: none;">
-            <label for="random_count">Number of random cases:</label>
-            <input type="number" id="random_count" name="random_count" min="1" max="{{ total_cases }}" value="10" style="width: 100%; padding: 8px; margin-top: 5px;">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">
-                Specify how many cases to randomly select (1-{{ total_cases }})
-            </small>
-        </div>
-    </div>
-
-    <div style="margin: 30px 0;">
-
-        <h2 style="color: #34495e; margin-bottom: 15px;">Demographic Information</h2>
-
-        <div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
-            <small><strong>Note:</strong> This information helps us understand the diversity of perspectives in our dataset. All fields are optional and will be kept confidential.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="annotator_id">Your Annotator ID:</label>
-            <input type="text" id="annotator_id" name="annotator_id" placeholder="Enter your unique identifier">
-        </div>
-
-        <div class="form-group">
-            <label for="expertise">Area of Expertise:</label>
-            <input type="text" id="expertise" name="expertise" placeholder="e.g., Internal Medicine, Cardiology, Emergency Medicine">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Please specify your primary area of medical expertise</small>
-        </div>
-
-        <div class="form-group">
-            <label for="years_of_practice">Years of Practice:</label>
-            <input type="text" id="years_of_practice" name="years_of_practice" placeholder="e.g., 5, 10-15, 20+">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Enter your years of professional practice</small>
-        </div>
-
-        <div class="form-group">
-            <label for="age">Age Range:</label>
-            <input type="text" id="age" name="age" placeholder="e.g., 25-34, 45-54, prefer not to say">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Enter your age or age range</small>
-        </div>
-
-        <div class="form-group">
-            <label for="sex">Sex:</label>
-            <select id="sex" name="sex" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
-                <option value="">Select...</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-                <option value="prefer_not_to_say">Prefer not to say</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="race">Race/Ethnicity:</label>
-            <select id="race" name="race" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
-                <option value="">Select your race/ethnicity...</option>
-                <option value="american_indian_alaska_native">American Indian or Alaska Native</option>
-                <option value="asian">Asian</option>
-                <option value="black_african_american">Black or African American</option>
-                <option value="hispanic_latino">Hispanic or Latino</option>
-                <option value="native_hawaiian_pacific_islander">Native Hawaiian or Other Pacific Islander</option>
-                <option value="white">White</option>
-                <option value="two_or_more">Two or More Races</option>
-                <option value="other">Other</option>
-                <option value="prefer_not_to_say">Prefer not to say</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="practice_location">Primary Practice Location:</label>
-            <input type="text" id="practice_location" name="practice_location" placeholder="e.g., Boston, MA; London, UK; Sydney, Australia">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">Enter your primary practice location (city, state/country)</small>
-        </div>
+<div style="max-width: 900px; margin: 0 auto;">
+    <div style="margin-bottom: 40px;">
+        <p style="font-size: 18px; color: #555; line-height: 1.8;">
+            Welcome to the Clinical Decision Annotation System. Before participating,
+            please review the research consent form below.
+        </p>
     </div>
 
     <!-- Research Consent Section -->
     <div style="margin: 40px 0 30px 0;">
         <div
             id="consent-header"
-            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 12px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s ease;"
-            onclick="toggleConsent()"
-            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'"
-            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+            style="background: #667eea; color: white; padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; transition: background-color 0.3s ease;"
+            onclick="toggleConsent()">
             <h2 style="margin: 0; color: white; border: none; padding: 0; font-size: 1.3em; font-weight: 500;">Research Consent Form</h2>
             <span id="consent-toggle-icon" style="font-size: 20px; font-weight: bold; transition: transform 0.3s ease;">▼</span>
         </div>
-        <div id="consent-body" style="padding: 30px; background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%); max-height: 500px; overflow-y: auto; border-radius: 0 0 12px 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); margin-top: 2px;">
+        <div id="consent-body" style="padding: 30px; background: #f8f9fa; max-height: 500px; overflow-y: auto; border-radius: 0 0 8px 8px; border: 1px solid #ddd; border-top: none; margin-top: 0;">
             {% include 'consent.html' %}
         </div>
     </div>
 
-    <div style="display: flex; justify-content: center; margin: 40px 0;">
-        <button type="submit" class="btn btn-primary" id="start-button" style="padding: 15px 50px; font-size: 18px; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(52, 152, 219, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(52, 152, 219, 0.3)'">Start Annotation</button>
+    <div style="text-align: center; margin: 40px 0;">
+        <button
+            type="button"
+            class="btn btn-primary"
+            id="continue-button"
+            onclick="proceedToDemographics()"
+            style="padding: 15px 50px; font-size: 18px;">
+            Continue
+        </button>
     </div>
-</form>
+</div>
 
 <script>
 // Consent form toggle functionality
@@ -227,7 +57,7 @@ function toggleConsent() {
 // Consent validation
 function validateConsent() {
     const consentRadios = document.querySelectorAll('input[name="consent"]');
-    const startButton = document.getElementById('start-button');
+    const continueButton = document.getElementById('continue-button');
     const consentHeader = document.getElementById('consent-header');
     let agreed = false;
 
@@ -238,128 +68,49 @@ function validateConsent() {
     });
 
     if (agreed) {
-        startButton.disabled = false;
-        startButton.style.opacity = '1';
-        startButton.style.cursor = 'pointer';
-        consentHeader.style.background = 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)';
-        consentHeader.style.boxShadow = '0 4px 15px rgba(86, 171, 47, 0.3)';
+        continueButton.disabled = false;
+        continueButton.style.opacity = '1';
+        continueButton.style.cursor = 'pointer';
+        consentHeader.style.background = '#2ecc71';
     } else {
-        startButton.disabled = true;
-        startButton.style.opacity = '0.5';
-        startButton.style.cursor = 'not-allowed';
-        consentHeader.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-        consentHeader.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+        continueButton.disabled = true;
+        continueButton.style.opacity = '0.5';
+        continueButton.style.cursor = 'not-allowed';
+        consentHeader.style.background = '#667eea';
     }
 
     return agreed;
 }
 
+// Proceed to demographics page
+function proceedToDemographics() {
+    if (validateConsent()) {
+        window.location.href = '/demographics';
+    } else {
+        alert('Please read and agree to the consent form before proceeding.');
+        // Expand consent form if collapsed
+        const consentBody = document.getElementById('consent-body');
+        const toggleIcon = document.getElementById('consent-toggle-icon');
+        consentBody.style.display = 'block';
+        toggleIcon.style.transform = 'rotate(0deg)';
+        toggleIcon.textContent = '▼';
+        // Scroll to consent form
+        document.getElementById('consent-header').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 // Add event listeners to consent radio buttons
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize button as disabled
-    const startButton = document.getElementById('start-button');
-    startButton.disabled = true;
-    startButton.style.opacity = '0.5';
-    startButton.style.cursor = 'not-allowed';
+    const continueButton = document.getElementById('continue-button');
+    continueButton.disabled = true;
+    continueButton.style.opacity = '0.5';
+    continueButton.style.cursor = 'not-allowed';
 
     const consentRadios = document.querySelectorAll('input[name="consent"]');
     consentRadios.forEach(radio => {
         radio.addEventListener('change', validateConsent);
     });
-
-    // Intercept form submission to check consent
-    const form = document.querySelector('form[action="/start"]');
-    form.addEventListener('submit', function(e) {
-        if (!validateConsent()) {
-            e.preventDefault();
-            alert('Please read and agree to the consent form before proceeding.');
-            // Expand consent form if collapsed
-            const consentBody = document.getElementById('consent-body');
-            const toggleIcon = document.getElementById('consent-toggle-icon');
-            consentBody.style.display = 'block';
-            toggleIcon.style.transform = 'rotate(0deg)';
-            toggleIcon.textContent = '▼';
-            // Scroll to consent form
-            document.getElementById('consent-header').scrollIntoView({ behavior: 'smooth' });
-            return false;
-        }
-    });
-});
-
-
-async function updateModels() {
-    const datasetSelect = document.getElementById('dataset');
-    const modelSelect = document.getElementById('model_key');
-    const selectedDataset = datasetSelect.value;
-
-    // Update process description based on selected dataset
-    updateProcessDescription(selectedDataset);
-
-    // Fetch models for the selected dataset
-    try {
-        const response = await fetch(`/api/models/${selectedDataset}`);
-        const data = await response.json();
-        const models = data.models || [];
-
-        // Clear current options
-        modelSelect.innerHTML = '';
-
-        // Add new options
-        models.forEach(model => {
-            const option = document.createElement('option');
-            option.value = model.key;
-            option.textContent = model.name;
-            if (!model.available) {
-                option.disabled = true;
-                option.textContent += ' (Not available)';
-            }
-            modelSelect.appendChild(option);
-        });
-
-        // Select first available model
-        const firstAvailable = models.find(m => m.available);
-        if (firstAvailable) {
-            modelSelect.value = firstAvailable.key;
-        }
-    } catch (error) {
-        console.error('Error fetching models:', error);
-    }
-}
-
-function updateProcessDescription(dataset) {
-    const usmleProcess = document.getElementById('usmle-process');
-    const mimicProcess = document.getElementById('mimic-process');
-
-    if (dataset === 'usmle') {
-        usmleProcess.style.display = 'block';
-        mimicProcess.style.display = 'none';
-    } else {
-        usmleProcess.style.display = 'none';
-        mimicProcess.style.display = 'block';
-    }
-}
-
-function toggleSelectionMode() {
-    const allCasesMode = document.querySelector('input[name="selection_mode"][value="all"]').checked;
-    document.getElementById('all-cases-options').style.display = allCasesMode ? 'block' : 'none';
-    document.getElementById('targeted-cases-options').style.display = allCasesMode ? 'none' : 'block';
-}
-
-function toggleTargetedType() {
-    const manipulativeMode = document.querySelector('input[name="targeted_type"][value="manipulative"]').checked;
-    const indicesMode = document.querySelector('input[name="targeted_type"][value="indices"]').checked;
-    const randomMode = document.querySelector('input[name="targeted_type"][value="random"]').checked;
-
-    document.getElementById('manipulative-input').style.display = manipulativeMode ? 'block' : 'none';
-    document.getElementById('indices-input').style.display = indicesMode ? 'block' : 'none';
-    document.getElementById('random-input').style.display = randomMode ? 'block' : 'none';
-}
-
-// Initialize process description on page load
-document.addEventListener('DOMContentLoaded', function() {
-    const datasetSelect = document.getElementById('dataset');
-    const initialDataset = datasetSelect.value;
-    updateProcessDescription(initialDataset);
 });
 </script>
 {% endblock %}
