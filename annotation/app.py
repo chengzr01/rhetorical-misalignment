@@ -20,6 +20,12 @@ DATASETS = {
         'data_dir': '../experiments/cache/usmle',
         'cases_dir': '../experiments/cases/usmle',
         'annotation_dir': 'annotations/usmle'
+    },
+    'usmle_sample': {
+        'name': 'USMLE Sample',
+        'data_dir': '../experiments/cache/usmle_sample',
+        'cases_dir': '../experiments/cases/usmle_sample',
+        'annotation_dir': 'annotations/usmle_sample'
     }
 }
 
@@ -209,8 +215,8 @@ def demographics():
     dataset_availability = check_dataset_availability()
 
     # Find first available dataset
-    default_dataset = 'usmle'
-    for dataset_key in ['usmle', 'mimic']:
+    default_dataset = 'usmle_sample'
+    for dataset_key in ['usmle_sample', 'usmle', 'mimic']:
         if dataset_availability.get(dataset_key, False):
             default_dataset = dataset_key
             break
@@ -327,8 +333,8 @@ def step1():
     case_index = case_indices[current_position]
     case = data[case_index].copy()
 
-    # Check if this is USMLE dataset
-    if dataset_key == 'usmle':
+    # Check if this is USMLE dataset (or USMLE sample)
+    if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: multiple-choice interface
         return render_template('step1_usmle.html',
                               case=case,
@@ -353,7 +359,7 @@ def step1_submit():
     """Handle step 1 submission - collect 3 treatment blocks with beliefs (MIMIC) or answer choice (USMLE)"""
     dataset_key = session.get('dataset_key', 'mimic')
 
-    if dataset_key == 'usmle':
+    if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: collect answer and belief
         answer = request.form.get('answer')
         answer_belief = request.form.get('answer_belief')
@@ -404,7 +410,7 @@ def step2():
     # Render markdown fields to HTML
     case['information_html'] = render_markdown(case.get('information', ''))
 
-    if dataset_key == 'usmle':
+    if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: show initial answer and AI's analysis
         initial_answer = session.get('step1_answer', '')
         initial_belief = session.get('step1_answer_belief', '0.5')
@@ -452,7 +458,7 @@ def step2_submit():
     except:
         highlights_step2 = []
 
-    if dataset_key == 'usmle':
+    if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: collect revised answer and belief
         answer_step2 = request.form.get('answer_step2')
         answer_belief_step2 = request.form.get('answer_belief_step2')
@@ -507,7 +513,7 @@ def step3():
     # Render markdown fields to HTML
     case['information_html'] = render_markdown(case.get('information', ''))
 
-    if dataset_key == 'usmle':
+    if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: show step 2 answer and correct answer
         step2_answer = session.get('step2_answer', '')
         step2_belief = session.get('step2_answer_belief', '0.5')
@@ -582,7 +588,7 @@ def step3_submit():
     # Combine all highlights
     highlights = highlights_step2 + highlights_step3
 
-    if dataset_key == 'usmle':
+    if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: collect final answer
         answer_step3 = request.form.get('answer_step3')
         answer_belief_step3 = request.form.get('answer_belief_step3')
@@ -778,7 +784,7 @@ def summary():
                     # Check if this annotation is from the current session
                     if annotation.get('annotator_id') == annotator_id:
                         # Count decision changes based on dataset type
-                        if dataset_key == 'usmle':
+                        if dataset_key in ['usmle', 'usmle_sample']:
                             # USMLE: check if answer changed between steps
                             if annotation.get('step1_to_step2_changes', {}).get('answer_changed'):
                                 decision_changes_count += 1

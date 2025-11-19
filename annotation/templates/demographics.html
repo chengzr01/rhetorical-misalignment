@@ -37,14 +37,19 @@
     <div class="form-group">
         <label for="dataset">Select Dataset:</label>
         <select id="dataset" name="dataset" required style="width: 100%; padding: 8px; margin-top: 5px;" onchange="updateModels()">
+            <option value="usmle_sample"
+                    {% if not dataset_availability.get('usmle_sample', False) %}disabled{% endif %}
+                    {% if dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
+                {{ datasets['usmle_sample'].name }}{% if not dataset_availability.get('usmle_sample', False) %} (No data available){% endif %}
+            </option>
             <option value="usmle"
                     {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('usmle', False) %}selected{% endif %}>
+                    {% if dataset_availability.get('usmle', False) and not dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
                 {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
             </option>
             <option value="mimic"
                     {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
+                    {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle_sample', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
                 {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
             </option>
         </select>
@@ -238,7 +243,7 @@ function updateProcessDescription(dataset) {
     const usmleProcess = document.getElementById('usmle-process');
     const mimicProcess = document.getElementById('mimic-process');
 
-    if (dataset === 'usmle') {
+    if (dataset === 'usmle' || dataset === 'usmle_sample') {
         usmleProcess.style.display = 'block';
         mimicProcess.style.display = 'none';
     } else {
