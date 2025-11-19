@@ -186,10 +186,107 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Start Annotation</button>
+    <!-- Research Consent Section -->
+    <div style="margin: 40px 0 30px 0;">
+        <div
+            id="consent-header"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 12px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); transition: all 0.3s ease;"
+            onclick="toggleConsent()"
+            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+            <h2 style="margin: 0; color: white; border: none; padding: 0; font-size: 1.3em; font-weight: 500;">Research Consent Form</h2>
+            <span id="consent-toggle-icon" style="font-size: 20px; font-weight: bold; transition: transform 0.3s ease;">▼</span>
+        </div>
+        <div id="consent-body" style="padding: 30px; background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%); max-height: 500px; overflow-y: auto; border-radius: 0 0 12px 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); margin-top: 2px;">
+            {% include 'consent.html' %}
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin: 40px 0;">
+        <button type="submit" class="btn btn-primary" id="start-button" style="padding: 15px 50px; font-size: 18px; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(52, 152, 219, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(52, 152, 219, 0.3)'">Start Annotation</button>
+    </div>
 </form>
 
 <script>
+// Consent form toggle functionality
+function toggleConsent() {
+    const consentBody = document.getElementById('consent-body');
+    const toggleIcon = document.getElementById('consent-toggle-icon');
+
+    if (consentBody.style.display === 'none') {
+        consentBody.style.display = 'block';
+        toggleIcon.style.transform = 'rotate(0deg)';
+        toggleIcon.textContent = '▼';
+    } else {
+        consentBody.style.display = 'none';
+        toggleIcon.style.transform = 'rotate(-90deg)';
+        toggleIcon.textContent = '▶';
+    }
+}
+
+// Consent validation
+function validateConsent() {
+    const consentRadios = document.querySelectorAll('input[name="consent"]');
+    const startButton = document.getElementById('start-button');
+    const consentHeader = document.getElementById('consent-header');
+    let agreed = false;
+
+    consentRadios.forEach(radio => {
+        if (radio.checked && radio.value === 'agree') {
+            agreed = true;
+        }
+    });
+
+    if (agreed) {
+        startButton.disabled = false;
+        startButton.style.opacity = '1';
+        startButton.style.cursor = 'pointer';
+        consentHeader.style.background = 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)';
+        consentHeader.style.boxShadow = '0 4px 15px rgba(86, 171, 47, 0.3)';
+    } else {
+        startButton.disabled = true;
+        startButton.style.opacity = '0.5';
+        startButton.style.cursor = 'not-allowed';
+        consentHeader.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        consentHeader.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+    }
+
+    return agreed;
+}
+
+// Add event listeners to consent radio buttons
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize button as disabled
+    const startButton = document.getElementById('start-button');
+    startButton.disabled = true;
+    startButton.style.opacity = '0.5';
+    startButton.style.cursor = 'not-allowed';
+
+    const consentRadios = document.querySelectorAll('input[name="consent"]');
+    consentRadios.forEach(radio => {
+        radio.addEventListener('change', validateConsent);
+    });
+
+    // Intercept form submission to check consent
+    const form = document.querySelector('form[action="/start"]');
+    form.addEventListener('submit', function(e) {
+        if (!validateConsent()) {
+            e.preventDefault();
+            alert('Please read and agree to the consent form before proceeding.');
+            // Expand consent form if collapsed
+            const consentBody = document.getElementById('consent-body');
+            const toggleIcon = document.getElementById('consent-toggle-icon');
+            consentBody.style.display = 'block';
+            toggleIcon.style.transform = 'rotate(0deg)';
+            toggleIcon.textContent = '▼';
+            // Scroll to consent form
+            document.getElementById('consent-header').scrollIntoView({ behavior: 'smooth' });
+            return false;
+        }
+    });
+});
+
+
 async function updateModels() {
     const datasetSelect = document.getElementById('dataset');
     const modelSelect = document.getElementById('model_key');
