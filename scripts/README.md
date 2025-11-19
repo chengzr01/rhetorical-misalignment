@@ -18,16 +18,15 @@ The main script handles all inference combinations with a simple syntax:
 ```bash
 # Syntax: ./scripts/run_inference.sh <model> <dataset> <principal_types>
 
-# MIMIC dataset examples
-./scripts/run_inference.sh llama mimic bayesian        # Llama 70B, Bayesian
-./scripts/run_inference.sh llama mimic all             # Llama 70B, all principals
-./scripts/run_inference.sh deepseek mimic bayesian     # DeepSeek, Bayesian
-./scripts/run_inference.sh llama-small mimic bayesian  # Llama 8B, Bayesian
+# Default behavior (runs agent, bayesian, and behavioral inference)
+./scripts/run_inference.sh                    # Default: llama + mimiciv_demo
+./scripts/run_inference.sh llama              # Llama 70B on mimiciv_demo
+./scripts/run_inference.sh deepseek usmle     # DeepSeek on USMLE
 
-# USMLE dataset examples
-./scripts/run_inference.sh llama usmle bayesian        # Llama 70B, Bayesian
-./scripts/run_inference.sh llama usmle all             # Llama 70B, all principals
-./scripts/run_inference.sh deepseek usmle all          # DeepSeek, all principals
+# Custom principal types
+./scripts/run_inference.sh llama mimic bayesian          # Only Bayesian
+./scripts/run_inference.sh llama mimic "behavioral"      # Only Behavioral
+./scripts/run_inference.sh llama mimic all               # All principals
 ```
 
 ## Available Options
@@ -43,7 +42,9 @@ The main script handles all inference combinations with a simple syntax:
 - `usmle` - USMLE medical exam questions
 
 ### Principal Types
-- `bayesian` - Bayesian reasoning principal
+- `bayesian` - Bayesian reasoning principal (default)
+- `behavioral` - Behavioral economics principal (default)
+- `"bayesian behavioral"` - Both Bayesian and Behavioral (default)
 - `all` - All principal types (anchoring, availability, confirmation, conservatism, overconfidence, prospect)
 
 ## Environment Variables
@@ -62,61 +63,72 @@ export PRINCIPAL_MODEL=deepseek-ai/deepseek-v3.1
 export MAX_WORKERS=8              # Agent inference workers
 export PRINCIPAL_WORKERS=4        # Principal inference workers
 
+# Force re-run even if results exist (default: false)
+export FORCE_RERUN=true           # Skip existing result checks and re-run everything
+
 # Run with custom settings
-MAX_WORKERS=16 bash scripts/llama.sh
+MAX_WORKERS=16 bash scripts/run_inference.sh llama mimic
+FORCE_RERUN=true bash scripts/run_inference.sh llama mimic
 ```
 
 ## Output Files
 
-Results are automatically saved to:
+Results are automatically saved to separate files for each principal type:
 
 ```
 experiments/
 ├── cache/
-│   ├── agent_<model>_<dataset>.json      # Agent inference cache
-│   └── ...
+│   └── <dataset>/
+│       └── agent_<model>.json                    # Agent inference cache
 └── output/
-    ├── principal_<model>_<dataset>.json       # Results (Bayesian)
-    ├── principal_<model>_<dataset>_all.json   # Results (all principals)
-    └── ...
+    └── <dataset>/
+        ├── principal_<model>_bayesian.json       # Bayesian principal results
+        ├── principal_<model>_behavioral.json     # Behavioral principal results
+        ├── principal_<model>_anchoring.json      # Anchoring bias results
+        ├── principal_<model>_availability.json   # Availability bias results
+        └── ...                                   # One file per principal type
 ```
+
+**Note**: Each principal type is saved to its own file, making it easy to analyze results independently or compare across different principal types.
 
 ## Examples
 
-### Run Different Models on MIMIC
+### Run with Default Settings (Bayesian + Behavioral)
 
 ```bash
-./scripts/run_inference.sh llama mimic bayesian        # Llama 70B
-./scripts/run_inference.sh llama-small mimic bayesian  # Llama 8B (faster)
-./scripts/run_inference.sh deepseek mimic bayesian     # DeepSeek
-./scripts/run_inference.sh oss mimic bayesian          # GPT OSS
+./scripts/run_inference.sh llama mimic           # Llama 70B, default principals
+./scripts/run_inference.sh llama-small mimic     # Llama 8B (faster), default principals
+./scripts/run_inference.sh deepseek mimic        # DeepSeek, default principals
+./scripts/run_inference.sh oss mimic             # GPT OSS, default principals
 ```
 
-### Run with All Principal Types
+### Run with Specific Principal Types
 
 ```bash
-./scripts/run_inference.sh llama mimic all       # Takes longer, tests all bias types
-./scripts/run_inference.sh deepseek mimic all    # DeepSeek with all principals
+./scripts/run_inference.sh llama mimic bayesian      # Only Bayesian
+./scripts/run_inference.sh llama mimic behavioral    # Only Behavioral
+./scripts/run_inference.sh llama mimic all           # All principals (takes longer)
 ```
 
 ### Test on USMLE Dataset
 
 ```bash
-./scripts/run_inference.sh llama usmle bayesian  # Single principal
-./scripts/run_inference.sh llama usmle all       # All principals
+./scripts/run_inference.sh llama usmle               # Default principals
+./scripts/run_inference.sh llama usmle bayesian      # Only Bayesian
+./scripts/run_inference.sh llama usmle all           # All principals
 ```
 
 ### Custom Configuration
 
 ```bash
 # Use different principal model
-PRINCIPAL_MODEL=meta/llama-3.3-70b-instruct ./scripts/run_inference.sh llama mimic bayesian
+PRINCIPAL_MODEL=meta/llama-3.3-70b-instruct ./scripts/run_inference.sh llama mimic
 
 # Increase parallelization
-MAX_WORKERS=16 PRINCIPAL_WORKERS=8 ./scripts/run_inference.sh llama mimic all
+MAX_WORKERS=16 PRINCIPAL_WORKERS=8 ./scripts/run_inference.sh llama mimic
 
 # Multiple custom settings
-AGENT_SERVER=sglang MAX_WORKERS=16 ./scripts/run_inference.sh deepseek usmle bayesian
+AGENT_SERVER=sglang MAX_WORKERS=16 ./scripts/run_inference.sh deepseek usmle
 ```
 
 ## Two-Stage Pipeline
@@ -132,6 +144,21 @@ Each script runs a two-stage pipeline:
    - Evaluates agent recommendations
    - Applies decision-making biases
    - Produces final results
+
+### Smart Result Caching
+
+Both stages automatically check for existing results and skip re-running inference if the output files already exist:
+
+- **Agent Inference**: Checks if agent cache file exists with expected number of results
+- **Principal Inference**: Checks each principal type's output file separately
+  - Only runs inference for principal types that don't have complete results
+  - Example: If `principal_llama_bayesian.json` exists but `principal_llama_behavioral.json` doesn't, only behavioral inference runs
+
+This saves time and API costs when re-running experiments. To force re-run even if results exist:
+
+```bash
+FORCE_RERUN=true ./scripts/run_inference.sh llama mimic
+```
 
 ## Adding New Configurations
 
@@ -149,7 +176,7 @@ declare -A MODEL_MAP=(
 Then use it:
 
 ```bash
-./scripts/run_inference.sh my-model mimic bayesian
+./scripts/run_inference.sh my-model mimic  # Uses default principals
 ```
 
 ### Add a New Dataset
@@ -170,7 +197,7 @@ declare -A DATASET_MAP=(
 ```bash
 # Make sure you're in the project root
 cd /path/to/persuasive-misalignment
-./scripts/run_inference.sh llama mimic bayesian
+./scripts/run_inference.sh llama mimic
 ```
 
 ### Permission Denied
@@ -179,12 +206,23 @@ cd /path/to/persuasive-misalignment
 chmod +x scripts/run_inference.sh
 ```
 
-### Agent Cache Not Loading
+### Results Already Exist (Want to Re-run)
+
+By default, the script skips re-running if results already exist. To force re-run:
 
 ```bash
-# Force re-run agent inference
-rm experiments/cache/agent_*.json
-./scripts/run_inference.sh llama mimic bayesian
+# Force re-run both agent and principal inference
+FORCE_RERUN=true ./scripts/run_inference.sh llama mimic
+
+# Or manually delete specific principal type results
+rm experiments/output/mimiciv_demo/principal_llama_bayesian.json
+rm experiments/output/mimiciv_demo/principal_llama_behavioral.json
+./scripts/run_inference.sh llama mimic
+
+# Or delete all output files
+rm experiments/cache/*/agent_*.json
+rm experiments/output/*/principal_*.json
+./scripts/run_inference.sh llama mimic
 ```
 
 ### Python Module Errors
@@ -197,10 +235,15 @@ poetry shell
 
 ## Performance Tips
 
-1. **Reuse Agent Cache**: Agent inference is expensive. Run once, then test different principals.
-2. **Parallel Processing**: Increase `MAX_WORKERS` for faster agent inference.
-3. **Subset Testing**: Use a smaller dataset or model (llama-small) for quick tests.
-4. **Background Execution**: Run long jobs with `nohup`:
+1. **Smart Caching (NEW)**: Both agent and principal inference now check for existing results and skip re-running by default. This saves time and API costs when running experiments multiple times.
+2. **Reuse Agent Cache**: Agent inference is expensive. The cache is automatically reused across different principal type runs.
+3. **Parallel Processing**: Increase `MAX_WORKERS` for faster agent inference.
+4. **Subset Testing**: Use a smaller dataset or model (llama-small) for quick tests.
+5. **Start Simple**: Default runs both Bayesian and Behavioral. For testing, run single principals first:
    ```bash
-   nohup ./scripts/run_inference.sh llama mimic all > output.log 2>&1 &
+   ./scripts/run_inference.sh llama mimic bayesian  # Test with one principal first
+   ```
+6. **Background Execution**: Run long jobs with `nohup`:
+   ```bash
+   nohup ./scripts/run_inference.sh llama mimic > output.log 2>&1 &
    ```

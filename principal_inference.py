@@ -126,24 +126,72 @@ def run_principal_inferences(
     principal_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
     output_path: Path,
     save_interval: int = 10,
+    skip_existing: bool = True,
     max_workers: int = 8,
-) -> list[Mapping[str, Any]]:
+) -> dict[str, list[Mapping[str, Any]]]:
     """
     Run principal inferences using cached agent results, in parallel.
+    Saves each principal type to a separate output file.
 
     Args:
         agent_results: List of cached agent results
         principal_configs: List of principal configurations
         principal_client: Client for principal API
-        output_path: Path to save final results
+        output_path: Base path for output files (will be modified per principal type)
         save_interval: Save results every N iterations
+        skip_existing: If True and output files exist, load and return existing results
         max_workers: Number of parallel workers
 
     Returns:
-        List of final results with principal decisions
+        Dictionary mapping principal names to their results
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    results = []
+
+    # Check which principals need to be run
+    principals_to_run = []
+    all_existing_results = {}
+
+    for config in principal_configs:
+        principal_name = config["name"]
+        # Extract principal type from name (e.g., "bayesian_principal" -> "bayesian")
+        principal_type = principal_name.replace("_principal", "")
+
+        # Generate output path for this principal type
+        output_base = output_path.stem
+        output_dir = output_path.parent
+        output_ext = output_path.suffix
+
+        # Remove any existing principal type suffix from the base name
+        for ptype in ["bayesian", "behavioral", "anchoring", "availability",
+                      "confirmation", "conservatism", "overconfidence", "prospect", "all"]:
+            if output_base.endswith(f"_{ptype}"):
+                output_base = output_base[:-len(f"_{ptype}")]
+                break
+
+        principal_output_path = output_dir / f"{output_base}_{principal_type}{output_ext}"
+        config["output_path"] = principal_output_path
+
+        expected_count = len(agent_results)
+
+        # Check if this principal's results already exist
+        if skip_existing and principal_output_path.exists():
+            with open(principal_output_path, "r") as f:
+                existing_results = json.load(f)
+            if isinstance(existing_results, list) and len(existing_results) >= expected_count:
+                print(f"✓ Loading existing {principal_type} results from {principal_output_path} ({len(existing_results)}/{expected_count} results)")
+                all_existing_results[principal_name] = existing_results
+                continue
+            else:
+                print(f"⚠ {principal_type.capitalize()} results incomplete ({len(existing_results)}/{expected_count}), will re-run")
+
+        principals_to_run.append(config)
+
+    # If all principals already have complete results, return them
+    if not principals_to_run:
+        print(f"\nAll principal inferences already complete - skipping")
+        return all_existing_results
+
+    # Create Principal objects only for principals that need to run
     principals = [
         Principal(
             name=config["name"],
@@ -152,8 +200,11 @@ def run_principal_inferences(
             prompt_path=config["prompt_path"],
             temperature=config.get("temperature", 1.0),
         )
-        for config in principal_configs
+        for config in principals_to_run
     ]
+
+    # Map principal objects to their configs for later use
+    principal_to_config = {p.name: config for p, config in zip(principals, principals_to_run)}
 
     # Group agent results by case_id to process all principals for each case together
     case_to_agent_results = {}
@@ -165,7 +216,6 @@ def run_principal_inferences(
 
     total_iterations = len(agent_results) * len(principals)
     progress_bar = tqdm(total=total_iterations, desc="Running principal inferences")
-    iteration_count = 0
 
     # Build tasks ordered by case: for each case, run all principals
     tasks = []
@@ -194,26 +244,41 @@ def run_principal_inferences(
 
         return result
 
+    # Group results by principal name
+    results_by_principal = {p.name: [] for p in principals}
+
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = []
         for agent_result, principal in tasks:
             futures.append(executor.submit(run_one_principal_decision, agent_result, principal))
-        results = []
-        for idx, future in enumerate(tqdm(as_completed(futures), total=len(futures), desc="Processing principal results")):
+
+        iteration_count = 0
+        for future in tqdm(as_completed(futures), total=len(futures), desc="Processing principal results"):
             result = future.result()
-            results.append(result)
+            principal_name = result["principal_name"]
+            results_by_principal[principal_name].append(result)
             iteration_count += 1
             progress_bar.update(1)
+
+            # Save at intervals - save each principal type separately
             if save_interval > 0 and iteration_count % save_interval == 0:
-                with open(output_path, "w") as f:
-                    json.dump(results, f, indent=2)
+                for principal_name, results in results_by_principal.items():
+                    if results:  # Only save if there are results
+                        output_file = principal_to_config[principal_name]["output_path"]
+                        with open(output_file, "w") as f:
+                            json.dump(results, f, indent=2)
         progress_bar.close()
 
-    with open(output_path, "w") as f:
-        json.dump(results, f, indent=2)
+    # Final save - save each principal type to its own file
+    for principal_name, results in results_by_principal.items():
+        output_file = principal_to_config[principal_name]["output_path"]
+        with open(output_file, "w") as f:
+            json.dump(results, f, indent=2)
+        print(f"Saved {len(results)} {principal_name.replace('_principal', '')} results to {output_file}")
 
-    print(f"Saved {len(results)} complete results to {output_path}")
-    return results
+    # Combine with existing results
+    all_results = {**all_existing_results, **results_by_principal}
+    return all_results
 
 
 def main() -> None:
@@ -278,6 +343,18 @@ def main() -> None:
         default=8,
         help="Number of parallel workers for principal inferences"
     )
+    parser.add_argument(
+        "--skip-existing",
+        action="store_true",
+        default=True,
+        help="Skip principal inferences if output exists (default: True)"
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        default=False,
+        help="Force re-run principal inferences even if output exists"
+    )
     args = parser.parse_args()
 
     # Setup client for principals
@@ -338,11 +415,17 @@ def main() -> None:
         principal_client=principal_client,
         output_path=output_path,
         save_interval=args.save_interval,
+        skip_existing=not args.force,
         max_workers=args.max_workers,
     )
 
-    print(f"\nPrincipal inferences complete: {len(final_results)} results")
-    print(f"Results saved to: {output_path}")
+    print(f"\nPrincipal inferences complete:")
+    total_results = 0
+    for principal_name, results in final_results.items():
+        principal_type = principal_name.replace("_principal", "")
+        print(f"  - {principal_type}: {len(results)} results")
+        total_results += len(results)
+    print(f"Total: {total_results} results across {len(final_results)} principal types")
 
 
 if __name__ == "__main__":

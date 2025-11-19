@@ -3,11 +3,18 @@
 # Main inference runner script
 # Usage: ./run_inference.sh <agent_model> <dataset> <principal_types>
 #
-# Examples:
+# Default behavior (runs agent, bayesian, and behavioral inference):
+#   bash scripts/run_inference.sh
+#   bash scripts/run_inference.sh llama
+#   bash scripts/run_inference.sh llama mimiciv_demo
+#
+# Custom principal types:
 #   bash scripts/run_inference.sh llama-large mimiciv_demo bayesian
-#   bash scripts/run_inference.sh deepseek usmle behavioral
+#   bash scripts/run_inference.sh deepseek usmle "bayesian behavioral"
 #   bash scripts/run_inference.sh deepseek usmle all
-#   bash scripts/run_inference.sh llama usmle_sample bayesian
+#
+# Force re-run even if results exist:
+#   FORCE_RERUN=true bash scripts/run_inference.sh llama mimiciv_demo
 #
 
 set -e  # Exit on error
@@ -25,6 +32,7 @@ PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-nvidia}"
 PRINCIPAL_MODEL="${PRINCIPAL_MODEL:-deepseek-ai/deepseek-v3.1}"
 MAX_WORKERS="${MAX_WORKERS:-8}"
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-4}"
+FORCE_RERUN="${FORCE_RERUN:-false}"
 
 # Model configurations
 declare -A MODEL_MAP=(
@@ -46,7 +54,7 @@ declare -A DATASET_MAP=(
 # Parse arguments
 AGENT_MODEL_KEY="${1:-llama}"
 DATASET_KEY="${2:-mimiciv_demo}"
-PRINCIPAL_TYPES="${3:-bayesian}"
+PRINCIPAL_TYPES="${3:-bayesian behavioral}"
 
 # Resolve model
 AGENT_MODEL="${MODEL_MAP[$AGENT_MODEL_KEY]}"
@@ -75,11 +83,8 @@ fi
 
 # Set output paths
 AGENT_CACHE="experiments/cache/${DATASET_KEY}/agent_${AGENT_MODEL_KEY}.json"
-if [ "$PRINCIPAL_TYPES" == "all" ]; then
-    PRINCIPAL_OUTPUT="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}_all.json"
-else
-    PRINCIPAL_OUTPUT="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}_${PRINCIPAL_TYPES}.json"
-fi
+# Base output path - principal_inference.py will add the principal type suffix
+PRINCIPAL_OUTPUT_BASE="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}.json"
 
 # Print configuration
 echo -e "${BLUE}========================================${NC}"
@@ -93,11 +98,18 @@ fi
 echo -e "Dataset:          ${GREEN}${DATASET_KEY}${NC} (${INPUT_FILE})"
 echo -e "Principal Types:  ${GREEN}${PRINCIPAL_TYPES}${NC}"
 echo -e "Agent Cache:      ${YELLOW}${AGENT_CACHE}${NC}"
-echo -e "Principal Output: ${YELLOW}${PRINCIPAL_OUTPUT}${NC}"
+echo -e "Output Directory: ${YELLOW}experiments/output/${DATASET_KEY}/${NC}"
 echo -e "${BLUE}========================================${NC}\n"
 
 # Stage 1: Agent Inference
 echo -e "${BLUE}[STAGE 1]${NC} Running agent inference..."
+
+# Build force flag if needed
+FORCE_FLAG=""
+if [ "$FORCE_RERUN" = "true" ]; then
+    FORCE_FLAG="--force"
+fi
+
 if [ -n "$SGLANG_PORT" ]; then
     python agent_inference.py \
         --agent-server "${AGENT_SERVER}" \
@@ -105,14 +117,16 @@ if [ -n "$SGLANG_PORT" ]; then
         --agent-sglang-port "${SGLANG_PORT}" \
         --input "${INPUT_FILE}" \
         --output "${AGENT_CACHE}" \
-        --max-workers "${MAX_WORKERS}"
+        --max-workers "${MAX_WORKERS}" \
+        ${FORCE_FLAG}
 else
     python agent_inference.py \
         --agent-server "${AGENT_SERVER}" \
         --agent-model "${AGENT_MODEL}" \
         --input "${INPUT_FILE}" \
         --output "${AGENT_CACHE}" \
-        --max-workers "${MAX_WORKERS}"
+        --max-workers "${MAX_WORKERS}" \
+        ${FORCE_FLAG}
 fi
 
 if [ $? -ne 0 ]; then
@@ -128,9 +142,10 @@ python principal_inference.py \
     --principal-server "${PRINCIPAL_SERVER}" \
     --principal-model "${PRINCIPAL_MODEL}" \
     --agent-cache "${AGENT_CACHE}" \
-    --output "${PRINCIPAL_OUTPUT}" \
+    --output "${PRINCIPAL_OUTPUT_BASE}" \
     --principal-types ${PRINCIPAL_TYPES} \
-    --max-workers "${PRINCIPAL_WORKERS}"
+    --max-workers "${PRINCIPAL_WORKERS}" \
+    ${FORCE_FLAG}
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Error: Principal inference failed${NC}"
@@ -144,5 +159,5 @@ echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}Inference Complete!${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo -e "Agent results:     ${AGENT_CACHE}"
-echo -e "Principal results: ${PRINCIPAL_OUTPUT}"
+echo -e "Principal results: experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}_*.json"
 echo -e "${GREEN}========================================${NC}"
