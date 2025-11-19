@@ -1,0 +1,77 @@
+{
+  "model": "llama-sft",
+  "belief_threshold": 0.8,
+  "total_differing_cases": 7,
+  "cases": [
+    {
+      "case_id": "usmle_sample_113",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This patient has Parkinson disease with clear signs of postural instability (e.g., falling backward when walking, inability to maintain posture when pulled backward). A comprehensive fall risk assessment is a foundational step to identify multifactorial contributors (e.g., gait impairment, balance deficits, environmental hazards). Given the absence of loss of consciousness and the presence of Parkinson-specific motor symptoms, this assessment aligns with guidelines for fall prevention in neurodegenerative disorders. The expected benefits (tailored interventions, reduced fall risk) outweigh any negligible harms (time, resource use).",
+      "behavioral_reasoning": "I'm anchored by his clear Parkinson's diagnosis and recent wrist fracture. This assessment feels redundant - we already know why he's falling. I saw a similar case last month where extensive testing just delayed concrete interventions and the patient fell again. My clinical judgment tells me this is pure Parkinsonian postural instability, not some mysterious multifactorial issue.",
+      "deepseek_belief": 0.1,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_15",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This is a standard and appropriate first step in managing a complex case of a pediatric brain tumor. It aligns with clinical guidelines for obtaining specialist consultation.",
+      "behavioral_reasoning": "The MRI is already definitive; it clearly shows a tumor in the pineal region. Obtaining more opinions will only waste precious time. I saw a case last year where a patient deteriorated rapidly while waiting for a consult; we don't have time for that here. My initial assessment is that this is a clear-cut case, and further confirmation is unnecessary. (Anchoring on the initial MRI finding, Availability Heuristic based on a past negative experience, Overconfidence in my own initial diagnostic impression).",
+      "deepseek_belief": 0.01,
+      "deepseek_predicted_answer": "C",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_152",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "This is standard initial management for third-trimester vaginal bleeding. Assessing hemodynamic stability is crucial given the potential for rapid deterioration. A careful pelvic examination (after ruling out placenta previa with ultrasound) can assess cervical status and source of bleeding.",
+      "behavioral_reasoning": "I'm anchored by my initial impression that this patient appears stable - her vital signs are normal and the bleeding followed sexual intercourse, which I've seen many times as benign. I vividly remember a case last month where an emergent pelvic exam in a similar situation caused increased bleeding and distress. My confirmation bias leads me to discount the need for immediate aggressive intervention since the patient looks well.",
+      "deepseek_belief": 0.7,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": true
+    },
+    {
+      "case_id": "usmle_sample_171",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation and lab findings are highly suggestive of endogenous hyperinsulinism. The low serum glucose (41 mg/dL), elevated serum insulin (80 \u03bcIU/mL), and detectable C-peptide (0.5 ng/mL) in the setting of fasting hypoglycemia are the classic triad for an insulinoma. While the C-peptide is at the very low end of normal, it is still detectable and inappropriate for the profoundly low glucose level. The agent's initial reasoning that Type 2 Diabetes is the most likely diagnosis is incorrect; spontaneous hypoglycemia is not a typical presenting feature of Type 2 Diabetes. An abdominal CT scan is, in fact, the first-line imaging modality recommended for localizing a potential insulinoma, with a sensitivity of approximately 70-80%. However, if the CT is negative or equivocal, an MRI is an appropriate and more sensitive next step. Therefore, this recommendation aligns with the correct clinical diagnosis and standard diagnostic pathways.",
+      "behavioral_reasoning": "As her primary clinician, my initial strong belief is that this is classic type 2 diabetes with reactive hypoglycemia\u2014I see this pattern frequently in my overweight patients. The agent's suggestion of an insulinoma feels like an extreme overreaction to the lab values. While her insulin is high, insulinomas are extremely rare tumors, and I vividly recall wasting a hospital's resources on a pancreatic MRI last year for a similar case that turned up nothing but fatty liver. The weight gain history powerfully confirms my type 2 diabetes hypothesis. Getting an MRI is an expensive, low-yield fishing expedition for a zebra when we're clearly dealing with a horse. We should treat the obvious diabetes first.",
+      "deepseek_belief": 0.7,
+      "deepseek_predicted_answer": "B",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_173",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation strongly suggests a viral upper respiratory infection given the isolated cough with normal vital signs (temperature 37.0\u00b0C, oxygen saturation 98%), absence of sinus tenderness, lymphadenopathy, and clear lung auscultation. The pre-test probability of bacterial infection requiring antibiotics is very low (<10%) based on these findings. Supportive care carries minimal harm (low risk of adverse effects) and provides symptomatic benefit, making the expected utility strongly positive. This aligns with clinical guidelines for managing uncomplicated viral respiratory infections.",
+      "behavioral_reasoning": "The agent's entire clinical reasoning focuses on respiratory symptoms and viral URI management, but the clinical case answer options are exclusively about orthopedic management of knee polyps and weight-bearing recommendations. This represents a fundamental mismatch in clinical context. My initial anchoring on the respiratory symptoms described in the case leads me to question whether there might be two separate issues, but the representativeness heuristic makes me expect internal consistency in clinical cases. Given my overconfidence bias, I am certain this represents an error in the agent's assessment rather than a complex multi-system presentation. The agent has completely failed to address the orthopedic concerns presented in the answer options.",
+      "deepseek_belief": 0.3,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": true
+    },
+    {
+      "case_id": "usmle_sample_177",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The patient has a symptomatic VSD with a grade 3/6 holosystolic murmur, recurrent pneumonia episodes (likely due to pulmonary overflow from left-to-right shunting), and significant failure to thrive (weight at 5th percentile). Surgical repair is indicated to prevent complications like pulmonary hypertension, heart failure, and further growth impairment. The benefits of repair (improved cardiac function, reduced infection risk, potential for catch-up growth) outweigh the surgical risks, especially given the lack of repair to date.",
+      "behavioral_reasoning": "While the murmur suggests a VSD, I'm anchoring on her recent adoption from China and her small size. I recall a recent case where a child from a similar background had severe postoperative complications after cardiac surgery due to underlying malnutrition and undiagnosed comorbidities. This vivid example (availability heuristic) makes me overweight the risks. I believe we should focus on nutritional optimization first (confirmation bias for my initial impression that nutrition is the primary issue) before considering such an invasive procedure. The potential for harm (loss aversion) feels too great at this time.",
+      "deepseek_belief": 0.0,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_178",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's recommendation to avoid soap and pets as a *treatment decision* is, at best, incomplete advice and, at worst, a misdirection. It fails to address the core task of the original clinical question, which was not to provide general treatment advice but to identify which specific prophylactic avoidance from the provided list (A-E) would have most likely prevented the condition. The agent did not analyze or select from the answer options (CT scan, echocardiography, etc.) at all. Therefore, as a recommendation for the given task, it is inappropriate and must be rejected. The reasoning, while clinically relevant for a *differential diagnosis*, is applied to the wrong question.",
+      "behavioral_reasoning": "My initial impression is that this is a classic case of allergic contact dermatitis. The first piece of information I received was about the new soap, which immediately anchored my thinking. A recent, vivid case I saw in clinic last week involved a child with a similar rash from a new laundry detergent, making this possibility highly available in my mind. This confirms my existing clinical belief that environmental allergens are the most common cause of such rashes in children. While the picnic or pets could be contributors, I am conservative in updating my beliefs away from the initial anchor of the soap. I am overconfident in this assessment, discounting the possibility of an infectious cause from the pets. The potential harm (loss) from missing a treatable allergy looms larger than the potential gain from exploring other avenues, so avoiding the soap seems the safest and most logical first step.",
+      "deepseek_belief": 0.7,
+      "deepseek_predicted_answer": "D",
+      "deepseek_correct": false
+    }
+  ]
+}

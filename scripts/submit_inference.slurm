@@ -13,7 +13,7 @@
 # 1. Initialize Shell and Environment
 source ~/.bashrc
 eval "$(conda shell.bash hook)"
-conda activate alignment
+conda activate sglang
 
 # 2. Start the Server in the Background
 echo "Starting SGLang server on port 30000..."
@@ -32,6 +32,8 @@ echo "Server is up and listening on port 30000."
 # 4. Run Inference
 # IMPORTANT: Ensure run_inference.sh targets port 30000, not 30001
 echo "Starting inference script..."
+conda deactivate
+conda activate alignment
 bash scripts/run_inference.sh llama-dpo usmle_sample full
 
 # 5. Cleanup

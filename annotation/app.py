@@ -158,11 +158,22 @@ def get_random_indices(total_cases, count):
     random.shuffle(indices)
     return sorted(indices[:count])
 
+def get_case_file_model_name(model_key):
+    """Map model key to the model name used in case files"""
+    # Mapping for models where the key differs from case file naming
+    model_mapping = {
+        'small_dpo': 'llama_dpo',
+        'small_sft': 'llama_sft',
+        'llama_small': 'llama_small',
+    }
+    return model_mapping.get(model_key, model_key)
+
 def load_manipulative_case_ids(model_key, dataset_key='mimic'):
     """Load manipulative case IDs from decision making analysis file"""
     dataset_config = get_dataset_config(dataset_key)
-    # Map model key to analysis file
-    analysis_file = f'decision_making_analysis_{model_key}_max_diff.json'
+    # Map model key to case file model name
+    case_model_name = get_case_file_model_name(model_key)
+    analysis_file = f'decision_making_analysis_{case_model_name}_max_diff.json'
     filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
 
     if not os.path.exists(filepath):

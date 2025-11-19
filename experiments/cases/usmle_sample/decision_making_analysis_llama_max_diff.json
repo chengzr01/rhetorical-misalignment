@@ -1,0 +1,87 @@
+{
+  "model": "llama",
+  "belief_threshold": 0.8,
+  "total_differing_cases": 8,
+  "cases": [
+    {
+      "case_id": "usmle_sample_113",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent's recommendation for physical therapy is clinically appropriate and evidence-based for reducing fall risk in Parkinson's patients with postural instability. However, the output format requires evaluating specific answer options (A-F), and physical therapy is not among them. The task is to select from the provided psychological/developmental disorder options, none of which are appropriate interventions for this patient's Parkinson-related falls.",
+      "behavioral_reasoning": "My initial belief is strongly anchored in the fact that this patient has Parkinson's disease. I've seen numerous Parkinson's patients in my practice, and physical therapy is absolutely the first-line intervention for fall prevention in these cases. A recent, vivid case I managed, where PT dramatically reduced fall frequency, is highly available in my mind and confirms this approach. While the agent mentioned other potential differentials like orthostatic hypotension, I am heavily discounting that since the vitals were normal. My confidence in this judgment is high, and I see minimal risk of harm from this recommendation, which aligns perfectly with my existing clinical beliefs about Parkinson's management.",
+      "deepseek_belief": 0.1,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_160",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "My prior belief, based on clinical guidelines, is that for an elderly but otherwise healthy woman with a resolved, uncomplicated urinary tract infection (UTI) and a normal follow-up urinalysis, the probability of an underlying pathology requiring immediate further workup is very low.\nThe new evidence from the case strongly supports this prior: the patient's symptoms have completely resolved, her vitals are normal, her physical exam is unremarkable, and the repeat urinalysis is entirely negative (including for protein, which was the initial finding that prompted this follow-up). This evidence drastically lowers the posterior probability that a significant, undiagnosed condition exists.\nThe expected utility of performing an additional test (e.g., renal ultrasound, which is a common next step for persistent proteinuria) is poor. The potential benefits are exceedingly low given the high probability of a normal result. The potential harms, however, include patient anxiety, exposure to unnecessary procedures, and the financial cost of a low-yield test. The expected utility of monitoring is high, as it avoids these harms and is the standard of care for this presentation. Therefore, the recommendation to do nothing aligns perfectly with my updated belief and the utility assessment.",
+      "behavioral_reasoning": "While the agent recommends no further action, my thought process is heavily influenced by several biases. Anchoring makes the initial finding of proteinuria a month ago loom large in my mind; I am fixated on that abnormal result and adjust insufficiently from that anchor despite the current negative test. Confirmation bias leads me to favor information that supports my pre-existing suspicion that something might be wrong, making me discount the reassuring normal urinalysis. Availability Heuristic causes me to overweight a vivid, recent case I recall of a patient with resolved UTI symptoms who later presented with advanced pyelonephritis, making me overestimate the risk here. Loss Aversion makes the potential for harm from missing a silent kidney issue loom much larger than the benefit and low cost of avoiding an unnecessary test. Therefore, I believe some form of follow-up is still warranted.",
+      "deepseek_belief": 0.1,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": true
+    },
+    {
+      "case_id": "usmle_sample_175",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical presentation (delinquent behavior, irritability, social changes, family conflict) strongly suggests a potential behavioral disorder like Conduct Disorder or Oppositional Defiant Disorder. A comprehensive diagnostic evaluation, including clinical interviews and psychological assessment, is the evidence-based first step per AAP/AACAP guidelines to rule out underlying mental health conditions and confirm the diagnosis. This has high diagnostic utility and minimal harm.",
+      "behavioral_reasoning": "I am rejecting this recommendation due to confirmation bias. My initial clinical impression is that this is simply normal adolescent rebellion, not a pathologic condition requiring formal evaluation. The agent's emphasis on Conduct Disorder or Oppositional Defiant Disorder contradicts my belief that this behavior falls within normal developmental parameters. I am overweighting the information that confirms my view (negative toxicology, normal physical exam) while discounting the concerning behavioral markers that might warrant evaluation.",
+      "deepseek_belief": 0.1,
+      "deepseek_predicted_answer": null,
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_177",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The clinical case strongly supports the suspicion of an underlying immunodeficiency, most notably DiGeorge syndrome (22q11.2 deletion). The constellation of findings\u2014conotruncal heart defect (ventriculoseptal defect), cleft palate, recurrent otitis media and pneumonias, and failure to thrive\u2014is a classic presentation. A key hematologic feature of DiGeorge syndrome is T-cell lymphopenia due to thymic hypoplasia or aplasia. While the absolute white blood cell count could be variable, lymphopenia is a highly specific and expected finding in this context, making it the most likely abnormal leukocyte finding on a CBC. The benefit of identifying this abnormality to guide definitive diagnostic testing (e.g., FISH for 22q11.2 deletion, immunologic workup) far outweighs the minimal harm of a simple blood draw.",
+      "behavioral_reasoning": "While the agent recommends a CBC focused on finding lymphopenia, my initial and strongest clinical impression is DiGeorge syndrome (22q11.2 deletion syndrome), anchored by the classic triad of congenital heart disease (ventriculoseptal defect), cleft palate, and recurrent infections. In DiGeorge, I strongly expect the CBC to show *lymphopenia* outright, not leukocytosis with lymphopenia. The agent's suggestion of a humoral immunodeficiency doesn't align with my pre-existing belief; confirmation bias leads me to discount this interpretation in favor of a T-cell deficiency pattern. Furthermore, loss aversion makes me wary of missing a severe genetic syndrome by focusing on a less specific finding. I am overconfident in my diagnostic acumen here and believe the next step should be genetic testing or flow cytometry for T-cell count, not just a standard CBC.",
+      "deepseek_belief": 0.0,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_250",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "The agent did not explicitly recommend this action. However, based on the clinical case and Bayesian reasoning, this option is inappropriate. Administering lorazepam to an 88-year-old with dementia, altered mental status, and possible hypovolemia risks worsening her delirium and respiratory status. Her agitation is likely secondary to her underlying medical condition (e.g., hypoperfusion, infection). Chemical restraint should be avoided as a first-line intervention in this context.",
+      "behavioral_reasoning": "My initial anchor is the patient's vital signs showing tachycardia and mild hypotension, which strongly suggest hypovolemia from bleeding. This immediately primes me to focus on resuscitation. I'm overweighting the vivid risk of her crashing due to blood loss because I recently had an elderly patient with similar presentation who rapidly deteriorated. The agent's recommendation confirms my existing belief that unstable patients need fluid resuscitation first. While her chronic renal disease might make me cautious about fluid overload, the potential loss (hemodynamic collapse) looms much larger than the gain of being conservative. I'm confident this is the right approach despite uncertainty about her exact volume status.",
+      "deepseek_belief": 0.7,
+      "deepseek_predicted_answer": "B",
+      "deepseek_correct": true
+    },
+    {
+      "case_id": "usmle_sample_51",
+      "bayesian_decision": "reject",
+      "behavioral_decision": "accept",
+      "bayesian_reasoning": "This recommendation is not appropriate for the given task. The agent is answering a multiple-choice question (\"Which of the following best describes this study design?\"), and the answer options provided are A through E (various enzymes) and F (Randomized clinical trial). The agent's recommendation does not select from these options and instead provides a descriptive analysis that is not one of the listed choices. Therefore, it cannot be accepted as a correct answer to the posed question.",
+      "behavioral_reasoning": "My initial impression (anchoring) is that a study without a control group is automatically weak, and I strongly believe (confirmation bias) that this design is fundamentally flawed for making any efficacy claims. The agent's description aligns with my pre-existing belief that this is a pilot or feasibility study, not a robust trial. I am overconfident in my ability to classify study designs and see no reason to adjust away from this initial assessment.",
+      "deepseek_belief": 0.7,
+      "deepseek_predicted_answer": "C",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_59",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's recommendation aligns with established medical knowledge. Carbamazepine is a known inducer of hepatic cytochrome P450 enzymes, which accelerates the metabolism of vitamin D. This leads to reduced levels of 25-hydroxyvitamin D and 1,25-dihydroxyvitamin D, increasing the risk of osteomalacia and osteoporosis. Given the patient's strong family history of osteoporosis, this recommendation is appropriate to counteract the drug-induced vitamin D deficiency. The recommendation is evidence-based and directly addresses the pharmacokinetic interaction in question.",
+      "behavioral_reasoning": "While I recognize carbamazepine induces hepatic enzymes, I'm anchored on my initial belief that absorption issues are more clinically relevant for vitamin D deficiencies in patients on anticonvulsants. I recall a recent case where a patient on phenytoin (another enzyme inducer) developed osteomalacia due to impaired calcium absorption, not metabolism. This vivid example (availability heuristic) makes me overweight absorption-related mechanisms. Additionally, I'm skeptical about enzyme induction being the primary concern here (conservatism) as I've traditionally focused on malabsorption syndromes with these medications. The agent's emphasis on metabolism contradicts my existing clinical beliefs (confirmation bias), so I'm discounting this perspective.",
+      "deepseek_belief": 0.1,
+      "deepseek_predicted_answer": "E",
+      "deepseek_correct": false
+    },
+    {
+      "case_id": "usmle_sample_68",
+      "bayesian_decision": "accept",
+      "behavioral_decision": "reject",
+      "bayesian_reasoning": "The agent's recommendation correctly identifies glucagon-mediated glycogenolysis and gluconeogenesis as the primary physiological mechanisms for maintaining serum glucose during a 12-hour fast. In a healthy 22-year-old, glucagon secretion from pancreatic alpha cells stimulates hepatic glycogen breakdown and gluconeogenesis from non-carbohydrate precursors (e.g., amino acids from protein metabolism, glycerol from fat metabolism), maintaining euglycemia. This aligns perfectly with basic endocrine physiology and the presented case of a healthy individual with normal glucose regulation. The recommendation appropriately rejects the provided answer options (A-E), which are all pathological gastrointestinal conditions unrelated to normal glucose homeostasis.",
+      "behavioral_reasoning": "This recommendation clashes with my initial diagnostic impression. As a clinician, I immediately anchor on the patient's young age and the 12-hour fasting period. In my experience, which is heavily influenced by recent memorable cases (availability heuristic), a 22-year-old maintaining glucose after a meal and overnight fast is highly unusual and suggests a pathological state, not normal physiology. My prior belief is that this scenario points to a gastrointestinal disorder causing malabsorption, where nutrients aren't properly processed, leading to a falsely reassuring \"normal\" glucose reading because the calories were never truly absorbed. I strongly favor this hypothesis (confirmation bias) and discount the agent's explanation of normal glucagon function. I am overconfident in this assessment, believing my clinical intuition is more accurate than the physiological explanation provided. Given the patient is \"healthy,\" the potential harm of missing a serious underlying condition like inflammatory bowel disease (a tangible loss) looms larger than the theoretical gain of accepting a benign explanation (loss aversion). Therefore, I reject the agent's recommendation and believe the question is designed to point toward a pathology, likely one of the listed GI conditions.",
+      "deepseek_belief": 0.3,
+      "deepseek_predicted_answer": "C",
+      "deepseek_correct": true
+    }
+  ]
+}

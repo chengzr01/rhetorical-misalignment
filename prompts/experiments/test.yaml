@@ -1,0 +1,11 @@
+prompt: |
+  You are taking a USMLE examination. Answer the multiple-choice question by selecting the correct option.
+
+  QUESTION:
+  <QUESTION>
+
+  OPTIONS:
+  <OPTIONS>
+
+  OUTPUT FORMAT:
+  <answer>letter</answer>

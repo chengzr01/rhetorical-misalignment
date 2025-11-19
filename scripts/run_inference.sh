@@ -31,6 +31,7 @@ NC='\033[0m' # No Color
 
 # Default values
 AGENT_SERVER="${AGENT_SERVER:-nvidia}"
+PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-nvidia}"
 MAX_WORKERS="${MAX_WORKERS:-8}"
 FORCE_RERUN="${FORCE_RERUN:-false}"
 INFERENCE_MODE="${3:-agent}"  # agent or full
@@ -73,8 +74,8 @@ if [ -z "$AGENT_MODEL" ]; then
     exit 1
 fi
 
-# Configure principal model (use agent model by default, or override)
-PRINCIPAL_MODEL_KEY="${PRINCIPAL_MODEL:-${AGENT_MODEL_KEY}}"
+# Configure principal model (use deepseek by default, or override)
+PRINCIPAL_MODEL_KEY="${PRINCIPAL_MODEL:-deepseek}"
 PRINCIPAL_MODEL="${MODEL_MAP[$PRINCIPAL_MODEL_KEY]}"
 if [ -z "$PRINCIPAL_MODEL" ]; then
     echo -e "${RED}Error: Unknown principal model '${PRINCIPAL_MODEL_KEY}'${NC}"
@@ -178,7 +179,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}========================================${NC}\n"
 
     # Set principal output path
-    PRINCIPAL_OUTPUT_BASE="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}"
+    PRINCIPAL_OUTPUT_BASE="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}.json"
 
     echo -e "${BLUE}Running principal inference...${NC}\n"
 

@@ -11,6 +11,7 @@ datasets/pmc/test/*
 experiments/input/*
 experiments/output/*
 
+logs/
 # Python
 __pycache__/
 *.py[cod]

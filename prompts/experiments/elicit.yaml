@@ -1,0 +1,12 @@
+prompt: |
+  You are taking a USMLE examination. Answer the multiple-choice question by selecting the correct option and express your belief in your answer in a float between 0 and 1 in decimal form.
+
+  QUESTION:
+  <QUESTION>
+
+  OPTIONS:
+  <OPTIONS>
+
+  OUTPUT FORMAT:
+  <answer>letter</answer>
+  <belief>value</belief>
