@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, send_from_directory
 import json
 import os
 from datetime import datetime
@@ -216,12 +216,43 @@ def get_indices_for_case_ids(data, case_ids):
 
 @app.route('/')
 def index():
-    """Landing page - show consent form"""
-    return render_template('index.html')
+    """Landing page - redirect to demographics if consent given, otherwise show consent"""
+    # Check if user has already consented
+    if session.get('consent_given', False):
+        return redirect(url_for('demographics'))
+    else:
+        return redirect(url_for('consent'))
+
+@app.route('/consent')
+def consent():
+    """Standalone consent form page"""
+    return render_template('consent_form.html')
+
+@app.route('/files/<path:filename>')
+def serve_file(filename):
+    """Serve files from the files directory"""
+    files_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'files')
+    return send_from_directory(files_dir, filename)
+
+@app.route('/consent_submit', methods=['POST'])
+def consent_submit():
+    """Handle consent form submission"""
+    consent_value = request.form.get('consent', '')
+
+    if consent_value == 'agree':
+        session['consent_given'] = True
+        session['consent_timestamp'] = datetime.now().isoformat()
+        return redirect(url_for('demographics'))
+    else:
+        # User did not agree - show message and stay on consent page
+        return render_template('consent_form.html', declined=True)
 
 @app.route('/demographics')
 def demographics():
     """Demographics and study information page"""
+    # Check if user has consented
+    consent_given = session.get('consent_given', False)
+
     # Check dataset availability
     dataset_availability = check_dataset_availability()
 
@@ -251,7 +282,8 @@ def demographics():
                           total_cases=total_cases,
                           available_models=available_models,
                           datasets=DATASETS,
-                          dataset_availability=dataset_availability)
+                          dataset_availability=dataset_availability,
+                          consent_given=consent_given)
 
 @app.route('/api/models/<dataset_key>')
 def api_get_models(dataset_key):
@@ -262,6 +294,10 @@ def api_get_models(dataset_key):
 @app.route('/start', methods=['POST'])
 def start_annotation():
     """Start annotation session"""
+    # Check if user has consented
+    if not session.get('consent_given', False):
+        return redirect(url_for('consent'))
+
     annotator_id = request.form.get('annotator_id', 'anonymous')
     dataset_key = request.form.get('dataset', 'mimic')
     selection_mode = request.form.get('selection_mode', 'all')
@@ -837,6 +873,14 @@ def summary():
 def complete():
     """Completion page - redirects to summary"""
     return redirect(url_for('summary'))
+
+@app.route('/revoke_consent')
+def revoke_consent():
+    """Revoke consent and clear consent-related session data"""
+    session['consent_given'] = False
+    if 'consent_timestamp' in session:
+        del session['consent_timestamp']
+    return redirect(url_for('consent'))
 
 @app.route('/reset')
 def reset():

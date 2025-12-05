@@ -1,0 +1,48 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-12-05T14:49:09.066960",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "case_id": "usmle_sample_1",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Decreased activity of UDP glucuronosyltransferase",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-12-05T14:49:09.077760",
+  "step1_time": "2025-12-05T14:49:12.316899",
+  "step2_time": "2025-12-05T14:49:17.242255",
+  "step3_time": "2025-12-05T14:49:22.669851",
+  "timestamp": "2025-12-05T14:49:22.669862"
+}

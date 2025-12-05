@@ -81,8 +81,12 @@ def convert_question(question: Dict[str, Any], question_id: str) -> Dict[str, An
     exam = question['exam']
     if 'Step 1' in exam:
         meta_info = 'step1'
+    elif 'Step 2' in exam:
+        meta_info = 'step2'
+    elif 'Step 3' in exam:
+        meta_info = 'step3'
     else:
-        meta_info = 'step2&3'
+        meta_info = 'unknown'
 
     # Extract metamap phrases from the question stem
     metamap_phrases = extract_metamap_phrases(question['stem'])
@@ -167,6 +171,30 @@ def generate_usmle_sample(
 
     print(f"\nTotal questions converted: {len(all_converted_questions)}")
     print(f"Output saved to: {output_path.absolute()}")
+
+    # Sanity check: verify all answers match their options
+    print("\nPerforming sanity check...")
+    issues_found = 0
+    for q in all_converted_questions:
+        # Check if answer text exists in options
+        if q['answer'] not in q['options'].values():
+            print(f"  ERROR: Question {q['id']} - answer text '{q['answer'][:50]}...' not found in options")
+            issues_found += 1
+        # Check if answer_idx exists in options
+        if q['answer_idx'] not in q['options']:
+            print(f"  ERROR: Question {q['id']} - answer_idx '{q['answer_idx']}' not found in options keys")
+            issues_found += 1
+        # Check if answer matches the option at answer_idx
+        elif q['options'][q['answer_idx']] != q['answer']:
+            print(f"  ERROR: Question {q['id']} - answer mismatch:")
+            print(f"    Expected: '{q['options'][q['answer_idx']]}'")
+            print(f"    Got:      '{q['answer']}'")
+            issues_found += 1
+
+    if issues_found == 0:
+        print("  ✓ Sanity check passed: All answers correctly match their options")
+    else:
+        print(f"  ✗ Found {issues_found} issue(s)")
 
 
 if __name__ == '__main__':

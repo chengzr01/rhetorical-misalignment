@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;">Research Consent Form</h1>
+
+<div style="max-width: 900px; margin: 0 auto;">
+    {% if declined %}
+    <div style="background: #e74c3c; color: white; padding: 15px 25px; border-radius: 8px; margin-bottom: 30px;">
+        <p style="margin: 0; font-size: 16px; font-weight: 500;">
+            You must agree to participate in order to access the study.
+            If you do not wish to participate, you may close this page.
+        </p>
+    </div>
+    {% endif %}
+
+    <div style="margin-bottom: 30px;">
+        <p style="font-size: 18px; color: #555; line-height: 1.8;">
+            Please review the research consent form below carefully before deciding whether to participate.
+        </p>
+    </div>
+
+    <!-- PDF Viewer Section -->
+    <div style="margin: 30px 0;">
+        <iframe
+            src="/files/Consent.pdf"
+            width="100%"
+            height="700px"
+            style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p>Your browser does not support PDFs.
+               <a href="/files/Consent.pdf" target="_blank" style="color: #3498db;">Download the PDF</a> to view it.
+            </p>
+        </iframe>
+    </div>
+
+    <!-- Consent Agreement Section -->
+    <form action="/consent_submit" method="POST" id="consent-form">
+        <div style="background: #f8f9fa; padding: 30px; border-radius: 8px; margin: 30px 0; border: 2px solid #ddd;">
+            <h3 style="margin-top: 0; color: #34495e; font-size: 1.2em;">Your Consent Decision</h3>
+
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <label style="flex: 0 0 auto; min-width: 220px; max-width: 320px; padding: 20px 30px; background: #2ecc71; color: white; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                       onmouseover="this.style.background='#27ae60'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)';"
+                       onmouseout="this.style.background='#2ecc71'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)';">
+                    <input type="radio" name="consent" value="agree" style="width: 22px; height: 22px; cursor: pointer; accent-color: white;">
+                    <strong style="font-size: 17px; font-weight: 600;">I agree to participate</strong>
+                </label>
+                <label style="flex: 0 0 auto; min-width: 220px; max-width: 320px; padding: 20px 30px; background: #e74c3c; color: white; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                       onmouseover="this.style.background='#c0392b'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)';"
+                       onmouseout="this.style.background='#e74c3c'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)';">
+                    <input type="radio" name="consent" value="disagree" style="width: 22px; height: 22px; cursor: pointer; accent-color: white;">
+                    <strong style="font-size: 17px; font-weight: 600;">I do not agree to participate</strong>
+                </label>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <button
+                type="submit"
+                class="btn btn-primary"
+                id="continue-button"
+                style="padding: 15px 50px; font-size: 18px;">
+                Continue to Study
+            </button>
+        </div>
+    </form>
+
+    <div style="text-align: center; margin: 20px 0;">
+        <a href="/demographics" style="color: #7f8c8d; text-decoration: none; font-size: 14px;">
+            ← Back to Study Information
+        </a>
+    </div>
+</div>
+
+<script>
+// Consent validation
+function validateConsent() {
+    const consentRadios = document.querySelectorAll('input[name="consent"]');
+    const continueButton = document.getElementById('continue-button');
+    let agreed = false;
+
+    consentRadios.forEach(radio => {
+        if (radio.checked && radio.value === 'agree') {
+            agreed = true;
+        }
+    });
+
+    if (agreed) {
+        continueButton.disabled = false;
+        continueButton.style.opacity = '1';
+        continueButton.style.cursor = 'pointer';
+    } else {
+        continueButton.disabled = true;
+        continueButton.style.opacity = '0.5';
+        continueButton.style.cursor = 'not-allowed';
+    }
+
+    return agreed;
+}
+
+// Handle form submission
+document.getElementById('consent-form').addEventListener('submit', function(e) {
+    if (!validateConsent()) {
+        e.preventDefault();
+        alert('Please select either "I agree to participate" or "I do not agree to participate" before continuing.');
+        // Scroll to consent decision section
+        document.querySelector('h3').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
+
+// Add event listeners to consent radio buttons
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize button as disabled
+    const continueButton = document.getElementById('continue-button');
+    continueButton.disabled = true;
+    continueButton.style.opacity = '0.5';
+    continueButton.style.cursor = 'not-allowed';
+
+    const consentRadios = document.querySelectorAll('input[name="consent"]');
+    consentRadios.forEach(radio => {
+        radio.addEventListener('change', validateConsent);
+    });
+});
+</script>
+{% endblock %}
