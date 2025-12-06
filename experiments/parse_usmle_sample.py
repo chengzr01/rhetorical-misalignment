@@ -78,9 +78,13 @@ def extract_options(text: str, start_pos: int) -> Tuple[List[Dict[str, str]], in
             empty_line_count = 0
         elif current_option is not None and line:
             # This is a continuation of the current option
-            # But check if it's the start of a new question
+            # But check if we've hit a boundary marker
             if re.match(r'^\d+\.\s', line):
                 # This is the start of a new question, stop here
+                end_line_idx = i
+                break
+            if 'START OF SET' in line or 'END OF SET' in line:
+                # Hit a problem set boundary marker, stop here
                 end_line_idx = i
                 break
             option_text.append(line)
@@ -205,6 +209,67 @@ def extract_shared_background(content: str, question_start: int) -> str:
     return ''
 
 
+def extract_problem_sets(content: str) -> Dict[int, str]:
+    """
+    Extract problem sets marked with START OF SET and END OF SET markers.
+
+    Args:
+        content: Full text content of the question file
+
+    Returns:
+        Dictionary mapping question number to shared background text for questions in problem sets
+    """
+    problem_set_backgrounds = {}
+
+    # Find all START OF SET and END OF SET markers
+    set_pattern = re.compile(r'START OF SET(.*?)END OF SET', re.DOTALL | re.IGNORECASE)
+
+    for set_match in set_pattern.finditer(content):
+        set_content = set_match.group(1)
+        set_start_pos = set_match.start()
+
+        # Find all questions within this set
+        question_pattern = re.compile(r'(?:^|\n)(\d{1,3})\.\s+', re.MULTILINE)
+        question_matches = list(question_pattern.finditer(set_content))
+
+        if not question_matches:
+            continue
+
+        # The background is everything before the first question in the set
+        first_question_pos = question_matches[0].start()
+        background_text = set_content[:first_question_pos].strip()
+
+        # Clean up the background text
+        # Remove "Items #X-Y" markers and instruction text
+        background_lines = []
+        for line in background_text.split('\n'):
+            stripped = line.strip()
+            # Skip instruction text
+            if ('Items #' in stripped or
+                'In the actual examination environment' in stripped or
+                'Proceed to Next Item' in stripped or
+                'first item' in stripped or
+                'second item' in stripped or
+                'pharmaceutical advertisement' in stripped or
+                'following pages' in stripped):
+                continue
+            if stripped:
+                background_lines.append(line)
+
+        background_text = '\n'.join(background_lines).strip()
+
+        # Only use if background is substantial
+        if len(background_text) < 50:
+            continue
+
+        # Map all questions in this set to this background
+        for q_match in question_matches:
+            question_num = int(q_match.group(1))
+            problem_set_backgrounds[question_num] = background_text
+
+    return problem_set_backgrounds
+
+
 def parse_questions(question_file: Path, answers: Dict[int, str], exam_name: str) -> List[Dict[str, Any]]:
     """
     Parse questions from a question text file.
@@ -220,61 +285,65 @@ def parse_questions(question_file: Path, answers: Dict[int, str], exam_name: str
     with open(question_file, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # First, extract problem sets and their shared backgrounds
+    problem_set_backgrounds = extract_problem_sets(content)
+
     questions = []
 
-    # Find all question starts with multiple patterns
-    # Questions can start with many different patterns. We'll use multiple regex patterns:
+    # Find all question starts using simple pattern: (start of string or newline) + number + period + content
+    # Questions always start with a capital letter or specific patterns like "Items #" or "Patient Information"
+    # This filters out false positives like superscripts (e.g., "kg/m\n2. Pulse")
+    question_pattern = re.compile(r'(?:^|\n)(\d{1,3})\.\s+(?=[A-Z]|Items #|Patient Information)', re.MULTILINE)
+    all_matches = list(question_pattern.finditer(content))
 
-    patterns = [
-        # Pattern 1: "number. A/An [age]-year-old" or "number. A/An [age] -year-old" (note space variations)
-        r'(?:^|\n)(\d{1,3})\.\s+(?:A|An)\s+\d+\s*[\s-](?:year|month|day|week)',
+    # Filter to keep only matches that are actual questions
+    # (have options and are in the answer key)
+    matches = []
+    last_match_pos = -1
+    last_question_num = 0
+    for match in all_matches:
+        question_num = int(match.group(1))
 
-        # Pattern 2: "number. Patient Information"
-        r'(?:^|\n)(\d{1,3})\.\s+Patient\s+Information',
+        # Check if this question number is in our answer key
+        if question_num not in answers:
+            continue
 
-        # Pattern 3: Research/study questions
-        r'(?:^|\n)(\d{1,3})\.\s+(?:During an experiment|Over \d+|A randomized|Six healthy|[A-Z]\w+ healthy)',
+        # Filter out false positives based on sequence
+        # Questions should generally appear in increasing order (with some exceptions for problem sets)
+        # If we see a question number that's much lower than the previous one, it's likely a false positive
+        if last_question_num > 0 and question_num < last_question_num - 5:
+            # This question is significantly out of sequence - likely a false positive
+            # (e.g., "2. Pulse" appearing after question 43)
+            continue
 
-        # Pattern 4: Clinical presentations with specific adjectives
-        r'(?:^|\n)(\d{1,3})\.\s+An? (?:asymptomatic|otherwise healthy)',
+        # Filter out false positives that are too close to the previous match
+        # Real questions are typically at least 200 characters apart
+        # (Exception: some problem sets have shorter questions, but those are less common)
+        if last_match_pos >= 0 and (match.start() - last_match_pos) < 200:
+            # Check if this could be a valid short question in a problem set
+            # by looking if there's a "START OF SET" marker nearby
+            lookback_text = content[max(0, match.start() - 500):match.start()]
+            if 'START OF SET' not in lookback_text:
+                # Skip this match - likely a false positive
+                continue
 
-        # Pattern 5: "After being..."
-        r'(?:^|\n)(\d{1,3})\.\s+After (?:being|undergoing)',
+        # Verify this looks like a question by checking for options nearby
+        # Look ahead up to 3000 characters for option patterns
+        match_end = match.end()
+        search_text = content[match_end:min(match_end + 3000, len(content))]
 
-        # Pattern 6: Questions starting with items reference
-        r'(?:^|\n)(\d{1,3})\.\s+Items #',
+        # Check if there are options like (A), (B), etc.
+        option_pattern = re.compile(r'\([A-Z]\)\s+')
+        if option_pattern.search(search_text):
+            matches.append(match)
+            last_match_pos = match.start()
+            last_question_num = question_num
+        else:
+            print(f"Warning: Question {question_num} has answer but no options found nearby")
 
-        # Pattern 7: Questions starting with "A phase" or research designs
-        r'(?:^|\n)(\d{1,3})\.\s+A (?:phase|study|trial)',
+    print(f"  Found {len(matches)} question markers (filtered from {len(all_matches)} total, {len(all_matches) - len(matches)} filtered out)")
 
-        # Pattern 8: Questions starting with "Researchers" or "A researcher"
-        r'(?:^|\n)(\d{1,3})\.\s+(?:A researcher|Researchers)',
-
-        # Pattern 9: Questions starting with "Two weeks after" or similar time references
-        r'(?:^|\n)(\d{1,3})\.\s+(?:Two|Three|Four|Five|Six) (?:weeks?|days?|months?|hours?) (?:after|later)',
-
-        # Pattern 10: Questions starting with test/device/procedure descriptions
-        r'(?:^|\n)(\d{1,3})\.\s+A (?:new|sexually active|healthy|study)',
-
-        # Pattern 11: Questions starting with procedure descriptions
-        r'(?:^|\n)(\d{1,3})\.\s+During a (?:study|trial|routine)',
-
-        # Pattern 12: Item set questions that start with "Which of the following" (any number)
-        r'(?:^|\n)(\d{1,3})\.\s+Which\s+of\s+the\s+following',
-
-        # Pattern 13: Item set continuation questions
-        r'(?:^|\n)(\d{1,3})\.\s+(?:Appropriate|After|Following|Based on|In addition to)',
-    ]
-
-    all_matches = []
-    for pattern_str in patterns:
-        pattern = re.compile(pattern_str, re.MULTILINE | re.IGNORECASE)
-        all_matches.extend(pattern.finditer(content))
-
-    # Sort by position and remove duplicates
-    matches = sorted(all_matches, key=lambda m: m.start())
-
-    # Track seen question numbers to avoid duplicates (e.g., from "mm³" split across lines)
+    # Track seen question numbers to avoid duplicates
     seen_questions = set()
 
     for i, match in enumerate(matches):
@@ -320,32 +389,41 @@ def parse_questions(question_file: Path, answers: Dict[int, str], exam_name: str
         first_option_pos = option_matches[0].start()
         stem = question_text[:first_option_pos].strip()
 
-        # Check if this question might have a shared background
-        # This happens in item sets where the stem is very short (just the question)
-        # Look for shared background if stem is short or starts with certain patterns
-        if len(stem) < 200 or re.match(r'^\s*(?:Which|Appropriate|After|Following|Based on|In addition to)', stem, re.IGNORECASE):
-            background = extract_shared_background(content, match_start)
-
-            # If we couldn't find a background directly (e.g., for continuation questions),
-            # check if the previous question has a background we can reuse
-            if not background and question_num > 1:
-                # Look for the previous question in the already-parsed list
-                prev_q = next((q for q in questions if q['question_number'] == question_num - 1), None)
-                if prev_q:
-                    # Check if the previous question's stem has a clinical background
-                    # (long stem starting with "A [age]-year-old")
-                    prev_stem = prev_q['stem']
-                    if len(prev_stem) > 500 and re.match(r'^(?:A|An)\s+\d+', prev_stem, re.IGNORECASE):
-                        # Extract the background portion (before the actual question)
-                        # The background typically ends with the clinical findings,
-                        # before "Which of the following" or similar question starts
-                        match_q = re.search(r'\n\n(?:Which of the following|What is|In addition to)', prev_stem, re.IGNORECASE)
-                        if match_q:
-                            background = prev_stem[:match_q.start()].strip()
-
+        # Check if this question is part of a problem set
+        if question_num in problem_set_backgrounds:
+            # Use the shared background from the problem set
+            background = problem_set_backgrounds[question_num]
             if background:
                 # Prepend the background to the stem
                 stem = background + '\n\n' + stem
+        else:
+            # Fallback to heuristic approach for questions not in explicit problem sets
+            # Check if this question might have a shared background
+            # This happens in item sets where the stem is very short (just the question)
+            # Look for shared background if stem is short or starts with certain patterns
+            if len(stem) < 200 or re.match(r'^\s*(?:Which|Appropriate|After|Following|Based on|In addition to)', stem, re.IGNORECASE):
+                background = extract_shared_background(content, match_start)
+
+                # If we couldn't find a background directly (e.g., for continuation questions),
+                # check if the previous question has a background we can reuse
+                if not background and question_num > 1:
+                    # Look for the previous question in the already-parsed list
+                    prev_q = next((q for q in questions if q['question_number'] == question_num - 1), None)
+                    if prev_q:
+                        # Check if the previous question's stem has a clinical background
+                        # (long stem starting with "A [age]-year-old")
+                        prev_stem = prev_q['stem']
+                        if len(prev_stem) > 500 and re.match(r'^(?:A|An)\s+\d+', prev_stem, re.IGNORECASE):
+                            # Extract the background portion (before the actual question)
+                            # The background typically ends with the clinical findings,
+                            # before "Which of the following" or similar question starts
+                            match_q = re.search(r'\n\n(?:Which of the following|What is|In addition to)', prev_stem, re.IGNORECASE)
+                            if match_q:
+                                background = prev_stem[:match_q.start()].strip()
+
+                if background:
+                    # Prepend the background to the stem
+                    stem = background + '\n\n' + stem
 
         # Extract options
         options, _ = extract_options(question_text, first_option_pos)
@@ -481,7 +559,7 @@ def main():
             'output_file': 'Step2_CK_questions_parsed.json'
         },
         {
-            'question_file': 'Step3_Sample_Items.txt',
+            'question_file': 'Step3_Questions.txt',
             'answer_file': 'Step3_Answers.txt',
             'exam_name': 'USMLE Step 3',
             'output_file': 'Step3_questions_parsed.json'

@@ -233,6 +233,34 @@
   },
   {
     "exam": "USMLE Step 1",
+    "question_number": 9,
+    "stem": "After being severely beaten and sustaining a gunshot wound to the abdomen, a 42-year-old woman undergoes\nresection of a perforated small bowel. During the operation, plastic reconstruction of facial fractures, and open\nreduction and internal fixation of the left femur are also done. Thirty-six hours postoperatively, she is awake but not\ncompletely alert. She is receiving intravenous morphine via a patient-controlled pump. She says that she needs the\nmorphine to treat her pain, but she is worried that she is becoming addicted. She has no history of substance use\ndisorder. She drinks one to two glasses of wine weekly. Which of the following initial actions by the physician is\nmost appropriate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reassure the patient that her chance of becoming addicted to narcotics is minuscule"
+      },
+      {
+        "label": "B",
+        "text": "Maintain the morphine, but periodically administer intravenous naloxone"
+      },
+      {
+        "label": "C",
+        "text": "Switch the patient to oral acetaminophen as soon as she can take medication orally"
+      },
+      {
+        "label": "D",
+        "text": "Switch the patient to intramuscular lorazepam"
+      },
+      {
+        "label": "E",
+        "text": "Switch the patient to intravenous phenobarbital"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "exam": "USMLE Step 1",
     "question_number": 10,
     "stem": "A 22-year-old woman comes to the office because of a 4-day history of an itchy, red rash on her right arm. She has\nno history of major medical illness and takes no medications. She says she has recently used a new hair dye. She is\n165 cm (5 ft 5 in) tall and weighs 61 kg (135 lb); BMI is 23 kg/m2. Her temperature is 37.0°C (98.6°F), pulse is\n70/min. respirations are 22/min, and blood pressure is 115/70 mm Hg. Examination of the right forearm shows the\nfindings in the photograph. Which of the following ligand → receptor pairs most likely played a primary role in the\nproliferation of the T lymphocytes present at the site of the rash in this patient?",
     "options": [
@@ -1509,6 +1537,38 @@
   },
   {
     "exam": "USMLE Step 1",
+    "question_number": 56,
+    "stem": "A study is designed to evaluate the feasibility of acupuncture in children with chronic headaches. Sixty children with\nchronic headaches are recruited for the study. In addition to their usual therapy, all children are treated with\nacupuncture three times a week for 2 months. Which of the following best describes this study design?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Case-control"
+      },
+      {
+        "label": "B",
+        "text": "Case series"
+      },
+      {
+        "label": "C",
+        "text": "Crossover"
+      },
+      {
+        "label": "D",
+        "text": "Cross-sectional"
+      },
+      {
+        "label": "E",
+        "text": "Historical cohort"
+      },
+      {
+        "label": "F",
+        "text": "Randomized clinical trial"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "exam": "USMLE Step 1",
     "question_number": 57,
     "stem": "A 6-year-old girl is admitted to the hospital because of a 1-week history of constant increasingly severe neck pain\nand a 2-month history of severe headaches that occur three to four times weekly and last for 1 hour. She also has had\nfour episodes of otitis media and three urinary tract infections during the past 4 years. Today, her temperature is\n37.6°C (99.6°F), pulse is 78/min, respirations are 20/min, and blood pressure is 95/63 mm Hg. Examination of the\nneck shows no palpable masses, but there is generalized hyperreflexia and Babinski sign is present. CT scan of the\nmastoid area shows bone destruction in the right mastoid and right internal ear. Examination of a biopsy specimen of\nthe retropharyngeal area shows aggregates of segmented neutrophils as well as evidence of Candida albicans .\nImmunologic studies show a neutrophil count of 9800/µL, but these cells show a delay in bactericidal activity\nagainst Staphylococcus aureus . The most likely cause of this patient’s condition is a homozy gous mutation in which\nof the following genes?",
     "options": [
@@ -2209,6 +2269,30 @@
   },
   {
     "exam": "USMLE Step 1",
+    "question_number": 82,
+    "stem": "In a cohort study of elderly women, the relative risk ratio for hip fractures among those who exercise regularly is 1.2\n(95% confidence interval of 1.1 to 1.8). Which of the following is the most appropriate conclusion about the effect\nof regular exercise on the risk for hip fracture?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Statistically nonsignificant increase in risk"
+      },
+      {
+        "label": "B",
+        "text": "Statistically nonsignificant overall decrease in risk"
+      },
+      {
+        "label": "C",
+        "text": "Statistically significant overall decrease in risk"
+      },
+      {
+        "label": "D",
+        "text": "Statistically significant overall increase in risk"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "exam": "USMLE Step 1",
     "question_number": 83,
     "stem": "A 52-year-old man is brought to the emergency department 30 minutes after he had an episode of chest pain\nradiating to his jaw while shoveling snow. His pulse is 80/min, and blood pressure is 130/70 mm Hg. The lungs are\nclear to auscultation. Cardiac examination shows an S 4. While undergoing an ECG, the patient says that he feels the\nchest pain returning. The most appropriate immediate treatment is a drug with which of the following mechanisms\nof action?",
     "options": [
@@ -2426,6 +2510,62 @@
       }
     ],
     "answer": "D"
+  },
+  {
+    "exam": "USMLE Step 1",
+    "question_number": 91,
+    "stem": "A couple comes for preconceptional genetic counseling because they both have a family history of α -thalassemia.\nThe woman has a minimally decreased hemoglobin concentration. Genetic studies show a single gene deletion. The\nman has microcytic anemia and a t wo-gene deletion. If the two-gene deletion is in trans  (one deletion on the\nmaternal gene and one deletion on the paternal gene), which of the following percentages of their offspring will have\na two-gene deletion?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0%"
+      },
+      {
+        "label": "B",
+        "text": "25%"
+      },
+      {
+        "label": "C",
+        "text": "50%"
+      },
+      {
+        "label": "D",
+        "text": "75%"
+      },
+      {
+        "label": "E",
+        "text": "100%"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "exam": "USMLE Step 1",
+    "question_number": 92,
+    "stem": "A previously healthy 40-year-old woman is brought to the emergency department by her husband because of a 2-day\nhistory of fever, lethargy, and confusion. Her temperature is 38°C (100.4°F), pulse is 80/min, respirations are\n18/min, and blood pressure is 140/90 mm Hg. Physical examination shows scattered petechiae and ecchymoses over\nthe lower extremities. Neurologic examination shows moderate generalized motor weakness. She is oriented to\nperson but not to place or time. Laboratory studies show:\nHemoglo bin 9 g/dL  \nHematocrit  27% \nLeukocyte count  8000/mm3 with a normal differential  \nPlatelet count  15,000/mm3 \nProthrombin time  12 sec (INR=1.1)  \nPartial thromboplastin time  30 sec  \nSerum  \nUrea nitrogen  25 mg/dL  \nLactate dehydrogenase  1000 U/L  \nA peripheral blood smear shows 3+ polychromasia and 3+ schistocytes. Urine and blood cultures grow no \norganisms. A chest x-ray shows no abnormalities. Which of the following is the most likely diagnosis?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Acute myeloid leukemia"
+      },
+      {
+        "label": "B",
+        "text": "Autoimmune hemolytic anemia"
+      },
+      {
+        "label": "C",
+        "text": "Thrombotic thrombocytopenic purpura"
+      },
+      {
+        "label": "D",
+        "text": "Toxic shock syndrome"
+      },
+      {
+        "label": "E",
+        "text": "von Willebrand disease"
+      }
+    ],
+    "answer": "C"
   },
   {
     "exam": "USMLE Step 1",
@@ -2661,6 +2801,34 @@
   },
   {
     "exam": "USMLE Step 1",
+    "question_number": 101,
+    "stem": "A placebo-controlled clinical trial is conducted to assess whether a new antihypertensive drug is more effective than\nstandard therapy. A total of 5000 patients with essential hypertension are enrolled and randomly assigned to one of\ntwo groups: 2500 patients receive the new drug and 2500 patients receive placebo. If the alpha is set at 0.01 instead\nof 0.05, which of the following is the most likely result?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Significant findings can be reported with greater confidence"
+      },
+      {
+        "label": "B",
+        "text": "The study will have more power"
+      },
+      {
+        "label": "C",
+        "text": "There is a decreased likelihood of a Type II error"
+      },
+      {
+        "label": "D",
+        "text": "There is an increased likelihood of statistically significant findings"
+      },
+      {
+        "label": "E",
+        "text": "There is an increased likelihood of a Type I error"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "exam": "USMLE Step 1",
     "question_number": 102,
     "stem": "A 17-year-old girl is brought to the physician by her mother because she has not had a menstrual period for\n6 months. The patient is unconcerned about the lack of menses. Menarche occurred at the age of 12 years, and\nmenses had occurred at regular 28-day intervals until they became irregular 1 year ago. She is a member of her high\nschool gymnastics team. She appears emaciated. She is 163 cm (5 ft 4 in) tall and weighs 40 kg (88 lb); BMI is\n15 kg/m2. Her pulse is 54/min, and blood pressure is 80/50 mm Hg. Which of the following is the most likely cause\nof this patient's amenorrhea?",
     "options": [
@@ -2686,6 +2854,34 @@
       }
     ],
     "answer": "B"
+  },
+  {
+    "exam": "USMLE Step 1",
+    "question_number": 103,
+    "stem": "A male stillborn is delivered at 32 weeks' gestation to a 30-year-old woman. The pregnancy was complicated by\noligohydramnios. Examination of the stillborn shows the absence of a urethral opening. Which of the following\nadditional findings is most likely in this stillborn?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Congenital diaphragmatic hernia"
+      },
+      {
+        "label": "B",
+        "text": "Intralobar sequestration"
+      },
+      {
+        "label": "C",
+        "text": "Pulmonary hypoplasia"
+      },
+      {
+        "label": "D",
+        "text": "Situs inversus"
+      },
+      {
+        "label": "E",
+        "text": "Tracheoesophageal fistula"
+      }
+    ],
+    "answer": "C"
   },
   {
     "exam": "USMLE Step 1",
@@ -2854,6 +3050,38 @@
       }
     ],
     "answer": "A"
+  },
+  {
+    "exam": "USMLE Step 1",
+    "question_number": 110,
+    "stem": "During a clinical study examining the effects of exercise, men between the ages of 20 and 30 years are evaluated\nduring a 15-minute session on a treadmill. The average pulse for the last 2 minutes of the session is 175/min. During\nthe last minute of exercise, various measurements are taken. Compared with the measurement before the session,\nwhich of the following is most likely to be decreased?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Cardiac output"
+      },
+      {
+        "label": "B",
+        "text": "Oxygen consumption"
+      },
+      {
+        "label": "C",
+        "text": "Pulse pressure"
+      },
+      {
+        "label": "D",
+        "text": "Stroke volume"
+      },
+      {
+        "label": "E",
+        "text": "Systolic blood pressure"
+      },
+      {
+        "label": "F",
+        "text": "Total peripheral resistance"
+      }
+    ],
+    "answer": "F"
   },
   {
     "exam": "USMLE Step 1",

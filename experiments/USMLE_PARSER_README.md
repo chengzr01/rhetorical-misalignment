@@ -52,7 +52,7 @@ python parse_usmle_sample.py
 This script reads the plain text files from `../datasets/usmle_sample/` and creates parsed JSON files:
 - `Step1_Questions.txt` + `Step1_Answers.txt` → `Step1_questions_parsed.json`
 - `Step2_Questions.txt` + `Step2_Answers.txt` → `Step2_CK_questions_parsed.json`
-- `Step3_Sample_Items.txt` + `Step3_Answers.txt` → `Step3_questions_parsed.json`
+- `Step3_Questions.txt` + `Step3_Answers.txt` → `Step3_questions_parsed.json`
 
 **Options:**
 - `--input-dir`: Directory containing the plain text files (default: `../datasets/usmle_sample`)

@@ -401,6 +401,34 @@
   },
   {
     "exam": "USMLE Step 3",
+    "question_number": 16,
+    "stem": "The quality improvement department of a hospital has received several incident reports indicating tha t patients admitted to the \nhospital have received a different amount of oxygen than was originally ordered by the admitting physician. On admission, \nthe current practice for ordering oxygen therapy is that the admitting physician includes oxygen in the written admission \norders. An example of admission orders for oxygen is shown:  \n \nOxygen: 2 liters via nasal cannula with goal of oxygen saturation >90%  \n \nAfter patients are admitted to the hospital, the amount of oxygen a patient receives is based upon physician  and nurse \ndiscussion, which is not usually documented in the medical record as an additional order. In addition to reviewing the \nhospital's protocol for oxygen delivery, instituting which of the following measures would most likely decrease discrepancies  \nin oxygen delivery without creating additional risks?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Conducting an in -service program on oxygen use and documentation of orders"
+      },
+      {
+        "label": "B",
+        "text": "Creating a standard set of oxygen orders that includes initial dose, titration parameters, and goal dose"
+      },
+      {
+        "label": "C",
+        "text": "Encouragi ng the nurses to refrain from adjusting the patient's oxygen dose without a written order from the physician"
+      },
+      {
+        "label": "D",
+        "text": "Requiring nurses to enter verbal orders in the electronic medical record and requiring physician signature within 24 hours"
+      },
+      {
+        "label": "E",
+        "text": "Requiring nurses to telephone a physician prior to any deviation from the original admission order for oxygen therapy"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "exam": "USMLE Step 3",
     "question_number": 17,
     "stem": "A 21 -year-old ballet dancer comes to the office because she and her husband would like to conceive. She has not had a \nmenstrual period during the past  8 months. She runs 13 km (8 mi) daily. The patient identifies as White. She is 165 cm (5 ft 5 \nin) tall and weighs 48 kg (105 lb); BMI is 18 kg/m2. Temperature is 36.1°C  (97.0°F), pulse is 52/min, respirations are \n20/min, and blood pressure is 90/70 mm Hg. Physical examination discloses a thin woman. The remainder of the physical \nexamination shows no abnormali ties. The patient is advised to gain weight and to decrease the amount of strenuous exercise. \nShe returns for follow -up 3 months later. She says she s till has not had a period even though she has gained 2 kg (4.4 lb). \nWhich of the following is the most likely cause of this patient's amenorrhea?",
     "options": [
@@ -498,7 +526,7 @@
       },
       {
         "label": "D",
-        "text": "Provide the parents with literature about the vaccine and advise them that they may defer the decision because the vaccine may be administered until the age of 26 years Question In patients with cirrhosis and acute bleeding esophageal varices, how do endoscopic sclerotherapy and emergency portacaval sh unt compare for control of bleeding and survival? Methods Design : Randomized controlled trial (San Diego Bleeding Esophageal Varices Study). ClinicalTrials.gov NCT0069002 7. Allocation : Concealed. Blinding : Blinded (gastroenterologist who evaluated patients for portal -systemic encephalopathy). Follow -up period : Up to 17 years. Setting : University of California San Diego Medical Center. Patients : 211 patients (mean age 49 years, 77% men) with acute bleeding esophageal varices resulting from cirrhosis, who required a transfusion of ≥ 2 units of blood  and, for patients transferred from other hospitals, observation of upper gastrointestinal bleeding within 48 hours of transfer. Exclusion criterion was > 1 previous session of endoscopic sclerotherapy. Intervention : Endoscopic sclerother apy ( n = 106) or emergency portacaval shunt ( n = 105). Emergency portacaval shunt comprised a direct side -to-side or direct end -to-side portacaval shunt done within 8 hours of initial contact. Outcomes : Control of bleeding at > 30 days, survival, readmissions for variceal or nonvariceal bleeding requiring transfusion of packed red blood cells, and recurrent portal -systemic encephalopathy. Patient follow -up: 100% (minimum follow -up until death or 9.4 years). Main results 15-year survival was lower with endos copic sclerotherapy than with emergency portacaval shunt (10/106 vs 48/105, relative benefit reduction 79%, 95% CI 62 to 89; number needed to harm 3, CI 2 to 4). Other main results are shown in the Table.  The abstract displayed on these following pages is for use with items #21 -23 on page 26. Endoscopic sclerotherapy (EST) vs emergency portacaval shunt (EPCS) in patients with cirrhosis and acute bleeding esophageal varices Outcomes  Child risk      P class  EST  EPCS  value Control of bleeding at > 30 days*    20% 100%  <.001 Median survival (years)  A 4.62 10.43  .003 B 2.61 6.19 <.001 C 0.58 5.30 .005 Mean number of readmissions for    6.8 0.4 <.001 variceal bleeding requiring packed red blood cell transfusion Recurrent portal -systemic encephalopathy†    35% 15% .001 *Excluding indeterminate deaths at 14 d ays from nonbleeding causes. †In patients who survived 30 days and left hospital. Conclusion In patients with cirrhosis and acute bleeding esophageal varices, emergency portacaval shunt was better than endoscopic sclerotherapy for control of bleeding, recurrent encephalopathy, and survival. Sources of funding : National Institutes of Health and Surgical Education and Research Foundation. Structured abstract based on : Orloff MJ, Isenberg JI, Wheeler HO, et al. Randomized trial of emergency endoscopic sclero therapy versus emergency portacaval shunt for acutely bleeding esophageal varices in cirrhosis.  J Am Coll Surg. 2009;209:25 -40. 19651060"
+        "text": "Provide the parents with literature about the vaccine and advise them that they may defer the decision because the vaccine may be administered until the age of 26 years"
       }
     ],
     "answer": "C"
@@ -506,7 +534,7 @@
   {
     "exam": "USMLE Step 3",
     "question_number": 21,
-    "stem": "A 52 -year-old man with hepatic cirrhosis comes to the emergency department because of a 3 -hour history of vomiting blood. \nEsophagogastroduodenoscopy confirms actively bleeding esophageal varices. Based on the abstract shown, the physician is \nconsidering an emergency portacaval shunt (EPCS) procedure rather than endoscopic sclerotherapy (EST). According to the \nresult s in the abstract, approximately how many patients must be treated with EPCS rather than EST to prevent one case of \nrecurrent portal -systemic en cephalopathy?",
+    "stem": "Question  \nIn patients with cirrhosis and acute bleeding esophageal varices, how do endoscopic sclerotherapy and emergency portacaval sh unt \ncompare for control of bleeding and survival?  \nMethods  \nDesign : Randomized controlled trial (San Diego Bleeding Esophageal Varices Study). ClinicalTrials.gov NCT0069002 7. \nAllocation : Concealed.  \nBlinding : Blinded (gastroenterologist who evaluated patients for portal -systemic encephalopathy).  \nFollow -up period : Up to 17 years.  \nSetting : University of California San Diego Medical Center.  \nPatients : 211 patients (mean age 49 years, 77% men) with acute bleeding esophageal varices resulting from cirrhosis, who required \na transfusion of ≥ 2 units of blood  and, for patients transferred from other hospitals, observation of upper gastrointestinal bleeding \nwithin 48 hours of transfer. Exclusion criterion was > 1 previous session of endoscopic sclerotherapy.  \nIntervention : Endoscopic sclerother apy ( n = 106) or emergency portacaval shunt ( n = 105). Emergency portacaval shunt comprised \na direct side -to-side or direct end -to-side portacaval shunt done within 8 hours of initial contact.  \nOutcomes : Control of bleeding at > 30 days, survival, readmissions for variceal or nonvariceal bleeding requiring transfusion of \npacked red blood cells, and recurrent portal -systemic encephalopathy.  \nPatient follow -up: 100% (minimum follow -up until death or 9.4 years).  \nMain results  \n15-year survival was lower with endos copic sclerotherapy than with emergency portacaval shunt (10/106 vs 48/105, relative benefit \nEndoscopic sclerotherapy (EST) vs emergency portacaval shunt (EPCS) in patients with cirrhosis and acute bleeding \nesophageal varices  \nOutcomes  Child risk      P \n  class  EST  EPCS  value  \nControl of bleeding at > 30 days*    20% 100%  <.001  \nMedian survival (years)  A 4.62 10.43  .003 \n  B 2.61 6.19 <.001  \n  C 0.58 5.30 .005 \nMean number of readmissions for    6.8 0.4 <.001  \n variceal bleeding requiring packed red          \n blood cell transfusion          \nRecurrent portal -systemic encephalopathy†    35% 15% .001 \n*Excluding indeterminate deaths at 14 days from nonbleeding causes.  \n†In patients who survived 30 days and left hospital.  \nConclusion  \nIn patients with cirrhosis and acute bleeding esophageal varices, emergency portacaval shunt was better than endoscopic \nsclerotherapy for control of bleeding, recurrent encephalopathy, and survival.  \nSources of funding : National Institutes of Health and Surgical Education and Research Foundation.  \nStructured abstract based on : Orloff MJ, Isenberg JI, Wheeler HO, et al. Randomized trial of emergency endoscopic \nsclero therapy versus emergency portacaval shunt for acutely bleeding esophageal varices in cirrhosis.  J Am Coll Surg. \n2009;209:25 -40. 19651060\n\nA 52 -year-old man with hepatic cirrhosis comes to the emergency department because of a 3 -hour history of vomiting blood. \nEsophagogastroduodenoscopy confirms actively bleeding esophageal varices. Based on the abstract shown, the physician is \nconsidering an emergency portacaval shunt (EPCS) procedure rather than endoscopic sclerotherapy (EST). According to the \nresult s in the abstract, approximately how many patients must be treated with EPCS rather than EST to prevent one case of \nrecurrent portal -systemic en cephalopathy?",
     "options": [
       {
         "label": "A",
@@ -534,7 +562,7 @@
   {
     "exam": "USMLE Step 3",
     "question_number": 22,
-    "stem": "Which of the following most strongly limits the generalizability of this study's findings?",
+    "stem": "Question  \nIn patients with cirrhosis and acute bleeding esophageal varices, how do endoscopic sclerotherapy and emergency portacaval sh unt \ncompare for control of bleeding and survival?  \nMethods  \nDesign : Randomized controlled trial (San Diego Bleeding Esophageal Varices Study). ClinicalTrials.gov NCT0069002 7. \nAllocation : Concealed.  \nBlinding : Blinded (gastroenterologist who evaluated patients for portal -systemic encephalopathy).  \nFollow -up period : Up to 17 years.  \nSetting : University of California San Diego Medical Center.  \nPatients : 211 patients (mean age 49 years, 77% men) with acute bleeding esophageal varices resulting from cirrhosis, who required \na transfusion of ≥ 2 units of blood  and, for patients transferred from other hospitals, observation of upper gastrointestinal bleeding \nwithin 48 hours of transfer. Exclusion criterion was > 1 previous session of endoscopic sclerotherapy.  \nIntervention : Endoscopic sclerother apy ( n = 106) or emergency portacaval shunt ( n = 105). Emergency portacaval shunt comprised \na direct side -to-side or direct end -to-side portacaval shunt done within 8 hours of initial contact.  \nOutcomes : Control of bleeding at > 30 days, survival, readmissions for variceal or nonvariceal bleeding requiring transfusion of \npacked red blood cells, and recurrent portal -systemic encephalopathy.  \nPatient follow -up: 100% (minimum follow -up until death or 9.4 years).  \nMain results  \n15-year survival was lower with endos copic sclerotherapy than with emergency portacaval shunt (10/106 vs 48/105, relative benefit \nEndoscopic sclerotherapy (EST) vs emergency portacaval shunt (EPCS) in patients with cirrhosis and acute bleeding \nesophageal varices  \nOutcomes  Child risk      P \n  class  EST  EPCS  value  \nControl of bleeding at > 30 days*    20% 100%  <.001  \nMedian survival (years)  A 4.62 10.43  .003 \n  B 2.61 6.19 <.001  \n  C 0.58 5.30 .005 \nMean number of readmissions for    6.8 0.4 <.001  \n variceal bleeding requiring packed red          \n blood cell transfusion          \nRecurrent portal -systemic encephalopathy†    35% 15% .001 \n*Excluding indeterminate deaths at 14 days from nonbleeding causes.  \n†In patients who survived 30 days and left hospital.  \nConclusion  \nIn patients with cirrhosis and acute bleeding esophageal varices, emergency portacaval shunt was better than endoscopic \nsclerotherapy for control of bleeding, recurrent encephalopathy, and survival.  \nSources of funding : National Institutes of Health and Surgical Education and Research Foundation.  \nStructured abstract based on : Orloff MJ, Isenberg JI, Wheeler HO, et al. Randomized trial of emergency endoscopic \nsclero therapy versus emergency portacaval shunt for acutely bleeding esophageal varices in cirrhosis.  J Am Coll Surg. \n2009;209:25 -40. 19651060\n\nWhich of the following most strongly limits the generalizability of this study's findings?",
     "options": [
       {
         "label": "A",
@@ -562,7 +590,7 @@
   {
     "exam": "USMLE Step 3",
     "question_number": 23,
-    "stem": "Which of the following conclusions is most appropriate based on the results presented in the table?",
+    "stem": "Question  \nIn patients with cirrhosis and acute bleeding esophageal varices, how do endoscopic sclerotherapy and emergency portacaval sh unt \ncompare for control of bleeding and survival?  \nMethods  \nDesign : Randomized controlled trial (San Diego Bleeding Esophageal Varices Study). ClinicalTrials.gov NCT0069002 7. \nAllocation : Concealed.  \nBlinding : Blinded (gastroenterologist who evaluated patients for portal -systemic encephalopathy).  \nFollow -up period : Up to 17 years.  \nSetting : University of California San Diego Medical Center.  \nPatients : 211 patients (mean age 49 years, 77% men) with acute bleeding esophageal varices resulting from cirrhosis, who required \na transfusion of ≥ 2 units of blood  and, for patients transferred from other hospitals, observation of upper gastrointestinal bleeding \nwithin 48 hours of transfer. Exclusion criterion was > 1 previous session of endoscopic sclerotherapy.  \nIntervention : Endoscopic sclerother apy ( n = 106) or emergency portacaval shunt ( n = 105). Emergency portacaval shunt comprised \na direct side -to-side or direct end -to-side portacaval shunt done within 8 hours of initial contact.  \nOutcomes : Control of bleeding at > 30 days, survival, readmissions for variceal or nonvariceal bleeding requiring transfusion of \npacked red blood cells, and recurrent portal -systemic encephalopathy.  \nPatient follow -up: 100% (minimum follow -up until death or 9.4 years).  \nMain results  \n15-year survival was lower with endos copic sclerotherapy than with emergency portacaval shunt (10/106 vs 48/105, relative benefit \nEndoscopic sclerotherapy (EST) vs emergency portacaval shunt (EPCS) in patients with cirrhosis and acute bleeding \nesophageal varices  \nOutcomes  Child risk      P \n  class  EST  EPCS  value  \nControl of bleeding at > 30 days*    20% 100%  <.001  \nMedian survival (years)  A 4.62 10.43  .003 \n  B 2.61 6.19 <.001  \n  C 0.58 5.30 .005 \nMean number of readmissions for    6.8 0.4 <.001  \n variceal bleeding requiring packed red          \n blood cell transfusion          \nRecurrent portal -systemic encephalopathy†    35% 15% .001 \n*Excluding indeterminate deaths at 14 days from nonbleeding causes.  \n†In patients who survived 30 days and left hospital.  \nConclusion  \nIn patients with cirrhosis and acute bleeding esophageal varices, emergency portacaval shunt was better than endoscopic \nsclerotherapy for control of bleeding, recurrent encephalopathy, and survival.  \nSources of funding : National Institutes of Health and Surgical Education and Research Foundation.  \nStructured abstract based on : Orloff MJ, Isenberg JI, Wheeler HO, et al. Randomized trial of emergency endoscopic \nsclero therapy versus emergency portacaval shunt for acutely bleeding esophageal varices in cirrhosis.  J Am Coll Surg. \n2009;209:25 -40. 19651060\n\nWhich of the following conclusions is most appropriate based on the results presented in the table?",
     "options": [
       {
         "label": "A",
@@ -578,7 +606,7 @@
       },
       {
         "label": "D",
-        "text": "The randomization procedure was inef fective in decreasing bias in this study END OF SET Items #21 –23 refer to the abstract displayed on the previous pages."
+        "text": "The randomization procedure was inef fective in decreasing bias in this study"
       }
     ],
     "answer": "B"
@@ -1121,6 +1149,38 @@
   },
   {
     "exam": "USMLE Step 3",
+    "question_number": 43,
+    "stem": "A study is conducted to assess physician use of β -adrenergic blocking agents as treatment for heart failure. A random sample of 5000 practicing physicians is selected and surveyed using a 10 -item validated questionnaire. Researchers stratify the current prescribing patterns by age of physician, and by location and type of practice. Which of the following most accurately characterizes this study design?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Case-control study"
+      },
+      {
+        "label": "B",
+        "text": "Case series"
+      },
+      {
+        "label": "C",
+        "text": "Clinical trial"
+      },
+      {
+        "label": "D",
+        "text": "Cross-sectional study"
+      },
+      {
+        "label": "E",
+        "text": "Prospective cohort study"
+      },
+      {
+        "label": "F",
+        "text": "Retrospective cohort study"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "exam": "USMLE Step 3",
     "question_number": 44,
     "stem": "A 28 -year-old man comes to the office because of a 3 -day history of increasing pain on urination. He says, \"I'm worried that I \nmight have a sexual disease.\" He has been married for the past 7  years, and he states that his only sexual relations since then \nhave been with his wife. Medical history is unremarkable and the patient takes no medi cations. He works at a gardening \ncenter. Vital signs are within normal limits. Abdominal examination discloses shotty bilateral inguinal lymphadenopathy. \nExamination of th e penis discloses a minimal amount of watery urethral discharge. The testes appear normal. The remainder \nof the physical examination shows no abnormalities. Which of the following is the most appropriate diagnostic study at this \ntime?",
     "options": [
@@ -1289,8 +1349,36 @@
   },
   {
     "exam": "USMLE Step 3",
+    "question_number": 50,
+    "stem": "A physician would like to evaluate the benefit of a new osteoporosis medication in preventing fractures in women aged \n40 to 60 years. A total of 300  women aged 40 to 60  years with osteoporosis documented by DEXA scan are enrolled in the \nstudy from general gynecology clinics. The patients are equally randomiz ed into two groups. Group  A receives the new \nosteoporosis medication and Group  B receives placebo. The patients are followed for 5  years and bone density is measured \nannually by DEXA scanning. Results show that the bone density of patients who received the study medication is unchanged \nand the bone density in patients who received placebo decreased by 2% ( P=.01). The ph ysician concludes that the new \nmedication decreases the risk for fracture in women aged 40 to 60  years. Which of the following is the most a ppropriate \nconclusion to draw from these data?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The impact of the medication on bone density may not correlate with the risk for fracture"
+      },
+      {
+        "label": "B",
+        "text": "The lack of a change in bone density among patients who received the study medication suggests the presence of a confounding variable"
+      },
+      {
+        "label": "C",
+        "text": "The lack of a change in bone density among the treatment group suggests that the medication regimen is too complicated"
+      },
+      {
+        "label": "D",
+        "text": "The lack of women younger than 40  years of age makes it difficult to evaluate the long -term benefit of tr eatment"
+      },
+      {
+        "label": "E",
+        "text": "Selection bias is likely because the patients were all selected from general gynecology practices"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "exam": "USMLE Step 3",
     "question_number": 51,
-    "stem": "A 15 -year-old boy is brought to the clinic after his father noticed significant swelling of the boy’s chest when he was getting \ndressed 6  hours ago. The patient reports a 3 -month history of gradually worsening left -sided chest pain and swelling, but he \nsays he was too embarrassed to tell his parents. He has not had fever, chills, night sweats, loss of appetite, weight loss, o r any \nrecent trauma to the chest. Medical history is unremarkable and he takes no medications. The patient is a good student. He \ndoes not smoke cigarettes or drink alcoholic beverages. Temperature is 36.4°C (97.5°F), pulse is 69/min, respirations are \n14/min, and blood pressure is 115/70 mm Hg. Oxygen saturation is 100% on room air. Examination of the head, neck, and \nskin discloses no abnormalities. There is a fixed palpable mass measuring approximately 14 × 12 cm in the left chest wall \nthat is tender to palpation. The remainde r of the physical examination discloses no abnormalities. Biopsy of this mass is most \nlikely to show which of the following?",
+    "stem": "A 15 -year-old boy is brought to the clinic after his father noticed significant swelling of the boy’s chest when he was getting dressed 6  hours ago. The patient reports a 3 -month history of gradually worsening left -sided chest pain and swelling, but he says he was too embarrassed to tell his parents. He has not had fever, chills, night sweats, loss of appetite, weight loss, or any recent trauma to the chest. Medical history is unremarkable and he takes no medications. The patient is a good student. He does not smoke cigarettes or drink alcoholic beverages. Temperature is 36.4°C (97.5°F), pulse is 69/min, respirations are 14/min, and blood pressure is 115/70 mm Hg. Oxygen saturation is 100% on room air. Examination of the head, neck, and skin discloses no abnormalities. There is a fixed palpable mass measuring approximately 14 × 12 cm in the left chest wall that is tender to palpation. The remainde r of the physical examination discloses no abnormalities. Biopsy of this mass is most likely to show which of the following?",
     "options": [
       {
         "label": "A",
@@ -1594,7 +1682,7 @@
       },
       {
         "label": "E",
-        "text": "Pancoast tumor A 16 -year-old boy comes to the office because of a 2 -week history of six to eight daily episodes of loose, watery stools. The episodes are as sociated with abdominal cramps. His stool has not contained any blood. Medical history is signif icant for recurrent sinopulmonary infections typically treated with oral antibiotics. His last infection occurred 1 month ago and resolved within  10 days. He currently takes no medications and is not sexually active. He has no history of recent travel. He does not smo ke ciga rettes, drink alcoholic beverages, or use other substances. BMI is 18 kg/m2. Temperature is 37.7°C (99.9°F), pulse is 100/min, respir ations are 18/min, and blood pressure is 110/60 mm Hg. Lungs are clear to auscultation. Cardiac examinat ion discloses no abnormalities. Bowel sounds are normoactive. Abdomen is soft; palpation discloses mild, diffuse tenderness but no masses or hepatosplenomegaly. Digital rectal examination discloses brown stool; test of the stool for occult blood is negative. A cultu re of the stool is obtained. Acid -fast smear of a stool specimen shows numerous 6 -μm ovoid oocysts."
+        "text": "Pancoast tumor"
       }
     ],
     "answer": "E"
@@ -1650,10 +1738,34 @@
       },
       {
         "label": "E",
-        "text": "Serum quantitative immunoglobulin c oncentrations END OF SET Items #62 –63 are part of a sequential item set. In the actual examination environment, you will not be able to view the second item until you click \"Proceed to Next Item.\" After navigating to the second item, you will not be able to add or change an answer to the first item."
+        "text": "Serum quantitative immunoglobulin c oncentrations"
       }
     ],
     "answer": "E"
+  },
+  {
+    "exam": "USMLE Step 3",
+    "question_number": 64,
+    "stem": "Physicians at an ambulatory clinic would like to develop a rapid screening test to diagnose influenza virus infection after t he \nclinic reported 20% more cases of influenza virus infection this year than any other year. Patients at the clinic currently w ait \nalmost 90 minutes for results of a nasopharyngeal swab test to determine if they have influenza virus infection. The \nphysicians develop two tests, Test A and Test B, which take only 10 minutes to yield results. The receive r operator \ncharacteristic (ROC) c urves for the two tests are shown. Based on these data, which of the following is the most appropriate \nconclusion to draw about Test A compared with Test B?",
+    "options": [
+      {
+        "label": "A",
+        "text": "In the high false positive rate range, Test A is more accurate than Test B"
+      },
+      {
+        "label": "B",
+        "text": "In the high sensitivity range, Test A is more accurate than Test B"
+      },
+      {
+        "label": "C",
+        "text": "In the low false positive rate range, Test A is more accurate than Test B"
+      },
+      {
+        "label": "D",
+        "text": "In the low sensitivity range, Test B is more accurate than Test A"
+      }
+    ],
+    "answer": "C"
   },
   {
     "exam": "USMLE Step 3",
@@ -1762,7 +1874,7 @@
       },
       {
         "label": "E",
-        "text": "Prostacyclin synthase The pharmaceutical advertisement on t he following pages is for use with items #69 and 70 on page 56. An 18 -year-old woman comes to the university health center requesting medication to improve her concentration. She says she needs to maintain a high grade -point average so that she will be accepted into graduate school. She graduated in the top 10% of her class at a se lective preparatory high school. She is taking six classes this semester and says that she is having trouble keeping up with her workload. Several of her friends take medication for attention -deficit/hyperactivity disorder (ADHD) and h ave told her that these medications help them study and perform better on examinations. The patient says she took some of her roommate’s Essepro  XL and was able to study for hours without being distracted. She says Essepro  XL has the added benefit of suppressing her appetite, which might help her lose weight. Medical history is remarkable for asthma and seasonal allergies since early childhood. Medications are albuterol inhaler as needed, fluticasone inhaler twice daily, and oral 24 -hour loratadine 10  mg wi th pseudoephedrine once daily. BMI is 30  kg/m2. Blood pressure is 130/84  mm Hg; other vital signs are within normal limits. The lungs are clear to auscultation. Cardiac examination discloses a midsystolic click. The patient has an advertisement for Esse pro XL, as shown, and as ks the physician if she could be prescribed this medication to improve her concentration and to lose weight. The physician decides not to prescribe Essepro  XL for this patient."
+        "text": "Prostacyclin synthase"
       }
     ],
     "answer": "D"
@@ -1770,7 +1882,7 @@
   {
     "exam": "USMLE Step 3",
     "question_number": 69,
-    "stem": "Based on the advertisement, which of the following is the  most appropriate rationale for this decision?",
+    "stem": "An 18-year-old woman comes to the university health center requesting medication to improve her concentration. She says she \nneeds to maintain a high grade -point average so that she will be accepted into graduate school. She graduated in the top 10% of her \nclass at a se lective preparatory high school. She is taking six classes this semester and says that she is having trouble keeping up \nwith her workload. Several of her friends take medication for attention -deficit/hyperactivity disorder (ADHD) and h ave told her that \nthese medications help them study and perform better on examinations. The patient says she took some of her roommate’s \nEssepro  XL and was able to study for hours without being distracted. She says Essepro  XL has the added benefit of suppressing her \nappetite, which might help her lose weight. Medical history is remarkable for asthma and seasonal allergies since early childhood. \nMedications are albuterol inhaler as needed, fluticasone inhaler twice daily, and oral 24 -hour loratadine 10  mg wi th \npseudoephedrine once daily. BMI is 30  kg/m2. Blood pressure is 130/84  mm Hg; other vital signs are within normal limits. The \nlungs are clear to auscultation. Cardiac examination discloses a midsystolic click. The patient has an advertisement for Esse pro XL, \nas shown, and as ks the physician if she could be prescribed this medication to improve her concentration and to lose weight. The \nphysician decides not to prescribe Essepro  XL for this patient.\n\nBased on the advertisement, which of the following is the  most appropriate rationale for this decision?",
     "options": [
       {
         "label": "A",
@@ -1798,7 +1910,7 @@
   {
     "exam": "USMLE Step 3",
     "question_number": 70,
-    "stem": "Based on the advertisement, which of the following is the greatest advantage of Essepro  XL over methylphenidate  XL?",
+    "stem": "An 18-year-old woman comes to the university health center requesting medication to improve her concentration. She says she \nneeds to maintain a high grade -point average so that she will be accepted into graduate school. She graduated in the top 10% of her \nclass at a se lective preparatory high school. She is taking six classes this semester and says that she is having trouble keeping up \nwith her workload. Several of her friends take medication for attention -deficit/hyperactivity disorder (ADHD) and h ave told her that \nthese medications help them study and perform better on examinations. The patient says she took some of her roommate’s \nEssepro  XL and was able to study for hours without being distracted. She says Essepro  XL has the added benefit of suppressing her \nappetite, which might help her lose weight. Medical history is remarkable for asthma and seasonal allergies since early childhood. \nMedications are albuterol inhaler as needed, fluticasone inhaler twice daily, and oral 24 -hour loratadine 10  mg wi th \npseudoephedrine once daily. BMI is 30  kg/m2. Blood pressure is 130/84  mm Hg; other vital signs are within normal limits. The \nlungs are clear to auscultation. Cardiac examination discloses a midsystolic click. The patient has an advertisement for Esse pro XL, \nas shown, and as ks the physician if she could be prescribed this medication to improve her concentration and to lose weight. The \nphysician decides not to prescribe Essepro  XL for this patient.\n\nBased on the advertisement, which of the following is the greatest advantage of Essepro  XL over methylphenidate  XL?",
     "options": [
       {
         "label": "A",
@@ -1822,7 +1934,7 @@
       },
       {
         "label": "F",
-        "text": "Increased duration of action END OF SET"
+        "text": "Increased duration of action"
       }
     ],
     "answer": "F"
@@ -2314,7 +2426,7 @@
       },
       {
         "label": "D",
-        "text": "Type 1 diabetes mellitus An 11 -year-old girl is brought to the emergency department by her parents because of a 1 -day history of shortness of breath, fatigue, excessive thirst, and frequent urination. The parents say the onset of these symptoms coincided with an upper respiratory tra ct infection. Medical history is significant for type  1 diabetes mellitus. The patient's only medication is insulin. BMI is 23 kg/m2 (93rd percentile). Temperature is 36.0°C  (96.8°F), pulse is 110/min, respirations are 28/min, and blood pressure i s 95/6 5 mm Hg. Oxygen saturation is 97% on room air. The patient appears moderately dehydrated and drowsy, but she is able to speak easily when prompted and communicates in a lucid fashion. Her respiratory pattern is rapid and deep, and she is using accessory muscles o f respir ation. Results of laboratory studies are shown: Serum    Arterial blood gas analysis on room air Acetone  45 mg/dL (N<10)   PO2 95 mm Hg Glucose  693 mg/dL   PCO2 26 mm Hg PH 7.16 Base excess  −16 mEq/L"
+        "text": "Type 1 diabetes mellitus"
       }
     ],
     "answer": "B"
@@ -2322,7 +2434,7 @@
   {
     "exam": "USMLE Step 3",
     "question_number": 90,
-    "stem": "An 11 -year-old girl is brought to the emergency department by her parents because of a 1 -day history of shortness of breath, fatigue, \nexcessive thirst, and frequent urination. The parents say the onset of these symptoms coincided with an upper respiratory tra ct \ninfection. Medical history is significant for type  1 diabetes mellitus. The patient's only medication is insulin. BMI is 23 kg/m2 (93rd \npercentile). Temperature is 36.0°C  (96.8°F), pulse is 110/min, respirations are 28/min, and blood pressure i s 95/6 5 mm Hg. Oxygen \nsaturation is 97% on room air. The patient appears moderately dehydrated and drowsy, but she is able to speak easily when \nprompted and communicates in a lucid fashion. Her respiratory pattern is rapid and deep, and she is using accessory muscles o f \nrespir ation. Results of laboratory studies are shown:  \n \nSerum    Arterial blood gas analysis on room air  \n Acetone  45 mg/dL (N<10)   PO2 95 mm Hg  \n Glucose  693 mg/dL   PCO2 26 mm Hg  \n     PH 7.16 \n     Base excess  −16 mEq/L\n\nIn addition to volume expansion, which of the following is the most appropriate intervention at this time?",
+    "stem": "An 11 -year-old girl is brought to the emergency department by her parents because of a 1 -day history of shortness of breath, fatigue, \nexcessive thirst, and frequent urination. The parents say the onset of these symptoms coincided with an upper respiratory tra ct \ninfection. Medical history is significant for type  1 diabetes mellitus. The patient's only medication is insulin. BMI is 23 kg/m2 (93rd \npercentile). Temperature is 36.0°C  (96.8°F), pulse is 110/min, respirations are 28/min, and blood pressure i s 95/6 5 mm Hg. Oxygen \nsaturation is 97% on room air. The patient appears moderately dehydrated and drowsy, but she is able to speak easily when \nprompted and communicates in a lucid fashion. Her respiratory pattern is rapid and deep, and she is using accessory muscles o f \nrespir ation. Results of laboratory studies are shown:  \nSerum    Arterial blood gas analysis on room air  \n Acetone  45 mg/dL (N<10)   PO2 95 mm Hg  \n Glucose  693 mg/dL   PCO2 26 mm Hg  \n     PH 7.16 \n     Base excess  −16 mEq/L\n\nIn addition to volume expansion, which of the following is the most appropriate intervention at this time?",
     "options": [
       {
         "label": "A",
@@ -2346,6 +2458,34 @@
       }
     ],
     "answer": "B"
+  },
+  {
+    "exam": "USMLE Step 3",
+    "question_number": 91,
+    "stem": "An 11 -year-old girl is brought to the emergency department by her parents because of a 1 -day history of shortness of breath, fatigue, \nexcessive thirst, and frequent urination. The parents say the onset of these symptoms coincided with an upper respiratory tra ct \ninfection. Medical history is significant for type  1 diabetes mellitus. The patient's only medication is insulin. BMI is 23 kg/m2 (93rd \npercentile). Temperature is 36.0°C  (96.8°F), pulse is 110/min, respirations are 28/min, and blood pressure i s 95/6 5 mm Hg. Oxygen \nsaturation is 97% on room air. The patient appears moderately dehydrated and drowsy, but she is able to speak easily when \nprompted and communicates in a lucid fashion. Her respiratory pattern is rapid and deep, and she is using accessory muscles o f \nrespir ation. Results of laboratory studies are shown:  \nSerum    Arterial blood gas analysis on room air  \n Acetone  45 mg/dL (N<10)   PO2 95 mm Hg  \n Glucose  693 mg/dL   PCO2 26 mm Hg  \n     PH 7.16 \n     Base excess  −16 mEq/L\n\nAn infusion of intravenous short -acting insulin is begun. Four hours later, laboratory studies are obtained, and re sults are \nshown:  \n \nSerum  Arterial blood gas analysis on room air  \n Acetone  30 mg/dL (N<10)   pH 7.24 \n Glucose  385 mg/dL      \n \nShortly thereafter, the patient develops a headache and then suddenly loses consciousness. Physical examination shows \nincreased mus cle to ne and extensor posturing of the extremities in response to painful stimuli. Which of the following is the \nmost appropriate next step in management?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Administration of sodium bicarbonate"
+      },
+      {
+        "label": "B",
+        "text": "CT scan of the head"
+      },
+      {
+        "label": "C",
+        "text": "EEG"
+      },
+      {
+        "label": "D",
+        "text": "Fosphenytoin therapy"
+      },
+      {
+        "label": "E",
+        "text": "Mannitol therapy"
+      }
+    ],
+    "answer": "E"
   },
   {
     "exam": "USMLE Step 3",
@@ -2814,7 +2954,7 @@
       },
       {
         "label": "E",
-        "text": "Measure the patient's blood glucose concentration daily A 32 -year-old man comes to the office because of mild eye irrit ation, runny nose, nas al congestion, and postnasal drip that have occurred since he moved to his current apartment 10 months ago. He also reports occasional shortness of breath with wheezing and loss of his sense of smell. He has not had fever or cough. Medical history is unremarkable and he takes no med ications. Family history is significant for nasal polyps in several family members who also have similar symptoms. The patient's vital sig ns are within normal  limits . Physical examination discloses mildly injected conjunc tivae, pale and swolle n nasal turbinates, and a slightly injected pharynx. Lungs are clear to auscultation. The remainder of the examination discloses no abnormalities."
+        "text": "Measure the patient's blood glucose concentration daily"
       }
     ],
     "answer": "C"
@@ -2839,6 +2979,30 @@
       {
         "label": "D",
         "text": "Perennial nature of symptoms"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "exam": "USMLE Step 3",
+    "question_number": 110,
+    "stem": "A 32 -year-old man comes to the office because of mild eye irrit ation, runny nose, nas al congestion, and postnasal drip that have \noccurred since he moved to his current apartment 10 months ago. He also reports occasional shortness of breath with wheezing and \nloss of his sense of smell. He has not had fever or cough. Medical history is unremarkable and he takes no med ications. Family \nhistory is significant for nasal polyps in several family members who also have similar symptoms. The patient's vital sig ns are  \nwithin normal  limits . Physical examination discloses mildly injected conjunc tivae, pale and swolle n nasal turbinates, and a slightly \ninjected pharynx. Lungs are clear to auscultation. The remainder of the examination discloses no abnormalities.\n\nThe patient is counseled regarding allergen avoidance, including the use of HEPA air filter s, a mattress cover, and frequent vacuuming with dust removal. He returns to the office 1 month later with continued wheezing and shortness of breath. Which of the following is the most appropriate pharmacotherapy at this time?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Inhaled fluticasone"
+      },
+      {
+        "label": "B",
+        "text": "Nasal cromo lyn"
+      },
+      {
+        "label": "C",
+        "text": "Nasal oxymetazoline"
+      },
+      {
+        "label": "D",
+        "text": "Oral fexofenadine"
       }
     ],
     "answer": "A"

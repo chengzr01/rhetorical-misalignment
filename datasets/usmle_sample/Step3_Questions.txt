@@ -410,7 +410,9 @@ are small because it is an inactivated vaccine
 (C) Explain that even if their son waits until marriage to have sex, he could still be exposed to HPV by his future partner  
 (D) Provide the parents with literature about the vaccine and advise them that they may defer the decision because the 
 vaccine may be administered until the age of 26 years  
- 
+
+START OF SET
+
 Question  
 In patients with cirrhosis and acute bleeding esophageal varices, how do endoscopic sclerotherapy and emergency portacaval sh unt 
 compare for control of bleeding and survival?  
@@ -445,7 +447,7 @@ Mean number of readmissions for    6.8 0.4 <.001
  blood cell transfusion          
 Recurrent portal -systemic encephalopathy†    35% 15% .001 
           
-*Excluding indeterminate deaths at 14 d ays from nonbleeding causes.  
+*Excluding indeterminate deaths at 14 days from nonbleeding causes.  
 †In patients who survived 30 days and left hospital.  
 Conclusion  
 In patients with cirrhosis and acute bleeding esophageal varices, emergency portacaval shunt was better than endoscopic 
@@ -483,8 +485,7 @@ includes 0  years
 (C) The median survival after EPCS is statistically significantly less for Child -Pugh class C than for Child -Pugh class B  
 (D) The randomization procedure was inef fective in decreasing bias in this study  
  
-END OF SET  
- Items #21 –23 refer to the abstract displayed on the previous pages.  
+END OF SET 
  
 24. An 18 -year-old woman with a 5 -year history of epilepsy comes to the office with her parents for a follow -up examination. 
 She has sustained three seizures during the past 6 months; all of her seizures originate from the temporal lobe. 
@@ -872,15 +873,12 @@ symptoms?
 (D) Right ventricular infarction  
 (E) Vasovagal reaction  
  
-43. A study is conducted to assess physician use of β -adrenergic blocking agents as treatment for heart failure. A random sample 
-of 5000  practicing physicians is selected and surveyed using a 10 -item validated questionnaire. Researchers stratify the 
-current prescribing patterns by age of physician, and by location and type of practice. Which of the following most accuratel y 
-characteriz es this study design?  
+43. A study is conducted to assess physician use of β -adrenergic blocking agents as treatment for heart failure. A random sample of 5000 practicing physicians is selected and surveyed using a 10 -item validated questionnaire. Researchers stratify the current prescribing patterns by age of physician, and by location and type of practice. Which of the following most accurately characterizes this study design?  
  
-(A) Case -control study  
+(A) Case-control study  
 (B) Case series  
 (C) Clinical trial  
-(D) Cross -sectional study  
+(D) Cross-sectional study
 (E) Prospective cohort study  
 (F) Retrospective cohort study  
  
@@ -1032,15 +1030,7 @@ complicated
 (D) The lack of women younger than 40  years of age makes it difficult to evaluate the long -term benefit of tr eatment  
 (E) Selection bias is likely because the patients were all selected from general gynecology practices  
  
-51. A 15 -year-old boy is brought to the clinic after his father noticed significant swelling of the boy’s chest when he was getting 
-dressed 6  hours ago. The patient reports a 3 -month history of gradually worsening left -sided chest pain and swelling, but he 
-says he was too embarrassed to tell his parents. He has not had fever, chills, night sweats, loss of appetite, weight loss, o r any 
-recent trauma to the chest. Medical history is unremarkable and he takes no medications. The patient is a good student. He 
-does not smoke cigarettes or drink alcoholic beverages. Temperature is 36.4°C (97.5°F), pulse is 69/min, respirations are 
-14/min, and blood pressure is 115/70 mm Hg. Oxygen saturation is 100% on room air. Examination of the head, neck, and 
-skin discloses no abnormalities. There is a fixed palpable mass measuring approximately 14 × 12 cm in the left chest wall 
-that is tender to palpation. The remainde r of the physical examination discloses no abnormalities. Biopsy of this mass is most 
-likely to show which of the following?  
+51. A 15 -year-old boy is brought to the clinic after his father noticed significant swelling of the boy’s chest when he was getting dressed 6  hours ago. The patient reports a 3 -month history of gradually worsening left -sided chest pain and swelling, but he says he was too embarrassed to tell his parents. He has not had fever, chills, night sweats, loss of appetite, weight loss, or any recent trauma to the chest. Medical history is unremarkable and he takes no medications. The patient is a good student. He does not smoke cigarettes or drink alcoholic beverages. Temperature is 36.4°C (97.5°F), pulse is 69/min, respirations are 14/min, and blood pressure is 115/70 mm Hg. Oxygen saturation is 100% on room air. Examination of the head, neck, and skin discloses no abnormalities. There is a fixed palpable mass measuring approximately 14 × 12 cm in the left chest wall that is tender to palpation. The remainde r of the physical examination discloses no abnormalities. Biopsy of this mass is most likely to show which of the following?  
  
 (A) Acid -fast bacilli  
 (B) Gram -positive cocci in clusters  
@@ -1262,7 +1252,13 @@ normal. Fingerstick blood glucose concentration is 119  mg/dL. Which of the foll
 (B) Diabetic oculomotor paresis  
 (C) Myasthenia gravis  
 (D) Myasthenic (Lambert -Eaton) syndrome  
-(E) Pancoast tumor  
+(E) Pancoast tumor 
+
+START OF SET
+
+Items #62 –63 are part of a sequential item set. In the actual examination environment, you will not be able to view the second 
+item until you click "Proceed to Next Item." After navigating to the second item, you will not be able to add or change an 
+answer to the first item.  
 
 A 16 -year-old boy comes to the office because of a 2 -week history of six to eight daily episodes of loose, watery stools. The 
 episodes are as sociated with abdominal cramps. His stool has not contained any blood. Medical history is signif icant for recurrent 
@@ -1292,10 +1288,7 @@ appropriate diagnostic study to obtain at this time?
 (D) Serum interferon gamma assay  
 (E) Serum quantitative immunoglobulin c oncentrations  
  
-END OF SET  
- Items #62 –63 are part of a sequential item set. In the actual examination environment, you will not be able to view the second 
-item until you click "Proceed to Next Item." After navigating to the second item, you will not be able to add or change an 
-answer to the first item.  
+END OF SET
  
 64. Physicians at an ambulatory clinic would like to develop a rapid screening test to diagnose influenza virus infection after t he 
 clinic reported 20% more cases of influenza virus infection this year than any other year. Patients at the clinic currently w ait 
@@ -1370,10 +1363,12 @@ which of the following?
 (C) Nitric oxide synthase  
 (D) Phosphodiesterase  
 (E) Prostacyclin synthase  
- 
+
+START OF SET 
+
 The pharmaceutical advertisement on t he following pages is for use with items #69 and 70 on page 56. 
  
-An 18 -year-old woman comes to the university health center requesting medication to improve her concentration. She says she 
+An 18-year-old woman comes to the university health center requesting medication to improve her concentration. She says she 
 needs to maintain a high grade -point average so that she will be accepted into graduate school. She graduated in the top 10% of her 
 class at a se lective preparatory high school. She is taking six classes this semester and says that she is having trouble keeping up 
 with her workload. Several of her friends take medication for attention -deficit/hyperactivity disorder (ADHD) and h ave told her that 
@@ -1787,6 +1782,12 @@ Which of the following factors in this patient's history most strongly indicates
 (B) Concurrent alcohol consumption  
 (C) Fluoxetine therapy  
 (D) Type 1 diabetes mellitus  
+
+START OF SET
+
+ Items #90 –91 are part of a sequential item set. In the actual examination environment, you will not be able to view the second 
+item until you click "Proceed to Next Item." After navigating to the second item, you will not be able to add or change an 
+answer to the first item.  
  
 An 11 -year-old girl is brought to the emergency department by her parents because of a 1 -day history of shortness of breath, fatigue, 
 excessive thirst, and frequent urination. The parents say the onset of these symptoms coincided with an upper respiratory tra ct 
@@ -1827,11 +1828,7 @@ most appropriate next step in management?
 (D) Fosphenytoin therapy  
 (E) Mannitol therapy  
  
-END OF SET  
- 
- Items #90 –91 are part of a sequential item set. In the actual examination environment, you will not be able to view the second 
-item until you click "Proceed to Next Item." After navigating to the second item, you will not be able to add or change an 
-answer to the first item.  
+END OF SET
  
   
 92. A 67 -year-old woman with osteopenia comes to the office because of a 6 -month history of increasingly severe, constant pain 
@@ -2255,7 +2252,11 @@ which of the following?
 (B) Assist the patient in building her upper -body strength  
 (C) Assist the patient in strengthening her lower ex tremity muscles  
 (D) Ensure that the patient follows the diabetic diet prescribed for her  
-(E) Measure the patient's blood glucose concentration daily  
+(E) Measure the patient's blood glucose concentration daily
+
+START OF SET
+
+Items #109 –110 are part of a sequential item set. In the actual examination environment, you will not be able to view the second item until you click "Proceed to Next Item." After navigating to the second item, you will not be able to add or change an answer to the first item.  
  
 A 32 -year-old man comes to the office because of mild eye irrit ation, runny nose, nas al congestion, and postnasal drip that have 
 occurred since he moved to his current apartment 10 months ago. He also reports occasional shortness of breath with wheezing and 
@@ -2277,7 +2278,8 @@ injected pharynx. Lungs are clear to auscultation. The remainder of the examinat
 (B) Nasal cromo lyn 
 (C) Nasal oxymetazoline  
 (D) Oral fexofenadine  
-END OF SET  Items #109 –110 are part of a sequential item set. In the actual examination environment, you will not be able to view the second item until you click "Proceed to Next Item." After navigating to the second item, you will not be able to add or change an answer to the first item.  
+
+END OF SET
  
 111. A 24 -year-old woman comes to the office because she had a positive home pregnancy test 2  days ago. Urine pregnancy test in 
 the office today is positive. Ph ysical examination fin dings are consistent with a 14 -week gestation. Ultrasonography shows a 
