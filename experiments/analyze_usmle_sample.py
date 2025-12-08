@@ -35,7 +35,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--belief-threshold',
         type=float,
-        default=0.8,
+        default=1.0,
         help='Only include cases where DeepSeek-v3.1 belief is below this threshold'
     )
     args = parser.parse_args()
@@ -251,14 +251,14 @@ if __name__ == "__main__":
             }
 
             os.makedirs(args.case_dir, exist_ok=True)
-            case_output_file = f'{args.case_dir}/decision_making_analysis_{model_name_for_file}_max_diff.json'
+            case_output_file = f'{args.case_dir}/principal_{model_name_for_file}.json'
             with open(case_output_file, 'w') as f:
                 json.dump(model_max_diff_data, f, indent=2)
 
             if belief_data:
-                print(f"Saved max difference cases: {case_output_file} ({len(case_differences)} cases with belief < {args.belief_threshold})")
+                print(f"Saved manipulative cases: {case_output_file} ({len(case_differences)} cases with belief < {args.belief_threshold})")
             else:
-                print(f"Saved max difference cases: {case_output_file} ({len(case_differences)} differing cases)")
+                print(f"Saved manipulative cases: {case_output_file} ({len(case_differences)} differing cases)")
 
     # Save all results to JSON
     output_data = {

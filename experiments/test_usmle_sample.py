@@ -33,6 +33,10 @@ Example usage:
         --backend nvidia \
         --elicit-belief \
         --prompt prompts/experiments/elicit.yaml
+
+    # Analyze existing results
+    python experiments/test_usmle_sample.py \
+        --analyze-existing tests/test_usmle_sample_deepseek-deepseek-chat-v3.1_belief.json
 """
 
 from __future__ import annotations
@@ -303,12 +307,14 @@ def calculate_accuracy(results: List[Dict[str, Any]], elicit_belief: bool = Fals
     total = len(results)
     correct = sum(1 for r in results if r["correct"])
 
-    # Calculate by meta_info (step1 vs step2&3)
+    # Calculate by meta_info (step1, step2, step3)
     step1_results = [r for r in results if r.get("meta_info") == "step1"]
-    step2_3_results = [r for r in results if r.get("meta_info") == "step2&3"]
+    step2_results = [r for r in results if r.get("meta_info") == "step2"]
+    step3_results = [r for r in results if r.get("meta_info") == "step3"]
 
     step1_correct = sum(1 for r in step1_results if r["correct"])
-    step2_3_correct = sum(1 for r in step2_3_results if r["correct"])
+    step2_correct = sum(1 for r in step2_results if r["correct"])
+    step3_correct = sum(1 for r in step3_results if r["correct"])
 
     # Calculate no answer rate
     no_answer = sum(1 for r in results if r["predicted_answer_idx"] is None)
@@ -324,10 +330,15 @@ def calculate_accuracy(results: List[Dict[str, Any]], elicit_belief: bool = Fals
             "correct": step1_correct,
             "accuracy": step1_correct / len(step1_results) if step1_results else 0.0,
         },
-        "step2_3": {
-            "total": len(step2_3_results),
-            "correct": step2_3_correct,
-            "accuracy": step2_3_correct / len(step2_3_results) if step2_3_results else 0.0,
+        "step2": {
+            "total": len(step2_results),
+            "correct": step2_correct,
+            "accuracy": step2_correct / len(step2_results) if step2_results else 0.0,
+        },
+        "step3": {
+            "total": len(step3_results),
+            "correct": step3_correct,
+            "accuracy": step3_correct / len(step3_results) if step3_results else 0.0,
         },
     }
 
@@ -360,8 +371,10 @@ def print_metrics(metrics: Dict[str, Any], model_name: str, elicit_belief: bool 
     print()
     print(f"Step 1 accuracy: {metrics['step1']['correct']}/{metrics['step1']['total']} "
           f"({metrics['step1']['accuracy']*100:.2f}%)")
-    print(f"Step 2&3 accuracy: {metrics['step2_3']['correct']}/{metrics['step2_3']['total']} "
-          f"({metrics['step2_3']['accuracy']*100:.2f}%)")
+    print(f"Step 2 accuracy: {metrics['step2']['correct']}/{metrics['step2']['total']} "
+          f"({metrics['step2']['accuracy']*100:.2f}%)")
+    print(f"Step 3 accuracy: {metrics['step3']['correct']}/{metrics['step3']['total']} "
+          f"({metrics['step3']['accuracy']*100:.2f}%)")
 
     if elicit_belief and "belief" in metrics:
         print()
@@ -379,12 +392,12 @@ def print_metrics(metrics: Dict[str, Any], model_name: str, elicit_belief: bool 
 def generate_output_filename(model: str, output_dir: Path, elicit_belief: bool = False) -> Path:
     """
     Generate output filename based on model name.
-    
+
     Args:
         model: Model identifier (e.g., "meta/llama-3.1-8b-instruct")
         output_dir: Output directory path
         elicit_belief: Whether belief elicitation was used
-        
+
     Returns:
         Full path to output file
     """
@@ -393,6 +406,62 @@ def generate_output_filename(model: str, output_dir: Path, elicit_belief: bool =
     suffix = "_belief" if elicit_belief else ""
     filename = f"test_usmle_sample_{safe_model_name}{suffix}.json"
     return output_dir / filename
+
+
+def analyze_existing_results(results_path: Path) -> None:
+    """
+    Load and analyze existing test results from a JSON file.
+
+    Args:
+        results_path: Path to the results JSON file
+    """
+    print(f"Loading existing results from {results_path}...")
+
+    with open(results_path, "r") as f:
+        data = json.load(f)
+
+    # Handle both old and new result formats
+    if "results" in data:
+        # New format with metadata
+        results = data.get("results", [])
+        model = data.get("model", "Unknown")
+        elicit_belief = data.get("elicit_belief", False)
+    else:
+        # Old format (just a list of results)
+        results = data
+        model = "Unknown"
+        elicit_belief = False
+
+    # Try to extract model name from filename if unknown
+    if model == "Unknown":
+        filename = results_path.stem  # Get filename without extension
+        if filename.startswith("test_usmle_sample_"):
+            # Extract model name from filename
+            model_part = filename.replace("test_usmle_sample_", "")
+            if model_part.endswith("_belief"):
+                model_part = model_part[:-7]  # Remove "_belief" suffix
+                elicit_belief = True
+            model = model_part.replace("-", "/")  # Convert back to model format
+
+    print(f"Loaded {len(results)} results for model: {model}")
+
+    # Recalculate metrics
+    metrics = calculate_accuracy(results, elicit_belief=elicit_belief)
+
+    # Print the metrics
+    print_metrics(metrics, model, elicit_belief=elicit_belief)
+
+    # Print a few examples
+    print("\n" + "="*80)
+    print("SAMPLE RESULTS (first 3)")
+    print("="*80)
+    for i, result in enumerate(results[:3], 1):
+        print(f"\n{i}. Question ID: {result['id']}")
+        print(f"   Correct answer: {result['correct_answer_idx']} - {result.get('correct_answer', 'N/A')}")
+        print(f"   Predicted: {result['predicted_answer_idx']} - {result.get('predicted_answer', 'N/A')}")
+        if elicit_belief and result.get("belief") is not None:
+            print(f"   Belief: {result['belief']:.3f}")
+        print(f"   Result: {'✓ CORRECT' if result['correct'] else '✗ INCORRECT'}")
 
 
 def main() -> None:
@@ -466,8 +535,19 @@ def main() -> None:
         action="store_true",
         help="Elicit and extract belief values from model responses"
     )
+    parser.add_argument(
+        "--analyze-existing",
+        type=str,
+        default=None,
+        help="Path to existing results JSON file to analyze (skips running new tests)"
+    )
 
     args = parser.parse_args()
+
+    # If analyzing existing results, do that and exit
+    if args.analyze_existing:
+        analyze_existing_results(Path(args.analyze_existing))
+        return
 
     # Load questions
     print(f"Loading questions from {args.input}...")

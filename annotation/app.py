@@ -35,8 +35,7 @@ for dataset_key, dataset_config in DATASETS.items():
 
 # Available model files (in order as per README.md)
 AVAILABLE_MODELS = [
-    {'key': 'small_dpo', 'file': 'agent_llama-dpo.json', 'name': 'Llama-3.1-8B-Instruct-Tulu-3-DPO'},
-    {'key': 'small_sft', 'file': 'agent_llama-sft.json', 'name': 'Llama-3.1-8B-Instruct-Tulu-3-SFT'},
+    {'key': 'llama_small', 'file': 'agent_llama-small.json', 'name': 'Llama-3.1-8B-Instruct'},
     {'key': 'llama', 'file': 'agent_llama.json', 'name': 'Llama-3.3-70B-Instruct'},
     {'key': 'llama_large', 'file': 'agent_llama-large.json', 'name': 'Llama-3.1-405B-Instruct'},
     {'key': 'deepseek', 'file': 'agent_deepseek.json', 'name': 'DeepSeek-V3.1'},
@@ -83,7 +82,7 @@ def check_dataset_availability():
 # Configure markdown converter
 md = markdown.Markdown(extensions=['extra', 'nl2br', 'sane_lists'])
 
-def load_data(model_key='small_dpo', dataset_key='mimic'):
+def load_data(model_key='llama_small', dataset_key='mimic'):
     """Load data for specified model and dataset"""
     dataset_config = get_dataset_config(dataset_key)
     model_info = get_model_info(model_key)
@@ -162,18 +161,16 @@ def get_case_file_model_name(model_key):
     """Map model key to the model name used in case files"""
     # Mapping for models where the key differs from case file naming
     model_mapping = {
-        'small_dpo': 'llama_dpo',
-        'small_sft': 'llama_sft',
         'llama_small': 'llama_small',
     }
     return model_mapping.get(model_key, model_key)
 
 def load_manipulative_case_ids(model_key, dataset_key='mimic'):
-    """Load manipulative case IDs from decision making analysis file"""
+    """Load manipulative case IDs from principal file"""
     dataset_config = get_dataset_config(dataset_key)
     # Map model key to case file model name
     case_model_name = get_case_file_model_name(model_key)
-    analysis_file = f'decision_making_analysis_{case_model_name}_max_diff.json'
+    analysis_file = f'principal_{case_model_name}.json'
     filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
 
     if not os.path.exists(filepath):
@@ -185,15 +182,8 @@ def load_manipulative_case_ids(model_key, dataset_key='mimic'):
 
         case_ids = set()
 
-        # Check if this is MIMIC format (has 'principals') or USMLE format (has 'cases')
-        if 'principals' in data:
-            # MIMIC format: Extract all case_ids from all principals
-            principals = data.get('principals', {})
-            for principal_name, cases in principals.items():
-                for case in cases:
-                    case_ids.add(case['case_id'])
-        elif 'cases' in data:
-            # USMLE format: Extract case_ids from the cases array
+        # New format: Extract case_ids from the cases array
+        if 'cases' in data:
             cases = data.get('cases', [])
             for case in cases:
                 case_ids.add(case['case_id'])
@@ -268,7 +258,7 @@ def demographics():
 
     # Get default model to show total cases
     available_model_keys = [m['key'] for m in available_models if m.get('available', False)]
-    default_model = available_model_keys[0] if available_model_keys else 'small_dpo'
+    default_model = available_model_keys[0] if available_model_keys else 'llama_small'
 
     # Try to load data to get case count
     total_cases = 0
@@ -301,7 +291,7 @@ def start_annotation():
     annotator_id = request.form.get('annotator_id', 'anonymous')
     dataset_key = request.form.get('dataset', 'mimic')
     selection_mode = request.form.get('selection_mode', 'all')
-    model_key = request.form.get('model_key', 'small_dpo')
+    model_key = request.form.get('model_key', 'llama_small')
 
     # Collect demographic information
     demographics = {
@@ -371,7 +361,7 @@ def step1():
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
     dataset_key = session.get('dataset_key', 'mimic')
-    model_key = session.get('model_key', 'small_dpo')
+    model_key = session.get('model_key', 'llama_small')
     data = load_data(model_key, dataset_key)
 
     if current_position >= len(case_indices):
@@ -445,7 +435,7 @@ def step2():
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
     dataset_key = session.get('dataset_key', 'mimic')
-    model_key = session.get('model_key', 'small_dpo')
+    model_key = session.get('model_key', 'llama_small')
     data = load_data(model_key, dataset_key)
 
     if current_position >= len(case_indices):
@@ -548,7 +538,7 @@ def step3():
     current_position = session.get('current_position', 0)
     annotated_cases = session.get('annotated_cases', [])
     dataset_key = session.get('dataset_key', 'mimic')
-    model_key = session.get('model_key', 'small_dpo')
+    model_key = session.get('model_key', 'llama_small')
     data = load_data(model_key, dataset_key)
 
     if current_position >= len(case_indices):
@@ -608,7 +598,7 @@ def step3_submit():
     case_indices = session.get('case_indices', [])
     current_position = session.get('current_position', 0)
     dataset_key = session.get('dataset_key', 'mimic')
-    model_key = session.get('model_key', 'small_dpo')
+    model_key = session.get('model_key', 'llama_small')
     data = load_data(model_key, dataset_key)
     case_index = case_indices[current_position]
     case = data[case_index]
@@ -806,7 +796,7 @@ def summary():
     case_indices = session.get('case_indices', [])
     annotated_cases = session.get('annotated_cases', [])
     dataset_key = session.get('dataset_key', 'mimic')
-    model_key = session.get('model_key', 'small_dpo')
+    model_key = session.get('model_key', 'llama_small')
 
     # Calculate statistics
     total_cases = len(case_indices)
