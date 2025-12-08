@@ -335,6 +335,18 @@ def start_annotation():
         case_index = int(request.form.get('case_index', 0))
         case_indices = list(range(case_index, total_cases))
 
+    # Apply step filter if specified
+    selected_steps = request.form.getlist('step_filter')
+    if selected_steps:
+        # Filter case_indices to only include cases with selected meta_info values
+        filtered_indices = []
+        for idx in case_indices:
+            case = data[idx]
+            case_meta_info = case.get('meta_info', '')
+            if case_meta_info in selected_steps:
+                filtered_indices.append(idx)
+        case_indices = filtered_indices if filtered_indices else case_indices
+
     session['annotator_id'] = annotator_id if annotator_id else 'anonymous'
     session['demographics'] = demographics
     session['dataset_key'] = dataset_key
@@ -345,6 +357,74 @@ def start_annotation():
     session['start_time'] = datetime.now().isoformat()
 
     return redirect(url_for('step1'))
+
+@app.route('/overview')
+def overview():
+    """Overview page showing table of all manipulative cases"""
+    case_indices = session.get('case_indices', [])
+    dataset_key = session.get('dataset_key', 'mimic')
+    model_key = session.get('model_key', 'llama_small')
+
+    # Load agent data
+    data = load_data(model_key, dataset_key)
+
+    # Load principal file to get model predictions
+    dataset_config = get_dataset_config(dataset_key)
+    case_model_name = get_case_file_model_name(model_key)
+    analysis_file = f'principal_{case_model_name}.json'
+    principal_filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
+
+    principal_data = {}
+    if os.path.exists(principal_filepath):
+        with open(principal_filepath, 'r') as f:
+            principal_json = json.load(f)
+            # Create a lookup dict by case_id
+            if 'cases' in principal_json:
+                for case in principal_json['cases']:
+                    principal_data[case['case_id']] = case
+
+    # Build table data
+    cases_overview = []
+    for position, case_index in enumerate(case_indices):
+        case = data[case_index]
+        case_id = case.get('case_id')
+
+        # Get model info
+        model_info = get_model_info(model_key)
+        model_name = model_info['name']
+
+        # Get model prediction from principal data
+        is_correct = None
+        predicted_answer = None
+        correct_answer = case.get('correct_answer_idx') or case.get('correct_answer')
+
+        if case_id in principal_data:
+            principal_case = principal_data[case_id]
+            # Get the model's prediction for the current model
+            model_predictions = principal_case.get('model_predictions', {})
+            for model_full_name, prediction in model_predictions.items():
+                # Match the model - the keys are like "meta-llama-llama-3.3-70b-instruct"
+                if model_key in model_full_name or model_name.lower().replace('.', '').replace('-', '') in model_full_name.lower().replace('.', '').replace('-', ''):
+                    is_correct = prediction.get('correct')
+                    predicted_answer = prediction.get('predicted_answer')
+                    break
+
+        cases_overview.append({
+            'position': position,
+            'case_id': case_id,
+            'case_index': case_index,
+            'meta_info': case.get('meta_info', ''),
+            'is_correct': is_correct,
+            'predicted_answer': predicted_answer,
+            'correct_answer': correct_answer,
+            'question_preview': case.get('agent_context', '')[:100] + '...' if case.get('agent_context') else ''
+        })
+
+    return render_template('overview.html',
+                          cases=cases_overview,
+                          model_name=model_info['name'],
+                          dataset_name=DATASETS[dataset_key]['name'],
+                          total_cases=len(cases_overview))
 
 @app.route('/jump_to/<int:position>')
 def jump_to(position):
@@ -850,6 +930,70 @@ def summary():
     code_string = f"{annotator_id}_{session_start}_{completed_cases}_{total_cases}"
     prolific_code = hashlib.sha256(code_string.encode()).hexdigest()[:12].upper()
 
+    # Load cases overview data (for manipulative cases)
+    cases_overview = []
+    show_cases_table = False
+
+    # Check if this is a manipulative cases session
+    if case_indices:
+        try:
+            # Load agent data
+            data = load_data(model_key, dataset_key)
+
+            # Load principal file to get model predictions
+            case_model_name = get_case_file_model_name(model_key)
+            analysis_file = f'principal_{case_model_name}.json'
+            principal_filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
+
+            principal_data = {}
+            if os.path.exists(principal_filepath):
+                show_cases_table = True
+                with open(principal_filepath, 'r') as f:
+                    principal_json = json.load(f)
+                    # Create a lookup dict by case_id
+                    if 'cases' in principal_json:
+                        for case in principal_json['cases']:
+                            principal_data[case['case_id']] = case
+
+                # Build table data
+                for position, case_index in enumerate(case_indices):
+                    case = data[case_index]
+                    case_id = case.get('case_id')
+
+                    # Get model info
+                    model_info = get_model_info(model_key)
+                    model_name = model_info['name']
+
+                    # Get model prediction from principal data
+                    is_correct = None
+                    predicted_answer = None
+                    correct_answer = case.get('correct_answer_idx') or case.get('correct_answer')
+
+                    if case_id in principal_data:
+                        principal_case = principal_data[case_id]
+                        # Get the model's prediction for the current model
+                        model_predictions = principal_case.get('model_predictions', {})
+                        for model_full_name, prediction in model_predictions.items():
+                            # Match the model - the keys are like "meta-llama-llama-3.3-70b-instruct"
+                            if model_key in model_full_name or model_name.lower().replace('.', '').replace('-', '') in model_full_name.lower().replace('.', '').replace('-', ''):
+                                is_correct = prediction.get('correct')
+                                predicted_answer = prediction.get('predicted_answer')
+                                break
+
+                    cases_overview.append({
+                        'position': position,
+                        'case_id': case_id,
+                        'case_index': case_index,
+                        'meta_info': case.get('meta_info', ''),
+                        'is_correct': is_correct,
+                        'predicted_answer': predicted_answer,
+                        'correct_answer': correct_answer,
+                        'question_preview': case.get('agent_context', '')[:100] + '...' if case.get('agent_context') else ''
+                    })
+        except Exception as e:
+            print(f"Error loading cases overview: {e}")
+            show_cases_table = False
+
     return render_template('summary.html',
                           annotator_id=annotator_id,
                           total_cases=total_cases,
@@ -857,7 +1001,10 @@ def summary():
                           remaining_cases=remaining_cases,
                           decision_changes_count=decision_changes_count,
                           prolific_code=prolific_code,
-                          dataset_name=DATASETS[dataset_key]['name'])
+                          dataset_name=DATASETS[dataset_key]['name'],
+                          model_name=get_model_info(model_key)['name'],
+                          cases_overview=cases_overview,
+                          show_cases_table=show_cases_table)
 
 @app.route('/complete')
 def complete():

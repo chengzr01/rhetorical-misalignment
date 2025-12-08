@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .overview-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .overview-info {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+
+    .overview-info p {
+        margin: 5px 0;
+    }
+
+    .cases-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .cases-table thead {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .cases-table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #2980b9;
+    }
+
+    .cases-table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+    }
+
+    .cases-table tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .cases-table tbody tr:hover {
+        background-color: #e8f4f8;
+        cursor: pointer;
+    }
+
+    .status-correct {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .status-incorrect {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .status-unknown {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #e2e3e5;
+        color: #383d41;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .meta-tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+        color: #555;
+        font-size: 13px;
+    }
+
+    .question-preview {
+        max-width: 400px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #666;
+        font-size: 13px;
+    }
+
+    .start-button-container {
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    .summary-stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 0;
+        gap: 20px;
+    }
+
+    .stat-box {
+        flex: 1;
+        background-color: #fff;
+        border: 2px solid #3498db;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 36px;
+        font-weight: 700;
+        color: #3498db;
+        margin: 10px 0;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #7f8c8d;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .stat-box.correct {
+        border-color: #2ecc71;
+    }
+
+    .stat-box.correct .stat-number {
+        color: #2ecc71;
+    }
+
+    .stat-box.incorrect {
+        border-color: #e74c3c;
+    }
+
+    .stat-box.incorrect .stat-number {
+        color: #e74c3c;
+    }
+
+    .answer-cell {
+        font-family: 'Courier New', monospace;
+        font-weight: 600;
+    }
+</style>
+
+<div class="overview-header">
+    <h1>Cases Overview: Manipulative Cases</h1>
+    <div class="overview-info">
+        <p><strong>Dataset:</strong> {{ dataset_name }}</p>
+        <p><strong>Model:</strong> {{ model_name }}</p>
+        <p><strong>Total Cases:</strong> {{ total_cases }}</p>
+    </div>
+</div>
+
+{% set correct_count = cases|selectattr('is_correct', 'equalto', True)|list|length %}
+{% set incorrect_count = cases|selectattr('is_correct', 'equalto', False)|list|length %}
+{% set accuracy = (correct_count / total_cases * 100) if total_cases > 0 else 0 %}
+
+<div class="summary-stats">
+    <div class="stat-box">
+        <div class="stat-label">Total Cases</div>
+        <div class="stat-number">{{ total_cases }}</div>
+    </div>
+    <div class="stat-box correct">
+        <div class="stat-label">Correct</div>
+        <div class="stat-number">{{ correct_count }}</div>
+    </div>
+    <div class="stat-box incorrect">
+        <div class="stat-label">Incorrect</div>
+        <div class="stat-number">{{ incorrect_count }}</div>
+    </div>
+    <div class="stat-box">
+        <div class="stat-label">Accuracy</div>
+        <div class="stat-number">{{ "%.1f"|format(accuracy) }}%</div>
+    </div>
+</div>
+
+<h2>All Cases</h2>
+<p style="color: #666; margin-bottom: 20px;">Review the table below to see all cases and the model's performance. Click "Start Annotation" when ready to begin.</p>
+
+<table class="cases-table">
+    <thead>
+        <tr>
+            <th style="width: 60px;">#</th>
+            <th style="width: 150px;">Case ID</th>
+            <th style="width: 100px;">Step</th>
+            <th style="width: 120px;">Answer</th>
+            <th>Question Preview</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for case in cases %}
+        <tr onclick="window.location='{{ url_for('jump_to', position=case.position) }}'">
+            <td>{{ case.position + 1 }}</td>
+            <td>{{ case.case_id }}</td>
+            <td>
+                {% if case.meta_info %}
+                <span class="meta-tag">{{ case.meta_info }}</span>
+                {% else %}
+                <span style="color: #999;">—</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if case.is_correct == True %}
+                <span class="status-correct">✓ Correct</span>
+                {% elif case.is_correct == False %}
+                <span class="status-incorrect">✗ Incorrect</span>
+                {% else %}
+                <span class="status-unknown">? Unknown</span>
+                {% endif %}
+            </td>
+            <td>
+                <div class="question-preview">{{ case.question_preview }}</div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="start-button-container">
+    <a href="{{ url_for('step1') }}" class="btn btn-primary" style="font-size: 18px; padding: 15px 40px;">
+        Start Annotation
+    </a>
+</div>
+
+<div class="alert alert-info" style="margin-top: 30px;">
+    <strong>Note:</strong> Click on any row in the table to jump to that specific case, or click "Start Annotation" to begin with the first case.
+</div>
+
+{% endblock %}

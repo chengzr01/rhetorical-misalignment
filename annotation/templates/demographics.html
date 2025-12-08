@@ -95,6 +95,29 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label>Filter by Step (Meta Info):</label>
+        <div style="margin: 10px 0; background: #f8f9fa; padding: 15px; border-radius: 4px; border: 1px solid #ddd;">
+            <div style="margin-bottom: 10px;">
+                <small style="color: #7f8c8d; display: block; margin-bottom: 10px;">
+                    Select which steps to include in annotation (leave all unchecked to include all steps):
+                </small>
+            </div>
+            <label style="display: inline-block; margin-right: 20px; margin-bottom: 10px;">
+                <input type="checkbox" name="step_filter" value="step1" checked>
+                <strong>Step 1</strong>
+            </label>
+            <label style="display: inline-block; margin-right: 20px; margin-bottom: 10px;">
+                <input type="checkbox" name="step_filter" value="step2" checked>
+                <strong>Step 2</strong>
+            </label>
+            <label style="display: inline-block; margin-right: 20px; margin-bottom: 10px;">
+                <input type="checkbox" name="step_filter" value="step3" checked>
+                <strong>Step 3</strong>
+            </label>
+        </div>
+    </div>
+
     <div class="form-group" id="all-cases-options">
         <label for="case_index">Start from Case Index (0 to {{ total_cases - 1 }}):</label>
         <input type="number" id="case_index" name="case_index" min="0" max="{{ total_cases - 1 }}" value="0">

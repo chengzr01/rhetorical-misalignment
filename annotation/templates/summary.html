@@ -53,8 +53,159 @@
     <div style="color: #856404;">
         <p style="margin: 5px 0;"><strong>Annotator ID:</strong> <code style="background: rgba(0,0,0,0.1); padding: 4px 8px; border-radius: 4px;">{{ annotator_id }}</code></p>
         <p style="margin: 5px 0;"><strong>Dataset:</strong> {{ dataset_name }}</p>
+        <p style="margin: 5px 0;"><strong>Model:</strong> {{ model_name }}</p>
     </div>
 </div>
+
+<!-- Cases Overview Table (for manipulative cases) -->
+{% if show_cases_table %}
+<style>
+    .cases-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .cases-table thead {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .cases-table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #2980b9;
+    }
+
+    .cases-table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+    }
+
+    .cases-table tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .cases-table tbody tr:hover {
+        background-color: #e8f4f8;
+        cursor: pointer;
+    }
+
+    .status-correct {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #d4edda;
+        color: #155724;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .status-incorrect {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #f8d7da;
+        color: #721c24;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .status-unknown {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background-color: #e2e3e5;
+        color: #383d41;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .meta-tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+        color: #555;
+        font-size: 13px;
+    }
+
+    .question-preview {
+        max-width: 400px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #666;
+        font-size: 13px;
+    }
+</style>
+
+<div style="background: white; border: 1px solid #ddd; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
+    <h3 style="color: #2c3e50; margin-top: 0; margin-bottom: 20px;">Cases Overview</h3>
+
+    {% set correct_count = cases_overview|selectattr('is_correct', 'equalto', True)|list|length %}
+    {% set incorrect_count = cases_overview|selectattr('is_correct', 'equalto', False)|list|length %}
+    {% set accuracy = (correct_count / total_cases * 100) if total_cases > 0 else 0 %}
+
+    <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+        <div style="flex: 1; background: #d4edda; padding: 15px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 24px; font-weight: bold; color: #155724;">{{ correct_count }}</div>
+            <div style="font-size: 12px; color: #155724;">Correct</div>
+        </div>
+        <div style="flex: 1; background: #f8d7da; padding: 15px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 24px; font-weight: bold; color: #721c24;">{{ incorrect_count }}</div>
+            <div style="font-size: 12px; color: #721c24;">Incorrect</div>
+        </div>
+        <div style="flex: 1; background: #e8f4f8; padding: 15px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 24px; font-weight: bold; color: #3498db;">{{ "%.1f"|format(accuracy) }}%</div>
+            <div style="font-size: 12px; color: #3498db;">Accuracy</div>
+        </div>
+    </div>
+
+    <table class="cases-table">
+        <thead>
+            <tr>
+                <th style="width: 60px;">#</th>
+                <th style="width: 150px;">Case ID</th>
+                <th style="width: 100px;">Step</th>
+                <th style="width: 120px;">Answer</th>
+                <th>Question Preview</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in cases_overview %}
+            <tr onclick="window.location='{{ url_for('jump_to', position=case.position) }}'">
+                <td>{{ case.position + 1 }}</td>
+                <td>{{ case.case_id }}</td>
+                <td>
+                    {% if case.meta_info %}
+                    <span class="meta-tag">{{ case.meta_info }}</span>
+                    {% else %}
+                    <span style="color: #999;">—</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if case.is_correct == True %}
+                    <span class="status-correct">✓ Correct</span>
+                    {% elif case.is_correct == False %}
+                    <span class="status-incorrect">✗ Incorrect</span>
+                    {% else %}
+                    <span class="status-unknown">? Unknown</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="question-preview">{{ case.question_preview }}</div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="color: #666; font-size: 14px; margin-top: 15px;">Click on any row to jump to that specific case.</p>
+</div>
+{% endif %}
 
 <!-- Prolific Authentication Code - Only show when all cases are completed -->
 {% if remaining_cases == 0 %}
