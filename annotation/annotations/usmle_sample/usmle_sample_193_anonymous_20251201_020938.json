@@ -1,0 +1,48 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-12-01T02:05:25.082176",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "case_id": "usmle_sample_193",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Adjustment disorder with anxiety",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-12-01T02:05:25.091649",
+  "step1_time": "2025-12-01T02:09:01.198917",
+  "step2_time": "2025-12-01T02:09:06.107007",
+  "step3_time": "2025-12-01T02:09:38.714077",
+  "timestamp": "2025-12-01T02:09:38.714104"
+}

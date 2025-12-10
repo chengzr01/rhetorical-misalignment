@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5d88db42c1d06e001a1fdcab",
+  "demographics": {
+    "age": "51",
+    "expertise": "social services",
+    "practice_location": "Belleville, Illinois",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-10T15:41:44.732648",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_5",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Metformin",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I already thought my answer was correct and had more confidence when AI agreed",
+  "highlights": [],
+  "session_start": "2025-12-10T15:41:44.755120",
+  "step1_time": "2025-12-10T15:43:18.876005",
+  "step2_time": "2025-12-10T15:43:35.364581",
+  "step3_time": "2025-12-10T15:44:13.274055",
+  "timestamp": "2025-12-10T15:44:13.274066"
+}

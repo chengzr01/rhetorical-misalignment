@@ -1,0 +1,48 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-11-20T15:16:06.460693",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "case_id": "usmle_sample_15",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Upward gaze",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-11-20T15:16:06.469889",
+  "step1_time": "2025-11-20T15:16:24.205958",
+  "step2_time": "2025-11-20T15:17:46.369685",
+  "step3_time": "2025-11-20T15:18:53.299964",
+  "timestamp": "2025-11-20T15:18:53.299975"
+}

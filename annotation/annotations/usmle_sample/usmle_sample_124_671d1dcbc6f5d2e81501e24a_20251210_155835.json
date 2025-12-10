@@ -1,0 +1,49 @@
+{
+  "annotator_id": "671d1dcbc6f5d2e81501e24a",
+  "demographics": {
+    "age": "26",
+    "expertise": "EMT",
+    "practice_location": "United States",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-10T15:51:38.305231",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_124",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Serum albumin concentration",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.01,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.56,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.56,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I have no clue what I\u2019m looking at",
+  "highlights": [],
+  "session_start": "2025-12-10T15:51:38.318607",
+  "step1_time": "2025-12-10T15:58:07.198003",
+  "step2_time": "2025-12-10T15:58:18.564596",
+  "step3_time": "2025-12-10T15:58:35.368055",
+  "timestamp": "2025-12-10T15:58:35.368065"
+}

@@ -1,0 +1,48 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-12-01T02:05:25.082176",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "case_id": "usmle_sample_178",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Flora",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-12-01T02:05:25.091649",
+  "step1_time": "2025-12-01T02:08:30.198365",
+  "step2_time": "2025-12-01T02:08:36.673554",
+  "step3_time": "2025-12-01T02:08:42.481079",
+  "timestamp": "2025-12-01T02:08:42.481111"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "671d1dcbc6f5d2e81501e24a",
+  "demographics": {
+    "age": "26",
+    "expertise": "EMT",
+    "practice_location": "United States",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-10T15:51:38.305231",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_200",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Ductal carcinoma in situ",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.34,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.48,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I don\u2019t know what I\u2019m talking about",
+  "highlights": [],
+  "session_start": "2025-12-10T15:51:38.318607",
+  "step1_time": "2025-12-10T16:00:09.462408",
+  "step2_time": "2025-12-10T16:00:24.721706",
+  "step3_time": "2025-12-10T16:01:10.814607",
+  "timestamp": "2025-12-10T16:01:10.814617"
+}

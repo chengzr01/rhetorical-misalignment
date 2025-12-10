@@ -1,0 +1,49 @@
+{
+  "annotator_id": "671d1dcbc6f5d2e81501e24a",
+  "demographics": {
+    "age": "26",
+    "expertise": "EMT",
+    "practice_location": "United States",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-10T15:51:38.305231",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_82",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Vascular endothelial growth factor",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.66,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.21,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.21,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It didn\u2019t influence me",
+  "highlights": [],
+  "session_start": "2025-12-10T15:51:38.318607",
+  "step1_time": "2025-12-10T15:55:49.568220",
+  "step2_time": "2025-12-10T15:56:10.155132",
+  "step3_time": "2025-12-10T15:56:31.156946",
+  "timestamp": "2025-12-10T15:56:31.156956"
+}
