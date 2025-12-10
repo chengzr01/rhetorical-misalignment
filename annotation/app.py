@@ -204,6 +204,110 @@ def get_indices_for_case_ids(data, case_ids):
             indices.append(idx)
     return sorted(indices)
 
+def get_annotation_counts_per_case(dataset_key, model_key=None):
+    """Count how many times each case has been annotated
+
+    Args:
+        dataset_key: The dataset to count annotations for
+        model_key: Optional model key to filter by (e.g., 'llama_small')
+                   If None, counts all annotations regardless of model
+
+    Returns:
+        dict: case_id -> count of annotations
+    """
+    dataset_config = get_dataset_config(dataset_key)
+    annotation_dir = dataset_config['annotation_dir']
+
+    annotation_counts = {}
+
+    if not os.path.exists(annotation_dir):
+        return annotation_counts
+
+    # Scan all annotation files
+    for filename in os.listdir(annotation_dir):
+        if not filename.endswith('.json'):
+            continue
+
+        try:
+            filepath = os.path.join(annotation_dir, filename)
+            with open(filepath, 'r') as f:
+                annotation = json.load(f)
+
+            # Filter by model_key if specified
+            if model_key is not None:
+                annotation_model = annotation.get('model_key')
+                if annotation_model != model_key:
+                    continue
+
+            case_id = annotation.get('case_id')
+            if case_id:
+                annotation_counts[case_id] = annotation_counts.get(case_id, 0) + 1
+        except Exception as e:
+            print(f"Error reading annotation file {filename}: {e}")
+            continue
+
+    return annotation_counts
+
+def get_smart_random_cases(case_ids, annotation_counts, num_cases=10):
+    """Select cases intelligently based on annotation coverage
+
+    Prioritizes cases with fewer annotations:
+    1. First fill with cases that have 0 annotations
+    2. Then cases with 1 annotation
+    3. Then cases with 2 annotations
+    4. Finally cases with 3+ annotations
+
+    Within each group, randomly shuffle.
+
+    Args:
+        case_ids: List of all available case IDs
+        annotation_counts: Dict of case_id -> annotation count
+        num_cases: Number of cases to select (default 10)
+
+    Returns:
+        List of selected case_ids
+    """
+    import random
+
+    # Group cases by annotation count
+    grouped_cases = {
+        0: [],  # Never annotated
+        1: [],  # Annotated once
+        2: [],  # Annotated twice
+        3: []   # Annotated 3+ times
+    }
+
+    for case_id in case_ids:
+        count = annotation_counts.get(case_id, 0)
+        if count >= 3:
+            grouped_cases[3].append(case_id)
+        else:
+            grouped_cases[count].append(case_id)
+
+    # Shuffle each group
+    for group in grouped_cases.values():
+        random.shuffle(group)
+
+    # Select cases prioritizing lower annotation counts
+    selected = []
+    for priority in [0, 1, 2, 3]:
+        available = grouped_cases[priority]
+        needed = num_cases - len(selected)
+
+        if needed <= 0:
+            break
+
+        # Take as many as we need from this group
+        selected.extend(available[:needed])
+
+    # If we still don't have enough cases (shouldn't happen), pad with random cases
+    if len(selected) < num_cases:
+        remaining = [c for c in case_ids if c not in selected]
+        random.shuffle(remaining)
+        selected.extend(remaining[:num_cases - len(selected)])
+
+    return selected
+
 @app.route('/')
 def index():
     """Landing page - redirect based on consent status"""
@@ -281,6 +385,47 @@ def api_get_models(dataset_key):
     models = get_available_models(dataset_key)
     return jsonify({'models': models})
 
+@app.route('/api/coverage/<dataset_key>/<model_key>')
+def api_get_coverage(dataset_key, model_key):
+    """API endpoint to get annotation coverage statistics for a dataset and model"""
+    # Load manipulative cases
+    case_ids = load_manipulative_case_ids(model_key, dataset_key)
+
+    if not case_ids:
+        return jsonify({
+            'error': 'No manipulative cases found',
+            'total_cases': 0,
+            'cases_by_count': {0: 0, 1: 0, 2: 0, 3: 0},
+            'total_annotations': 0,
+            'target_annotations': 0,
+            'progress_percent': 0
+        })
+
+    # Get annotation counts for this specific model
+    annotation_counts = get_annotation_counts_per_case(dataset_key, model_key)
+
+    # Categorize cases by annotation count
+    cases_by_count = {0: 0, 1: 0, 2: 0, 3: 0}
+
+    for case_id in case_ids:
+        count = annotation_counts.get(case_id, 0)
+        if count >= 3:
+            cases_by_count[3] += 1
+        else:
+            cases_by_count[count] += 1
+
+    # Calculate progress metrics
+    total_annotations_needed = len(case_ids) * 3
+    total_annotations_current = sum(annotation_counts.get(cid, 0) for cid in case_ids)
+
+    return jsonify({
+        'total_cases': len(case_ids),
+        'cases_by_count': cases_by_count,
+        'total_annotations': total_annotations_current,
+        'target_annotations': total_annotations_needed,
+        'progress_percent': (total_annotations_current / total_annotations_needed * 100) if total_annotations_needed > 0 else 0
+    })
+
 @app.route('/start', methods=['POST'])
 def start_annotation():
     """Start annotation session"""
@@ -322,10 +467,24 @@ def start_annotation():
         elif targeted_type == 'manipulative':
             # Load manipulative cases for this model and dataset
             manipulative_case_ids = load_manipulative_case_ids(model_key, dataset_key)
-            case_indices = get_indices_for_case_ids(data, manipulative_case_ids)
-            if not case_indices:
+
+            if not manipulative_case_ids:
                 # Fallback to all cases if no manipulative cases found
                 case_indices = list(range(total_cases))
+            else:
+                # Get annotation counts for smart selection (model-specific)
+                annotation_counts = get_annotation_counts_per_case(dataset_key, model_key)
+
+                # Smart selection: prioritize cases with fewer annotations
+                # Randomly select 10 cases, prioritizing those with 0 annotations, then 1, then 2, then 3+
+                selected_case_ids = get_smart_random_cases(
+                    manipulative_case_ids,
+                    annotation_counts,
+                    num_cases=10
+                )
+
+                # Convert selected case IDs to indices
+                case_indices = get_indices_for_case_ids(data, selected_case_ids)
         else:
             # Random sampling
             random_count = int(request.form.get('random_count', 10))
@@ -715,6 +874,7 @@ def step3_submit():
             'annotator_id': session.get('annotator_id'),
             'demographics': session.get('demographics', {}),
             'dataset': dataset_key,
+            'model_key': model_key,
             'case_id': case['case_id'],
             'agent_name': case['agent_name'],
             'agent_model': case['agent_model'],
@@ -775,6 +935,7 @@ def step3_submit():
             'annotator_id': session.get('annotator_id'),
             'demographics': session.get('demographics', {}),
             'dataset': dataset_key,
+            'model_key': model_key,
             'case_id': case['case_id'],
             'hadm_id': case.get('hadm_id'),
             'subject_id': case.get('subject_id'),

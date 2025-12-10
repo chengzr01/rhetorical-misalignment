@@ -85,12 +85,12 @@
         <label>Case Selection Mode:</label>
         <div style="margin: 10px 0;">
             <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="selection_mode" value="all" checked onchange="toggleSelectionMode()">
-                <strong>All Cases</strong> - Annotate all cases sequentially
-            </label>
-            <label style="display: block;">
-                <input type="radio" name="selection_mode" value="targeted" onchange="toggleSelectionMode()">
+                <input type="radio" name="selection_mode" value="targeted" checked onchange="toggleSelectionMode()">
                 <strong>Targeted Cases</strong> - Annotate specific filtered cases
+            </label>
+            <label style="display: block; opacity: 0.5; cursor: not-allowed;">
+                <input type="radio" name="selection_mode" value="all" disabled onchange="toggleSelectionMode()">
+                <strong>All Cases</strong> - Annotate all cases sequentially
             </label>
         </div>
     </div>
@@ -118,53 +118,35 @@
         </div>
     </div>
 
-    <div class="form-group" id="all-cases-options">
+    <div class="form-group" id="all-cases-options" style="display: none;">
         <label for="case_index">Start from Case Index (0 to {{ total_cases - 1 }}):</label>
         <input type="number" id="case_index" name="case_index" min="0" max="{{ total_cases - 1 }}" value="0">
         <small style="color: #7f8c8d; display: block; margin-top: 5px;">You can start from a specific case number if needed</small>
     </div>
 
-    <div class="form-group" id="targeted-cases-options" style="display: none;">
-        <label>Selection Type:</label>
-        <div style="margin: 10px 0;">
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="targeted_type" value="manipulative" checked onchange="toggleTargetedType()">
-                <strong>Manipulative Cases</strong> - Cases where the model shows significant bias
-            </label>
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="targeted_type" value="indices" onchange="toggleTargetedType()">
-                <strong>Specific Indices</strong> - Choose specific case numbers
-            </label>
-            <label style="display: block;">
-                <input type="radio" name="targeted_type" value="random" onchange="toggleTargetedType()">
-                <strong>Random Sample</strong> - Randomly select a number of cases
-            </label>
-        </div>
-
-        <div id="manipulative-input" style="margin-top: 10px;">
-            <div style="background: #fff3cd; padding: 10px; border-radius: 4px; border-left: 4px solid #ffc107;">
-                <small style="color: #856404;">
-                    <strong>Note:</strong> This will show cases from the decision making analysis where the model demonstrated the highest difference between principal and bayesian contexts, indicating potential manipulation or bias.
+    <!-- <div class="form-group" id="targeted-cases-options">
+        <input type="hidden" name="targeted_type" value="manipulative">
+        <div style="margin-top: 10px;">
+            <div style="background: #e8f4f8; padding: 15px; border-radius: 4px; border-left: 4px solid #3498db;">
+                <p style="margin: 0 0 10px 0; color: #2c3e50;">
+                    <strong>Smart Case Assignment - Manipulative Cases</strong>
+                </p>
+                <small style="color: #34495e; line-height: 1.6;">
+                    You will be assigned <strong>10 randomly selected cases</strong> from the manipulative cases pool for the selected model.
+                    The system intelligently prioritizes:
+                </small>
+                <ul style="margin: 8px 0 8px 20px; color: #34495e; font-size: 13px; line-height: 1.8;">
+                    <li><strong>Priority 1:</strong> Cases not yet annotated by anyone</li>
+                    <li><strong>Priority 2:</strong> Cases annotated by only 1 person</li>
+                    <li><strong>Priority 3:</strong> Cases annotated by 2 people</li>
+                    <li><strong>Priority 4:</strong> Cases with 3+ annotations</li>
+                </ul>
+                <small style="color: #7f8c8d; display: block; margin-top: 8px;">
+                    <em>This ensures we collect at least 3 annotations for each case, with full coverage as the first priority.</em>
                 </small>
             </div>
         </div>
-
-        <div id="indices-input" style="margin-top: 10px; display: none;">
-            <label for="case_indices">Case Indices (comma-separated or range):</label>
-            <input type="text" id="case_indices" name="case_indices" placeholder="e.g., 0,5,10 or 0-20" style="width: 100%; padding: 8px; margin-top: 5px;">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">
-                Enter specific case numbers separated by commas (e.g., "0,5,10") or a range (e.g., "0-20")
-            </small>
-        </div>
-
-        <div id="random-input" style="margin-top: 10px; display: none;">
-            <label for="random_count">Number of random cases:</label>
-            <input type="number" id="random_count" name="random_count" min="1" max="{{ total_cases }}" value="10" style="width: 100%; padding: 8px; margin-top: 5px;">
-            <small style="color: #7f8c8d; display: block; margin-top: 5px;">
-                Specify how many cases to randomly select (1-{{ total_cases }})
-            </small>
-        </div>
-    </div>
+    </div> -->
 
     <div style="margin: 40px 0;">
         <h2 style="color: #34495e; margin-bottom: 15px;">Demographic Information</h2>
@@ -292,16 +274,6 @@ function toggleSelectionMode() {
     const allCasesMode = document.querySelector('input[name="selection_mode"][value="all"]').checked;
     document.getElementById('all-cases-options').style.display = allCasesMode ? 'block' : 'none';
     document.getElementById('targeted-cases-options').style.display = allCasesMode ? 'none' : 'block';
-}
-
-function toggleTargetedType() {
-    const manipulativeMode = document.querySelector('input[name="targeted_type"][value="manipulative"]').checked;
-    const indicesMode = document.querySelector('input[name="targeted_type"][value="indices"]').checked;
-    const randomMode = document.querySelector('input[name="targeted_type"][value="random"]').checked;
-
-    document.getElementById('manipulative-input').style.display = manipulativeMode ? 'block' : 'none';
-    document.getElementById('indices-input').style.display = indicesMode ? 'block' : 'none';
-    document.getElementById('random-input').style.display = randomMode ? 'block' : 'none';
 }
 
 // Initialize process description on page load
