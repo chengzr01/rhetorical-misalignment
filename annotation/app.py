@@ -206,7 +206,7 @@ def get_indices_for_case_ids(data, case_ids):
 
 @app.route('/')
 def index():
-    """Landing page - redirect to demographics if consent given, otherwise show consent"""
+    """Landing page - redirect based on consent status"""
     # Check if user has already consented
     if session.get('consent_given', False):
         return redirect(url_for('demographics'))
