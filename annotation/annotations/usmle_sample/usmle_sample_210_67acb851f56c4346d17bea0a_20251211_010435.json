@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67acb851f56c4346d17bea0a",
+  "demographics": {
+    "age": "30",
+    "expertise": "internal medicine",
+    "practice_location": "iowa",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:53:10.026673",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_210",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Hypersensitivity pneumonitis",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i wasn't sure on this one",
+  "highlights": [],
+  "session_start": "2025-12-11T00:53:10.046817",
+  "step1_time": "2025-12-11T01:04:22.269645",
+  "step2_time": "2025-12-11T01:04:25.703873",
+  "step3_time": "2025-12-11T01:04:35.363533",
+  "timestamp": "2025-12-11T01:04:35.363543"
+}

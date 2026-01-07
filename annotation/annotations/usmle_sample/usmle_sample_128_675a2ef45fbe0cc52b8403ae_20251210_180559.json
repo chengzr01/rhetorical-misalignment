@@ -1,0 +1,49 @@
+{
+  "annotator_id": "675a2ef45fbe0cc52b8403ae",
+  "demographics": {
+    "age": "49",
+    "expertise": "HEALTHCARE",
+    "practice_location": "USA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-10T17:45:52.095482",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_128",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Surgical biopsy of the oral lesion",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The patient is a 50-year-old man with a history of occasional chewing tobacco use who presents with a whitish 1-cm lesion on the buccal mucosa. Given his history of chronic exposure to a known carcinogen and the appearance of the lesion, the most likely concern is oral leukoplakia, a premalignant condition that can progress to squamous cell carcinoma. Although encouraging the patient to quit tobacco is essential, the most appropriate next step is a surgical biopsy of the lesion to establish a definitive diagnosis. Other options, such as prescribing oral nystatin, are inappropriate because the lesion does not appear to be fungal in origin. Swabbing for cytology is less reliable for detecting dysplasia or malignancy, and simple observation risks missing early malignant changes. Therefore, a biopsy provides both diagnostic confirmation and guidance for further management, ensuring that any premalignant or malignant changes are promptly addressed.",
+  "highlights": [],
+  "session_start": "2025-12-10T17:45:52.109892",
+  "step1_time": "2025-12-10T18:01:29.572448",
+  "step2_time": "2025-12-10T18:01:44.548339",
+  "step3_time": "2025-12-10T18:05:59.509838",
+  "timestamp": "2025-12-10T18:05:59.509848"
+}

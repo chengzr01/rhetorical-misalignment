@@ -1,0 +1,49 @@
+{
+  "annotator_id": "673feeafa80a279f5cc63e33",
+  "demographics": {
+    "age": "62",
+    "expertise": "none",
+    "practice_location": "CT, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-10T19:02:06.627451",
+    "years_of_practice": "0"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_11",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Open-labeled clinical trial",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.36,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.36,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.36,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Because everyone was receiving the actual product I figure case control; fit",
+  "highlights": [],
+  "session_start": "2025-12-10T19:02:06.642013",
+  "step1_time": "2025-12-10T19:03:09.253045",
+  "step2_time": "2025-12-10T19:04:44.997941",
+  "step3_time": "2025-12-10T19:07:17.416693",
+  "timestamp": "2025-12-10T19:07:17.416703"
+}

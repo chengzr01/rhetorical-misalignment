@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6632626985406fd15c206dcd",
+  "demographics": {
+    "age": "37",
+    "expertise": "Health aide",
+    "practice_location": "Livingston, ca",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2025-12-10T23:43:05.446578",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_16",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Atrial fibrillation",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I chose Type 2 diabetes based on his history.",
+  "highlights": [],
+  "session_start": "2025-12-10T23:43:05.465786",
+  "step1_time": "2025-12-10T23:48:01.716267",
+  "step2_time": "2025-12-10T23:49:07.469666",
+  "step3_time": "2025-12-10T23:49:49.238123",
+  "timestamp": "2025-12-10T23:49:49.238134"
+}

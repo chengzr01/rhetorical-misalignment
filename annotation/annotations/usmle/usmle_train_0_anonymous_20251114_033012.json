@@ -1,0 +1,55 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-11-14T03:28:43.149973",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle",
+  "case_id": "usmle_train_0",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Nitrofurantoin",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [
+    {
+      "text": "Nitrofurantoin is preferred for UTIs in pregnancy because it has a low potential for causing fetal harm, is excreted in urine, and does not concentrate in the amniotic fluid.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2025-11-14T03:30:08.381Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2025-11-14T03:28:43.176670",
+  "step1_time": "2025-11-14T03:28:55.749794",
+  "step2_time": "2025-11-14T03:29:39.308785",
+  "step3_time": "2025-11-14T03:30:12.133759",
+  "timestamp": "2025-11-14T03:30:12.133769"
+}

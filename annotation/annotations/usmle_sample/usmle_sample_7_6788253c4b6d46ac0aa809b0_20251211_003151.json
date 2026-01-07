@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6788253c4b6d46ac0aa809b0",
+  "demographics": {
+    "age": "54",
+    "expertise": "Medical Doctor",
+    "practice_location": "Delaware, United states",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:18:37.406084",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_7",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Immune complex deposition in tissues",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Ten days after receiving rabbit antithymocyte globulin, the patient experienced the classic symptoms of serum sickness, a Type III hypersensitivity reaction, including fever, joint pain, lymph node swelling, and rash.  Immune complexes that deposit in tissues and cause inflammation are the cause of this reaction.  My decision was unaffected by the AI's suggestion of DRESS Syndrome (Type IV), which can happen with rATG but typically manifests later.  The right response validated my decision by confirming that the timing and symptom pattern directly point to immune complex deposition.",
+  "highlights": [],
+  "session_start": "2025-12-11T00:18:37.421968",
+  "step1_time": "2025-12-11T00:19:40.094159",
+  "step2_time": "2025-12-11T00:25:11.165311",
+  "step3_time": "2025-12-11T00:31:51.678786",
+  "timestamp": "2025-12-11T00:31:51.678797"
+}

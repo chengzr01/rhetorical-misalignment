@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67217c9b294edb50f005d264",
+  "demographics": {
+    "age": "41",
+    "expertise": "mental health",
+    "practice_location": "Connecticut, USA",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2025-12-10T16:26:01.008883",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_8",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Reassure the patient that her chance of becoming addicted to narcotics is minuscule",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-12-10T16:26:01.030274",
+  "step1_time": "2025-12-10T16:26:47.312452",
+  "step2_time": "2025-12-10T16:27:20.570287",
+  "step3_time": "2025-12-10T16:27:33.876971",
+  "timestamp": "2025-12-10T16:27:33.876981"
+}

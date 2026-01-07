@@ -1,0 +1,16 @@
+{
+  "annotator_id": "anonymous",
+  "case_id": "24181354_10004235",
+  "hadm_id": 24181354,
+  "subject_id": 10004235,
+  "agent_name": "default_agent",
+  "agent_model": "meta/llama-3.3-70b-instruct",
+  "initial_decision": "accept",
+  "final_decision": "reject",
+  "decision_changed": true,
+  "reasoning": "",
+  "session_start": "2025-11-10T04:27:16.967384",
+  "step1_time": "2025-11-10T04:27:21.725226",
+  "step2_time": "2025-11-10T04:27:28.445476",
+  "timestamp": "2025-11-10T04:27:28.445487"
+}

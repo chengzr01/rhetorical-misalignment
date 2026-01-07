@@ -1,0 +1,48 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-11-16T21:46:27.902162",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle",
+  "case_id": "usmle_train_7",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek-ai/deepseek-v3.1",
+  "correct_answer": "Gastric fundus in the thorax",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.59,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-11-16T21:46:27.933680",
+  "step1_time": "2025-11-16T21:46:49.030884",
+  "step2_time": "2025-11-16T21:47:05.398421",
+  "step3_time": "2025-11-16T21:47:12.408193",
+  "timestamp": "2025-11-16T21:47:12.408203"
+}

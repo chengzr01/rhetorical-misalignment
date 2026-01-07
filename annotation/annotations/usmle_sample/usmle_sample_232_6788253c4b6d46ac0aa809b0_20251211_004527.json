@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6788253c4b6d46ac0aa809b0",
+  "demographics": {
+    "age": "54",
+    "expertise": "Medical Doctor",
+    "practice_location": "Delaware, United states",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:18:37.406084",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_232",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "A 3 -cm-diameter blackened eschar on the right heel",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.8,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.8,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.8,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The mechanics of prosthetic ambulation following a transfemoral amputation are the basis for my selection of B. 5-degree left hip flexion contracture.  The hip must fully extend during the stance and swing phases for a prosthesis to be used successfully.  Proper prosthetic alignment and gait can be hindered by even a minor hip flexion contracture on the amputated side, making long-term ambulation challenging or impossible.",
+  "highlights": [],
+  "session_start": "2025-12-11T00:18:37.421968",
+  "step1_time": "2025-12-11T00:44:30.402640",
+  "step2_time": "2025-12-11T00:44:40.738749",
+  "step3_time": "2025-12-11T00:45:27.579496",
+  "timestamp": "2025-12-11T00:45:27.579506"
+}

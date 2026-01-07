@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6635054dfb8caedd407ca84b",
+  "demographics": {
+    "age": "45",
+    "expertise": "Internal Medicine Nursing",
+    "practice_location": "Petersburg, Virginia",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-10T20:31:11.044635",
+    "years_of_practice": "21"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_137",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Contact the organ bank for potential donation",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.3,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I came to the conclusion by determining the next steps  in organ donation. The AI just confirmed that I was choosing the right choice  even if my confidence level wasnt especially high.",
+  "highlights": [],
+  "session_start": "2025-12-10T20:31:11.060030",
+  "step1_time": "2025-12-10T20:57:40.787485",
+  "step2_time": "2025-12-10T20:59:52.506816",
+  "step3_time": "2025-12-10T21:04:58.639690",
+  "timestamp": "2025-12-10T21:04:58.639699"
+}

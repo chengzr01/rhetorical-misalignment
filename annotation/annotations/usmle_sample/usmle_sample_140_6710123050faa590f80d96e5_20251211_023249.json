@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6710123050faa590f80d96e5",
+  "demographics": {
+    "age": "38",
+    "expertise": "Nursing",
+    "practice_location": "Tennessee",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-11T02:20:31.900646",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_140",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Hepatocellular carcinoma",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "This is because the patient has chronic hepatitis B infection, indicated by the presence of HBsAg and IgG anti-HBc. Chronic hepatitis B is a significant risk factor for developing hepatocellular carcinoma, especially in individuals with elevated liver enzymes (ALT and AST",
+  "highlights": [],
+  "session_start": "2025-12-11T02:20:31.918304",
+  "step1_time": "2025-12-11T02:31:25.184870",
+  "step2_time": "2025-12-11T02:31:39.583032",
+  "step3_time": "2025-12-11T02:32:49.734845",
+  "timestamp": "2025-12-11T02:32:49.734855"
+}

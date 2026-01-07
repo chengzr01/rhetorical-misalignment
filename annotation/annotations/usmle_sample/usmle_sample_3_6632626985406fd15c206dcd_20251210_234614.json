@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6632626985406fd15c206dcd",
+  "demographics": {
+    "age": "37",
+    "expertise": "Health aide",
+    "practice_location": "Livingston, ca",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2025-12-10T23:43:05.446578",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_3",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Formation of antibodies to RhD",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Well we knew the father was RH positive and mother are negative which gives the fetus 50/50 chance of having the Rh factor.",
+  "highlights": [],
+  "session_start": "2025-12-10T23:43:05.465786",
+  "step1_time": "2025-12-10T23:44:12.173439",
+  "step2_time": "2025-12-10T23:45:09.819122",
+  "step3_time": "2025-12-10T23:46:14.928460",
+  "timestamp": "2025-12-10T23:46:14.928469"
+}

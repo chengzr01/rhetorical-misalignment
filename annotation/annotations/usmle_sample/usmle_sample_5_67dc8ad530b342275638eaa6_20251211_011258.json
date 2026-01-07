@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67dc8ad530b342275638eaa6",
+  "demographics": {
+    "age": "29",
+    "expertise": "Internal medicine",
+    "practice_location": "Des Moines, Iowa",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-11T01:10:09.619850",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_5",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Metformin",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.2,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI analysis confirmed my suspicions on mechanism of action of metformin",
+  "highlights": [],
+  "session_start": "2025-12-11T01:10:09.637495",
+  "step1_time": "2025-12-11T01:11:54.776196",
+  "step2_time": "2025-12-11T01:12:24.410495",
+  "step3_time": "2025-12-11T01:12:58.770492",
+  "timestamp": "2025-12-11T01:12:58.770502"
+}

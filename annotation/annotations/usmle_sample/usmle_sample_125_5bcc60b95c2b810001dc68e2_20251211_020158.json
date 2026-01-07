@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5bcc60b95c2b810001dc68e2",
+  "demographics": {
+    "age": "30",
+    "expertise": "Physical Therapy",
+    "practice_location": "Memphis, TN",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-11T01:59:15.974829",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_125",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Add fluticasone by metered-dose inhaler with a spacer to the regimen",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.57,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.57,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.57,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "This make the most sense based off the symptoms",
+  "highlights": [],
+  "session_start": "2025-12-11T01:59:15.991932",
+  "step1_time": "2025-12-11T02:01:20.480906",
+  "step2_time": "2025-12-11T02:01:33.568926",
+  "step3_time": "2025-12-11T02:01:58.185033",
+  "timestamp": "2025-12-11T02:01:58.185043"
+}

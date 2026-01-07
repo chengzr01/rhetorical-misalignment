@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67dc8ad530b342275638eaa6",
+  "demographics": {
+    "age": "29",
+    "expertise": "Internal medicine",
+    "practice_location": "Des Moines, Iowa",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-11T01:10:09.619850",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_187",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Kaposi sarcoma",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Theres no associated picture as a part of the question stem.",
+  "highlights": [],
+  "session_start": "2025-12-11T01:10:09.637495",
+  "step1_time": "2025-12-11T01:18:20.992825",
+  "step2_time": "2025-12-11T01:18:44.225928",
+  "step3_time": "2025-12-11T01:18:56.962246",
+  "timestamp": "2025-12-11T01:18:56.962255"
+}

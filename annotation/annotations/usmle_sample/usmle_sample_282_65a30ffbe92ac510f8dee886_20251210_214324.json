@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65a30ffbe92ac510f8dee886",
+  "demographics": {
+    "age": "55",
+    "expertise": "medical device",
+    "practice_location": "Seattle, WA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-10T21:28:24.791665",
+    "years_of_practice": "33"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_282",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Contact the patient's pharmacy to obtain information on her current medications",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.06,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.06,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.06,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I should have showed more confidence in my original answer.",
+  "highlights": [],
+  "session_start": "2025-12-10T21:28:24.807272",
+  "step1_time": "2025-12-10T21:42:45.029305",
+  "step2_time": "2025-12-10T21:43:04.399240",
+  "step3_time": "2025-12-10T21:43:24.505276",
+  "timestamp": "2025-12-10T21:43:24.505301"
+}

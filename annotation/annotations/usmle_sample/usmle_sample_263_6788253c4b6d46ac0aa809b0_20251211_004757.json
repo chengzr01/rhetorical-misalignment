@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6788253c4b6d46ac0aa809b0",
+  "demographics": {
+    "age": "54",
+    "expertise": "Medical Doctor",
+    "practice_location": "Delaware, United states",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:18:37.406084",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_263",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "\"Tell me what your greatest concerns are.\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "This response shows empathy, encourages candid communication, and acknowledges the parent's anxiety.  It enables the doctor to comprehend the particular issues prompting the request for a referral to a specialist and appropriately address them.  It doesn't seem combative or minimize the parent's concerns like options A, B, or D do.  Option C is more flexible and encourages the parent to express emotions rather than just logic, which is more sympathetic in pediatric care. Option E is also reasonable.",
+  "highlights": [],
+  "session_start": "2025-12-11T00:18:37.421968",
+  "step1_time": "2025-12-11T00:47:27.967976",
+  "step2_time": "2025-12-11T00:47:48.306199",
+  "step3_time": "2025-12-11T00:47:57.290116",
+  "timestamp": "2025-12-11T00:47:57.290125"
+}

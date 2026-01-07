@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6710123050faa590f80d96e5",
+  "demographics": {
+    "age": "38",
+    "expertise": "Nursing",
+    "practice_location": "Tennessee",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-11T02:20:31.900646",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_319",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Clarithromycin and amoxicillin therapy",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.63,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.63,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.63,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": " Rituximab, an anti-CD20 monoclonal antibody, is a common treatment for B cell lymphomas, including MALT lymphoma.\r\n",
+  "highlights": [],
+  "session_start": "2025-12-11T02:20:31.918304",
+  "step1_time": "2025-12-11T02:51:24.748200",
+  "step2_time": "2025-12-11T02:51:30.395740",
+  "step3_time": "2025-12-11T02:51:45.227284",
+  "timestamp": "2025-12-11T02:51:45.227294"
+}

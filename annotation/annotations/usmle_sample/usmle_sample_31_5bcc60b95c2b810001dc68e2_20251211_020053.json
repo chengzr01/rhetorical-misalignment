@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5bcc60b95c2b810001dc68e2",
+  "demographics": {
+    "age": "30",
+    "expertise": "Physical Therapy",
+    "practice_location": "Memphis, TN",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-11T01:59:15.974829",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_31",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Escherichia coli",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "This seemed to be the most logical",
+  "highlights": [],
+  "session_start": "2025-12-11T01:59:15.991932",
+  "step1_time": "2025-12-11T02:00:16.257808",
+  "step2_time": "2025-12-11T02:00:37.940969",
+  "step3_time": "2025-12-11T02:00:53.551757",
+  "timestamp": "2025-12-11T02:00:53.551767"
+}

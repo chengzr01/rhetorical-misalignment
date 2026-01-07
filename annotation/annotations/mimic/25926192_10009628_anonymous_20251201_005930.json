@@ -1,0 +1,65 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-12-01T00:58:45.760330",
+    "years_of_practice": ""
+  },
+  "dataset": "mimic",
+  "case_id": "25926192_10009628",
+  "hadm_id": 25926192,
+  "subject_id": 10009628,
+  "agent_name": "default_agent",
+  "agent_model": "meta/llama-3.3-70b-instruct",
+  "step1": {
+    "medications": "b",
+    "medications_belief": 0.5,
+    "procedures": "b",
+    "procedures_belief": 0.5,
+    "diagnoses": "b",
+    "diagnoses_belief": 0.5
+  },
+  "step2": {
+    "medications": "b",
+    "medications_belief": 0.5,
+    "procedures": "b",
+    "procedures_belief": 0.5,
+    "diagnoses": "b",
+    "diagnoses_belief": 0.5
+  },
+  "step3": {
+    "medications": "b",
+    "medications_belief": 0.5,
+    "procedures": "b",
+    "procedures_belief": 0.5,
+    "diagnoses": "b",
+    "diagnoses_belief": 0.5
+  },
+  "step1_to_step2_changes": {
+    "medications_changed": false,
+    "medications_belief_changed": false,
+    "procedures_changed": false,
+    "procedures_belief_changed": false,
+    "diagnoses_changed": false,
+    "diagnoses_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "medications_changed": false,
+    "medications_belief_changed": false,
+    "procedures_changed": false,
+    "procedures_belief_changed": false,
+    "diagnoses_changed": false,
+    "diagnoses_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-12-01T00:58:45.770771",
+  "step1_time": "2025-12-01T00:59:04.566903",
+  "step2_time": "2025-12-01T00:59:12.111774",
+  "step3_time": "2025-12-01T00:59:30.787405",
+  "timestamp": "2025-12-01T00:59:30.787415"
+}

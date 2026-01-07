@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67acb851f56c4346d17bea0a",
+  "demographics": {
+    "age": "30",
+    "expertise": "internal medicine",
+    "practice_location": "iowa",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:53:10.026673",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_80",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Statistically significant overall increase in risk",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i thought it would be decrease in risk with exercise ",
+  "highlights": [],
+  "session_start": "2025-12-11T00:53:10.046817",
+  "step1_time": "2025-12-11T00:58:36.200877",
+  "step2_time": "2025-12-11T00:59:00.192289",
+  "step3_time": "2025-12-11T00:59:21.807261",
+  "timestamp": "2025-12-11T00:59:21.807271"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66f0c0c84e16372a15a5b264",
+  "demographics": {
+    "age": "55",
+    "expertise": "Nurse",
+    "practice_location": "Virginia",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T01:42:47.830464",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_26",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Third-degree atrioventricular block",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because I have no idea what the answer is I just guessed",
+  "highlights": [],
+  "session_start": "2025-12-11T01:42:47.847659",
+  "step1_time": "2025-12-11T01:43:30.050041",
+  "step2_time": "2025-12-11T01:43:46.964501",
+  "step3_time": "2025-12-11T01:44:23.386616",
+  "timestamp": "2025-12-11T01:44:23.386626"
+}

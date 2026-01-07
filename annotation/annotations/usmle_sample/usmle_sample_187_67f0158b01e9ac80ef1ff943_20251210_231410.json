@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67f0158b01e9ac80ef1ff943",
+  "demographics": {
+    "age": "",
+    "expertise": "social worker",
+    "practice_location": "U.S.A New york",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-10T23:07:44.944792",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_187",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Kaposi sarcoma",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "right choice ",
+  "highlights": [],
+  "session_start": "2025-12-10T23:07:44.960019",
+  "step1_time": "2025-12-10T23:13:11.145598",
+  "step2_time": "2025-12-10T23:13:42.626668",
+  "step3_time": "2025-12-10T23:14:10.466385",
+  "timestamp": "2025-12-10T23:14:10.466395"
+}

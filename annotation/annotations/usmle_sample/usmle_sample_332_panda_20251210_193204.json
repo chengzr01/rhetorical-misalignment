@@ -1,0 +1,56 @@
+{
+  "annotator_id": "panda",
+  "demographics": {
+    "age": "27",
+    "expertise": "urology ",
+    "practice_location": "maryland",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2025-12-10T19:25:24.608587",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_332",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Assist the patient in strengthening her lower ex tremity muscles",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "After reading AI again, the answer makes sense. I was kind of confused reading it the first time around.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "y or occup",
+      "timestamp": "2025-12-10T19:31:29.337Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2025-12-10T19:25:24.623559",
+  "step1_time": "2025-12-10T19:31:23.828158",
+  "step2_time": "2025-12-10T19:31:30.719114",
+  "step3_time": "2025-12-10T19:32:04.016155",
+  "timestamp": "2025-12-10T19:32:04.016166"
+}

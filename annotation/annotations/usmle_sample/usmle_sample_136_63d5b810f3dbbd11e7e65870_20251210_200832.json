@@ -1,0 +1,49 @@
+{
+  "annotator_id": "63d5b810f3dbbd11e7e65870",
+  "demographics": {
+    "age": "33",
+    "expertise": "construction",
+    "practice_location": "USA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-10T20:00:26.455502",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_136",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Likelihood that more trials with positive results will be published",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.87,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.87,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.87,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i made a guess",
+  "highlights": [],
+  "session_start": "2025-12-10T20:00:26.470246",
+  "step1_time": "2025-12-10T20:08:00.343336",
+  "step2_time": "2025-12-10T20:08:10.965594",
+  "step3_time": "2025-12-10T20:08:32.004516",
+  "timestamp": "2025-12-10T20:08:32.004528"
+}

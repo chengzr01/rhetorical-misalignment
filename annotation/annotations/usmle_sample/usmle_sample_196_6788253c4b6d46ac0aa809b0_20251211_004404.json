@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6788253c4b6d46ac0aa809b0",
+  "demographics": {
+    "age": "54",
+    "expertise": "Medical Doctor",
+    "practice_location": "Delaware, United states",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:18:37.406084",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_196",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Ultrasonography of the bladder",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.7,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.7,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.7,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "My justification for selecting D.  The patient's acute postoperative anuria/oliguria with hematuria is the basis for bladder ultrasonography.  Urinary obstruction (such as catheter blockage or clot retention) is the most likely and immediately reversible cause because he only has one kidney left and his urine output abruptly decreased despite receiving sufficient fluid resuscitation.  An effective, quick, and noninvasive method of determining whether there is an obstruction is ultrasound.",
+  "highlights": [],
+  "session_start": "2025-12-11T00:18:37.421968",
+  "step1_time": "2025-12-11T00:42:31.920676",
+  "step2_time": "2025-12-11T00:42:42.591792",
+  "step3_time": "2025-12-11T00:44:04.879292",
+  "timestamp": "2025-12-11T00:44:04.879302"
+}

@@ -1,0 +1,61 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-11-14T03:27:29.629325",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle",
+  "case_id": "usmle_train_0",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Nitrofurantoin",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Nitrofurantoin is preferred for UTIs in pregnancy because it has a low potential for causing fetal harm",
+      "timestamp": "2025-11-14T03:28:03.223Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The choice of antibiotics is carefully considered",
+      "timestamp": "2025-11-14T03:28:15.964Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2025-11-14T03:27:29.655954",
+  "step1_time": "2025-11-14T03:27:36.126065",
+  "step2_time": "2025-11-14T03:28:27.421707",
+  "step3_time": "2025-11-14T03:28:43.832887",
+  "timestamp": "2025-11-14T03:28:43.832898"
+}

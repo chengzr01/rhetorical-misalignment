@@ -1,0 +1,48 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2025-11-16T21:43:04.322948",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle",
+  "case_id": "usmle_train_1",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek-ai/deepseek-v3.1",
+  "correct_answer": "Placing the infant in a supine position on a firm mattress while sleeping",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.71,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.71,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-11-16T21:43:04.359470",
+  "step1_time": "2025-11-16T21:44:27.147586",
+  "step2_time": "2025-11-16T21:45:16.876649",
+  "step3_time": "2025-11-16T21:45:28.569555",
+  "timestamp": "2025-11-16T21:45:28.569565"
+}

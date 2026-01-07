@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6710123050faa590f80d96e5",
+  "demographics": {
+    "age": "38",
+    "expertise": "Nursing",
+    "practice_location": "Tennessee",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-11T02:20:31.900646",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_263",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "\"Tell me what your greatest concerns are.\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "\r\nThis response acknowledges the father's concerns and invites him to share his thoughts, allowing the physician to address specific worries and provide reassurance.\r\n\r\n- The father's family history of cancer is likely driving his concerns, and exploring these concerns can help build trust and improve communication.\r\n",
+  "highlights": [],
+  "session_start": "2025-12-11T02:20:31.918304",
+  "step1_time": "2025-12-11T02:43:43.071272",
+  "step2_time": "2025-12-11T02:43:49.804726",
+  "step3_time": "2025-12-11T02:44:02.392620",
+  "timestamp": "2025-12-11T02:44:02.392631"
+}

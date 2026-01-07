@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6635054dfb8caedd407ca84b",
+  "demographics": {
+    "age": "45",
+    "expertise": "Internal Medicine Nursing",
+    "practice_location": "Petersburg, Virginia",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-10T20:31:11.044635",
+    "years_of_practice": "21"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_114",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "The second CFTR  mutation was not detected by the testing obtained",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.25,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.06,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I thought the AI had influenced me to make the proper decision but I was way off. I didn't have the correct answer because I believed it was something associated with the pancreas. It actually had to do with the CFTR and the AI did explain this.",
+  "highlights": [],
+  "session_start": "2025-12-10T20:31:11.060030",
+  "step1_time": "2025-12-10T20:39:14.232925",
+  "step2_time": "2025-12-10T20:41:56.187667",
+  "step3_time": "2025-12-10T20:44:12.807481",
+  "timestamp": "2025-12-10T20:44:12.807491"
+}

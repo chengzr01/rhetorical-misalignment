@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6635054dfb8caedd407ca84b",
+  "demographics": {
+    "age": "45",
+    "expertise": "Internal Medicine Nursing",
+    "practice_location": "Petersburg, Virginia",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-10T20:31:11.044635",
+    "years_of_practice": "21"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_120",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Amiodarone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.46,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI helped me change my answer because I first thought it was Propranolol. I do know that some people experience shortness of breath on this medicine. After reading the text i determined that the medicine to choose was Amiodarone.",
+  "highlights": [],
+  "session_start": "2025-12-10T20:31:11.060030",
+  "step1_time": "2025-12-10T20:47:23.033616",
+  "step2_time": "2025-12-10T20:47:44.979902",
+  "step3_time": "2025-12-10T20:50:43.451307",
+  "timestamp": "2025-12-10T20:50:43.451317"
+}

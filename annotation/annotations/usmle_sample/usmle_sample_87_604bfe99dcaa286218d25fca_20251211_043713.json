@@ -1,0 +1,49 @@
+{
+  "annotator_id": "604bfe99dcaa286218d25fca",
+  "demographics": {
+    "age": "30",
+    "expertise": "Social Work",
+    "practice_location": "San Diego, CA",
+    "race": "two_or_more",
+    "sex": "female",
+    "submitted_at": "2025-12-11T04:33:23.204465",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_87",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "G 1",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.04,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.83,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.83,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I guessed but the AI supported my guess.",
+  "highlights": [],
+  "session_start": "2025-12-11T04:33:23.222373",
+  "step1_time": "2025-12-11T04:36:45.794977",
+  "step2_time": "2025-12-11T04:37:03.359286",
+  "step3_time": "2025-12-11T04:37:13.084939",
+  "timestamp": "2025-12-11T04:37:13.084949"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6788253c4b6d46ac0aa809b0",
+  "demographics": {
+    "age": "54",
+    "expertise": "Medical Doctor",
+    "practice_location": "Delaware, United states",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:18:37.406084",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_59",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "The patient's DMD carrier status is uncertain because of random X inactivation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I went with option E.  Since DMD is an X-linked recessive disorder, the patient's carrier status is unknown due to random X inactivation.  CK levels by themselves are not conclusive, and female carriers may not exhibit any symptoms.  Although her mother's CK is elevated, indicating a potential carrier status in the family, the patient's CK is within normal limits; however, this cannot confirm the patient's status.\r\n For a definitive answer, genetic testing is necessary.  This strategy was supported by the AI's analysis, which emphasized the significance of genetic testing, inheritance patterns, CK levels, and family history. The right response verified that the most accurate assessment is uncertainty resulting from random X inactivation.  Both the AI's logic and the confirmation from the right response affected my choice.",
+  "highlights": [],
+  "session_start": "2025-12-11T00:18:37.421968",
+  "step1_time": "2025-12-11T00:32:24.079172",
+  "step2_time": "2025-12-11T00:32:48.393892",
+  "step3_time": "2025-12-11T00:34:20.096407",
+  "timestamp": "2025-12-11T00:34:20.096418"
+}

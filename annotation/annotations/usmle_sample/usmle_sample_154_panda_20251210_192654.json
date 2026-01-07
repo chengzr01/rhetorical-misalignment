@@ -1,0 +1,56 @@
+{
+  "annotator_id": "panda",
+  "demographics": {
+    "age": "27",
+    "expertise": "urology ",
+    "practice_location": "maryland",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2025-12-10T19:25:24.608587",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_154",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Smoking cessation",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI helped me do critical thinking and how to answer the question",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "allergies and",
+      "timestamp": "2025-12-10T19:26:31.153Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2025-12-10T19:25:24.623559",
+  "step1_time": "2025-12-10T19:26:21.433351",
+  "step2_time": "2025-12-10T19:26:36.074071",
+  "step3_time": "2025-12-10T19:26:54.306863",
+  "timestamp": "2025-12-10T19:26:54.306873"
+}

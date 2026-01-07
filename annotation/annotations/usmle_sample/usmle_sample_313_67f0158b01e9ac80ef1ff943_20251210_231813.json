@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67f0158b01e9ac80ef1ff943",
+  "demographics": {
+    "age": "",
+    "expertise": "social worker",
+    "practice_location": "U.S.A New york",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2025-12-10T23:07:44.944792",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_313",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Concurrent alcohol consumption",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.79,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.79,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.79,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "perfect treatment",
+  "highlights": [],
+  "session_start": "2025-12-10T23:07:44.960019",
+  "step1_time": "2025-12-10T23:17:49.648784",
+  "step2_time": "2025-12-10T23:17:54.407061",
+  "step3_time": "2025-12-10T23:18:13.115364",
+  "timestamp": "2025-12-10T23:18:13.115374"
+}

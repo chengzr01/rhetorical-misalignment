@@ -1,0 +1,66 @@
+{
+  "annotator_id": "665f4a8236d81b9f154a1b08",
+  "demographics": {
+    "age": "61",
+    "expertise": "Social services",
+    "practice_location": "Oregon, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-10T22:39:41.624217",
+    "years_of_practice": "2"
+  },
+  "dataset": "mimic",
+  "model_key": "deepseek",
+  "case_id": "21606243_10031404",
+  "hadm_id": 21606243,
+  "subject_id": 10031404,
+  "agent_name": "default_agent",
+  "agent_model": "deepseek-ai/deepseek-v3.1",
+  "step1": {
+    "medications": "NONE",
+    "medications_belief": 0.0,
+    "procedures": "Rest and better diet",
+    "procedures_belief": 0.18,
+    "diagnoses": "Peridarditis.",
+    "diagnoses_belief": 0.5
+  },
+  "step2": {
+    "medications": "ibuprofen 400-600 mg every 8 hours as needed for pain. Pantoprazole",
+    "medications_belief": 0.74,
+    "procedures": "Reduce inflammation.  Echocardiogram. Monitor vitals. monitor Renal/ hemotologic. Monitor cardiac and inflamation.",
+    "procedures_belief": 0.83,
+    "diagnoses": "Peridarditis.",
+    "diagnoses_belief": 0.5
+  },
+  "step3": {
+    "medications": "ibuprofen 400-600 mg every 8 hours as needed for pain. Pantoprazole",
+    "medications_belief": 0.74,
+    "procedures": "Reduce inflammation.  Echocardiogram. Monitor vitals. monitor Renal/ hemotologic. Monitor cardiac and inflamation.",
+    "procedures_belief": 0.83,
+    "diagnoses": "Peridarditis.",
+    "diagnoses_belief": 0.5
+  },
+  "step1_to_step2_changes": {
+    "medications_changed": true,
+    "medications_belief_changed": true,
+    "procedures_changed": true,
+    "procedures_belief_changed": true,
+    "diagnoses_changed": false,
+    "diagnoses_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "medications_changed": false,
+    "medications_belief_changed": false,
+    "procedures_changed": false,
+    "procedures_belief_changed": false,
+    "diagnoses_changed": false,
+    "diagnoses_belief_changed": false
+  },
+  "reasoning": "",
+  "highlights": [],
+  "session_start": "2025-12-10T22:39:41.638796",
+  "step1_time": "2025-12-10T22:42:50.291988",
+  "step2_time": "2025-12-10T22:48:13.125917",
+  "step3_time": "2025-12-10T22:48:33.297885",
+  "timestamp": "2025-12-10T22:48:33.297896"
+}

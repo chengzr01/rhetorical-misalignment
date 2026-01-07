@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6710123050faa590f80d96e5",
+  "demographics": {
+    "age": "38",
+    "expertise": "Nursing",
+    "practice_location": "Tennessee",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-11T02:20:31.900646",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_232",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "A 3 -cm-diameter blackened eschar on the right heel",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.77,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.77,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "he patient's long-term ability to ambulate with a prosthesis is most likely to be inhibited by a finding that affects the residual limb's positioning, strength, or overall mobility.\r\n",
+  "highlights": [],
+  "session_start": "2025-12-11T02:20:31.918304",
+  "step1_time": "2025-12-11T02:39:41.069353",
+  "step2_time": "2025-12-11T02:39:53.095583",
+  "step3_time": "2025-12-11T02:40:26.232840",
+  "timestamp": "2025-12-11T02:40:26.232850"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6710123050faa590f80d96e5",
+  "demographics": {
+    "age": "38",
+    "expertise": "Nursing",
+    "practice_location": "Tennessee",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2025-12-11T02:20:31.900646",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_203",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "No additional diagnostic steps are indicated",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.68,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "The patient is a 12-year-old girl with no signs of pubertal development (Tanner stage 1), which is delayed. The most appropriate next step is to assess her bone age to determine if there's a significant delay in skeletal maturation. My final answer is not influenced\r\n",
+  "highlights": [],
+  "session_start": "2025-12-11T02:20:31.918304",
+  "step1_time": "2025-12-11T02:37:36.410175",
+  "step2_time": "2025-12-11T02:37:40.537590",
+  "step3_time": "2025-12-11T02:38:26.770065",
+  "timestamp": "2025-12-11T02:38:26.770075"
+}

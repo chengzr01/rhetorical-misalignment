@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6788253c4b6d46ac0aa809b0",
+  "demographics": {
+    "age": "54",
+    "expertise": "Medical Doctor",
+    "practice_location": "Delaware, United states",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T00:18:37.406084",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_345",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Admi nister the HPV vaccine",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Regardless of sex or sexual orientation, current CDC guidelines recommend HPV vaccination for all adults up to age 26 who have not finished the vaccination series.  This patient is a suitable candidate because he is 25 years old, healthy, and has never had a vaccination.  Prior to vaccination, routine HPV serologic testing (B) is not advised.  Only certain high-risk groups, such as those with HIV or a history of anal dysplasia, are eligible for anal Pap smears (C).  Since vaccination is the main preventive measure, motivational interviewing to promote abstinence (D) is irrelevant in this case.",
+  "highlights": [],
+  "session_start": "2025-12-11T00:18:37.421968",
+  "step1_time": "2025-12-11T00:48:27.557274",
+  "step2_time": "2025-12-11T00:48:50.680528",
+  "step3_time": "2025-12-11T00:48:59.470146",
+  "timestamp": "2025-12-11T00:48:59.470156"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5dcf7b49523df00ae9c4e07e",
+  "demographics": {
+    "age": "31",
+    "expertise": "ob",
+    "practice_location": "dumont nj",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-10T16:47:06.486517",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_288",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Serum quantitative immunoglobulin c oncentrations",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.3,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.23,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.23,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I do not know anything about immunology",
+  "highlights": [],
+  "session_start": "2025-12-10T16:47:06.500806",
+  "step1_time": "2025-12-10T17:06:54.845402",
+  "step2_time": "2025-12-10T17:07:01.360121",
+  "step3_time": "2025-12-10T17:07:11.928682",
+  "timestamp": "2025-12-10T17:07:11.928692"
+}

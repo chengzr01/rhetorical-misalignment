@@ -1,0 +1,56 @@
+{
+  "annotator_id": "65a30ffbe92ac510f8dee886",
+  "demographics": {
+    "age": "55",
+    "expertise": "medical device",
+    "practice_location": "Seattle, WA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-10T21:28:24.791665",
+    "years_of_practice": "33"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_194",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "Measurement of serum Lyme (Borreli a burgdorferi) antibody concentration",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.02,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Darn it, I had it right, and then AI convinced me to change. I should have stuck w/ it.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "btain cranial CT or MRI",
+      "timestamp": "2025-12-10T21:35:37.400Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2025-12-10T21:28:24.807272",
+  "step1_time": "2025-12-10T21:34:40.122791",
+  "step2_time": "2025-12-10T21:35:47.541909",
+  "step3_time": "2025-12-10T21:36:13.738965",
+  "timestamp": "2025-12-10T21:36:13.738976"
+}

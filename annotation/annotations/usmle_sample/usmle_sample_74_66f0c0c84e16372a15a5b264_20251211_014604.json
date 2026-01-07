@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66f0c0c84e16372a15a5b264",
+  "demographics": {
+    "age": "55",
+    "expertise": "Nurse",
+    "practice_location": "Virginia",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2025-12-11T01:42:47.830464",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_small",
+  "case_id": "usmle_sample_74",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-8b-instruct",
+  "correct_answer": "\"Tell me what you know about the steroid inhalers and how they are supposed to work.\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I dont know the answer so why would I change it. I guessed",
+  "highlights": [],
+  "session_start": "2025-12-11T01:42:47.847659",
+  "step1_time": "2025-12-11T01:45:08.291923",
+  "step2_time": "2025-12-11T01:45:37.581744",
+  "step3_time": "2025-12-11T01:46:04.537824",
+  "timestamp": "2025-12-11T01:46:04.537836"
+}
