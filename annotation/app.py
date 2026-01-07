@@ -13,19 +13,19 @@ DATASETS = {
         'name': 'MIMIC-IV',
         'data_dir': '../experiments/cache/mimiciv_demo',
         'cases_dir': '../experiments/cases/mimiciv_demo',
-        'annotation_dir': 'annotations/mimic'
+        'annotation_dir': 'results/mimic'
     },
     'usmle': {
         'name': 'USMLE',
         'data_dir': '../experiments/cache/usmle',
         'cases_dir': '../experiments/cases/usmle',
-        'annotation_dir': 'annotations/usmle'
+        'annotation_dir': 'results/usmle'
     },
     'usmle_sample': {
         'name': 'USMLE Sample',
         'data_dir': '../experiments/cache/usmle_sample',
         'cases_dir': '../experiments/cases/usmle_sample',
-        'annotation_dir': 'annotations/usmle_sample'
+        'annotation_dir': 'results/usmle_sample'
     }
 }
 
