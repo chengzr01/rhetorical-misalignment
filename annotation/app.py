@@ -314,6 +314,9 @@ def step1():
     case_index = case_indices[current_position]
     case = data[case_index].copy()
 
+    # Get model info
+    model_info = get_model_info(model_key)
+
     # Check if this is USMLE dataset (or USMLE sample)
     if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: multiple-choice interface
@@ -322,7 +325,8 @@ def step1():
                               case_index=case_index,
                               current_position=current_position,
                               total_cases=len(case_indices),
-                              annotated_cases=annotated_cases)
+                              annotated_cases=annotated_cases,
+                              model_name=model_info['name'])
     else:
         # MIMIC: short-answer interface
         # Render markdown fields to HTML
@@ -333,7 +337,8 @@ def step1():
                               case_index=case_index,
                               current_position=current_position,
                               total_cases=len(case_indices),
-                              annotated_cases=annotated_cases)
+                              annotated_cases=annotated_cases,
+                              model_name=model_info['name'])
 
 @app.route('/step1_submit', methods=['POST'])
 def step1_submit():
@@ -391,6 +396,9 @@ def step2():
     # Render markdown fields to HTML
     case['information_html'] = render_markdown(case.get('information', ''))
 
+    # Get model info
+    model_info = get_model_info(model_key)
+
     if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: show initial answer and AI's analysis
         initial_answer = session.get('step1_answer', '')
@@ -403,7 +411,8 @@ def step2():
                               case_index=case_index,
                               current_position=current_position,
                               total_cases=len(case_indices),
-                              annotated_cases=annotated_cases)
+                              annotated_cases=annotated_cases,
+                              model_name=model_info['name'])
     else:
         # MIMIC: show initial treatment plan and agent's recommendation
         # Get initial inputs from session (step 1)
@@ -425,7 +434,8 @@ def step2():
                               case_index=case_index,
                               current_position=current_position,
                               total_cases=len(case_indices),
-                              annotated_cases=annotated_cases)
+                              annotated_cases=annotated_cases,
+                              model_name=model_info['name'])
 
 @app.route('/step2_submit', methods=['POST'])
 def step2_submit():
@@ -494,6 +504,9 @@ def step3():
     # Render markdown fields to HTML
     case['information_html'] = render_markdown(case.get('information', ''))
 
+    # Get model info
+    model_info = get_model_info(model_key)
+
     if dataset_key in ['usmle', 'usmle_sample']:
         # USMLE: show step 2 answer and correct answer
         step2_answer = session.get('step2_answer', '')
@@ -506,7 +519,8 @@ def step3():
                               case_index=case_index,
                               current_position=current_position,
                               total_cases=len(case_indices),
-                              annotated_cases=annotated_cases)
+                              annotated_cases=annotated_cases,
+                              model_name=model_info['name'])
     else:
         # MIMIC: show step 2 treatment plan and ground truth
         # Get step 2 inputs from session
@@ -534,7 +548,8 @@ def step3():
                               case_index=case_index,
                               current_position=current_position,
                               total_cases=len(case_indices),
-                              annotated_cases=annotated_cases)
+                              annotated_cases=annotated_cases,
+                              model_name=model_info['name'])
 
 @app.route('/step3_submit', methods=['POST'])
 def step3_submit():

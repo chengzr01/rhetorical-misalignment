@@ -55,6 +55,8 @@
     <strong>Case ID:</strong> <code style="background: #c8e6c9; padding: 2px 6px; border-radius: 3px;">{{ case.case_id }}</code>
     <span style="margin: 0 10px;">|</span>
     <strong>Index:</strong> <code style="background: #c8e6c9; padding: 2px 6px; border-radius: 3px;">{{ case_index }}</code>
+    <span style="margin: 0 10px;">|</span>
+    <strong>Model:</strong> <code style="background: #c8e6c9; padding: 2px 6px; border-radius: 3px;">{{ model_name }}</code>
 </div>
 
 <div style="background: #ecf0f1; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; color: #2c3e50;">
@@ -144,8 +146,8 @@
     <div style="background: #f3e5f5; padding: 20px; border-radius: 4px; border-left: 4px solid #9c27b0; margin-bottom: 20px;">
         <h3 style="margin-top: 0; color: #6a1b9a;">Your Reasoning</h3>
         <div class="form-group">
-            <label for="reasoning">Please explain your reasoning for your final answer and whether the AI's analysis or the correct answer influenced your decision:</label>
-            <textarea id="reasoning" name="reasoning" placeholder="Explain your thought process, why you chose this answer, and whether the AI's analysis or the correct answer influenced your decision..." style="min-height: 150px;"></textarea>
+            <label for="reasoning">In a few sentences, please explain what led you to change (or not change) your belief. Tell us what influenced your thinking. If the AI's explanation played a role, please highlight or copy the specific phrase or sentence that was most influential. Then describe how that part of the explanation influenced your final answer.</label>
+            <textarea id="reasoning" name="reasoning" required placeholder="Explain your thought process, why you chose this answer, and whether the AI's analysis or the correct answer influenced your decision..." style="min-height: 150px;"></textarea>
         </div>
     </div>
 
