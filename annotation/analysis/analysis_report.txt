@@ -1,0 +1,202 @@
+
+================================================================================
+ANNOTATION RESULTS ANALYSIS
+================================================================================
+
+================================================================================
+USMLE SAMPLE DATASET ANALYSIS
+================================================================================
+
+Total annotations: 162
+Unique cases: 113
+Unique annotators: 23
+
+Annotations by model:
+  allenai/Llama-3.1-Tulu-3-8B-DPO: 11 (6.8%)
+  meta-llama/llama-3.1-405b-instruct: 1 (0.6%)
+  meta-llama/llama-3.1-8b-instruct: 150 (92.6%)
+
+--------------------------------------------------------------------------------
+ANSWER CORRECTNESS ANALYSIS
+--------------------------------------------------------------------------------
+
+Step 1 (Initial answer): 61/162 correct (37.7%)
+Step 2 (After AI): 71/162 correct (43.8%)
+Step 3 (After truth): 84/162 correct (51.9%)
+
+--------------------------------------------------------------------------------
+ANSWER CHANGE ANALYSIS
+--------------------------------------------------------------------------------
+
+Step 1 → Step 2 (After seeing AI): 30/162 changed answer (18.5%)
+Step 2 → Step 3 (After seeing truth): 13/162 changed answer (8.0%)
+
+--------------------------------------------------------------------------------
+BELIEF CHANGE ANALYSIS
+--------------------------------------------------------------------------------
+
+Step 1 → Step 2 (After seeing AI response):
+  Belief increased: 40/162 (24.7%)
+    Mean increase: 0.249
+    Median increase: 0.225
+    Min: 0.020, Max: 0.830
+    Std dev: 0.204
+  Belief decreased: 10/162 (6.2%)
+    Mean decrease: -0.184
+    Median decrease: -0.185
+    Min: -0.450, Max: -0.030
+    Std dev: 0.120
+  Belief unchanged: 112/162 (69.1%)
+
+Step 2 → Step 3 (After seeing ground truth):
+  Belief increased: 4/162 (2.5%)
+    Mean increase: 0.260
+    Median increase: 0.245
+    Min: 0.050, Max: 0.500
+    Std dev: 0.192
+  Belief decreased: 3/162 (1.9%)
+    Mean decrease: -0.237
+    Median decrease: -0.190
+    Min: -0.430, Max: -0.090
+    Std dev: 0.175
+  Belief unchanged: 155/162 (95.7%)
+
+--------------------------------------------------------------------------------
+PERSUASION ANALYSIS
+--------------------------------------------------------------------------------
+
+From Step 1 to Step 2 (AI persuasion):
+  Persuaded from correct → incorrect: 6/162 (3.7%)
+    Mean belief change: -0.020
+    Median belief change: 0.000
+  Persuaded from incorrect → correct: 16/162 (9.9%)
+    Mean belief change: 0.114
+    Median belief change: 0.045
+  Stayed correct: 55/162 (34.0%)
+  Stayed incorrect: 77/162 (47.5%)
+
+--------------------------------------------------------------------------------
+HIGHLIGHTS ANALYSIS
+--------------------------------------------------------------------------------
+
+Total highlights: 19
+Annotations with highlights: 16/162 (9.9%)
+
+Highlights by step:
+  step2: 17
+  step3: 2
+
+--------------------------------------------------------------------------------
+TIME ANALYSIS
+--------------------------------------------------------------------------------
+
+Time spent on Step 1 (seconds):
+  Mean: 607.5
+  Median: 493.7
+  Min: 2.9, Max: 1871.8
+
+Time spent on Step 2 (seconds):
+  Mean: 24.7
+  Median: 13.3
+  Min: 1.7, Max: 331.1
+
+Time spent on Step 3 (seconds):
+  Mean: 44.3
+  Median: 22.9
+  Min: 2.5, Max: 446.2
+
+--------------------------------------------------------------------------------
+ANNOTATOR DEMOGRAPHICS
+--------------------------------------------------------------------------------
+
+Age:
+  30: 22 (13.6%)
+  55: 12 (7.4%)
+  33: 11 (6.8%)
+  31: 10 (6.2%)
+  29: 10 (6.2%)
+  38: 10 (6.2%)
+  26: 10 (6.2%)
+  49: 10 (6.2%)
+  27: 10 (6.2%)
+  54: 10 (6.2%)
+  37: 9 (5.6%)
+  45: 4 (2.5%)
+  62: 2 (1.2%)
+  23: 2 (1.2%)
+  28: 2 (1.2%)
+  51: 1 (0.6%)
+  41: 1 (0.6%)
+
+Expertise:
+  construction: 11 (6.8%)
+  ob: 10 (6.2%)
+  Internal medicine: 10 (6.2%)
+  internal medicine: 10 (6.2%)
+  Nursing: 10 (6.2%)
+  EMT: 10 (6.2%)
+  HEALTHCARE: 10 (6.2%)
+  Social Work: 10 (6.2%)
+  urology : 10 (6.2%)
+  social worker: 10 (6.2%)
+  medical device: 10 (6.2%)
+  Medical Doctor: 10 (6.2%)
+  Health aide: 9 (5.6%)
+  Internal Medicine Nursing: 4 (2.5%)
+  none: 2 (1.2%)
+  Physical Therapy: 2 (1.2%)
+  Emergency Medicine: 2 (1.2%)
+  Nurse: 2 (1.2%)
+  nurse: 2 (1.2%)
+  social services: 1 (0.6%)
+  mental health: 1 (0.6%)
+
+Practice Location:
+  USA: 21 (13.0%)
+  dumont nj: 10 (6.2%)
+  Des Moines, Iowa: 10 (6.2%)
+  iowa: 10 (6.2%)
+  Tennessee: 10 (6.2%)
+  United States: 10 (6.2%)
+  San Diego, CA: 10 (6.2%)
+  maryland: 10 (6.2%)
+  U.S.A New york: 10 (6.2%)
+  Seattle, WA: 10 (6.2%)
+  Delaware, United states: 10 (6.2%)
+  Livingston, ca: 9 (5.6%)
+  Petersburg, Virginia: 4 (2.5%)
+  CT, USA: 2 (1.2%)
+  Memphis, TN: 2 (1.2%)
+  Milwaukee, WI: 2 (1.2%)
+  Virginia: 2 (1.2%)
+  usa: 2 (1.2%)
+  Belleville, Illinois: 1 (0.6%)
+  Connecticut, USA: 1 (0.6%)
+
+Race:
+  white: 81 (50.0%)
+  black_african_american: 35 (21.6%)
+  asian: 11 (6.8%)
+  two_or_more: 10 (6.2%)
+  hispanic_latino: 9 (5.6%)
+
+Sex:
+  female: 114 (70.4%)
+  male: 32 (19.8%)
+
+Years Of Practice:
+  5: 24 (14.8%)
+  15: 22 (13.6%)
+  10: 20 (12.3%)
+  2: 20 (12.3%)
+  12: 11 (6.8%)
+  11: 11 (6.8%)
+  8: 10 (6.2%)
+  33: 10 (6.2%)
+  7: 9 (5.6%)
+  21: 4 (2.5%)
+  0: 2 (1.2%)
+  1: 2 (1.2%)
+  9: 1 (0.6%)
+
+================================================================================

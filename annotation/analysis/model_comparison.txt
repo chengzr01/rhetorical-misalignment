@@ -1,0 +1,109 @@
+
+================================================================================
+MODEL COMPARISON ANALYSIS - USMLE SAMPLE
+================================================================================
+
+Comparing persuasion effectiveness across different AI models
+
+================================================================================
+USMLE SAMPLE - MODEL COMPARISON
+================================================================================
+
+Total annotations: 162
+Models found: 3 unique models
+
+--------------------------------------------------------------------------------
+DETAILED MODEL ANALYSIS
+--------------------------------------------------------------------------------
+
+================================================================================
+Model: meta-llama/llama-3.1-8b-instruct
+================================================================================
+Total annotations: 150
+
+Accuracy:
+  Step 1 (Initial): 56/150 (37.3%)
+  Step 2 (After AI): 68/150 (45.3%)
+  Step 3 (After truth): 80/150 (53.3%)
+  Change Step1→Step2: +8.0 percentage points
+
+Answer Changes:
+  Changed answer: 27/150 (18.0%)
+
+Persuasion Effects:
+  Correct → Incorrect: 4/150 (2.7%)
+  Incorrect → Correct: 16/150 (10.7%)
+  Net helpful effect: +12 (+8.0 percentage points)
+
+Belief Changes:
+  Increased: 38/150 (25.3%)
+    Mean: 0.252, Median: 0.225
+  Decreased: 10/150 (6.7%)
+    Mean: -0.184, Median: -0.185
+  Unchanged: 102/150 (68.0%)
+
+================================================================================
+Model: allenai/Llama-3.1-Tulu-3-8B-DPO
+================================================================================
+Total annotations: 11
+
+Accuracy:
+  Step 1 (Initial): 5/11 (45.5%)
+  Step 2 (After AI): 3/11 (27.3%)
+  Step 3 (After truth): 4/11 (36.4%)
+  Change Step1→Step2: -18.2 percentage points
+
+Answer Changes:
+  Changed answer: 3/11 (27.3%)
+
+Persuasion Effects:
+  Correct → Incorrect: 2/11 (18.2%)
+  Incorrect → Correct: 0/11 (0.0%)
+  Net helpful effect: -2 (-18.2 percentage points)
+
+Belief Changes:
+  Increased: 2/11 (18.2%)
+    Mean: 0.195, Median: 0.195
+  Decreased: 0/11 (0.0%)
+  Unchanged: 9/11 (81.8%)
+
+================================================================================
+Model: meta-llama/llama-3.1-405b-instruct
+================================================================================
+Total annotations: 1
+
+Accuracy:
+  Step 1 (Initial): 0/1 (0.0%)
+  Step 2 (After AI): 0/1 (0.0%)
+  Step 3 (After truth): 0/1 (0.0%)
+  Change Step1→Step2: +0.0 percentage points
+
+Answer Changes:
+  Changed answer: 0/1 (0.0%)
+
+Persuasion Effects:
+  Correct → Incorrect: 0/1 (0.0%)
+  Incorrect → Correct: 0/1 (0.0%)
+  Net helpful effect: +0 (+0.0 percentage points)
+
+Belief Changes:
+  Increased: 0/1 (0.0%)
+  Decreased: 0/1 (0.0%)
+  Unchanged: 1/1 (100.0%)
+
+================================================================================
+SUMMARY COMPARISON TABLE
+================================================================================
+
+Model                                                  N  Ans Chg   C→I   I→C   Net
+--------------------------------------------------------------------------------------------
+meta-llama/llama-3.1-8b-instruct                     150    18.0%  2.7% 10.7%  +8.0%
+allenai/Llama-3.1-Tulu-3-8B-DPO                       11    27.3% 18.2%  0.0% -18.2%
+meta-llama/llama-3.1-405b-instruct                     1     0.0%  0.0%  0.0%  +0.0%
+
+Note:
+  C→I = Correct to Incorrect (harmful persuasion)
+  I→C = Incorrect to Correct (helpful persuasion)
+  Net = I→C - C→I (positive is helpful overall)
+
+================================================================================
