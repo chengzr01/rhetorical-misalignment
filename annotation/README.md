@@ -1,212 +1,153 @@
 # Clinical Decision Annotation Interface
 
-A Flask web application for collecting human annotations on clinical decision-making with AI-generated recommendations. This system studies how clinicians' decisions change when exposed to AI analysis and ground truth information.
+Flask web application for collecting human annotations on clinical decision-making with AI-generated recommendations. Studies how clinicians' decisions change when exposed to AI analysis and ground truth.
 
 ## Overview
 
-This annotation interface presents clinical cases to human annotators in a three-step process:
-
-### For MIMIC-IV Cases (Treatment Planning):
-1. **Step 1**: Annotators review the clinical context and provide initial treatment plans (medications, procedures, diagnoses) with confidence ratings
-2. **Step 2**: Annotators see the AI agent's recommendation and can revise their treatment plans
-3. **Step 3**: Annotators see the actual treatment (ground truth) and make final revisions
-
-### For USMLE Cases (Multiple Choice):
-1. **Step 1**: Annotators review the clinical question and select an initial answer with confidence rating
-2. **Step 2**: Annotators see the AI's analysis and can revise their answer
-3. **Step 3**: Annotators see the correct answer and make final revisions
+Three-step annotation process:
+- **MIMIC-IV**: Initial treatment plan → Revise after AI recommendation → Revise after ground truth
+- **USMLE**: Initial answer → Revise after AI analysis → Revise after correct answer
 
 ## Features
 
-- **Multiple Dataset Support**: MIMIC-IV, USMLE, and USMLE Sample datasets
-- **Multiple Model Support**: Compare annotations across different AI models (Llama variants, DeepSeek)
-- **Consent Management**: Built-in IRB consent form and demographics collection
-- **Smart Case Selection**: Prioritizes cases with fewer annotations for balanced coverage
-- **Text Highlighting**: Annotators can highlight important text in AI recommendations
-- **Progress Tracking**: Real-time annotation coverage statistics
-- **Markdown Rendering**: Clean, readable formatting of clinical data with proper headings, lists, and tables
+- **Multi-dataset/model support**: MIMIC-IV, USMLE variants; Llama, DeepSeek models
+- **Automatic balancing**: Smart scheduling across models and cases for balanced coverage
+- **IRB-ready**: Consent forms, demographics collection
+- **Rich formatting**: Markdown rendering, text highlighting
+- **Progress tracking**: Real-time coverage statistics
 
-## Installation
+## Quick Start
 
-1. Install Python dependencies:
 ```bash
 pip install -r requirements.txt
+./start.sh  # or: python app.py
 ```
 
-2. Ensure your data files are organized as:
+Application runs on `http://localhost:8000`
+
+## Architecture (Modular)
+
 ```
 annotation/
-└── ../experiments/
-    ├── cache/
-    │   ├── mimiciv_demo/
-    │   │   └── agent_*.json
-    │   ├── usmle/
-    │   │   └── agent_*.json
-    │   └── usmle_sample/
-    │       └── agent_*.json
-    └── cases/
-        ├── mimiciv_demo/
-        │   └── principal_*.json
-        ├── usmle/
-        │   └── principal_*.json
-        └── usmle_sample/
-            └── principal_*.json
+├── config.py                 # Dataset/model configurations
+├── data_loader.py           # Data loading utilities
+├── scheduler.py             # ⭐ SCHEDULING SYSTEM (model & case balancing)
+├── annotation_utils.py      # Annotation save/render utilities
+├── app.py                   # Flask routes and UI
+├── analyze_coverage.py      # Coverage analysis script
+├── test_model_balancing.py  # Test script
+└── templates/               # HTML templates
 ```
 
-## Running the Application
+### Module Descriptions
 
-### Quick Start
-```bash
-./start.sh
+**`config.py`**: Add datasets/models, change paths
+- `DATASETS`: Dataset configurations (name, paths)
+- `AVAILABLE_MODELS`: Model list (key, file, display name)
+
+**`data_loader.py`**: Modify data loading
+- `load_data()`, `load_manipulative_case_ids()`, `get_available_models()`
+
+**`scheduler.py`** ⭐ **MAIN SCHEDULING SYSTEM**
+- **Model balancing**: `select_model_with_fewest_annotations()` - Auto-selects model needing more annotations
+- **Case balancing**: `get_smart_random_cases()` - Prioritizes cases: 0 → 1 → 2 → 3+ annotations
+- **Statistics**: `get_annotation_counts_per_case()`, `get_coverage_statistics()`
+
+**`annotation_utils.py`**: Modify annotation format
+- `save_annotation()`, `render_markdown()`
+
+**`app.py`**: Add routes, modify UI flow
+
+## Scheduling System
+
+### How It Works
+1. User lands on demographics page with "Automatic Model Balancing" ON (default)
+2. System selects model with fewest total annotations
+3. Within model, selects 10 cases prioritizing those with 0 → 1 → 2 annotations
+
+### Customization
+
+**Change cases per session** (`scheduler.py`):
+```python
+def get_smart_random_cases(case_ids, annotation_counts, num_cases=10):  # Change here
 ```
 
-### Manual Start
-```bash
-python app.py
+**Change annotation target** (`scheduler.py`):
+```python
+total_annotations_needed = len(case_ids) * 3  # Change 3 here
 ```
 
-The application will start on `http://localhost:8000`
+**Disable auto-balancing by default** (`templates/demographics.html`):
+```html
+<input type="checkbox" name="auto_balance_models" checked>  <!-- Remove 'checked' -->
+```
+
+## Data Structure
+
+### Required Files
+```
+../experiments/
+├── cache/{dataset}/agent_*.json          # Agent responses
+└── cases/{dataset}/principal_*.json      # Manipulative cases
+```
+
+### Output
+```
+results/{dataset}/{case_id}_{annotator_id}_{timestamp}.json
+```
+
+### Annotation Format
+- **Metadata**: `annotator_id`, `demographics`, `dataset`, `model_key`, `case_id`
+- **Responses**: `step1`, `step2`, `step3` (answers + confidence)
+- **Changes**: `step1_to_step2_changes`, `step2_to_step3_changes`
+- **Extras**: `reasoning`, `highlights`, timestamps
 
 ## Usage
 
 ### For Annotators
-
-1. **Consent**: Review and agree to the consent form
-2. **Demographics**: Enter demographic information and select:
-   - Dataset (MIMIC-IV, USMLE, or USMLE Sample)
-   - Model to annotate
-   - Case selection mode (all cases, specific indices, or manipulative cases)
-3. **Annotation**: Follow the three-step process for each case
-4. **Completion**: Receive a unique completion code at the end
+1. Review consent form
+2. Enter demographics, select dataset (or use auto-balancing)
+3. Annotate cases through 3-step process
+4. Receive completion code
 
 ### Case Selection Modes
-
-- **All Cases**: Annotate all cases in order
-- **Targeted - Specific Indices**: Annotate specific cases by index (e.g., "0,5,10-15")
-- **Targeted - Manipulative Cases**: Smart selection of 10 manipulative cases, prioritizing those with fewer existing annotations
-
-### Coverage Tracking
-
-Access `/api/coverage/<dataset>/<model>` to view annotation statistics:
-- Total cases requiring annotation
-- Cases by annotation count (0, 1, 2, 3+ annotations)
-- Overall progress percentage
-
-## Data Storage
-
-Annotations are saved as JSON files in the `results/` directory:
-
-```
-results/
-├── mimic/
-│   └── {case_id}_{annotator_id}_{timestamp}.json
-├── usmle/
-│   └── {case_id}_{annotator_id}_{timestamp}.json
-└── usmle_sample/
-    └── {case_id}_{annotator_id}_{timestamp}.json
-```
-
-### Annotation Format
-
-Each annotation file includes:
-
-**Metadata:**
-- `annotator_id`: Unique identifier for the annotator
-- `demographics`: Age, expertise, years of practice, etc.
-- `dataset`: Dataset key (mimic, usmle, usmle_sample)
-- `model_key`: Model key (llama, llama_small, llama_large, deepseek)
-- `case_id`: Unique case identifier
-
-**Three Steps of Responses:**
-- `step1`: Initial response before seeing AI recommendation
-- `step2`: Revised response after seeing AI recommendation
-- `step3`: Final response after seeing ground truth
-
-**Change Tracking:**
-- `step1_to_step2_changes`: What changed after seeing AI
-- `step2_to_step3_changes`: What changed after seeing ground truth
-
-**Additional Data:**
-- `reasoning`: Free-text explanation of decision-making
-- `highlights`: Text snippets highlighted by the annotator
-- `step1_time`, `step2_time`, `step3_time`: Timestamps for each step
-
-## File Structure
-
-```
-annotation/
-├── app.py                      # Flask application
-├── analyze_coverage.py         # Coverage analysis utility
-├── requirements.txt            # Python dependencies
-├── start.sh                    # Startup script
-├── README.md                   # This file
-├── templates/                  # HTML templates
-│   ├── base.html              # Base template
-│   ├── consent_form.html      # Consent form
-│   ├── demographics.html      # Demographics and case selection
-│   ├── overview.html          # Case overview table
-│   ├── step1.html             # Step 1 (MIMIC)
-│   ├── step1_usmle.html       # Step 1 (USMLE)
-│   ├── step2.html             # Step 2 (MIMIC)
-│   ├── step2_usmle.html       # Step 2 (USMLE)
-│   ├── step3.html             # Step 3 (MIMIC)
-│   ├── step3_usmle.html       # Step 3 (USMLE)
-│   └── summary.html           # Completion summary
-├── files/                      # Static files (consent documents, etc.)
-└── results/                    # Annotation results
-    ├── mimic/
-    ├── usmle/
-    └── usmle_sample/
-```
+- **All cases**: Sequential annotation
+- **Specific indices**: Target cases by index (e.g., "0,5,10-15")
+- **Manipulative cases**: Smart selection of 10 cases (default)
 
 ## Configuration
 
-### Adding New Datasets
-
-Edit the `DATASETS` dictionary in `app.py`:
-
+### Add Dataset (`config.py`)
 ```python
-DATASETS = {
-    'your_dataset_key': {
-        'name': 'Display Name',
-        'data_dir': '../experiments/cache/your_dataset',
-        'cases_dir': '../experiments/cases/your_dataset',
-        'annotation_dir': 'results/your_dataset'
-    }
+DATASETS['new_key'] = {
+    'name': 'Display Name',
+    'data_dir': '../experiments/cache/new_dataset',
+    'cases_dir': '../experiments/cases/new_dataset',
+    'annotation_dir': 'results/new_dataset'
 }
 ```
 
-### Adding New Models
-
-Edit the `AVAILABLE_MODELS` list in `app.py`:
-
+### Add Model (`config.py`)
 ```python
-AVAILABLE_MODELS = [
-    {'key': 'model_key', 'file': 'agent_filename.json', 'name': 'Display Name'}
-]
+AVAILABLE_MODELS.append({
+    'key': 'model_key',
+    'file': 'agent_filename.json',
+    'name': 'Display Name'
+})
 ```
 
-## Development
+## Testing & Analysis
 
-### Running in Debug Mode
-
-The application runs in debug mode by default:
-```python
-app.run(debug=True, host='0.0.0.0', port=8000)
-```
-
-### Analyzing Coverage
-
-Use the coverage analysis script to check annotation progress:
 ```bash
+# Test model balancing logic
+python test_model_balancing.py
+
+# Analyze annotation coverage
 python analyze_coverage.py
+
+# API endpoint for coverage stats
+curl http://localhost:8000/api/coverage/{dataset}/{model}
 ```
-
-## Security Notes
-
-- Change the Flask secret key in production (line 8 of `app.py`)
-- The application is configured to run on all interfaces (`0.0.0.0`) for development
-- Session data is stored in Flask sessions with the secret key
 
 ## Dependencies
 
@@ -214,3 +155,16 @@ python analyze_coverage.py
 - markdown 3.5.1
 
 See `requirements.txt` for complete list.
+
+## Security Notes
+
+- Change Flask secret key in production (`app.py`)
+- App runs on `0.0.0.0:8000` for development
+- Session data encrypted with secret key
+
+## Module Dependencies
+
+```
+config.py → data_loader.py → scheduler.py → annotation_utils.py → app.py
+```
+No circular dependencies. Each module independently testable.

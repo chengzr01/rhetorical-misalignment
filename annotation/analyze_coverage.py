@@ -4,104 +4,17 @@ Analyze annotation coverage across all datasets.
 Shows which cases need more annotations to reach the 3-annotation goal.
 """
 
-import json
+import sys
 import os
-from collections import defaultdict
-from pathlib import Path
 
-# Dataset configuration
-DATASETS = {
-    'mimic': {
-        'name': 'MIMIC-IV',
-        'cases_dir': '../experiments/cases/mimiciv_demo',
-        'annotation_dir': 'annotations/mimic'
-    },
-    'usmle': {
-        'name': 'USMLE',
-        'cases_dir': '../experiments/cases/usmle',
-        'annotation_dir': 'annotations/usmle'
-    },
-    'usmle_sample': {
-        'name': 'USMLE Sample',
-        'cases_dir': '../experiments/cases/usmle_sample',
-        'annotation_dir': 'annotations/usmle_sample'
-    }
-}
+# Add current directory to path to import modules
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from config import DATASETS, AVAILABLE_MODELS
+from data_loader import load_manipulative_case_ids
+from scheduler import get_annotation_counts_per_case
 
 MODELS = ['llama_small', 'llama', 'llama_large', 'deepseek']
-
-def get_case_file_model_name(model_key):
-    """Map model key to the model name used in case files"""
-    return model_key
-
-def load_manipulative_case_ids(dataset_key, model_key):
-    """Load manipulative case IDs from principal file"""
-    dataset_config = DATASETS[dataset_key]
-    case_model_name = get_case_file_model_name(model_key)
-    analysis_file = f'principal_{case_model_name}.json'
-    filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
-
-    if not os.path.exists(filepath):
-        return []
-
-    try:
-        with open(filepath, 'r') as f:
-            data = json.load(f)
-
-        case_ids = []
-        if 'cases' in data:
-            cases = data.get('cases', [])
-            for case in cases:
-                case_ids.append(case['case_id'])
-
-        return case_ids
-    except Exception as e:
-        print(f"Error loading {filepath}: {e}")
-        return []
-
-def get_annotation_counts_per_case(dataset_key, model_key=None):
-    """Count how many times each case has been annotated
-
-    Args:
-        dataset_key: The dataset to count annotations for
-        model_key: Optional model key to filter by (e.g., 'llama_small')
-                   If None, counts all annotations regardless of model
-
-    Returns:
-        dict: case_id -> count of annotations
-    """
-    dataset_config = DATASETS[dataset_key]
-    annotation_dir = dataset_config['annotation_dir']
-
-    annotation_counts = defaultdict(int)
-
-    if not os.path.exists(annotation_dir):
-        return annotation_counts
-
-    # Scan all annotation files
-    for filename in os.listdir(annotation_dir):
-        if not filename.endswith('.json'):
-            continue
-
-        try:
-            filepath = os.path.join(annotation_dir, filename)
-            with open(filepath, 'r') as f:
-                annotation = json.load(f)
-
-            # Filter by model_key if specified
-            if model_key is not None:
-                annotation_model = annotation.get('model_key')
-                if annotation_model != model_key:
-                    continue
-
-            case_id = annotation.get('case_id')
-            if case_id:
-                annotation_counts[case_id] += 1
-        except Exception as e:
-            print(f"Error reading {filename}: {e}")
-            continue
-
-    return annotation_counts
 
 def analyze_dataset_coverage(dataset_key, model_key):
     """Analyze annotation coverage for a specific dataset and model"""
@@ -110,7 +23,7 @@ def analyze_dataset_coverage(dataset_key, model_key):
     print(f"{'='*80}")
 
     # Load manipulative cases
-    case_ids = load_manipulative_case_ids(dataset_key, model_key)
+    case_ids = load_manipulative_case_ids(model_key, dataset_key)
 
     if not case_ids:
         print(f"  ⚠️  No manipulative cases found (principal file may not exist)")

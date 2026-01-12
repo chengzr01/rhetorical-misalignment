@@ -2,311 +2,40 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 import json
 import os
 from datetime import datetime
-import markdown
+import hashlib
+
+# Import from our modules
+from config import DATASETS, AVAILABLE_MODELS
+from data_loader import (
+    get_dataset_config,
+    get_model_info,
+    get_available_models,
+    check_dataset_availability,
+    load_data,
+    load_manipulative_case_ids,
+    get_case_file_model_name,
+    get_indices_for_case_ids,
+    parse_indices,
+    get_random_indices
+)
+from scheduler import (
+    get_annotation_counts_per_case,
+    get_smart_random_cases,
+    select_model_with_fewest_annotations,
+    get_coverage_statistics
+)
+from annotation_utils import (
+    render_markdown,
+    save_annotation
+)
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-change-this'  # Change this in production
-
-# Dataset configuration
-DATASETS = {
-    'mimic': {
-        'name': 'MIMIC-IV',
-        'data_dir': '../experiments/cache/mimiciv_demo',
-        'cases_dir': '../experiments/cases/mimiciv_demo',
-        'annotation_dir': 'results/mimic'
-    },
-    'usmle': {
-        'name': 'USMLE',
-        'data_dir': '../experiments/cache/usmle',
-        'cases_dir': '../experiments/cases/usmle',
-        'annotation_dir': 'results/usmle'
-    },
-    'usmle_sample': {
-        'name': 'USMLE Sample',
-        'data_dir': '../experiments/cache/usmle_sample',
-        'cases_dir': '../experiments/cases/usmle_sample',
-        'annotation_dir': 'results/usmle_sample'
-    }
-}
 
 # Ensure annotation directories exist
 for dataset_key, dataset_config in DATASETS.items():
     os.makedirs(dataset_config['annotation_dir'], exist_ok=True)
 
-# Available model files (in order as per README.md)
-AVAILABLE_MODELS = [
-    {'key': 'llama_small', 'file': 'agent_llama-small.json', 'name': 'Llama-3.1-8B-Instruct'},
-    {'key': 'llama', 'file': 'agent_llama.json', 'name': 'Llama-3.3-70B-Instruct'},
-    {'key': 'llama_large', 'file': 'agent_llama-large.json', 'name': 'Llama-3.1-405B-Instruct'},
-    {'key': 'deepseek', 'file': 'agent_deepseek.json', 'name': 'DeepSeek-V3.1'},
-]
-
-def get_dataset_config(dataset_key):
-    """Get dataset configuration"""
-    return DATASETS.get(dataset_key, DATASETS['mimic'])
-
-def get_model_info(model_key):
-    """Get model info by key"""
-    for model in AVAILABLE_MODELS:
-        if model['key'] == model_key:
-            return model
-    return AVAILABLE_MODELS[0]  # Default to first model
-
-def get_available_models(dataset_key='mimic'):
-    """Get list of available model files in order for given dataset"""
-    dataset_config = get_dataset_config(dataset_key)
-    available = []
-    for model in AVAILABLE_MODELS:
-        filepath = os.path.join(dataset_config['data_dir'], model['file'])
-        model_copy = model.copy()
-        model_copy['available'] = os.path.exists(filepath)
-        available.append(model_copy)
-    return available
-
-def check_dataset_availability():
-    """Check which datasets have available data"""
-    dataset_availability = {}
-    for dataset_key, dataset_config in DATASETS.items():
-        # Check if data directory exists and has at least one model file
-        data_dir = dataset_config['data_dir']
-        has_data = False
-        if os.path.exists(data_dir):
-            for model in AVAILABLE_MODELS:
-                filepath = os.path.join(data_dir, model['file'])
-                if os.path.exists(filepath):
-                    has_data = True
-                    break
-        dataset_availability[dataset_key] = has_data
-    return dataset_availability
-
-# Configure markdown converter
-md = markdown.Markdown(extensions=['extra', 'nl2br', 'sane_lists'])
-
-def load_data(model_key='llama_small', dataset_key='mimic'):
-    """Load data for specified model and dataset"""
-    dataset_config = get_dataset_config(dataset_key)
-    model_info = get_model_info(model_key)
-    filepath = os.path.join(dataset_config['data_dir'], model_info['file'])
-    with open(filepath, 'r') as f:
-        return json.load(f)
-
-def render_markdown(text):
-    """Convert markdown text to HTML"""
-    if not text:
-        return ""
-    # Reset markdown converter for each use
-    md.reset()
-    return md.convert(text)
-
-def save_annotation(annotation, dataset_key='mimic'):
-    """Save annotation to a file in dataset-specific directory"""
-    dataset_config = get_dataset_config(dataset_key)
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    filename = f"{annotation['case_id']}_{annotation['annotator_id']}_{timestamp}.json"
-    filepath = os.path.join(dataset_config['annotation_dir'], filename)
-
-    with open(filepath, 'w') as f:
-        json.dump(annotation, f, indent=2)
-
-    return filepath
-
-def parse_indices(indices_string, total_cases):
-    """Parse a string of indices into a list of integers
-
-    Supports formats:
-    - Comma-separated: "0,5,10,15"
-    - Range: "0-20"
-    - Mixed: "0,5,10-15,20"
-    """
-    indices = []
-
-    if not indices_string or not indices_string.strip():
-        return []
-
-    parts = indices_string.split(',')
-    for part in parts:
-        part = part.strip()
-        if '-' in part:
-            # Range format
-            try:
-                start, end = part.split('-')
-                start = int(start.strip())
-                end = int(end.strip())
-                indices.extend(range(start, end + 1))
-            except ValueError:
-                continue
-        else:
-            # Single index
-            try:
-                indices.append(int(part))
-            except ValueError:
-                continue
-
-    # Filter to valid indices
-    indices = [i for i in indices if 0 <= i < total_cases]
-    # Remove duplicates and sort
-    indices = sorted(set(indices))
-
-    return indices
-
-def get_random_indices(total_cases, count):
-    """Get random case indices"""
-    import random
-    count = min(count, total_cases)
-    indices = list(range(total_cases))
-    random.shuffle(indices)
-    return sorted(indices[:count])
-
-def get_case_file_model_name(model_key):
-    """Map model key to the model name used in case files"""
-    # Mapping for models where the key differs from case file naming
-    model_mapping = {
-        'llama_small': 'llama_small',
-    }
-    return model_mapping.get(model_key, model_key)
-
-def load_manipulative_case_ids(model_key, dataset_key='mimic'):
-    """Load manipulative case IDs from principal file"""
-    dataset_config = get_dataset_config(dataset_key)
-    # Map model key to case file model name
-    case_model_name = get_case_file_model_name(model_key)
-    analysis_file = f'principal_{case_model_name}.json'
-    filepath = os.path.join(dataset_config['cases_dir'], analysis_file)
-
-    if not os.path.exists(filepath):
-        return []
-
-    try:
-        with open(filepath, 'r') as f:
-            data = json.load(f)
-
-        case_ids = set()
-
-        # New format: Extract case_ids from the cases array
-        if 'cases' in data:
-            cases = data.get('cases', [])
-            for case in cases:
-                case_ids.add(case['case_id'])
-        else:
-            print(f"Unknown format in {filepath}")
-            return []
-
-        return list(case_ids)
-    except Exception as e:
-        print(f"Error loading manipulative cases: {e}")
-        return []
-
-def get_indices_for_case_ids(data, case_ids):
-    """Find indices in data array that match the given case_ids"""
-    indices = []
-    for idx, case in enumerate(data):
-        if case.get('case_id') in case_ids:
-            indices.append(idx)
-    return sorted(indices)
-
-def get_annotation_counts_per_case(dataset_key, model_key=None):
-    """Count how many times each case has been annotated
-
-    Args:
-        dataset_key: The dataset to count annotations for
-        model_key: Optional model key to filter by (e.g., 'llama_small')
-                   If None, counts all annotations regardless of model
-
-    Returns:
-        dict: case_id -> count of annotations
-    """
-    dataset_config = get_dataset_config(dataset_key)
-    annotation_dir = dataset_config['annotation_dir']
-
-    annotation_counts = {}
-
-    if not os.path.exists(annotation_dir):
-        return annotation_counts
-
-    # Scan all annotation files
-    for filename in os.listdir(annotation_dir):
-        if not filename.endswith('.json'):
-            continue
-
-        try:
-            filepath = os.path.join(annotation_dir, filename)
-            with open(filepath, 'r') as f:
-                annotation = json.load(f)
-
-            # Filter by model_key if specified
-            if model_key is not None:
-                annotation_model = annotation.get('model_key')
-                if annotation_model != model_key:
-                    continue
-
-            case_id = annotation.get('case_id')
-            if case_id:
-                annotation_counts[case_id] = annotation_counts.get(case_id, 0) + 1
-        except Exception as e:
-            print(f"Error reading annotation file {filename}: {e}")
-            continue
-
-    return annotation_counts
-
-def get_smart_random_cases(case_ids, annotation_counts, num_cases=10):
-    """Select cases intelligently based on annotation coverage
-
-    Prioritizes cases with fewer annotations:
-    1. First fill with cases that have 0 annotations
-    2. Then cases with 1 annotation
-    3. Then cases with 2 annotations
-    4. Finally cases with 3+ annotations
-
-    Within each group, randomly shuffle.
-
-    Args:
-        case_ids: List of all available case IDs
-        annotation_counts: Dict of case_id -> annotation count
-        num_cases: Number of cases to select (default 10)
-
-    Returns:
-        List of selected case_ids
-    """
-    import random
-
-    # Group cases by annotation count
-    grouped_cases = {
-        0: [],  # Never annotated
-        1: [],  # Annotated once
-        2: [],  # Annotated twice
-        3: []   # Annotated 3+ times
-    }
-
-    for case_id in case_ids:
-        count = annotation_counts.get(case_id, 0)
-        if count >= 3:
-            grouped_cases[3].append(case_id)
-        else:
-            grouped_cases[count].append(case_id)
-
-    # Shuffle each group
-    for group in grouped_cases.values():
-        random.shuffle(group)
-
-    # Select cases prioritizing lower annotation counts
-    selected = []
-    for priority in [0, 1, 2, 3]:
-        available = grouped_cases[priority]
-        needed = num_cases - len(selected)
-
-        if needed <= 0:
-            break
-
-        # Take as many as we need from this group
-        selected.extend(available[:needed])
-
-    # If we still don't have enough cases (shouldn't happen), pad with random cases
-    if len(selected) < num_cases:
-        remaining = [c for c in case_ids if c not in selected]
-        random.shuffle(remaining)
-        selected.extend(remaining[:num_cases - len(selected)])
-
-    return selected
 
 @app.route('/')
 def index():
@@ -388,43 +117,8 @@ def api_get_models(dataset_key):
 @app.route('/api/coverage/<dataset_key>/<model_key>')
 def api_get_coverage(dataset_key, model_key):
     """API endpoint to get annotation coverage statistics for a dataset and model"""
-    # Load manipulative cases
-    case_ids = load_manipulative_case_ids(model_key, dataset_key)
-
-    if not case_ids:
-        return jsonify({
-            'error': 'No manipulative cases found',
-            'total_cases': 0,
-            'cases_by_count': {0: 0, 1: 0, 2: 0, 3: 0},
-            'total_annotations': 0,
-            'target_annotations': 0,
-            'progress_percent': 0
-        })
-
-    # Get annotation counts for this specific model
-    annotation_counts = get_annotation_counts_per_case(dataset_key, model_key)
-
-    # Categorize cases by annotation count
-    cases_by_count = {0: 0, 1: 0, 2: 0, 3: 0}
-
-    for case_id in case_ids:
-        count = annotation_counts.get(case_id, 0)
-        if count >= 3:
-            cases_by_count[3] += 1
-        else:
-            cases_by_count[count] += 1
-
-    # Calculate progress metrics
-    total_annotations_needed = len(case_ids) * 3
-    total_annotations_current = sum(annotation_counts.get(cid, 0) for cid in case_ids)
-
-    return jsonify({
-        'total_cases': len(case_ids),
-        'cases_by_count': cases_by_count,
-        'total_annotations': total_annotations_current,
-        'target_annotations': total_annotations_needed,
-        'progress_percent': (total_annotations_current / total_annotations_needed * 100) if total_annotations_needed > 0 else 0
-    })
+    stats = get_coverage_statistics(dataset_key, model_key)
+    return jsonify(stats)
 
 @app.route('/start', methods=['POST'])
 def start_annotation():
@@ -436,7 +130,18 @@ def start_annotation():
     annotator_id = request.form.get('annotator_id', 'anonymous')
     dataset_key = request.form.get('dataset', 'mimic')
     selection_mode = request.form.get('selection_mode', 'all')
-    model_key = request.form.get('model_key', 'llama_small')
+
+    # Check if automatic model balancing is enabled
+    auto_balance_models = request.form.get('auto_balance_models', 'on') == 'on'
+
+    if auto_balance_models:
+        # Automatically select the model with fewest annotations
+        model_key = select_model_with_fewest_annotations(dataset_key)
+        print(f"Auto-selected model: {model_key} for balanced annotation coverage")
+    else:
+        # Use manually selected model
+        model_key = request.form.get('model_key', 'llama_small')
+        print(f"Manually selected model: {model_key}")
 
     # Collect demographic information
     demographics = {
@@ -1031,8 +736,6 @@ def step3_submit():
 @app.route('/summary')
 def summary():
     """Summary page showing annotation progress and statistics"""
-    import hashlib
-
     annotator_id = session.get('annotator_id', 'anonymous')
     case_indices = session.get('case_indices', [])
     annotated_cases = session.get('annotated_cases', [])
