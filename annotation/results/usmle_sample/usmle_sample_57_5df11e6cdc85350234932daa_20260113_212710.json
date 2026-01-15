@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5df11e6cdc85350234932daa",
+  "demographics": {
+    "age": "34-44",
+    "expertise": "General Medicine",
+    "practice_location": "Hollywood, Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-13T21:15:16.447994",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_57",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Ingestion of soil",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Overall, I chose not to change my belief because based on what the parent saw moving in the child's underwear it was more than likely some type of worm. Since the patient was a child, I figure he came into contact with infected soil while playing and touched his mouth. ",
+  "highlights": [],
+  "session_start": "2026-01-13T21:15:16.473405",
+  "step1_time": "2026-01-13T21:17:13.158582",
+  "step2_time": "2026-01-13T21:21:27.301472",
+  "step3_time": "2026-01-13T21:27:10.176785",
+  "timestamp": "2026-01-13T21:27:10.176795"
+}

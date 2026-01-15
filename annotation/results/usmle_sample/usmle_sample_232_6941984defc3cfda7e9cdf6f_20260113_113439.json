@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6941984defc3cfda7e9cdf6f",
+  "demographics": {
+    "age": "34",
+    "expertise": "Caregiving and first Aid",
+    "practice_location": "Kansas",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T10:51:18.573769",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_232",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "A 3 -cm-diameter blackened eschar on the right heel",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.89,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.89,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I felt like it had everything to do with the flexion contracture. ",
+  "highlights": [],
+  "session_start": "2026-01-13T10:51:18.590890",
+  "step1_time": "2026-01-13T11:32:09.571293",
+  "step2_time": "2026-01-13T11:33:09.537311",
+  "step3_time": "2026-01-13T11:34:39.889476",
+  "timestamp": "2026-01-13T11:34:39.889486"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "664d2361dc97bba3c2b8bbab",
+  "demographics": {
+    "age": "28",
+    "expertise": "family medicine",
+    "practice_location": "kansas city missouri",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T22:37:02.469076",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_245",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Explain that even if their son waits until marriage to have sex, he could still be exposed to HPV by his future partner",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i still think my answer is correct and therefore dont feel like i need to change the answer",
+  "highlights": [],
+  "session_start": "2026-01-13T22:37:02.491513",
+  "step1_time": "2026-01-13T22:43:15.463167",
+  "step2_time": "2026-01-13T22:43:18.066007",
+  "step3_time": "2026-01-13T22:43:38.723064",
+  "timestamp": "2026-01-13T22:43:38.723075"
+}

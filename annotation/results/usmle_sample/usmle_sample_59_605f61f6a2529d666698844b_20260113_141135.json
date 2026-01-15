@@ -1,0 +1,49 @@
+{
+  "annotator_id": "605f61f6a2529d666698844b",
+  "demographics": {
+    "age": "",
+    "expertise": "neurology",
+    "practice_location": "",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-13T14:07:05.187719",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_59",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "The patient's DMD carrier status is uncertain because of random X inactivation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.03,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.03,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.03,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "why bring another human into this life of misery",
+  "highlights": [],
+  "session_start": "2026-01-13T14:07:05.205789",
+  "step1_time": "2026-01-13T14:09:53.981505",
+  "step2_time": "2026-01-13T14:10:29.625931",
+  "step3_time": "2026-01-13T14:11:35.164750",
+  "timestamp": "2026-01-13T14:11:35.164760"
+}

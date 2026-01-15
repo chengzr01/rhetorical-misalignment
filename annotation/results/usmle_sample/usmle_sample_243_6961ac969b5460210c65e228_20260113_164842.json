@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6961ac969b5460210c65e228",
+  "demographics": {
+    "age": "23",
+    "expertise": "Orthopaedics",
+    "practice_location": "California, US",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T16:34:47.756534",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_243",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Maternal smoking",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It would not allow me to highlight but the passage clearly states that this would likely be the number one reason.",
+  "highlights": [],
+  "session_start": "2026-01-13T16:34:47.780408",
+  "step1_time": "2026-01-13T16:47:46.554599",
+  "step2_time": "2026-01-13T16:48:07.533375",
+  "step3_time": "2026-01-13T16:48:42.871843",
+  "timestamp": "2026-01-13T16:48:42.871853"
+}

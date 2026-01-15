@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695fe4d93fcd8bc4b641f317",
+  "demographics": {
+    "age": "26",
+    "expertise": "pharmacy",
+    "practice_location": "usa",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T21:39:33.324492",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_62",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "C5a",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief because I knew the answer and the AI got it right",
+  "highlights": [],
+  "session_start": "2026-01-13T21:39:33.350116",
+  "step1_time": "2026-01-13T21:45:55.397744",
+  "step2_time": "2026-01-13T21:46:15.033791",
+  "step3_time": "2026-01-13T21:46:49.156569",
+  "timestamp": "2026-01-13T21:46:49.156579"
+}

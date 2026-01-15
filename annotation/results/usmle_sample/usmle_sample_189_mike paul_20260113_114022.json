@@ -1,0 +1,49 @@
+{
+  "annotator_id": "mike paul",
+  "demographics": {
+    "age": "54-61",
+    "expertise": "internal medicine ",
+    "practice_location": "texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T11:35:50.462028",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_189",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Report the physician to the clinic administrator and conduct the remainder of the clinic hours without him",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief; I already thought the physician should be stopped from seeing patients immediately. The AI explanation reinforced this by stating: \u201cDirectly address the situation with the impaired physician. Ask him not to see patients and remove himself from patient care.\u201d This phrase was most influential because it emphasized that immediate patient safety takes priority, guiding me to confirm that confronting the physician and having him leave the clinic is the correct first action.",
+  "highlights": [],
+  "session_start": "2026-01-13T11:35:50.484410",
+  "step1_time": "2026-01-13T11:39:59.108738",
+  "step2_time": "2026-01-13T11:40:03.666397",
+  "step3_time": "2026-01-13T11:40:22.904471",
+  "timestamp": "2026-01-13T11:40:22.904481"
+}

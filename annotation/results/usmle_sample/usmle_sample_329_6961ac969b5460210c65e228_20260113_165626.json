@@ -1,0 +1,62 @@
+{
+  "annotator_id": "6961ac969b5460210c65e228",
+  "demographics": {
+    "age": "23",
+    "expertise": "Orthopaedics",
+    "practice_location": "California, US",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T16:34:47.756534",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_329",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Refer the patient to an allergist for further evaluation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "WHAT? This ai is getting more confusing. It says in the passage that referring would be a bad idea? I changed my answer because it said that isn't a favorable option.",
+  "highlights": [
+    {
+      "text": "Choose a local anesthetic from a different class",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T16:55:28.800Z",
+      "step": "step3"
+    },
+    {
+      "text": "Referring the patient to a pain management or physiatry specialist:",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T16:56:07.328Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-13T16:34:47.780408",
+  "step1_time": "2026-01-13T16:54:50.664994",
+  "step2_time": "2026-01-13T16:55:09.992967",
+  "step3_time": "2026-01-13T16:56:26.995864",
+  "timestamp": "2026-01-13T16:56:26.995873"
+}

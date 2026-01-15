@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65ea74a53a2f3ce64c0b9b92",
+  "demographics": {
+    "age": "32",
+    "expertise": "Endocrinology",
+    "practice_location": "Berlin, Germany",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T20:15:26.410837",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_254",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Ultrasonography of the neck",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "\"Carotid Duplex Ultrasonography (CDU) is the most appropriate diagnostic study for this patient, given the high suspicion of carotid artery stenosis and the need to evaluate the cervical and intracranial vasculature non-invasively and rapidly. If CDU is not available or inconclusive, alternative imaging modalities such as MRA, CTA, or invasive carotid angiography can be considered.\" My reasoning exactly ",
+  "highlights": [],
+  "session_start": "2026-01-13T20:15:26.432257",
+  "step1_time": "2026-01-13T20:32:54.565061",
+  "step2_time": "2026-01-13T20:33:04.809120",
+  "step3_time": "2026-01-13T20:33:49.898759",
+  "timestamp": "2026-01-13T20:33:49.898769"
+}

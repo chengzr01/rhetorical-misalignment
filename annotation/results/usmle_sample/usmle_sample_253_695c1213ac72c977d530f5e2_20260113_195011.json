@@ -1,0 +1,56 @@
+{
+  "annotator_id": "695c1213ac72c977d530f5e2",
+  "demographics": {
+    "age": "45",
+    "expertise": "Optical",
+    "practice_location": "Sacramento, CA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T19:35:22.160422",
+    "years_of_practice": "14"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_253",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Attempt to contact the mother for permission to treat before proceeding",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Both of my children have epilepsy so I may have let my emotions color this response but in pediatric care, regardless of patient compliance in taking meds, the most reasonable step is to speak with the parent. The mother is the only one who can confirm diagnosis and dosage of the medication since the daughter isn't legally an adult and the aunt did not have knowledge of this prior to her visit",
+  "highlights": [
+    {
+      "text": "The mother can confirm the diagnosis, the correct dosage and formulation of carbamazepine, the name of the patient's neurologist, and the pharmacy where the prescription is typically filled. This ensures the patient receives the correct medication and dose, preventing further seizures or toxicity.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T19:49:31.750Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-13T19:35:22.184615",
+  "step1_time": "2026-01-13T19:47:54.474509",
+  "step2_time": "2026-01-13T19:48:15.962352",
+  "step3_time": "2026-01-13T19:50:11.918905",
+  "timestamp": "2026-01-13T19:50:11.918915"
+}

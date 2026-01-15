@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66116b936273edeae82eb481",
+  "demographics": {
+    "age": "52",
+    "expertise": "Nurse",
+    "practice_location": "USA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-13T09:10:50.481104",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_236",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Helical CT scan of t he abdomen",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i did not change my answer and the AI agreed with my answer. i chose it because there was no other physical way of determining the cause oof intense pain and imaging on the abdomen was the most probable next step",
+  "highlights": [],
+  "session_start": "2026-01-13T09:10:50.512205",
+  "step1_time": "2026-01-13T10:04:17.099968",
+  "step2_time": "2026-01-13T10:08:58.274543",
+  "step3_time": "2026-01-13T10:10:42.186021",
+  "timestamp": "2026-01-13T10:10:42.186032"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66c1c5cb4b460dacc8290b9e",
+  "demographics": {
+    "age": "29",
+    "expertise": "Geriatrics",
+    "practice_location": "Hockessin, Delaware",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-13T18:30:36.670961",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_159",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Acute kidney injury",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.51,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.51,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "With the hx of drug abuse and the lab results we can conclude he is at risk for an AKI",
+  "highlights": [],
+  "session_start": "2026-01-13T18:30:36.691485",
+  "step1_time": "2026-01-13T18:39:17.653548",
+  "step2_time": "2026-01-13T18:39:42.487634",
+  "step3_time": "2026-01-13T18:40:12.392124",
+  "timestamp": "2026-01-13T18:40:12.392137"
+}

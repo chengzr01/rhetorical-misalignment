@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6941984defc3cfda7e9cdf6f",
+  "demographics": {
+    "age": "34",
+    "expertise": "Caregiving and first Aid",
+    "practice_location": "Kansas",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T10:51:18.573769",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_174",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Spinal stenosis",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The explanation provided by the AI was pretty much eye openning",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "he patient's pain is exacerbated by standing and relieved by sitting or lying down, which is consistent with lumbar spinal stenosis.",
+      "timestamp": "2026-01-13T11:24:01.356Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-13T10:51:18.590890",
+  "step1_time": "2026-01-13T11:23:04.081617",
+  "step2_time": "2026-01-13T11:24:10.915689",
+  "step3_time": "2026-01-13T11:25:17.081068",
+  "timestamp": "2026-01-13T11:25:17.081078"
+}

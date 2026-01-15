@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67104774a27cafe02964514d",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T12:01:22.877453",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_13",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Sertoli-Leydig tumor",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I chose this answer because the virilization signs and high testosterone point to an ovarian androgen-producing tumor, making Sertoli-Leydig tumor the best fit.",
+  "highlights": [],
+  "session_start": "2026-01-13T12:01:22.895237",
+  "step1_time": "2026-01-13T12:02:00.083660",
+  "step2_time": "2026-01-13T12:02:18.543279",
+  "step3_time": "2026-01-13T12:03:20.022862",
+  "timestamp": "2026-01-13T12:03:20.022872"
+}

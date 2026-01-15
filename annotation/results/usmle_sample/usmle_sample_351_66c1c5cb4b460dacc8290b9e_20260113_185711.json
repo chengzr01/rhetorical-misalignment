@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66c1c5cb4b460dacc8290b9e",
+  "demographics": {
+    "age": "29",
+    "expertise": "Geriatrics",
+    "practice_location": "Hockessin, Delaware",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-13T18:30:36.670961",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_351",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Order a random urine test for oxycodone",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.61,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.61,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I personally don't police peoples pain. \r\nI think that if there is a genuine concern, switching medications can be appropriate.\r\nA drug test will indicate to the patient either you are on to them or you do not believe in their pain.",
+  "highlights": [],
+  "session_start": "2026-01-13T18:30:36.691485",
+  "step1_time": "2026-01-13T18:55:35.154189",
+  "step2_time": "2026-01-13T18:55:42.327539",
+  "step3_time": "2026-01-13T18:57:11.402865",
+  "timestamp": "2026-01-13T18:57:11.402875"
+}

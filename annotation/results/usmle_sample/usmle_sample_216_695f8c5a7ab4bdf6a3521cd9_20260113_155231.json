@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f8c5a7ab4bdf6a3521cd9",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Family Medicine",
+    "practice_location": "Hampstead, NC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T15:45:46.762512",
+    "years_of_practice": "27"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_216",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Measurement of plasma and urine catecholamine and metabolite concentrations",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because I knew the correct answer.",
+  "highlights": [],
+  "session_start": "2026-01-13T15:45:46.780865",
+  "step1_time": "2026-01-13T15:51:44.570745",
+  "step2_time": "2026-01-13T15:52:10.748747",
+  "step3_time": "2026-01-13T15:52:31.805209",
+  "timestamp": "2026-01-13T15:52:31.805218"
+}

@@ -1,0 +1,74 @@
+{
+  "annotator_id": "66c1c5cb4b460dacc8290b9e",
+  "demographics": {
+    "age": "29",
+    "expertise": "Geriatrics",
+    "practice_location": "Hockessin, Delaware",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-13T18:30:36.670961",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_109",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Adenovirus",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The symptoms coupled with the fact he was outside and swimming it made sense. Then the information provided noted a sore throat and itchy eyes with discharge",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Itchy eyes",
+      "timestamp": "2026-01-13T18:35:41.756Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Conjunctival injection and discharge",
+      "timestamp": "2026-01-13T18:35:47.766Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Fever (39.4\u00b0C or 102.9\u00b0F)",
+      "timestamp": "2026-01-13T18:35:52.510Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Sore throat",
+      "timestamp": "2026-01-13T18:35:57.508Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-13T18:30:36.691485",
+  "step1_time": "2026-01-13T18:35:35.463668",
+  "step2_time": "2026-01-13T18:36:07.459952",
+  "step3_time": "2026-01-13T18:37:06.101244",
+  "timestamp": "2026-01-13T18:37:06.101254"
+}

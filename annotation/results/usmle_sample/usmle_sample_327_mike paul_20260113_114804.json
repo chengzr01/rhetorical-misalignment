@@ -1,0 +1,49 @@
+{
+  "annotator_id": "mike paul",
+  "demographics": {
+    "age": "54-61",
+    "expertise": "internal medicine ",
+    "practice_location": "texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T11:35:50.462028",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_327",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Ultrasonography of the right upper abdominal quadrant",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.61,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.73,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.73,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my final belief that the correct answer is E. Ultrasonography of the right upper abdominal quadrant, but my confidence in that answer increased after reviewing the AI\u2019s explanation.",
+  "highlights": [],
+  "session_start": "2026-01-13T11:35:50.484410",
+  "step1_time": "2026-01-13T11:46:25.497143",
+  "step2_time": "2026-01-13T11:47:18.958381",
+  "step3_time": "2026-01-13T11:48:04.685186",
+  "timestamp": "2026-01-13T11:48:04.685196"
+}

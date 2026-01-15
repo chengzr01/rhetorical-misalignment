@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66c1c5cb4b460dacc8290b9e",
+  "demographics": {
+    "age": "29",
+    "expertise": "Geriatrics",
+    "practice_location": "Hockessin, Delaware",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-13T18:30:36.670961",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_164",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Increased  increased  decreased",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Glucose is increased due to DM2\r\nInsulin lvls are normal bc pancreas is still producing\r\nInsulin receptor responsiveness is probably decreased bc the cells are not responding appropriately to the insulin",
+  "highlights": [],
+  "session_start": "2026-01-13T18:30:36.691485",
+  "step1_time": "2026-01-13T18:40:46.210393",
+  "step2_time": "2026-01-13T18:40:48.763355",
+  "step3_time": "2026-01-13T18:42:33.372198",
+  "timestamp": "2026-01-13T18:42:33.372208"
+}

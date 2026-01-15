@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66aba95407d5b1630abb7bb0",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Home health",
+    "practice_location": "Columbus, Ohio",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T21:55:01.963123",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_3",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Formation of antibodies to RhD",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.29,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.84,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.84,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I had guessed originally that the answer I chose was correct, but it was nice to see the AI agree. Then seeing I was correct overall is a good feeling.\r\n",
+  "highlights": [],
+  "session_start": "2026-01-13T21:55:02.047282",
+  "step1_time": "2026-01-13T21:56:43.453029",
+  "step2_time": "2026-01-13T21:57:45.776558",
+  "step3_time": "2026-01-13T21:59:29.153779",
+  "timestamp": "2026-01-13T21:59:29.153789"
+}

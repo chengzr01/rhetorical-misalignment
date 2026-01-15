@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6941984defc3cfda7e9cdf6f",
+  "demographics": {
+    "age": "34",
+    "expertise": "Caregiving and first Aid",
+    "practice_location": "Kansasa",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T10:38:11.062695",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_1",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Decreased activity of UDP glucuronosyltransferase",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.52,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I had a similar experience with my nice. I wasn't actually sure until the AI mentioned the symptoms.",
+  "highlights": [],
+  "session_start": "2026-01-13T10:38:11.079785",
+  "step1_time": "2026-01-13T10:42:05.856296",
+  "step2_time": "2026-01-13T10:42:57.311625",
+  "step3_time": "2026-01-13T10:44:46.487296",
+  "timestamp": "2026-01-13T10:44:46.487306"
+}

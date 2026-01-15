@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66c1c5cb4b460dacc8290b9e",
+  "demographics": {
+    "age": "29",
+    "expertise": "Geriatrics",
+    "practice_location": "Hockessin, Delaware",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-13T18:30:36.670961",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_213",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Buspirone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Buspirone is given to those who have a hx of substance abuse because it is low risk. It is an anti-anxiety medication.\r\nI know this as I have a close relative that takes this as well as many of my patients.",
+  "highlights": [],
+  "session_start": "2026-01-13T18:30:36.691485",
+  "step1_time": "2026-01-13T18:49:25.866002",
+  "step2_time": "2026-01-13T18:49:45.315161",
+  "step3_time": "2026-01-13T18:51:05.368399",
+  "timestamp": "2026-01-13T18:51:05.368409"
+}

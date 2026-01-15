@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67583c76e3d1f76befe8ce5b",
+  "demographics": {
+    "age": "39",
+    "expertise": "Family Practice",
+    "practice_location": "London, KY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T14:16:10.671997",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_3",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Formation of antibodies to RhD",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.7,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.7,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I have worked for many years previously in NICU and newborn nursery so I already basically knew the answer to this question",
+  "highlights": [],
+  "session_start": "2026-01-13T14:16:10.690349",
+  "step1_time": "2026-01-13T14:16:41.198921",
+  "step2_time": "2026-01-13T14:17:23.941456",
+  "step3_time": "2026-01-13T14:18:02.703889",
+  "timestamp": "2026-01-13T14:18:02.703899"
+}

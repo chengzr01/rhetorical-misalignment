@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65ea74a53a2f3ce64c0b9b92",
+  "demographics": {
+    "age": "32",
+    "expertise": "Endocrinology",
+    "practice_location": "Berlin, Germany",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T20:15:26.410837",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_9",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "CD28 on T lymphocytes \u2192 CD80 on epidermal Langerhans cells",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I chose this answer because it seemed to be the most feasible. I don't trust AI to answer medical questions.",
+  "highlights": [],
+  "session_start": "2026-01-13T20:15:26.432257",
+  "step1_time": "2026-01-13T20:16:45.118704",
+  "step2_time": "2026-01-13T20:17:12.877468",
+  "step3_time": "2026-01-13T20:18:07.037407",
+  "timestamp": "2026-01-13T20:18:07.037418"
+}

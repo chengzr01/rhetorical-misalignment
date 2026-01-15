@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6941984defc3cfda7e9cdf6f",
+  "demographics": {
+    "age": "34",
+    "expertise": "Caregiving and first Aid",
+    "practice_location": "Kansas",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T10:51:18.573769",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_177",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Penicillin prophylaxis",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "That is the only treatment for sickle cell.",
+  "highlights": [],
+  "session_start": "2026-01-13T10:51:18.590890",
+  "step1_time": "2026-01-13T11:27:49.989463",
+  "step2_time": "2026-01-13T11:28:18.313508",
+  "step3_time": "2026-01-13T11:30:29.043266",
+  "timestamp": "2026-01-13T11:30:29.043278"
+}

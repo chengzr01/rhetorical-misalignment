@@ -1,0 +1,68 @@
+{
+  "annotator_id": "6650bfea11f11fd1b150a7ca",
+  "demographics": {
+    "age": "23",
+    "expertise": "Cardiology",
+    "practice_location": "NJ",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T17:42:07.507383",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_63",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Cyclin-dependent kinases",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was confident in my answer from the start due to my knowledge on the subject. However, the AI's explanation, specifically their clinical reasoning regarding cell proliferation, confirmed my suspision that the proliferative phase of the menstrual cycle is occuring, and thus governed by the interaction of cyclins and cyclin-dependent kinases.",
+  "highlights": [
+    {
+      "text": "Estrogen levels typically peak during the mid-follicular phase, leading to the proliferative phase of the menstrual cycle.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T17:45:09.265Z",
+      "step": "step3"
+    },
+    {
+      "text": "The biopsy results show regular tubular endometrial glands with abundant mitotic figures, indicating a high rate of cell proliferation.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T17:45:14.067Z",
+      "step": "step3"
+    },
+    {
+      "text": "Estrogen is the primary hormone responsible for stimulating cell proliferation and growth in the endometrium during the follicular phase of the menstrual cycle.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T17:45:21.370Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-13T17:42:07.526664",
+  "step1_time": "2026-01-13T17:43:37.223791",
+  "step2_time": "2026-01-13T17:43:42.730793",
+  "step3_time": "2026-01-13T17:46:30.667009",
+  "timestamp": "2026-01-13T17:46:30.667019"
+}

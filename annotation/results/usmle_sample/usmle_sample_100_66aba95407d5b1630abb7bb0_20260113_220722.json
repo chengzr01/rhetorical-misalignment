@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66aba95407d5b1630abb7bb0",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Home health",
+    "practice_location": "Columbus, Ohio",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T21:55:01.963123",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_100",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Hypogonadotropic hypogonadism",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.67,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.74,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.74,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "At first I guessed hypothermic but then I started thinking it was with her uterus what changed my mind was the aI mentioning that it was due to anarexia which changed my vote",
+  "highlights": [],
+  "session_start": "2026-01-13T21:55:02.047282",
+  "step1_time": "2026-01-13T22:04:51.336932",
+  "step2_time": "2026-01-13T22:06:08.392791",
+  "step3_time": "2026-01-13T22:07:22.106183",
+  "timestamp": "2026-01-13T22:07:22.106194"
+}

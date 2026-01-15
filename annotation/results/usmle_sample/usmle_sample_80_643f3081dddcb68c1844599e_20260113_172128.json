@@ -1,0 +1,49 @@
+{
+  "annotator_id": "643f3081dddcb68c1844599e",
+  "demographics": {
+    "age": "51",
+    "expertise": "Nursing/Healthcare",
+    "practice_location": "Los Angeles, CA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T17:04:28.114064",
+    "years_of_practice": "23"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_80",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Statistically significant overall increase in risk",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.69,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.71,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.71,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn't trust AI when it said that exercise increased the risk of fracture in elderly women. I have only heard good things about exercise when it comes to bone health.",
+  "highlights": [],
+  "session_start": "2026-01-13T17:04:28.133665",
+  "step1_time": "2026-01-13T17:15:32.829626",
+  "step2_time": "2026-01-13T17:17:19.346652",
+  "step3_time": "2026-01-13T17:21:28.476361",
+  "timestamp": "2026-01-13T17:21:28.476371"
+}

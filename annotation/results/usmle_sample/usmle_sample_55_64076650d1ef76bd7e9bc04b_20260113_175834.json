@@ -1,0 +1,92 @@
+{
+  "annotator_id": "64076650d1ef76bd7e9bc04b",
+  "demographics": {
+    "age": "32",
+    "expertise": "Private Medicine - General Family Health",
+    "practice_location": "United States of America",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T17:51:04.338917",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_55",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Myeloperoxidase",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.25,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer after the AI swayed me in that direction. I focused to heavily on the NADPH oxidative compound phrasing and caused me to second-guess myself.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "reactive oxygen species (ROS).",
+      "timestamp": "2026-01-13T17:56:09.805Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Chronic granulomatous disease (CGD)",
+      "timestamp": "2026-01-13T17:56:17.857Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Leukocyte adhesion deficiency (LAD)",
+      "timestamp": "2026-01-13T17:56:20.077Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Severe congenital neutropeni",
+      "timestamp": "2026-01-13T17:56:22.958Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Immunodeficiency disorders",
+      "timestamp": "2026-01-13T17:56:26.295Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "gene encoding the phagocyte NADPH oxidase complex",
+      "timestamp": "2026-01-13T17:56:32.836Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "e CYBB or CYBA gene.",
+      "timestamp": "2026-01-13T17:56:42.479Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-13T17:51:04.358390",
+  "step1_time": "2026-01-13T17:54:07.305884",
+  "step2_time": "2026-01-13T17:56:47.990891",
+  "step3_time": "2026-01-13T17:58:34.818479",
+  "timestamp": "2026-01-13T17:58:34.818489"
+}

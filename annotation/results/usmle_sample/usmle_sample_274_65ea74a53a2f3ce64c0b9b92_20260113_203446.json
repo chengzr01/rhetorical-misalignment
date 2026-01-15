@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65ea74a53a2f3ce64c0b9b92",
+  "demographics": {
+    "age": "32",
+    "expertise": "Endocrinology",
+    "practice_location": "Berlin, Germany",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T20:15:26.410837",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_274",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Yes yes",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "We shared the same reasoning",
+  "highlights": [],
+  "session_start": "2026-01-13T20:15:26.432257",
+  "step1_time": "2026-01-13T20:34:28.917032",
+  "step2_time": "2026-01-13T20:34:36.315933",
+  "step3_time": "2026-01-13T20:34:46.547782",
+  "timestamp": "2026-01-13T20:34:46.547793"
+}

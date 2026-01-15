@@ -1,0 +1,62 @@
+{
+  "annotator_id": "5a2111b5bf56cc000176feb5",
+  "demographics": {
+    "age": "34-45",
+    "expertise": "Cardiopulmonary",
+    "practice_location": "Salisbury, NC",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-13T13:49:53.033117",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_17",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Hair follicle",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.55,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.33,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.33,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "SInce it involved the skin, I thought the Dermis was where this started to proliferate. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "rash on his buttocks and legs",
+      "timestamp": "2026-01-13T13:50:42.587Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Redness and itchiness.",
+      "timestamp": "2026-01-13T13:50:53.067Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-13T13:49:53.050895",
+  "step1_time": "2026-01-13T13:50:26.269593",
+  "step2_time": "2026-01-13T13:51:41.533429",
+  "step3_time": "2026-01-13T13:52:24.562026",
+  "timestamp": "2026-01-13T13:52:24.562037"
+}

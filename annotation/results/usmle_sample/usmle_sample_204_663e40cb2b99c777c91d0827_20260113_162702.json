@@ -1,0 +1,49 @@
+{
+  "annotator_id": "663e40cb2b99c777c91d0827",
+  "demographics": {
+    "age": "27",
+    "expertise": "Radiation Oncology",
+    "practice_location": "Memphis, TN",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T16:11:43.555016",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_204",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "No abnormalities",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.24,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.24,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.24,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I had the correct answer but did change my answer due to this part of the AI's explanation, \"insulinomas are typically small, solitary tumors located in the pancreas.\" This explanation made it seem like the patient could have a mass on their pancreas.",
+  "highlights": [],
+  "session_start": "2026-01-13T16:11:43.573538",
+  "step1_time": "2026-01-13T16:25:36.429664",
+  "step2_time": "2026-01-13T16:26:08.987067",
+  "step3_time": "2026-01-13T16:27:02.150201",
+  "timestamp": "2026-01-13T16:27:02.150209"
+}

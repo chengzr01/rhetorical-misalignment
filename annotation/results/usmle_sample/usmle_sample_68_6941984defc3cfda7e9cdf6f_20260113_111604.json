@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6941984defc3cfda7e9cdf6f",
+  "demographics": {
+    "age": "34",
+    "expertise": "Caregiving and first Aid",
+    "practice_location": "Kansas",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T10:51:18.573769",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_68",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Sensation over the upper lip",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI's explanation esp this part made me think we are focusing only on the eye.",
+  "highlights": [
+    {
+      "text": "he patient's normal visual acuity and lack of other ocular abnormalities suggest that the injury is limited to the orbital floor and extraocular muscles.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-13T11:15:51.862Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-13T10:51:18.590890",
+  "step1_time": "2026-01-13T11:12:25.686771",
+  "step2_time": "2026-01-13T11:13:48.859730",
+  "step3_time": "2026-01-13T11:16:04.686831",
+  "timestamp": "2026-01-13T11:16:04.686841"
+}

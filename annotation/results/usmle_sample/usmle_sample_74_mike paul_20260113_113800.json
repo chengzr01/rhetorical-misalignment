@@ -1,0 +1,49 @@
+{
+  "annotator_id": "mike paul",
+  "demographics": {
+    "age": "54-61",
+    "expertise": "internal medicine ",
+    "practice_location": "texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T11:35:50.462028",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_74",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "\"Tell me what you know about the steroid inhalers and how they are supposed to work.\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not significantly change my belief, but the AI\u2019s explanation helped reinforce it by clearly linking the patient\u2019s frustration to a need for open, nonjudgmental communication. The most influential phrase was: \u201copen-ended, nonjudgmental, and patient-centered,\u201d which clarified why exploring the patient\u2019s understanding should come before testing or referrals. That explanation strengthened my confidence that addressing the patient\u2019s beliefs and misconceptions was the most appropriate first step.",
+  "highlights": [],
+  "session_start": "2026-01-13T11:35:50.484410",
+  "step1_time": "2026-01-13T11:36:52.821734",
+  "step2_time": "2026-01-13T11:37:08.028209",
+  "step3_time": "2026-01-13T11:38:00.567839",
+  "timestamp": "2026-01-13T11:38:00.567848"
+}

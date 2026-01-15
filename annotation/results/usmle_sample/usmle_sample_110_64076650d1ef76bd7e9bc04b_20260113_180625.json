@@ -1,0 +1,56 @@
+{
+  "annotator_id": "64076650d1ef76bd7e9bc04b",
+  "demographics": {
+    "age": "32",
+    "expertise": "Private Medicine - General Family Health",
+    "practice_location": "United States of America",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T17:51:04.338917",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_110",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Hypertension and muscle weakness",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "My thought was of Cushing's and the AI confirmed that thought for me so I was shocked to see my answer as wrong. Several of the answers are present in Cushing's and there is often co-morbidity of issues going on. It was the confirmation that made me further confident in the wrong choice.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Cushing's syndrome: A",
+      "timestamp": "2026-01-13T18:04:12.402Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-13T17:51:04.358390",
+  "step1_time": "2026-01-13T18:04:00.222971",
+  "step2_time": "2026-01-13T18:04:26.167450",
+  "step3_time": "2026-01-13T18:06:25.005049",
+  "timestamp": "2026-01-13T18:06:25.005059"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65b1193868f3449f46325ea8",
+  "demographics": {
+    "age": "53",
+    "expertise": "Health",
+    "practice_location": "United States Arizona ",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-13T20:40:26.596048",
+    "years_of_practice": "23"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_311",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Effect of hemi -inattention on her visual spatial skills",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The Ai played a role ",
+  "highlights": [],
+  "session_start": "2026-01-13T20:40:26.616944",
+  "step1_time": "2026-01-13T20:54:12.895985",
+  "step2_time": "2026-01-13T20:54:18.291535",
+  "step3_time": "2026-01-13T20:54:32.211491",
+  "timestamp": "2026-01-13T20:54:32.211502"
+}

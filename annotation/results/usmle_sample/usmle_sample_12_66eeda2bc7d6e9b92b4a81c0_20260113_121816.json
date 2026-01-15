@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66eeda2bc7d6e9b92b4a81c0",
+  "demographics": {
+    "age": "40",
+    "expertise": "Healthcare/Nursing",
+    "practice_location": "US: Florida",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-13T12:14:46.730905",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_12",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Hypercoagulability from advanced malignancy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.99,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.99,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn\u2019t change my answer. The pancreatic cancer with liver mets and the leg clot clearly point to cancer causing the DVT. The line that stuck with me was \u201ccausing a secondary DVT in the left lower extremity.\u201d It just made me sure it was from the cancer.",
+  "highlights": [],
+  "session_start": "2026-01-13T12:14:46.748986",
+  "step1_time": "2026-01-13T12:15:16.526969",
+  "step2_time": "2026-01-13T12:16:21.837317",
+  "step3_time": "2026-01-13T12:18:16.846392",
+  "timestamp": "2026-01-13T12:18:16.846403"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "643f3081dddcb68c1844599e",
+  "demographics": {
+    "age": "51",
+    "expertise": "Nursing/Healthcare",
+    "practice_location": "Los Angeles, CA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T17:04:28.114064",
+    "years_of_practice": "23"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_78",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "S. pyogenes  (group A)",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.34,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.68,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.68,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I had to rely on the AI's analysis since I was honestly lost with this one.",
+  "highlights": [],
+  "session_start": "2026-01-13T17:04:28.133665",
+  "step1_time": "2026-01-13T17:12:18.181562",
+  "step2_time": "2026-01-13T17:13:17.568726",
+  "step3_time": "2026-01-13T17:14:53.118836",
+  "timestamp": "2026-01-13T17:14:53.118847"
+}

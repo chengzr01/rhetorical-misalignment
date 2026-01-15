@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f8c5a7ab4bdf6a3521cd9",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Family Medicine",
+    "practice_location": "Hampstead, NC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T15:45:46.762512",
+    "years_of_practice": "27"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_260",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Cardiac conduction abnormality",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I knew this answer",
+  "highlights": [],
+  "session_start": "2026-01-13T15:45:46.780865",
+  "step1_time": "2026-01-13T15:54:24.470393",
+  "step2_time": "2026-01-13T15:54:56.790754",
+  "step3_time": "2026-01-13T15:55:14.007420",
+  "timestamp": "2026-01-13T15:55:14.007430"
+}

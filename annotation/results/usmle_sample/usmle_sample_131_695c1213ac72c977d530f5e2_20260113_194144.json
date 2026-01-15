@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695c1213ac72c977d530f5e2",
+  "demographics": {
+    "age": "45",
+    "expertise": "Optical",
+    "practice_location": "Sacramento, CA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T19:35:22.160422",
+    "years_of_practice": "14"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_131",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Learning disorder",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Not sure why we wouldn't first rule out PTSD from the adoption. Not saying the adoptive parents aren't handling it well but when a child is moved to another country there is bound to be addtional stress. AI didn't influence my decision one way or the other",
+  "highlights": [],
+  "session_start": "2026-01-13T19:35:22.184615",
+  "step1_time": "2026-01-13T19:40:22.832774",
+  "step2_time": "2026-01-13T19:40:41.341781",
+  "step3_time": "2026-01-13T19:41:44.472303",
+  "timestamp": "2026-01-13T19:41:44.472313"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67e494e108181d6621738771",
+  "demographics": {
+    "age": "39-44",
+    "expertise": "midwifery ",
+    "practice_location": "USA",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-01-13T10:02:00.255627",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_316",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Surgical fixation",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change the answer because the subtrochantric  fractures with cortical discontinuity requires surgical fixation.",
+  "highlights": [],
+  "session_start": "2026-01-13T10:02:00.294178",
+  "step1_time": "2026-01-13T10:34:53.594250",
+  "step2_time": "2026-01-13T10:35:04.179372",
+  "step3_time": "2026-01-13T10:37:44.383319",
+  "timestamp": "2026-01-13T10:37:44.383329"
+}

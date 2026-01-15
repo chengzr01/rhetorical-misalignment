@@ -1,0 +1,56 @@
+{
+  "annotator_id": "66116b936273edeae82eb481",
+  "demographics": {
+    "age": "52",
+    "expertise": "Nurse",
+    "practice_location": "USA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-13T09:10:50.481104",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_175",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Measurement of urine and plasma osmolarity",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.46,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "the AI explains that the clinical signs combined with the history of the patient are consistent with hyponatremia, and that the immediate action would be to stabilize the electrolyte imbalance and so that prompted me to change me answer to measurement of urine and plasma osmolarity",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The question asks for the \"most appropriate next step in management.\" While the ultimate goal is to identify and address the underlying cause (likely the medications), the immediacy of the sodium level 116 mEq/L dictates the first action",
+      "timestamp": "2026-01-13T09:43:52.844Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-13T09:10:50.512205",
+  "step1_time": "2026-01-13T09:40:53.476011",
+  "step2_time": "2026-01-13T09:45:11.027639",
+  "step3_time": "2026-01-13T09:47:25.575977",
+  "timestamp": "2026-01-13T09:47:25.575987"
+}

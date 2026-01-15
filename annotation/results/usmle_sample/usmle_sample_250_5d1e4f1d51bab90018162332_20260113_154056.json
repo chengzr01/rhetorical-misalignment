@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5d1e4f1d51bab90018162332",
+  "demographics": {
+    "age": "32",
+    "expertise": "DENTISTRY",
+    "practice_location": "NY, NY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T15:32:56.136816",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_250",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Referral to home hospice care",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief. The AI\u2019s explanation reinforced my thinking with the phrase \u201csevere congenital anomalies and a very poor prognosis.\u201d That clarified that further testing would not change outcomes and that the most appropriate focus was comfort and family support, confirming hospice care as the correct next step.",
+  "highlights": [],
+  "session_start": "2026-01-13T15:32:56.159422",
+  "step1_time": "2026-01-13T15:40:37.874225",
+  "step2_time": "2026-01-13T15:40:42.175671",
+  "step3_time": "2026-01-13T15:40:56.959372",
+  "timestamp": "2026-01-13T15:40:56.959380"
+}

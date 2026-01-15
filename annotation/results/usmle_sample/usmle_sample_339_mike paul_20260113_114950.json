@@ -1,0 +1,49 @@
+{
+  "annotator_id": "mike paul",
+  "demographics": {
+    "age": "54-61",
+    "expertise": "internal medicine ",
+    "practice_location": "texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-13T11:35:50.462028",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_339",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "In 5 years",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.73,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I did not change my belief that the correct answer is C. In 5 years. The AI\u2019s explanation strengthened my confidence by explicitly tying the patient\u2019s age and normal Pap plus negative HPV (co-testing) to established screening intervals.",
+  "highlights": [],
+  "session_start": "2026-01-13T11:35:50.484410",
+  "step1_time": "2026-01-13T11:48:40.894495",
+  "step2_time": "2026-01-13T11:49:17.742476",
+  "step3_time": "2026-01-13T11:49:50.453603",
+  "timestamp": "2026-01-13T11:49:50.453613"
+}

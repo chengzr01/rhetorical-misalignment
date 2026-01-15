@@ -1,0 +1,49 @@
+{
+  "annotator_id": "643f3081dddcb68c1844599e",
+  "demographics": {
+    "age": "51",
+    "expertise": "Nursing/Healthcare",
+    "practice_location": "Los Angeles, CA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T17:04:28.114064",
+    "years_of_practice": "23"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_218",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "It is likely to double her risk for death during the next 3 months",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.14,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.62,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.62,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was confused by the AI response",
+  "highlights": [],
+  "session_start": "2026-01-13T17:04:28.133665",
+  "step1_time": "2026-01-13T17:33:31.126720",
+  "step2_time": "2026-01-13T17:37:37.872596",
+  "step3_time": "2026-01-13T17:38:20.005312",
+  "timestamp": "2026-01-13T17:38:20.005323"
+}

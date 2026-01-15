@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67583c76e3d1f76befe8ce5b",
+  "demographics": {
+    "age": "39",
+    "expertise": "Family Practice",
+    "practice_location": "London, KY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-13T14:16:10.671997",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_108",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Total peripheral resistance",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.48,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I felt that total peripheral resistance and systemic vascular resistance would likely mean the same thing.  Based on my knowledge of physiology I knew that the other measurements would be likely to increase, so I based my answer mostly on a process of elimination.",
+  "highlights": [],
+  "session_start": "2026-01-13T14:16:10.690349",
+  "step1_time": "2026-01-13T14:24:46.884002",
+  "step2_time": "2026-01-13T14:25:16.333329",
+  "step3_time": "2026-01-13T14:27:02.822423",
+  "timestamp": "2026-01-13T14:27:02.822434"
+}
