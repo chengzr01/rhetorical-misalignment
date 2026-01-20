@@ -57,10 +57,19 @@ def load_case_details(case_id):
 
 
 def collect_persuasion_examples(annotations):
-    """Collect examples of persuasion with details"""
+    """Collect examples of AI persuasion/influence with details
 
-    harmful_cases = []  # Correct → Incorrect
-    helpful_cases = []  # Incorrect → Correct
+    Collects ALL cases where belief changed, categorized by correctness trajectory:
+    1. correct_to_incorrect: Started correct, ended incorrect (harmful)
+    2. incorrect_to_correct: Started incorrect, ended correct (helpful)
+    3. stayed_correct_belief_changed: Stayed correct but belief changed
+    4. stayed_incorrect_belief_changed: Stayed incorrect but belief changed
+    """
+
+    correct_to_incorrect = []  # Harmful: answer changed from correct to incorrect
+    incorrect_to_correct = []  # Helpful: answer changed from incorrect to correct
+    stayed_correct_belief_changed = []  # Correct answer maintained, belief influenced
+    stayed_incorrect_belief_changed = []  # Incorrect answer maintained, belief influenced
 
     for annotation in annotations:
         step1 = annotation.get('step1', {})
@@ -71,15 +80,16 @@ def collect_persuasion_examples(annotations):
         step2_correct = step2.get('is_correct', False)
         answer_changed = changes_1_2.get('answer_changed', False)
 
-        if not answer_changed:
-            continue
-
         # Calculate belief change
         belief1 = step1.get('answer_belief')
         belief2 = step2.get('answer_belief')
         belief_change = None
         if belief1 is not None and belief2 is not None:
             belief_change = belief2 - belief1
+
+        # Skip if no belief change
+        if belief_change is None or belief_change == 0:
+            continue
 
         example = {
             'annotation': annotation,
@@ -90,20 +100,37 @@ def collect_persuasion_examples(annotations):
             'correct_answer_idx': annotation.get('correct_answer_idx'),
             'step1_answer': step1.get('answer'),
             'step1_belief': step1.get('answer_belief'),
+            'step1_correct': step1_correct,
             'step2_answer': step2.get('answer'),
             'step2_belief': step2.get('answer_belief'),
+            'step2_correct': step2_correct,
+            'answer_changed': answer_changed,
             'belief_change': belief_change,
             'highlights': annotation.get('highlights', []),
             'reasoning': annotation.get('reasoning', ''),
             'demographics': annotation.get('demographics', {})
         }
 
+        # Categorize based on correctness trajectory
         if step1_correct and not step2_correct:
-            harmful_cases.append(example)
+            # Harmful: persuaded from correct to incorrect answer
+            correct_to_incorrect.append(example)
         elif not step1_correct and step2_correct:
-            helpful_cases.append(example)
+            # Helpful: persuaded from incorrect to correct answer
+            incorrect_to_correct.append(example)
+        elif step1_correct and step2_correct:
+            # Stayed correct but belief was influenced
+            stayed_correct_belief_changed.append(example)
+        elif not step1_correct and not step2_correct:
+            # Stayed incorrect but belief was influenced
+            stayed_incorrect_belief_changed.append(example)
 
-    return harmful_cases, helpful_cases
+    return {
+        'correct_to_incorrect': correct_to_incorrect,
+        'incorrect_to_correct': incorrect_to_correct,
+        'stayed_correct_belief_changed': stayed_correct_belief_changed,
+        'stayed_incorrect_belief_changed': stayed_incorrect_belief_changed
+    }
 
 
 def format_example(example, index, persuasion_type):
@@ -152,6 +179,9 @@ def format_example(example, index, persuasion_type):
     output.append(f"\nStep 2 (After AI):")
     output.append(f"  Answer: {example['step2_answer']} {step2_marker}")
     output.append(f"  Confidence: {example['step2_belief']:.2f}" if example['step2_belief'] is not None else "  Confidence: N/A")
+
+    answer_changed_text = "Yes" if example.get('answer_changed', False) else "No"
+    output.append(f"  Answer Changed: {answer_changed_text}")
 
     if example['belief_change'] is not None:
         change_direction = "increased" if example['belief_change'] > 0 else "decreased" if example['belief_change'] < 0 else "unchanged"
@@ -209,153 +239,217 @@ def format_example(example, index, persuasion_type):
     return "\n".join(output)
 
 
-def generate_report(harmful_cases, helpful_cases):
+def generate_report(cases_dict):
     """Generate a comprehensive report"""
 
     report = []
 
     report.append("="*80)
-    report.append("PERSUASION EXAMPLES REPORT - USMLE SAMPLE")
+    report.append("AI BELIEF INFLUENCE REPORT - USMLE SAMPLE")
     report.append("="*80)
     report.append("")
-    report.append("This report contains detailed examples of AI persuasion effects,")
-    report.append("including annotator highlights and reasoning.")
+    report.append("This report contains detailed examples of AI influence on human beliefs,")
+    report.append("including cases where beliefs changed with or without answer changes.")
     report.append("")
+
+    # Extract case lists
+    correct_to_incorrect = cases_dict['correct_to_incorrect']
+    incorrect_to_correct = cases_dict['incorrect_to_correct']
+    stayed_correct = cases_dict['stayed_correct_belief_changed']
+    stayed_incorrect = cases_dict['stayed_incorrect_belief_changed']
 
     # Summary statistics
     report.append("="*80)
     report.append("SUMMARY")
     report.append("="*80)
-    report.append(f"\nTotal Harmful Persuasion Cases (Correct → Incorrect): {len(harmful_cases)}")
-    report.append(f"Total Helpful Persuasion Cases (Incorrect → Correct): {len(helpful_cases)}")
-    report.append(f"Total Persuasion Cases: {len(harmful_cases) + len(helpful_cases)}")
+    report.append(f"\nTotal cases where AI influenced beliefs: {len(correct_to_incorrect) + len(incorrect_to_correct) + len(stayed_correct) + len(stayed_incorrect)}")
+    report.append("")
+    report.append(f"Breakdown by outcome:")
+    report.append(f"  1. Correct → Incorrect (harmful):             {len(correct_to_incorrect):3d} cases")
+    report.append(f"  2. Incorrect → Correct (helpful):             {len(incorrect_to_correct):3d} cases")
+    report.append(f"  3. Stayed correct, belief changed:            {len(stayed_correct):3d} cases")
+    report.append(f"  4. Stayed incorrect, belief changed:          {len(stayed_incorrect):3d} cases")
+    report.append("")
+    report.append(f"Net helpful answer changes: {len(incorrect_to_correct) - len(correct_to_incorrect):+d}")
 
-    # Model breakdown
-    harmful_by_model = defaultdict(int)
-    helpful_by_model = defaultdict(int)
+    # Model breakdown for all categories
+    def count_by_model(cases):
+        by_model = defaultdict(int)
+        for case in cases:
+            model_name = case['model'].split('/')[-1] if case['model'] and '/' in case['model'] else (case['model'] or 'unknown')
+            by_model[model_name] += 1
+        return by_model
 
-    for case in harmful_cases:
-        harmful_by_model[case['model']] += 1
-    for case in helpful_cases:
-        helpful_by_model[case['model']] += 1
+    report.append(f"\nBreakdown by Model:")
+    all_models = set()
+    c2i_models = count_by_model(correct_to_incorrect)
+    i2c_models = count_by_model(incorrect_to_correct)
+    sc_models = count_by_model(stayed_correct)
+    si_models = count_by_model(stayed_incorrect)
 
-    if harmful_by_model:
-        report.append(f"\nHarmful Persuasion by Model:")
-        for model, count in sorted(harmful_by_model.items()):
-            model_name = model.split('/')[-1] if '/' in model else model
-            report.append(f"  {model_name}: {count}")
+    all_models.update(c2i_models.keys())
+    all_models.update(i2c_models.keys())
+    all_models.update(sc_models.keys())
+    all_models.update(si_models.keys())
 
-    if helpful_by_model:
-        report.append(f"\nHelpful Persuasion by Model:")
-        for model, count in sorted(helpful_by_model.items()):
-            model_name = model.split('/')[-1] if '/' in model else model
-            report.append(f"  {model_name}: {count}")
+    report.append(f"  {'Model':<40} {'C→I':>6} {'I→C':>6} {'SC':>6} {'SI':>6} {'Total':>6}")
+    report.append(f"  {'-'*76}")
+    for model in sorted(all_models):
+        c2i = c2i_models.get(model, 0)
+        i2c = i2c_models.get(model, 0)
+        sc = sc_models.get(model, 0)
+        si = si_models.get(model, 0)
+        total = c2i + i2c + sc + si
+        report.append(f"  {model:<40} {c2i:>6} {i2c:>6} {sc:>6} {si:>6} {total:>6}")
+    report.append(f"\n  Legend: C→I=Correct to Incorrect, I→C=Incorrect to Correct, SC=Stayed Correct, SI=Stayed Incorrect")
 
-    # Highlights statistics
-    harmful_with_highlights = sum(1 for c in harmful_cases if c['highlights'])
-    helpful_with_highlights = sum(1 for c in helpful_cases if c['highlights'])
+    # Highlights and reasoning statistics
+    def count_metadata(cases):
+        with_highlights = sum(1 for c in cases if c['highlights'])
+        with_reasoning = sum(1 for c in cases if c['reasoning'])
+        return with_highlights, with_reasoning
 
     report.append(f"\nCases with Highlights:")
-    report.append(f"  Harmful cases: {harmful_with_highlights}/{len(harmful_cases)}")
-    report.append(f"  Helpful cases: {helpful_with_highlights}/{len(helpful_cases)}")
+    for category_name, cases in [
+        ("Correct → Incorrect", correct_to_incorrect),
+        ("Incorrect → Correct", incorrect_to_correct),
+        ("Stayed Correct", stayed_correct),
+        ("Stayed Incorrect", stayed_incorrect)
+    ]:
+        h, r = count_metadata(cases)
+        report.append(f"  {category_name:<25}: {h}/{len(cases)} with highlights, {r}/{len(cases)} with reasoning")
 
-    # Reasoning statistics
-    harmful_with_reasoning = sum(1 for c in harmful_cases if c['reasoning'])
-    helpful_with_reasoning = sum(1 for c in helpful_cases if c['reasoning'])
-
-    report.append(f"\nCases with Annotator Reasoning:")
-    report.append(f"  Harmful cases: {harmful_with_reasoning}/{len(harmful_cases)}")
-    report.append(f"  Helpful cases: {helpful_with_reasoning}/{len(helpful_cases)}")
-
-    # Harmful cases
+    # Section 1: Harmful (Correct → Incorrect)
     report.append("\n\n")
     report.append("="*80)
-    report.append("SECTION 1: HARMFUL PERSUASION CASES")
+    report.append("SECTION 1: CORRECT → INCORRECT (HARMFUL)")
     report.append("="*80)
-    report.append("\nThese are cases where the AI persuaded annotators to change from")
+    report.append("\nCases where AI persuaded annotators to change from")
     report.append("a CORRECT answer to an INCORRECT answer.")
     report.append("")
 
-    if harmful_cases:
-        # Sort by belief change (most confident first)
-        harmful_sorted = sorted(harmful_cases,
-                               key=lambda x: (x['step2_belief'] or 0),
-                               reverse=True)
-
-        for i, case in enumerate(harmful_sorted, 1):
-            report.append(format_example(case, i, "HARMFUL PERSUASION"))
+    if correct_to_incorrect:
+        sorted_cases = sorted(correct_to_incorrect, key=lambda x: abs(x['belief_change'] or 0), reverse=True)
+        for i, case in enumerate(sorted_cases, 1):
+            report.append(format_example(case, i, "HARMFUL: Correct → Incorrect"))
     else:
-        report.append("\nNo harmful persuasion cases found.")
+        report.append("\nNo cases found in this category.")
 
-    # Helpful cases
+    # Section 2: Helpful (Incorrect → Correct)
     report.append("\n\n")
     report.append("="*80)
-    report.append("SECTION 2: HELPFUL PERSUASION CASES")
+    report.append("SECTION 2: INCORRECT → CORRECT (HELPFUL)")
     report.append("="*80)
-    report.append("\nThese are cases where the AI persuaded annotators to change from")
+    report.append("\nCases where AI persuaded annotators to change from")
     report.append("an INCORRECT answer to a CORRECT answer.")
     report.append("")
 
-    if helpful_cases:
-        # Sort by belief change (most confident first)
-        helpful_sorted = sorted(helpful_cases,
-                               key=lambda x: (x['step2_belief'] or 0),
-                               reverse=True)
-
-        for i, case in enumerate(helpful_sorted, 1):
-            report.append(format_example(case, i, "HELPFUL PERSUASION"))
+    if incorrect_to_correct:
+        sorted_cases = sorted(incorrect_to_correct, key=lambda x: abs(x['belief_change'] or 0), reverse=True)
+        for i, case in enumerate(sorted_cases, 1):
+            report.append(format_example(case, i, "HELPFUL: Incorrect → Correct"))
     else:
-        report.append("\nNo helpful persuasion cases found.")
+        report.append("\nNo cases found in this category.")
+
+    # Section 3: Stayed Correct (Belief Changed)
+    report.append("\n\n")
+    report.append("="*80)
+    report.append("SECTION 3: STAYED CORRECT (BELIEF INFLUENCED)")
+    report.append("="*80)
+    report.append("\nCases where annotator maintained CORRECT answer but")
+    report.append("AI influenced their confidence/belief.")
+    report.append("")
+
+    if stayed_correct:
+        sorted_cases = sorted(stayed_correct, key=lambda x: abs(x['belief_change'] or 0), reverse=True)
+        for i, case in enumerate(sorted_cases, 1):
+            report.append(format_example(case, i, "STAYED CORRECT: Belief Influenced"))
+    else:
+        report.append("\nNo cases found in this category.")
+
+    # Section 4: Stayed Incorrect (Belief Changed)
+    report.append("\n\n")
+    report.append("="*80)
+    report.append("SECTION 4: STAYED INCORRECT (BELIEF INFLUENCED)")
+    report.append("="*80)
+    report.append("\nCases where annotator maintained INCORRECT answer but")
+    report.append("AI influenced their confidence/belief.")
+    report.append("")
+
+    if stayed_incorrect:
+        sorted_cases = sorted(stayed_incorrect, key=lambda x: abs(x['belief_change'] or 0), reverse=True)
+        for i, case in enumerate(sorted_cases, 1):
+            report.append(format_example(case, i, "STAYED INCORRECT: Belief Influenced"))
+    else:
+        report.append("\nNo cases found in this category.")
 
     return "\n".join(report)
 
 
-def generate_json_export(harmful_cases, helpful_cases):
-    """Generate JSON export of all cases for further analysis"""
+def generate_json_export(cases_dict):
+    """Generate organized JSON export of all cases for further analysis"""
+
+    def format_case_for_export(case):
+        """Format a single case for JSON export"""
+        return {
+            'case_id': case['case_id'],
+            'annotator_id': case['annotator_id'],
+            'model': case['model'],
+            'correct_answer': case['correct_answer'],
+            'correct_answer_idx': case['correct_answer_idx'],
+            'step1_answer': case['step1_answer'],
+            'step1_belief': case['step1_belief'],
+            'step1_correct': case['step1_correct'],
+            'step2_answer': case['step2_answer'],
+            'step2_belief': case['step2_belief'],
+            'step2_correct': case['step2_correct'],
+            'answer_changed': case['answer_changed'],
+            'belief_change': case['belief_change'],
+            'num_highlights': len(case['highlights']),
+            'highlights': case['highlights'],
+            'has_reasoning': bool(case['reasoning']),
+            'reasoning': case['reasoning'],
+            'demographics': case['demographics']
+        }
+
+    # Extract case lists
+    correct_to_incorrect = cases_dict['correct_to_incorrect']
+    incorrect_to_correct = cases_dict['incorrect_to_correct']
+    stayed_correct = cases_dict['stayed_correct_belief_changed']
+    stayed_incorrect = cases_dict['stayed_incorrect_belief_changed']
 
     output = {
-        'summary': {
-            'total_harmful': len(harmful_cases),
-            'total_helpful': len(helpful_cases),
-            'total_persuasion': len(harmful_cases) + len(helpful_cases)
+        'metadata': {
+            'description': 'AI influence on human beliefs in medical diagnosis',
+            'dataset': 'USMLE Sample',
+            'total_cases': len(correct_to_incorrect) + len(incorrect_to_correct) + len(stayed_correct) + len(stayed_incorrect)
         },
-        'harmful_cases': [],
-        'helpful_cases': []
+        'summary': {
+            'correct_to_incorrect': {
+                'count': len(correct_to_incorrect),
+                'description': 'Cases where AI persuaded from correct to incorrect answer'
+            },
+            'incorrect_to_correct': {
+                'count': len(incorrect_to_correct),
+                'description': 'Cases where AI persuaded from incorrect to correct answer'
+            },
+            'stayed_correct_belief_changed': {
+                'count': len(stayed_correct),
+                'description': 'Cases where correct answer was maintained but belief changed'
+            },
+            'stayed_incorrect_belief_changed': {
+                'count': len(stayed_incorrect),
+                'description': 'Cases where incorrect answer was maintained but belief changed'
+            },
+            'net_helpful_answer_changes': len(incorrect_to_correct) - len(correct_to_incorrect)
+        },
+        'cases': {
+            'correct_to_incorrect': [format_case_for_export(case) for case in correct_to_incorrect],
+            'incorrect_to_correct': [format_case_for_export(case) for case in incorrect_to_correct],
+            'stayed_correct_belief_changed': [format_case_for_export(case) for case in stayed_correct],
+            'stayed_incorrect_belief_changed': [format_case_for_export(case) for case in stayed_incorrect]
+        }
     }
-
-    for case in harmful_cases:
-        output['harmful_cases'].append({
-            'case_id': case['case_id'],
-            'annotator_id': case['annotator_id'],
-            'model': case['model'],
-            'correct_answer': case['correct_answer'],
-            'correct_answer_idx': case['correct_answer_idx'],
-            'step1_answer': case['step1_answer'],
-            'step1_belief': case['step1_belief'],
-            'step2_answer': case['step2_answer'],
-            'step2_belief': case['step2_belief'],
-            'belief_change': case['belief_change'],
-            'highlights': case['highlights'],
-            'reasoning': case['reasoning'],
-            'demographics': case['demographics']
-        })
-
-    for case in helpful_cases:
-        output['helpful_cases'].append({
-            'case_id': case['case_id'],
-            'annotator_id': case['annotator_id'],
-            'model': case['model'],
-            'correct_answer': case['correct_answer'],
-            'correct_answer_idx': case['correct_answer_idx'],
-            'step1_answer': case['step1_answer'],
-            'step1_belief': case['step1_belief'],
-            'step2_answer': case['step2_answer'],
-            'step2_belief': case['step2_belief'],
-            'belief_change': case['belief_change'],
-            'highlights': case['highlights'],
-            'reasoning': case['reasoning'],
-            'demographics': case['demographics']
-        })
 
     return output
 
@@ -363,7 +457,7 @@ def generate_json_export(harmful_cases, helpful_cases):
 def main():
     """Main function"""
     print("\n" + "="*80)
-    print("COLLECTING PERSUASION EXAMPLES")
+    print("COLLECTING AI BELIEF INFLUENCE EXAMPLES")
     print("="*80)
 
     annotations = load_all_annotations()
@@ -372,16 +466,22 @@ def main():
         return
 
     print(f"\nLoaded {len(annotations)} annotations")
-    print("Analyzing persuasion cases...")
+    print("Analyzing belief influence cases...")
 
-    harmful_cases, helpful_cases = collect_persuasion_examples(annotations)
+    cases_dict = collect_persuasion_examples(annotations)
 
-    print(f"\nFound {len(harmful_cases)} harmful persuasion cases (correct → incorrect)")
-    print(f"Found {len(helpful_cases)} helpful persuasion cases (incorrect → correct)")
+    # Print summary
+    print(f"\nFound belief influence cases:")
+    print(f"  - Correct → Incorrect:           {len(cases_dict['correct_to_incorrect']):3d} cases (harmful)")
+    print(f"  - Incorrect → Correct:           {len(cases_dict['incorrect_to_correct']):3d} cases (helpful)")
+    print(f"  - Stayed Correct (belief Δ):     {len(cases_dict['stayed_correct_belief_changed']):3d} cases")
+    print(f"  - Stayed Incorrect (belief Δ):   {len(cases_dict['stayed_incorrect_belief_changed']):3d} cases")
+    total = sum(len(v) for v in cases_dict.values())
+    print(f"  - Total:                         {total:3d} cases")
 
     # Generate text report
     print("\nGenerating detailed report...")
-    report = generate_report(harmful_cases, helpful_cases)
+    report = generate_report(cases_dict)
 
     output_file = 'persuasion_examples.txt'
     with open(output_file, 'w') as f:
@@ -391,7 +491,7 @@ def main():
 
     # Generate JSON export
     print("Generating JSON export...")
-    json_data = generate_json_export(harmful_cases, helpful_cases)
+    json_data = generate_json_export(cases_dict)
 
     json_file = 'persuasion_examples.json'
     with open(json_file, 'w') as f:
@@ -404,7 +504,7 @@ def main():
     print("="*80)
     print(f"\nGenerated files:")
     print(f"  - {output_file} (Detailed human-readable report)")
-    print(f"  - {json_file} (Structured data for analysis)")
+    print(f"  - {json_file} (Structured data with organized categories)")
     print("")
 
 
