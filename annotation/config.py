@@ -31,3 +31,6 @@ AVAILABLE_MODELS = [
     {'key': 'llama_large', 'file': 'agent_llama-large.json', 'name': 'Llama-3.1-405B-Instruct'},
     {'key': 'deepseek', 'file': 'agent_deepseek.json', 'name': 'DeepSeek-V3.1'},
 ]
+
+# Default number of cases to assign to each annotator
+DEFAULT_NUM_CASES_PER_ANNOTATOR = 5

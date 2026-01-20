@@ -47,99 +47,125 @@
 </div>
 
 <form action="/start" method="POST">
-    <div class="form-group">
-        <label for="dataset">Select Dataset:</label>
-        <select id="dataset" name="dataset" required style="width: 100%; padding: 8px; margin-top: 5px;" onchange="updateModels()">
-            <option value="usmle_sample"
-                    {% if not dataset_availability.get('usmle_sample', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
-                {{ datasets['usmle_sample'].name }}{% if not dataset_availability.get('usmle_sample', False) %} (No data available){% endif %}
-            </option>
-            <option value="usmle"
-                    {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('usmle', False) and not dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
-                {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
-            </option>
-            <option value="mimic"
-                    {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
-                    {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle_sample', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
-                {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
-            </option>
-        </select>
-        <small style="color: #7f8c8d; display: block; margin-top: 5px;">Select the dataset to annotate</small>
-    </div>
+    <!-- Study Configuration Section -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #34495e; margin-bottom: 10px;">Study Configuration</h2>
 
-    <div class="form-group">
-        <div style="background: #e8f8f5; padding: 15px; border-radius: 4px; border-left: 4px solid #1abc9c; margin-bottom: 15px;">
-            <label style="display: flex; align-items: center; cursor: pointer; margin: 0;">
-                <input type="checkbox" id="auto_balance_models" name="auto_balance_models" checked onchange="toggleModelSelection()" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
-                <div>
-                    <strong style="color: #16a085; font-size: 16px;">Model Balancing</strong>
-                </div>
-            </label>
+        <!-- Reminder for annotators -->
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px;">
+            <p style="margin: 0; color: #856404; font-size: 14px;">
+                <strong>Note:</strong> The settings below are configured for this study. You should not change them.
+            </p>
         </div>
-    </div>
 
-    <div class="form-group" id="model-selection-group">
-        <label for="model_key">Select Model:</label>
-        <select id="model_key" name="model_key" style="width: 100%; padding: 8px; margin-top: 5px;" disabled>
-            {% for model in available_models %}
-            <option value="{{ model.key }}" {% if not model.get('available', False) %}disabled{% endif %}>
-                {{ model.name }}{% if not model.get('available', False) %} (Not available){% endif %}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
+        <!-- Configuration Box -->
+        <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 20px;">
 
-    <div class="form-group">
-        <label>Select Cases:</label>
-        <div style="margin: 10px 0;">
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="selection_mode" value="targeted" checked onchange="toggleSelectionMode()">
-                <strong>Targeted Cases</strong> - Annotate specific filtered cases
-            </label>
-            <label style="display: block; opacity: 0.5; cursor: not-allowed;">
-                <input type="radio" name="selection_mode" value="all" disabled onchange="toggleSelectionMode()">
-                <strong>All Cases</strong> - Annotate all cases sequentially
-            </label>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label>Select Steps:</label>
-        <div style="margin: 10px 0; background: #f8f9fa; padding: 15px; border-radius: 4px; border: 1px solid #ddd;">
-            <label style="display: inline-block; margin-right: 20px; margin-bottom: 10px;">
-                <input type="checkbox" name="step_filter" value="step1" checked>
-                <strong>Step 1</strong>
-            </label>
-            <label style="display: inline-block; margin-right: 20px; margin-bottom: 10px;">
-                <input type="checkbox" name="step_filter" value="step2" checked>
-                <strong>Step 2</strong>
-            </label>
-            <label style="display: inline-block; margin-right: 20px; margin-bottom: 10px;">
-                <input type="checkbox" name="step_filter" value="step3" checked>
-                <strong>Step 3</strong>
-            </label>
-        </div>
-    </div>
-
-    <div class="form-group" id="all-cases-options" style="display: none;">
-        <label for="case_index">Start from Case Index (0 to {{ total_cases - 1 }}):</label>
-        <input type="number" id="case_index" name="case_index" min="0" max="{{ total_cases - 1 }}" value="0">
-        <small style="color: #7f8c8d; display: block; margin-top: 5px;">You can start from a specific case number if needed</small>
-    </div>
-
-    <div class="form-group" id="targeted-cases-options">
-        <input type="hidden" name="targeted_type" value="manipulative">
-        <div style="margin-top: 10px;">
-            <div style="background: #e8f4f8; padding: 15px; border-radius: 4px; border-left: 4px solid #3498db;">
-                <p style="margin: 0 0 10px 0; color: #2c3e50;">
-                    <strong>Smart Case Assignment - Manipulative Cases</strong>
-                </p>
-                <small style="color: #34495e; line-height: 1.6;">
-                    You will be assigned <strong>10 randomly selected cases</strong> from the manipulative cases pool for the selected model.
-                </small>
+            <!-- Dataset Selection -->
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="dataset" style="font-weight: 600; color: #2c3e50; margin-bottom: 8px; display: block;">Dataset:</label>
+                <select id="dataset" name="dataset" required style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" onchange="updateModels()">
+                    <option value="usmle_sample"
+                            {% if not dataset_availability.get('usmle_sample', False) %}disabled{% endif %}
+                            {% if dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
+                        {{ datasets['usmle_sample'].name }}{% if not dataset_availability.get('usmle_sample', False) %} (No data available){% endif %}
+                    </option>
+                    <option value="usmle"
+                            {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
+                            {% if dataset_availability.get('usmle', False) and not dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
+                        {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
+                    </option>
+                    <option value="mimic"
+                            {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
+                            {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle_sample', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
+                        {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
+                    </option>
+                </select>
             </div>
+
+            <!-- Model Balancing -->
+            <div style="margin-bottom: 20px;">
+                <div style="background: #e8f8f5; padding: 12px 15px; border-radius: 4px; border-left: 4px solid #1abc9c;">
+                    <label style="display: flex; align-items: center; cursor: pointer; margin: 0;">
+                        <input type="checkbox" id="auto_balance_models" name="auto_balance_models" checked onchange="toggleModelSelection()" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <div>
+                            <strong style="color: #16a085; font-size: 15px;">Automatic Model Balancing</strong>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Model Selection -->
+            <div class="form-group" id="model-selection-group" style="margin-bottom: 20px;">
+                <label for="model_key" style="font-weight: 600; color: #2c3e50; margin-bottom: 8px; display: block;">Model:</label>
+                <select id="model_key" name="model_key" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" disabled>
+                    {% for model in available_models %}
+                    <option value="{{ model.key }}" {% if not model.get('available', False) %}disabled{% endif %}>
+                        {{ model.name }}{% if not model.get('available', False) %} (Not available){% endif %}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Case Selection Mode -->
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: 600; color: #2c3e50; margin-bottom: 8px; display: block;">Case Selection Mode:</label>
+                <div style="background: white; padding: 12px; border-radius: 4px; border: 1px solid #dee2e6;">
+                    <label style="display: block; margin-bottom: 10px; cursor: pointer;">
+                        <input type="radio" name="selection_mode" value="targeted" checked onchange="toggleSelectionMode()" style="margin-right: 8px;">
+                        <strong>Targeted Cases</strong> - Smart assignment from manipulative cases pool
+                    </label>
+                    <label style="display: block; opacity: 0.5; cursor: not-allowed;">
+                        <input type="radio" name="selection_mode" value="all" disabled onchange="toggleSelectionMode()" style="margin-right: 8px;">
+                        <strong>All Cases</strong> - Sequential annotation (disabled)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step Filter -->
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: 600; color: #2c3e50; margin-bottom: 8px; display: block;">Include Steps:</label>
+                <div style="background: white; padding: 12px; border-radius: 4px; border: 1px solid #dee2e6;">
+                    <label style="display: inline-block; margin-right: 20px; cursor: pointer;">
+                        <input type="checkbox" name="step_filter" value="step1" checked style="margin-right: 6px;">
+                        <strong>Step 1</strong>
+                    </label>
+                    <label style="display: inline-block; margin-right: 20px; cursor: pointer;">
+                        <input type="checkbox" name="step_filter" value="step2" checked style="margin-right: 6px;">
+                        <strong>Step 2</strong>
+                    </label>
+                    <label style="display: inline-block; cursor: pointer;">
+                        <input type="checkbox" name="step_filter" value="step3" checked style="margin-right: 6px;">
+                        <strong>Step 3</strong>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Hidden option for "All Cases" mode (not shown by default) -->
+            <div class="form-group" id="all-cases-options" style="display: none; margin-bottom: 20px;">
+                <label for="case_index" style="font-weight: 600; color: #2c3e50; margin-bottom: 8px; display: block;">Start from Case Index (0 to {{ total_cases - 1 }}):</label>
+                <input type="number" id="case_index" name="case_index" min="0" max="{{ total_cases - 1 }}" value="0" style="width: 120px; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+            </div>
+
+            <!-- Targeted Cases Options -->
+            <div class="form-group" id="targeted-cases-options" style="margin-bottom: 0;">
+                <input type="hidden" name="targeted_type" value="manipulative">
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 4px; border-left: 4px solid #3498db;">
+                    <p style="margin: 0 0 8px 0; color: #2c3e50; font-weight: 600;">
+                        Case Assignment - Manipulative Cases
+                    </p>
+                    <div>
+                        <label for="num_cases_to_assign" style="color: #2c3e50; font-weight: 500; display: block; margin-bottom: 5px; font-size: 14px;">
+                            Number of cases to assign:
+                        </label>
+                        <select id="num_cases_to_assign" name="num_cases_to_assign"
+                                style="width: 100px; padding: 8px; border: 1px solid #bdc3c7; border-radius: 4px; font-size: 14px;">
+                            <option value="5" selected>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

@@ -5,7 +5,7 @@ from datetime import datetime
 import hashlib
 
 # Import from our modules
-from config import DATASETS, AVAILABLE_MODELS
+from config import DATASETS, AVAILABLE_MODELS, DEFAULT_NUM_CASES_PER_ANNOTATOR
 from data_loader import (
     get_dataset_config,
     get_model_info,
@@ -180,12 +180,15 @@ def start_annotation():
                 # Get annotation counts for smart selection (model-specific)
                 annotation_counts = get_annotation_counts_per_case(dataset_key, model_key)
 
+                # Get number of cases to assign (from form or use default)
+                num_cases_to_assign = int(request.form.get('num_cases_to_assign', DEFAULT_NUM_CASES_PER_ANNOTATOR))
+
                 # Smart selection: prioritize cases with fewer annotations
-                # Randomly select 10 cases, prioritizing those with 0 annotations, then 1, then 2, then 3+
+                # Randomly select cases, prioritizing those with 0 annotations, then 1, then 2, then 3+
                 selected_case_ids = get_smart_random_cases(
                     manipulative_case_ids,
                     annotation_counts,
-                    num_cases=10
+                    num_cases=num_cases_to_assign
                 )
 
                 # Convert selected case IDs to indices

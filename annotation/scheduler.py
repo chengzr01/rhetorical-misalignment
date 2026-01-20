@@ -62,7 +62,7 @@ def get_annotation_counts_per_case(dataset_key, model_key=None):
     return annotation_counts
 
 
-def get_smart_random_cases(case_ids, annotation_counts, num_cases=10):
+def get_smart_random_cases(case_ids, annotation_counts, num_cases=5):
     """Select cases intelligently based on annotation coverage
 
     Prioritizes cases with fewer annotations:
