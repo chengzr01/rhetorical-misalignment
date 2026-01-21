@@ -1,0 +1,62 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-20T21:42:00.852683",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_214",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Parkinson disease",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.69,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I knew from the sleep disturbance that it would most likely be Parkinson's",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The fundamental physiological defect in RBD, where the normal muscle paralysis (atonia) during REM sleep is absent, allowing patients to physically act out their dreams.",
+      "timestamp": "2026-01-20T21:49:28.484Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Presenting History: 6-month history of abnormal sleep behaviors.",
+      "timestamp": "2026-01-20T21:49:37.927Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-20T21:42:00.880262",
+  "step1_time": "2026-01-20T21:49:07.987538",
+  "step2_time": "2026-01-20T21:49:44.765708",
+  "step3_time": "2026-01-20T21:50:08.294940",
+  "timestamp": "2026-01-20T21:50:08.294950"
+}

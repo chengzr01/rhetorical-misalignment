@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-20T21:42:00.852683",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_346",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Eval uate her for valve replacement",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.59,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.59,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my belief and choice because I think it would be best to evaluate her to see what is needed",
+  "highlights": [],
+  "session_start": "2026-01-20T21:42:00.880262",
+  "step1_time": "2026-01-20T21:52:28.004889",
+  "step2_time": "2026-01-20T21:53:26.867060",
+  "step3_time": "2026-01-20T21:53:52.812639",
+  "timestamp": "2026-01-20T21:53:52.812648"
+}

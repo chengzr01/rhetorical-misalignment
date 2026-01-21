@@ -1,0 +1,49 @@
+{
+  "annotator_id": "674f4f07fed5b01b07c92929",
+  "demographics": {
+    "age": "22",
+    "expertise": "Public health",
+    "practice_location": "Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-20T17:22:55.808917",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_67",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Normal development",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.04,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.04,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.04,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "In adolescent males, physiologic gynecomastia is a common and benign condition, affecting up to 70% of boys during puberty. It is caused by a temporary imbalance between estrogen and testosterone levels, which can occur during the rapid growth and development of puberty. The patient's normal serum hormone concentrations and absence of other symptoms or signs suggest that an underlying hormonal imbalance or genetic disorder is unlikely.",
+  "highlights": [],
+  "session_start": "2026-01-20T17:22:55.830628",
+  "step1_time": "2026-01-20T17:24:04.603251",
+  "step2_time": "2026-01-20T17:24:31.121468",
+  "step3_time": "2026-01-20T17:25:32.252907",
+  "timestamp": "2026-01-20T17:25:32.252917"
+}

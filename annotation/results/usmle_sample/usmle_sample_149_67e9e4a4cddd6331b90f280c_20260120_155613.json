@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67e9e4a4cddd6331b90f280c",
+  "demographics": {
+    "age": "47",
+    "expertise": "internal medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T15:53:51.137649",
+    "years_of_practice": "21"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_149",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Ask clinical providers in the unit to identify what they believe to be the most common factors leading to nonremoval of central venous catheters",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "based on the implementation",
+  "highlights": [],
+  "session_start": "2026-01-20T15:53:51.159325",
+  "step1_time": "2026-01-20T15:55:43.059485",
+  "step2_time": "2026-01-20T15:55:48.592768",
+  "step3_time": "2026-01-20T15:56:13.066227",
+  "timestamp": "2026-01-20T15:56:13.066237"
+}

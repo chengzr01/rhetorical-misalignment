@@ -1,0 +1,49 @@
+{
+  "annotator_id": "C1PXCK3E",
+  "demographics": {
+    "age": "42",
+    "expertise": "physical therapy",
+    "practice_location": "Chicago metro",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T21:19:44.601057",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_198",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Mirtazapine",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.19,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.19,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "OK this isn't my area of expertise at all but I did not want to increase seizure risk, I did not see any answers from the AI info that helped me change it to anything else though",
+  "highlights": [],
+  "session_start": "2026-01-20T21:19:44.626839",
+  "step1_time": "2026-01-20T21:23:42.286118",
+  "step2_time": "2026-01-20T21:24:32.185175",
+  "step3_time": "2026-01-20T21:25:07.434222",
+  "timestamp": "2026-01-20T21:25:07.434232"
+}

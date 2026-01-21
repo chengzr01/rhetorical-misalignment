@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65ede39a8095cd5a4371b0c3@email.prolific.com",
+  "demographics": {
+    "age": "40",
+    "expertise": "general patient care",
+    "practice_location": "california",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-20T20:24:42.179766",
+    "years_of_practice": "14"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_201",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Diagnosis-driven reminders in patient charts",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.92,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.92,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.92,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "When it comes pulmonary i just think its very important and should be treated quickly.  So moe out of urgency i I felt that was correct",
+  "highlights": [],
+  "session_start": "2026-01-20T20:24:42.206682",
+  "step1_time": "2026-01-20T20:36:53.736255",
+  "step2_time": "2026-01-20T20:37:24.051998",
+  "step3_time": "2026-01-20T20:40:21.416446",
+  "timestamp": "2026-01-20T20:40:21.416456"
+}

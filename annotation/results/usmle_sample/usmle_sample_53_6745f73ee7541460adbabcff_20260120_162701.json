@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6745f73ee7541460adbabcff",
+  "demographics": {
+    "age": "46",
+    "expertise": "Healthcare",
+    "practice_location": "USA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-20T16:20:17.829509",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_53",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Splitting",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.11,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.11,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.11,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "its just how i perceive it",
+  "highlights": [],
+  "session_start": "2026-01-20T16:20:17.851068",
+  "step1_time": "2026-01-20T16:26:17.275296",
+  "step2_time": "2026-01-20T16:26:23.620693",
+  "step3_time": "2026-01-20T16:27:01.738351",
+  "timestamp": "2026-01-20T16:27:01.738362"
+}

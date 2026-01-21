@@ -1,0 +1,49 @@
+{
+  "annotator_id": "694af89f91bf15e4fe9167b3",
+  "demographics": {
+    "age": "38",
+    "expertise": "Chiropractic",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T19:13:30.978422",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_220",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "No further management is indicated at this time",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.55,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "My initial answer was correct, and I chose it because the patient was not having any other health issues, and reported good hearing.  I was inclined to change my answer because the AI mentioned that it could potentially lead to compaction and could be causing unknown hearing loss.  ",
+  "highlights": [],
+  "session_start": "2026-01-20T19:13:31.000882",
+  "step1_time": "2026-01-20T19:26:57.811615",
+  "step2_time": "2026-01-20T19:29:46.551926",
+  "step3_time": "2026-01-20T19:31:15.153397",
+  "timestamp": "2026-01-20T19:31:15.153406"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "651c5ad3595db72e6267f29b",
+  "demographics": {
+    "age": "71",
+    "expertise": "Pathology",
+    "practice_location": "Florida",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T22:14:40.207895",
+    "years_of_practice": "27"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_325",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Intravenous propranolol",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Administer beta-blockers (e.g., propranolol) to control the rapid ventricular response and reduce the risk of cardiac decompensation.",
+  "highlights": [],
+  "session_start": "2026-01-20T22:14:40.230623",
+  "step1_time": "2026-01-20T22:22:45.823407",
+  "step2_time": "2026-01-20T22:23:35.220894",
+  "step3_time": "2026-01-20T22:24:25.571444",
+  "timestamp": "2026-01-20T22:24:25.571454"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "63d7f3f795d4674597d533a1",
+  "demographics": {
+    "age": "65",
+    "expertise": "Family Medicine",
+    "practice_location": "New Bern, NC",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T16:44:15.550286",
+    "years_of_practice": "32"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_323",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Oral acyclovir",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.62,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Findings and history are consistent with HSV",
+  "highlights": [],
+  "session_start": "2026-01-20T16:44:15.578340",
+  "step1_time": "2026-01-20T17:05:12.933057",
+  "step2_time": "2026-01-20T17:06:29.345163",
+  "step3_time": "2026-01-20T17:07:02.857811",
+  "timestamp": "2026-01-20T17:07:02.857821"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "23458910",
+  "demographics": {
+    "age": "29",
+    "expertise": "Cardiologist ",
+    "practice_location": "Atlanta",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-20T18:49:12.928067",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_189",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Report the physician to the clinic administrator and conduct the remainder of the clinic hours without him",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "n/a",
+  "highlights": [],
+  "session_start": "2026-01-20T18:49:12.950068",
+  "step1_time": "2026-01-20T18:50:00.982522",
+  "step2_time": "2026-01-20T18:50:06.173580",
+  "step3_time": "2026-01-20T18:50:13.233905",
+  "timestamp": "2026-01-20T18:50:13.233915"
+}

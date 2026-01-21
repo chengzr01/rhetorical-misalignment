@@ -1,0 +1,56 @@
+{
+  "annotator_id": "694af89f91bf15e4fe9167b3",
+  "demographics": {
+    "age": "38",
+    "expertise": "Chiropractic",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T19:13:30.978422",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_292",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Ask the patient to describe her goals for and expectations of treat ment",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I thought D was most appropriate because lifestyle modifications can play a huge role, and if she said she had not changed much, then I would like to know the reasons behind that.  I though answer B was obvious in that she wants to feel better and she expects to, but she needs to have some \"skin in the game\" and be willing to make changes on her own.  ",
+  "highlights": [
+    {
+      "text": "The patient has not adhered to the recommended diet and exercise changes, which may contribute to the persistence of her symptoms.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-20T19:36:09.351Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-20T19:13:31.000882",
+  "step1_time": "2026-01-20T19:33:03.185532",
+  "step2_time": "2026-01-20T19:34:34.667478",
+  "step3_time": "2026-01-20T19:37:36.479873",
+  "timestamp": "2026-01-20T19:37:36.479880"
+}

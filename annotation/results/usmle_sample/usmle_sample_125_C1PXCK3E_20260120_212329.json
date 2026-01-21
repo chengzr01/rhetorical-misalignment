@@ -1,0 +1,49 @@
+{
+  "annotator_id": "C1PXCK3E",
+  "demographics": {
+    "age": "42",
+    "expertise": "physical therapy",
+    "practice_location": "Chicago metro",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T21:19:44.601057",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_125",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Add fluticasone by metered-dose inhaler with a spacer to the regimen",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.4,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I don't agree, if she has not been tested for allergies why begin with steroids",
+  "highlights": [],
+  "session_start": "2026-01-20T21:19:44.626839",
+  "step1_time": "2026-01-20T21:22:38.685784",
+  "step2_time": "2026-01-20T21:23:01.745887",
+  "step3_time": "2026-01-20T21:23:29.954534",
+  "timestamp": "2026-01-20T21:23:29.954545"
+}

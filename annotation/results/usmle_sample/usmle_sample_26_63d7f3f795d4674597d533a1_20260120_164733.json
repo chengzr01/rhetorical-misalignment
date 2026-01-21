@@ -1,0 +1,56 @@
+{
+  "annotator_id": "63d7f3f795d4674597d533a1",
+  "demographics": {
+    "age": "65",
+    "expertise": "Family Medicine",
+    "practice_location": "New Bern, NC",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T16:44:15.550286",
+    "years_of_practice": "32"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_26",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Third-degree atrioventricular block",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.92,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI explanation confirmed my initial diagnosis",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "No apparent relation between the",
+      "timestamp": "2026-01-20T16:46:16.771Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-20T16:44:15.578340",
+  "step1_time": "2026-01-20T16:44:56.733621",
+  "step2_time": "2026-01-20T16:46:39.944512",
+  "step3_time": "2026-01-20T16:47:33.972201",
+  "timestamp": "2026-01-20T16:47:33.972212"
+}

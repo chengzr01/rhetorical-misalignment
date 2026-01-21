@@ -1,0 +1,68 @@
+{
+  "annotator_id": "694af89f91bf15e4fe9167b3",
+  "demographics": {
+    "age": "38",
+    "expertise": "Chiropractic",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T19:13:30.978422",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_199",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Female factor infertility",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.7,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI mentioned the possibility of tubal damage and therefore issues with ovulation and potential endometriosis issues.  The AI also mentioned that a patient with this history would likely suffer from persistent infertility.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "tubal damage or blockage is a possible cause of infertility",
+      "timestamp": "2026-01-20T19:22:18.690Z",
+      "step": "step2"
+    },
+    {
+      "text": "Given the patient's history of PID and ruptured appendix, tubal damage or blockage is a possible cause of infertility",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-20T19:23:49.890Z",
+      "step": "step3"
+    },
+    {
+      "text": "The patient is likely to remain infertile due to tubal damage or blockage, endometriosis, or other underlying causes.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-20T19:24:03.869Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-20T19:13:31.000882",
+  "step1_time": "2026-01-20T19:21:53.977247",
+  "step2_time": "2026-01-20T19:23:14.173189",
+  "step3_time": "2026-01-20T19:25:42.994361",
+  "timestamp": "2026-01-20T19:25:42.994371"
+}

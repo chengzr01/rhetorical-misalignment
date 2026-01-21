@@ -1,0 +1,49 @@
+{
+  "annotator_id": "674f4f07fed5b01b07c92929",
+  "demographics": {
+    "age": "22",
+    "expertise": "Public health",
+    "practice_location": "Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-20T17:22:55.808917",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_82",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Vascular endothelial growth factor",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I chose his answer, because the one description, matches, granulation tissue, which is pink, soft, and bumpy. Granulation tissue forms, because the body is making new blood vessels to heal the wound.",
+  "highlights": [],
+  "session_start": "2026-01-20T17:22:55.830628",
+  "step1_time": "2026-01-20T17:27:57.547656",
+  "step2_time": "2026-01-20T17:28:00.890627",
+  "step3_time": "2026-01-20T17:29:02.584685",
+  "timestamp": "2026-01-20T17:29:02.584695"
+}

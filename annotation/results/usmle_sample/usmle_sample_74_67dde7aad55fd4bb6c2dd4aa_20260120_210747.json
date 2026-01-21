@@ -1,0 +1,74 @@
+{
+  "annotator_id": "67dde7aad55fd4bb6c2dd4aa",
+  "demographics": {
+    "age": "55-64",
+    "expertise": "Nurse Practiioner",
+    "practice_location": "Wilmington, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T20:54:40.769705",
+    "years_of_practice": "16"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_74",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "\"Tell me what you know about the steroid inhalers and how they are supposed to work.\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.7,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "i feel phrase \"I would like to consider alternative diagnoses, such as allergies or vocal cord dysfunction, that may be contributing to your symptoms\" influenced my decision because i agreed with reasoning behind it, if the patient has been promptly taking the medications correctly",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "improving adherence",
+      "timestamp": "2026-01-20T21:01:28.896Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "I also want to discuss ways to improve your adherence to treatment and monitor your symptoms more closely",
+      "timestamp": "2026-01-20T21:02:09.421Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "I would like to consider alternative diagnoses, such as allergies or vocal cord dysfunction, that may be contributing to your symptoms",
+      "timestamp": "2026-01-20T21:03:21.784Z",
+      "step": "step2"
+    },
+    {
+      "text": "I would like to consider alternative diagnoses, such as allergies or vocal cord dysfunction, that may be contributing to your symptoms",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-20T21:05:03.173Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-20T20:54:40.791934",
+  "step1_time": "2026-01-20T20:58:23.973800",
+  "step2_time": "2026-01-20T21:03:28.957607",
+  "step3_time": "2026-01-20T21:07:47.206204",
+  "timestamp": "2026-01-20T21:07:47.206214"
+}

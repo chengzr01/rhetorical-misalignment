@@ -1,0 +1,49 @@
+{
+  "annotator_id": "651c5ad3595db72e6267f29b",
+  "demographics": {
+    "age": "71",
+    "expertise": "Pathology",
+    "practice_location": "Florida",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T22:14:40.207895",
+    "years_of_practice": "27"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_332",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Assist the patient in strengthening her lower ex tremity muscles",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Physical therapy and mobility assistance: A physical therapist (PT) should visit the patient at home to provide mobility assistance, ensure proper use of the walker, and develop a plan to improve mobility and strength.",
+  "highlights": [],
+  "session_start": "2026-01-20T22:14:40.230623",
+  "step1_time": "2026-01-20T22:25:15.256425",
+  "step2_time": "2026-01-20T22:25:24.811911",
+  "step3_time": "2026-01-20T22:26:58.660740",
+  "timestamp": "2026-01-20T22:26:58.660750"
+}
