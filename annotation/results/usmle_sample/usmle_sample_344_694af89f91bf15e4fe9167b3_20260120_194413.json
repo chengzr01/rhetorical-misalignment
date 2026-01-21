@@ -1,0 +1,56 @@
+{
+  "annotator_id": "694af89f91bf15e4fe9167b3",
+  "demographics": {
+    "age": "38",
+    "expertise": "Chiropractic",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T19:13:30.978422",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_344",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Transcutaneous pacing",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.3,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The patient had low blood pressure and low perfusion, so administering and IV with dobutamine which helps to strengthen the heartbeat would help with BP.  The patient also seemed to be dehydrated so the use of transcutaneous pacing didn't make sense to me,",
+  "highlights": [
+    {
+      "text": "Administering intravenous (IV) fluids to increase blood volume and blood pressure.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-20T19:41:07.400Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-20T19:13:31.000882",
+  "step1_time": "2026-01-20T19:39:07.048722",
+  "step2_time": "2026-01-20T19:40:07.409222",
+  "step3_time": "2026-01-20T19:44:13.241850",
+  "timestamp": "2026-01-20T19:44:13.241859"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67cccc70ea11ab9caa72da49",
+  "demographics": {
+    "age": "52",
+    "expertise": "General healthcare",
+    "practice_location": "Arizona, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T17:54:52.895523",
+    "years_of_practice": "25"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_116",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Normal development",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.99,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.99,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI\u2019s explanation confirmed that the infant\u2019s sleep duration, nap pattern, and brief nighttime waking are normal for age. This reassurance supported my original choice and increased my confidence.",
+  "highlights": [],
+  "session_start": "2026-01-20T17:54:52.926857",
+  "step1_time": "2026-01-20T17:58:17.433204",
+  "step2_time": "2026-01-20T17:58:52.829287",
+  "step3_time": "2026-01-20T18:00:07.858311",
+  "timestamp": "2026-01-20T18:00:07.858321"
+}

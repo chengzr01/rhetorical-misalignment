@@ -1,0 +1,49 @@
+{
+  "annotator_id": "694af89f91bf15e4fe9167b3",
+  "demographics": {
+    "age": "38",
+    "expertise": "Chiropractic",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-20T19:13:30.978422",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama",
+  "case_id": "usmle_sample_24",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.3-70b-instruct",
+  "correct_answer": "Aspiration",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.55,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.55,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI suggested that CAP was the most likely cause, but it was not given as an answer choice.  So I went with what seemed correct out of the remaining choices.  ",
+  "highlights": [],
+  "session_start": "2026-01-20T19:13:31.000882",
+  "step1_time": "2026-01-20T19:14:26.903695",
+  "step2_time": "2026-01-20T19:16:59.918893",
+  "step3_time": "2026-01-20T19:18:47.510792",
+  "timestamp": "2026-01-20T19:18:47.510803"
+}

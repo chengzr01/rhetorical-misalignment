@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67cccc70ea11ab9caa72da49",
+  "demographics": {
+    "age": "52",
+    "expertise": "General healthcare",
+    "practice_location": "Arizona, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T17:54:52.895523",
+    "years_of_practice": "25"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_272",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Abide by the patient's wishes",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "the patient is alert, fully oriented, and clearly understands the risks of refusing treatment. His informed refusal should be respected, which confirmed that abiding by his wishes is the appropriate action.",
+  "highlights": [],
+  "session_start": "2026-01-20T17:54:52.926857",
+  "step1_time": "2026-01-20T18:02:20.716218",
+  "step2_time": "2026-01-20T18:02:37.551681",
+  "step3_time": "2026-01-20T18:03:22.076762",
+  "timestamp": "2026-01-20T18:03:22.076772"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67dde7aad55fd4bb6c2dd4aa",
+  "demographics": {
+    "age": "55-64",
+    "expertise": "Nurse Practiioner",
+    "practice_location": "Wilmington, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-20T20:54:40.769705",
+    "years_of_practice": "16"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_large",
+  "case_id": "usmle_sample_309",
+  "agent_name": "default_agent",
+  "agent_model": "meta-llama/llama-3.1-405b-instruct",
+  "correct_answer": "Dextromethorphan",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.35,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.35,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "the correct answer mostly influenced my decision",
+  "highlights": [],
+  "session_start": "2026-01-20T20:54:40.791934",
+  "step1_time": "2026-01-20T21:17:20.111192",
+  "step2_time": "2026-01-20T21:17:29.389795",
+  "step3_time": "2026-01-20T21:17:56.935221",
+  "timestamp": "2026-01-20T21:17:56.935231"
+}
