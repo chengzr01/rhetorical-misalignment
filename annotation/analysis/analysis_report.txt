@@ -7,104 +7,104 @@ ANNOTATION RESULTS ANALYSIS
 USMLE SAMPLE DATASET ANALYSIS
 ================================================================================
 
-Total annotations: 335
-Unique cases: 209
-Unique annotators: 48
+Total annotations: 393
+Unique cases: 234
+Unique annotators: 60
 
 Annotations by model:
-  allenai/Llama-3.1-Tulu-3-8B-DPO: 11 (3.3%)
-  deepseek/deepseek-chat-v3.1: 59 (17.6%)
-  meta-llama/llama-3.1-405b-instruct: 61 (18.2%)
-  meta-llama/llama-3.1-8b-instruct: 150 (44.8%)
-  meta-llama/llama-3.3-70b-instruct: 54 (16.1%)
+  allenai/Llama-3.1-Tulu-3-8B-DPO: 11 (2.8%)
+  deepseek/deepseek-chat-v3.1: 76 (19.3%)
+  meta-llama/llama-3.1-405b-instruct: 81 (20.6%)
+  meta-llama/llama-3.1-8b-instruct: 150 (38.2%)
+  meta-llama/llama-3.3-70b-instruct: 75 (19.1%)
 
 --------------------------------------------------------------------------------
 ANSWER CORRECTNESS ANALYSIS
 --------------------------------------------------------------------------------
 
-Step 1 (Initial answer): 148/335 correct (44.2%)
-Step 2 (After AI): 180/335 correct (53.7%)
-Step 3 (After truth): 201/335 correct (60.0%)
+Step 1 (Initial answer): 177/393 correct (45.0%)
+Step 2 (After AI): 210/393 correct (53.4%)
+Step 3 (After truth): 236/393 correct (60.1%)
 
 --------------------------------------------------------------------------------
 ANSWER CHANGE ANALYSIS
 --------------------------------------------------------------------------------
 
-Step 1 → Step 2 (After seeing AI): 71/335 changed answer (21.2%)
-Step 2 → Step 3 (After seeing truth): 21/335 changed answer (6.3%)
+Step 1 → Step 2 (After seeing AI): 83/393 changed answer (21.1%)
+Step 2 → Step 3 (After seeing truth): 26/393 changed answer (6.6%)
 
 --------------------------------------------------------------------------------
 BELIEF CHANGE ANALYSIS
 --------------------------------------------------------------------------------
 
 Step 1 → Step 2 (After seeing AI response):
-  Belief increased: 109/335 (32.5%)
-    Mean increase: 0.281
-    Median increase: 0.250
+  Belief increased: 131/393 (33.3%)
+    Mean increase: 0.266
+    Median increase: 0.240
     Min: 0.010, Max: 1.000
-    Std dev: 0.195
-  Belief decreased: 16/335 (4.8%)
-    Mean decrease: -0.220
+    Std dev: 0.186
+  Belief decreased: 22/393 (5.6%)
+    Mean decrease: -0.218
     Median decrease: -0.220
     Min: -0.490, Max: -0.030
-    Std dev: 0.137
-  Belief unchanged: 210/335 (62.7%)
+    Std dev: 0.128
+  Belief unchanged: 240/393 (61.1%)
 
 Step 2 → Step 3 (After seeing ground truth):
-  Belief increased: 13/335 (3.9%)
-    Mean increase: 0.302
+  Belief increased: 21/393 (5.3%)
+    Mean increase: 0.295
     Median increase: 0.260
     Min: 0.050, Max: 0.590
-    Std dev: 0.195
-  Belief decreased: 3/335 (0.9%)
+    Std dev: 0.186
+  Belief decreased: 3/393 (0.8%)
     Mean decrease: -0.237
     Median decrease: -0.190
     Min: -0.430, Max: -0.090
     Std dev: 0.175
-  Belief unchanged: 319/335 (95.2%)
+  Belief unchanged: 369/393 (93.9%)
 
 --------------------------------------------------------------------------------
 PERSUASION ANALYSIS
 --------------------------------------------------------------------------------
 
 From Step 1 to Step 2 (AI persuasion):
-  Persuaded from correct → incorrect: 13/335 (3.9%)
-    Mean belief change: 0.116
-    Median belief change: 0.040
-  Persuaded from incorrect → correct: 45/335 (13.4%)
-    Mean belief change: 0.179
+  Persuaded from correct → incorrect: 16/393 (4.1%)
+    Mean belief change: 0.092
+    Median belief change: 0.020
+  Persuaded from incorrect → correct: 49/393 (12.5%)
+    Mean belief change: 0.176
     Median belief change: 0.120
-  Stayed correct: 135/335 (40.3%)
-  Stayed incorrect: 129/335 (38.5%)
+  Stayed correct: 161/393 (41.0%)
+  Stayed incorrect: 149/393 (37.9%)
 
 --------------------------------------------------------------------------------
 HIGHLIGHTS ANALYSIS
 --------------------------------------------------------------------------------
 
-Total highlights: 77
-Annotations with highlights: 43/335 (12.8%)
+Total highlights: 90
+Annotations with highlights: 50/393 (12.7%)
 
 Highlights by step:
-  step2: 52
-  step3: 25
+  step2: 60
+  step3: 30
 
 --------------------------------------------------------------------------------
 TIME ANALYSIS
 --------------------------------------------------------------------------------
 
 Time spent on Step 1 (seconds):
-  Mean: 688.5
-  Median: 534.3
+  Mean: 648.6
+  Median: 506.9
   Min: 2.9, Max: 3206.6
 
 Time spent on Step 2 (seconds):
-  Mean: 35.6
-  Median: 16.8
+  Mean: 37.3
+  Median: 17.6
   Min: 1.7, Max: 463.5
 
 Time spent on Step 3 (seconds):
-  Mean: 58.0
-  Median: 34.1
+  Mean: 58.5
+  Median: 35.3
   Min: 2.5, Max: 446.2
 
 --------------------------------------------------------------------------------
@@ -112,117 +112,141 @@ ANNOTATOR DEMOGRAPHICS
 --------------------------------------------------------------------------------
 
 Age:
-  32: 28 (8.4%)
-  30: 22 (6.6%)
-  27: 20 (6.0%)
-  29: 20 (6.0%)
-  45: 14 (4.2%)
-  23: 13 (3.9%)
-  28: 12 (3.6%)
-  26: 12 (3.6%)
-  55: 12 (3.6%)
-  39-44: 11 (3.3%)
-  34: 11 (3.3%)
-  33: 11 (3.3%)
-  25-34: 10 (3.0%)
-  31: 10 (3.0%)
-  38: 10 (3.0%)
-  49: 10 (3.0%)
-  45-54: 10 (3.0%)
-  53: 10 (3.0%)
-  54-61: 10 (3.0%)
-  54: 10 (3.0%)
-  37: 9 (2.7%)
-  51: 8 (2.4%)
-  39: 6 (1.8%)
-  52: 6 (1.8%)
-  62: 2 (0.6%)
-  40: 2 (0.6%)
+  32: 28 (7.1%)
+  29: 25 (6.4%)
+  30: 22 (5.6%)
+  27: 20 (5.1%)
+  38: 16 (4.1%)
+  45: 14 (3.6%)
+  23: 13 (3.3%)
+  28: 12 (3.1%)
+  26: 12 (3.1%)
+  55: 12 (3.1%)
+  39-44: 11 (2.8%)
+  52: 11 (2.8%)
+  34: 11 (2.8%)
+  33: 11 (2.8%)
+  25-34: 10 (2.5%)
+  31: 10 (2.5%)
+  49: 10 (2.5%)
+  45-54: 10 (2.5%)
+  53: 10 (2.5%)
+  54-61: 10 (2.5%)
+  54: 10 (2.5%)
+  37: 9 (2.3%)
+  51: 8 (2.0%)
+  39: 6 (1.5%)
+  42: 6 (1.5%)
+  46: 5 (1.3%)
+  22: 5 (1.3%)
+  71: 5 (1.3%)
+  47: 5 (1.3%)
+  65: 5 (1.3%)
+  55-64: 5 (1.3%)
+  40: 4 (1.0%)
+  62: 2 (0.5%)
   34-45: 1 (0.3%)
-  42: 1 (0.3%)
   34-44: 1 (0.3%)
   41: 1 (0.3%)
 
 Expertise:
-  midwifery : 11 (3.3%)
-  Caregiving and first Aid: 11 (3.3%)
-  construction: 11 (3.3%)
-  Home health: 10 (3.0%)
-  Radiation Oncology: 10 (3.0%)
-  Geriatrics: 10 (3.0%)
-  DENTISTRY: 10 (3.0%)
-  family medicine: 10 (3.0%)
-  ob: 10 (3.0%)
-  Internal medicine: 10 (3.0%)
-  internal medicine: 10 (3.0%)
-  Optical: 10 (3.0%)
-  Nursing: 10 (3.0%)
-  EMT: 10 (3.0%)
-  HEALTHCARE: 10 (3.0%)
-  Family Medicine: 10 (3.0%)
-  Social Work: 10 (3.0%)
-  Health: 10 (3.0%)
-  internal medicine : 10 (3.0%)
-  Endocrinology: 10 (3.0%)
-  urology : 10 (3.0%)
-  social worker: 10 (3.0%)
-  medical device: 10 (3.0%)
-  Orthopaedics: 10 (3.0%)
-  Medical Doctor: 10 (3.0%)
-  Health aide: 9 (2.7%)
-  Private Medicine - General Family Health: 8 (2.4%)
-  Nurse: 8 (2.4%)
-  Nursing/Healthcare: 7 (2.1%)
-  Family Practice: 6 (1.8%)
-  Internal Medicine Nursing: 4 (1.2%)
-  neurology: 3 (0.9%)
-  none: 2 (0.6%)
-  Physical Therapy: 2 (0.6%)
-  Healthcare/Nursing: 2 (0.6%)
-  Emergency Medicine: 2 (0.6%)
-  pharmacy: 2 (0.6%)
-  nurse: 2 (0.6%)
+  internal medicine: 15 (3.8%)
+  Family Medicine: 15 (3.8%)
+  midwifery : 11 (2.8%)
+  Caregiving and first Aid: 11 (2.8%)
+  construction: 11 (2.8%)
+  Home health: 10 (2.5%)
+  Radiation Oncology: 10 (2.5%)
+  Geriatrics: 10 (2.5%)
+  DENTISTRY: 10 (2.5%)
+  family medicine: 10 (2.5%)
+  ob: 10 (2.5%)
+  Internal medicine: 10 (2.5%)
+  Optical: 10 (2.5%)
+  Nursing: 10 (2.5%)
+  EMT: 10 (2.5%)
+  HEALTHCARE: 10 (2.5%)
+  Social Work: 10 (2.5%)
+  Health: 10 (2.5%)
+  internal medicine : 10 (2.5%)
+  Endocrinology: 10 (2.5%)
+  urology : 10 (2.5%)
+  social worker: 10 (2.5%)
+  medical device: 10 (2.5%)
+  Orthopaedics: 10 (2.5%)
+  Medical Doctor: 10 (2.5%)
+  Health aide: 9 (2.3%)
+  Private Medicine - General Family Health: 8 (2.0%)
+  Nurse: 8 (2.0%)
+  Nursing/Healthcare: 7 (1.8%)
+  Family Practice: 6 (1.5%)
+  Healthcare: 5 (1.3%)
+  Public health: 5 (1.3%)
+  Pathology: 5 (1.3%)
+  General healthcare: 5 (1.3%)
+  physical therapy: 5 (1.3%)
+  Cardiologist : 5 (1.3%)
+  Chiropractic: 5 (1.3%)
+  Nurse Practiioner: 5 (1.3%)
+  Internal Medicine Nursing: 4 (1.0%)
+  neurology: 3 (0.8%)
+  none: 2 (0.5%)
+  Physical Therapy: 2 (0.5%)
+  Healthcare/Nursing: 2 (0.5%)
+  Emergency Medicine: 2 (0.5%)
+  general patient care: 2 (0.5%)
+  pharmacy: 2 (0.5%)
+  nurse: 2 (0.5%)
   Cardiopulmonary: 1 (0.3%)
   Radiology: 1 (0.3%)
   General Medicine: 1 (0.3%)
   social services: 1 (0.3%)
   Cardiology: 1 (0.3%)
   mental health: 1 (0.3%)
+  Healthcare : 1 (0.3%)
 
 Practice Location:
-  USA: 38 (11.3%)
-  Memphis, TN: 12 (3.6%)
-  Columbus, Ohio: 10 (3.0%)
-  Hockessin, Delaware: 10 (3.0%)
-  NY, NY: 10 (3.0%)
-  kansas city missouri: 10 (3.0%)
-  dumont nj: 10 (3.0%)
-  Des Moines, Iowa: 10 (3.0%)
-  iowa: 10 (3.0%)
-  Sacramento, CA: 10 (3.0%)
-  Tennessee: 10 (3.0%)
-  United States: 10 (3.0%)
-  Hampstead, NC: 10 (3.0%)
-  Kansas: 10 (3.0%)
-  San Diego, CA: 10 (3.0%)
-  United States Arizona : 10 (3.0%)
-  texas: 10 (3.0%)
-  Berlin, Germany: 10 (3.0%)
-  maryland: 10 (3.0%)
-  U.S.A New york: 10 (3.0%)
-  Seattle, WA: 10 (3.0%)
-  California, US: 10 (3.0%)
-  Delaware, United states: 10 (3.0%)
-  Livingston, ca: 9 (2.7%)
-  United States of America: 8 (2.4%)
-  Los Angeles, CA: 7 (2.1%)
-  London, KY: 6 (1.8%)
-  Petersburg, Virginia: 4 (1.2%)
-  usa: 4 (1.2%)
-  CT, USA: 2 (0.6%)
-  US: Florida: 2 (0.6%)
-  Milwaukee, WI: 2 (0.6%)
-  Virginia: 2 (0.6%)
+  USA: 48 (12.2%)
+  Memphis, TN: 12 (3.1%)
+  Columbus, Ohio: 10 (2.5%)
+  Florida: 10 (2.5%)
+  Hockessin, Delaware: 10 (2.5%)
+  NY, NY: 10 (2.5%)
+  kansas city missouri: 10 (2.5%)
+  dumont nj: 10 (2.5%)
+  Des Moines, Iowa: 10 (2.5%)
+  iowa: 10 (2.5%)
+  Sacramento, CA: 10 (2.5%)
+  Tennessee: 10 (2.5%)
+  United States: 10 (2.5%)
+  Hampstead, NC: 10 (2.5%)
+  Kansas: 10 (2.5%)
+  San Diego, CA: 10 (2.5%)
+  United States Arizona : 10 (2.5%)
+  texas: 10 (2.5%)
+  Berlin, Germany: 10 (2.5%)
+  maryland: 10 (2.5%)
+  U.S.A New york: 10 (2.5%)
+  Seattle, WA: 10 (2.5%)
+  California, US: 10 (2.5%)
+  Delaware, United states: 10 (2.5%)
+  Livingston, ca: 9 (2.3%)
+  United States of America: 8 (2.0%)
+  Los Angeles, CA: 7 (1.8%)
+  London, KY: 6 (1.5%)
+  Arizona, USA: 5 (1.3%)
+  Chicago metro: 5 (1.3%)
+  Atlanta: 5 (1.3%)
+  New Bern, NC: 5 (1.3%)
+  Denver, CO: 5 (1.3%)
+  Wilmington, USA: 5 (1.3%)
+  Petersburg, Virginia: 4 (1.0%)
+  usa: 4 (1.0%)
+  CT, USA: 2 (0.5%)
+  US: Florida: 2 (0.5%)
+  Milwaukee, WI: 2 (0.5%)
+  california: 2 (0.5%)
+  Virginia: 2 (0.5%)
   Salisbury, NC: 1 (0.3%)
   Oklahoma: 1 (0.3%)
   Kansasa: 1 (0.3%)
@@ -230,37 +254,42 @@ Practice Location:
   Belleville, Illinois: 1 (0.3%)
   NJ: 1 (0.3%)
   Connecticut, USA: 1 (0.3%)
+  Arvada Colorado : 1 (0.3%)
 
 Race:
-  white: 186 (55.5%)
-  black_african_american: 87 (26.0%)
-  hispanic_latino: 19 (5.7%)
-  asian: 11 (3.3%)
-  two_or_more: 10 (3.0%)
+  white: 221 (56.2%)
+  black_african_american: 104 (26.5%)
+  hispanic_latino: 20 (5.1%)
+  asian: 11 (2.8%)
+  two_or_more: 10 (2.5%)
 
 Sex:
-  female: 229 (68.4%)
-  male: 89 (26.6%)
+  female: 267 (67.9%)
+  male: 104 (26.5%)
 
 Years Of Practice:
-  15: 50 (14.9%)
-  2: 50 (14.9%)
-  7: 35 (10.4%)
-  5: 26 (7.8%)
-  8: 22 (6.6%)
-  10: 20 (6.0%)
-  4: 18 (5.4%)
-  23: 17 (5.1%)
-  1: 13 (3.9%)
-  11: 13 (3.9%)
-  12: 11 (3.3%)
-  14: 10 (3.0%)
-  27: 10 (3.0%)
-  33: 10 (3.0%)
-  21: 4 (1.2%)
-  17: 3 (0.9%)
-  0: 2 (0.6%)
+  15: 51 (13.0%)
+  2: 50 (12.7%)
+  7: 40 (10.2%)
+  5: 26 (6.6%)
+  8: 22 (5.6%)
+  10: 20 (5.1%)
+  1: 18 (4.6%)
+  4: 18 (4.6%)
+  23: 17 (4.3%)
+  27: 15 (3.8%)
+  11: 13 (3.3%)
+  14: 12 (3.1%)
+  12: 11 (2.8%)
+  33: 10 (2.5%)
+  21: 9 (2.3%)
+  17: 8 (2.0%)
+  9: 6 (1.5%)
+  25: 5 (1.3%)
+  3: 5 (1.3%)
+  32: 5 (1.3%)
+  16: 5 (1.3%)
+  0: 2 (0.5%)
   20: 1 (0.3%)
-  9: 1 (0.3%)
 
 ================================================================================

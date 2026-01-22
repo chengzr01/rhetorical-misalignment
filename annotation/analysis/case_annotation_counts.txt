@@ -3,7 +3,7 @@
 ANNOTATION COUNT REPORT - USMLE Sample Dataset
 ====================================================================================================
 
-Total unique cases with annotations: 209
+Total unique cases with annotations: 234
 Models found: deepseek, llama, llama_large, llama_small
 
 Goal: 3 annotations per case per model
@@ -11,14 +11,14 @@ Goal: 3 annotations per case per model
 ====================================================================================================
 Case ID                    deepseek          llama    llama_large    llama_small          Total
 ----------------------------------------------------------------------------------------------------
-usmle_sample_0                    0              0              1              1              2
+usmle_sample_0                    0              1              1              1              3
 usmle_sample_1                    0              1              1              5              7
 usmle_sample_2                    1              0              1              0              2
 usmle_sample_3                    1              1              2              2              6
 usmle_sample_4                    1              1              0              0              2
 usmle_sample_5                    0              0              0              2              2
 usmle_sample_7                    0              0              0              1              1
-usmle_sample_8                    0              0              1              1              2
+usmle_sample_8                    0              1              1              1              3
 usmle_sample_9                    0              1              1              0              2
 usmle_sample_11                   0              0              0              2              2
 usmle_sample_12                   0              0              1              0              1
@@ -29,7 +29,8 @@ usmle_sample_16                   0              0              0              1
 usmle_sample_17                   1              1              0              0              2
 usmle_sample_18                   0              1              1              0              2
 usmle_sample_22                   0              0              1              0              1
-usmle_sample_26                   0              0              0              2              2
+usmle_sample_24                   0              1              0              0              1
+usmle_sample_26                   1              0              0              2              3
 usmle_sample_30                   0              0              1              0              1
 usmle_sample_31                   0              0              0              2              2
 usmle_sample_34                   0              1              0              0              1
@@ -41,47 +42,55 @@ usmle_sample_43                   0              0              1              0
 usmle_sample_45                   1              0              0              0              1
 usmle_sample_46                   0              0              0              2              2
 usmle_sample_47                   1              1              0              0              2
-usmle_sample_48                   0              0              1              0              1
+usmle_sample_48                   1              1              1              0              3
 usmle_sample_49                   1              0              0              0              1
+usmle_sample_53                   0              1              0              0              1
+usmle_sample_54                   0              1              0              0              1
 usmle_sample_55                   0              0              1              0              1
+usmle_sample_56                   0              0              1              0              1
 usmle_sample_57                   1              0              0              0              1
 usmle_sample_59                   0              1              1              2              4
 usmle_sample_61                   0              1              0              0              1
 usmle_sample_62                   1              0              0              1              2
-usmle_sample_63                   0              0              1              0              1
+usmle_sample_63                   1              0              1              0              2
 usmle_sample_66                   0              0              0              2              2
-usmle_sample_67                   1              0              0              2              3
+usmle_sample_67                   1              0              1              2              4
 usmle_sample_68                   0              1              0              0              1
 usmle_sample_70                   0              0              1              0              1
 usmle_sample_71                   0              0              0              2              2
-usmle_sample_74                   1              0              0              2              3
+usmle_sample_74                   1              0              1              2              4
 usmle_sample_76                   1              1              0              0              2
 usmle_sample_78                   0              1              0              0              1
-usmle_sample_79                   0              0              0              1              1
+usmle_sample_79                   1              0              0              1              2
 usmle_sample_80                   0              1              0              2              3
-usmle_sample_82                   0              0              0              1              1
+usmle_sample_81                   0              0              1              0              1
+usmle_sample_82                   0              0              1              1              2
 usmle_sample_83                   0              1              0              0              1
 usmle_sample_87                   0              0              0              2              2
 usmle_sample_89                   0              0              0              1              1
 usmle_sample_90                   0              1              0              1              2
 usmle_sample_92                   0              0              1              0              1
 usmle_sample_95                   1              0              0              1              2
+usmle_sample_96                   0              1              0              0              1
 usmle_sample_97                   0              0              0              1              1
 usmle_sample_100                  1              0              0              0              1
+usmle_sample_101                  0              0              1              0              1
+usmle_sample_103                  1              0              0              0              1
 usmle_sample_106                  0              0              1              0              1
 usmle_sample_108                  0              0              1              0              1
 usmle_sample_109                  0              1              0              0              1
 usmle_sample_110                  0              0              1              0              1
+usmle_sample_112                  0              0              1              0              1
 usmle_sample_113                  1              0              0              0              1
 usmle_sample_114                  0              0              0              1              1
 usmle_sample_115                  0              1              1              0              2
-usmle_sample_116                  0              1              0              0              1
+usmle_sample_116                  1              1              0              0              2
 usmle_sample_119                  0              0              0              2              2
 usmle_sample_120                  0              0              0              1              1
 usmle_sample_121                  1              0              0              0              1
 usmle_sample_123                  1              0              1              1              3
 usmle_sample_124                  0              1              0              2              3
-usmle_sample_125                  0              0              1              2              3
+usmle_sample_125                  0              1              1              2              4
 usmle_sample_128                  0              0              0              1              1
 usmle_sample_129                  0              0              0              1              1
 usmle_sample_131                  1              0              0              1              2
@@ -90,6 +99,7 @@ usmle_sample_135                  0              1              0              0
 usmle_sample_136                  0              0              0              2              2
 usmle_sample_137                  0              0              0              1              1
 usmle_sample_138                  0              1              1              0              2
+usmle_sample_139                  0              0              1              0              1
 usmle_sample_140                  0              0              0              2              2
 usmle_sample_141                  1              0              0              0              1
 usmle_sample_143                  1              0              0              0              1
@@ -97,13 +107,13 @@ usmle_sample_144                  1              0              0              0
 usmle_sample_145                  0              0              1              0              1
 usmle_sample_147                  0              0              1              0              1
 usmle_sample_148                  0              0              1              0              1
-usmle_sample_149                  0              0              0              1              1
+usmle_sample_149                  0              1              0              1              2
 usmle_sample_150                  0              0              0              1              1
 usmle_sample_152                  0              1              0              0              1
 usmle_sample_154                  0              0              0              2              2
 usmle_sample_155                  0              0              1              0              1
-usmle_sample_156                  0              0              1              0              1
-usmle_sample_157                  0              0              1              0              1
+usmle_sample_156                  0              1              1              0              2
+usmle_sample_157                  1              0              1              0              2
 usmle_sample_159                  0              1              0              1              2
 usmle_sample_160                  1              0              0              0              1
 usmle_sample_164                  0              1              0              0              1
@@ -113,7 +123,7 @@ usmle_sample_168                  0              0              0              1
 usmle_sample_169                  1              0              0              1              2
 usmle_sample_170                  0              0              0              2              2
 usmle_sample_171                  0              0              1              0              1
-usmle_sample_173                  1              0              0              0              1
+usmle_sample_173                  1              1              0              0              2
 usmle_sample_174                  0              1              0              0              1
 usmle_sample_175                  1              0              1              1              3
 usmle_sample_176                  0              1              0              0              1
@@ -124,16 +134,18 @@ usmle_sample_181                  0              0              1              0
 usmle_sample_185                  0              0              0              1              1
 usmle_sample_187                  0              0              0              2              2
 usmle_sample_188                  1              0              0              1              2
-usmle_sample_189                  1              0              0              1              2
+usmle_sample_189                  1              0              1              1              3
 usmle_sample_190                  1              0              1              0              2
+usmle_sample_192                  0              1              0              0              1
 usmle_sample_193                  0              1              0              3              4
 usmle_sample_194                  0              0              0              1              1
 usmle_sample_195                  0              1              0              1              2
 usmle_sample_196                  0              0              0              1              1
 usmle_sample_197                  0              0              1              2              3
-usmle_sample_198                  0              0              0              1              1
+usmle_sample_198                  0              1              0              1              2
+usmle_sample_199                  0              1              0              0              1
 usmle_sample_200                  0              0              0              2              2
-usmle_sample_201                  0              0              0              2              2
+usmle_sample_201                  1              1              0              2              4
 usmle_sample_202                  0              0              0              1              1
 usmle_sample_203                  0              0              1              2              3
 usmle_sample_204                  1              0              1              0              2
@@ -144,10 +156,12 @@ usmle_sample_209                  0              0              0              1
 usmle_sample_210                  0              0              0              1              1
 usmle_sample_211                  0              0              0              1              1
 usmle_sample_213                  0              1              1              0              2
+usmle_sample_214                  1              0              0              0              1
 usmle_sample_215                  0              0              0              1              1
-usmle_sample_216                  0              1              1              1              3
+usmle_sample_216                  1              1              1              1              4
 usmle_sample_218                  0              1              0              1              2
 usmle_sample_219                  0              0              1              1              2
+usmle_sample_220                  0              1              1              0              2
 usmle_sample_221                  0              1              0              0              1
 usmle_sample_224                  0              0              0              1              1
 usmle_sample_225                  0              0              1              0              1
@@ -157,6 +171,7 @@ usmle_sample_229                  0              0              1              0
 usmle_sample_230                  0              0              1              1              2
 usmle_sample_231                  0              0              1              0              1
 usmle_sample_232                  0              1              0              2              3
+usmle_sample_234                  1              0              0              0              1
 usmle_sample_235                  0              0              0              1              1
 usmle_sample_236                  1              0              0              0              1
 usmle_sample_237                  1              1              1              1              4
@@ -165,19 +180,22 @@ usmle_sample_241                  1              0              0              0
 usmle_sample_243                  1              0              0              0              1
 usmle_sample_245                  1              0              1              0              2
 usmle_sample_246                  1              0              0              2              3
+usmle_sample_247                  0              0              1              0              1
 usmle_sample_250                  1              0              0              0              1
 usmle_sample_251                  0              0              0              1              1
 usmle_sample_253                  1              0              0              0              1
 usmle_sample_254                  0              0              1              0              1
 usmle_sample_255                  0              1              0              0              1
 usmle_sample_257                  0              0              0              1              1
-usmle_sample_258                  1              0              0              1              2
+usmle_sample_258                  1              0              1              1              3
 usmle_sample_260                  0              1              0              1              2
 usmle_sample_263                  0              0              0              2              2
+usmle_sample_267                  0              1              0              0              1
 usmle_sample_268                  0              0              0              1              1
 usmle_sample_269                  0              1              0              1              2
-usmle_sample_272                  0              1              0              1              2
-usmle_sample_273                  0              0              1              0              1
+usmle_sample_271                  0              0              1              0              1
+usmle_sample_272                  1              1              0              1              3
+usmle_sample_273                  1              0              1              0              2
 usmle_sample_274                  0              1              1              0              2
 usmle_sample_275                  0              0              1              2              3
 usmle_sample_276                  1              0              0              2              3
@@ -185,11 +203,11 @@ usmle_sample_279                  1              0              0              0
 usmle_sample_282                  0              0              0              1              1
 usmle_sample_283                  0              0              0              2              2
 usmle_sample_285                  0              0              0              1              1
-usmle_sample_288                  0              1              0              1              2
+usmle_sample_288                  0              1              1              1              3
 usmle_sample_291                  0              0              1              2              3
-usmle_sample_292                  0              0              0              1              1
+usmle_sample_292                  0              1              1              1              3
 usmle_sample_293                  1              0              0              0              1
-usmle_sample_294                  0              0              0              1              1
+usmle_sample_294                  0              1              1              1              3
 usmle_sample_297                  1              0              0              0              1
 usmle_sample_298                  0              1              0              0              1
 usmle_sample_300                  1              0              0              0              1
@@ -197,63 +215,71 @@ usmle_sample_302                  0              0              1              1
 usmle_sample_304                  1              0              0              0              1
 usmle_sample_307                  1              0              0              0              1
 usmle_sample_308                  0              0              0              1              1
+usmle_sample_309                  0              0              1              0              1
 usmle_sample_311                  0              1              0              0              1
 usmle_sample_312                  1              0              0              0              1
 usmle_sample_313                  0              0              0              1              1
 usmle_sample_314                  1              0              0              0              1
-usmle_sample_315                  0              1              0              2              3
+usmle_sample_315                  1              1              0              2              4
 usmle_sample_316                  0              0              2              0              2
 usmle_sample_317                  0              0              0              1              1
 usmle_sample_318                  1              0              0              0              1
 usmle_sample_319                  0              0              0              2              2
-usmle_sample_321                  0              1              1              2              4
+usmle_sample_321                  1              1              1              2              5
 usmle_sample_322                  1              0              0              0              1
+usmle_sample_323                  1              0              0              0              1
+usmle_sample_325                  0              0              1              0              1
 usmle_sample_326                  0              0              0              1              1
 usmle_sample_327                  1              0              0              0              1
 usmle_sample_329                  1              1              0              0              2
 usmle_sample_330                  1              0              0              0              1
-usmle_sample_332                  0              0              0              2              2
+usmle_sample_332                  0              0              1              2              3
 usmle_sample_335                  0              0              0              1              1
 usmle_sample_339                  1              0              1              0              2
+usmle_sample_342                  0              0              1              0              1
 usmle_sample_343                  1              1              0              0              2
+usmle_sample_344                  0              1              0              0              1
 usmle_sample_345                  0              1              0              2              3
+usmle_sample_346                  1              0              0              0              1
 usmle_sample_347                  0              0              0              1              1
 usmle_sample_351                  0              1              1              0              2
+usmle_sample_357                  0              1              0              0              1
 usmle_sample_360                  0              0              0              1              1
 ----------------------------------------------------------------------------------------------------
-TOTAL                            59             54             61            161            335
+TOTAL                            76             75             81            161            393
 ====================================================================================================
 
 ====================================================================================================
 SUMMARY STATISTICS
 ====================================================================================================
 
-Total annotations across all cases: 335
-Average annotations per case: 1.60
+Total annotations across all cases: 393
+Average annotations per case: 1.68
 
 Annotation count distribution:
-  Cases with  1 annotations: 119 ( 56.9%)
-  Cases with  2 annotations:  65 ( 31.1%)
-  Cases with  3 annotations:  19 (  9.1%)
-  Cases with  4 annotations:   4 (  1.9%)
-  Cases with  6 annotations:   1 (  0.5%)
-  Cases with  7 annotations:   1 (  0.5%)
+  Cases with  1 annotations: 130 ( 55.6%)
+  Cases with  2 annotations:  67 ( 28.6%)
+  Cases with  3 annotations:  25 ( 10.7%)
+  Cases with  4 annotations:   9 (  3.8%)
+  Cases with  5 annotations:   1 (  0.4%)
+  Cases with  6 annotations:   1 (  0.4%)
+  Cases with  7 annotations:   1 (  0.4%)
 
 Per-model statistics:
-  deepseek       :   59 annotations (avg 0.28 per case)
-  llama          :   54 annotations (avg 0.26 per case)
-  llama_large    :   61 annotations (avg 0.29 per case)
-  llama_small    :  161 annotations (avg 0.77 per case)
+  deepseek       :   76 annotations (avg 0.32 per case)
+  llama          :   75 annotations (avg 0.32 per case)
+  llama_large    :   81 annotations (avg 0.35 per case)
+  llama_small    :  161 annotations (avg 0.69 per case)
 
 ====================================================================================================
 CASES NEEDING MORE ANNOTATIONS
 ====================================================================================================
 
-⚠️  Cases with 1-2 annotations (184 cases):
-    usmle_sample_0 (2), usmle_sample_2 (2), usmle_sample_4 (2), usmle_sample_5 (2), usmle_sample_7 (1)
-    usmle_sample_8 (2), usmle_sample_9 (2), usmle_sample_11 (2), usmle_sample_12 (1), usmle_sample_13 (1)
-    usmle_sample_14 (2), usmle_sample_16 (1), usmle_sample_17 (2), usmle_sample_18 (2), usmle_sample_22 (1)
-    usmle_sample_26 (2), usmle_sample_30 (1), usmle_sample_31 (2), usmle_sample_34 (1), usmle_sample_35 (1)
-    ... and 164 more cases
+⚠️  Cases with 1-2 annotations (197 cases):
+    usmle_sample_2 (2), usmle_sample_4 (2), usmle_sample_5 (2), usmle_sample_7 (1), usmle_sample_9 (2)
+    usmle_sample_11 (2), usmle_sample_12 (1), usmle_sample_13 (1), usmle_sample_14 (2), usmle_sample_16 (1)
+    usmle_sample_17 (2), usmle_sample_18 (2), usmle_sample_22 (1), usmle_sample_24 (1), usmle_sample_30 (1)
+    usmle_sample_31 (2), usmle_sample_34 (1), usmle_sample_35 (1), usmle_sample_37 (1), usmle_sample_38 (1)
+    ... and 177 more cases
 
 ====================================================================================================

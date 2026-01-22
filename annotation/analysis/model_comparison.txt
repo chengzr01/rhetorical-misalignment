@@ -9,7 +9,7 @@ Comparing persuasion effectiveness across different AI models
 USMLE SAMPLE - MODEL COMPARISON
 ================================================================================
 
-Total annotations: 335
+Total annotations: 393
 Models found: 5 unique models
 
 --------------------------------------------------------------------------------
@@ -45,80 +45,80 @@ Belief Changes:
 ================================================================================
 Model: meta-llama/llama-3.1-405b-instruct
 ================================================================================
-Total annotations: 61
+Total annotations: 81
 
 Accuracy:
-  Step 1 (Initial): 35/61 (57.4%)
-  Step 2 (After AI): 37/61 (60.7%)
-  Step 3 (After truth): 43/61 (70.5%)
-  Change Step1→Step2: +3.3 percentage points
+  Step 1 (Initial): 43/81 (53.1%)
+  Step 2 (After AI): 44/81 (54.3%)
+  Step 3 (After truth): 52/81 (64.2%)
+  Change Step1→Step2: +1.2 percentage points
 
 Answer Changes:
-  Changed answer: 10/61 (16.4%)
+  Changed answer: 13/81 (16.0%)
 
 Persuasion Effects:
-  Correct → Incorrect: 4/61 (6.6%)
-  Incorrect → Correct: 6/61 (9.8%)
-  Net helpful effect: +2 (+3.3 percentage points)
+  Correct → Incorrect: 5/81 (6.2%)
+  Incorrect → Correct: 6/81 (7.4%)
+  Net helpful effect: +1 (+1.2 percentage points)
 
 Belief Changes:
-  Increased: 20/61 (32.8%)
-    Mean: 0.305, Median: 0.310
-  Decreased: 2/61 (3.3%)
-    Mean: -0.135, Median: -0.135
-  Unchanged: 39/61 (63.9%)
+  Increased: 22/81 (27.2%)
+    Mean: 0.287, Median: 0.270
+  Decreased: 3/81 (3.7%)
+    Mean: -0.173, Median: -0.220
+  Unchanged: 56/81 (69.1%)
 
 ================================================================================
 Model: deepseek/deepseek-chat-v3.1
 ================================================================================
-Total annotations: 59
+Total annotations: 76
 
 Accuracy:
-  Step 1 (Initial): 29/59 (49.2%)
-  Step 2 (After AI): 41/59 (69.5%)
-  Step 3 (After truth): 42/59 (71.2%)
-  Change Step1→Step2: +20.3 percentage points
+  Step 1 (Initial): 42/76 (55.3%)
+  Step 2 (After AI): 55/76 (72.4%)
+  Step 3 (After truth): 57/76 (75.0%)
+  Change Step1→Step2: +17.1 percentage points
 
 Answer Changes:
-  Changed answer: 18/59 (30.5%)
+  Changed answer: 21/76 (27.6%)
 
 Persuasion Effects:
-  Correct → Incorrect: 2/59 (3.4%)
-  Incorrect → Correct: 14/59 (23.7%)
-  Net helpful effect: +12 (+20.3 percentage points)
+  Correct → Incorrect: 3/76 (3.9%)
+  Incorrect → Correct: 16/76 (21.1%)
+  Net helpful effect: +13 (+17.1 percentage points)
 
 Belief Changes:
-  Increased: 33/59 (55.9%)
-    Mean: 0.304, Median: 0.290
-  Decreased: 2/59 (3.4%)
-    Mean: -0.445, Median: -0.445
-  Unchanged: 24/59 (40.7%)
+  Increased: 45/76 (59.2%)
+    Mean: 0.281, Median: 0.270
+  Decreased: 4/76 (5.3%)
+    Mean: -0.345, Median: -0.380
+  Unchanged: 27/76 (35.5%)
 
 ================================================================================
 Model: meta-llama/llama-3.3-70b-instruct
 ================================================================================
-Total annotations: 54
+Total annotations: 75
 
 Accuracy:
-  Step 1 (Initial): 23/54 (42.6%)
-  Step 2 (After AI): 31/54 (57.4%)
-  Step 3 (After truth): 32/54 (59.3%)
-  Change Step1→Step2: +14.8 percentage points
+  Step 1 (Initial): 31/75 (41.3%)
+  Step 2 (After AI): 40/75 (53.3%)
+  Step 3 (After truth): 43/75 (57.3%)
+  Change Step1→Step2: +12.0 percentage points
 
 Answer Changes:
-  Changed answer: 13/54 (24.1%)
+  Changed answer: 19/75 (25.3%)
 
 Persuasion Effects:
-  Correct → Incorrect: 1/54 (1.9%)
-  Incorrect → Correct: 9/54 (16.7%)
-  Net helpful effect: +8 (+14.8 percentage points)
+  Correct → Incorrect: 2/75 (2.7%)
+  Incorrect → Correct: 11/75 (14.7%)
+  Net helpful effect: +9 (+12.0 percentage points)
 
 Belief Changes:
-  Increased: 16/54 (29.6%)
-    Mean: 0.282, Median: 0.305
-  Decreased: 2/54 (3.7%)
-    Mean: -0.260, Median: -0.260
-  Unchanged: 36/54 (66.7%)
+  Increased: 24/75 (32.0%)
+    Mean: 0.248, Median: 0.185
+  Decreased: 5/75 (6.7%)
+    Mean: -0.210, Median: -0.220
+  Unchanged: 46/75 (61.3%)
 
 ================================================================================
 Model: allenai/Llama-3.1-Tulu-3-8B-DPO
@@ -152,9 +152,9 @@ SUMMARY COMPARISON TABLE
 Model                                                  N  Ans Chg   C→I   I→C   Net
 --------------------------------------------------------------------------------------------
 meta-llama/llama-3.1-8b-instruct                     150    18.0%  2.7% 10.7%  +8.0%
-meta-llama/llama-3.1-405b-instruct                    61    16.4%  6.6%  9.8%  +3.3%
-deepseek/deepseek-chat-v3.1                           59    30.5%  3.4% 23.7% +20.3%
-meta-llama/llama-3.3-70b-instruct                     54    24.1%  1.9% 16.7% +14.8%
+meta-llama/llama-3.1-405b-instruct                    81    16.0%  6.2%  7.4%  +1.2%
+deepseek/deepseek-chat-v3.1                           76    27.6%  3.9% 21.1% +17.1%
+meta-llama/llama-3.3-70b-instruct                     75    25.3%  2.7% 14.7% +12.0%
 allenai/Llama-3.1-Tulu-3-8B-DPO                       11    27.3% 18.2%  0.0% -18.2%
 
 Note:
