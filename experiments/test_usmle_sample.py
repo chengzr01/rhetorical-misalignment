@@ -4,39 +4,7 @@ Test language models directly on USMLE sample questions.
 This script evaluates models' performance on clinical multiple-choice questions.
 
 Example usage:
-    # Test with NVIDIA API (default)
-    python experiments/test_usmle_sample.py \
-        --model meta/llama-3.1-8b-instruct \
-        --backend nvidia \
-        --temperature 0.0 \
-        --max-workers 4
-
-    # Test with different NVIDIA model
-    python experiments/test_usmle_sample.py \
-        --model meta/llama-3.3-70b-instruct \
-        --backend nvidia
-
-    # Test with SGLang server
-    python experiments/test_usmle_sample.py \
-        --model llama-sft \
-        --backend sglang \
-        --sglang-port 30000
-
-    # Test with OpenRouter
-    python experiments/test_usmle_sample.py \
-        --model meta-llama/llama-3.1-8b-instruct \
-        --backend openrouter
-
-    # Test with belief elicitation
-    python experiments/test_usmle_sample.py \
-        --model meta/llama-3.1-8b-instruct \
-        --backend nvidia \
-        --elicit-belief \
-        --prompt prompts/experiments/elicit.yaml
-
-    # Analyze existing results
-    python experiments/test_usmle_sample.py \
-        --analyze-existing tests/test_usmle_sample_deepseek-deepseek-chat-v3.1_belief.json
+    # (same as before)
 """
 
 from __future__ import annotations
@@ -50,7 +18,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
 import yaml
 
 # Add parent directory to path to import from agents and interface
@@ -208,11 +175,16 @@ def test_single_question(
         print(f"Error processing question {question_data.get('id', 'unknown')}: {str(e)}")
         result = {
             "id": question_data.get("id"),
+            "question": question,
+            "options": options,
+            "correct_answer": question_data.get("answer"),
             "correct_answer_idx": correct_answer_idx,
             "predicted_answer_idx": None,
+            "predicted_answer": None,
             "correct": False,
             "response": None,
             "error": str(e),
+            "meta_info": question_data.get("meta_info"),
         }
         if elicit_belief:
             result["belief"] = None
@@ -282,16 +254,35 @@ def run_tests(
     print(f"Testing {len(questions)} questions with {max_workers} workers...")
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # To avoid race conditions when clients (e.g., SGLangChatClient) are not thread safe,
+        # create a client per worker if using SGLang backend
+        if isinstance(client, SGLangChatClient):
+            # To avoid accidental request mixing (see @sglang-inference-15607459.err 149–155), initialize one client per thread
+            def test_q_with_client(q):
+                thread_client = SGLangChatClient(port=client._port, base_url=client._base_url)
+                return test_single_question(
+                    q,
+                    thread_client,
+                    model,
+                    prompt_template,
+                    temperature,
+                    elicit_belief
+                )
+            job_func = test_q_with_client
+        else:
+            # Thread-safe clients
+            def job_func(q):
+                return test_single_question(
+                    q,
+                    client,
+                    model,
+                    prompt_template,
+                    temperature,
+                    elicit_belief
+                )
+
         future_to_question = {
-            executor.submit(
-                test_single_question,
-                question,
-                client,
-                model,
-                prompt_template,
-                temperature,
-                elicit_belief
-            ): question
+            executor.submit(job_func, question): question
             for question in questions
         }
 
@@ -497,7 +488,7 @@ def main() -> None:
     parser.add_argument(
         "--sglang-port",
         type=int,
-        default=30001,
+        default=30000,
         help="Port for SGLang server"
     )
     parser.add_argument(
@@ -615,10 +606,12 @@ def main() -> None:
     print("="*80)
     for i, result in enumerate(results[:3], 1):
         print(f"\n{i}. Question ID: {result['id']}")
-        print(f"   Correct answer: {result['correct_answer_idx']} - {result['correct_answer']}")
+        print(f"   Correct answer: {result['correct_answer_idx']} - {result.get('correct_answer', 'N/A')}")
         print(f"   Predicted: {result['predicted_answer_idx']} - {result.get('predicted_answer', 'N/A')}")
         if args.elicit_belief and result.get("belief") is not None:
             print(f"   Belief: {result['belief']:.3f}")
+        if result.get("error"):
+            print(f"   Error: {result['error']}")
         print(f"   Result: {'✓ CORRECT' if result['correct'] else '✗ INCORRECT'}")
 
 
