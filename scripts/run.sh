@@ -1,4 +1,24 @@
 #!/bin/bash
+#
+# Inference Runner Script for Clinical Questions (Agent + Principal)
+#
+# Usage:
+#   bash scripts/run.sh [agent_model_key] [dataset_key] [inference_mode]
+#
+#   agent_model_key:  deepseek | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft
+#   dataset_key:      mimiciv_demo | usmle | usmle_sample
+#   inference_mode:   agent | full        # agent = agent only, full = agent + principal (default: agent)
+#
+# Examples:
+#   bash scripts/run.sh llama usmle_sample agent
+#   bash scripts/run.sh deepseek mimiciv_demo full
+#   AGENT_SERVER=sglang PRINCIPAL_MODEL=llama-dpo bash scripts/run.sh llama-dpo usmle full
+#
+# Environment variables (optional overrides):
+#   AGENT_SERVER, PRINCIPAL_SERVER, PRINCIPAL_MODEL, MAX_WORKERS, PRINCIPAL_TYPES, FORCE_RERUN, PRINCIPAL_WORKERS, etc.
+#   (See below for all configurables.)
+#
+# This script configures and runs agent inference and optionally principal inference, supporting multiple model/server options.
 
 set -e  # Exit on error
 
@@ -21,6 +41,7 @@ PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
 # Model configurations
 declare -A MODEL_MAP=(
     ["deepseek"]="deepseek/deepseek-chat-v3.1"
+    ["deepseek-llama"]="deepseek/deepseek-r1-distill-llama-70b"
     ["llama"]="meta-llama/llama-3.3-70b-instruct"
     ["llama-small"]="meta-llama/llama-3.1-8b-instruct"
     ["llama-large"]="meta-llama/llama-3.1-405b-instruct"

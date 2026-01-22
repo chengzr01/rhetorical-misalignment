@@ -18,7 +18,7 @@ conda activate sglang
 # 2. Start the Server in the Background
 echo "Starting SGLang server on port 30000..."
 # We use '&' to push this to the background so the script continues
-bash interface/sglang.sh SFT & 
+bash interface/sglang.sh DPO & 
 SERVER_PID=$!
 
 # 3. Wait for the Server to be Ready
@@ -34,7 +34,8 @@ echo "Server is up and listening on port 30000."
 echo "Starting inference script..."
 conda deactivate
 conda activate alignment
-bash scripts/run_inference.sh llama-sft usmle_sample full
+# bash scripts/run.sh llama-dpo usmle_sample full
+bash scripts/test.sh llama-dpo
 
 # 5. Cleanup
 # Once inference is done, we kill the server process
