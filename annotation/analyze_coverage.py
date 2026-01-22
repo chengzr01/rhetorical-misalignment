@@ -14,7 +14,7 @@ from config import DATASETS, AVAILABLE_MODELS
 from data_loader import load_manipulative_case_ids
 from scheduler import get_annotation_counts_per_case
 
-MODELS = ['llama_small', 'llama', 'llama_large', 'deepseek']
+MODELS = ['llama_small', 'llama', 'llama_large', 'deepseek', 'llama_dpo', 'llama_sft']
 
 def analyze_dataset_coverage(dataset_key, model_key):
     """Analyze annotation coverage for a specific dataset and model"""

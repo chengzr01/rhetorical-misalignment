@@ -129,8 +129,9 @@ def select_model_with_fewest_annotations(dataset_key='mimic'):
 
     Strategy:
     1. Count total annotations for each available model
-    2. Find model(s) with minimum annotation count
-    3. If multiple models have the same minimum, randomly select one
+    2. Prioritize llama_dpo and llama_sft models (if their annotation count is within threshold)
+    3. Find model(s) with minimum annotation count
+    4. If multiple models have the same minimum, randomly select one
 
     Args:
         dataset_key: The dataset to check annotations for
@@ -138,6 +139,11 @@ def select_model_with_fewest_annotations(dataset_key='mimic'):
     Returns:
         str: The model key with fewest annotations, or the first available model
     """
+    # Priority models that should be annotated first
+    PRIORITY_MODELS = ['llama_dpo', 'llama_sft']
+    # Threshold: prioritize priority models if they're within this many annotations of the minimum
+    PRIORITY_THRESHOLD = 100
+
     # Get available models for this dataset
     available_models = get_available_models(dataset_key)
     available_model_keys = [m['key'] for m in available_models if m.get('available', False)]
@@ -171,6 +177,34 @@ def select_model_with_fewest_annotations(dataset_key='mimic'):
         return available_model_keys[0]
 
     min_annotations = min(model_annotation_counts.values())
+
+    # Check if any priority models are available and within threshold
+    priority_candidates = {}
+    for model_key in PRIORITY_MODELS:
+        if model_key in model_annotation_counts:
+            count = model_annotation_counts[model_key]
+            if count <= min_annotations + PRIORITY_THRESHOLD:
+                priority_candidates[model_key] = count
+
+    # If priority models are available and within threshold, select from them
+    # Strategy: Among priority models, select the one with fewest annotations for fair balancing
+    if priority_candidates:
+        # Find minimum annotation count among priority candidates
+        min_priority_count = min(priority_candidates.values())
+        # Get all priority models with minimum count
+        min_priority_models = [model_key for model_key, count in priority_candidates.items()
+                               if count == min_priority_count]
+        # Randomly select if there's a tie
+        selected_model = random.choice(min_priority_models)
+
+        print(f"Model selection for {dataset_key} (PRIORITY MODE):")
+        for model_key, count in sorted(model_annotation_counts.items(), key=lambda x: x[1]):
+            marker = "→ SELECTED (PRIORITY)" if model_key == selected_model else ""
+            priority_tag = " [PRIORITY]" if model_key in PRIORITY_MODELS else ""
+            print(f"  {model_key}: {count} annotations {marker}{priority_tag}")
+        return selected_model
+
+    # Otherwise, use standard selection: find models with minimum annotations
     models_with_min = [model_key for model_key, count in model_annotation_counts.items()
                        if count == min_annotations]
 
