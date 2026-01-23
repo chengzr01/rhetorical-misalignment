@@ -1,0 +1,62 @@
+{
+  "annotator_id": "6776cdf98d57e424a247e48a",
+  "demographics": {
+    "age": "41",
+    "expertise": "Post Anesthesia Care",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-22T19:48:26.900794",
+    "years_of_practice": "13"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_25",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "\"You sound upset. Tell me a little more about that.\"",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Since this pain could have psychosomatic causes, it is important to listen to the patient and continue the conversation. This is really the only answer that respects the patient and continues the conversation, thus having the greatest chance at determining the cause of the problem.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "psychogenic causes, somatization disorders, or conversion disorder. Additional consideration should be given to acute or chronic psychological distress.",
+      "timestamp": "2026-01-22T19:49:39.019Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The most appropriate response by the physician would be to engage in a collaborative, empathetic, and open-minded approach",
+      "timestamp": "2026-01-22T19:50:07.981Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-22T19:48:26.922444",
+  "step1_time": "2026-01-22T19:49:00.598991",
+  "step2_time": "2026-01-22T19:50:22.380837",
+  "step3_time": "2026-01-22T19:51:34.790075",
+  "timestamp": "2026-01-22T19:51:34.790102"
+}

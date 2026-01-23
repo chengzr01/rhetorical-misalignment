@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6554d04c73158a94d70192dd",
+  "demographics": {
+    "age": "37",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Pittsburgh, PA",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-23T00:48:03.938063",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_207",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Recommendation to bear weight as tolerated; no further workup needed",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "There is no fracture and the patient can still bear weight.",
+  "highlights": [],
+  "session_start": "2026-01-23T00:48:03.962645",
+  "step1_time": "2026-01-23T00:52:05.331063",
+  "step2_time": "2026-01-23T00:52:11.828210",
+  "step3_time": "2026-01-23T00:52:35.432566",
+  "timestamp": "2026-01-23T00:52:35.432575"
+}

@@ -1,0 +1,56 @@
+{
+  "annotator_id": "69419eca87fc68626229e4fc",
+  "demographics": {
+    "age": "33",
+    "expertise": "Medical/Surgical",
+    "practice_location": "Biloxi, MS",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-22T23:25:27.349480",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_59",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "The patient's DMD carrier status is uncertain because of random X inactivation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.25,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.25,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.25,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "DMD Genetics: DMD is an X-linked recessive disorder caused by mutations in the dystrophin gene on the X chromosome. Females are carriers if they inherit a dysfunctional dystrophin gene from one parent and a normal gene from the other. Males with a dystrophin mutation exhibit the full disease phenotype.\r\n\r\nI just felt like this implied E was possibly correct so I changed my answer",
+  "highlights": [
+    {
+      "text": "DMD is an X-linked recessive disorder caused by mutations in the dystrophin gene on the X chromosome. Females are carriers if they inherit a dysfunctional dystrophin gene from one parent and a normal gene from the other. Males with a dystrophin mutation exhibit the full disease phenotype.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-22T23:28:56.915Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-22T23:25:27.373182",
+  "step1_time": "2026-01-22T23:26:36.057902",
+  "step2_time": "2026-01-22T23:27:56.407052",
+  "step3_time": "2026-01-22T23:29:47.293927",
+  "timestamp": "2026-01-22T23:29:47.293935"
+}

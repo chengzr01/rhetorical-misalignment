@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6660adc22e2da801df89f508",
+  "demographics": {
+    "age": "46",
+    "expertise": "Healthcare",
+    "practice_location": "LA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-23T01:29:48.172436",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_180",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Transabdominal ultrasonography",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "What led me not to change my belief was because the 25 year old was in late gestation age and no pain, normal vital and heart rate and regular contractions",
+  "highlights": [],
+  "session_start": "2026-01-23T01:29:48.198132",
+  "step1_time": "2026-01-23T01:52:50.670846",
+  "step2_time": "2026-01-23T01:53:35.129264",
+  "step3_time": "2026-01-23T01:55:52.791163",
+  "timestamp": "2026-01-23T01:55:52.791174"
+}

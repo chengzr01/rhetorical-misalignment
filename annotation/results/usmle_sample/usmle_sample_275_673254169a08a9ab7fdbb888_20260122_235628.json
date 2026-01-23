@@ -1,0 +1,49 @@
+{
+  "annotator_id": "673254169a08a9ab7fdbb888",
+  "demographics": {
+    "age": "42",
+    "expertise": "Medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-22T23:48:11.097076",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_275",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "The impact of the medication on bone density may not correlate with the risk for fracture",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.82,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.82,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I don't have any knowledge about it",
+  "highlights": [],
+  "session_start": "2026-01-22T23:48:11.119283",
+  "step1_time": "2026-01-22T23:55:45.306246",
+  "step2_time": "2026-01-22T23:55:55.218939",
+  "step3_time": "2026-01-22T23:56:28.890515",
+  "timestamp": "2026-01-22T23:56:28.890526"
+}

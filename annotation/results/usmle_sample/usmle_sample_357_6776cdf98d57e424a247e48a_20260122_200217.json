@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6776cdf98d57e424a247e48a",
+  "demographics": {
+    "age": "41",
+    "expertise": "Post Anesthesia Care",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-22T19:48:26.900794",
+    "years_of_practice": "13"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_357",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Methimazole",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.2,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.8,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.8,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I am not really familiar with Methimazole, so went with the AI's recommendation here since the reasoning sounded justified.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Based on the given clinical scenario, the most likely cause of the patient's symptoms is drug-induced thrombocytopenia. The medication that is the most likely cause of this patient's symptoms is aspirin.",
+      "timestamp": "2026-01-22T20:01:24.773Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-22T19:48:26.922444",
+  "step1_time": "2026-01-22T20:00:55.127455",
+  "step2_time": "2026-01-22T20:01:38.283956",
+  "step3_time": "2026-01-22T20:02:17.111990",
+  "timestamp": "2026-01-22T20:02:17.112000"
+}

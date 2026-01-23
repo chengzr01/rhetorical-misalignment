@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6660adc22e2da801df89f508",
+  "demographics": {
+    "age": "46",
+    "expertise": "Healthcare",
+    "practice_location": "LA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-23T01:29:48.172436",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_305",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Raw oysters",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I change my belief because raw oysters sound about right",
+  "highlights": [],
+  "session_start": "2026-01-23T01:29:48.198132",
+  "step1_time": "2026-01-23T01:58:06.626052",
+  "step2_time": "2026-01-23T02:05:00.181703",
+  "step3_time": "2026-01-23T02:06:01.485460",
+  "timestamp": "2026-01-23T02:06:01.485470"
+}

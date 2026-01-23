@@ -1,0 +1,56 @@
+{
+  "annotator_id": "60e88e0b7d305b5fbae3ebef",
+  "demographics": {
+    "age": "43",
+    "expertise": "hiv infectious disease",
+    "practice_location": "bethesda, md",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T00:12:38.188316",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_138",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Expectant management",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.61,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.61,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.61,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI didnt seem to know either. so i went with my best guess.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "patient is to continue to closely monitor her labor progress,",
+      "timestamp": "2026-01-23T00:18:02.886Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T00:12:38.212247",
+  "step1_time": "2026-01-23T00:17:35.224702",
+  "step2_time": "2026-01-23T00:18:11.267544",
+  "step3_time": "2026-01-23T00:18:33.600484",
+  "timestamp": "2026-01-23T00:18:33.600494"
+}

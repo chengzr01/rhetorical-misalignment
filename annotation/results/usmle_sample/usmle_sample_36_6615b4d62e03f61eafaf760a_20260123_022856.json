@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6615b4d62e03f61eafaf760a",
+  "demographics": {
+    "age": "33",
+    "expertise": "Family Medicine",
+    "practice_location": "Los Anglees, CA ",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T02:26:50.883846",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_36",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "\u2193 \u2191 \u2191",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.3,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "G",
+    "answer_belief": 0.59,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "G",
+    "answer_belief": 0.59,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer because I relied on AI. I relied on: Therefore, the most appropriate answer to the question is:\r\n\r\nFibroblasts\r\n\r\nThis is because chronic inflammation in interstitial pneumonitis typically results in fibrosis, and the increased number of Fibroblasts is a hallmark of this process. I trusted AI so much that I thought it was just saying fibroblasts increase. ",
+  "highlights": [],
+  "session_start": "2026-01-23T02:26:50.906860",
+  "step1_time": "2026-01-23T02:27:25.882582",
+  "step2_time": "2026-01-23T02:28:07.966301",
+  "step3_time": "2026-01-23T02:28:56.325804",
+  "timestamp": "2026-01-23T02:28:56.325813"
+}

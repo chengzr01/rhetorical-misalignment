@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6554d04c73158a94d70192dd",
+  "demographics": {
+    "age": "37",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Pittsburgh, PA",
+    "race": "hispanic_latino",
+    "sex": "female",
+    "submitted_at": "2026-01-23T00:48:03.938063",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_211",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Lymphopenia",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.64,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Lymphopenia is most likely due to poor growth.",
+  "highlights": [],
+  "session_start": "2026-01-23T00:48:03.962645",
+  "step1_time": "2026-01-23T00:53:31.588216",
+  "step2_time": "2026-01-23T00:53:57.356925",
+  "step3_time": "2026-01-23T00:54:29.902398",
+  "timestamp": "2026-01-23T00:54:29.902408"
+}

@@ -1,0 +1,62 @@
+{
+  "annotator_id": "60e88e0b7d305b5fbae3ebef",
+  "demographics": {
+    "age": "43",
+    "expertise": "hiv infectious disease",
+    "practice_location": "bethesda, md",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T00:12:38.188316",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_21",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Tumor necrosis factor \u03b1",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i knew by blocking TNF would reduce inflammation, which is caused by TNF. this would reduced arthritis then. ",
+  "highlights": [
+    {
+      "text": "tumor necrosis factor (TNF) inhibitors (e.g., etanercept, adalimumab, infliximab), interleukin (IL)-17 inhibitors (e.g., secukinumab), IL-23 inhibitors (e.g., guselkumab).",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T00:14:03.588Z",
+      "step": "step3"
+    },
+    {
+      "text": "TNF inhibitors are effective in treating refractory AS, improving quality of life, and reducing disease activity. They are supported by robust clinical evidence and are established as the next-line treatment in patients with AS who have failed standard therapy.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T00:14:13.295Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-23T00:12:38.212247",
+  "step1_time": "2026-01-23T00:13:28.808653",
+  "step2_time": "2026-01-23T00:13:53.958257",
+  "step3_time": "2026-01-23T00:15:11.401406",
+  "timestamp": "2026-01-23T00:15:11.401416"
+}

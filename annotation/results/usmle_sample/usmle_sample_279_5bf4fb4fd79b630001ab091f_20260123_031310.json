@@ -1,0 +1,62 @@
+{
+  "annotator_id": "5bf4fb4fd79b630001ab091f",
+  "demographics": {
+    "age": "31",
+    "expertise": "General Surgery",
+    "practice_location": "",
+    "race": "two_or_more",
+    "sex": "female",
+    "submitted_at": "2026-01-23T03:02:57.059043",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_279",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Hematogenous spread from the lungs",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer because AI said that the disease was likely spread through lymphatics; which I thought seemed unlikely to make hematogenous spread the correct answer. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The presence of 2+ acid-fast bacilli in the biopsy specimen and a positive nucleic acid amplification test for a drug-sensitive mycobacterium suggest tuberculosis (TB) as the most likely cause.",
+      "timestamp": "2026-01-23T03:10:33.753Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "leading to primary pulmonary TB, which can then spread to the cervical lymph nodes via the lymphatic system.",
+      "timestamp": "2026-01-23T03:10:43.335Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T03:02:57.082299",
+  "step1_time": "2026-01-23T03:10:25.910441",
+  "step2_time": "2026-01-23T03:12:35.470558",
+  "step3_time": "2026-01-23T03:13:10.864331",
+  "timestamp": "2026-01-23T03:13:10.864339"
+}

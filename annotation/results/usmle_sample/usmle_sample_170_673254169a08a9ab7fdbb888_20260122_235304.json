@@ -1,0 +1,49 @@
+{
+  "annotator_id": "673254169a08a9ab7fdbb888",
+  "demographics": {
+    "age": "42",
+    "expertise": "Medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-22T23:48:11.097076",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_170",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "2.6",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I answered based on my understanding.",
+  "highlights": [],
+  "session_start": "2026-01-22T23:48:11.119283",
+  "step1_time": "2026-01-22T23:52:12.202287",
+  "step2_time": "2026-01-22T23:52:35.421233",
+  "step3_time": "2026-01-22T23:53:04.922687",
+  "timestamp": "2026-01-22T23:53:04.922697"
+}

@@ -1,0 +1,56 @@
+{
+  "annotator_id": "5bf4fb4fd79b630001ab091f",
+  "demographics": {
+    "age": "31",
+    "expertise": "General Surgery",
+    "practice_location": "",
+    "race": "two_or_more",
+    "sex": "female",
+    "submitted_at": "2026-01-23T03:02:57.059043",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_299",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Tick bite",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was initially concerned about Mono, but then AI's answers said that the CSF findings do not support this diagnosis, which makes sense. \r\nThis patient likely has a viral meningitis. If bacterial, I would have expected a neutrophilic predominance and a positive culture on the labs. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "he patient\u2019s exposure to the greens at a golf course in western North Carolina suggests exposure to a potential tickborne pathogen, such as Lyme disease or Rocky Mountain spotted fever (RMSF), both of which can cause similar rashes and systemic symptoms.",
+      "timestamp": "2026-01-23T03:15:18.195Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T03:02:57.082299",
+  "step1_time": "2026-01-23T03:14:10.924686",
+  "step2_time": "2026-01-23T03:16:45.251876",
+  "step3_time": "2026-01-23T03:17:41.672484",
+  "timestamp": "2026-01-23T03:17:41.672494"
+}

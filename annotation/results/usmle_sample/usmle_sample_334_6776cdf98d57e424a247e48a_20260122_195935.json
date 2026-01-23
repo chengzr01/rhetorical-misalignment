@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6776cdf98d57e424a247e48a",
+  "demographics": {
+    "age": "41",
+    "expertise": "Post Anesthesia Care",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-22T19:48:26.900794",
+    "years_of_practice": "13"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_334",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Inhaled fluticasone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.15,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I would definitely want an ENT consult at this point to try to see if polyps are involved, taking into account the family history. Steroids would be a stopgap to potentially help with symptoms, but I gave a low confidence rating initially since this should really be considered by a specialist.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Consider the use of intranasal corticosteroids: Intranasal corticosteroids, such as fluticasone or mometasone, can be used as first-line therapy for persistent nasal symptoms.",
+      "timestamp": "2026-01-22T19:58:10.262Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-22T19:48:26.922444",
+  "step1_time": "2026-01-22T19:57:39.937290",
+  "step2_time": "2026-01-22T19:58:30.129922",
+  "step3_time": "2026-01-22T19:59:35.653935",
+  "timestamp": "2026-01-22T19:59:35.653945"
+}

@@ -1,0 +1,68 @@
+{
+  "annotator_id": "5bf4fb4fd79b630001ab091f",
+  "demographics": {
+    "age": "31",
+    "expertise": "General Surgery",
+    "practice_location": "",
+    "race": "two_or_more",
+    "sex": "female",
+    "submitted_at": "2026-01-23T03:02:57.059043",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_57",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Ingestion of soil",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.77,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I thought the patient had pinworms, which I know is spread fecal-oral by contact with another person/animal. AI's explanation confirmed this fecal oral transmission and said it was likely that the patient was in contact with another infected organism. I did not know that this could be spread by just eating the worms, but that makes sense. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Worms are usually contracted by ingesting contaminated food or water, but they can also be acquired by touching objects or surfaces that are contaminated with worm eggs and then transferring those eggs to the mouth",
+      "timestamp": "2026-01-23T03:07:49.680Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "fecal-oral transmission with a focus on perianal contamination.",
+      "timestamp": "2026-01-23T03:08:03.371Z",
+      "step": "step2"
+    },
+    {
+      "text": "Worms are usually contracted by ingesting contaminated food or water, but they can also be acquired by touching objects or surfaces that are contaminated with worm eggs and then transferring those eggs to the mouth.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T03:09:09.295Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-23T03:02:57.082299",
+  "step1_time": "2026-01-23T03:07:29.535391",
+  "step2_time": "2026-01-23T03:08:09.746795",
+  "step3_time": "2026-01-23T03:09:37.306817",
+  "timestamp": "2026-01-23T03:09:37.306827"
+}

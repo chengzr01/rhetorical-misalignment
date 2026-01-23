@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66fc24d3c455b3269b484198",
+  "demographics": {
+    "age": "32",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Kansas, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-22T20:04:51.316846",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_60",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "von Willebrand disease",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.32,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "When I reviewed the AI details of why they believe it to be von Willebrand, it made more sense and I agreed. ",
+  "highlights": [],
+  "session_start": "2026-01-22T20:04:51.346361",
+  "step1_time": "2026-01-22T20:06:30.981642",
+  "step2_time": "2026-01-22T20:06:49.757784",
+  "step3_time": "2026-01-22T20:07:29.199799",
+  "timestamp": "2026-01-22T20:07:29.199809"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6615b4d62e03f61eafaf760a",
+  "demographics": {
+    "age": "33",
+    "expertise": "Family Medicine",
+    "practice_location": "Los Anglees, CA ",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T02:26:50.883846",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_317",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Metoprolol",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn't change my answer because I thought the patient had heart failure. I thought that digoxin is contraindicated in patients with heart failure. ",
+  "highlights": [],
+  "session_start": "2026-01-23T02:26:50.906860",
+  "step1_time": "2026-01-23T02:35:24.812876",
+  "step2_time": "2026-01-23T02:35:36.478227",
+  "step3_time": "2026-01-23T02:36:26.408361",
+  "timestamp": "2026-01-23T02:36:26.408371"
+}

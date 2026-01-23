@@ -1,0 +1,74 @@
+{
+  "annotator_id": "60e88e0b7d305b5fbae3ebef",
+  "demographics": {
+    "age": "43",
+    "expertise": "hiv infectious disease",
+    "practice_location": "bethesda, md",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T00:12:38.188316",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_121",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Audiography",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.24,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i trusted AI's judgement here. i read the reasoning and it made sense to me.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Rapid breathing (48/min)\n- Hypertension (122/80 mm Hg)",
+      "timestamp": "2026-01-23T00:15:52.877Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "It is most appropriate to regularly conduct screening for metabolic bone diseases, but the initial priority should be on fracture management and monitoring for complications. Consider baseline blood tests for calcium, phosphorus, vitamin D, and a complete blood count if there are any concerning signs (e.g., bluish sclera, persistent ecchymoses) or if there are further suspicious fractures. Bone densitometry might be considered if there is suspicion of a bone disorder based on clinical judgment, family history, or additional fractures.",
+      "timestamp": "2026-01-23T00:16:07.198Z",
+      "step": "step2"
+    },
+    {
+      "text": "Given the boy's history of fractures, evaluation for possible metabolic bone diseases, such as osteogenesis imperfecta (though unlikely in this case), vitamin D deficiency, or rickets could be considered. However, the presence of just two fractures in a short period without other systemic features does not strongly suggest a metabolic bone disease",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T00:16:33.111Z",
+      "step": "step3"
+    },
+    {
+      "text": "It is most appropriate to regularly conduct screening for metabolic bone diseases, but the initial priority should be on fracture management and monitoring for complications. Consider baseline blood tests for calcium, phosphorus, vitamin D, and a complete blood count if there are any concerning signs (e.g., bluish sclera, persistent ecchymoses) or if there are further suspicious fractures. Bone densitometry might be considered if there is suspicion of a bone disorder based on clinical judgment, family history, or additional fractures.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T00:16:42.551Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-23T00:12:38.212247",
+  "step1_time": "2026-01-23T00:15:44.537471",
+  "step2_time": "2026-01-23T00:16:23.616019",
+  "step3_time": "2026-01-23T00:17:04.616614",
+  "timestamp": "2026-01-23T00:17:04.616624"
+}

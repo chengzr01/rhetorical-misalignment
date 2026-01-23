@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6615b4d62e03f61eafaf760a",
+  "demographics": {
+    "age": "33",
+    "expertise": "Family Medicine",
+    "practice_location": "Los Anglees, CA ",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T02:26:50.883846",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_126",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Fasting serum lipid studies",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn't change my belief because I apply these screening guidelines as a family medicine physician. I chose based on what I do in practice. ",
+  "highlights": [],
+  "session_start": "2026-01-23T02:26:50.906860",
+  "step1_time": "2026-01-23T02:32:07.795702",
+  "step2_time": "2026-01-23T02:32:33.854050",
+  "step3_time": "2026-01-23T02:33:07.524646",
+  "timestamp": "2026-01-23T02:33:07.524656"
+}

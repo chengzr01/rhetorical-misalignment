@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6615b4d62e03f61eafaf760a",
+  "demographics": {
+    "age": "33",
+    "expertise": "Family Medicine",
+    "practice_location": "Los Anglees, CA ",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T02:26:50.883846",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_61",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Membranous",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.26,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.26,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.26,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I initially had the right answer. I changed the answer because it said: The bulbar urethra is particularly at risk during high-energy injuries, such as those sustained in a motorcycle crash, due to its proximity to the pelvic bones and susceptibility to shearing forces. I thought this ruled out membranous. ",
+  "highlights": [],
+  "session_start": "2026-01-23T02:26:50.906860",
+  "step1_time": "2026-01-23T02:29:44.470587",
+  "step2_time": "2026-01-23T02:30:45.737962",
+  "step3_time": "2026-01-23T02:31:20.752244",
+  "timestamp": "2026-01-23T02:31:20.752254"
+}

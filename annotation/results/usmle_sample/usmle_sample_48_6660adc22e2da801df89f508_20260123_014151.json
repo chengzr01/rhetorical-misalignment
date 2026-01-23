@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6660adc22e2da801df89f508",
+  "demographics": {
+    "age": "46",
+    "expertise": "Healthcare",
+    "practice_location": "LA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-23T01:29:48.172436",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_48",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Telephone interpreter",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn't change my belief because the telephone interpreter was the most reliable source to use as a interpreter to understand.",
+  "highlights": [],
+  "session_start": "2026-01-23T01:29:48.198132",
+  "step1_time": "2026-01-23T01:36:00.049137",
+  "step2_time": "2026-01-23T01:39:03.399306",
+  "step3_time": "2026-01-23T01:41:51.180389",
+  "timestamp": "2026-01-23T01:41:51.180399"
+}

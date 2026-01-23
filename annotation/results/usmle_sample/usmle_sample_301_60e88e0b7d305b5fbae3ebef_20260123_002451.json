@@ -1,0 +1,49 @@
+{
+  "annotator_id": "60e88e0b7d305b5fbae3ebef",
+  "demographics": {
+    "age": "43",
+    "expertise": "hiv infectious disease",
+    "practice_location": "bethesda, md",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T00:12:38.188316",
+    "years_of_practice": "17"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_301",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Heat intolerance",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i thought this could be it. AI really didnt provide the best recommendation, just a bunch of suggestions.",
+  "highlights": [],
+  "session_start": "2026-01-23T00:12:38.212247",
+  "step1_time": "2026-01-23T00:24:02.515339",
+  "step2_time": "2026-01-23T00:24:26.873901",
+  "step3_time": "2026-01-23T00:24:51.276480",
+  "timestamp": "2026-01-23T00:24:51.276490"
+}

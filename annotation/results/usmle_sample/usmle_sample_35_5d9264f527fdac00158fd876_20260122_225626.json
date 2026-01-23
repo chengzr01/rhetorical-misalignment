@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5d9264f527fdac00158fd876",
+  "demographics": {
+    "age": "39",
+    "expertise": "internal medicine",
+    "practice_location": "miami",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-22T22:54:49.046062",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_35",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Baroreceptor output",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.69,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.69,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.69,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "the increase blood[pressure",
+  "highlights": [],
+  "session_start": "2026-01-22T22:54:49.069728",
+  "step1_time": "2026-01-22T22:55:17.864439",
+  "step2_time": "2026-01-22T22:55:36.614636",
+  "step3_time": "2026-01-22T22:56:26.377881",
+  "timestamp": "2026-01-22T22:56:26.377892"
+}

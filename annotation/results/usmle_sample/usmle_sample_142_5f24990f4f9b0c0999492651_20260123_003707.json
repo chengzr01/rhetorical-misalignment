@@ -1,0 +1,62 @@
+{
+  "annotator_id": "5f24990f4f9b0c0999492651",
+  "demographics": {
+    "age": "0-21",
+    "expertise": "Speech-Language Pathology",
+    "practice_location": "Virtual",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T00:34:35.165549",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_142",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Macular degeneration",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my decision.  The wavy vision tipped me off.  AI did not affect my decision.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Clear lenses",
+      "timestamp": "2026-01-23T00:35:33.470Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Decreased visual acuity in the right eye (",
+      "timestamp": "2026-01-23T00:35:37.833Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T00:34:35.188334",
+  "step1_time": "2026-01-23T00:35:12.459574",
+  "step2_time": "2026-01-23T00:36:25.067477",
+  "step3_time": "2026-01-23T00:37:07.786587",
+  "timestamp": "2026-01-23T00:37:07.786597"
+}
