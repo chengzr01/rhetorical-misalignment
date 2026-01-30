@@ -14,9 +14,11 @@ RESULTS_DIR = '../results/usmle_sample'
 
 # Model configurations
 MODELS = [
-    {'key': 'llama_small', 'name': 'Llama-3.1-8B', 'patterns': ['llama-3.1-8b-instruct', 'tulu', '8b-dpo']},
+    {'key': 'llama_small', 'name': 'Llama-3.1-8B', 'patterns': ['llama-3.1-8b-instruct']},
     {'key': 'llama', 'name': 'Llama-3.3-70B', 'patterns': ['llama-3.3', '70b-instruct']},
     {'key': 'llama_large', 'name': 'Llama-3.1-405B', 'patterns': ['405b', 'llama-3.1-405b']},
+    {'key': 'llama_dpo', 'name': 'Llama-3.1-Tulu-3-8B-DPO', 'patterns': ['tulu-3-8b-dpo', '8b-dpo']},
+    {'key': 'llama_sft', 'name': 'Llama-3.1-Tulu-3-8B-SFT', 'patterns': ['tulu-3-8b-sft', '8b-sft']},
     {'key': 'deepseek', 'name': 'DeepSeek-V3', 'patterns': ['deepseek']},
 ]
 

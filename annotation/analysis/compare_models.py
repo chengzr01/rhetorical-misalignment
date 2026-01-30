@@ -69,6 +69,10 @@ def compare_models(annotations):
             'n': len(model_annotations),
             'answer_changed': 0,
             'belief_changes': [],
+            'belief_changes_when_correct': [],  # When human was initially correct
+            'belief_changes_when_incorrect': [],  # When human was initially incorrect
+            'belief_changes_persuaded': [],  # When answer changed
+            'belief_changes_not_persuaded': [],  # When answer didn't change
             'correct_to_incorrect': 0,
             'incorrect_to_correct': 0,
             'step1_correct': 0,
@@ -83,7 +87,8 @@ def compare_models(annotations):
             changes_1_2 = annotation.get('step1_to_step2_changes', {})
 
             # Answer changes
-            if changes_1_2.get('answer_changed'):
+            answer_changed = changes_1_2.get('answer_changed', False)
+            if answer_changed:
                 stats['answer_changed'] += 1
 
             # Belief changes
@@ -91,14 +96,25 @@ def compare_models(annotations):
             belief2 = step2.get('answer_belief')
             belief_change = calculate_belief_change(belief1, belief2)
 
-            if belief_change is not None:
-                stats['belief_changes'].append(belief_change)
-
             # Persuasion to wrong answer
             step1_correct = step1.get('is_correct', False)
             step2_correct = step2.get('is_correct', False)
             step3_correct = step3.get('is_correct', False)
-            answer_changed = changes_1_2.get('answer_changed', False)
+
+            if belief_change is not None:
+                stats['belief_changes'].append(belief_change)
+
+                # Track belief changes by initial correctness
+                if step1_correct:
+                    stats['belief_changes_when_correct'].append(belief_change)
+                else:
+                    stats['belief_changes_when_incorrect'].append(belief_change)
+
+                # Track belief changes by whether persuaded
+                if answer_changed:
+                    stats['belief_changes_persuaded'].append(belief_change)
+                else:
+                    stats['belief_changes_not_persuaded'].append(belief_change)
 
             if step1_correct:
                 stats['step1_correct'] += 1
@@ -193,6 +209,205 @@ def compare_models(annotations):
     print("  C→I = Correct to Incorrect (harmful persuasion)")
     print("  I→C = Incorrect to Correct (helpful persuasion)")
     print("  Net = I→C - C→I (positive is helpful overall)")
+
+    # Detailed belief change analysis
+    generate_belief_change_table(model_stats)
+
+
+def generate_belief_change_table(model_stats):
+    """Generate detailed belief change analysis table"""
+    print("\n\n" + "="*120)
+    print("DETAILED BELIEF CHANGE PATTERNS BY MODEL")
+    print("="*120)
+    print("\nHow different models change humans' confidence after seeing AI analysis (Step 1 → Step 2)")
+
+    # Prepare data for the table
+    belief_data = {}
+
+    for model_key, stats in model_stats.items():
+        if not stats['belief_changes']:
+            continue
+
+        belief_changes = stats['belief_changes']
+        increases = [x for x in belief_changes if x > 0]
+        decreases = [x for x in belief_changes if x < 0]
+        unchanged = [x for x in belief_changes if x == 0]
+
+        # Calculate absolute belief change magnitude
+        abs_changes = [abs(x) for x in belief_changes if x != 0]
+
+        belief_data[model_key] = {
+            'n': len(belief_changes),
+            'mean_change': statistics.mean(belief_changes) if belief_changes else 0,
+            'median_change': statistics.median(belief_changes) if belief_changes else 0,
+            'increased_pct': len(increases) / len(belief_changes) * 100 if belief_changes else 0,
+            'decreased_pct': len(decreases) / len(belief_changes) * 100 if belief_changes else 0,
+            'unchanged_pct': len(unchanged) / len(belief_changes) * 100 if belief_changes else 0,
+            'mean_increase': statistics.mean(increases) if increases else 0,
+            'mean_decrease': statistics.mean(decreases) if decreases else 0,
+            'mean_abs_change': statistics.mean(abs_changes) if abs_changes else 0,
+            'max_increase': max(increases) if increases else 0,
+            'max_decrease': min(decreases) if decreases else 0,
+        }
+
+    # Print comprehensive table
+    print("\n" + "-"*120)
+    print("BELIEF CHANGE OVERVIEW")
+    print("-"*120)
+    print(f"{'Model':<45} {'N':>5} {'Mean Δ':>8} {'Med Δ':>8} {'↑%':>7} {'↓%':>7} {'=%':>7}")
+    print("-"*120)
+
+    for model_key in sorted(belief_data.keys(), key=lambda x: belief_data[x]['mean_change'], reverse=True):
+        data = belief_data[model_key]
+        display_name = model_key[:42] + '...' if len(model_key) > 45 else model_key
+        print(f"{display_name:<45} {data['n']:>5} "
+              f"{data['mean_change']:>+7.3f} {data['median_change']:>+7.3f} "
+              f"{data['increased_pct']:>6.1f}% {data['decreased_pct']:>6.1f}% {data['unchanged_pct']:>6.1f}%")
+
+    print("\n" + "-"*120)
+    print("DETAILED BELIEF CHANGE MAGNITUDES")
+    print("-"*120)
+    print(f"{'Model':<45} {'Mean↑':>8} {'Max↑':>8} {'Mean↓':>8} {'Max↓':>8} {'Mean|Δ|':>9}")
+    print("-"*120)
+
+    for model_key in sorted(belief_data.keys(), key=lambda x: belief_data[x]['mean_abs_change'], reverse=True):
+        data = belief_data[model_key]
+        display_name = model_key[:42] + '...' if len(model_key) > 45 else model_key
+        print(f"{display_name:<45} "
+              f"{data['mean_increase']:>+7.3f} {data['max_increase']:>+7.3f} "
+              f"{data['mean_decrease']:>+7.3f} {data['max_decrease']:>+7.3f} "
+              f"{data['mean_abs_change']:>8.3f}")
+
+    # Belief change distribution
+    print("\n" + "-"*120)
+    print("BELIEF CHANGE DISTRIBUTION (Count by magnitude)")
+    print("-"*120)
+
+    # Define bins for distribution
+    bins = [
+        ("Large decrease (Δ ≤ -0.3)", lambda x: x <= -0.3),
+        ("Moderate decrease (-0.3 < Δ ≤ -0.1)", lambda x: -0.3 < x <= -0.1),
+        ("Small decrease (-0.1 < Δ < 0)", lambda x: -0.1 < x < 0),
+        ("No change (Δ = 0)", lambda x: x == 0),
+        ("Small increase (0 < Δ < 0.1)", lambda x: 0 < x < 0.1),
+        ("Moderate increase (0.1 ≤ Δ < 0.3)", lambda x: 0.1 <= x < 0.3),
+        ("Large increase (Δ ≥ 0.3)", lambda x: x >= 0.3),
+    ]
+
+    # Print header
+    header = f"{'Model':<45}"
+    for bin_name, _ in bins:
+        header += f" {bin_name.split('(')[0].strip()[:10]:>10}"
+    print(header)
+    print("-"*120)
+
+    for model_key in sorted(belief_data.keys(), key=lambda x: model_stats[x]['n'], reverse=True):
+        stats = model_stats[model_key]
+        belief_changes = stats['belief_changes']
+
+        display_name = model_key[:42] + '...' if len(model_key) > 45 else model_key
+        row = f"{display_name:<45}"
+
+        for bin_name, bin_func in bins:
+            count = sum(1 for x in belief_changes if bin_func(x))
+            pct = count / len(belief_changes) * 100 if belief_changes else 0
+            row += f" {count:>3}({pct:>4.1f}%)"
+
+        print(row)
+
+    print("\n" + "="*120)
+    print("INTERPRETATION GUIDE")
+    print("="*120)
+    print("Mean Δ:    Average belief change (positive = increased confidence, negative = decreased)")
+    print("Med Δ:     Median belief change")
+    print("↑%:        Percentage of cases where belief increased")
+    print("↓%:        Percentage of cases where belief decreased")
+    print("=%:        Percentage of cases where belief unchanged")
+    print("Mean↑:     Average magnitude when belief increased")
+    print("Mean↓:     Average magnitude when belief decreased")
+    print("Mean|Δ|:   Average absolute belief change (regardless of direction)")
+    print("Max↑/↓:    Maximum belief changes observed")
+    print("\nBeliefs are measured on a scale from 0 to 1 (0% to 100% confidence)")
+
+    # Conditional belief change analysis
+    generate_conditional_belief_change_table(model_stats)
+
+
+def generate_conditional_belief_change_table(model_stats):
+    """Generate belief change analysis conditioned on initial correctness and persuasion"""
+    print("\n\n" + "="*120)
+    print("BELIEF CHANGES BY INITIAL CORRECTNESS AND PERSUASION SUCCESS")
+    print("="*120)
+
+    # Analysis by initial correctness
+    print("\n" + "-"*120)
+    print("BELIEF CHANGES: WHEN HUMAN WAS INITIALLY CORRECT vs INCORRECT")
+    print("-"*120)
+    print(f"{'Model':<45} {'Initially Correct':>25} {'Initially Incorrect':>25} {'Difference':>20}")
+    print(f"{'':45} {'N':>8} {'Mean Δ':>9} {'Med Δ':>7} {'N':>8} {'Mean Δ':>9} {'Med Δ':>7} {'Mean':>9} {'Med':>9}")
+    print("-"*120)
+
+    for model_key in sorted(model_stats.keys(), key=lambda x: model_stats[x]['n'], reverse=True):
+        stats = model_stats[model_key]
+
+        when_correct = stats['belief_changes_when_correct']
+        when_incorrect = stats['belief_changes_when_incorrect']
+
+        mean_correct = statistics.mean(when_correct) if when_correct else 0
+        median_correct = statistics.median(when_correct) if when_correct else 0
+        mean_incorrect = statistics.mean(when_incorrect) if when_incorrect else 0
+        median_incorrect = statistics.median(when_incorrect) if when_incorrect else 0
+
+        diff_mean = mean_incorrect - mean_correct
+        diff_median = median_incorrect - median_correct
+
+        display_name = model_key[:42] + '...' if len(model_key) > 45 else model_key
+
+        print(f"{display_name:<45} "
+              f"{len(when_correct):>8} {mean_correct:>+8.3f} {median_correct:>+6.3f} "
+              f"{len(when_incorrect):>8} {mean_incorrect:>+8.3f} {median_incorrect:>+6.3f} "
+              f"{diff_mean:>+8.3f} {diff_median:>+8.3f}")
+
+    # Analysis by persuasion
+    print("\n" + "-"*120)
+    print("BELIEF CHANGES: WHEN AI PERSUADED (answer changed) vs NOT PERSUADED (answer stayed)")
+    print("-"*120)
+    print(f"{'Model':<45} {'Persuaded (ans changed)':>25} {'Not Persuaded':>25} {'Difference':>20}")
+    print(f"{'':45} {'N':>8} {'Mean Δ':>9} {'Med Δ':>7} {'N':>8} {'Mean Δ':>9} {'Med Δ':>7} {'Mean':>9} {'Med':>9}")
+    print("-"*120)
+
+    for model_key in sorted(model_stats.keys(), key=lambda x: model_stats[x]['n'], reverse=True):
+        stats = model_stats[model_key]
+
+        persuaded = stats['belief_changes_persuaded']
+        not_persuaded = stats['belief_changes_not_persuaded']
+
+        mean_persuaded = statistics.mean(persuaded) if persuaded else 0
+        median_persuaded = statistics.median(persuaded) if persuaded else 0
+        mean_not_persuaded = statistics.mean(not_persuaded) if not_persuaded else 0
+        median_not_persuaded = statistics.median(not_persuaded) if not_persuaded else 0
+
+        diff_mean = mean_persuaded - mean_not_persuaded
+        diff_median = median_persuaded - median_not_persuaded
+
+        display_name = model_key[:42] + '...' if len(model_key) > 45 else model_key
+
+        print(f"{display_name:<45} "
+              f"{len(persuaded):>8} {mean_persuaded:>+8.3f} {median_persuaded:>+6.3f} "
+              f"{len(not_persuaded):>8} {mean_not_persuaded:>+8.3f} {median_not_persuaded:>+6.3f} "
+              f"{diff_mean:>+8.3f} {diff_median:>+8.3f}")
+
+    print("\n" + "="*120)
+    print("INTERPRETATION:")
+    print("="*120)
+    print("Initially Correct:   How AI affects confidence when human started with right answer")
+    print("Initially Incorrect: How AI affects confidence when human started with wrong answer")
+    print("Persuaded:          Belief changes when AI successfully changed the human's answer")
+    print("Not Persuaded:      Belief changes when human kept their original answer despite AI input")
+    print("Difference:         Shows asymmetry in AI's effect (positive = larger effect in second column)")
+    print("\nKey insights:")
+    print("- Positive difference in 'Initially' table: AI increases confidence more when human was wrong")
+    print("- Large difference in 'Persuaded' table: AI causes bigger belief shifts when it changes minds")
 
 
 def main():

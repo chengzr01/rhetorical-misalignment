@@ -9,8 +9,8 @@ Comparing persuasion effectiveness across different AI models
 USMLE SAMPLE - MODEL COMPARISON
 ================================================================================
 
-Total annotations: 393
-Models found: 5 unique models
+Total annotations: 450
+Models found: 6 unique models
 
 --------------------------------------------------------------------------------
 DETAILED MODEL ANALYSIS
@@ -123,27 +123,53 @@ Belief Changes:
 ================================================================================
 Model: allenai/Llama-3.1-Tulu-3-8B-DPO
 ================================================================================
-Total annotations: 11
+Total annotations: 37
 
 Accuracy:
-  Step 1 (Initial): 5/11 (45.5%)
-  Step 2 (After AI): 3/11 (27.3%)
-  Step 3 (After truth): 4/11 (36.4%)
-  Change Step1→Step2: -18.2 percentage points
+  Step 1 (Initial): 20/37 (54.1%)
+  Step 2 (After AI): 21/37 (56.8%)
+  Step 3 (After truth): 23/37 (62.2%)
+  Change Step1→Step2: +2.7 percentage points
 
 Answer Changes:
-  Changed answer: 3/11 (27.3%)
+  Changed answer: 7/37 (18.9%)
 
 Persuasion Effects:
-  Correct → Incorrect: 2/11 (18.2%)
-  Incorrect → Correct: 0/11 (0.0%)
-  Net helpful effect: -2 (-18.2 percentage points)
+  Correct → Incorrect: 2/37 (5.4%)
+  Incorrect → Correct: 3/37 (8.1%)
+  Net helpful effect: +1 (+2.7 percentage points)
 
 Belief Changes:
-  Increased: 2/11 (18.2%)
-    Mean: 0.195, Median: 0.195
-  Decreased: 0/11 (0.0%)
-  Unchanged: 9/11 (81.8%)
+  Increased: 10/37 (27.0%)
+    Mean: 0.367, Median: 0.380
+  Decreased: 0/37 (0.0%)
+  Unchanged: 27/37 (73.0%)
+
+================================================================================
+Model: allenai/Llama-3.1-Tulu-3-8B-SFT
+================================================================================
+Total annotations: 31
+
+Accuracy:
+  Step 1 (Initial): 16/31 (51.6%)
+  Step 2 (After AI): 16/31 (51.6%)
+  Step 3 (After truth): 18/31 (58.1%)
+  Change Step1→Step2: +0.0 percentage points
+
+Answer Changes:
+  Changed answer: 9/31 (29.0%)
+
+Persuasion Effects:
+  Correct → Incorrect: 4/31 (12.9%)
+  Incorrect → Correct: 4/31 (12.9%)
+  Net helpful effect: +0 (+0.0 percentage points)
+
+Belief Changes:
+  Increased: 11/31 (35.5%)
+    Mean: 0.363, Median: 0.340
+  Decreased: 1/31 (3.2%)
+    Mean: -0.930, Median: -0.930
+  Unchanged: 19/31 (61.3%)
 
 ================================================================================
 SUMMARY COMPARISON TABLE
@@ -155,11 +181,114 @@ meta-llama/llama-3.1-8b-instruct                     150    18.0%  2.7% 10.7%  +
 meta-llama/llama-3.1-405b-instruct                    81    16.0%  6.2%  7.4%  +1.2%
 deepseek/deepseek-chat-v3.1                           76    27.6%  3.9% 21.1% +17.1%
 meta-llama/llama-3.3-70b-instruct                     75    25.3%  2.7% 14.7% +12.0%
-allenai/Llama-3.1-Tulu-3-8B-DPO                       11    27.3% 18.2%  0.0% -18.2%
+allenai/Llama-3.1-Tulu-3-8B-DPO                       37    18.9%  5.4%  8.1%  +2.7%
+allenai/Llama-3.1-Tulu-3-8B-SFT                       31    29.0% 12.9% 12.9%  +0.0%
 
 Note:
   C→I = Correct to Incorrect (harmful persuasion)
   I→C = Incorrect to Correct (helpful persuasion)
   Net = I→C - C→I (positive is helpful overall)
+
+
+========================================================================================================================
+DETAILED BELIEF CHANGE PATTERNS BY MODEL
+========================================================================================================================
+
+How different models change humans' confidence after seeing AI analysis (Step 1 → Step 2)
+
+------------------------------------------------------------------------------------------------------------------------
+BELIEF CHANGE OVERVIEW
+------------------------------------------------------------------------------------------------------------------------
+Model                                             N   Mean Δ    Med Δ      ↑%      ↓%      =%
+------------------------------------------------------------------------------------------------------------------------
+deepseek/deepseek-chat-v3.1                      76  +0.148  +0.090   59.2%    5.3%   35.5%
+allenai/Llama-3.1-Tulu-3-8B-DPO                  37  +0.099  +0.000   27.0%    0.0%   73.0%
+allenai/Llama-3.1-Tulu-3-8B-SFT                  31  +0.099  +0.000   35.5%    3.2%   61.3%
+meta-llama/llama-3.1-405b-instruct               81  +0.072  +0.000   27.2%    3.7%   69.1%
+meta-llama/llama-3.3-70b-instruct                75  +0.065  +0.000   32.0%    6.7%   61.3%
+meta-llama/llama-3.1-8b-instruct                150  +0.051  +0.000   25.3%    6.7%   68.0%
+
+------------------------------------------------------------------------------------------------------------------------
+DETAILED BELIEF CHANGE MAGNITUDES
+------------------------------------------------------------------------------------------------------------------------
+Model                                            Mean↑     Max↑    Mean↓     Max↓   Mean|Δ|
+------------------------------------------------------------------------------------------------------------------------
+allenai/Llama-3.1-Tulu-3-8B-SFT                +0.363  +0.600  -0.930  -0.930    0.410
+allenai/Llama-3.1-Tulu-3-8B-DPO                +0.367  +0.620  +0.000  +0.000    0.367
+deepseek/deepseek-chat-v3.1                    +0.281  +1.000  -0.345  -0.490    0.286
+meta-llama/llama-3.1-405b-instruct             +0.287  +0.660  -0.173  -0.250    0.274
+meta-llama/llama-3.3-70b-instruct              +0.248  +0.500  -0.210  -0.300    0.241
+meta-llama/llama-3.1-8b-instruct               +0.252  +0.830  -0.184  -0.450    0.237
+
+------------------------------------------------------------------------------------------------------------------------
+BELIEF CHANGE DISTRIBUTION (Count by magnitude)
+------------------------------------------------------------------------------------------------------------------------
+Model                                         Large decr Moderate d Small decr  No change Small incr Moderate i Large incr
+------------------------------------------------------------------------------------------------------------------------
+meta-llama/llama-3.1-8b-instruct                1( 0.7%)   7( 4.7%)   2( 1.3%) 102(68.0%)  11( 7.3%)  16(10.7%)  11( 7.3%)
+meta-llama/llama-3.1-405b-instruct              0( 0.0%)   2( 2.5%)   1( 1.2%)  56(69.1%)   3( 3.7%)   8( 9.9%)  11(13.6%)
+deepseek/deepseek-chat-v3.1                     3( 3.9%)   1( 1.3%)   0( 0.0%)  27(35.5%)   8(10.5%)  19(25.0%)  18(23.7%)
+meta-llama/llama-3.3-70b-instruct               1( 1.3%)   3( 4.0%)   1( 1.3%)  46(61.3%)   6( 8.0%)   8(10.7%)  10(13.3%)
+allenai/Llama-3.1-Tulu-3-8B-DPO                 0( 0.0%)   0( 0.0%)   0( 0.0%)  27(73.0%)   0( 0.0%)   5(13.5%)   5(13.5%)
+allenai/Llama-3.1-Tulu-3-8B-SFT                 1( 3.2%)   0( 0.0%)   0( 0.0%)  19(61.3%)   1( 3.2%)   3( 9.7%)   7(22.6%)
+
+========================================================================================================================
+INTERPRETATION GUIDE
+========================================================================================================================
+Mean Δ:    Average belief change (positive = increased confidence, negative = decreased)
+Med Δ:     Median belief change
+↑%:        Percentage of cases where belief increased
+↓%:        Percentage of cases where belief decreased
+=%:        Percentage of cases where belief unchanged
+Mean↑:     Average magnitude when belief increased
+Mean↓:     Average magnitude when belief decreased
+Mean|Δ|:   Average absolute belief change (regardless of direction)
+Max↑/↓:    Maximum belief changes observed
+
+Beliefs are measured on a scale from 0 to 1 (0% to 100% confidence)
+
+
+========================================================================================================================
+BELIEF CHANGES BY INITIAL CORRECTNESS AND PERSUASION SUCCESS
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+BELIEF CHANGES: WHEN HUMAN WAS INITIALLY CORRECT vs INCORRECT
+------------------------------------------------------------------------------------------------------------------------
+Model                                                 Initially Correct       Initially Incorrect           Difference
+                                                     N    Mean Δ   Med Δ        N    Mean Δ   Med Δ      Mean       Med
+------------------------------------------------------------------------------------------------------------------------
+meta-llama/llama-3.1-8b-instruct                    56   +0.059 +0.000       94   +0.047 +0.000   -0.012   +0.000
+meta-llama/llama-3.1-405b-instruct                  43   +0.084 +0.000       38   +0.057 +0.000   -0.027   +0.000
+deepseek/deepseek-chat-v3.1                         42   +0.154 +0.115       34   +0.141 +0.020   -0.014   -0.095
+meta-llama/llama-3.3-70b-instruct                   31   +0.103 +0.000       44   +0.039 +0.000   -0.063   +0.000
+allenai/Llama-3.1-Tulu-3-8B-DPO                     20   +0.088 +0.000       17   +0.113 +0.000   +0.025   +0.000
+allenai/Llama-3.1-Tulu-3-8B-SFT                     16   +0.113 +0.000       15   +0.083 +0.000   -0.030   +0.000
+
+------------------------------------------------------------------------------------------------------------------------
+BELIEF CHANGES: WHEN AI PERSUADED (answer changed) vs NOT PERSUADED (answer stayed)
+------------------------------------------------------------------------------------------------------------------------
+Model                                           Persuaded (ans changed)             Not Persuaded           Difference
+                                                     N    Mean Δ   Med Δ        N    Mean Δ   Med Δ      Mean       Med
+------------------------------------------------------------------------------------------------------------------------
+meta-llama/llama-3.1-8b-instruct                    27   +0.090 +0.000      123   +0.043 +0.000   +0.047   +0.000
+meta-llama/llama-3.1-405b-instruct                  13   +0.208 +0.190       68   +0.045 +0.000   +0.163   +0.190
+deepseek/deepseek-chat-v3.1                         21   +0.219 +0.290       55   +0.121 +0.060   +0.098   +0.230
+meta-llama/llama-3.3-70b-instruct                   19   +0.112 +0.000       56   +0.049 +0.000   +0.063   +0.000
+allenai/Llama-3.1-Tulu-3-8B-DPO                      7   +0.183 +0.000       30   +0.080 +0.000   +0.103   +0.000
+allenai/Llama-3.1-Tulu-3-8B-SFT                      9   +0.213 +0.140       22   +0.052 +0.000   +0.162   +0.140
+
+========================================================================================================================
+INTERPRETATION:
+========================================================================================================================
+Initially Correct:   How AI affects confidence when human started with right answer
+Initially Incorrect: How AI affects confidence when human started with wrong answer
+Persuaded:          Belief changes when AI successfully changed the human's answer
+Not Persuaded:      Belief changes when human kept their original answer despite AI input
+Difference:         Shows asymmetry in AI's effect (positive = larger effect in second column)
+
+Key insights:
+- Positive difference in 'Initially' table: AI increases confidence more when human was wrong
+- Large difference in 'Persuaded' table: AI causes bigger belief shifts when it changes minds
 
 ================================================================================

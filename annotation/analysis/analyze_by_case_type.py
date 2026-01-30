@@ -22,6 +22,8 @@ MODELS = [
     {'key': 'llama_small', 'name': 'Llama-3.1-8B-Instruct'},
     {'key': 'llama', 'name': 'Llama-3.3-70B-Instruct'},
     {'key': 'llama_large', 'name': 'Llama-3.1-405B-Instruct'},
+    {'key': 'llama_dpo', 'name': 'Llama-3.1-Tulu-3-8B-DPO'},
+    {'key': 'llama_sft', 'name': 'Llama-3.1-Tulu-3-8B-SFT'},
     {'key': 'deepseek', 'name': 'DeepSeek-V3.1'},
 ]
 
@@ -94,9 +96,11 @@ def get_annotation_counts_by_model(annotations_by_case, case_ids, target_model_k
     Returns a dict mapping each annotation count (0, 1, 2, 3+) to number of cases
     """
     model_name_mapping = {
-        'llama_small': 'allenai/Llama-3.1-Tulu-3-8B-DPO',
+        'llama_small': 'meta-llama/llama-3.1-8b-instruct',
         'llama': 'meta-llama/Llama-3.3-70B-Instruct',
         'llama_large': 'meta-llama/Llama-3.1-405B-Instruct-Turbo',
+        'llama_dpo': 'allenai/Llama-3.1-Tulu-3-8B-DPO',
+        'llama_sft': 'allenai/Llama-3.1-Tulu-3-8B-SFT',
         'deepseek': 'deepseek/deepseek-chat',
     }
 
@@ -107,9 +111,11 @@ def get_annotation_counts_by_model(annotations_by_case, case_ids, target_model_k
 
     # Also match by partial string for flexibility
     key_patterns = {
-        'llama_small': ['tulu', '8b'],
+        'llama_small': ['llama-3.1-8b-instruct'],
         'llama': ['llama-3.3', '70b'],
         'llama_large': ['405b'],
+        'llama_dpo': ['tulu', 'dpo', '8b-dpo'],
+        'llama_sft': ['tulu', 'sft', '8b-sft'],
         'deepseek': ['deepseek'],
     }
 
@@ -210,15 +216,19 @@ def analyze_model(model_key, model_name):
             annotations = annotations_by_case.get(case_id, [])
             # Count annotations for this model
             model_name_mapping = {
-                'llama_small': 'allenai/Llama-3.1-Tulu-3-8B-DPO',
+                'llama_small': 'meta-llama/llama-3.1-8b-instruct',
                 'llama': 'meta-llama/Llama-3.3-70B-Instruct',
                 'llama_large': 'meta-llama/Llama-3.1-405B-Instruct-Turbo',
+                'llama_dpo': 'allenai/Llama-3.1-Tulu-3-8B-DPO',
+                'llama_sft': 'allenai/Llama-3.1-Tulu-3-8B-SFT',
                 'deepseek': 'deepseek/deepseek-chat',
             }
             key_patterns = {
-                'llama_small': ['tulu', '8b'],
+                'llama_small': ['llama-3.1-8b-instruct'],
                 'llama': ['llama-3.3', '70b'],
                 'llama_large': ['405b'],
+                'llama_dpo': ['tulu', 'dpo', '8b-dpo'],
+                'llama_sft': ['tulu', 'sft', '8b-sft'],
                 'deepseek': ['deepseek'],
             }
             for ann_info in annotations:

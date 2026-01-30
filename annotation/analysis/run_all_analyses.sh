@@ -54,19 +54,27 @@ python full_case_annotation_report.py > full_case_annotation_report.txt
 echo "✓ Results saved to: full_case_annotation_report.txt"
 echo ""
 
+# Model accuracy analysis
+echo "8. Model Accuracy Analysis"
+echo "----------------------------------"
+python analyze_model_accuracy.py > model_accuracy_report.txt
+echo "✓ Results saved to: model_accuracy_report.txt"
+echo ""
+
 echo "=================================="
 echo "All analyses complete!"
 echo "=================================="
 echo ""
 echo "Generated files:"
 echo "  - analysis_report.txt              (Comprehensive analysis)"
-echo "  - model_comparison.txt             (Model-by-model comparison)"
+echo "  - model_comparison.txt             (Model-by-model comparison with belief change patterns)"
 echo "  - usmle_sample_annotations.csv     (Raw data export)"
 echo "  - persuasion_examples.txt          (Detailed persuasion cases with highlights)"
 echo "  - persuasion_examples.json         (Structured persuasion data)"
 echo "  - case_type_analysis.txt           (Analysis by Bayesian/Behavioral decisions)"
 echo "  - case_annotation_counts.txt       (Annotation counts per case)"
 echo "  - full_case_annotation_report.txt  (Complete annotation status report)"
+echo "  - model_accuracy_report.txt        (Model accuracy on test questions)"
 echo ""
 echo "See SUMMARY.md for key findings!"
 echo ""

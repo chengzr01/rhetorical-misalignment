@@ -16,25 +16,22 @@ Total cases in dataset: 108
 Annotation Status:
   Not annotated (0):        0 cases (  0.0%)
   Annotated once (1):      67 cases ( 62.0%)
-  Annotated twice (2):     40 cases ( 37.0%)
-  Goal reached (3+):        1 cases (  0.9%)
+  Annotated twice (2):     41 cases ( 38.0%)
+  Goal reached (3+):        0 cases (  0.0%)
 
 Progress:
-  Total annotations: 150/324 (46.3%)
-  Average per case: 1.39
-  Remaining to goal: 174
+  Total annotations: 149/324 (46.0%)
+  Average per case: 1.38
+  Remaining to goal: 175
 
-⚠️  Cases with 1-2 annotations (107 cases):
+⚠️  Cases with 1-2 annotations (108 cases):
     usmle_sample_114 (1 annotation)    usmle_sample_120 (1 annotation)    usmle_sample_123 (1 annotation)
     usmle_sample_128 (1 annotation)    usmle_sample_129 (1 annotation)    usmle_sample_131 (1 annotation)
     usmle_sample_137 (1 annotation)    usmle_sample_149 (1 annotation)    usmle_sample_150 (1 annotation)
     usmle_sample_159 (1 annotation)    usmle_sample_16 (1 annotation)    usmle_sample_167 (1 annotation)
     usmle_sample_169 (1 annotation)    usmle_sample_175 (1 annotation)    usmle_sample_177 (1 annotation)
     usmle_sample_179 (1 annotation)    usmle_sample_185 (1 annotation)    usmle_sample_188 (1 annotation)
-    usmle_sample_189 (1 annotation)    usmle_sample_194 (1 annotation)    ... and 87 more cases
-
-✅ Cases with 3+ annotations (1 cases):
-    usmle_sample_193
+    usmle_sample_189 (1 annotation)    usmle_sample_194 (1 annotation)    ... and 88 more cases
 
 ====================================================================================================
 MODEL: Llama-3.3-70B (llama)
@@ -107,6 +104,76 @@ Progress:
     usmle_sample_157 (1 annotation)    usmle_sample_171 (1 annotation)    ... and 59 more cases
 
 ====================================================================================================
+MODEL: Llama-3.1-Tulu-3-8B-DPO (llama_dpo)
+====================================================================================================
+
+Total cases in dataset: 111
+
+Annotation Status:
+  Not annotated (0):       85 cases ( 76.6%)
+  Annotated once (1):      26 cases ( 23.4%)
+  Annotated twice (2):      0 cases (  0.0%)
+  Goal reached (3+):        0 cases (  0.0%)
+
+Progress:
+  Total annotations: 26/333 (7.8%)
+  Average per case: 0.23
+  Remaining to goal: 307
+
+🔴 Cases with 0 annotations (85 cases):
+    usmle_sample_11, usmle_sample_117, usmle_sample_118, usmle_sample_120, usmle_sample_123
+    usmle_sample_13, usmle_sample_130, usmle_sample_135, usmle_sample_14, usmle_sample_140
+    usmle_sample_143, usmle_sample_146, usmle_sample_149, usmle_sample_157, usmle_sample_167
+    usmle_sample_171, usmle_sample_173, usmle_sample_179, usmle_sample_189, usmle_sample_198
+    usmle_sample_199, usmle_sample_203, usmle_sample_209, usmle_sample_213, usmle_sample_220
+    usmle_sample_224, usmle_sample_230, usmle_sample_236, usmle_sample_237, usmle_sample_245
+    ... and 55 more cases
+
+⚠️  Cases with 1-2 annotations (26 cases):
+    usmle_sample_103 (1 annotation)    usmle_sample_111 (1 annotation)    usmle_sample_113 (1 annotation)
+    usmle_sample_121 (1 annotation)    usmle_sample_138 (1 annotation)    usmle_sample_159 (1 annotation)
+    usmle_sample_180 (1 annotation)    usmle_sample_205 (1 annotation)    usmle_sample_207 (1 annotation)
+    usmle_sample_21 (1 annotation)    usmle_sample_211 (1 annotation)    usmle_sample_275 (1 annotation)
+    usmle_sample_284 (1 annotation)    usmle_sample_288 (1 annotation)    usmle_sample_301 (1 annotation)
+    usmle_sample_305 (1 annotation)    usmle_sample_311 (1 annotation)    usmle_sample_326 (1 annotation)
+    usmle_sample_34 (1 annotation)    usmle_sample_35 (1 annotation)    ... and 6 more cases
+
+====================================================================================================
+MODEL: Llama-3.1-Tulu-3-8B-SFT (llama_sft)
+====================================================================================================
+
+Total cases in dataset: 111
+
+Annotation Status:
+  Not annotated (0):       80 cases ( 72.1%)
+  Annotated once (1):      31 cases ( 27.9%)
+  Annotated twice (2):      0 cases (  0.0%)
+  Goal reached (3+):        0 cases (  0.0%)
+
+Progress:
+  Total annotations: 31/333 (9.3%)
+  Average per case: 0.28
+  Remaining to goal: 302
+
+🔴 Cases with 0 annotations (80 cases):
+    usmle_sample_107, usmle_sample_111, usmle_sample_124, usmle_sample_130, usmle_sample_134
+    usmle_sample_139, usmle_sample_141, usmle_sample_145, usmle_sample_148, usmle_sample_15
+    usmle_sample_155, usmle_sample_166, usmle_sample_169, usmle_sample_173, usmle_sample_176
+    usmle_sample_179, usmle_sample_18, usmle_sample_192, usmle_sample_197, usmle_sample_198
+    usmle_sample_200, usmle_sample_202, usmle_sample_204, usmle_sample_206, usmle_sample_209
+    usmle_sample_212, usmle_sample_216, usmle_sample_221, usmle_sample_228, usmle_sample_23
+    ... and 50 more cases
+
+⚠️  Cases with 1-2 annotations (31 cases):
+    usmle_sample_126 (1 annotation)    usmle_sample_136 (1 annotation)    usmle_sample_142 (1 annotation)
+    usmle_sample_170 (1 annotation)    usmle_sample_187 (1 annotation)    usmle_sample_193 (1 annotation)
+    usmle_sample_233 (1 annotation)    usmle_sample_25 (1 annotation)    usmle_sample_250 (1 annotation)
+    usmle_sample_272 (1 annotation)    usmle_sample_275 (1 annotation)    usmle_sample_279 (1 annotation)
+    usmle_sample_299 (1 annotation)    usmle_sample_307 (1 annotation)    usmle_sample_312 (1 annotation)
+    usmle_sample_317 (1 annotation)    usmle_sample_318 (1 annotation)    usmle_sample_320 (1 annotation)
+    usmle_sample_331 (1 annotation)    usmle_sample_334 (1 annotation)    ... and 11 more cases
+
+====================================================================================================
 MODEL: DeepSeek-V3 (deepseek)
 ====================================================================================================
 
@@ -148,9 +215,11 @@ SUMMARY - ANNOTATION STATUS ACROSS ALL MODELS
 
 Model                      Total Cases    Not Ann      1 Ann      2 Ann     3+ Ann   Progress
 ----------------------------------------------------------------------------------------------------
-Llama-3.1-8B                       108         0 (   0%)        67 (  62%)        40 (  37%)         1 (   1%)      46.3%
+Llama-3.1-8B                       108         0 (   0%)        67 (  62%)        41 (  38%)         0 (   0%)      46.0%
 Llama-3.3-70B                      122        47 (  39%)        75 (  61%)         0 (   0%)         0 (   0%)      20.5%
 Llama-3.1-405B                     127        48 (  38%)        77 (  61%)         2 (   2%)         0 (   0%)      21.3%
+Llama-3.1-Tulu-3-8B-DPO            111        85 (  77%)        26 (  23%)         0 (   0%)         0 (   0%)       7.8%
+Llama-3.1-Tulu-3-8B-SFT            111        80 (  72%)        31 (  28%)         0 (   0%)         0 (   0%)       9.3%
 DeepSeek-V3                        190       114 (  60%)        76 (  40%)         0 (   0%)         0 (   0%)      13.3%
 ====================================================================================================
 

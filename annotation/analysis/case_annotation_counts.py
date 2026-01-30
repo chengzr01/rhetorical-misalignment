@@ -13,9 +13,11 @@ RESULTS_DIR = '../results/usmle_sample'
 
 # Model mapping to identify which model each annotation belongs to
 MODEL_PATTERNS = {
-    'llama_small': ['llama-3.1-8b-instruct', 'tulu', '8b-dpo', 'llama-3.1-tulu-3-8b'],
+    'llama_small': ['llama-3.1-8b-instruct'],
     'llama': ['llama-3.3', '70b-instruct'],
     'llama_large': ['405b', 'llama-3.1-405b'],
+    'llama_dpo': ['tulu-3-8b-dpo', '8b-dpo'],
+    'llama_sft': ['tulu-3-8b-sft', '8b-sft'],
     'deepseek': ['deepseek'],
 }
 
