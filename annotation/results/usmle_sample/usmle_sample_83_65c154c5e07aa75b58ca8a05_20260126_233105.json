@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65c154c5e07aa75b58ca8a05",
+  "demographics": {
+    "age": "30",
+    "expertise": "Clinical microbiology ",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-26T23:19:03.966877",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_83",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Adenylyl cyclase",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.12,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.67,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.67,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because of this line: \u201cThis will help maintain proper hydration and electrolyte balance, improving the patient's overall clinical outcomes.\u201d I believed this hinted at Ca2+ channels being increased to balance out decreased urine osmolality.",
+  "highlights": [],
+  "session_start": "2026-01-26T23:19:03.995919",
+  "step1_time": "2026-01-26T23:25:25.404505",
+  "step2_time": "2026-01-26T23:26:45.623823",
+  "step3_time": "2026-01-26T23:31:05.499413",
+  "timestamp": "2026-01-26T23:31:05.499423"
+}

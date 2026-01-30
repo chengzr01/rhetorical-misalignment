@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5db741cc04b632000a9a9800",
+  "demographics": {
+    "age": "25",
+    "expertise": "CVICU",
+    "practice_location": "Ohio",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-26T09:23:19.144060",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_331",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Apply a plaster cast that incorporates the thumb",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn\u2019t think taht plaster was indicated because they didn\u2019t;t mention the X-rays showing a break",
+  "highlights": [],
+  "session_start": "2026-01-26T09:23:19.174660",
+  "step1_time": "2026-01-26T09:41:53.603438",
+  "step2_time": "2026-01-26T09:42:16.369535",
+  "step3_time": "2026-01-26T09:42:40.328781",
+  "timestamp": "2026-01-26T09:42:40.328792"
+}

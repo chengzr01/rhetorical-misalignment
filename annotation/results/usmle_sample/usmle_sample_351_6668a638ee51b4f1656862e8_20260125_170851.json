@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6668a638ee51b4f1656862e8",
+  "demographics": {
+    "age": "55+",
+    "expertise": "General",
+    "practice_location": "USA Midwest",
+    "race": "two_or_more",
+    "sex": "male",
+    "submitted_at": "2026-01-25T16:38:42.428797",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_351",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Order a random urine test for oxycodone",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Switching medications would address both the chief complaint and the drug abuse / drug selling factors.  The AI discussion did not substantially alter this opinion.",
+  "highlights": [],
+  "session_start": "2026-01-25T16:38:42.455083",
+  "step1_time": "2026-01-25T17:03:26.375371",
+  "step2_time": "2026-01-25T17:05:14.023249",
+  "step3_time": "2026-01-25T17:08:51.315689",
+  "timestamp": "2026-01-25T17:08:51.315698"
+}

@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6652269eea4a0dfa62f2f0ee",
+  "demographics": {
+    "age": "59",
+    "expertise": "Epidemiology",
+    "practice_location": "Missouri",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T19:24:08.416600",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_107",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Erythropoietin",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.05,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.87,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.87,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my original answer after reading the AI's explanation, as it seemed to be logical and precise in its reasoning.",
+  "highlights": [
+    {
+      "text": "The description of the drug that induces reticulocyte release suggests erythropoiesis-stimulating agents (ESAs), which are often used in patients on hemodialysis to manage anemia. These agents, such as erythropoietin (EPO) or darbepoetin alfa, act by stimulating the bone marrow to produce more red blood cells.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T19:37:05.344Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-25T19:24:08.443533",
+  "step1_time": "2026-01-25T19:35:41.008764",
+  "step2_time": "2026-01-25T19:36:29.727892",
+  "step3_time": "2026-01-25T19:38:20.120200",
+  "timestamp": "2026-01-25T19:38:20.120210"
+}

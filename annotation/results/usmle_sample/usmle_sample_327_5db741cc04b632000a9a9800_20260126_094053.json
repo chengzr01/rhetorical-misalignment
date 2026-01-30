@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5db741cc04b632000a9a9800",
+  "demographics": {
+    "age": "25",
+    "expertise": "CVICU",
+    "practice_location": "Ohio",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-26T09:23:19.144060",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_327",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Ultrasonography of the right upper abdominal quadrant",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.66,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.66,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.66,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "CT may be indicated if ultrasound doesn\u2019t reveal anything (or does, but something non-specific) and pain continues despite rehydration. Ultrasound is non invasive and can help diagnose or rule out a few major conditions. ",
+  "highlights": [],
+  "session_start": "2026-01-26T09:23:19.174660",
+  "step1_time": "2026-01-26T09:39:17.630663",
+  "step2_time": "2026-01-26T09:39:53.850599",
+  "step3_time": "2026-01-26T09:40:53.929733",
+  "timestamp": "2026-01-26T09:40:53.929745"
+}

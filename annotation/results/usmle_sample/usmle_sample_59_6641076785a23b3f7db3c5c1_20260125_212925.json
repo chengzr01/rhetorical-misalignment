@@ -1,0 +1,128 @@
+{
+  "annotator_id": "6641076785a23b3f7db3c5c1",
+  "demographics": {
+    "age": "26",
+    "expertise": "Pathology",
+    "practice_location": "Philadelphia, PA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T21:24:51.424396",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_59",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "The patient's DMD carrier status is uncertain because of random X inactivation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Honestly didn't know what a normal range would be, but, upon learning that she'd be 50% chance of carrying the disease because it's X-linked recessive, i revised my answer.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "evated serum levels of muscle creatine kinase (CK), a marker of muscle damage.\n-",
+      "timestamp": "2026-01-25T21:27:52.911Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "and do n",
+      "timestamp": "2026-01-25T21:27:54.100Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "emale",
+      "timestamp": "2026-01-25T21:27:55.559Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "levels, but most",
+      "timestamp": "2026-01-25T21:27:56.508Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "vat",
+      "timestamp": "2026-01-25T21:27:57.965Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "M",
+      "timestamp": "2026-01-25T21:27:58.679Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "a mil",
+      "timestamp": "2026-01-25T21:27:59.660Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": ", asymptomati",
+      "timestamp": "2026-01-25T21:28:00.729Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": ", indicating the presence of the disease in the family.\n- The patient has a serum CK level of",
+      "timestamp": "2026-01-25T21:28:08.882Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "/L, which is slightly elevated but within the normal range.\n- The patient's mother has a serum CK level of",
+      "timestamp": "2026-01-25T21:28:09.921Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "12",
+      "timestamp": "2026-01-25T21:28:11.201Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "e a 50% c",
+      "timestamp": "2026-01-25T21:28:19.987Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "If the patient is a carrier, she has a 25% chance of having a son with DMD",
+      "timestamp": "2026-01-25T21:28:24.171Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T21:24:51.452628",
+  "step1_time": "2026-01-25T21:27:33.286122",
+  "step2_time": "2026-01-25T21:28:39.181990",
+  "step3_time": "2026-01-25T21:29:25.616465",
+  "timestamp": "2026-01-25T21:29:25.616475"
+}

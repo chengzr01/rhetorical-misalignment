@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65c154c5e07aa75b58ca8a05",
+  "demographics": {
+    "age": "30",
+    "expertise": "Clinical microbiology ",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-26T23:19:03.966877",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_233",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Approve the study as submitted",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because of \u201cIf a positive association is found, it is important to communicate that these findings do not imply causation, but instead suggest a need for further investigation. The institution should be prepared to address any concerns that arise.\u201d ",
+  "highlights": [],
+  "session_start": "2026-01-26T23:19:03.995919",
+  "step1_time": "2026-01-26T23:38:53.249538",
+  "step2_time": "2026-01-26T23:40:42.091063",
+  "step3_time": "2026-01-26T23:41:17.738720",
+  "timestamp": "2026-01-26T23:41:17.738731"
+}

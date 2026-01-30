@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69435cac1b082b159ee78f3e",
+  "demographics": {
+    "age": "55",
+    "expertise": "Anesthesia",
+    "practice_location": "Greensboro, NC",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T13:49:29.957361",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_157",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Ask the patient about his alcohol intake, smoking, and stress level",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "While a lower testosterone level may be a factor, at 30 years old, that would not be the primary focus at this time. Exogenous factors related to stress in social/professional environments and stresses around difficulty in conceiving should be addressed first",
+  "highlights": [],
+  "session_start": "2026-01-25T13:49:29.984501",
+  "step1_time": "2026-01-25T14:00:55.101992",
+  "step2_time": "2026-01-25T14:01:18.551587",
+  "step3_time": "2026-01-25T14:03:27.058694",
+  "timestamp": "2026-01-25T14:03:27.058703"
+}

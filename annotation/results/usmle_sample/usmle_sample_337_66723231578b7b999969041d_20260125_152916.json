@@ -1,0 +1,74 @@
+{
+  "annotator_id": "66723231578b7b999969041d",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Dentistry",
+    "practice_location": "Blandon, PA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T15:16:24.527122",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_337",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Smoking cessation program",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.83,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The statins was not an answer choice. Smoking cessation is the next obvious step for CAD and wasn't really influenced by the AI.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "- Smoking: 20 years of smoking (one pack per day), a major risk factor for CAD.",
+      "timestamp": "2026-01-25T15:27:40.617Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Statins should be prescribed immediately",
+      "timestamp": "2026-01-25T15:28:00.853Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "- Hypercholesterolemia: The patient has a significantly elevated fasting serum total cholesterol level (249 mg/dL).",
+      "timestamp": "2026-01-25T15:28:11.360Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Given the high total cholesterol level (249 mg/dL), statins are the first-line pharmacological therapy",
+      "timestamp": "2026-01-25T15:28:22.377Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T15:16:24.555005",
+  "step1_time": "2026-01-25T15:27:25.972054",
+  "step2_time": "2026-01-25T15:28:31.791790",
+  "step3_time": "2026-01-25T15:29:16.077462",
+  "timestamp": "2026-01-25T15:29:16.077472"
+}

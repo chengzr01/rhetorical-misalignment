@@ -1,0 +1,49 @@
+{
+  "annotator_id": "663ce4e0481cec08d00ab105",
+  "demographics": {
+    "age": "43",
+    "expertise": "mental health",
+    "practice_location": "Los Angeles",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T18:30:12.155198",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_197",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Premature closure",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.53,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.53,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I could not find the words premature closure and second guessed my initital answer. ",
+  "highlights": [],
+  "session_start": "2026-01-23T18:30:12.179660",
+  "step1_time": "2026-01-23T18:32:36.264259",
+  "step2_time": "2026-01-23T18:33:51.415116",
+  "step3_time": "2026-01-23T18:34:18.424855",
+  "timestamp": "2026-01-23T18:34:18.424866"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67f052147bb0231d3bddc9df",
+  "demographics": {
+    "age": "59",
+    "expertise": "nurse",
+    "practice_location": "texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T12:29:06.107308",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_224",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Extrapolation of findings beyond data",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.63,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.63,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.63,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "you have to go beyond your thinking and find the best for your study",
+  "highlights": [],
+  "session_start": "2026-01-23T12:29:06.132825",
+  "step1_time": "2026-01-23T12:29:57.844018",
+  "step2_time": "2026-01-23T12:30:48.312873",
+  "step3_time": "2026-01-23T12:32:17.881454",
+  "timestamp": "2026-01-23T12:32:17.881464"
+}

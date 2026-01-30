@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6969491a59cff99b31f77813",
+  "demographics": {
+    "age": "32",
+    "expertise": "Endocrinology and Diabetes",
+    "practice_location": "Springfield,MA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T19:51:41.729358",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_34",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Foreign peptides bound to class I MHC molecules are recognized by CD8+ T lymphocytes",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.12,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.12,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief, I just put that I wasn't very confident in it. The AI did not really help lead me to the right answer. I honestly don't know much about that area of medicine. ",
+  "highlights": [],
+  "session_start": "2026-01-26T19:51:41.759968",
+  "step1_time": "2026-01-26T19:53:41.911773",
+  "step2_time": "2026-01-26T19:54:51.967046",
+  "step3_time": "2026-01-26T19:56:10.575707",
+  "timestamp": "2026-01-26T19:56:10.575717"
+}

@@ -1,0 +1,128 @@
+{
+  "annotator_id": "6641076785a23b3f7db3c5c1",
+  "demographics": {
+    "age": "26",
+    "expertise": "Pathology",
+    "practice_location": "Philadelphia, PA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T21:24:51.424396",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_53",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Splitting",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my belief that the patient was just a dick to the fact that there could be an underlying mental health disorder at play. Abdominal pain with aggressive behavior may also be attributed to metastatic tumor or a hormone issue.",
+  "highlights": [
+    {
+      "text": "The most likely explanatio",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:25:53.984Z",
+      "step": "step3"
+    },
+    {
+      "text": "for this patien",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:25:55.818Z",
+      "step": "step3"
+    },
+    {
+      "text": "n",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:25:57.217Z",
+      "step": "step3"
+    },
+    {
+      "text": "t's be",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:25:58.761Z",
+      "step": "step3"
+    },
+    {
+      "text": "ssue,",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:01.468Z",
+      "step": "step3"
+    },
+    {
+      "text": "nce ab",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:02.388Z",
+      "step": "step3"
+    },
+    {
+      "text": "l health i",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:02.982Z",
+      "step": "step3"
+    },
+    {
+      "text": "e ab",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:03.695Z",
+      "step": "step3"
+    },
+    {
+      "text": "l",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:04.351Z",
+      "step": "step3"
+    },
+    {
+      "text": "use o",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:05.954Z",
+      "step": "step3"
+    },
+    {
+      "text": "r a mental health issue, as these conditions can lead to erratic and aggressive behavior. Family conflicts may also be a contributing factor, but it is not t",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:07.231Z",
+      "step": "step3"
+    },
+    {
+      "text": "avior is su",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:09.163Z",
+      "step": "step3"
+    },
+    {
+      "text": "avior is su",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T21:26:10.828Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-25T21:24:51.452628",
+  "step1_time": "2026-01-25T21:25:11.241137",
+  "step2_time": "2026-01-25T21:25:40.646717",
+  "step3_time": "2026-01-25T21:27:08.564555",
+  "timestamp": "2026-01-25T21:27:08.564565"
+}

@@ -1,0 +1,122 @@
+{
+  "annotator_id": "6082c37809793130ca4b3f0e",
+  "demographics": {
+    "age": "56",
+    "expertise": "Medical Social Worker",
+    "practice_location": "Greenwood, SC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T17:19:07.686667",
+    "years_of_practice": "25"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_36",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "\u2193 \u2191 \u2191",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.07,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.45,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.45,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "After reading the explanation and highlighting the specimen variables, I determined all factors would be high. The questions asked to determine what values would be high or low. According to the response, all values would be high. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "chronic inflammatory interstitial pneumonitis",
+      "timestamp": "2026-01-23T17:20:27.370Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "changes in the cell populations of his alveoli",
+      "timestamp": "2026-01-23T17:20:44.415Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "interstitial tissue of the lungs",
+      "timestamp": "2026-01-23T17:20:54.993Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "alveoli (air sacs) where gas exchange occurs",
+      "timestamp": "2026-01-23T17:21:05.675Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "fibrosis (scarring)",
+      "timestamp": "2026-01-23T17:21:12.015Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "the lung architecture.",
+      "timestamp": "2026-01-23T17:21:15.831Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "thinning of the alveola",
+      "timestamp": "2026-01-23T17:21:43.667Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "crucial for alveolar repair",
+      "timestamp": "2026-01-23T17:21:52.349Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "surfactant,",
+      "timestamp": "2026-01-23T17:21:57.611Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "hronic inflammation, these cells may proliferate and become hypertrophic, and their number may increase",
+      "timestamp": "2026-01-23T17:22:11.861Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "increase in fibroblasts and collagen deposition leading to fibrosis is common.",
+      "timestamp": "2026-01-23T17:22:33.158Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "increase in fibroblasts (indicative of fibrosis)",
+      "timestamp": "2026-01-23T17:23:14.354Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T17:19:07.713374",
+  "step1_time": "2026-01-23T17:19:58.613246",
+  "step2_time": "2026-01-23T17:24:41.431799",
+  "step3_time": "2026-01-23T17:26:44.221509",
+  "timestamp": "2026-01-23T17:26:44.221518"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "694321028704dcdfb395347c",
+  "demographics": {
+    "age": "26",
+    "expertise": "medicine, pharmacy",
+    "practice_location": "usa",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T19:29:10.243218",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_193",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Elder neglect",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.93,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.93,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "From my understanding and ai it mentions mental health. The elderly woman has only 1 living child who is in a poor place, her husband is gone. She is clearly not taking care of her self in what looks like a depressive episode. Her lack of energy in her own health care reflects MDD. I argue that just because someone lives with her does not make it neglect. she may need a mental health eval more so than being reported for neglect. ",
+  "highlights": [],
+  "session_start": "2026-01-27T19:29:10.274225",
+  "step1_time": "2026-01-27T19:32:35.268875",
+  "step2_time": "2026-01-27T19:32:51.292387",
+  "step3_time": "2026-01-27T19:34:52.380727",
+  "timestamp": "2026-01-27T19:34:52.380738"
+}

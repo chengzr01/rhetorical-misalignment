@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66240f705ac353a0bb928773",
+  "demographics": {
+    "age": "41",
+    "expertise": "med surg",
+    "practice_location": "cleveland ohio",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T15:24:18.689534",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_246",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "5",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.05,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.05,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.05,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "im proud of myself",
+  "highlights": [],
+  "session_start": "2026-01-23T15:24:18.715052",
+  "step1_time": "2026-01-23T15:30:54.718772",
+  "step2_time": "2026-01-23T15:31:23.121300",
+  "step3_time": "2026-01-23T15:32:06.163929",
+  "timestamp": "2026-01-23T15:32:06.163938"
+}

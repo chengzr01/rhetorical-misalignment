@@ -1,0 +1,49 @@
+{
+  "annotator_id": "662940adc803eb008d6c70a9",
+  "demographics": {
+    "age": "43",
+    "expertise": "Registered nurse",
+    "practice_location": "Texas",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T17:18:47.049228",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_14",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Separation of endothelial junctions",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Sounds like normal cellulitis ",
+  "highlights": [],
+  "session_start": "2026-01-26T17:18:47.079614",
+  "step1_time": "2026-01-26T17:19:22.150485",
+  "step2_time": "2026-01-26T17:19:53.098983",
+  "step3_time": "2026-01-26T17:20:30.530272",
+  "timestamp": "2026-01-26T17:20:30.530283"
+}

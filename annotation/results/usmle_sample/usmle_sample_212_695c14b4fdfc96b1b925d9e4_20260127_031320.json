@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695c14b4fdfc96b1b925d9e4",
+  "demographics": {
+    "age": "20-25",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Denver, Colorado",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T03:06:07.939264",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_212",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Flora",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.42,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.63,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.63,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Once again, no image was shown to me on this screen. From the text it seemed contact dermatitis would be the most common cause. AI made me think more confidently about my decision.",
+  "highlights": [],
+  "session_start": "2026-01-27T03:06:07.968419",
+  "step1_time": "2026-01-27T03:12:08.967056",
+  "step2_time": "2026-01-27T03:12:30.148892",
+  "step3_time": "2026-01-27T03:13:20.962954",
+  "timestamp": "2026-01-27T03:13:20.962964"
+}

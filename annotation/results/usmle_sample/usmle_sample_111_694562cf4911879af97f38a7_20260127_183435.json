@@ -1,0 +1,62 @@
+{
+  "annotator_id": "694562cf4911879af97f38a7",
+  "demographics": {
+    "age": "35",
+    "expertise": "Primary Care",
+    "practice_location": "United States",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-27T18:28:43.614989",
+    "years_of_practice": "15"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_111",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Patellar ligament",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.95,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.95,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.95,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "After looking at the information that was given to me, I specifically focused on exactly where the swelling was located. I know that the patellar means pertaining to the knee. The anterior part of the tibial area is the knee; therefore, the only option that was more logical was the patellar ligament.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "attached to the abnormal anterior tibial area",
+      "timestamp": "2026-01-27T18:32:02.563Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Tendonitis: Particularly of the patellar tendon",
+      "timestamp": "2026-01-27T18:32:13.622Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-27T18:28:43.647489",
+  "step1_time": "2026-01-27T18:31:45.196195",
+  "step2_time": "2026-01-27T18:32:20.296026",
+  "step3_time": "2026-01-27T18:34:35.730464",
+  "timestamp": "2026-01-27T18:34:35.730474"
+}

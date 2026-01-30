@@ -1,0 +1,49 @@
+{
+  "annotator_id": "678c712ee0a31cf51476dfca",
+  "demographics": {
+    "age": "",
+    "expertise": "internal medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T14:59:11.714971",
+    "years_of_practice": "30"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_155",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Pericardiocentesis",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because the AI\u2019s reasoning clearly supported my initial conclusion",
+  "highlights": [],
+  "session_start": "2026-01-23T14:59:11.739081",
+  "step1_time": "2026-01-23T15:04:42.233742",
+  "step2_time": "2026-01-23T15:05:35.379428",
+  "step3_time": "2026-01-23T15:06:14.308060",
+  "timestamp": "2026-01-23T15:06:14.308070"
+}

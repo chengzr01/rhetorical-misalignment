@@ -1,0 +1,68 @@
+{
+  "annotator_id": "6082c37809793130ca4b3f0e",
+  "demographics": {
+    "age": "56",
+    "expertise": "Medical Social Worker",
+    "practice_location": "Greenwood, SC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T17:19:07.686667",
+    "years_of_practice": "25"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_353",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Intravenous vancomycin",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.32,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.82,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.82,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer. I saw nothing about the need for IV therapy. The response included a higher dose of diclocacillin or another antibiotic. I was confused as to why IV therapy would be needed at this time. Maybe after a biopsy, I would agree",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "(Mastitis",
+      "timestamp": "2026-01-23T17:49:57.696Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "re not painful or associated with systemic symptoms unless complicated.",
+      "timestamp": "2026-01-23T17:50:12.876Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "breast infection (mastitis",
+      "timestamp": "2026-01-23T17:50:32.851Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T17:19:07.713374",
+  "step1_time": "2026-01-23T17:49:47.255450",
+  "step2_time": "2026-01-23T17:51:13.289160",
+  "step3_time": "2026-01-23T17:53:33.389985",
+  "timestamp": "2026-01-23T17:53:33.389995"
+}

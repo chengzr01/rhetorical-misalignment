@@ -1,0 +1,122 @@
+{
+  "annotator_id": "6131ba00bd67d2702e9a3c8d",
+  "demographics": {
+    "age": "28",
+    "expertise": "cardiac imaging",
+    "practice_location": "Syracuse, NY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T05:31:26.095056",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_23",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Decreased bilirubin conjugation",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.07,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.11,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.11,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because AI added a bunch of unnecessary information and did not ever mention bilirubin conjugation",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "developed jaundice, which is evidenced by the presence of bilirubin in the blood.",
+      "timestamp": "2026-01-26T05:33:43.162Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "hepatocellular damage.",
+      "timestamp": "2026-01-26T05:33:49.845Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "cute hepatocellular injury",
+      "timestamp": "2026-01-26T05:33:54.896Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Hemolysis",
+      "timestamp": "2026-01-26T05:33:58.130Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "unconjugated hyperbilirubinemia",
+      "timestamp": "2026-01-26T05:34:01.417Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "hepatic disorder",
+      "timestamp": "2026-01-26T05:34:04.797Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "strongly suggests that the jaundice is a result of acute hepatocellular injury f",
+      "timestamp": "2026-01-26T05:34:14.691Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "overdose is a well-known cause of hepatotoxicity",
+      "timestamp": "2026-01-26T05:34:24.407Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "altered bilirubin processing, whic",
+      "timestamp": "2026-01-26T05:34:43.115Z",
+      "step": "step2"
+    },
+    {
+      "text": "hepatocellular injury due",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-26T05:35:40.170Z",
+      "step": "step3"
+    },
+    {
+      "text": "to replenish glutathione",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-26T05:35:54.783Z",
+      "step": "step3"
+    },
+    {
+      "text": "liver damage affecting bilirubin metabolism.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-26T05:36:08.172Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-26T05:31:26.123141",
+  "step1_time": "2026-01-26T05:32:11.568018",
+  "step2_time": "2026-01-26T05:35:18.612419",
+  "step3_time": "2026-01-26T05:37:04.383603",
+  "timestamp": "2026-01-26T05:37:04.383613"
+}

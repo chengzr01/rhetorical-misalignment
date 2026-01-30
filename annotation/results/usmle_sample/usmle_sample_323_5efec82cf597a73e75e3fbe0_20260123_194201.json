@@ -1,0 +1,62 @@
+{
+  "annotator_id": "5efec82cf597a73e75e3fbe0",
+  "demographics": {
+    "age": "24",
+    "expertise": "Psychology",
+    "practice_location": "Minneapolis, Minnesota",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:33:02.948210",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_323",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Oral acyclovir",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I went with what the AI recommended.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "acyclovir",
+      "timestamp": "2026-01-23T19:41:48.390Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "acyclovir",
+      "timestamp": "2026-01-23T19:41:51.021Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T19:33:02.975291",
+  "step1_time": "2026-01-23T19:41:42.328530",
+  "step2_time": "2026-01-23T19:41:54.457112",
+  "step3_time": "2026-01-23T19:42:01.403332",
+  "timestamp": "2026-01-23T19:42:01.403342"
+}

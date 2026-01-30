@@ -1,0 +1,98 @@
+{
+  "annotator_id": "5b3c4005b6b44100016160e7",
+  "demographics": {
+    "age": "33",
+    "expertise": "Mental Health",
+    "practice_location": "Baltimore, MD",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-27T16:24:40.025454",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_118",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Agoraphobia",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.98,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.98,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "At first I fundamentally disagreed with the \"correct answer\" due to the structure and presentation of the scenario. The case study fits the description of symptoms for DSM IV criteria and NOT the DSM V which is often more specific. What I would want to know is more about the stressors triggerring the avoidance. Are there other stressors because the catalyst event wasn't feeling trapped, but feeling late. The ongoing incidents indicate the panic episodes started without the avoidance. But for lack of a better answer I can concede this fits from a test taking perspctive. Clinically, I'd want to ask more questions and would for insurance purposes apply GAD and remove it with justification if agoraphobia was more appropriate upon further examination.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "sudden onset of chest pain, rapid heartbeat, sweating, and nausea, lasting approximately 10 minutes.",
+      "timestamp": "2026-01-27T16:31:21.274Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "6-month history of recurrent episodes of moderate chest pain, each preceded by episodes of stress.",
+      "timestamp": "2026-01-27T16:31:36.701Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "episodes have been occurring more frequently, with two to three instances weekly over the past three weeks. He experiences significant fear of these episodes happening in public or social settings,",
+      "timestamp": "2026-01-27T16:31:47.876Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "leading to avoidance behaviors.",
+      "timestamp": "2026-01-27T16:31:52.577Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "no past medical history of serious illness, i",
+      "timestamp": "2026-01-27T16:31:56.281Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "physical examination reveals no abnormalities.",
+      "timestamp": "2026-01-27T16:32:02.717Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "anxious mood",
+      "timestamp": "2026-01-27T16:32:10.757Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "** Panic Disorder:** The patient's history of sudden onset of severe symptoms, particularly in stressful situations, along with avoidance behaviors and an anxious mood, is suggestive of panic disorder.",
+      "timestamp": "2026-01-27T16:32:27.684Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-27T16:24:40.064591",
+  "step1_time": "2026-01-27T16:31:09.024867",
+  "step2_time": "2026-01-27T16:33:17.624645",
+  "step3_time": "2026-01-27T16:42:51.860828",
+  "timestamp": "2026-01-27T16:42:51.860837"
+}

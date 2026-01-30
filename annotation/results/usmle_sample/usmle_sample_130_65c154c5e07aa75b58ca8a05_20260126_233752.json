@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65c154c5e07aa75b58ca8a05",
+  "demographics": {
+    "age": "30",
+    "expertise": "Clinical microbiology ",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-26T23:19:03.966877",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_130",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Physical therapy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer because of \u201cImplement physical therapy interventions\u201d. The case mentioned medications being taken for Parkisons but did not mention physical therapy.",
+  "highlights": [],
+  "session_start": "2026-01-26T23:19:03.995919",
+  "step1_time": "2026-01-26T23:34:37.005625",
+  "step2_time": "2026-01-26T23:36:17.774228",
+  "step3_time": "2026-01-26T23:37:52.268796",
+  "timestamp": "2026-01-26T23:37:52.268806"
+}

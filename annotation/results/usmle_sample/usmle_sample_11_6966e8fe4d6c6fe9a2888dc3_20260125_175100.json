@@ -1,0 +1,98 @@
+{
+  "annotator_id": "6966e8fe4d6c6fe9a2888dc3",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Clinical psychology",
+    "practice_location": "USA",
+    "race": "two_or_more",
+    "sex": "female",
+    "submitted_at": "2026-01-25T17:44:47.528026",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_11",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Open-labeled clinical trial",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.96,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I did not see information about open-label in the clinical trial. However, I assumed randomization. It seems I was wrong about that, so I changed my answer.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "phase I clinical trial",
+      "timestamp": "2026-01-25T17:47:26.118Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "hase I trial, dose escalation cohort stu",
+      "timestamp": "2026-01-25T17:47:39.304Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Clinical Trial",
+      "timestamp": "2026-01-25T17:47:46.680Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "small, selected patient populations",
+      "timestamp": "2026-01-25T17:48:03.055Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Each cohort should be closely monitored",
+      "timestamp": "2026-01-25T17:48:26.748Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "experimental nature",
+      "timestamp": "2026-01-25T17:48:39.454Z",
+      "step": "step2"
+    },
+    {
+      "text": "phase I clinical tria",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T17:49:38.137Z",
+      "step": "step3"
+    },
+    {
+      "text": "Phase I trial, dose escalation cohort study.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T17:49:42.702Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-25T17:44:47.556764",
+  "step1_time": "2026-01-25T17:45:42.450945",
+  "step2_time": "2026-01-25T17:49:24.857486",
+  "step3_time": "2026-01-25T17:51:00.390007",
+  "timestamp": "2026-01-25T17:51:00.390015"
+}

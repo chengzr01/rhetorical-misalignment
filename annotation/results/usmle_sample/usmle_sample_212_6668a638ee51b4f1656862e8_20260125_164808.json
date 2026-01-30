@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6668a638ee51b4f1656862e8",
+  "demographics": {
+    "age": "55+",
+    "expertise": "General",
+    "practice_location": "USA Midwest",
+    "race": "two_or_more",
+    "sex": "male",
+    "submitted_at": "2026-01-25T16:38:42.428797",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_212",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Flora",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "My initial response matched the \"correct\" answer.  The highlighted area suggests some room for doubt.",
+  "highlights": [
+    {
+      "text": "Given the presentation and the family's pet exposure, ringworm (tinea corporis) should be considered. Dermatophytosis is a common skin infection caused by fungi and is known to be transmitted between humans and animals.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T16:47:36.570Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-25T16:38:42.455083",
+  "step1_time": "2026-01-25T16:44:20.267169",
+  "step2_time": "2026-01-25T16:46:03.490207",
+  "step3_time": "2026-01-25T16:48:08.174643",
+  "timestamp": "2026-01-25T16:48:08.174652"
+}

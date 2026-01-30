@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69435cac1b082b159ee78f3e",
+  "demographics": {
+    "age": "55",
+    "expertise": "Anesthesia",
+    "practice_location": "Greensboro, NC",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T13:49:29.957361",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_260",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Cardiac conduction abnormality",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The child's age and previously uneventful growth and development, leads to a ideopathic presentation of cardiac disease. Autposy did not show mechanical or phsyiologic defecst in the structures of the heart. Conduction and heart electrical dysrythmias seems a good answer",
+  "highlights": [],
+  "session_start": "2026-01-25T13:49:29.984501",
+  "step1_time": "2026-01-25T14:05:00.543307",
+  "step2_time": "2026-01-25T14:05:09.746571",
+  "step3_time": "2026-01-25T14:08:27.788954",
+  "timestamp": "2026-01-25T14:08:27.788963"
+}

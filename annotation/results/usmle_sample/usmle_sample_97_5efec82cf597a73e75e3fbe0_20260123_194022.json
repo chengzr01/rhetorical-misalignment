@@ -1,0 +1,56 @@
+{
+  "annotator_id": "5efec82cf597a73e75e3fbe0",
+  "demographics": {
+    "age": "24",
+    "expertise": "Psychology",
+    "practice_location": "Minneapolis, Minnesota",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:33:02.948210",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_97",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Olfactory nerve",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.05,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It was difficult to understand the terminology, and I didn't realize the olfactory is the nose, as I was thinking of the sinus.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "nasal",
+      "timestamp": "2026-01-23T19:39:52.072Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T19:33:02.975291",
+  "step1_time": "2026-01-23T19:39:29.450561",
+  "step2_time": "2026-01-23T19:40:00.387877",
+  "step3_time": "2026-01-23T19:40:22.667578",
+  "timestamp": "2026-01-23T19:40:22.667590"
+}

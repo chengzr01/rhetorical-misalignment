@@ -1,0 +1,56 @@
+{
+  "annotator_id": "63a18415816a2a0cbe438f1b",
+  "demographics": {
+    "age": "56",
+    "expertise": "long term care",
+    "practice_location": "Owensboro, KY USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T16:01:26.804110",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_49",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Increased hydrostatic pressure",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.88,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.88,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I was certain the clamp would increase pressure. AI clearly stated that the answer was increased hydrostatic pressure.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "increase in hydrostatic pressure in the glomerular capillaries",
+      "timestamp": "2026-01-23T16:10:32.668Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T16:01:26.828068",
+  "step1_time": "2026-01-23T16:10:05.403136",
+  "step2_time": "2026-01-23T16:10:39.549867",
+  "step3_time": "2026-01-23T16:12:03.406717",
+  "timestamp": "2026-01-23T16:12:03.406727"
+}

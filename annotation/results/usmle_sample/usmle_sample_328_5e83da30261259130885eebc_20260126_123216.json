@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5e83da30261259130885eebc",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "IM",
+    "practice_location": "usa",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T12:24:42.245466",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_328",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Osteomalacia",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.02,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.47,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.47,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "ai just made me more confident",
+  "highlights": [],
+  "session_start": "2026-01-26T12:24:42.273593",
+  "step1_time": "2026-01-26T12:31:47.786613",
+  "step2_time": "2026-01-26T12:32:04.908506",
+  "step3_time": "2026-01-26T12:32:16.172393",
+  "timestamp": "2026-01-26T12:32:16.172404"
+}

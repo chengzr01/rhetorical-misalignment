@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66723231578b7b999969041d",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Dentistry",
+    "practice_location": "Blandon, PA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T15:16:24.527122",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_3",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Formation of antibodies to RhD",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.16,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.19,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.19,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI definitely had an influence. IF the proper treatment is providing RhoGAM, a major concern would be the formation of antibodies to that.",
+  "highlights": [],
+  "session_start": "2026-01-25T15:16:24.555005",
+  "step1_time": "2026-01-25T15:16:56.125265",
+  "step2_time": "2026-01-25T15:18:34.966281",
+  "step3_time": "2026-01-25T15:19:53.283220",
+  "timestamp": "2026-01-25T15:19:53.283230"
+}

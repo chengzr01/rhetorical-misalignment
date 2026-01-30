@@ -1,0 +1,49 @@
+{
+  "annotator_id": "663ce4e0481cec08d00ab105",
+  "demographics": {
+    "age": "43",
+    "expertise": "mental health",
+    "practice_location": "Los Angeles",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T18:30:12.155198",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_274",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Yes yes",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.87,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.62,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.62,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I revised my confidence level based on AI not agreeing, but I was right",
+  "highlights": [],
+  "session_start": "2026-01-23T18:30:12.179660",
+  "step1_time": "2026-01-23T18:34:54.160120",
+  "step2_time": "2026-01-23T18:35:12.434679",
+  "step3_time": "2026-01-23T18:35:30.326146",
+  "timestamp": "2026-01-23T18:35:30.326155"
+}

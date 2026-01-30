@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6969491a59cff99b31f77813",
+  "demographics": {
+    "age": "32",
+    "expertise": "Endocrinology and Diabetes",
+    "practice_location": "Springfield,MA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T19:51:41.729358",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_331",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Apply a plaster cast that incorporates the thumb",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I thought that based on the AI explanation that the answer was going to be to get more imaging done, but since that answer was not an option, I figured my answer may still be correct",
+  "highlights": [],
+  "session_start": "2026-01-26T19:51:41.759968",
+  "step1_time": "2026-01-26T20:33:10.414680",
+  "step2_time": "2026-01-26T20:33:18.694775",
+  "step3_time": "2026-01-26T20:34:09.230221",
+  "timestamp": "2026-01-26T20:34:09.230231"
+}

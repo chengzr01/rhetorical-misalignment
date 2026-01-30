@@ -1,0 +1,86 @@
+{
+  "annotator_id": "5b3c4005b6b44100016160e7",
+  "demographics": {
+    "age": "33",
+    "expertise": "Mental Health",
+    "practice_location": "Baltimore, MD",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-27T16:24:40.025454",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_36",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "\u2193 \u2191 \u2191",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "To be blunt I do have working knowledge of lung diseases due to working with chronically ill populations and my own family history of lung concerns. What wasn't clear to me was how the arrows aligned to the question, so I am unusure if I misunderstood or if the design of this questionaire is my issue.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "chronic inflammatory interstitial pneumonitis presents for follow-up.",
+      "timestamp": "2026-01-27T16:26:20.373Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "most likely to be observed in the biopsy specimen compared to a healthy individual?",
+      "timestamp": "2026-01-27T16:26:33.426Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Chronic inflammation can lead to fibrosis (scarring) and changes in the lung architecture.",
+      "timestamp": "2026-01-27T16:26:45.170Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "n chronic inflammatory diseases, there may be thinning of the alveolar walls due to atrophy or destruction of Type I pneumocytes.",
+      "timestamp": "2026-01-27T16:26:55.440Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "n chronic inflammation, these cells may proliferate and become hypertrophic, and their number may increase to compensate for damage to Type I cells.",
+      "timestamp": "2026-01-27T16:27:09.012Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": ". In chronic interstitial pneumonitis, an increase in fibroblasts and collagen deposition leading to fibrosis is common.",
+      "timestamp": "2026-01-27T16:27:16.406Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-27T16:24:40.064591",
+  "step1_time": "2026-01-27T16:25:46.842294",
+  "step2_time": "2026-01-27T16:27:57.607876",
+  "step3_time": "2026-01-27T16:29:52.455441",
+  "timestamp": "2026-01-27T16:29:52.455450"
+}

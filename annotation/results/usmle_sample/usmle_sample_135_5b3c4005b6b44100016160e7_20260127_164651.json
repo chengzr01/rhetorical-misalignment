@@ -1,0 +1,56 @@
+{
+  "annotator_id": "5b3c4005b6b44100016160e7",
+  "demographics": {
+    "age": "33",
+    "expertise": "Mental Health",
+    "practice_location": "Baltimore, MD",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-27T16:24:40.025454",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_135",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Inclusion of trials with an intervention duration of 2 weeks",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.06,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.55,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.55,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I re-read the information for my understanding and re-read the question. The least reliable measure is the short studies which don't have the longitudenal aspect to make their data particularly reliable though that date is a nice starting off point for further research",
+  "highlights": [
+    {
+      "text": "Another consideration is the variability in sample sizes (ranging from 40 to 736) and treatment durations (from 2 weeks to 52 weeks). The optimal treatment duration for the maintenance phase can significantly influence the outcomes of interest, and longer treatment periods might reveal different results compared to shorter ones.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-27T16:45:46.036Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-27T16:24:40.064591",
+  "step1_time": "2026-01-27T16:43:22.263286",
+  "step2_time": "2026-01-27T16:44:32.677699",
+  "step3_time": "2026-01-27T16:46:51.603509",
+  "timestamp": "2026-01-27T16:46:51.603518"
+}

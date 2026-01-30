@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66723231578b7b999969041d",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Dentistry",
+    "practice_location": "Blandon, PA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T15:16:24.527122",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_46",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Omental bursa (lesser sac)",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.15,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.72,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.72,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Morrison\u2019s pouch (hepatorenal recess/pouch) is a potential space between the right liver lobe and right kidney that acts as a primary, early collection site for fluid, such as ascites. Omental bursa is a lesser contributor generally. ",
+  "highlights": [],
+  "session_start": "2026-01-25T15:16:24.555005",
+  "step1_time": "2026-01-25T15:23:56.374591",
+  "step2_time": "2026-01-25T15:25:42.944024",
+  "step3_time": "2026-01-25T15:26:35.212162",
+  "timestamp": "2026-01-25T15:26:35.212172"
+}

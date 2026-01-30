@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6652269eea4a0dfa62f2f0ee",
+  "demographics": {
+    "age": "59",
+    "expertise": "Epidemiology",
+    "practice_location": "Missouri",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T19:24:08.416600",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_285",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Contact the patient's health care proxy to discuss how to proceed",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.66,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.14,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I initially chose the correct answer of contacting the patient's proxy, but changed it due to the reasoning by the AI.  ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "In summary, the most appropriate initial intervention for this 88-year-old woman with rectal bleeding and underlying cardiovascular risk factors is to stabilize her hemodynamically through fluid resuscitation, assess her blood count and coagulation profile, and pursue a diagnostic evaluation to identify the source of bleeding. Further management will depend on the findings of this evaluation and the patient's hemodynamic response.",
+      "timestamp": "2026-01-25T19:53:24.040Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T19:24:08.443533",
+  "step1_time": "2026-01-25T19:52:02.462909",
+  "step2_time": "2026-01-25T19:53:57.311330",
+  "step3_time": "2026-01-25T19:54:54.288433",
+  "timestamp": "2026-01-25T19:54:54.288443"
+}

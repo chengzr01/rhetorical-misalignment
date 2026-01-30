@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69723abe48c08c189b48752a",
+  "demographics": {
+    "age": "35",
+    "expertise": "Internal Medicine",
+    "practice_location": "California",
+    "race": "asian",
+    "sex": "male",
+    "submitted_at": "2026-01-25T17:20:07.016492",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_173",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Biopsy of the vulva",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed it to a less invasive test after reading AI response",
+  "highlights": [],
+  "session_start": "2026-01-25T17:20:07.044699",
+  "step1_time": "2026-01-25T17:27:56.211837",
+  "step2_time": "2026-01-25T17:28:29.792141",
+  "step3_time": "2026-01-25T17:28:59.837276",
+  "timestamp": "2026-01-25T17:28:59.837285"
+}

@@ -1,0 +1,122 @@
+{
+  "annotator_id": "6082c37809793130ca4b3f0e",
+  "demographics": {
+    "age": "56",
+    "expertise": "Medical Social Worker",
+    "practice_location": "Greenwood, SC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T17:19:07.686667",
+    "years_of_practice": "25"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_83",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Adenylyl cyclase",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.04,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.04,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "As I read through the scenario, I kept seeing mention of pituitary issues and kidney problems. The medication appears to be effective. The response that stated endocrine issues or pituartary and pituitary gland caused by head injury. The choice I made was based on the name. It made me think it worked on the adrenal system.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "decreased urine osmolality",
+      "timestamp": "2026-01-23T17:34:06.863Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "desmopressin, urine osmolality increases",
+      "timestamp": "2026-01-23T17:34:12.750Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Polyuria and polydipsia two weeks post-injury",
+      "timestamp": "2026-01-23T17:34:24.056Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "decreased urine osmolality",
+      "timestamp": "2026-01-23T17:34:29.296Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "A basal skull fracture can involve the pituitary stalk or the hypothalamus, both of which are responsible for the production and release of ADH",
+      "timestamp": "2026-01-23T17:35:04.078Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "disorder of water balance",
+      "timestamp": "2026-01-23T17:35:10.669Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "diabetes insipidus, with",
+      "timestamp": "2026-01-23T17:35:17.510Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "central diabetes insipidus",
+      "timestamp": "2026-01-23T17:35:36.860Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "damage to the pituitary gland or hypothalamus",
+      "timestamp": "2026-01-23T17:35:42.232Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "vasopressin",
+      "timestamp": "2026-01-23T17:36:03.370Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "V2 receptors",
+      "timestamp": "2026-01-23T17:36:07.956Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "activation of V2 receptors, thereby correcting the water balance by improving the kidney's ability to concentrate urine.",
+      "timestamp": "2026-01-23T17:36:27.535Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T17:19:07.713374",
+  "step1_time": "2026-01-23T17:33:51.202311",
+  "step2_time": "2026-01-23T17:36:50.862453",
+  "step3_time": "2026-01-23T17:40:39.590242",
+  "timestamp": "2026-01-23T17:40:39.590251"
+}

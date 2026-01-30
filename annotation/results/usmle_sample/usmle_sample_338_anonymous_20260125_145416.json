@@ -1,0 +1,56 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-25T14:44:54.559457",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_338",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Administration of sodium bicarbonate",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.87,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.87,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I felt from the my deduction and then the AI's, highlight above, I was pretty confident on my assessment. But I was wrong. ",
+  "highlights": [
+    {
+      "text": "Due to the late presentation of this case, the patient's current management primarily focuses on supportive care and continuous monitoring",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T14:53:39.240Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-25T14:44:54.585146",
+  "step1_time": "2026-01-25T14:53:06.145809",
+  "step2_time": "2026-01-25T14:53:17.409218",
+  "step3_time": "2026-01-25T14:54:16.951337",
+  "timestamp": "2026-01-25T14:54:16.951346"
+}

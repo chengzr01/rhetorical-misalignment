@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5a8e54c9f49c9a0001f3dc3f",
+  "demographics": {
+    "age": "33",
+    "expertise": "pharmacy",
+    "practice_location": "New Jersey",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T20:17:21.996577",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_189",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Report the physician to the clinic administrator and conduct the remainder of the clinic hours without him",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.34,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.38,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.38,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I wasn't too sure of what the right answer was, but reading the AI explanation actually made me more confident in my first choice. What it said made sense",
+  "highlights": [],
+  "session_start": "2026-01-25T20:17:22.026108",
+  "step1_time": "2026-01-25T20:19:50.181884",
+  "step2_time": "2026-01-25T20:20:23.740470",
+  "step3_time": "2026-01-25T20:21:12.501539",
+  "timestamp": "2026-01-25T20:21:12.501549"
+}

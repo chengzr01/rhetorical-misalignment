@@ -1,0 +1,80 @@
+{
+  "annotator_id": "6131ba00bd67d2702e9a3c8d",
+  "demographics": {
+    "age": "28",
+    "expertise": "cardiac imaging",
+    "practice_location": "Syracuse, NY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T05:31:26.095056",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_306",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Add inhaled fluticasone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.52,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.52,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.52,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer, mostly because I disagree with the other options given the information available at this time.  However, the answer I selected is not the perfect solution either.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "frequent nocturnal symptoms.",
+      "timestamp": "2026-01-26T05:46:37.856Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "his may include increasing the dosage of her inhaled corticosteroid if not on one, adding a long-acting beta-agonist (LABA) if not already prescribed, or adjusting the frequency of albuterol use.",
+      "timestamp": "2026-01-26T05:46:53.633Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "pneumococcal vaccine",
+      "timestamp": "2026-01-26T05:47:15.137Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Obesity has been associated with worse asthma control,",
+      "timestamp": "2026-01-26T05:47:25.399Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "most appropriate next step in pharmacotherapy for this patient is to optimize her current asthma regimen,",
+      "timestamp": "2026-01-26T05:47:48.787Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-26T05:31:26.123141",
+  "step1_time": "2026-01-26T05:46:26.503365",
+  "step2_time": "2026-01-26T05:47:55.833391",
+  "step3_time": "2026-01-26T05:48:44.983146",
+  "timestamp": "2026-01-26T05:48:44.983155"
+}

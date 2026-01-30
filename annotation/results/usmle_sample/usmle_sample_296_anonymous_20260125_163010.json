@@ -1,0 +1,56 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-25T16:07:57.799390",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_296",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Maternal viral load is the best predictor of p erinatal transmission of HIV infection",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.01,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.52,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.52,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I thought AI was saying the same as I was but I did not have enough knowledge to understand. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Viral Suppression: The patient has undetectable serum HIV RNA levels, which is crucial for reducing the risk of transmission to the fetus or child during pregnancy, delivery, and breastfeeding.",
+      "timestamp": "2026-01-25T16:28:52.803Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T16:07:57.827430",
+  "step1_time": "2026-01-25T16:28:27.157901",
+  "step2_time": "2026-01-25T16:29:45.636732",
+  "step3_time": "2026-01-25T16:30:10.729169",
+  "timestamp": "2026-01-25T16:30:10.729179"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "60fceb63bd7ca52152c7362c",
+  "demographics": {
+    "age": "25",
+    "expertise": "",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-23T18:45:18.147575",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_167",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Corticosteroid injection",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Removal wasn\u2019t an option and AI said that a biopsy was necessary, so a corticosteroid injection was the best bet. ",
+  "highlights": [],
+  "session_start": "2026-01-23T18:45:18.174706",
+  "step1_time": "2026-01-23T18:52:56.301461",
+  "step2_time": "2026-01-23T18:53:42.166042",
+  "step3_time": "2026-01-23T18:54:22.413370",
+  "timestamp": "2026-01-23T18:54:22.413380"
+}
