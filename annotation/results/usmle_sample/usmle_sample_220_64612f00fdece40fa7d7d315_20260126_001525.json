@@ -1,0 +1,49 @@
+{
+  "annotator_id": "64612f00fdece40fa7d7d315",
+  "demographics": {
+    "age": "51",
+    "expertise": "Dental ",
+    "practice_location": "Seattle, WA",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-25T23:59:20.571417",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_220",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "No further management is indicated at this time",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The patient maintains her ability to communicate effectively and participate in her health maintenance examination. Does not require any removal.",
+  "highlights": [],
+  "session_start": "2026-01-25T23:59:20.600550",
+  "step1_time": "2026-01-26T00:13:10.044554",
+  "step2_time": "2026-01-26T00:13:18.550831",
+  "step3_time": "2026-01-26T00:15:25.602245",
+  "timestamp": "2026-01-26T00:15:25.602254"
+}

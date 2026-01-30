@@ -1,0 +1,62 @@
+{
+  "annotator_id": "663ce4e0481cec08d00ab105",
+  "demographics": {
+    "age": "43",
+    "expertise": "mental health",
+    "practice_location": "Los Angeles",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T18:30:12.155198",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_130",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Physical therapy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was not very sure in my initial belief, but the AI answer confirmed it and made me feel much more confident. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "therapy interventions:",
+      "timestamp": "2026-01-23T18:31:15.571Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Implement physical therapy interventions:\n- Balance and gait training to improve postural control and stability.\n- Assistive devices (e.g., walker, cane) to support mobility and reduce fall risk.\n- Strength and flexibility training to improve overall muscle function.",
+      "timestamp": "2026-01-23T18:31:21.998Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T18:30:12.179660",
+  "step1_time": "2026-01-23T18:31:00.725002",
+  "step2_time": "2026-01-23T18:31:32.915265",
+  "step3_time": "2026-01-23T18:32:02.173852",
+  "timestamp": "2026-01-23T18:32:02.173865"
+}

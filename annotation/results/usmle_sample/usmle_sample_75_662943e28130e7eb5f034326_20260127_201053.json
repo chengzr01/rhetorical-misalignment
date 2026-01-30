@@ -1,0 +1,49 @@
+{
+  "annotator_id": "662943e28130e7eb5f034326",
+  "demographics": {
+    "age": "54",
+    "expertise": "Veterinary medicine ",
+    "practice_location": "Knoxville, TN",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T20:06:08.859469",
+    "years_of_practice": "26"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_75",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Glycogenolysis in the liver",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The reminder that 12 hours post prandial is actually fasted ",
+  "highlights": [],
+  "session_start": "2026-01-27T20:06:08.891351",
+  "step1_time": "2026-01-27T20:09:33.467140",
+  "step2_time": "2026-01-27T20:10:20.394149",
+  "step3_time": "2026-01-27T20:10:53.492403",
+  "timestamp": "2026-01-27T20:10:53.492412"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-27T17:46:55.361110",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_170",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "2.6",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.15,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "Doing the math I thought the answer was 7. With the help of AI I was able to choose the correct answer.\r\n. ",
+  "highlights": [],
+  "session_start": "2026-01-27T17:46:55.391582",
+  "step1_time": "2026-01-27T17:58:35.252768",
+  "step2_time": "2026-01-27T17:59:17.942047",
+  "step3_time": "2026-01-27T18:00:16.605221",
+  "timestamp": "2026-01-27T18:00:16.605232"
+}

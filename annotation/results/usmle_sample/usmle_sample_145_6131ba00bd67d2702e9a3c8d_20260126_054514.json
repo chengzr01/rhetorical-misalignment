@@ -1,0 +1,110 @@
+{
+  "annotator_id": "6131ba00bd67d2702e9a3c8d",
+  "demographics": {
+    "age": "28",
+    "expertise": "cardiac imaging",
+    "practice_location": "Syracuse, NY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T05:31:26.095056",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_145",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Insulin therapy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.74,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because my personal knowledge was supported with information from AI.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "scenario raises concern for diabetes mellitus, sp",
+      "timestamp": "2026-01-26T05:43:06.235Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "ymptoms include increased thirst and urination, fatigue, and unintentional weight loss.",
+      "timestamp": "2026-01-26T05:43:12.284Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "elevated blood glucose level f",
+      "timestamp": "2026-01-26T05:43:16.108Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "hyperglycemi",
+      "timestamp": "2026-01-26T05:43:30.807Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "common symptom of diabete",
+      "timestamp": "2026-01-26T05:43:44.646Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "associated with the elevated blood glucose levels.",
+      "timestamp": "2026-01-26T05:43:54.101Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "ects chronic hyperglycemia over the past 3 months,",
+      "timestamp": "2026-01-26T05:43:59.688Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "new diagnosis of type 1 diabetes requires starting insulin therapy and lifestyle modification",
+      "timestamp": "2026-01-26T05:44:18.010Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Insulin therapy is necessary for glucose control and to prevent diabetic ketoacidosis (DKA), which is a potentially life-threatening condition.",
+      "timestamp": "2026-01-26T05:44:26.877Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "ost appropriate next step in management, taking into account the urgency of initiating insulin therapy to prevent complications and the necessity of close monitoring, is to start insulin therapy immediately,",
+      "timestamp": "2026-01-26T05:44:37.413Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-26T05:31:26.123141",
+  "step1_time": "2026-01-26T05:42:53.561372",
+  "step2_time": "2026-01-26T05:44:41.918652",
+  "step3_time": "2026-01-26T05:45:14.325073",
+  "timestamp": "2026-01-26T05:45:14.325083"
+}

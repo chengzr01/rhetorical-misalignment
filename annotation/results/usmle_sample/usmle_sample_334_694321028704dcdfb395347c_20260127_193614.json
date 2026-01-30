@@ -1,0 +1,49 @@
+{
+  "annotator_id": "694321028704dcdfb395347c",
+  "demographics": {
+    "age": "26",
+    "expertise": "medicine, pharmacy",
+    "practice_location": "usa",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T19:29:10.243218",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_334",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Inhaled fluticasone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.96,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.96,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "ai only confirmed by beliefs and increase my confidence. did not change my answer",
+  "highlights": [],
+  "session_start": "2026-01-27T19:29:10.274225",
+  "step1_time": "2026-01-27T19:35:43.579915",
+  "step2_time": "2026-01-27T19:35:52.123833",
+  "step3_time": "2026-01-27T19:36:14.436906",
+  "timestamp": "2026-01-27T19:36:14.436917"
+}

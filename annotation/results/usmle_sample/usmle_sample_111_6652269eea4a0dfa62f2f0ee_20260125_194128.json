@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6652269eea4a0dfa62f2f0ee",
+  "demographics": {
+    "age": "59",
+    "expertise": "Epidemiology",
+    "practice_location": "Missouri",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T19:24:08.416600",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_111",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Patellar ligament",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.46,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.02,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I did not change my answer, which was the correct one, but I did increase my confidence level after seeing the correct answer.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Upon reviewing the clinical scenario, several key features and symptoms are identified that suggest a diagnosis of Osgood-Schlatter disease. This condition typically presents with anterior knee pain and swelling below the patellar tendon insertion on the tibial tubercle in adolescents during periods of growth spurts. The symptoms have persisted for one month and have affected the boy's ability to play soccer, which is consistent with this diagnosis.",
+      "timestamp": "2026-01-25T19:40:24.612Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T19:24:08.443533",
+  "step1_time": "2026-01-25T19:39:22.996281",
+  "step2_time": "2026-01-25T19:40:35.055669",
+  "step3_time": "2026-01-25T19:41:28.786311",
+  "timestamp": "2026-01-25T19:41:28.786320"
+}

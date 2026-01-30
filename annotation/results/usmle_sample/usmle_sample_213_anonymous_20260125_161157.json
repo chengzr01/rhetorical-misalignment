@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-25T16:07:57.799390",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_213",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Buspirone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI recommended an SSRI that wasn't listed in the multiple choice options, but Busiprone is an SSRI. Before I was just hazarding a guess. ",
+  "highlights": [],
+  "session_start": "2026-01-25T16:07:57.827430",
+  "step1_time": "2026-01-25T16:08:43.568378",
+  "step2_time": "2026-01-25T16:11:01.385960",
+  "step3_time": "2026-01-25T16:11:57.548313",
+  "timestamp": "2026-01-25T16:11:57.548323"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69723abe48c08c189b48752a",
+  "demographics": {
+    "age": "35",
+    "expertise": "Internal Medicine",
+    "practice_location": "California",
+    "race": "asian",
+    "sex": "male",
+    "submitted_at": "2026-01-25T17:20:07.016492",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_123",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Echocardiography",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI played no role in changing my answer. The other tests are impractical and take a long time in an urgent case",
+  "highlights": [],
+  "session_start": "2026-01-25T17:20:07.044699",
+  "step1_time": "2026-01-25T17:24:19.957293",
+  "step2_time": "2026-01-25T17:25:38.111153",
+  "step3_time": "2026-01-25T17:26:38.147315",
+  "timestamp": "2026-01-25T17:26:38.147324"
+}

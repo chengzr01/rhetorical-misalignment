@@ -1,0 +1,122 @@
+{
+  "annotator_id": "6131ba00bd67d2702e9a3c8d",
+  "demographics": {
+    "age": "28",
+    "expertise": "cardiac imaging",
+    "practice_location": "Syracuse, NY",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T05:31:26.095056",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_348",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Kidney function",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because the AI information made sense and supported my current knowledge.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "moderately impaired renal function.",
+      "timestamp": "2026-01-26T05:50:57.513Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "lipid levels might be contributing to her cardiovascular risk.",
+      "timestamp": "2026-01-26T05:51:08.268Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "oderately controlled hypertension, but it is not optimally controlled, su",
+      "timestamp": "2026-01-26T05:51:14.480Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "proper treatment of her hypothyroidism.",
+      "timestamp": "2026-01-26T05:51:26.741Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "polycystic kidney disease, CKD can progress, leading to end-stage renal disease (ESRD)",
+      "timestamp": "2026-01-26T05:51:34.822Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Copeptin level might provide insight into prognosis regarding water homeostasis, but it is not typically used as a prognostic marker",
+      "timestamp": "2026-01-26T05:51:45.116Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "further titration of her antihypertensive medications",
+      "timestamp": "2026-01-26T05:52:04.672Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "specific \"treatment\" for polycystic kidney disease itself; management focuses on slowing progression, reducing blood pressure, managing blood glucose and cholesterol, and treating any accompanying symptoms or complications.",
+      "timestamp": "2026-01-26T05:52:17.582Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "prognosis is guarded.",
+      "timestamp": "2026-01-26T05:52:41.645Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "most strongly indicates a poor prognosis is the moderate impairment of renal function",
+      "timestamp": "2026-01-26T05:52:47.245Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "elevated creatinine level and the history of polycystic kidney diseas",
+      "timestamp": "2026-01-26T05:52:53.017Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "ey to a better prognosis lies in tightly controlling her BP, glucose levels, and lipid profile, as well as managing her CKD",
+      "timestamp": "2026-01-26T05:53:07.666Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-26T05:31:26.123141",
+  "step1_time": "2026-01-26T05:50:45.045297",
+  "step2_time": "2026-01-26T05:53:29.117286",
+  "step3_time": "2026-01-26T05:53:57.621054",
+  "timestamp": "2026-01-26T05:53:57.621064"
+}

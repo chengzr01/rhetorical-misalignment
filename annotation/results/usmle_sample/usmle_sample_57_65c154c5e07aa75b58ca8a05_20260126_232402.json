@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65c154c5e07aa75b58ca8a05",
+  "demographics": {
+    "age": "30",
+    "expertise": "Clinical microbiology ",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-26T23:19:03.966877",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_57",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Ingestion of soil",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.27,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "\u201cThe most likely mode of transmission for the causal infectious agent is fecal-oral transmission with a focus on perianal contamination\u201d influenced my change in my answer. ",
+  "highlights": [],
+  "session_start": "2026-01-26T23:19:03.995919",
+  "step1_time": "2026-01-26T23:20:12.882543",
+  "step2_time": "2026-01-26T23:22:05.540607",
+  "step3_time": "2026-01-26T23:24:02.079625",
+  "timestamp": "2026-01-26T23:24:02.079636"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T20:41:08.247496",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_92",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Increased  decreased",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was wrong.",
+  "highlights": [],
+  "session_start": "2026-01-23T20:41:08.274560",
+  "step1_time": "2026-01-23T20:42:24.017675",
+  "step2_time": "2026-01-23T20:42:36.731981",
+  "step3_time": "2026-01-23T20:42:52.379291",
+  "timestamp": "2026-01-23T20:42:52.379300"
+}

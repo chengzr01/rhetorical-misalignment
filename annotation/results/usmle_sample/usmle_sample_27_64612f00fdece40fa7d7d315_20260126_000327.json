@@ -1,0 +1,49 @@
+{
+  "annotator_id": "64612f00fdece40fa7d7d315",
+  "demographics": {
+    "age": "51",
+    "expertise": "Dental ",
+    "practice_location": "Seattle, WA",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-25T23:59:20.571417",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_27",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Parathyroid gland",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Because of the word \"kidney\".",
+  "highlights": [],
+  "session_start": "2026-01-25T23:59:20.600550",
+  "step1_time": "2026-01-26T00:00:57.641277",
+  "step2_time": "2026-01-26T00:02:38.445163",
+  "step3_time": "2026-01-26T00:03:27.102192",
+  "timestamp": "2026-01-26T00:03:27.102203"
+}

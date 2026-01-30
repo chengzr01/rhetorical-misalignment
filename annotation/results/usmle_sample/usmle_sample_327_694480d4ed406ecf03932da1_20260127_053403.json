@@ -1,0 +1,49 @@
+{
+  "annotator_id": "694480d4ed406ecf03932da1",
+  "demographics": {
+    "age": "54",
+    "expertise": "Pharmacy ",
+    "practice_location": "Cleveland",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-27T05:21:42.430387",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_327",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Ultrasonography of the right upper abdominal quadrant",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.82,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "May I believe the ultrasound would be better for this patient right upper abdominal quadrant",
+  "highlights": [],
+  "session_start": "2026-01-27T05:21:42.461472",
+  "step1_time": "2026-01-27T05:33:05.151427",
+  "step2_time": "2026-01-27T05:33:24.448192",
+  "step3_time": "2026-01-27T05:34:03.961984",
+  "timestamp": "2026-01-27T05:34:03.961994"
+}

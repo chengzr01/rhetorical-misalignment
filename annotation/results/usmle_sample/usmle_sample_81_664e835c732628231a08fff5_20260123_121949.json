@@ -1,0 +1,80 @@
+{
+  "annotator_id": "664e835c732628231a08fff5",
+  "demographics": {
+    "age": "31",
+    "expertise": "medical term.",
+    "practice_location": "Saratoga, NY/ USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T11:46:49.744448",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_81",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Increases nitric oxide concentration",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.28,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.24,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.24,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI again did not directly help answer the question but background knowledge being an emt helped me decipher.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "cute Coronary Syndrome (STEMI, NSTEMI)",
+      "timestamp": "2026-01-23T12:16:47.879Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Myocardial Infarction (MI):",
+      "timestamp": "2026-01-23T12:16:52.588Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Cardiac examination reveals an S4, indicative of ventricular diastolic dysfunction, which could be seen in both ischemic heart disease and other non-ischemic cardiomyopathies but is commonly associated with ischemic heart disease.",
+      "timestamp": "2026-01-23T12:17:03.341Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "he goal is to reduce the thrombus formation that contributes to acute coronary artery occlusion.",
+      "timestamp": "2026-01-23T12:17:24.716Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "pirin irreversibly inhibits platelet function by acetylating cyclooxygenase (COX)-1, thus preventing the synthesis of thromboxane A2, a potent vasoconstrictor and platelet aggregator.",
+      "timestamp": "2026-01-23T12:17:40.096Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T11:46:49.772080",
+  "step1_time": "2026-01-23T12:14:34.420721",
+  "step2_time": "2026-01-23T12:19:09.665137",
+  "step3_time": "2026-01-23T12:19:49.570201",
+  "timestamp": "2026-01-23T12:19:49.570211"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T20:41:08.247496",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_325",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Intravenous propranolol",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I'm not familiar with meds for this.",
+  "highlights": [],
+  "session_start": "2026-01-23T20:41:08.274560",
+  "step1_time": "2026-01-23T20:44:38.842514",
+  "step2_time": "2026-01-23T20:45:10.735129",
+  "step3_time": "2026-01-23T20:45:23.278578",
+  "timestamp": "2026-01-23T20:45:23.278588"
+}

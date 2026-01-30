@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5db741cc04b632000a9a9800",
+  "demographics": {
+    "age": "25",
+    "expertise": "CVICU",
+    "practice_location": "Ohio",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-26T09:23:19.144060",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_120",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Amiodarone",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.22,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.44,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.44,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I wasn\u2019t sure ofThe side effects of amino. I figure ttriatropium would be more helpful than not. And propranolol I knew could cause a cough but wasn\u2019t sure it was symptomatic in the way that this cough presents itself. ",
+  "highlights": [],
+  "session_start": "2026-01-26T09:23:19.174660",
+  "step1_time": "2026-01-26T09:28:09.705875",
+  "step2_time": "2026-01-26T09:28:59.022640",
+  "step3_time": "2026-01-26T09:29:41.061759",
+  "timestamp": "2026-01-26T09:29:41.061769"
+}

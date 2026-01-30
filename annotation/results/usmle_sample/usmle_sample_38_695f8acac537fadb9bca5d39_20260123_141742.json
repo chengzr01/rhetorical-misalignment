@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f8acac537fadb9bca5d39",
+  "demographics": {
+    "age": "42",
+    "expertise": "Social worker",
+    "practice_location": "Houlton, Maine",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T14:15:53.193870",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_38",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Graft-versus-host disease",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn't know the answer anyway. I felt that AI would have a better chance. ",
+  "highlights": [],
+  "session_start": "2026-01-23T14:15:53.217832",
+  "step1_time": "2026-01-23T14:16:42.606330",
+  "step2_time": "2026-01-23T14:17:19.107460",
+  "step3_time": "2026-01-23T14:17:42.902200",
+  "timestamp": "2026-01-23T14:17:42.902209"
+}

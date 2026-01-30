@@ -1,0 +1,56 @@
+{
+  "annotator_id": "693aef2b64b3ff6eb0ed3123",
+  "demographics": {
+    "age": "41",
+    "expertise": "Mental health",
+    "practice_location": "Seattle, WA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:49:20.273979",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_221",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Pulmonary infarction",
+  "correct_answer_idx": "H",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.01,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.01,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.01,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I guessed",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Postoperative pleural effusion or atelectasis:",
+      "timestamp": "2026-01-23T19:54:26.858Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T19:49:20.300638",
+  "step1_time": "2026-01-23T19:53:55.306446",
+  "step2_time": "2026-01-23T19:54:44.226031",
+  "step3_time": "2026-01-23T19:54:57.998953",
+  "timestamp": "2026-01-23T19:54:57.998962"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "678c712ee0a31cf51476dfca",
+  "demographics": {
+    "age": "",
+    "expertise": "internal medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T14:59:11.714971",
+    "years_of_practice": "30"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_83",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Adenylyl cyclase",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.76,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief because the AI\u2019s explanation reinforced the same mechanism I initially used to select the answer",
+  "highlights": [],
+  "session_start": "2026-01-23T14:59:11.739081",
+  "step1_time": "2026-01-23T15:00:59.694287",
+  "step2_time": "2026-01-23T15:01:43.247906",
+  "step3_time": "2026-01-23T15:03:34.993634",
+  "timestamp": "2026-01-23T15:03:34.993644"
+}

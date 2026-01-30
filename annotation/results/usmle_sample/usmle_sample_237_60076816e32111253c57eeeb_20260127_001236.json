@@ -1,0 +1,49 @@
+{
+  "annotator_id": "60076816e32111253c57eeeb",
+  "demographics": {
+    "age": "27",
+    "expertise": "occupational therapy",
+    "practice_location": "Denver, CO",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T00:03:18.313795",
+    "years_of_practice": "2.5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_237",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Telemetry observation",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer because the AI reasoning gave an answer I understood and that was on the list",
+  "highlights": [],
+  "session_start": "2026-01-27T00:03:18.344668",
+  "step1_time": "2026-01-27T00:09:21.059528",
+  "step2_time": "2026-01-27T00:12:03.847734",
+  "step3_time": "2026-01-27T00:12:36.892851",
+  "timestamp": "2026-01-27T00:12:36.892861"
+}

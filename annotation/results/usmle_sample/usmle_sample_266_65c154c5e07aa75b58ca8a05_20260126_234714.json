@@ -1,0 +1,49 @@
+{
+  "annotator_id": "65c154c5e07aa75b58ca8a05",
+  "demographics": {
+    "age": "30",
+    "expertise": "Clinical microbiology ",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-26T23:19:03.966877",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_266",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Endometrial biopsy",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "\u201cA endometrial biopsy may be indicated to rule out endometrial hyperplasia or carcinoma\u201d influenced me to keep my answer the same.",
+  "highlights": [],
+  "session_start": "2026-01-26T23:19:03.995919",
+  "step1_time": "2026-01-26T23:44:41.630774",
+  "step2_time": "2026-01-26T23:45:57.592356",
+  "step3_time": "2026-01-26T23:47:14.996471",
+  "timestamp": "2026-01-26T23:47:14.996481"
+}

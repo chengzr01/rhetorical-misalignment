@@ -1,0 +1,98 @@
+{
+  "annotator_id": "5b3c4005b6b44100016160e7",
+  "demographics": {
+    "age": "33",
+    "expertise": "Mental Health",
+    "practice_location": "Baltimore, MD",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-01-27T16:24:40.025454",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_360",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Pericardiocentesis",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.06,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.81,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "There does not appear to be a place in the scenario indicating a build up of fluid in the lungs or elsewhere. If the cynosis is still occurring it may make sense to adjust the respitration slightly despite the 78% oxygenation. Based on the A.I analysis it is possible that starting there would be sufficient. If we're approaching this as the venitaltion currently is adequate then I would suggest thorough evaluation for fluid build up. And then Pericardiocentsis",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Management Options",
+      "timestamp": "2026-01-27T16:52:01.627Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Optimize Ventilation: Assess and adjust mechanical ventilation settings to minimize lung injury (reduce PEEP if possible, adjust rate and PIP according to clinical status).",
+      "timestamp": "2026-01-27T16:52:21.608Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "he immediate focus is on life-saving measures to improve oxygenation and perfusion while investigating and treating potential underlying causes. Optimal mechanical ventilation adjustments, cardiovascular support, and infection control are essential components of the management plan.",
+      "timestamp": "2026-01-27T16:52:38.488Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "ggressive management to address the respiratory distress and hypotension. Optimizing mechanical ventilation, ensuring adequate perfusion, and starting broad-spectrum antibiotics",
+      "timestamp": "2026-01-27T16:52:48.448Z",
+      "step": "step2"
+    },
+    {
+      "text": "- Optimize Ventilation: Assess and adjust mechanical ventilation settings to minimize lung injury (reduce PEEP if possible, adjust rate and PIP according to clinical status).\n- Fluid Management: Monitor fluid status closely; continue with assessment for fluid overload and adjust fluid administration accordingly.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-27T16:53:40.357Z",
+      "step": "step3"
+    },
+    {
+      "text": "Cyanosis,",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-27T16:53:52.354Z",
+      "step": "step3"
+    },
+    {
+      "text": "- Respiratory distress syndrome (RDS) diagnosis",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-27T16:54:08.946Z",
+      "step": "step3"
+    },
+    {
+      "text": "Oxygen saturation 78%",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-27T16:54:18.799Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-27T16:24:40.064591",
+  "step1_time": "2026-01-27T16:51:06.221231",
+  "step2_time": "2026-01-27T16:52:53.847711",
+  "step3_time": "2026-01-27T16:57:13.318684",
+  "timestamp": "2026-01-27T16:57:13.318694"
+}

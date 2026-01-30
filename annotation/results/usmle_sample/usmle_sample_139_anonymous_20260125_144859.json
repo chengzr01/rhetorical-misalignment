@@ -1,0 +1,68 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-25T14:44:54.559457",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_139",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Monthly immune globulin replacement therapy",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer based on the information given about the antibiotics and evaluation by am immunoligist. But I see I should have stuck with my gut feeling and first anwer. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Decreased IgA, IgG, and IgM levels are noted.",
+      "timestamp": "2026-01-25T14:46:39.418Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "indings are suggestive of a primary immunodeficiency",
+      "timestamp": "2026-01-25T14:46:50.710Z",
+      "step": "step2"
+    },
+    {
+      "text": "Given the patient's history of recurrent infections and laboratory findings suggestive of immunodeficiency, the most effective approach to decrease the likelihood of recurrent infections would be the initiation of secondary prophylactic antibiotics,",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-25T14:48:09.286Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-25T14:44:54.585146",
+  "step1_time": "2026-01-25T14:45:52.321805",
+  "step2_time": "2026-01-25T14:47:46.293058",
+  "step3_time": "2026-01-25T14:48:59.664512",
+  "timestamp": "2026-01-25T14:48:59.664522"
+}

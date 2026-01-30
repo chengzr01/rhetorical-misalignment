@@ -1,0 +1,56 @@
+{
+  "annotator_id": "693aef2b64b3ff6eb0ed3123",
+  "demographics": {
+    "age": "41",
+    "expertise": "Mental health",
+    "practice_location": "Seattle, WA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:49:20.273979",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_169",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Giardia lamblia",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.01,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.14,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.14,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It was one of the diagnoses possible",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "might be contaminated",
+      "timestamp": "2026-01-23T19:51:28.360Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T19:49:20.300638",
+  "step1_time": "2026-01-23T19:51:17.910752",
+  "step2_time": "2026-01-23T19:52:06.994977",
+  "step3_time": "2026-01-23T19:52:26.903327",
+  "timestamp": "2026-01-23T19:52:26.903338"
+}

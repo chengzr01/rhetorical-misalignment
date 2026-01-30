@@ -1,0 +1,80 @@
+{
+  "annotator_id": "63a18415816a2a0cbe438f1b",
+  "demographics": {
+    "age": "56",
+    "expertise": "long term care",
+    "practice_location": "Owensboro, KY USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T16:01:26.804110",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_173",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Biopsy of the vulva",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.78,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.78,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my original answer because after reading the AIs explanation, I thought the biopsy may need be the least invasvie choice. These statements: \"Since the patient is unable to undergo a vaginal examination due to discomfort, a bedside examination may be required. Alternatively, a bedside ultrasound may be useful to identify the source of the bleeding, or to detect any fluid collections that may suggest infection or other pathology.\" AND \"Since the patient is unable to undergo a vaginal examination due to discomfort, a bedside examination may be required. Alternatively, a bedside ultrasound may be useful to identify the source of the bleeding, or to detect any fluid collections that may suggest infection or other pathology.\" made me shy away from my original answer of biopsy.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "most appropriate next step in management would be to perform a bedside or pelvic examination to further evaluate the nature of the vulvovaginal lesion,",
+      "timestamp": "2026-01-23T16:34:18.237Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "a vaginal examination is required to assess the nature of the lesion and to evaluate for any possible malignancy or infection.",
+      "timestamp": "2026-01-23T16:34:54.784Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "a bedside examination may be required. Alternatively, a bedside ultrasound may be useful to identify the source of the bleeding, or to detect any fluid collections that may suggest infection or other pathology",
+      "timestamp": "2026-01-23T16:35:14.130Z",
+      "step": "step2"
+    },
+    {
+      "text": "The most appropriate next step in management would be to perform a bedside or pelvic examination to further evaluate the nature of the vulvovaginal lesion",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T16:38:15.604Z",
+      "step": "step3"
+    },
+    {
+      "text": "Since the patient is unable to undergo a vaginal examination due to discomfort, a bedside examination may be required. Alternatively, a bedside ultrasound may be useful to identify the source of the bleeding, or to detect any fluid collections that may suggest infection or other pathology.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T16:38:38.552Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-23T16:01:26.828068",
+  "step1_time": "2026-01-23T16:31:45.729761",
+  "step2_time": "2026-01-23T16:36:09.503351",
+  "step3_time": "2026-01-23T16:39:16.180768",
+  "timestamp": "2026-01-23T16:39:16.180777"
+}

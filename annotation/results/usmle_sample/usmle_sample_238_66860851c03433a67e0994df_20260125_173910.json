@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66860851c03433a67e0994df",
+  "demographics": {
+    "age": "20",
+    "expertise": "retail",
+    "practice_location": "new york city",
+    "race": "asian",
+    "sex": "male",
+    "submitted_at": "2026-01-25T17:34:31.618540",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_238",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Vibrio vulnificus",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I researched about the four different parts and chose the best answer",
+  "highlights": [],
+  "session_start": "2026-01-25T17:34:31.645208",
+  "step1_time": "2026-01-25T17:38:18.094848",
+  "step2_time": "2026-01-25T17:38:20.817325",
+  "step3_time": "2026-01-25T17:39:10.884297",
+  "timestamp": "2026-01-25T17:39:10.884307"
+}

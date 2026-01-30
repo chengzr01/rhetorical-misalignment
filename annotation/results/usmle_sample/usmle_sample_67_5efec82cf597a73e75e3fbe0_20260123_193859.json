@@ -1,0 +1,68 @@
+{
+  "annotator_id": "5efec82cf597a73e75e3fbe0",
+  "demographics": {
+    "age": "24",
+    "expertise": "Psychology",
+    "practice_location": "Minneapolis, Minnesota",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:33:02.948210",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_67",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Normal development",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "What factored into my decision are the boy's normal development and hormone levels.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "late puberty",
+      "timestamp": "2026-01-23T19:37:57.557Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "normal hormone levels and lack of other systemic symptoms",
+      "timestamp": "2026-01-23T19:38:14.551Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Normal height and weight",
+      "timestamp": "2026-01-23T19:38:21.450Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T19:33:02.975291",
+  "step1_time": "2026-01-23T19:37:45.006621",
+  "step2_time": "2026-01-23T19:38:31.148155",
+  "step3_time": "2026-01-23T19:38:59.234582",
+  "timestamp": "2026-01-23T19:38:59.234592"
+}

@@ -1,0 +1,62 @@
+{
+  "annotator_id": "63a18415816a2a0cbe438f1b",
+  "demographics": {
+    "age": "56",
+    "expertise": "long term care",
+    "practice_location": "Owensboro, KY USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T16:01:26.804110",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_166",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "X-rays of the left hand and wrist",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "Reading the AI's explanation increased my confidence that my answer was likely correct. This statement made me feel certain \"Clinical Reasoning:\r\n- The bone age x-ray is the initial test of choice because it can help differentiate constitutional delay of growth and puberty from other etiologies of short stature and delayed puberty.\" I trust the AIs assertion that the bone age xray is the appropriate choice.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The most appropriate next step in diagnosis is a bone age x-ray to evaluate skeletal maturation",
+      "timestamp": "2026-01-23T16:26:21.052Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "bone age x-ray is the initial test of choice because it can help differentiate constitutional delay of growth and puberty from other etiologies of short stature and delayed puberty.",
+      "timestamp": "2026-01-23T16:26:37.980Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T16:01:26.828068",
+  "step1_time": "2026-01-23T16:25:23.766985",
+  "step2_time": "2026-01-23T16:26:52.784723",
+  "step3_time": "2026-01-23T16:29:39.818450",
+  "timestamp": "2026-01-23T16:29:39.818460"
+}

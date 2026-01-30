@@ -1,0 +1,49 @@
+{
+  "annotator_id": "694480d4ed406ecf03932da1",
+  "demographics": {
+    "age": "54",
+    "expertise": "Pharmacy ",
+    "practice_location": "Cleveland",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-27T05:21:42.430387",
+    "years_of_practice": "20"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_21",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Tumor necrosis factor \u03b1",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "The backup data made me correct my first answer to understand the reasoning behind the correct diagnosis to achieve patient safety",
+  "highlights": [],
+  "session_start": "2026-01-27T05:21:42.461472",
+  "step1_time": "2026-01-27T05:22:23.280154",
+  "step2_time": "2026-01-27T05:23:22.763067",
+  "step3_time": "2026-01-27T05:24:38.661794",
+  "timestamp": "2026-01-27T05:24:38.661804"
+}

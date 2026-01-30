@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5db741cc04b632000a9a9800",
+  "demographics": {
+    "age": "25",
+    "expertise": "CVICU",
+    "practice_location": "Ohio",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-26T09:23:19.144060",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_69",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Orthostatic hypotension",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.68,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.68,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.68,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I don\u2019t know why this would be orthostasis. Just because it\u2019s improved by her laying down doesn\u2019t mean that that\u2019s the cause. A severely malnourished person or a person post open-heart surgery can have orthostasis hypotension. Dehydration is a cause of- and likely the cause  of hers - hypotension. ",
+  "highlights": [],
+  "session_start": "2026-01-26T09:23:19.174660",
+  "step1_time": "2026-01-26T09:24:06.805249",
+  "step2_time": "2026-01-26T09:25:09.020050",
+  "step3_time": "2026-01-26T09:27:17.226331",
+  "timestamp": "2026-01-26T09:27:17.226340"
+}

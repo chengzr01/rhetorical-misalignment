@@ -1,0 +1,49 @@
+{
+  "annotator_id": "693aef2b64b3ff6eb0ed3123",
+  "demographics": {
+    "age": "41",
+    "expertise": "Mental health",
+    "practice_location": "Seattle, WA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:49:20.273979",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_95",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Apoptosis",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I guessed, the AI didn't help",
+  "highlights": [],
+  "session_start": "2026-01-23T19:49:20.300638",
+  "step1_time": "2026-01-23T19:49:41.488161",
+  "step2_time": "2026-01-23T19:50:37.120879",
+  "step3_time": "2026-01-23T19:50:55.442958",
+  "timestamp": "2026-01-23T19:50:55.442968"
+}

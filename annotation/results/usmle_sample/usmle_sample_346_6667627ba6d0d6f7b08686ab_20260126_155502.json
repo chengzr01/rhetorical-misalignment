@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6667627ba6d0d6f7b08686ab",
+  "demographics": {
+    "age": "67",
+    "expertise": "Internal Med  Cardio  Neuro  Dermatology  OB GYN   Plastic Surgery",
+    "practice_location": "Louisville Ky",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T15:33:28.344255",
+    "years_of_practice": "59"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_346",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Eval uate her for valve replacement",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The history is self explanatory, mitral regurg has to be followed closely",
+  "highlights": [],
+  "session_start": "2026-01-26T15:33:28.374019",
+  "step1_time": "2026-01-26T15:53:19.090228",
+  "step2_time": "2026-01-26T15:54:19.982283",
+  "step3_time": "2026-01-26T15:55:02.676761",
+  "timestamp": "2026-01-26T15:55:02.676770"
+}

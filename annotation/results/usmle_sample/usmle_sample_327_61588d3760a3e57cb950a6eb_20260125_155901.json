@@ -1,0 +1,49 @@
+{
+  "annotator_id": "61588d3760a3e57cb950a6eb",
+  "demographics": {
+    "age": "57",
+    "expertise": "Anesthesia",
+    "practice_location": "Lexington",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T15:46:26.770701",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_327",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Ultrasonography of the right upper abdominal quadrant",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.38,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "most of the time a CT is more diagnostic. I changed only my confidence level because of AI remarks",
+  "highlights": [],
+  "session_start": "2026-01-25T15:46:26.796649",
+  "step1_time": "2026-01-25T15:57:47.674171",
+  "step2_time": "2026-01-25T15:57:59.622688",
+  "step3_time": "2026-01-25T15:59:01.421772",
+  "timestamp": "2026-01-25T15:59:01.421784"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5a8e54c9f49c9a0001f3dc3f",
+  "demographics": {
+    "age": "33",
+    "expertise": "pharmacy",
+    "practice_location": "New Jersey",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T20:17:21.996577",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_199",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Female factor infertility",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.31,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.35,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.35,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Reading the AI answer made me more confident in what I originally chose. The fact that they were recommending fertility treatments made me think my pick of female infertility was the correct one.",
+  "highlights": [],
+  "session_start": "2026-01-25T20:17:22.026108",
+  "step1_time": "2026-01-25T20:22:19.453956",
+  "step2_time": "2026-01-25T20:22:45.872590",
+  "step3_time": "2026-01-25T20:23:39.610351",
+  "timestamp": "2026-01-25T20:23:39.610362"
+}

@@ -1,0 +1,56 @@
+{
+  "annotator_id": "6652269eea4a0dfa62f2f0ee",
+  "demographics": {
+    "age": "59",
+    "expertise": "Epidemiology",
+    "practice_location": "Missouri",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T19:24:08.416600",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_267",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Right ventricular infarction",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.36,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer, which was correct. The reasoning by the AI only reinforced my thinking.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Differentiating between acute coronary syndrome and other causes of chest pain is crucial. The patient's risk factors include hypertension, diabetes mellitus, dyslipidemia, and recent surgery, all of which can contribute to acute coronary syndrome (ACS). The presentation of chest pressure without radiation and ECG changes is concerning for a possible acute myocardial infarction (AMI).",
+      "timestamp": "2026-01-25T19:48:09.653Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T19:24:08.443533",
+  "step1_time": "2026-01-25T19:47:01.665077",
+  "step2_time": "2026-01-25T19:48:19.887317",
+  "step3_time": "2026-01-25T19:49:05.875136",
+  "timestamp": "2026-01-25T19:49:05.875145"
+}

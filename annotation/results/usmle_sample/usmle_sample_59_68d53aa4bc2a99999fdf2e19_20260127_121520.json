@@ -1,0 +1,49 @@
+{
+  "annotator_id": "68d53aa4bc2a99999fdf2e19",
+  "demographics": {
+    "age": "22",
+    "expertise": "LPN",
+    "practice_location": "Virginia ",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T12:03:15.613303",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_59",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "The patient's DMD carrier status is uncertain because of random X inactivation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The duchenne muscular dystrophy is X linked recessive, also the patient has a strong family history of being a carrier.",
+  "highlights": [],
+  "session_start": "2026-01-27T12:03:15.645489",
+  "step1_time": "2026-01-27T12:12:46.417029",
+  "step2_time": "2026-01-27T12:12:55.742764",
+  "step3_time": "2026-01-27T12:15:20.971107",
+  "timestamp": "2026-01-27T12:15:20.971117"
+}

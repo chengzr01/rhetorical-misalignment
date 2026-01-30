@@ -1,0 +1,49 @@
+{
+  "annotator_id": "662943e28130e7eb5f034326",
+  "demographics": {
+    "age": "54",
+    "expertise": "Veterinary medicine ",
+    "practice_location": "Knoxville, TN",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-27T20:06:08.859469",
+    "years_of_practice": "26"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_312",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Obsessive -compulsive disorder",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Based on the normal neuro exam and no aura, I was suspicious of TOURETTE. I didn\u2019t change my answer. ",
+  "highlights": [],
+  "session_start": "2026-01-27T20:06:08.891351",
+  "step1_time": "2026-01-27T20:16:19.765025",
+  "step2_time": "2026-01-27T20:17:24.718507",
+  "step3_time": "2026-01-27T20:18:02.393427",
+  "timestamp": "2026-01-27T20:18:02.393438"
+}

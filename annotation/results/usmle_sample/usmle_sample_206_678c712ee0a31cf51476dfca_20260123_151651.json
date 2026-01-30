@@ -1,0 +1,49 @@
+{
+  "annotator_id": "678c712ee0a31cf51476dfca",
+  "demographics": {
+    "age": "",
+    "expertise": "internal medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T14:59:11.714971",
+    "years_of_practice": "30"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_206",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Azithromycin",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer because the clinical features strongly support pertussis, and the  Correct Answer",
+  "highlights": [],
+  "session_start": "2026-01-23T14:59:11.739081",
+  "step1_time": "2026-01-23T15:10:01.538763",
+  "step2_time": "2026-01-23T15:11:15.464761",
+  "step3_time": "2026-01-23T15:16:51.722461",
+  "timestamp": "2026-01-23T15:16:51.722471"
+}

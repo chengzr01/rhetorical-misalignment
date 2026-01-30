@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5e83da30261259130885eebc",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "IM",
+    "practice_location": "usa",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-26T12:24:42.245466",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_84",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Mediation of cell entry via a fusion protein",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.22,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.22,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.22,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI didn't help me. I knew it was RSV I just did not remember back to the microbio which was not included",
+  "highlights": [],
+  "session_start": "2026-01-26T12:24:42.273593",
+  "step1_time": "2026-01-26T12:25:27.176945",
+  "step2_time": "2026-01-26T12:26:04.415445",
+  "step3_time": "2026-01-26T12:26:39.309418",
+  "timestamp": "2026-01-26T12:26:39.309428"
+}

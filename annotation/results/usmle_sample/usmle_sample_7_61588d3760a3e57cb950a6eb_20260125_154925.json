@@ -1,0 +1,49 @@
+{
+  "annotator_id": "61588d3760a3e57cb950a6eb",
+  "demographics": {
+    "age": "57",
+    "expertise": "Anesthesia",
+    "practice_location": "Lexington",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T15:46:26.770701",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_7",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Immune complex deposition in tissues",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.08,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.08,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.08,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I originally chose the correct answer but let AI confuse me. I wasn't confident to start with but used logic to make my first decision. I guess I trusted AI more than myself.",
+  "highlights": [],
+  "session_start": "2026-01-25T15:46:26.796649",
+  "step1_time": "2026-01-25T15:47:09.019280",
+  "step2_time": "2026-01-25T15:47:41.273453",
+  "step3_time": "2026-01-25T15:49:25.528036",
+  "timestamp": "2026-01-25T15:49:25.528045"
+}

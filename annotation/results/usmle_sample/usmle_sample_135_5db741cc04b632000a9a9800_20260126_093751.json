@@ -1,0 +1,49 @@
+{
+  "annotator_id": "5db741cc04b632000a9a9800",
+  "demographics": {
+    "age": "25",
+    "expertise": "CVICU",
+    "practice_location": "Ohio",
+    "race": "",
+    "sex": "female",
+    "submitted_at": "2026-01-26T09:23:19.144060",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_135",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Inclusion of trials with an intervention duration of 2 weeks",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.39,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.39,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It seemed after i econsidered these options, 2 weeks was a very short duration for treating such a serious condition. It would require more time to really understand how well it helped people fight he urges to use again ",
+  "highlights": [],
+  "session_start": "2026-01-26T09:23:19.174660",
+  "step1_time": "2026-01-26T09:36:00.904256",
+  "step2_time": "2026-01-26T09:37:10.501806",
+  "step3_time": "2026-01-26T09:37:51.492978",
+  "timestamp": "2026-01-26T09:37:51.492988"
+}

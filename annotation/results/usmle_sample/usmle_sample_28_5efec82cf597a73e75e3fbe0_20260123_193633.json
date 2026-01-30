@@ -1,0 +1,68 @@
+{
+  "annotator_id": "5efec82cf597a73e75e3fbe0",
+  "demographics": {
+    "age": "24",
+    "expertise": "Psychology",
+    "practice_location": "Minneapolis, Minnesota",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:33:02.948210",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_28",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "\"It is tough to change your diet and fluid intake, but what sorts of things were you doing at first when you were following the recommendations?\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I thought D was also an appropriate and client-centered approach. It focuses on the end goal and is solution-focused.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "patient-centered",
+      "timestamp": "2026-01-23T19:35:09.664Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "understanding the challenges the patient faces",
+      "timestamp": "2026-01-23T19:35:14.609Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "improve adherence and quality of life",
+      "timestamp": "2026-01-23T19:35:20.510Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T19:33:02.975291",
+  "step1_time": "2026-01-23T19:34:19.409818",
+  "step2_time": "2026-01-23T19:35:36.734710",
+  "step3_time": "2026-01-23T19:36:33.925154",
+  "timestamp": "2026-01-23T19:36:33.925163"
+}

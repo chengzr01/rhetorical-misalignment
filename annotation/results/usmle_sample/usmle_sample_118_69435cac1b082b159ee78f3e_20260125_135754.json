@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69435cac1b082b159ee78f3e",
+  "demographics": {
+    "age": "55",
+    "expertise": "Anesthesia",
+    "practice_location": "Greensboro, NC",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T13:49:29.957361",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_118",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Agoraphobia",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.76,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "While the patient has fear related to the occurance of his panic episodes in public, several instances of the panic are not tied to specifically being in public. First report keyed off of being late for class more so being in traffic. Quite anxious on exam and not in public though he may be imagining the stresses on being in public",
+  "highlights": [],
+  "session_start": "2026-01-25T13:49:29.984501",
+  "step1_time": "2026-01-25T13:54:24.376418",
+  "step2_time": "2026-01-25T13:54:40.673723",
+  "step3_time": "2026-01-25T13:57:54.787559",
+  "timestamp": "2026-01-25T13:57:54.787568"
+}

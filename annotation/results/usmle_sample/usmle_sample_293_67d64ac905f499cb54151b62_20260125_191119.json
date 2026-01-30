@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67d64ac905f499cb54151b62",
+  "demographics": {
+    "age": "69",
+    "expertise": "Nurse Practitioner",
+    "practice_location": "United States",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T18:30:19.475355",
+    "years_of_practice": "45"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_293",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Phosphodiesterase",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The explanation clarified that the patient's symptoms were due to peripheral arterial disease with intermittent claudication and highlighted the key treatment.",
+  "highlights": [],
+  "session_start": "2026-01-25T18:30:19.503648",
+  "step1_time": "2026-01-25T19:01:54.898930",
+  "step2_time": "2026-01-25T19:02:11.090845",
+  "step3_time": "2026-01-25T19:11:19.019601",
+  "timestamp": "2026-01-25T19:11:19.019610"
+}

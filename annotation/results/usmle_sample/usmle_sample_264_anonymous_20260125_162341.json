@@ -1,0 +1,62 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-25T16:07:57.799390",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_264",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Vertebrobasilar",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.27,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.27,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.27,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I agreed with AI's clinical reasoning, they did not say anything in relation to the choices that were presented in the multiple choice though so I had no reason to change, it seemed we agreed. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Ataxic gait suggests a cerebellar involvement\n- Dysphagia suggests pharyngeal weakness or dysfunction",
+      "timestamp": "2026-01-25T16:22:20.853Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Cerebrovascular Accident (CVA)",
+      "timestamp": "2026-01-25T16:22:32.224Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T16:07:57.827430",
+  "step1_time": "2026-01-25T16:21:35.618153",
+  "step2_time": "2026-01-25T16:23:03.263211",
+  "step3_time": "2026-01-25T16:23:41.135858",
+  "timestamp": "2026-01-25T16:23:41.135868"
+}

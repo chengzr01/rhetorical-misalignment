@@ -1,0 +1,62 @@
+{
+  "annotator_id": "6652269eea4a0dfa62f2f0ee",
+  "demographics": {
+    "age": "59",
+    "expertise": "Epidemiology",
+    "practice_location": "Missouri",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-25T19:24:08.416600",
+    "years_of_practice": "22"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_54",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Case series",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.68,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.78,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.96,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I changed my belief as the case series type of study is a bit more logical than the randomized clinical trial option that I originally picked.  Both options could be used, but in hindsight, the randomized aspect for the study was not indicated.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "In a feasibility study, it is acceptable to not have a control group, as the main aim is to assess the feasibility of the intervention, rather than its effectiveness.",
+      "timestamp": "2026-01-25T19:31:40.136Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Outcome Measures: The feasibility of acupuncture treatment can be measured by the number of children completing the treatment, the level of adherence to the treatment schedule, and the incidence of adverse events.",
+      "timestamp": "2026-01-25T19:32:02.109Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-25T19:24:08.443533",
+  "step1_time": "2026-01-25T19:26:55.986547",
+  "step2_time": "2026-01-25T19:32:08.956516",
+  "step3_time": "2026-01-25T19:34:20.379349",
+  "timestamp": "2026-01-25T19:34:20.379358"
+}

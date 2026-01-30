@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67f052147bb0231d3bddc9df",
+  "demographics": {
+    "age": "59",
+    "expertise": "nurse",
+    "practice_location": "texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-01-23T12:29:06.107308",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_249",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "The absence of seizures 2 years postoperatively is the best predictor of long -term seizure control",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.87,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.87,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "it seems to be correct that there should be some time for improvement and that is when one can clearly conclude it is real",
+  "highlights": [],
+  "session_start": "2026-01-23T12:29:06.132825",
+  "step1_time": "2026-01-23T12:40:52.098838",
+  "step2_time": "2026-01-23T12:41:00.291521",
+  "step3_time": "2026-01-23T12:42:43.869956",
+  "timestamp": "2026-01-23T12:42:43.869966"
+}

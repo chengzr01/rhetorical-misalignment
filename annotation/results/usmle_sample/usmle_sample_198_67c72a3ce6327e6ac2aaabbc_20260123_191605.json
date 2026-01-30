@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67c72a3ce6327e6ac2aaabbc",
+  "demographics": {
+    "age": "78",
+    "expertise": "home care",
+    "practice_location": "burlington, vt",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T19:04:10.881629",
+    "years_of_practice": "10"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_198",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Mirtazapine",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.05,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.05,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "A change of medication, will be increased as needed. His epilepsy  can cause depression and all should be monitored.",
+  "highlights": [],
+  "session_start": "2026-01-23T19:04:10.906998",
+  "step1_time": "2026-01-23T19:11:06.860266",
+  "step2_time": "2026-01-23T19:13:57.762572",
+  "step3_time": "2026-01-23T19:16:05.676983",
+  "timestamp": "2026-01-23T19:16:05.676993"
+}

@@ -1,0 +1,68 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-01-27T17:46:55.361110",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_279",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Hematogenous spread from the lungs",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.04,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.49,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "Using AI I was still unable to come up with the right answer the first time. After consulting AI and highlighting certain contexts, Ai came up with the correct answer. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Chief Complaint: Fever and pain/swelling of the left side of the neck lasting 1 week.",
+      "timestamp": "2026-01-27T18:01:04.558Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Medical History:\n- HIV infection for 4 years with declining antiretroviral therapy\n- No current medications\n- Moderate BMI (20 kg/m2)",
+      "timestamp": "2026-01-27T18:01:08.552Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Vital Signs:\n- Fever (38.3\u00b0C/100.9\u00b0F)\n- Other vital signs within normal limits\n- Oxygen saturation on room air is normal",
+      "timestamp": "2026-01-27T18:01:15.119Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-27T17:46:55.391582",
+  "step1_time": "2026-01-27T18:00:48.219706",
+  "step2_time": "2026-01-27T18:01:49.160918",
+  "step3_time": "2026-01-27T18:03:25.198432",
+  "timestamp": "2026-01-27T18:03:25.198441"
+}

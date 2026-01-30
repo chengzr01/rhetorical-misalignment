@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6641076785a23b3f7db3c5c1",
+  "demographics": {
+    "age": "26",
+    "expertise": "Pathology",
+    "practice_location": "Philadelphia, PA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-25T21:24:51.424396",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_sft",
+  "case_id": "usmle_sample_228",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-SFT",
+  "correct_answer": "Adjustment disorder with anxiety",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.66,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I knew it was panic disorder, but out of the options, I figured PTSD was closest to it.",
+  "highlights": [],
+  "session_start": "2026-01-25T21:24:51.452628",
+  "step1_time": "2026-01-25T21:33:54.384302",
+  "step2_time": "2026-01-25T21:34:16.541743",
+  "step3_time": "2026-01-25T21:34:44.424853",
+  "timestamp": "2026-01-25T21:34:44.424863"
+}

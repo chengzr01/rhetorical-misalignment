@@ -1,0 +1,158 @@
+{
+  "annotator_id": "6082c37809793130ca4b3f0e",
+  "demographics": {
+    "age": "56",
+    "expertise": "Medical Social Worker",
+    "practice_location": "Greenwood, SC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T17:19:07.686667",
+    "years_of_practice": "25"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_230",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Patients aged 45 years and older with hyperlipidemia and central obesity",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.6,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.88,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "As I read though the explaination, I saw that participants in the study had to meet certain criteria. Hyperlipidemia and obesity were high on the scale. They were also interested in somewhat older people. The 3 criteria needed to be a part of the study were identified. That is why I chose my answer",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Studies have shown lifestyle interventions and medication in individuals with IGT and IFG significantly reduce the risk of developing T2DM.",
+      "timestamp": "2026-01-23T17:41:54.503Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Typically adults, given T2DM is more prevalent in adults.",
+      "timestamp": "2026-01-23T17:42:02.457Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Obesity, family history of T2DM, physical inactivity, ethnicity (e.g., South Asian, African-American, Native American, Hispanic/Latino), history of gestational diabetes, or polycystic ovary syndrom",
+      "timestamp": "2026-01-23T17:42:11.843Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Age: A",
+      "timestamp": "2026-01-23T17:42:43.149Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Obesity:",
+      "timestamp": "2026-01-23T17:42:45.609Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Family histo",
+      "timestamp": "2026-01-23T17:42:49.038Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Ethnicity:",
+      "timestamp": "2026-01-23T17:42:52.761Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "meeting criteria for pre-diabetes (IGT and IFG), having metabolic syndrome, being overweight or obese, and possessing additional risk factors for T2DM. This comprehensive approach will enable the trial to efficiently evaluate the medication's efficacy in preventing the development of T2DM in a high-risk population",
+      "timestamp": "2026-01-23T17:43:23.651Z",
+      "step": "step2"
+    },
+    {
+      "text": "Population at Risk",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:45:05.912Z",
+      "step": "step3"
+    },
+    {
+      "text": "Age",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:45:12.542Z",
+      "step": "step3"
+    },
+    {
+      "text": "Metabolic Syndrome",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:45:18.172Z",
+      "step": "step3"
+    },
+    {
+      "text": "ther Risk Factor",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:45:22.201Z",
+      "step": "step3"
+    },
+    {
+      "text": "ifestyle interventions",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:45:33.953Z",
+      "step": "step3"
+    },
+    {
+      "text": "dietary modifications, increased physical activity, and weight loss.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:45:39.863Z",
+      "step": "step3"
+    },
+    {
+      "text": "meeting at least three of the five criteria: abdominal obesity, hypertension, low HDL cholesterol, high triglycerides, and fasting glucose as per the Intern",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:46:03.749Z",
+      "step": "step3"
+    },
+    {
+      "text": "Fasting plasma glucos",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:46:15.252Z",
+      "step": "step3"
+    },
+    {
+      "text": "Adults (aged \u226540 years)",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:46:22.879Z",
+      "step": "step3"
+    },
+    {
+      "text": "BMI \u2265 25 kg/m\u00b2.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-01-23T17:46:26.104Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-01-23T17:19:07.713374",
+  "step1_time": "2026-01-23T17:41:21.965226",
+  "step2_time": "2026-01-23T17:44:44.987584",
+  "step3_time": "2026-01-23T17:48:22.941881",
+  "timestamp": "2026-01-23T17:48:22.941890"
+}

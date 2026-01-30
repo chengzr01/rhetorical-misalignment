@@ -1,0 +1,92 @@
+{
+  "annotator_id": "664e835c732628231a08fff5",
+  "demographics": {
+    "age": "31",
+    "expertise": "medical term.",
+    "practice_location": "Saratoga, NY/ USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-01-23T11:46:49.744448",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "llama_dpo",
+  "case_id": "usmle_sample_276",
+  "agent_name": "default_agent",
+  "agent_model": "allenai/Llama-3.1-Tulu-3-8B-DPO",
+  "correct_answer": "Poorly differentiated anaplastic spindle cells",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.55,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.55,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "No my thought of thinking was more in tune with the AI and not looking into what would be on the biopsy per say.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Cystic Hygroma:",
+      "timestamp": "2026-01-23T12:21:58.873Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "generally not painful unless secondarily infected.",
+      "timestamp": "2026-01-23T12:22:04.130Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Lymphoma:",
+      "timestamp": "2026-01-23T12:22:17.680Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Fibroma",
+      "timestamp": "2026-01-23T12:22:34.911Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Sarcoma",
+      "timestamp": "2026-01-23T12:22:37.500Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Biopsy",
+      "timestamp": "2026-01-23T12:22:56.070Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "lymphoma or sarcoma,",
+      "timestamp": "2026-01-23T12:23:01.901Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-01-23T11:46:49.772080",
+  "step1_time": "2026-01-23T12:21:03.746661",
+  "step2_time": "2026-01-23T12:24:00.643466",
+  "step3_time": "2026-01-23T12:24:50.519412",
+  "timestamp": "2026-01-23T12:24:50.519422"
+}
