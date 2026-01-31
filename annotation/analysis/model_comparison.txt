@@ -9,12 +9,64 @@ Comparing persuasion effectiveness across different AI models
 USMLE SAMPLE - MODEL COMPARISON
 ================================================================================
 
-Total annotations: 450
+Total annotations: 692
 Models found: 6 unique models
 
 --------------------------------------------------------------------------------
 DETAILED MODEL ANALYSIS
 --------------------------------------------------------------------------------
+
+================================================================================
+Model: allenai/Llama-3.1-Tulu-3-8B-DPO
+================================================================================
+Total annotations: 158
+
+Accuracy:
+  Step 1 (Initial): 75/158 (47.5%)
+  Step 2 (After AI): 86/158 (54.4%)
+  Step 3 (After truth): 98/158 (62.0%)
+  Change Step1→Step2: +7.0 percentage points
+
+Answer Changes:
+  Changed answer: 30/158 (19.0%)
+
+Persuasion Effects:
+  Correct → Incorrect: 5/158 (3.2%)
+  Incorrect → Correct: 16/158 (10.1%)
+  Net helpful effect: +11 (+7.0 percentage points)
+
+Belief Changes:
+  Increased: 47/158 (29.7%)
+    Mean: 0.313, Median: 0.280
+  Decreased: 10/158 (6.3%)
+    Mean: -0.175, Median: -0.130
+  Unchanged: 101/158 (63.9%)
+
+================================================================================
+Model: allenai/Llama-3.1-Tulu-3-8B-SFT
+================================================================================
+Total annotations: 152
+
+Accuracy:
+  Step 1 (Initial): 62/152 (40.8%)
+  Step 2 (After AI): 75/152 (49.3%)
+  Step 3 (After truth): 85/152 (55.9%)
+  Change Step1→Step2: +8.6 percentage points
+
+Answer Changes:
+  Changed answer: 47/152 (30.9%)
+
+Persuasion Effects:
+  Correct → Incorrect: 10/152 (6.6%)
+  Incorrect → Correct: 23/152 (15.1%)
+  Net helpful effect: +13 (+8.6 percentage points)
+
+Belief Changes:
+  Increased: 55/152 (36.2%)
+    Mean: 0.280, Median: 0.250
+  Decreased: 5/152 (3.3%)
+    Mean: -0.468, Median: -0.440
+  Unchanged: 92/152 (60.5%)
 
 ================================================================================
 Model: meta-llama/llama-3.1-8b-instruct
@@ -121,68 +173,17 @@ Belief Changes:
   Unchanged: 46/75 (61.3%)
 
 ================================================================================
-Model: allenai/Llama-3.1-Tulu-3-8B-DPO
-================================================================================
-Total annotations: 37
-
-Accuracy:
-  Step 1 (Initial): 20/37 (54.1%)
-  Step 2 (After AI): 21/37 (56.8%)
-  Step 3 (After truth): 23/37 (62.2%)
-  Change Step1→Step2: +2.7 percentage points
-
-Answer Changes:
-  Changed answer: 7/37 (18.9%)
-
-Persuasion Effects:
-  Correct → Incorrect: 2/37 (5.4%)
-  Incorrect → Correct: 3/37 (8.1%)
-  Net helpful effect: +1 (+2.7 percentage points)
-
-Belief Changes:
-  Increased: 10/37 (27.0%)
-    Mean: 0.367, Median: 0.380
-  Decreased: 0/37 (0.0%)
-  Unchanged: 27/37 (73.0%)
-
-================================================================================
-Model: allenai/Llama-3.1-Tulu-3-8B-SFT
-================================================================================
-Total annotations: 31
-
-Accuracy:
-  Step 1 (Initial): 16/31 (51.6%)
-  Step 2 (After AI): 16/31 (51.6%)
-  Step 3 (After truth): 18/31 (58.1%)
-  Change Step1→Step2: +0.0 percentage points
-
-Answer Changes:
-  Changed answer: 9/31 (29.0%)
-
-Persuasion Effects:
-  Correct → Incorrect: 4/31 (12.9%)
-  Incorrect → Correct: 4/31 (12.9%)
-  Net helpful effect: +0 (+0.0 percentage points)
-
-Belief Changes:
-  Increased: 11/31 (35.5%)
-    Mean: 0.363, Median: 0.340
-  Decreased: 1/31 (3.2%)
-    Mean: -0.930, Median: -0.930
-  Unchanged: 19/31 (61.3%)
-
-================================================================================
 SUMMARY COMPARISON TABLE
 ================================================================================
 
 Model                                                  N  Ans Chg   C→I   I→C   Net
 --------------------------------------------------------------------------------------------
+allenai/Llama-3.1-Tulu-3-8B-DPO                      158    19.0%  3.2% 10.1%  +7.0%
+allenai/Llama-3.1-Tulu-3-8B-SFT                      152    30.9%  6.6% 15.1%  +8.6%
 meta-llama/llama-3.1-8b-instruct                     150    18.0%  2.7% 10.7%  +8.0%
 meta-llama/llama-3.1-405b-instruct                    81    16.0%  6.2%  7.4%  +1.2%
 deepseek/deepseek-chat-v3.1                           76    27.6%  3.9% 21.1% +17.1%
 meta-llama/llama-3.3-70b-instruct                     75    25.3%  2.7% 14.7% +12.0%
-allenai/Llama-3.1-Tulu-3-8B-DPO                       37    18.9%  5.4%  8.1%  +2.7%
-allenai/Llama-3.1-Tulu-3-8B-SFT                       31    29.0% 12.9% 12.9%  +0.0%
 
 Note:
   C→I = Correct to Incorrect (harmful persuasion)
@@ -202,8 +203,8 @@ BELIEF CHANGE OVERVIEW
 Model                                             N   Mean Δ    Med Δ      ↑%      ↓%      =%
 ------------------------------------------------------------------------------------------------------------------------
 deepseek/deepseek-chat-v3.1                      76  +0.148  +0.090   59.2%    5.3%   35.5%
-allenai/Llama-3.1-Tulu-3-8B-DPO                  37  +0.099  +0.000   27.0%    0.0%   73.0%
-allenai/Llama-3.1-Tulu-3-8B-SFT                  31  +0.099  +0.000   35.5%    3.2%   61.3%
+allenai/Llama-3.1-Tulu-3-8B-SFT                 152  +0.086  +0.000   36.2%    3.3%   60.5%
+allenai/Llama-3.1-Tulu-3-8B-DPO                 158  +0.082  +0.000   29.7%    6.3%   63.9%
 meta-llama/llama-3.1-405b-instruct               81  +0.072  +0.000   27.2%    3.7%   69.1%
 meta-llama/llama-3.3-70b-instruct                75  +0.065  +0.000   32.0%    6.7%   61.3%
 meta-llama/llama-3.1-8b-instruct                150  +0.051  +0.000   25.3%    6.7%   68.0%
@@ -213,8 +214,8 @@ DETAILED BELIEF CHANGE MAGNITUDES
 ------------------------------------------------------------------------------------------------------------------------
 Model                                            Mean↑     Max↑    Mean↓     Max↓   Mean|Δ|
 ------------------------------------------------------------------------------------------------------------------------
-allenai/Llama-3.1-Tulu-3-8B-SFT                +0.363  +0.600  -0.930  -0.930    0.410
-allenai/Llama-3.1-Tulu-3-8B-DPO                +0.367  +0.620  +0.000  +0.000    0.367
+allenai/Llama-3.1-Tulu-3-8B-SFT                +0.280  +0.850  -0.468  -0.930    0.295
+allenai/Llama-3.1-Tulu-3-8B-DPO                +0.313  +1.000  -0.175  -0.430    0.289
 deepseek/deepseek-chat-v3.1                    +0.281  +1.000  -0.345  -0.490    0.286
 meta-llama/llama-3.1-405b-instruct             +0.287  +0.660  -0.173  -0.250    0.274
 meta-llama/llama-3.3-70b-instruct              +0.248  +0.500  -0.210  -0.300    0.241
@@ -225,12 +226,12 @@ BELIEF CHANGE DISTRIBUTION (Count by magnitude)
 ------------------------------------------------------------------------------------------------------------------------
 Model                                         Large decr Moderate d Small decr  No change Small incr Moderate i Large incr
 ------------------------------------------------------------------------------------------------------------------------
+allenai/Llama-3.1-Tulu-3-8B-DPO                 2( 1.3%)   5( 3.2%)   3( 1.9%) 101(63.9%)  12( 7.6%)  13( 8.2%)  22(13.9%)
+allenai/Llama-3.1-Tulu-3-8B-SFT                 3( 2.0%)   2( 1.3%)   0( 0.0%)  92(60.5%)  13( 8.6%)  21(13.8%)  21(13.8%)
 meta-llama/llama-3.1-8b-instruct                1( 0.7%)   7( 4.7%)   2( 1.3%) 102(68.0%)  11( 7.3%)  16(10.7%)  11( 7.3%)
 meta-llama/llama-3.1-405b-instruct              0( 0.0%)   2( 2.5%)   1( 1.2%)  56(69.1%)   3( 3.7%)   8( 9.9%)  11(13.6%)
 deepseek/deepseek-chat-v3.1                     3( 3.9%)   1( 1.3%)   0( 0.0%)  27(35.5%)   8(10.5%)  19(25.0%)  18(23.7%)
 meta-llama/llama-3.3-70b-instruct               1( 1.3%)   3( 4.0%)   1( 1.3%)  46(61.3%)   6( 8.0%)   8(10.7%)  10(13.3%)
-allenai/Llama-3.1-Tulu-3-8B-DPO                 0( 0.0%)   0( 0.0%)   0( 0.0%)  27(73.0%)   0( 0.0%)   5(13.5%)   5(13.5%)
-allenai/Llama-3.1-Tulu-3-8B-SFT                 1( 3.2%)   0( 0.0%)   0( 0.0%)  19(61.3%)   1( 3.2%)   3( 9.7%)   7(22.6%)
 
 ========================================================================================================================
 INTERPRETATION GUIDE
@@ -258,12 +259,12 @@ BELIEF CHANGES: WHEN HUMAN WAS INITIALLY CORRECT vs INCORRECT
 Model                                                 Initially Correct       Initially Incorrect           Difference
                                                      N    Mean Δ   Med Δ        N    Mean Δ   Med Δ      Mean       Med
 ------------------------------------------------------------------------------------------------------------------------
+allenai/Llama-3.1-Tulu-3-8B-DPO                     75   +0.058 +0.000       83   +0.104 +0.000   +0.046   +0.000
+allenai/Llama-3.1-Tulu-3-8B-SFT                     62   +0.069 +0.000       90   +0.098 +0.000   +0.029   +0.000
 meta-llama/llama-3.1-8b-instruct                    56   +0.059 +0.000       94   +0.047 +0.000   -0.012   +0.000
 meta-llama/llama-3.1-405b-instruct                  43   +0.084 +0.000       38   +0.057 +0.000   -0.027   +0.000
 deepseek/deepseek-chat-v3.1                         42   +0.154 +0.115       34   +0.141 +0.020   -0.014   -0.095
 meta-llama/llama-3.3-70b-instruct                   31   +0.103 +0.000       44   +0.039 +0.000   -0.063   +0.000
-allenai/Llama-3.1-Tulu-3-8B-DPO                     20   +0.088 +0.000       17   +0.113 +0.000   +0.025   +0.000
-allenai/Llama-3.1-Tulu-3-8B-SFT                     16   +0.113 +0.000       15   +0.083 +0.000   -0.030   +0.000
 
 ------------------------------------------------------------------------------------------------------------------------
 BELIEF CHANGES: WHEN AI PERSUADED (answer changed) vs NOT PERSUADED (answer stayed)
@@ -271,12 +272,12 @@ BELIEF CHANGES: WHEN AI PERSUADED (answer changed) vs NOT PERSUADED (answer stay
 Model                                           Persuaded (ans changed)             Not Persuaded           Difference
                                                      N    Mean Δ   Med Δ        N    Mean Δ   Med Δ      Mean       Med
 ------------------------------------------------------------------------------------------------------------------------
+allenai/Llama-3.1-Tulu-3-8B-DPO                     30   +0.129 +0.000      128   +0.071 +0.000   +0.058   +0.000
+allenai/Llama-3.1-Tulu-3-8B-SFT                     47   +0.147 +0.020      105   +0.059 +0.000   +0.088   +0.020
 meta-llama/llama-3.1-8b-instruct                    27   +0.090 +0.000      123   +0.043 +0.000   +0.047   +0.000
 meta-llama/llama-3.1-405b-instruct                  13   +0.208 +0.190       68   +0.045 +0.000   +0.163   +0.190
 deepseek/deepseek-chat-v3.1                         21   +0.219 +0.290       55   +0.121 +0.060   +0.098   +0.230
 meta-llama/llama-3.3-70b-instruct                   19   +0.112 +0.000       56   +0.049 +0.000   +0.063   +0.000
-allenai/Llama-3.1-Tulu-3-8B-DPO                      7   +0.183 +0.000       30   +0.080 +0.000   +0.103   +0.000
-allenai/Llama-3.1-Tulu-3-8B-SFT                      9   +0.213 +0.140       22   +0.052 +0.000   +0.162   +0.140
 
 ========================================================================================================================
 INTERPRETATION:

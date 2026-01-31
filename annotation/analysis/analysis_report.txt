@@ -7,314 +7,401 @@ ANNOTATION RESULTS ANALYSIS
 USMLE SAMPLE DATASET ANALYSIS
 ================================================================================
 
-Total annotations: 450
-Unique cases: 256
-Unique annotators: 73
+Total annotations: 692
+Unique cases: 295
+Unique annotators: 118
 
 Annotations by model:
-  allenai/Llama-3.1-Tulu-3-8B-DPO: 37 (8.2%)
-  allenai/Llama-3.1-Tulu-3-8B-SFT: 31 (6.9%)
-  deepseek/deepseek-chat-v3.1: 76 (16.9%)
-  meta-llama/llama-3.1-405b-instruct: 81 (18.0%)
-  meta-llama/llama-3.1-8b-instruct: 150 (33.3%)
-  meta-llama/llama-3.3-70b-instruct: 75 (16.7%)
+  allenai/Llama-3.1-Tulu-3-8B-DPO: 158 (22.8%)
+  allenai/Llama-3.1-Tulu-3-8B-SFT: 152 (22.0%)
+  deepseek/deepseek-chat-v3.1: 76 (11.0%)
+  meta-llama/llama-3.1-405b-instruct: 81 (11.7%)
+  meta-llama/llama-3.1-8b-instruct: 150 (21.7%)
+  meta-llama/llama-3.3-70b-instruct: 75 (10.8%)
 
 --------------------------------------------------------------------------------
 ANSWER CORRECTNESS ANALYSIS
 --------------------------------------------------------------------------------
 
-Step 1 (Initial answer): 208/450 correct (46.2%)
-Step 2 (After AI): 244/450 correct (54.2%)
-Step 3 (After truth): 273/450 correct (60.7%)
+Step 1 (Initial answer): 309/692 correct (44.7%)
+Step 2 (After AI): 368/692 correct (53.2%)
+Step 3 (After truth): 415/692 correct (60.0%)
 
 --------------------------------------------------------------------------------
 ANSWER CHANGE ANALYSIS
 --------------------------------------------------------------------------------
 
-Step 1 → Step 2 (After seeing AI): 96/450 changed answer (21.3%)
-Step 2 → Step 3 (After seeing truth): 29/450 changed answer (6.4%)
+Step 1 → Step 2 (After seeing AI): 157/692 changed answer (22.7%)
+Step 2 → Step 3 (After seeing truth): 49/692 changed answer (7.1%)
 
 --------------------------------------------------------------------------------
 BELIEF CHANGE ANALYSIS
 --------------------------------------------------------------------------------
 
 Step 1 → Step 2 (After seeing AI response):
-  Belief increased: 150/450 (33.3%)
-    Mean increase: 0.281
-    Median increase: 0.260
+  Belief increased: 231/692 (33.4%)
+    Mean increase: 0.279
+    Median increase: 0.250
     Min: 0.010, Max: 1.000
-    Std dev: 0.188
-  Belief decreased: 23/450 (5.1%)
-    Mean decrease: -0.249
-    Median decrease: -0.220
+    Std dev: 0.197
+  Belief decreased: 37/692 (5.3%)
+    Mean decrease: -0.240
+    Median decrease: -0.210
     Min: -0.930, Max: -0.030
-    Std dev: 0.194
-  Belief unchanged: 277/450 (61.6%)
+    Std dev: 0.182
+  Belief unchanged: 424/692 (61.3%)
 
 Step 2 → Step 3 (After seeing ground truth):
-  Belief increased: 21/450 (4.7%)
-    Mean increase: 0.295
-    Median increase: 0.260
-    Min: 0.050, Max: 0.590
-    Std dev: 0.186
-  Belief decreased: 3/450 (0.7%)
-    Mean decrease: -0.237
-    Median decrease: -0.190
-    Min: -0.430, Max: -0.090
-    Std dev: 0.175
-  Belief unchanged: 426/450 (94.7%)
+  Belief increased: 40/692 (5.8%)
+    Mean increase: 0.343
+    Median increase: 0.305
+    Min: 0.050, Max: 0.980
+    Std dev: 0.227
+  Belief decreased: 8/692 (1.2%)
+    Mean decrease: -0.381
+    Median decrease: -0.330
+    Min: -0.960, Max: -0.090
+    Std dev: 0.284
+  Belief unchanged: 644/692 (93.1%)
 
 --------------------------------------------------------------------------------
 PERSUASION ANALYSIS
 --------------------------------------------------------------------------------
 
 From Step 1 to Step 2 (AI persuasion):
-  Persuaded from correct → incorrect: 20/450 (4.4%)
-    Mean belief change: 0.088
-    Median belief change: 0.000
-  Persuaded from incorrect → correct: 56/450 (12.4%)
-    Mean belief change: 0.183
-    Median belief change: 0.130
-  Stayed correct: 188/450 (41.8%)
-  Stayed incorrect: 166/450 (36.9%)
+  Persuaded from correct → incorrect: 29/692 (4.2%)
+    Mean belief change: 0.086
+    Median belief change: 0.030
+  Persuaded from incorrect → correct: 88/692 (12.7%)
+    Mean belief change: 0.176
+    Median belief change: 0.085
+  Stayed correct: 280/692 (40.5%)
+  Stayed incorrect: 255/692 (36.8%)
 
 --------------------------------------------------------------------------------
 HIGHLIGHTS ANALYSIS
 --------------------------------------------------------------------------------
 
-Total highlights: 133
-Annotations with highlights: 73/450 (16.2%)
+Total highlights: 377
+Annotations with highlights: 132/692 (19.1%)
 
 Highlights by step:
-  step2: 96
-  step3: 37
+  step2: 298
+  step3: 79
 
 --------------------------------------------------------------------------------
 TIME ANALYSIS
 --------------------------------------------------------------------------------
 
 Time spent on Step 1 (seconds):
-  Mean: 620.0
-  Median: 463.8
+  Mean: 610.7
+  Median: 449.0
   Min: 2.9, Max: 3206.6
 
 Time spent on Step 2 (seconds):
-  Mean: 39.0
-  Median: 19.3
+  Mean: 46.1
+  Median: 24.1
   Min: 1.7, Max: 463.5
 
 Time spent on Step 3 (seconds):
-  Mean: 57.4
-  Median: 35.7
-  Min: 2.5, Max: 446.2
+  Mean: 64.7
+  Median: 41.0
+  Min: 2.5, Max: 700.2
 
 --------------------------------------------------------------------------------
 ANNOTATOR DEMOGRAPHICS
 --------------------------------------------------------------------------------
 
 Age:
-  32: 33 (7.3%)
-  29: 25 (5.6%)
-  30: 22 (4.9%)
-  33: 21 (4.7%)
-  27: 20 (4.4%)
-  38: 16 (3.6%)
-  31: 15 (3.3%)
-  45: 14 (3.1%)
-  37: 14 (3.1%)
-  23: 13 (2.9%)
-  28: 12 (2.7%)
-  26: 12 (2.7%)
-  55: 12 (2.7%)
-  39-44: 11 (2.4%)
-  52: 11 (2.4%)
-  42: 11 (2.4%)
-  34: 11 (2.4%)
-  46: 10 (2.2%)
-  25-34: 10 (2.2%)
-  49: 10 (2.2%)
-  45-54: 10 (2.2%)
-  53: 10 (2.2%)
-  54-61: 10 (2.2%)
-  54: 10 (2.2%)
-  51: 8 (1.8%)
-  39: 7 (1.6%)
-  41: 6 (1.3%)
-  22: 5 (1.1%)
-  71: 5 (1.1%)
-  43: 5 (1.1%)
-  0-21: 5 (1.1%)
-  47: 5 (1.1%)
-  65: 5 (1.1%)
-  36: 5 (1.1%)
-  55-64: 5 (1.1%)
-  40: 4 (0.9%)
-  62: 2 (0.4%)
-  34-45: 1 (0.2%)
-  34-44: 1 (0.2%)
-  18-24: 1 (0.2%)
+  32: 39 (5.6%)
+  33: 31 (4.5%)
+  27: 31 (4.5%)
+  30: 27 (3.9%)
+  29: 25 (3.6%)
+  26: 23 (3.3%)
+  25-34: 20 (2.9%)
+  31: 20 (2.9%)
+  54: 20 (2.9%)
+  51: 18 (2.6%)
+  28: 17 (2.5%)
+  55: 17 (2.5%)
+  45-54: 16 (2.3%)
+  38: 16 (2.3%)
+  41: 16 (2.3%)
+  43: 15 (2.2%)
+  45: 14 (2.0%)
+  37: 14 (2.0%)
+  23: 13 (1.9%)
+  42: 12 (1.7%)
+  39-44: 11 (1.6%)
+  22: 11 (1.6%)
+  52: 11 (1.6%)
+  25: 11 (1.6%)
+  34: 11 (1.6%)
+  56: 11 (1.6%)
+  46: 10 (1.4%)
+  59: 10 (1.4%)
+  35: 10 (1.4%)
+  49: 10 (1.4%)
+  53: 10 (1.4%)
+  54-61: 10 (1.4%)
+  39: 7 (1.0%)
+  67: 6 (0.9%)
+  57: 6 (0.9%)
+  71: 5 (0.7%)
+  35-44: 5 (0.7%)
+  0-21: 5 (0.7%)
+  47: 5 (0.7%)
+  69: 5 (0.7%)
+  65: 5 (0.7%)
+  48: 5 (0.7%)
+  24: 5 (0.7%)
+  78: 5 (0.7%)
+  20: 5 (0.7%)
+  55+: 5 (0.7%)
+  20-25: 5 (0.7%)
+  36: 5 (0.7%)
+  55-64: 5 (0.7%)
+  40: 4 (0.6%)
+  62: 2 (0.3%)
+  34-45: 1 (0.1%)
+  34-44: 1 (0.1%)
+  18-24: 1 (0.1%)
 
 Expertise:
-  Family Medicine: 20 (4.4%)
-  internal medicine: 16 (3.6%)
-  Emergency Medicine: 12 (2.7%)
-  midwifery : 11 (2.4%)
-  Caregiving and first Aid: 11 (2.4%)
-  construction: 11 (2.4%)
-  Healthcare: 10 (2.2%)
-  Home health: 10 (2.2%)
-  Radiation Oncology: 10 (2.2%)
-  Geriatrics: 10 (2.2%)
-  DENTISTRY: 10 (2.2%)
-  family medicine: 10 (2.2%)
-  ob: 10 (2.2%)
-  Internal medicine: 10 (2.2%)
-  Optical: 10 (2.2%)
-  Nursing: 10 (2.2%)
-  EMT: 10 (2.2%)
-  HEALTHCARE: 10 (2.2%)
-  Social Work: 10 (2.2%)
-  Health: 10 (2.2%)
-  internal medicine : 10 (2.2%)
-  Endocrinology: 10 (2.2%)
-  urology : 10 (2.2%)
-  social worker: 10 (2.2%)
-  medical device: 10 (2.2%)
-  Orthopaedics: 10 (2.2%)
-  Medical Doctor: 10 (2.2%)
-  Health aide: 9 (2.0%)
-  Private Medicine - General Family Health: 8 (1.8%)
-  Nurse: 8 (1.8%)
-  Nursing/Healthcare: 7 (1.6%)
-  Family Practice: 6 (1.3%)
-  Public health: 5 (1.1%)
-  Medical/Surgical: 5 (1.1%)
-  Pathology: 5 (1.1%)
-  General healthcare: 5 (1.1%)
-  hiv infectious disease: 5 (1.1%)
-  physical therapy: 5 (1.1%)
-  Medicine: 5 (1.1%)
-  Cardiologist : 5 (1.1%)
-  Speech-Language Pathology: 5 (1.1%)
-  Chiropractic: 5 (1.1%)
-  Family Medicine : 5 (1.1%)
-  Nurse Practiioner: 5 (1.1%)
-  Post Anesthesia Care: 5 (1.1%)
-  General Surgery: 5 (1.1%)
-  Internal Medicine Nursing: 4 (0.9%)
-  neurology: 3 (0.7%)
-  none: 2 (0.4%)
-  Physical Therapy: 2 (0.4%)
-  Healthcare/Nursing: 2 (0.4%)
-  general patient care: 2 (0.4%)
-  pharmacy: 2 (0.4%)
-  nurse: 2 (0.4%)
-  Cardiopulmonary: 1 (0.2%)
-  Radiology: 1 (0.2%)
-  General Medicine: 1 (0.2%)
-  social services: 1 (0.2%)
-  Cardiology: 1 (0.2%)
-  Engineering: 1 (0.2%)
-  mental health: 1 (0.2%)
-  Healthcare : 1 (0.2%)
+  internal medicine: 21 (3.0%)
+  Family Medicine: 20 (2.9%)
+  Emergency Medicine: 17 (2.5%)
+  Nurse: 13 (1.9%)
+  midwifery : 11 (1.6%)
+  Pathology: 11 (1.6%)
+  Anesthesia: 11 (1.6%)
+  Caregiving and first Aid: 11 (1.6%)
+  construction: 11 (1.6%)
+  Healthcare: 10 (1.4%)
+  Home health: 10 (1.4%)
+  Radiation Oncology: 10 (1.4%)
+  Geriatrics: 10 (1.4%)
+  DENTISTRY: 10 (1.4%)
+  family medicine: 10 (1.4%)
+  ob: 10 (1.4%)
+  Internal medicine: 10 (1.4%)
+  Optical: 10 (1.4%)
+  Nursing: 10 (1.4%)
+  EMT: 10 (1.4%)
+  HEALTHCARE: 10 (1.4%)
+  Social Work: 10 (1.4%)
+  Health: 10 (1.4%)
+  internal medicine : 10 (1.4%)
+  Endocrinology: 10 (1.4%)
+  urology : 10 (1.4%)
+  social worker: 10 (1.4%)
+  medical device: 10 (1.4%)
+  Orthopaedics: 10 (1.4%)
+  Medical Doctor: 10 (1.4%)
+  Health aide: 9 (1.3%)
+  Private Medicine - General Family Health: 8 (1.2%)
+  Nursing/Healthcare: 7 (1.0%)
+  pharmacy: 7 (1.0%)
+  nurse: 7 (1.0%)
+  Family Practice: 6 (0.9%)
+  Internal Med  Cardio  Neuro  Dermatology  OB GYN   Plastic Surgery: 6 (0.9%)
+  CVICU: 6 (0.9%)
+  Endocrinology and Diabetes: 6 (0.9%)
+  mental health: 6 (0.9%)
+  long term care: 6 (0.9%)
+  LPN: 6 (0.9%)
+  Public health: 5 (0.7%)
+  Medical/Surgical: 5 (0.7%)
+  Epidemiology: 5 (0.7%)
+  Primary Care: 5 (0.7%)
+  General healthcare: 5 (0.7%)
+  Mental Health: 5 (0.7%)
+  hiv infectious disease: 5 (0.7%)
+  Internal Medicine: 5 (0.7%)
+  RDH: 5 (0.7%)
+  physical therapy: 5 (0.7%)
+  Clinical microbiology : 5 (0.7%)
+  Pharmacy : 5 (0.7%)
+  Medicine: 5 (0.7%)
+  Cardiologist : 5 (0.7%)
+  Dentistry: 5 (0.7%)
+  pediatrics: 5 (0.7%)
+  Speech-Language Pathology: 5 (0.7%)
+  med surg: 5 (0.7%)
+  cardiac imaging: 5 (0.7%)
+  Registered nurse: 5 (0.7%)
+  Nurse Practitioner: 5 (0.7%)
+  social work : 5 (0.7%)
+  Mental health: 5 (0.7%)
+  Psychology: 5 (0.7%)
+  Veterinary medicine : 5 (0.7%)
+  home care: 5 (0.7%)
+  medicine, pharmacy: 5 (0.7%)
+  Chiropractic: 5 (0.7%)
+  general practice, oncology, medical physics: 5 (0.7%)
+  retail: 5 (0.7%)
+  General: 5 (0.7%)
+  Dental : 5 (0.7%)
+  Medical Social Worker: 5 (0.7%)
+  Family Medicine : 5 (0.7%)
+  occupational therapy: 5 (0.7%)
+  IM: 5 (0.7%)
+  Nurse Practiioner: 5 (0.7%)
+  Post Anesthesia Care: 5 (0.7%)
+  medical term.: 5 (0.7%)
+  General Surgery: 5 (0.7%)
+  Internal Medicine Nursing: 4 (0.6%)
+  neurology: 3 (0.4%)
+  none: 2 (0.3%)
+  Physical Therapy: 2 (0.3%)
+  Healthcare/Nursing: 2 (0.3%)
+  general patient care: 2 (0.3%)
+  Clinical psychology: 1 (0.1%)
+  Cardiopulmonary: 1 (0.1%)
+  Radiology: 1 (0.1%)
+  Social worker: 1 (0.1%)
+  Clinical Mental Health Counseling: 1 (0.1%)
+  General Medicine: 1 (0.1%)
+  social services: 1 (0.1%)
+  Cardiology: 1 (0.1%)
+  Engineering: 1 (0.1%)
+  Healthcare : 1 (0.1%)
 
 Practice Location:
-  USA: 53 (11.8%)
-  Memphis, TN: 12 (2.7%)
-  Columbus, Ohio: 10 (2.2%)
-  Florida: 10 (2.2%)
-  Hockessin, Delaware: 10 (2.2%)
-  NY, NY: 10 (2.2%)
-  kansas city missouri: 10 (2.2%)
-  dumont nj: 10 (2.2%)
-  Des Moines, Iowa: 10 (2.2%)
-  iowa: 10 (2.2%)
-  Sacramento, CA: 10 (2.2%)
-  Tennessee: 10 (2.2%)
-  United States: 10 (2.2%)
-  Hampstead, NC: 10 (2.2%)
-  Kansas: 10 (2.2%)
-  San Diego, CA: 10 (2.2%)
-  United States Arizona : 10 (2.2%)
-  texas: 10 (2.2%)
-  Berlin, Germany: 10 (2.2%)
-  maryland: 10 (2.2%)
-  U.S.A New york: 10 (2.2%)
-  Seattle, WA: 10 (2.2%)
-  California, US: 10 (2.2%)
-  Delaware, United states: 10 (2.2%)
-  Denver, CO: 10 (2.2%)
-  Livingston, ca: 9 (2.0%)
-  United States of America: 8 (1.8%)
-  Los Angeles, CA: 7 (1.6%)
-  London, KY: 6 (1.3%)
-  Biloxi, MS: 5 (1.1%)
-  Kansas, USA: 5 (1.1%)
-  Arizona, USA: 5 (1.1%)
-  bethesda, md: 5 (1.1%)
-  Chicago metro: 5 (1.1%)
-  Los Anglees, CA : 5 (1.1%)
-  Atlanta: 5 (1.1%)
-  Virtual: 5 (1.1%)
-  New Bern, NC: 5 (1.1%)
-  LA: 5 (1.1%)
-  Pittsburgh, PA: 5 (1.1%)
-  Chicago: 5 (1.1%)
-  Wilmington, USA: 5 (1.1%)
-  Petersburg, Virginia: 4 (0.9%)
-  usa: 4 (0.9%)
-  CT, USA: 2 (0.4%)
-  US: Florida: 2 (0.4%)
-  Milwaukee, WI: 2 (0.4%)
-  california: 2 (0.4%)
-  Virginia: 2 (0.4%)
-  Salisbury, NC: 1 (0.2%)
-  Oklahoma: 1 (0.2%)
-  Kansasa: 1 (0.2%)
-  miami: 1 (0.2%)
-  Hollywood, Florida: 1 (0.2%)
-  Belleville, Illinois: 1 (0.2%)
-  NJ: 1 (0.2%)
-  Buffalo, NY: 1 (0.2%)
-  Connecticut, USA: 1 (0.2%)
-  Arvada Colorado : 1 (0.2%)
+  USA: 64 (9.2%)
+  United States: 20 (2.9%)
+  Seattle, WA: 20 (2.9%)
+  texas: 15 (2.2%)
+  Denver, CO: 15 (2.2%)
+  usa: 14 (2.0%)
+  United States of America: 13 (1.9%)
+  Memphis, TN: 12 (1.7%)
+  Florida: 11 (1.6%)
+  Columbus, Ohio: 10 (1.4%)
+  Hockessin, Delaware: 10 (1.4%)
+  NY, NY: 10 (1.4%)
+  kansas city missouri: 10 (1.4%)
+  dumont nj: 10 (1.4%)
+  Des Moines, Iowa: 10 (1.4%)
+  iowa: 10 (1.4%)
+  Sacramento, CA: 10 (1.4%)
+  Tennessee: 10 (1.4%)
+  Hampstead, NC: 10 (1.4%)
+  Kansas: 10 (1.4%)
+  San Diego, CA: 10 (1.4%)
+  United States Arizona : 10 (1.4%)
+  Berlin, Germany: 10 (1.4%)
+  maryland: 10 (1.4%)
+  U.S.A New york: 10 (1.4%)
+  California, US: 10 (1.4%)
+  Delaware, United states: 10 (1.4%)
+  Livingston, ca: 9 (1.3%)
+  Los Angeles, CA: 7 (1.0%)
+  London, KY: 6 (0.9%)
+  Louisville Ky: 6 (0.9%)
+  Ohio: 6 (0.9%)
+  Springfield,MA: 6 (0.9%)
+  Philadelphia, PA: 6 (0.9%)
+  Lexington: 6 (0.9%)
+  Owensboro, KY USA: 6 (0.9%)
+  Virginia : 6 (0.9%)
+  Biloxi, MS: 5 (0.7%)
+  Missouri: 5 (0.7%)
+  Kansas, USA: 5 (0.7%)
+  Arizona, USA: 5 (0.7%)
+  Baltimore, MD: 5 (0.7%)
+  Greensboro, NC: 5 (0.7%)
+  bethesda, md: 5 (0.7%)
+  California: 5 (0.7%)
+  Chicago metro: 5 (0.7%)
+  Los Anglees, CA : 5 (0.7%)
+  Los Angeles: 5 (0.7%)
+  Cleveland: 5 (0.7%)
+  Atlanta: 5 (0.7%)
+  Blandon, PA: 5 (0.7%)
+  Phoenix AZ: 5 (0.7%)
+  Virtual: 5 (0.7%)
+  cleveland ohio: 5 (0.7%)
+  Syracuse, NY: 5 (0.7%)
+  New Jersey: 5 (0.7%)
+  Texas: 5 (0.7%)
+  New Bern, NC: 5 (0.7%)
+  Alabama: 5 (0.7%)
+  Minneapolis, Minnesota: 5 (0.7%)
+  LA: 5 (0.7%)
+  Knoxville, TN: 5 (0.7%)
+  burlington, vt: 5 (0.7%)
+  Norfolk, VA: 5 (0.7%)
+  new york city: 5 (0.7%)
+  Pittsburgh, PA: 5 (0.7%)
+  USA Midwest: 5 (0.7%)
+  Denver, Colorado: 5 (0.7%)
+  Greenwood, SC: 5 (0.7%)
+  Chicago: 5 (0.7%)
+  Wilmington, USA: 5 (0.7%)
+  Saratoga, NY/ USA: 5 (0.7%)
+  Petersburg, Virginia: 4 (0.6%)
+  CT, USA: 2 (0.3%)
+  US: Florida: 2 (0.3%)
+  Milwaukee, WI: 2 (0.3%)
+  california: 2 (0.3%)
+  Virginia: 2 (0.3%)
+  Salisbury, NC: 1 (0.1%)
+  Oklahoma: 1 (0.1%)
+  Kansasa: 1 (0.1%)
+  miami: 1 (0.1%)
+  Houlton, Maine: 1 (0.1%)
+  Hollywood, Florida: 1 (0.1%)
+  Belleville, Illinois: 1 (0.1%)
+  NJ: 1 (0.1%)
+  Buffalo, NY: 1 (0.1%)
+  Connecticut, USA: 1 (0.1%)
+  Arvada Colorado : 1 (0.1%)
 
 Race:
-  white: 253 (56.2%)
-  black_african_american: 109 (24.2%)
-  hispanic_latino: 25 (5.6%)
-  asian: 21 (4.7%)
-  two_or_more: 15 (3.3%)
+  white: 421 (60.8%)
+  black_african_american: 134 (19.4%)
+  asian: 41 (5.9%)
+  hispanic_latino: 25 (3.6%)
+  two_or_more: 21 (3.0%)
 
 Sex:
-  female: 299 (66.4%)
-  male: 129 (28.7%)
+  female: 469 (67.8%)
+  male: 184 (26.6%)
 
 Years Of Practice:
-  2: 55 (12.2%)
-  15: 51 (11.3%)
-  7: 40 (8.9%)
-  5: 31 (6.9%)
-  10: 30 (6.7%)
-  4: 23 (5.1%)
-  8: 22 (4.9%)
-  12: 21 (4.7%)
-  1: 18 (4.0%)
-  11: 18 (4.0%)
-  23: 17 (3.8%)
-  27: 15 (3.3%)
-  17: 13 (2.9%)
-  14: 12 (2.7%)
-  3: 11 (2.4%)
-  33: 10 (2.2%)
-  21: 9 (2.0%)
-  9: 6 (1.3%)
-  25: 5 (1.1%)
-  32: 5 (1.1%)
-  16: 5 (1.1%)
-  13: 5 (1.1%)
-  0: 2 (0.4%)
-  20: 1 (0.2%)
-  6: 1 (0.2%)
+  2: 76 (11.0%)
+  15: 56 (8.1%)
+  10: 51 (7.4%)
+  5: 48 (6.9%)
+  7: 45 (6.5%)
+  4: 28 (4.0%)
+  8: 28 (4.0%)
+  3: 27 (3.9%)
+  12: 27 (3.9%)
+  20: 27 (3.9%)
+  6: 26 (3.8%)
+  1: 23 (3.3%)
+  11: 18 (2.6%)
+  23: 17 (2.5%)
+  22: 15 (2.2%)
+  27: 15 (2.2%)
+  17: 13 (1.9%)
+  14: 12 (1.7%)
+  9: 11 (1.6%)
+  25: 10 (1.4%)
+  33: 10 (1.4%)
+  21: 9 (1.3%)
+  59: 6 (0.9%)
+  20+: 6 (0.9%)
+  45: 5 (0.7%)
+  30: 5 (0.7%)
+  32: 5 (0.7%)
+  26: 5 (0.7%)
+  2.5: 5 (0.7%)
+  16: 5 (0.7%)
+  13: 5 (0.7%)
+  0: 2 (0.3%)
 
 ================================================================================
