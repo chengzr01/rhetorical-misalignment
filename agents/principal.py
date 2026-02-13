@@ -46,26 +46,34 @@ class Principal(BaseAgent):
             data = yaml.safe_load(f)
         return data["prompt"]
 
-    def act(self, context: str, information: str, **kwargs: Any) -> Mapping[str, Any]:
+    def act(self, context: str, information: str = "", options: str = "", **kwargs: Any) -> Mapping[str, Any]:
         """
         Make a decision based on context and information from an agent.
 
         Args:
             context: The decision context/scenario
-            information: Information provided by the expert agent
+            information: Information provided by the expert agent (optional)
+            options: Answer options for belief-elicitation mode (optional)
             **kwargs: Additional arguments to pass to the LLM
 
         Returns:
             Dictionary containing:
-                - decision: The principal's decision
+                - decision/answer: The principal's decision or answer
                 - belief: The principal's updated belief
                 - reasoning: The principal's reasoning
                 - raw_response: The raw LLM response
         """
         # Fill in the prompt template
-        prompt = self.prompt_template.replace("<CONTEXT>", context).replace(
-            "<RECOMMENDATIONS>", information
-        )
+        prompt = self.prompt_template.replace("<CONTEXT>", context)
+
+        # Handle different prompt formats
+        if "<RECOMMENDATIONS>" in prompt:
+            # Original format: agent recommendations
+            prompt = prompt.replace("<RECOMMENDATIONS>", information)
+
+        if "<OPTIONS>" in prompt:
+            # Belief-elicitation format: answer options
+            prompt = prompt.replace("<OPTIONS>", options)
 
         # Call the LLM
         messages = [{"role": "user", "content": prompt}]
@@ -79,16 +87,26 @@ class Principal(BaseAgent):
 
     def _parse_response(self, response: str) -> Mapping[str, str]:
         """
-        Parse the principal's response to extract decision, belief, and reasoning.
+        Parse the principal's response to extract decision/answer, belief, and reasoning.
 
-        Expected format: <decision>...</decision><belief>...</belief><reasoning>...</reasoning>
+        Expected formats:
+        - Original: <decision>...</decision><belief>...</belief><reasoning>...</reasoning>
+        - Belief mode: <answer>...</answer><belief>...</belief><reasoning>...</reasoning>
         """
-        result = {"decision": "", "belief": "", "reasoning": ""}
+        result = {"decision": "", "answer": "", "belief": "", "reasoning": ""}
 
-        # Extract decision
+        # Extract decision (original format)
         decision_match = re.search(r"<decision>(.*?)</decision>", response, re.DOTALL)
         if decision_match:
             result["decision"] = decision_match.group(1).strip()
+
+        # Extract answer (belief-elicitation format)
+        answer_match = re.search(r"<answer>(.*?)</answer>", response, re.DOTALL)
+        if answer_match:
+            result["answer"] = answer_match.group(1).strip()
+            # For backward compatibility, also set as decision
+            if not result["decision"]:
+                result["decision"] = result["answer"]
 
         # Extract belief
         belief_match = re.search(r"<belief>(.*?)</belief>", response, re.DOTALL)
