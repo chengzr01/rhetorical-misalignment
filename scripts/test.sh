@@ -11,6 +11,12 @@
 #   llama-large     - meta-llama/llama-3.1-405b-instruct
 #   llama-dpo       - allenai/Llama-3.1-Tulu-3-8B-DPO
 #   llama-sft       - allenai/Llama-3.1-Tulu-3-8B-SFT
+#   llama3-dpo      - princeton-nlp/Llama-3-Instruct-8B-DPO
+#   llama3-kto      - princeton-nlp/Llama-3-Instruct-8B-KTO
+#   mistral-dpo     - princeton-nlp/Mistral-7B-Instruct-DPO
+#   mistral-kto     - princeton-nlp/Mistral-7B-Instruct-KTO
+#   qwen            - qwen/qwen-2.5-7b-instruct
+#   mistral         - mistralai/mistral-7b-instruct
 #
 # Examples:
 #   bash scripts/test.sh                    # Run with deepseek (default)
@@ -19,6 +25,12 @@
 #   bash scripts/test.sh deepseek-llama     # Run with deepseek-llama
 #   bash scripts/test.sh llama-dpo          # Run with llama-dpo
 #   bash scripts/test.sh llama-sft          # Run with llama-sft
+#   bash scripts/test.sh llama3-dpo         # Run with llama3-dpo
+#   bash scripts/test.sh llama3-kto         # Run with llama3-kto
+#   bash scripts/test.sh mistral-dpo        # Run with mistral-dpo
+#   bash scripts/test.sh mistral-kto        # Run with mistral-kto
+#   bash scripts/test.sh qwen               # Run with qwen-2.5-7b
+#   bash scripts/test.sh mistral            # Run with mistral-7b
 #
 # Customize parameters:
 #   BACKEND=nvidia bash scripts/test.sh deepseek
@@ -57,6 +69,12 @@ declare -A MODEL_MAP=(
     ["llama-large"]="meta-llama/llama-3.1-405b-instruct"
     ["llama-dpo"]="allenai/Llama-3.1-Tulu-3-8B-DPO"
     ["llama-sft"]="allenai/Llama-3.1-Tulu-3-8B-SFT"
+    ["llama3-dpo"]="princeton-nlp/Llama-3-Instruct-8B-DPO"
+    ["llama3-kto"]="princeton-nlp/Llama-3-Instruct-8B-KTO"
+    ["mistral-dpo"]="princeton-nlp/Mistral-7B-Instruct-DPO"
+    ["mistral-kto"]="princeton-nlp/Mistral-7B-Instruct-KTO"
+    ["qwen"]="qwen/qwen-2.5-7b-instruct"
+    ["mistral"]="mistralai/mistral-7b-instruct"
 )
 
 # Worker configurations per model (adjust based on model size)
@@ -68,6 +86,12 @@ declare -A WORKER_MAP=(
     ["llama-large"]="4"
     ["llama-dpo"]="32"
     ["llama-sft"]="32"
+    ["llama3-dpo"]="32"
+    ["llama3-kto"]="32"
+    ["mistral-dpo"]="32"
+    ["mistral-kto"]="32"
+    ["qwen"]="32"
+    ["mistral"]="32"
 )
 
 # SGLang port mapping per model (default, but can be overridden by env)
@@ -101,6 +125,18 @@ if [[ "$MODEL_KEY" == "llama-dpo" ]]; then
 elif [[ "$MODEL_KEY" == "llama-sft" ]]; then
     SELECTED_BACKEND="sglang"
     SGLANG_PORT="${SGLANG_PORT:-${MODEL_PORT_MAP[$MODEL_KEY]:-$SFT_PORT}}"
+elif [[ "$MODEL_KEY" == "llama3-dpo" ]]; then
+    SELECTED_BACKEND="sglang"
+    SGLANG_PORT="${SGLANG_PORT:-30000}"
+elif [[ "$MODEL_KEY" == "llama3-kto" ]]; then
+    SELECTED_BACKEND="sglang"
+    SGLANG_PORT="${SGLANG_PORT:-30000}"
+elif [[ "$MODEL_KEY" == "mistral-dpo" ]]; then
+    SELECTED_BACKEND="sglang"
+    SGLANG_PORT="${SGLANG_PORT:-30000}"
+elif [[ "$MODEL_KEY" == "mistral-kto" ]]; then
+    SELECTED_BACKEND="sglang"
+    SGLANG_PORT="${SGLANG_PORT:-30000}"
 fi
 
 # Print configuration

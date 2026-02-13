@@ -5,7 +5,7 @@
 # Usage:
 #   bash scripts/run.sh [agent_model_key] [dataset_key] [inference_mode]
 #
-#   agent_model_key:  deepseek | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft
+#   agent_model_key:  deepseek | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | llama3-dpo | llama3-kto | mistral-dpo | mistral-kto | qwen | mistral
 #   dataset_key:      mimiciv_demo | usmle | usmle_sample
 #   inference_mode:   agent | full        # agent = agent only, full = agent + principal (default: agent)
 #
@@ -47,7 +47,14 @@ declare -A MODEL_MAP=(
     ["llama-large"]="meta-llama/llama-3.1-405b-instruct"
     ["llama-dpo"]="allenai/Llama-3.1-Tulu-3-8B-DPO"
     ["llama-sft"]="allenai/Llama-3.1-Tulu-3-8B-SFT"
+    ["llama3-dpo"]="princeton-nlp/Llama-3-Instruct-8B-DPO"
+    ["llama3-kto"]="princeton-nlp/Llama-3-Instruct-8B-KTO"
+    ["mistral-dpo"]="princeton-nlp/Mistral-7B-Instruct-DPO"
+    ["mistral-kto"]="princeton-nlp/Mistral-7B-Instruct-KTO"
+    ["qwen"]="qwen/qwen-2.5-7b-instruct"
+    ["mistral"]="mistralai/mistral-7b-instruct"
 )
+
 
 # Dataset configurations
 declare -A DATASET_MAP=(
@@ -92,6 +99,18 @@ if [ "$AGENT_MODEL_KEY" == "llama-dpo" ]; then
 elif [ "$AGENT_MODEL_KEY" == "llama-sft" ]; then
     AGENT_SERVER="sglang"
     SGLANG_PORT="30000"
+elif [ "$AGENT_MODEL_KEY" == "llama3-dpo" ]; then
+    AGENT_SERVER="sglang"
+    SGLANG_PORT="30000"
+elif [ "$AGENT_MODEL_KEY" == "llama3-kto" ]; then
+    AGENT_SERVER="sglang"
+    SGLANG_PORT="30000"
+elif [ "$AGENT_MODEL_KEY" == "mistral-dpo" ]; then
+    AGENT_SERVER="sglang"
+    SGLANG_PORT="30000"
+elif [ "$AGENT_MODEL_KEY" == "mistral-kto" ]; then
+    AGENT_SERVER="sglang"
+    SGLANG_PORT="30000"
 fi
 
 # Override PRINCIPAL_SERVER for sglang models (if using different principal model)
@@ -101,6 +120,18 @@ if [ "$PRINCIPAL_MODEL_KEY" == "llama-dpo" ]; then
 elif [ "$PRINCIPAL_MODEL_KEY" == "llama-sft" ]; then
     PRINCIPAL_SERVER="sglang"
     PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30002}"
+elif [ "$PRINCIPAL_MODEL_KEY" == "llama3-dpo" ]; then
+    PRINCIPAL_SERVER="sglang"
+    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30001}"
+elif [ "$PRINCIPAL_MODEL_KEY" == "llama3-kto" ]; then
+    PRINCIPAL_SERVER="sglang"
+    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30002}"
+elif [ "$PRINCIPAL_MODEL_KEY" == "mistral-dpo" ]; then
+    PRINCIPAL_SERVER="sglang"
+    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30003}"
+elif [ "$PRINCIPAL_MODEL_KEY" == "mistral-kto" ]; then
+    PRINCIPAL_SERVER="sglang"
+    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30004}"
 fi
 
 # Resolve dataset
