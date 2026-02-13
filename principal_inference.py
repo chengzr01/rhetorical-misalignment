@@ -18,20 +18,34 @@ from agents.principal import Principal
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 
 
-def format_usmle_context_for_principal(agent_result: Mapping[str, Any]) -> str:
+def format_usmle_context_for_principal(agent_result: Mapping[str, Any], belief_mode: bool = False) -> tuple[str, str]:
     """
     Format USMLE question context for principal evaluation.
-    Includes the question and agent's answer recommendation.
+
+    Args:
+        agent_result: Agent result containing question and options
+        belief_mode: If True, format for belief-elicitation (separate context and options)
+                    If False, format for recommendation acceptance (combined)
+
+    Returns:
+        For belief_mode: (context, formatted_options)
+        For non-belief_mode: (combined_context, "")
     """
     principal_context = agent_result.get("principal_context", "")
     options = agent_result.get("options", {})
 
-    formatted = f"{principal_context}\n\n"
-    formatted += "Answer Options:\n"
+    # Format options
+    formatted_options = ""
     for key in sorted(options.keys()):
-        formatted += f"{key}. {options[key]}\n"
+        formatted_options += f"{key}. {options[key]}\n"
 
-    return formatted
+    if belief_mode:
+        # Return context and options separately for belief-elicitation prompts
+        return principal_context, formatted_options.strip()
+    else:
+        # Return combined for recommendation-based prompts
+        formatted = f"{principal_context}\n\nAnswer Options:\n{formatted_options}"
+        return formatted, ""
 
 
 def setup_client(
@@ -62,10 +76,18 @@ def run_principal_decision(
     principal: Principal,
     principal_context: str,
     agent_result: Mapping[str, Any],
+    belief_mode: bool = False,
 ) -> Mapping[str, Any]:
     """
     Run principal decision using cached agent results.
     Handles both MIMIC and USMLE dataset types.
+
+    Args:
+        principal: Principal agent to use
+        principal_context: Context string for the principal
+        agent_result: Agent's result containing question and recommendations
+        belief_mode: If True, use belief-elicitation format (answer + belief)
+                    If False, use recommendation acceptance format
     """
     dataset_type = agent_result.get("dataset_type", "mimic")
     info = agent_result.get("information")
@@ -82,16 +104,22 @@ def run_principal_decision(
 
     # For USMLE, format the context to include options
     if dataset_type == "usmle":
-        pc = format_usmle_context_for_principal(agent_result)
-        # Add agent's recommendation
-        pc += f"\n\nAgent's Recommendation:\n{recommendation.strip() if recommendation else ''}"
+        if belief_mode:
+            # Belief-elicitation mode: separate context and options
+            pc, options_str = format_usmle_context_for_principal(agent_result, belief_mode=True)
+            decision_result = principal.act(context=pc, options=options_str)
+        else:
+            # Recommendation mode: combined context with agent's recommendation
+            pc, _ = format_usmle_context_for_principal(agent_result, belief_mode=False)
+            # Add agent's recommendation
+            pc += f"\n\nAgent's Recommendation:\n{recommendation.strip() if recommendation else ''}"
+            decision_result = principal.act(context=pc, information=agent_result["information"])
     else:
         # MIMIC format: use principal_context with <RECOMMENDATIONS> placeholder
         pc = principal_context
         if pc and "<RECOMMENDATIONS>" in pc:
             pc = pc.replace("<RECOMMENDATIONS>", recommendation.strip() if recommendation else "")
-
-    decision_result = principal.act(context=pc, information=agent_result["information"])
+        decision_result = principal.act(context=pc, information=agent_result["information"])
 
     result = {
         "agent_name": agent_result["agent_name"],
@@ -162,8 +190,9 @@ def run_principal_inferences(
         output_ext = output_path.suffix
 
         # Remove any existing principal type suffix from the base name
-        for ptype in ["bayesian", "behavioral", "anchoring", "availability",
-                      "confirmation", "conservatism", "overconfidence", "prospect", "all"]:
+        for ptype in ["bayesian_belief", "behavioral_belief", "bayesian", "behavioral",
+                      "anchoring", "availability", "confirmation", "conservatism",
+                      "overconfidence", "prospect", "all"]:
             if output_base.endswith(f"_{ptype}"):
                 output_base = output_base[:-len(f"_{ptype}")]
                 break
@@ -226,10 +255,15 @@ def run_principal_inferences(
 
     def run_one_principal_decision(agent_result, principal):
         principal_context = agent_result.get("principal_context", agent_result["agent_context"])
+
+        # Determine if this is belief-elicitation mode
+        belief_mode = "_belief" in principal.name
+
         result = run_principal_decision(
             principal=principal,
             principal_context=principal_context,
             agent_result=agent_result,
+            belief_mode=belief_mode,
         )
         # Add case ID
         if "case_id" in agent_result:
@@ -322,8 +356,10 @@ def main() -> None:
         type=str,
         nargs="+",
         default=["bayesian"],
-        choices=["all", "bayesian", "behavioral", "anchoring", "availability", "confirmation", "conservatism", "overconfidence", "prospect"],
-        help="Principal types to use. Use 'all' to run all types except bayesian, or specify one or more types"
+        choices=["all", "bayesian", "behavioral", "bayesian_belief", "behavioral_belief",
+                 "anchoring", "availability", "confirmation", "conservatism", "overconfidence", "prospect"],
+        help="Principal types to use. Use 'all' to run all types except bayesian, or specify one or more types. "
+             "Types ending with '_belief' use belief-elicitation format (answer + confidence) instead of recommendation acceptance."
     )
     parser.add_argument(
         "--output",
