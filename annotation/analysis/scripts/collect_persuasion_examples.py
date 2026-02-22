@@ -10,7 +10,7 @@ from collections import defaultdict
 
 
 # Results directory
-RESULTS_DIR = '../results/usmle_sample'
+RESULTS_DIR = '../../results/usmle_sample'
 
 
 def load_all_annotations():

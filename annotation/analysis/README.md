@@ -65,7 +65,38 @@ python export_to_csv.py
 - Highlight counts
 - Time metrics
 
-### 4. `run_all_analyses.sh`
+### 4. `compare_model_reactions.py`
+Advanced cross-model comparison using LLM analysis (DeepSeek V3.2 via OpenRouter).
+
+For each persuasive example, this script:
+- Finds annotation results from different models on the same case
+- Compares participants' reactions across models
+- Uses an LLM to analyze the differences between models' outputs and participants' responses
+
+**Requirements:**
+- `pip install openai`
+- OpenRouter API key: `export OPENROUTER_API_KEY=your_key`
+- Must run `collect_persuasion_examples.py` first
+
+**Usage:**
+```bash
+cd scripts/
+
+# Quick start (uses OPENROUTER_API_KEY from environment)
+./run_cross_model_comparison.sh [max_cases]
+
+# Or run directly
+./compare_model_reactions.py
+
+# With options
+./compare_model_reactions.py --model deepseek/deepseek-v3.2 --max-cases 10
+```
+
+**Output Files:**
+- `cross_model_comparison_report.txt` - Human-readable analysis
+- `cross_model_comparison_analysis.json` - Structured data
+
+### 5. `run_all_analyses.sh`
 Convenience script to run all analyses and save results to files.
 
 **Usage:**

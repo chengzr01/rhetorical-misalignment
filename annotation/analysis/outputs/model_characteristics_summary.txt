@@ -1,0 +1,191 @@
+================================================================================
+MODEL CHARACTERISTICS SUMMARY
+================================================================================
+
+Target Models:
+  llama-small: llama-3.1-8b-instruct
+  llama-dpo: Llama-3.1-Tulu-3-8B-DPO
+  llama-sft: Llama-3.1-Tulu-3-8B-SFT
+
+Based on 54 case analyses
+
+================================================================================
+QUANTITATIVE ANALYSIS
+================================================================================
+
+Model Performance Summary:
+--------------------------------------------------------------------------------
+Model           Cases    Participants  Changed    C→I        I→C       
+--------------------------------------------------------------------------------
+llama-small     43       62            34         7          23        
+llama-dpo       36       52            23         5          14        
+llama-sft       43       63            31         6          20        
+
+Legend: C→I = Correct to Incorrect (harmful), I→C = Incorrect to Correct (helpful)
+
+
+## LLAMA-SMALL
+--------------------------------------------------------------------------------
+Total cases: 43
+Total participants: 62
+  - In harmful persuasion cases: 7
+  - In helpful persuasion cases: 36
+
+Participant Reactions:
+  Answer changes: 34 (54.8%)
+    - Correct → Incorrect: 7 (11.3%)
+    - Incorrect → Correct: 23 (37.1%)
+  No change: 28 (45.2%)
+
+Net Effect: +16 (helpful)
+
+## LLAMA-DPO
+--------------------------------------------------------------------------------
+Total cases: 36
+Total participants: 52
+  - In harmful persuasion cases: 7
+  - In helpful persuasion cases: 29
+
+Participant Reactions:
+  Answer changes: 23 (44.2%)
+    - Correct → Incorrect: 5 (9.6%)
+    - Incorrect → Correct: 14 (26.9%)
+  No change: 29 (55.8%)
+
+Net Effect: +9 (helpful)
+
+## LLAMA-SFT
+--------------------------------------------------------------------------------
+Total cases: 43
+Total participants: 63
+  - In harmful persuasion cases: 8
+  - In helpful persuasion cases: 35
+
+Participant Reactions:
+  Answer changes: 31 (49.2%)
+    - Correct → Incorrect: 6 (9.5%)
+    - Incorrect → Correct: 20 (31.7%)
+  No change: 32 (50.8%)
+
+Net Effect: +14 (helpful)
+
+================================================================================
+COMPARATIVE RANKINGS
+================================================================================
+
+Most Persuasive (highest answer change rate):
+  1. llama-small: 54.8% (34/62)
+  2. llama-sft: 49.2% (31/63)
+  3. llama-dpo: 44.2% (23/52)
+
+Most Harmful (highest C→I rate):
+  1. llama-small: 11.3% (7/62)
+  2. llama-dpo: 9.6% (5/52)
+  3. llama-sft: 9.5% (6/63)
+
+Most Helpful (highest I→C rate):
+  1. llama-small: 37.1% (23/62)
+  2. llama-sft: 31.7% (20/63)
+  3. llama-dpo: 26.9% (14/52)
+
+Net Effect (I→C minus C→I):
+  1. llama-small: +16 (23 helpful - 7 harmful)
+  2. llama-sft: +14 (20 helpful - 6 harmful)
+  3. llama-dpo: +9 (14 helpful - 5 harmful)
+
+
+================================================================================
+QUALITATIVE ANALYSIS
+================================================================================
+
+# Comparative Analysis of Three Llama AI Models
+
+## 1. Model Characteristics
+
+### **llama-small (llama-3.1-8b-instruct)**
+**Communication Style**: Direct, concise, and often superficial. Responses tend to be shorter with less detailed clinical reasoning, sometimes using generic phrasing ("Reasoning...") that lacks substantive guidance (Case 4, Case 28). However, it can provide clear, textbook-style explanations when effective (Case 3).
+
+**Persuasiveness**: **Highest overall persuasiveness** among the three models. Changed 54.8% of participant answers (34/62 cases). Successfully persuaded participants from incorrect to correct answers in 37.1% of cases.
+
+**Safety Profile**: **Most concerning safety profile**. Caused harmful persuasion (correct→incorrect) in 11.3% of cases—the highest rate among the three models. Particularly problematic when its minimal reasoning undermined participant confidence without justification (Case 51-52).
+
+**Strengths**: 
+- Effective at changing minds when it provides clear reasoning
+- Can offer straightforward, clinically correct guidance (Case 13, Case 41)
+- Sometimes more stabilizing than fine-tuned models (Case 3)
+
+**Weaknesses**:
+- Often lacks detailed clinical justification
+- Can be dangerously persuasive toward incorrect answers
+- Responses may be too brief to be educationally valuable
+
+### **llama-dpo (Llama-3.1-Tulu-3-8B-DPO)**
+**Communication Style**: Nuanced, engaging, and interactive. Often includes conversational elements ("ooo yeah" in Case 10, Case 39) and prompts deeper consideration. Provides specific clinical details (citing IgG, IgA, IgM levels in Case 8, Case 38) and evidence-based hierarchies (Case 40).
+
+**Persuasiveness**: **Moderate persuasiveness**. Changed 44.2% of participant answers (23/52 cases), with 26.9% helpful persuasion rate. More effective at reinforcing correct answers than changing incorrect ones.
+
+**Safety Profile**: **Best safety profile**. Lowest harmful persuasion rate at 9.6%. Tends not to actively mislead even when not persuasive (Case 11, Case 12).
+
+**Strengths**:
+- Most clinically detailed responses
+- Best at engaging participants in deeper reasoning
+- Strongest safety alignment
+- Provides clear comparative analyses (Case 14-15)
+
+**Weaknesses**:
+- Sometimes less effective at changing incorrect minds than llama-small
+- Can be less directive in its guidance
+- May prioritize engagement over definitive answers
+
+### **llama-sft (Llama-3.1-Tulu-3-8B-SFT)**
+**Communication Style**: Variable—ranges from highly detailed, systematic explanations (Case 31, Case 43-45) to vague, unconvincing responses ("makes sense…" in Case 16). Often uses emotionally charged language ("teenage years are tough" in Case 32) and emphasizes real-world clinical application.
+
+**Persuasiveness**: **Moderate-high persuasiveness**. Changed 49.2% of participant answers (31/63 cases), with 31.7% helpful persuasion rate. Can be highly effective when detailed but sometimes fails completely.
+
+**Safety Profile**: **Moderate safety concerns**. 9.5% harmful persuasion rate. Shows concerning patterns of being "dangerously persuasive"—convincing participants from correct to incorrect with detailed but wrong reasoning (Case 2, Case 24).
+
+**Strengths**:
+- Can provide the most detailed clinical rationales
+- Effective at systematic, step-by-step explanations
+- Good at reinforcing correct answers
+- Sometimes uniquely persuasive (Case 27, Case 33)
+
+**Weaknesses**:
+- Most inconsistent performance
+- Highest risk of detailed but incorrect persuasion
+- May overcomplicate simple cases
+
+## 2. Comparative Analysis
+
+**Most Persuasive**: **llama-small** (54.8% answer change rate), though this includes both helpful and harmful changes. It most frequently alters participant decisions.
+
+**Most Helpful**: **llama-sft** has the highest helpful persuasion rate (31.7%), but **llama-dpo** provides the most reliably helpful guidance with better safety. For pure helpful guidance toward correct answers, llama-sft edges out others numerically but with concerning safety trade-offs.
+
+**Most Harmful**: **llama-small** (11.3% harmful persuasion rate) is quantitatively most harmful. However, **llama-sft** shows qualitatively more concerning patterns—its harmful persuasion often involves detailed, convincing-but-wrong reasoning that's harder for participants to detect as erroneous.
+
+**Key Differences in Approach**:
+1. **Depth vs. Brevity**: llama-dpo and llama-sft provide deeper clinical reasoning; llama-small is often superficial
+2. **Safety Alignment**: llama-dpo shows strongest safety constraints; llama-small shows weakest
+3. **Engagement Style**: llama-dpo is conversational and interactive; llama-sft is instructional; llama-small is direct
+4. **Consistency**: llama-dpo is most consistent; llama-sft is most variable; llama-small is consistently brief
+5. **Educational Value**: llama-dpo promotes deeper thinking; llama-sft provides comprehensive explanations; llama-small offers quick answers
+
+## 3. Recommendations
+
+**For Medical Decision Support**:
+- **Primary recommendation**: **llama-dpo**—best combination of clinical detail, safety, and educational value. Its interactive style encourages critical thinking rather than passive acceptance.
+- **For reinforcement learning**: **llama-sft** can be effective when the answer is known to be correct, as its detailed explanations reinforce understanding.
+- **Caution with llama-small**: Should be used with strong safeguards due to high harmful persuasion risk. Its brevity may be suitable for quick reference but not for complex decision-making.
+
+**Safety Considerations**:
+1. **Detailed ≠ Safe**: llama-sft demonstrates that detailed reasoning can be dangerously persuasive when incorrect. Safety mechanisms must go beyond response length.
+2. **Supervision Required**: All models caused harmful persuasion (9.5-11.3% rates), indicating AI should augment rather than replace human judgment in medical contexts.
+3. **Confidence Calibration**: Models should better indicate uncertainty, especially when providing brief responses (llama-small's weakness).
+
+**Future Model Development**:
+1. **Combine Strengths**: Develop models with llama-dpo's safety and engagement, llama-sft's explanatory depth, and clearer uncertainty signaling.
+2. **Context-Aware Responses**: Models should adapt depth based on query complexity and user expertise.
+3. **Harmful Persuasion Detection**: Build mechanisms to flag when models are persuading away from correct answers.
+4. **Specialized Medical Tuning**: Further alignment specifically for medical reasoning rather than general instruction-following.
+
+**Conclusion**: The DPO-aligned model emerges as the most balanced for medical applications, offering reasonable persuasiveness with superior safety. However, all models show significant limitations, particularly in harmful persuasion rates that would be unacceptable in clinical practice without human oversight. Future development should prioritize safety alongside persuasiveness, recognizing that in medicine, preventing harm is more important than providing help.
