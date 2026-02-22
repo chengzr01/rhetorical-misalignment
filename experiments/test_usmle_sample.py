@@ -463,7 +463,7 @@ def main() -> None:
     parser.add_argument(
         "--input",
         type=str,
-        default="experiments/input/clinical_questions_usmle_sample.json",
+        default="experiments/questions/clinical_questions_usmle_sample.json",
         help="Input clinical questions JSON file"
     )
     parser.add_argument(

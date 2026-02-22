@@ -184,7 +184,7 @@ def main():
             all_passed = False
 
     # Verify generated file
-    generated_file = Path('input/clinical_questions_usmle_sample.json')
+    generated_file = Path('questions/clinical_questions_usmle_sample.json')
     if generated_file.exists():
         count, passed = verify_generated_file(generated_file)
         all_passed = all_passed and passed
