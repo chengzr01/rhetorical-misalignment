@@ -5,7 +5,7 @@
 # Usage:
 #   bash scripts/run.sh [agent_model_key] [dataset_key] [inference_mode]
 #
-#   agent_model_key:  deepseek | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | llama3-dpo | llama3-kto | mistral-dpo | mistral-kto | qwen | mistral
+#   agent_model_key:  deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | qwen | mistral
 #   dataset_key:      mimiciv_demo | usmle | usmle_sample
 #   inference_mode:   agent | full        # agent = agent only, full = agent + principal (default: agent)
 #
@@ -21,6 +21,9 @@
 # This script configures and runs agent inference and optionally principal inference, supporting multiple model/server options.
 
 set -e  # Exit on error
+
+# Load shared model configuration
+source "$(dirname "$0")/model_config.sh"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -38,29 +41,12 @@ INFERENCE_MODE="${3:-agent}"  # agent or full
 PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian behavioral}"  # Space-separated list
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
 
-# Model configurations
-declare -A MODEL_MAP=(
-    ["deepseek"]="deepseek/deepseek-chat-v3.1"
-    ["deepseek-llama"]="deepseek/deepseek-r1-distill-llama-70b"
-    ["llama"]="meta-llama/llama-3.3-70b-instruct"
-    ["llama-small"]="meta-llama/llama-3.1-8b-instruct"
-    ["llama-large"]="meta-llama/llama-3.1-405b-instruct"
-    ["llama-dpo"]="allenai/Llama-3.1-Tulu-3-8B-DPO"
-    ["llama-sft"]="allenai/Llama-3.1-Tulu-3-8B-SFT"
-    ["llama3-dpo"]="princeton-nlp/Llama-3-Instruct-8B-DPO"
-    ["llama3-kto"]="princeton-nlp/Llama-3-Instruct-8B-KTO"
-    ["mistral-dpo"]="princeton-nlp/Mistral-7B-Instruct-DPO"
-    ["mistral-kto"]="princeton-nlp/Mistral-7B-Instruct-KTO"
-    ["qwen"]="qwen/qwen-2.5-7b-instruct"
-    ["mistral"]="mistralai/mistral-7b-instruct"
-)
-
 
 # Dataset configurations
 declare -A DATASET_MAP=(
-    ["mimiciv_demo"]="experiments/input/clinical_questions_mimiciv_demo.json"
-    ["usmle"]="experiments/input/clinical_questions_usmle.json"
-    ["usmle_sample"]="experiments/input/clinical_questions_usmle_sample.json"
+    ["mimiciv_demo"]="experiments/questions/clinical_questions_mimiciv_demo.json"
+    ["usmle"]="experiments/questions/clinical_questions_usmle.json"
+    ["usmle_sample"]="experiments/questions/clinical_questions_usmle_sample.json"
 )
 
 # Parse arguments
@@ -92,47 +78,13 @@ if [ -z "$PRINCIPAL_MODEL" ]; then
 fi
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-${AGENT_SERVER}}"
 
-# Override AGENT_SERVER for sglang models
-if [ "$AGENT_MODEL_KEY" == "llama-dpo" ]; then
-    AGENT_SERVER="sglang"
-    SGLANG_PORT="30000"
-elif [ "$AGENT_MODEL_KEY" == "llama-sft" ]; then
-    AGENT_SERVER="sglang"
-    SGLANG_PORT="30000"
-elif [ "$AGENT_MODEL_KEY" == "llama3-dpo" ]; then
-    AGENT_SERVER="sglang"
-    SGLANG_PORT="30000"
-elif [ "$AGENT_MODEL_KEY" == "llama3-kto" ]; then
-    AGENT_SERVER="sglang"
-    SGLANG_PORT="30000"
-elif [ "$AGENT_MODEL_KEY" == "mistral-dpo" ]; then
-    AGENT_SERVER="sglang"
-    SGLANG_PORT="30000"
-elif [ "$AGENT_MODEL_KEY" == "mistral-kto" ]; then
-    AGENT_SERVER="sglang"
-    SGLANG_PORT="30000"
-fi
+# Configure AGENT_SERVER and SGLANG_PORT using model config
+AGENT_SERVER="${AGENT_SERVER:-$(get_model_server $AGENT_MODEL_KEY)}"
+SGLANG_PORT=$(get_agent_sglang_port $AGENT_MODEL_KEY)
 
-# Override PRINCIPAL_SERVER for sglang models (if using different principal model)
-if [ "$PRINCIPAL_MODEL_KEY" == "llama-dpo" ]; then
-    PRINCIPAL_SERVER="sglang"
-    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30001}"
-elif [ "$PRINCIPAL_MODEL_KEY" == "llama-sft" ]; then
-    PRINCIPAL_SERVER="sglang"
-    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30002}"
-elif [ "$PRINCIPAL_MODEL_KEY" == "llama3-dpo" ]; then
-    PRINCIPAL_SERVER="sglang"
-    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30001}"
-elif [ "$PRINCIPAL_MODEL_KEY" == "llama3-kto" ]; then
-    PRINCIPAL_SERVER="sglang"
-    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30002}"
-elif [ "$PRINCIPAL_MODEL_KEY" == "mistral-dpo" ]; then
-    PRINCIPAL_SERVER="sglang"
-    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30003}"
-elif [ "$PRINCIPAL_MODEL_KEY" == "mistral-kto" ]; then
-    PRINCIPAL_SERVER="sglang"
-    PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-30004}"
-fi
+# Configure PRINCIPAL_SERVER and port
+PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-$(get_model_server $PRINCIPAL_MODEL_KEY)}"
+PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-$(get_principal_sglang_port $PRINCIPAL_MODEL_KEY)}"
 
 # Resolve dataset
 INPUT_FILE="${DATASET_MAP[$DATASET_KEY]}"
@@ -143,7 +95,7 @@ if [ -z "$INPUT_FILE" ]; then
 fi
 
 # Set output path
-AGENT_OUTPUT="experiments/cache/${DATASET_KEY}/agent_${AGENT_MODEL_KEY}.json"
+AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/agent_${AGENT_MODEL_KEY}.json"
 
 # Print configuration
 echo -e "${BLUE}========================================${NC}"
@@ -211,7 +163,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}========================================${NC}\n"
 
     # Set principal output path
-    PRINCIPAL_OUTPUT_BASE="experiments/output/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}.json"
+    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}.json"
 
     echo -e "${BLUE}Running principal inference...${NC}\n"
 

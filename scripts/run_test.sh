@@ -5,16 +5,15 @@
 #
 # Model keys:
 #   deepseek        - deepseek/deepseek-chat-v3.1 (default)
+#   gemini          - google/gemini-2.5-pro
+#   gpt             - openai/gpt-5.1
+#   claude          - anthropic/claude-haiku-4.5
 #   deepseek-llama  - deepseek/deepseek-r1-distill-llama-70b
 #   llama-small     - meta-llama/llama-3.1-8b-instruct
 #   llama           - meta-llama/llama-3.3-70b-instruct
 #   llama-large     - meta-llama/llama-3.1-405b-instruct
 #   llama-dpo       - allenai/Llama-3.1-Tulu-3-8B-DPO
 #   llama-sft       - allenai/Llama-3.1-Tulu-3-8B-SFT
-#   llama3-dpo      - princeton-nlp/Llama-3-Instruct-8B-DPO
-#   llama3-kto      - princeton-nlp/Llama-3-Instruct-8B-KTO
-#   mistral-dpo     - princeton-nlp/Mistral-7B-Instruct-DPO
-#   mistral-kto     - princeton-nlp/Mistral-7B-Instruct-KTO
 #   qwen            - qwen/qwen-2.5-7b-instruct
 #   mistral         - mistralai/mistral-7b-instruct
 #
@@ -25,10 +24,6 @@
 #   bash scripts/test.sh deepseek-llama     # Run with deepseek-llama
 #   bash scripts/test.sh llama-dpo          # Run with llama-dpo
 #   bash scripts/test.sh llama-sft          # Run with llama-sft
-#   bash scripts/test.sh llama3-dpo         # Run with llama3-dpo
-#   bash scripts/test.sh llama3-kto         # Run with llama3-kto
-#   bash scripts/test.sh mistral-dpo        # Run with mistral-dpo
-#   bash scripts/test.sh mistral-kto        # Run with mistral-kto
 #   bash scripts/test.sh qwen               # Run with qwen-2.5-7b
 #   bash scripts/test.sh mistral            # Run with mistral-7b
 #
@@ -40,6 +35,9 @@
 #
 
 set -e  # Exit on error
+
+# Load shared model configuration
+source "$(dirname "$0")/model_config.sh"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -55,49 +53,20 @@ MAX_WORKERS="${MAX_WORKERS:-8}"
 ELICIT_BELIEF="${ELICIT_BELIEF:-true}"
 PROMPT_FILE="${PROMPT_FILE:-prompts/experiments/elicit.yaml}"
 
-# SGLang port configs for DPO/SFT models (overridable)
-DPO_PORT="${DPO_PORT:-30000}"
-SFT_PORT="${SFT_PORT:-30000}"
-SGLANG_PORT_DEFAULT="${SGLANG_PORT_DEFAULT:-30000}"
-
-# Model configurations
-declare -A MODEL_MAP=(
-    ["deepseek"]="deepseek/deepseek-chat-v3.1"
-    ["deepseek-llama"]="deepseek/deepseek-r1-distill-llama-70b"
-    ["llama"]="meta-llama/llama-3.3-70b-instruct"
-    ["llama-small"]="meta-llama/llama-3.1-8b-instruct"
-    ["llama-large"]="meta-llama/llama-3.1-405b-instruct"
-    ["llama-dpo"]="allenai/Llama-3.1-Tulu-3-8B-DPO"
-    ["llama-sft"]="allenai/Llama-3.1-Tulu-3-8B-SFT"
-    ["llama3-dpo"]="princeton-nlp/Llama-3-Instruct-8B-DPO"
-    ["llama3-kto"]="princeton-nlp/Llama-3-Instruct-8B-KTO"
-    ["mistral-dpo"]="princeton-nlp/Mistral-7B-Instruct-DPO"
-    ["mistral-kto"]="princeton-nlp/Mistral-7B-Instruct-KTO"
-    ["qwen"]="qwen/qwen-2.5-7b-instruct"
-    ["mistral"]="mistralai/mistral-7b-instruct"
-)
-
 # Worker configurations per model (adjust based on model size)
 declare -A WORKER_MAP=(
     ["deepseek"]="8"
+    ["gemini"]="8"
+    ["gpt"]="8"
+    ["claude"]="8"
     ["deepseek-llama"]="8"
     ["llama"]="8"
     ["llama-small"]="32"
     ["llama-large"]="4"
     ["llama-dpo"]="32"
     ["llama-sft"]="32"
-    ["llama3-dpo"]="32"
-    ["llama3-kto"]="32"
-    ["mistral-dpo"]="32"
-    ["mistral-kto"]="32"
     ["qwen"]="32"
     ["mistral"]="32"
-)
-
-# SGLang port mapping per model (default, but can be overridden by env)
-declare -A MODEL_PORT_MAP=(
-    ["llama-dpo"]="$DPO_PORT"
-    ["llama-sft"]="$SFT_PORT"
 )
 
 # Parse arguments
@@ -116,28 +85,9 @@ if [ -z "${MAX_WORKERS_SET}" ]; then
     MAX_WORKERS="${WORKER_MAP[$MODEL_KEY]:-8}"
 fi
 
-# Select backend: always use sglang for dpo and sft models, else use default/back-end
-SELECTED_BACKEND="$BACKEND"
-SGLANG_PORT=""
-if [[ "$MODEL_KEY" == "llama-dpo" ]]; then
-    SELECTED_BACKEND="sglang"
-    SGLANG_PORT="${SGLANG_PORT:-${MODEL_PORT_MAP[$MODEL_KEY]:-$DPO_PORT}}"
-elif [[ "$MODEL_KEY" == "llama-sft" ]]; then
-    SELECTED_BACKEND="sglang"
-    SGLANG_PORT="${SGLANG_PORT:-${MODEL_PORT_MAP[$MODEL_KEY]:-$SFT_PORT}}"
-elif [[ "$MODEL_KEY" == "llama3-dpo" ]]; then
-    SELECTED_BACKEND="sglang"
-    SGLANG_PORT="${SGLANG_PORT:-30000}"
-elif [[ "$MODEL_KEY" == "llama3-kto" ]]; then
-    SELECTED_BACKEND="sglang"
-    SGLANG_PORT="${SGLANG_PORT:-30000}"
-elif [[ "$MODEL_KEY" == "mistral-dpo" ]]; then
-    SELECTED_BACKEND="sglang"
-    SGLANG_PORT="${SGLANG_PORT:-30000}"
-elif [[ "$MODEL_KEY" == "mistral-kto" ]]; then
-    SELECTED_BACKEND="sglang"
-    SGLANG_PORT="${SGLANG_PORT:-30000}"
-fi
+# Configure backend and port using model config
+SELECTED_BACKEND="${BACKEND:-$(get_model_server $MODEL_KEY)}"
+SGLANG_PORT="${SGLANG_PORT:-$(get_agent_sglang_port $MODEL_KEY)}"
 
 # Print configuration
 echo -e "${BLUE}========================================${NC}"
