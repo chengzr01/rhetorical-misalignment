@@ -121,7 +121,7 @@ def get_smart_random_cases(case_ids, annotation_counts, num_cases=5):
     return selected
 
 
-def select_model_with_fewest_annotations(dataset_key='mimic'):
+def select_model_with_fewest_annotations(dataset_key='usmle_sample'):
     """Select the model with the fewest annotations for load balancing
 
     This function counts total annotations across all cases for each model

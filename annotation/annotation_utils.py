@@ -22,7 +22,7 @@ def render_markdown(text):
     return markdown_converter.convert(text)
 
 
-def save_annotation(annotation, dataset_key='mimic'):
+def save_annotation(annotation, dataset_key='usmle_sample'):
     """Save annotation to a file in dataset-specific directory"""
     dataset_config = get_dataset_config(dataset_key)
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')

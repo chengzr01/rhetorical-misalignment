@@ -22,28 +22,11 @@
 
 <div>
     <h2>Process Overview</h2>
-    <!-- USMLE Process (default) -->
-    <div id="usmle-process">
-        <ul>
-            <li><strong>Step 1 - Initial Answer:</strong> You will review a clinical question with multiple-choice options. You will select the answer you think is most appropriate and indicate your confidence level (0-1).</li>
-            <li><strong>Step 2 - After AI's Analysis:</strong> You will see the AI agent's clinical reasoning and analysis. You may then revise your answer selection and confidence level, or keep your original choice.</li>
-            <li><strong>Step 3 - After Correct Answer:</strong> You will see the correct answer. You may make final revisions to your answer selection and confidence level based on this information.</li>
-        </ul>
-    </div>
-    <!-- MIMIC Process -->
-    <div id="mimic-process" style="display: none;">
-        <ul>
-            <li><strong>Step 1 - Initial Treatment Plan:</strong> You will review the full clinical context for a patient case. You will provide your treatment recommendations in three categories:
-                <ul style="margin-top: 5px;">
-                    <li>Medications (with confidence level 0-1)</li>
-                    <li>Procedures (with confidence level 0-1)</li>
-                    <li>Diagnoses (with confidence level 0-1)</li>
-                </ul>
-            </li>
-            <li><strong>Step 2 - After Agent's Recommendation:</strong> You will see the AI agent's treatment recommendation. You may then revise your treatment plan and confidence levels for each category, or keep your original inputs.</li>
-            <li><strong>Step 3 - After Actual Treatment:</strong> You will see the actual treatment outcomes that were administered. You may make final revisions to your treatment plan and confidence levels for each category based on this information.</li>
-        </ul>
-    </div>
+    <ul>
+        <li><strong>Step 1 - Initial Answer:</strong> You will review a clinical question with multiple-choice options. You will select the answer you think is most appropriate and indicate your confidence level (0-1).</li>
+        <li><strong>Step 2 - After AI's Analysis:</strong> You will see the AI agent's clinical reasoning and analysis. You may then revise your answer selection and confidence level, or keep your original choice.</li>
+        <li><strong>Step 3 - After Correct Answer:</strong> You will see the correct answer. You may make final revisions to your answer selection and confidence level based on this information.</li>
+    </ul>
 </div>
 
 <form action="/start" method="POST">
@@ -61,27 +44,8 @@
         <!-- Configuration Box -->
         <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 20px;">
 
-            <!-- Dataset Selection -->
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label for="dataset" style="font-weight: 600; color: #2c3e50; margin-bottom: 8px; display: block;">Dataset:</label>
-                <select id="dataset" name="dataset" required style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 14px;" onchange="updateModels()">
-                    <option value="usmle_sample"
-                            {% if not dataset_availability.get('usmle_sample', False) %}disabled{% endif %}
-                            {% if dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
-                        {{ datasets['usmle_sample'].name }}{% if not dataset_availability.get('usmle_sample', False) %} (No data available){% endif %}
-                    </option>
-                    <option value="usmle"
-                            {% if not dataset_availability.get('usmle', False) %}disabled{% endif %}
-                            {% if dataset_availability.get('usmle', False) and not dataset_availability.get('usmle_sample', False) %}selected{% endif %}>
-                        {{ datasets['usmle'].name }}{% if not dataset_availability.get('usmle', False) %} (No data available){% endif %}
-                    </option>
-                    <option value="mimic"
-                            {% if not dataset_availability.get('mimic', False) %}disabled{% endif %}
-                            {% if dataset_availability.get('mimic', False) and not dataset_availability.get('usmle_sample', False) and not dataset_availability.get('usmle', False) %}selected{% endif %}>
-                        {{ datasets['mimic'].name }}{% if not dataset_availability.get('mimic', False) %} (No data available){% endif %}
-                    </option>
-                </select>
-            </div>
+            <!-- Dataset (fixed to usmle_sample) -->
+            <input type="hidden" name="dataset" value="usmle_sample">
 
             <!-- Model Balancing -->
             <div style="margin-bottom: 20px;">
@@ -240,16 +204,10 @@
 
 <script>
 async function updateModels() {
-    const datasetSelect = document.getElementById('dataset');
     const modelSelect = document.getElementById('model_key');
-    const selectedDataset = datasetSelect.value;
 
-    // Update process description based on selected dataset
-    updateProcessDescription(selectedDataset);
-
-    // Fetch models for the selected dataset
     try {
-        const response = await fetch(`/api/models/${selectedDataset}`);
+        const response = await fetch(`/api/models/usmle_sample`);
         const data = await response.json();
         const models = data.models || [];
 
@@ -278,19 +236,6 @@ async function updateModels() {
     }
 }
 
-function updateProcessDescription(dataset) {
-    const usmleProcess = document.getElementById('usmle-process');
-    const mimicProcess = document.getElementById('mimic-process');
-
-    if (dataset === 'usmle' || dataset === 'usmle_sample') {
-        usmleProcess.style.display = 'block';
-        mimicProcess.style.display = 'none';
-    } else {
-        usmleProcess.style.display = 'none';
-        mimicProcess.style.display = 'block';
-    }
-}
-
 function toggleSelectionMode() {
     const allCasesMode = document.querySelector('input[name="selection_mode"][value="all"]').checked;
     document.getElementById('all-cases-options').style.display = allCasesMode ? 'block' : 'none';
@@ -313,12 +258,9 @@ function toggleModelSelection() {
     }
 }
 
-// Initialize process description and model selection state on page load
+// Initialize model selection state on page load
 document.addEventListener('DOMContentLoaded', function() {
-    const datasetSelect = document.getElementById('dataset');
-    const initialDataset = datasetSelect.value;
-    updateProcessDescription(initialDataset);
-    toggleModelSelection();  // Initialize model selection state
+    toggleModelSelection();
 });
 </script>
 {% endblock %}

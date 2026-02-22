@@ -9,7 +9,7 @@ from config import DATASETS, AVAILABLE_MODELS
 
 def get_dataset_config(dataset_key):
     """Get dataset configuration"""
-    return DATASETS.get(dataset_key, DATASETS['mimic'])
+    return DATASETS.get(dataset_key, DATASETS['usmle_sample'])
 
 
 def get_model_info(model_key):
@@ -20,7 +20,7 @@ def get_model_info(model_key):
     return AVAILABLE_MODELS[0]  # Default to first model
 
 
-def get_available_models(dataset_key='mimic'):
+def get_available_models(dataset_key='usmle_sample'):
     """Get list of available model files in order for given dataset"""
     dataset_config = get_dataset_config(dataset_key)
     available = []
@@ -49,7 +49,7 @@ def check_dataset_availability():
     return dataset_availability
 
 
-def load_data(model_key='llama_small', dataset_key='mimic'):
+def load_data(model_key='llama_small', dataset_key='usmle_sample'):
     """Load data for specified model and dataset"""
     dataset_config = get_dataset_config(dataset_key)
     model_info = get_model_info(model_key)
@@ -67,7 +67,7 @@ def get_case_file_model_name(model_key):
     return model_mapping.get(model_key, model_key)
 
 
-def load_manipulative_case_ids(model_key, dataset_key='mimic'):
+def load_manipulative_case_ids(model_key, dataset_key='usmle_sample'):
     """Load manipulative case IDs from principal file"""
     dataset_config = get_dataset_config(dataset_key)
     # Map model key to case file model name
