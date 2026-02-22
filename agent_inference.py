@@ -319,7 +319,7 @@ def main() -> None:
     parser.add_argument(
         "--input",
         type=str,
-        default="experiments/input/clinical_questions.json",
+        default="experiments/questions/clinical_questions.json",
         help="Input clinical questions JSON file"
     )
     parser.add_argument(
@@ -338,7 +338,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=str,
-        default="experiments/cache/agent_results.json",
+        default="experiments/agents/agent_results.json",
         help="Output path for agent results cache"
     )
     parser.add_argument(

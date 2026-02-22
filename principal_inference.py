@@ -113,28 +113,28 @@ def run_principal_decision(
             pc, _ = format_usmle_context_for_principal(agent_result, belief_mode=False)
             # Add agent's recommendation
             pc += f"\n\nAgent's Recommendation:\n{recommendation.strip() if recommendation else ''}"
-            decision_result = principal.act(context=pc, information=agent_result["information"])
+            decision_result = principal.act(context=pc, information=info or "")
     else:
         # MIMIC format: use principal_context with <RECOMMENDATIONS> placeholder
         pc = principal_context
         if pc and "<RECOMMENDATIONS>" in pc:
             pc = pc.replace("<RECOMMENDATIONS>", recommendation.strip() if recommendation else "")
-        decision_result = principal.act(context=pc, information=agent_result["information"])
+        decision_result = principal.act(context=pc, information=info or "")
 
     result = {
-        "agent_name": agent_result["agent_name"],
-        "agent_model": agent_result["agent_model"],
+        "agent_name": agent_result.get("agent_name", "unknown"),
+        "agent_model": agent_result.get("agent_model", "unknown"),
         "principal_name": principal.name,
         "principal_model": principal.model,
         "principal_context": pc,
-        "agent_context": agent_result["agent_context"],
+        "agent_context": agent_result.get("agent_context") or agent_result.get("context", ""),
         "agent_task": agent_result.get("agent_task"),
         "agent_objective": agent_result.get("agent_objective"),
-        "information": agent_result["information"],
-        "decision": decision_result["decision"],
-        "belief": decision_result["belief"],
-        "reasoning": decision_result["reasoning"],
-        "raw_principal_response": decision_result["raw_response"],
+        "information": info or "",
+        "decision": decision_result.get("decision", ""),
+        "belief": decision_result.get("belief", ""),
+        "reasoning": decision_result.get("reasoning", ""),
+        "raw_principal_response": decision_result.get("raw_response", ""),
         "dataset_type": dataset_type,
     }
 
@@ -254,7 +254,8 @@ def run_principal_inferences(
                 tasks.append((agent_result, principal))
 
     def run_one_principal_decision(agent_result, principal):
-        principal_context = agent_result.get("principal_context", agent_result["agent_context"])
+        # Get principal_context, fallback to agent_context, fallback to context
+        principal_context = agent_result.get("principal_context") or agent_result.get("agent_context") or agent_result.get("context", "")
 
         # Determine if this is belief-elicitation mode
         belief_mode = "_belief" in principal.name
@@ -348,7 +349,7 @@ def main() -> None:
     parser.add_argument(
         "--agent-cache",
         type=str,
-        default="experiments/cache/agent_results.json",
+        default="experiments/agents/agent_results.json",
         help="Path to cached agent inference results"
     )
     parser.add_argument(
@@ -364,7 +365,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=str,
-        default="experiments/output/results.json",
+        default="experiments/principals/results.json",
         help="Output path for final results"
     )
     parser.add_argument(
