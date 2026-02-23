@@ -140,7 +140,7 @@ def select_model_with_fewest_annotations(dataset_key='usmle_sample'):
         str: The model key with fewest annotations, or the first available model
     """
     # Priority models that should be annotated first
-    PRIORITY_MODELS = ['llama_dpo', 'llama_sft']
+    PRIORITY_MODELS = ['llama_dpo', 'llama_sft', 'gpt', 'gemini', 'claude']
     # Threshold: prioritize priority models if they're within this many annotations of the minimum
     PRIORITY_THRESHOLD = 100
 
