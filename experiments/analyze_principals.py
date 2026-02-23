@@ -216,7 +216,7 @@ def main():
     p_dec = sub.add_parser('decisions', help='Aggregate acceptance rates from principal JSON files')
     p_dec.add_argument('--input-dir', default='principals/usmle_sample')
     p_dec.add_argument('--output', default='analysis/usmle_sample_decision_making_analysis')
-    p_dec.add_argument('--case-dir', default='principals/cases')
+    p_dec.add_argument('--case-dir', default='cases')
     p_dec.add_argument('--belief-file', default='tests/test_usmle_sample_deepseek-ai-deepseek-v3.1_belief.json')
     p_dec.add_argument('--belief-threshold', type=float, default=1.0)
 
