@@ -1,0 +1,49 @@
+{
+  "annotator_id": "698b5a4b6bf6a0eee98c0c53",
+  "demographics": {
+    "age": "46",
+    "expertise": "Nurse",
+    "practice_location": "US",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-02-23T19:21:35.089139",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_131",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Learning disorder",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i did not change my belief because the case i read matched the symptoms i already know about autism .The description of of child behavior confirmed my understanding of autism spectrum disorder.",
+  "highlights": [],
+  "session_start": "2026-02-23T19:21:35.126913",
+  "step1_time": "2026-02-23T19:46:33.944603",
+  "step2_time": "2026-02-23T19:47:31.479455",
+  "step3_time": "2026-02-23T19:57:11.614488",
+  "timestamp": "2026-02-23T19:57:11.614498"
+}

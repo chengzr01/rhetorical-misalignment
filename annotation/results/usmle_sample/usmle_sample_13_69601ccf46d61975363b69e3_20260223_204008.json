@@ -1,0 +1,284 @@
+{
+  "annotator_id": "69601ccf46d61975363b69e3",
+  "demographics": {
+    "age": "35",
+    "expertise": "Genetics",
+    "practice_location": "Remote",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T20:32:42.301889",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_13",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Sertoli-Leydig tumor",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.18,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief because AI's evidence was in line with my reasoning, so it just reinforced my belief and my confidence in my answer choice. The biggest part for me was confirming the virilizing nature and the consistent lab and imaging reuslts",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Amenorrhea",
+      "timestamp": "2026-02-23T20:33:30.408Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "hirsutism",
+      "timestamp": "2026-02-23T20:33:33.388Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Physical signs",
+      "timestamp": "2026-02-23T20:33:52.154Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "slightly overweight",
+      "timestamp": "2026-02-23T20:34:01.621Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "mildly elevated",
+      "timestamp": "2026-02-23T20:34:05.836Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "key finding",
+      "timestamp": "2026-02-23T20:34:18.953Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Imaging",
+      "timestamp": "2026-02-23T20:34:23.524Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Isolated \u2191 Testosterone",
+      "timestamp": "2026-02-23T20:34:40.711Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Ovarian source (vs adrenal)",
+      "timestamp": "2026-02-23T20:34:43.258Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Large ovarian mass (12 cm)",
+      "timestamp": "2026-02-23T20:34:47.705Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Neoplasm rather than PCOS",
+      "timestamp": "2026-02-23T20:34:50.336Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Most common",
+      "timestamp": "2026-02-23T20:35:01.118Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "ypically produces estrogen/inhibin",
+      "timestamp": "2026-02-23T20:35:07.986Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Rare",
+      "timestamp": "2026-02-23T20:35:11.438Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Present",
+      "timestamp": "2026-02-23T20:35:20.286Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Estrogen/Inhibin",
+      "timestamp": "2026-02-23T20:35:30.102Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "mass most likely represents a SERTOLI-LEYDIG CELL TUMOR (Arrhenoblastoma)",
+      "timestamp": "2026-02-23T20:35:40.387Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Supporting Evidence:",
+      "timestamp": "2026-02-23T20:35:52.253Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "clear virilization",
+      "timestamp": "2026-02-23T20:36:05.169Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "isolated testosterone elevation",
+      "timestamp": "2026-02-23T20:36:20.867Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "estrogen and inhibin",
+      "timestamp": "2026-02-23T20:36:37.318Z",
+      "step": "step2"
+    },
+    {
+      "text": "hirsutism",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:06.866Z",
+      "step": "step3"
+    },
+    {
+      "text": "Amenorrhea",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:09.184Z",
+      "step": "step3"
+    },
+    {
+      "text": "Physical signs:",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:17.100Z",
+      "step": "step3"
+    },
+    {
+      "text": "slightly overweight",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:22.085Z",
+      "step": "step3"
+    },
+    {
+      "text": "mildly elevated)",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:25.634Z",
+      "step": "step3"
+    },
+    {
+      "text": "Markedly elevated serum testosterone",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:34.653Z",
+      "step": "step3"
+    },
+    {
+      "text": "Imaging",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:44.018Z",
+      "step": "step3"
+    },
+    {
+      "text": "Most common virilizing ovarian tumor",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:37:58.683Z",
+      "step": "step3"
+    },
+    {
+      "text": "but typically produces estrogen/inhibin",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:04.303Z",
+      "step": "step3"
+    },
+    {
+      "text": "Estrogen",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:19.283Z",
+      "step": "step3"
+    },
+    {
+      "text": "Inhibin",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:21.233Z",
+      "step": "step3"
+    },
+    {
+      "text": "Present",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:23.866Z",
+      "step": "step3"
+    },
+    {
+      "text": "NOT virilization",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:31.949Z",
+      "step": "step3"
+    },
+    {
+      "text": "MOST LIKELY DIAGNOSIS",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:40.169Z",
+      "step": "step3"
+    },
+    {
+      "text": "Supporting Evidence",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:45.266Z",
+      "step": "step3"
+    },
+    {
+      "text": "clear virilization",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:38:56.648Z",
+      "step": "step3"
+    },
+    {
+      "text": "solated testosterone elevation",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:39:01.182Z",
+      "step": "step3"
+    },
+    {
+      "text": "estrogen and inhibin",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-02-23T20:39:10.234Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-02-23T20:32:42.335481",
+  "step1_time": "2026-02-23T20:33:10.183553",
+  "step2_time": "2026-02-23T20:36:50.976001",
+  "step3_time": "2026-02-23T20:40:08.651646",
+  "timestamp": "2026-02-23T20:40:08.651655"
+}

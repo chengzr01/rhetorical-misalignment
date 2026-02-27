@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-02-23T20:07:38.263519",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_48",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Telephone interpreter",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.7,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.95,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.95,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "This was the most logical answer as the clinic did not have a certified interpreter available but a telephone interpreter service was available.",
+  "highlights": [],
+  "session_start": "2026-02-23T20:07:38.298986",
+  "step1_time": "2026-02-23T20:13:54.338938",
+  "step2_time": "2026-02-23T20:14:19.304380",
+  "step3_time": "2026-02-23T20:15:13.011873",
+  "timestamp": "2026-02-23T20:15:13.011884"
+}

@@ -1,0 +1,134 @@
+{
+  "annotator_id": "69601ccf46d61975363b69e3",
+  "demographics": {
+    "age": "35",
+    "expertise": "Genetics",
+    "practice_location": "Remote",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T20:32:42.301889",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_221",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Pulmonary infarction",
+  "correct_answer_idx": "H",
+  "step1": {
+    "answer": "H",
+    "answer_belief": 0.64,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "H",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "H",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI tool confirmed my thought process, specifically in regards to the imaging results with the classic signs.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Triangular pleural-based density in left lower lobe",
+      "timestamp": "2026-02-23T20:47:49.992Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Left pleural rub (pleurisy)",
+      "timestamp": "2026-02-23T20:47:53.240Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Blood-streaked sputum (hemoptysis)",
+      "timestamp": "2026-02-23T20:47:56.309Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Acute",
+      "timestamp": "2026-02-23T20:47:58.342Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "post-operatively",
+      "timestamp": "2026-02-23T20:48:01.691Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Tachypnea",
+      "timestamp": "2026-02-23T20:48:03.940Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "PULMONARY INFARCTION (Infarct-like Consolidation)",
+      "timestamp": "2026-02-23T20:48:16.225Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "classic \"Hampton hump\" appearance",
+      "timestamp": "2026-02-23T20:48:20.539Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Hemoptysis",
+      "timestamp": "2026-02-23T20:48:26.838Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "classic",
+      "timestamp": "2026-02-23T20:48:32.858Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "fever",
+      "timestamp": "2026-02-23T20:48:48.806Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "acute",
+      "timestamp": "2026-02-23T20:48:51.973Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Young",
+      "timestamp": "2026-02-23T20:48:54.556Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The triangular pleural-based density with hemoptysis and pleuritic chest pain in the immediate postoperative period is pathognomonic for pulmonary infarction, a manifestation of underlying venous thromboembolism. This diagnosis explains all clinical findings and should prompt escalation from prophylactic to therapeutic anticoagulation.",
+      "timestamp": "2026-02-23T20:49:20.938Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T20:32:42.335481",
+  "step1_time": "2026-02-23T20:47:34.670754",
+  "step2_time": "2026-02-23T20:49:25.751351",
+  "step3_time": "2026-02-23T20:49:47.623275",
+  "timestamp": "2026-02-23T20:49:47.623285"
+}

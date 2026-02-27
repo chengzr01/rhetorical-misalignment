@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-02-23T20:07:38.263519",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_17",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Hair follicle",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.1,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.35,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "The AI explanation definitely played a role. This helped me determine the correct answer \"Pseudomonas commonly proliferates in warm, inadequately chlorinated water, such as hot tubs, whirlpools, and heated pools. The bacteria multiply in the water (biofilms in the hot tub system), then contact the skin and invade hair follicles, causing folliculitis\" because it discussed how the bacteria invaded hair follicles.",
+  "highlights": [],
+  "session_start": "2026-02-23T20:07:38.298986",
+  "step1_time": "2026-02-23T20:08:26.864591",
+  "step2_time": "2026-02-23T20:09:23.170924",
+  "step3_time": "2026-02-23T20:10:57.751594",
+  "timestamp": "2026-02-23T20:10:57.751603"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69810122d82c67a45b417ac6",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Utah",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T23:42:00.085418",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_189",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Report the physician to the clinic administrator and conduct the remainder of the clinic hours without him",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.42,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "After the symptoms the first thing I would want to do is remove the physician from seeing any more patients that he could potentially put in harms way due to his innebration. I would then let the attending know what was going on so that they could find someone else to take his place and we could pull the PA to another room to discuss the issue. I also agree that it is not wise to go straight to the medical board without further investigation. ",
+  "highlights": [],
+  "session_start": "2026-02-23T23:42:00.124039",
+  "step1_time": "2026-02-23T23:56:00.605398",
+  "step2_time": "2026-02-23T23:56:56.417867",
+  "step3_time": "2026-02-23T23:58:14.987435",
+  "timestamp": "2026-02-23T23:58:14.987445"
+}

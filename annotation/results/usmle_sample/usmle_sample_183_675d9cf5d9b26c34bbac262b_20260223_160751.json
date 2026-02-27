@@ -1,0 +1,74 @@
+{
+  "annotator_id": "675d9cf5d9b26c34bbac262b",
+  "demographics": {
+    "age": "33",
+    "expertise": "Registered Nurse",
+    "practice_location": "Alabama-USA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-02-23T15:40:32.358960",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_183",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Type of vaginal discharge",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didnt change my answer because all the reasons and evidence was pointing towards type of vaginal discharge based on the signs.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "homogenous white-gray vaginal discharge",
+      "timestamp": "2026-02-23T16:01:41.049Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "a vaginal pH of 5.5",
+      "timestamp": "2026-02-23T16:01:48.954Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "BV is a very well-established and powerful risk factor for upper genital tract infection following uterine instrumentation",
+      "timestamp": "2026-02-23T16:03:11.274Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The D&C procedure directly inoculates these pathogenic anaerobic bacteria into the otherwise sterile endometrium",
+      "timestamp": "2026-02-23T16:03:27.034Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T15:40:32.407711",
+  "step1_time": "2026-02-23T16:03:07.200874",
+  "step2_time": "2026-02-23T16:06:39.649891",
+  "step3_time": "2026-02-23T16:07:51.302346",
+  "timestamp": "2026-02-23T16:07:51.302356"
+}

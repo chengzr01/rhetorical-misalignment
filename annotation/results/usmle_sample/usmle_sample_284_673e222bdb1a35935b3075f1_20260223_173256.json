@@ -1,0 +1,62 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25",
+    "expertise": "Cardiology ",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-02-23T17:08:00.435716",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_284",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Continue current management; do not initiate hemodialysis",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I focused on patient's on the legality of the role of a surrogate and ensuring patient's wish.",
+  "highlights": [
+    {
+      "context": "",
+      "text": "Medical history is significant for type 2 diabetes mellitus, hypertension, and stroke 1 year ago with residual right -sided weakness and slurred speech",
+      "timestamp": "2026-02-23T14:50:22.032Z",
+      "step": "step2"
+    },
+    {
+      "context": "",
+      "text": "Hemodialysis was recommended but the patient declined and expressed an understanding that she would die without the intervention",
+      "timestamp": "2026-02-23T14:50:28.026Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T17:08:00.470127",
+  "step1_time": "2026-02-23T17:31:22.200171",
+  "step2_time": "2026-02-23T17:31:41.675011",
+  "step3_time": "2026-02-23T17:32:56.626392",
+  "timestamp": "2026-02-23T17:32:56.626403"
+}

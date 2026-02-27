@@ -1,0 +1,49 @@
+{
+  "annotator_id": "63d00f33d7efb157962e105b",
+  "demographics": {
+    "age": "36",
+    "expertise": "Nurses Assistant",
+    "practice_location": "Elmira New York",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T17:43:39.020799",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_80",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Statistically significant overall increase in risk",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.22,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Because the AI is right and stated facts that it would increase the potential for hip fracture",
+  "highlights": [],
+  "session_start": "2026-02-23T17:43:39.054474",
+  "step1_time": "2026-02-23T17:44:55.958696",
+  "step2_time": "2026-02-23T17:46:22.501601",
+  "step3_time": "2026-02-23T17:47:29.710207",
+  "timestamp": "2026-02-23T17:47:29.710217"
+}

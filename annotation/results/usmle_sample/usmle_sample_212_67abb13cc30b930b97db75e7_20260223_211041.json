@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67abb13cc30b930b97db75e7",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "Dallas, Texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-02-23T21:02:30.967174",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_212",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Flora",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.77,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.92,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.92,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "When he was on the picnic, he was outside and exposed to various plants. This is what irritated his skin. AI confirmed my thoughts.",
+  "highlights": [],
+  "session_start": "2026-02-23T21:02:31.003584",
+  "step1_time": "2026-02-23T21:10:02.073490",
+  "step2_time": "2026-02-23T21:10:13.359999",
+  "step3_time": "2026-02-23T21:10:41.498783",
+  "timestamp": "2026-02-23T21:10:41.498792"
+}

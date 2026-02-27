@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67b10c5dfc3a653912c55891",
+  "demographics": {
+    "age": "53",
+    "expertise": "Nursing",
+    "practice_location": "Atlanta",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T21:50:28.069078",
+    "years_of_practice": "32"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_282",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Contact the patient's pharmacy to obtain information on her current medications",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Pharmacies maintain medication records and are reliable in the case of a patient with dementia not being able to say what medications they're on. And also, ordering old meds is dangerous for Parkinson's.",
+  "highlights": [],
+  "session_start": "2026-02-23T21:50:28.102625",
+  "step1_time": "2026-02-23T22:03:06.141056",
+  "step2_time": "2026-02-23T22:03:14.496742",
+  "step3_time": "2026-02-23T22:04:53.336573",
+  "timestamp": "2026-02-23T22:04:53.336583"
+}

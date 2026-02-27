@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69699d1a4c8aab1ce7a5f231",
+  "demographics": {
+    "age": "29",
+    "expertise": "Cardiac",
+    "practice_location": "Virginia",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T16:38:16.042248",
+    "years_of_practice": "8"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_134",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "There is an unclear difference in efficacy between the two drugs at these doses",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.81,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI summarized information faster than I could so I was able to use AI's summary to make an educated decision on my answer. ",
+  "highlights": [],
+  "session_start": "2026-02-23T16:38:16.077742",
+  "step1_time": "2026-02-23T16:41:20.014354",
+  "step2_time": "2026-02-23T16:42:06.576786",
+  "step3_time": "2026-02-23T16:42:36.927274",
+  "timestamp": "2026-02-23T16:42:36.927284"
+}

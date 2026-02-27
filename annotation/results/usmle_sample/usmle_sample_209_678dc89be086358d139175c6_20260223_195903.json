@@ -1,0 +1,49 @@
+{
+  "annotator_id": "678dc89be086358d139175c6",
+  "demographics": {
+    "age": "21",
+    "expertise": "Education",
+    "practice_location": "Wentzville, MO",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T19:52:07.412156",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_209",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Normal development",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Based on what the analysis gave me, and it saying it was most likely normal development thats when I changed my answer. ",
+  "highlights": [],
+  "session_start": "2026-02-23T19:52:07.445317",
+  "step1_time": "2026-02-23T19:57:37.331557",
+  "step2_time": "2026-02-23T19:58:02.734222",
+  "step3_time": "2026-02-23T19:59:03.723955",
+  "timestamp": "2026-02-23T19:59:03.723966"
+}

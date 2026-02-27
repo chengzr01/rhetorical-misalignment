@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67b10c5dfc3a653912c55891",
+  "demographics": {
+    "age": "53",
+    "expertise": "Nursing",
+    "practice_location": "Atlanta",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T21:50:28.069078",
+    "years_of_practice": "32"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_228",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Adjustment disorder with anxiety",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.43,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.68,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.68,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was initially correct in this case. Given the circumstances surrounding the patient's case, she is likely struggling with an adjustment disorder.",
+  "highlights": [],
+  "session_start": "2026-02-23T21:50:28.102625",
+  "step1_time": "2026-02-23T21:54:12.386422",
+  "step2_time": "2026-02-23T21:55:25.237953",
+  "step3_time": "2026-02-23T21:57:40.515634",
+  "timestamp": "2026-02-23T21:57:40.515644"
+}

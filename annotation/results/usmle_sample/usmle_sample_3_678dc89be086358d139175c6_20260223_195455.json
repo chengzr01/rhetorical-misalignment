@@ -1,0 +1,49 @@
+{
+  "annotator_id": "678dc89be086358d139175c6",
+  "demographics": {
+    "age": "21",
+    "expertise": "Education",
+    "practice_location": "Wentzville, MO",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T19:52:07.412156",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_3",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Formation of antibodies to RhD",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.2,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.25,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.25,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I knew it had something to do with Rhd because of how often the AI used that word. I was close, but not that close.",
+  "highlights": [],
+  "session_start": "2026-02-23T19:52:07.445317",
+  "step1_time": "2026-02-23T19:52:59.918524",
+  "step2_time": "2026-02-23T19:53:28.922118",
+  "step3_time": "2026-02-23T19:54:55.834510",
+  "timestamp": "2026-02-23T19:54:55.834521"
+}

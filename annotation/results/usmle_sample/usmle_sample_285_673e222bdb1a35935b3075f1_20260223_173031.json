@@ -1,0 +1,62 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25",
+    "expertise": "Cardiology ",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-02-23T17:08:00.435716",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_285",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Contact the patient's health care proxy to discuss how to proceed",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.7,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Pure focus on medical history, associated medical issues like hypertension, tachycardia, and rectal bleeding. There is need for  in-depth analysis on her associated issues and need for proper medical intervention.",
+  "highlights": [
+    {
+      "context": "",
+      "text": "She is unable to speak coherently and becomes agitated and combative when a physic al examination is attempted",
+      "timestamp": "2026-02-23T14:45:02.296Z",
+      "step": "step2"
+    },
+    {
+      "context": "",
+      "text": "Medical history is significant for long -standing dementia secondary to multiple prior strokes, coronary artery disease, hypertension, hypercholesterolemia, and chronic renal disease",
+      "timestamp": "2026-02-23T14:45:19.816Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T17:08:00.470127",
+  "step1_time": "2026-02-23T17:25:54.424387",
+  "step2_time": "2026-02-23T17:26:34.275833",
+  "step3_time": "2026-02-23T17:30:31.487134",
+  "timestamp": "2026-02-23T17:30:31.487143"
+}

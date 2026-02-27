@@ -1,0 +1,49 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25",
+    "expertise": "Cardiology ",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-02-23T17:08:00.435716",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_360",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Pericardiocentesis",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The proper evaluation of issues related to cardiovascular and respiratory issues and the signs associated like Tachycardia and Cyanosis.",
+  "highlights": [],
+  "session_start": "2026-02-23T17:08:00.470127",
+  "step1_time": "2026-02-23T17:35:22.934958",
+  "step2_time": "2026-02-23T17:35:29.595236",
+  "step3_time": "2026-02-23T17:37:26.126253",
+  "timestamp": "2026-02-23T17:37:26.126263"
+}

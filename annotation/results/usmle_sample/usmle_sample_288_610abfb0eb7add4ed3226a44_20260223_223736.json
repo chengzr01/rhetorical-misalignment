@@ -1,0 +1,49 @@
+{
+  "annotator_id": "610abfb0eb7add4ed3226a44",
+  "demographics": {
+    "age": "28",
+    "expertise": "Mental Health",
+    "practice_location": "",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T22:28:56.455669",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_288",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Serum quantitative immunoglobulin c oncentrations",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.64,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I would have checked CD4 & lymphocyte counts to rule out cryptosporidiosis. That is why I gave my answer.",
+  "highlights": [],
+  "session_start": "2026-02-23T22:28:56.492663",
+  "step1_time": "2026-02-23T22:36:36.764909",
+  "step2_time": "2026-02-23T22:36:48.150315",
+  "step3_time": "2026-02-23T22:37:36.043250",
+  "timestamp": "2026-02-23T22:37:36.043259"
+}

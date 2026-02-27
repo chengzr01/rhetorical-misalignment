@@ -1,0 +1,49 @@
+{
+  "annotator_id": "610abfb0eb7add4ed3226a44",
+  "demographics": {
+    "age": "28",
+    "expertise": "Mental Health",
+    "practice_location": "",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T22:28:56.455669",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_274",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Yes yes",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.09,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.12,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.12,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I don't have a lot of knowledge in this area, so I did take AI's advice in their conclusion though I was not particularly confident in it.",
+  "highlights": [],
+  "session_start": "2026-02-23T22:28:56.492663",
+  "step1_time": "2026-02-23T22:33:52.624128",
+  "step2_time": "2026-02-23T22:34:05.904678",
+  "step3_time": "2026-02-23T22:34:43.038653",
+  "timestamp": "2026-02-23T22:34:43.038662"
+}

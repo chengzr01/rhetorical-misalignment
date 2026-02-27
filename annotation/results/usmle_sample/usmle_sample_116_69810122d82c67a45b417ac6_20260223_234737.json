@@ -1,0 +1,86 @@
+{
+  "annotator_id": "69810122d82c67a45b417ac6",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Utah",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T23:42:00.085418",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_116",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Normal development",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.58,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Based on im inital assumption that the baby has normal development, I was fairly confident in my answer. After the AIs interpretation of the childs symptoms confirming my assumed diagnoses, I saw now reason to change it. There is no sign of FTT, sleep apnea or lack of feeding. Overall seems like a normal developing child and I would educate the mother on the normal sleep patterns for a child of that age as well as what to look out for that would raise concern. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Chronologic age: 9 months",
+      "timestamp": "2026-02-23T23:44:50.057Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Awakens and cries at least once nightly, then returns to sleep after a bottle",
+      "timestamp": "2026-02-23T23:44:58.545Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "\u224814\u201315 hours\u2014well within normal range for his developmental age.",
+      "timestamp": "2026-02-23T23:45:11.531Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "No other concerning symptoms (no apnea, labored breathing, sweating, irritability out of proportion, failure to thrive, etc.).",
+      "timestamp": "2026-02-23T23:45:18.863Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Night wakings can increase around 6\u201312 months due to separation anxiety.",
+      "timestamp": "2026-02-23T23:45:27.777Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Conditions such as obstructive sleep apnea, reflux, or other medical disorders would typically have additional symptoms (snoring, gasping, poor weight gain, arching, frequent/prolonged awakenings), which are not present.",
+      "timestamp": "2026-02-23T23:45:33.186Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T23:42:00.124039",
+  "step1_time": "2026-02-23T23:43:41.612879",
+  "step2_time": "2026-02-23T23:45:44.813483",
+  "step3_time": "2026-02-23T23:47:37.119152",
+  "timestamp": "2026-02-23T23:47:37.119161"
+}

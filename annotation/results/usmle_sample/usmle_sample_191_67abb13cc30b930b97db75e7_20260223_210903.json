@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67abb13cc30b930b97db75e7",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "Dallas, Texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-02-23T21:02:30.967174",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_191",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Surgical debridement",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.66,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.78,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I think further investigation is important to figure out what the root cause is. ",
+  "highlights": [],
+  "session_start": "2026-02-23T21:02:31.003584",
+  "step1_time": "2026-02-23T21:05:07.376656",
+  "step2_time": "2026-02-23T21:08:40.079207",
+  "step3_time": "2026-02-23T21:09:03.301130",
+  "timestamp": "2026-02-23T21:09:03.301140"
+}

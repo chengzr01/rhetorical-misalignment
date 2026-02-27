@@ -1,0 +1,62 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25",
+    "expertise": "Cardiology ",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-02-23T17:08:00.435716",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_282",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Contact the patient's pharmacy to obtain information on her current medications",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.93,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.93,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.93,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The medical records influenced my decisions and helped me evaluate the objectives, to ensure quality assess and safety.",
+  "highlights": [
+    {
+      "context": "",
+      "text": "The patient is unable to re member which medications she takes and whether there have been any changes recently to her medication regimen",
+      "timestamp": "2026-02-23T14:41:48.880Z",
+      "step": "step2"
+    },
+    {
+      "context": "",
+      "text": "An emergency department record from a visit 1 year ago for a minor laceration indicates that the patient has Parkinson disease with mild dementia, bipolar disorder, and hypertension",
+      "timestamp": "2026-02-23T14:42:19.439Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T17:08:00.470127",
+  "step1_time": "2026-02-23T17:22:25.834998",
+  "step2_time": "2026-02-23T17:23:34.735283",
+  "step3_time": "2026-02-23T17:25:01.293633",
+  "timestamp": "2026-02-23T17:25:01.293643"
+}

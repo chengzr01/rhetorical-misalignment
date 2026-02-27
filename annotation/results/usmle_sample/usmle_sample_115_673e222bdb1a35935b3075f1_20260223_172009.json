@@ -1,0 +1,49 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25",
+    "expertise": "Cardiology ",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-02-23T17:08:00.435716",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_115",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "\"You must miss your daughter very much. Tell me about her.\"",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Previous knowledge on topics like this, and personal abilities related to empathy to get the best evaluations and ensure that the best services are provided accordingly. One thing that really influenced my decision is the acknowledgement on the path of the patient and need for expression of intent.",
+  "highlights": [],
+  "session_start": "2026-02-23T17:08:00.470127",
+  "step1_time": "2026-02-23T17:12:48.635309",
+  "step2_time": "2026-02-23T17:15:35.965305",
+  "step3_time": "2026-02-23T17:20:09.992584",
+  "timestamp": "2026-02-23T17:20:09.992594"
+}

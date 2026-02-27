@@ -1,0 +1,49 @@
+{
+  "annotator_id": "698f5ee07f3b666bd1303ac4",
+  "demographics": {
+    "age": "53",
+    "expertise": "Chiropractic",
+    "practice_location": "Mobile AL",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T22:44:58.722035",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_156",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Do not proceed, and remove the patient from the operating room",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.71,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.71,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "After I read the AI information it made me reconsider just asking the husband.   I changed to ask the patient to sign a new consent form becauseI would expect that they could wake her while she was still in the OR.",
+  "highlights": [],
+  "session_start": "2026-02-23T22:44:58.758189",
+  "step1_time": "2026-02-23T22:58:24.218920",
+  "step2_time": "2026-02-23T23:00:57.077973",
+  "step3_time": "2026-02-23T23:02:25.082537",
+  "timestamp": "2026-02-23T23:02:25.082545"
+}

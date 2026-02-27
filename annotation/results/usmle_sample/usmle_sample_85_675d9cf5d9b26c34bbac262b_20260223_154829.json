@@ -1,0 +1,68 @@
+{
+  "annotator_id": "675d9cf5d9b26c34bbac262b",
+  "demographics": {
+    "age": "33",
+    "expertise": "Registered Nurse",
+    "practice_location": "Alabama-USA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-02-23T15:40:32.358960",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_85",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "\u03b22-Adrenergic agonist",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.28,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.83,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.83,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI played a major role in my answer, i followed recommendations from the AI. Here are highlighted that influenced my decision. \"Inhaled Beta-2 Agonists (Albuterol): This medication causes bronchodilation and can help with wheezing\" and \"An inhaled beta-2 agonist (like albuterol) would only treat the wheezing\".",
+  "highlights": [
+    {
+      "context": "",
+      "text": "no urticaria",
+      "timestamp": "2026-02-23T15:39:40.419Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The lack of urticaria is a critical point",
+      "timestamp": "2026-02-23T15:40:53.072Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "immediate administration of IM epinephrine is the standard of care for any patient with anaphylaxis",
+      "timestamp": "2026-02-23T15:42:29.514Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-02-23T15:40:32.407711",
+  "step1_time": "2026-02-23T15:41:38.069697",
+  "step2_time": "2026-02-23T15:45:58.045051",
+  "step3_time": "2026-02-23T15:48:29.455793",
+  "timestamp": "2026-02-23T15:48:29.455804"
+}

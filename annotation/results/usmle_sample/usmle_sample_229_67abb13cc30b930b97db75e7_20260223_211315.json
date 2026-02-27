@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67abb13cc30b930b97db75e7",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "Dallas, Texas",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-02-23T21:02:30.967174",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_229",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Explain to the patient that because her advance directive is confusing, discussing her options would be helpful",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I wasn't sure on this one. Dealing with confused patients  is a hard part of the job.",
+  "highlights": [],
+  "session_start": "2026-02-23T21:02:31.003584",
+  "step1_time": "2026-02-23T21:11:13.777386",
+  "step2_time": "2026-02-23T21:11:45.101489",
+  "step3_time": "2026-02-23T21:13:15.900611",
+  "timestamp": "2026-02-23T21:13:15.900622"
+}

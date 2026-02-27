@@ -1,0 +1,49 @@
+{
+  "annotator_id": "610abfb0eb7add4ed3226a44",
+  "demographics": {
+    "age": "28",
+    "expertise": "Mental Health",
+    "practice_location": "",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-02-23T22:28:56.455669",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_32",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "\"Could you tell me your thoughts about the hormone treatment option we have discussed?\"",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.55,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.55,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.55,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It's always important to ask the patient's thoughts on a proposed treatment option. AI did not sway my initial answer.",
+  "highlights": [],
+  "session_start": "2026-02-23T22:28:56.492663",
+  "step1_time": "2026-02-23T22:29:40.134431",
+  "step2_time": "2026-02-23T22:30:28.044459",
+  "step3_time": "2026-02-23T22:31:13.298432",
+  "timestamp": "2026-02-23T22:31:13.298442"
+}
