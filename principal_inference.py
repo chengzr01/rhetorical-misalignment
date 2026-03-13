@@ -77,6 +77,7 @@ def run_principal_decision(
     principal_context: str,
     agent_result: Mapping[str, Any],
     belief_mode: bool = False,
+    choices_mode: bool = False,
 ) -> Mapping[str, Any]:
     """
     Run principal decision using cached agent results.
@@ -86,8 +87,8 @@ def run_principal_decision(
         principal: Principal agent to use
         principal_context: Context string for the principal
         agent_result: Agent's result containing question and recommendations
-        belief_mode: If True, use belief-elicitation format (answer + belief)
-                    If False, use recommendation acceptance format
+        belief_mode: If True, use belief-elicitation format (answer + belief, no agent rec)
+        choices_mode: If True, use choices format (answer + belief + agent rec as separate inputs)
     """
     dataset_type = agent_result.get("dataset_type", "mimic")
     info = agent_result.get("information")
@@ -105,9 +106,17 @@ def run_principal_decision(
     # For USMLE, format the context to include options
     if dataset_type == "usmle":
         if belief_mode:
-            # Belief-elicitation mode: separate context and options
+            # Belief-elicitation mode: context + options, no agent recommendation
             pc, options_str = format_usmle_context_for_principal(agent_result, belief_mode=True)
             decision_result = principal.act(context=pc, options=options_str)
+        elif choices_mode:
+            # Choices mode: context + options + agent recommendation as separate inputs
+            pc, options_str = format_usmle_context_for_principal(agent_result, belief_mode=True)
+            decision_result = principal.act(
+                context=pc,
+                options=options_str,
+                information=recommendation.strip() if recommendation else "",
+            )
         else:
             # Recommendation mode: combined context with agent's recommendation
             pc, _ = format_usmle_context_for_principal(agent_result, belief_mode=False)
@@ -190,7 +199,8 @@ def run_principal_inferences(
         output_ext = output_path.suffix
 
         # Remove any existing principal type suffix from the base name
-        for ptype in ["bayesian_belief", "behavioral_belief", "bayesian", "behavioral",
+        for ptype in ["bayesian_martingale_choices", "bayesian_choices", "behavioral_choices",
+                      "bayesian_belief", "behavioral_belief", "bayesian", "behavioral",
                       "anchoring", "availability", "confirmation", "conservatism",
                       "overconfidence", "prospect", "all"]:
             if output_base.endswith(f"_{ptype}"):
@@ -210,8 +220,20 @@ def run_principal_inferences(
                 print(f"✓ Loading existing {principal_type} results from {principal_output_path} ({len(existing_results)}/{expected_count} results)")
                 all_existing_results[principal_name] = existing_results
                 continue
+            elif isinstance(existing_results, list) and len(existing_results) > 0:
+                print(f"⚠ {principal_type.capitalize()} results incomplete ({len(existing_results)}/{expected_count}), resuming from checkpoint")
+                config["existing_results"] = existing_results
+                config["completed_keys"] = {
+                    (r.get("case_id"), r.get("permutation_idx"),
+                     r.get("condition"), r.get("paraphrase_idx"))
+                    for r in existing_results
+                }
             else:
-                print(f"⚠ {principal_type.capitalize()} results incomplete ({len(existing_results)}/{expected_count}), will re-run")
+                config["existing_results"] = []
+                config["completed_keys"] = set()
+        else:
+            config["existing_results"] = []
+            config["completed_keys"] = set()
 
         principals_to_run.append(config)
 
@@ -243,32 +265,46 @@ def run_principal_inferences(
             case_to_agent_results[case_id] = []
         case_to_agent_results[case_id].append(agent_result)
 
-    total_iterations = len(agent_results) * len(principals)
-    progress_bar = tqdm(total=total_iterations, desc="Running principal inferences")
-
     # Build tasks ordered by case: for each case, run all principals
+    # Skip (case_id, permutation_idx) pairs already completed in a prior partial run
     tasks = []
     for case_id in sorted(case_to_agent_results.keys()):
         for agent_result in case_to_agent_results[case_id]:
+            key = (agent_result.get("case_id"), agent_result.get("permutation_idx"),
+                   agent_result.get("condition"), agent_result.get("paraphrase_idx"))
             for principal in principals:
-                tasks.append((agent_result, principal))
+                completed_keys = principal_to_config[principal.name].get("completed_keys", set())
+                if key not in completed_keys:
+                    tasks.append((agent_result, principal))
+
+    total_iterations = len(tasks)
+    progress_bar = tqdm(total=total_iterations, desc="Running principal inferences")
 
     def run_one_principal_decision(agent_result, principal):
         # Get principal_context, fallback to agent_context, fallback to context
         principal_context = agent_result.get("principal_context") or agent_result.get("agent_context") or agent_result.get("context", "")
 
-        # Determine if this is belief-elicitation mode
+        # Determine inference mode from principal name
         belief_mode = "_belief" in principal.name
+        choices_mode = "_choices" in principal.name
 
         result = run_principal_decision(
             principal=principal,
             principal_context=principal_context,
             agent_result=agent_result,
             belief_mode=belief_mode,
+            choices_mode=choices_mode,
         )
-        # Add case ID
+        # Add case ID and permutation index (for martingale experiments)
         if "case_id" in agent_result:
             result["case_id"] = agent_result["case_id"]
+        if "permutation_idx" in agent_result:
+            result["permutation_idx"] = agent_result["permutation_idx"]
+        # Add condition label and paraphrase index (for paraphrase / sufficient-statistics experiments)
+        if "condition" in agent_result:
+            result["condition"] = agent_result["condition"]
+        if "paraphrase_idx" in agent_result:
+            result["paraphrase_idx"] = agent_result["paraphrase_idx"]
 
         # Add dataset-specific metadata (MIMIC only, USMLE handled in run_principal_decision)
         dataset_type = agent_result.get("dataset_type", "mimic")
@@ -279,8 +315,11 @@ def run_principal_inferences(
 
         return result
 
-    # Group results by principal name
-    results_by_principal = {p.name: [] for p in principals}
+    # Group results by principal name, seeded with any existing partial results
+    results_by_principal = {
+        p.name: list(principal_to_config[p.name].get("existing_results", []))
+        for p in principals
+    }
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = []
@@ -356,11 +395,13 @@ def main() -> None:
         "--principal-types",
         type=str,
         nargs="+",
-        default=["bayesian"],
+        default=["bayesian_choices", "behavioral_choices"],
         choices=["all", "bayesian", "behavioral", "bayesian_belief", "behavioral_belief",
+                 "bayesian_choices", "behavioral_choices", "bayesian_martingale_choices",
                  "anchoring", "availability", "confirmation", "conservatism", "overconfidence", "prospect"],
-        help="Principal types to use. Use 'all' to run all types except bayesian, or specify one or more types. "
-             "Types ending with '_belief' use belief-elicitation format (answer + confidence) instead of recommendation acceptance."
+        help="Principal types to use. Use 'all' to run all types, or specify one or more. "
+             "'_belief' types: answer + confidence, no agent recommendation. "
+             "'_choices' types: answer + confidence + agent recommendation."
     )
     parser.add_argument(
         "--output",
@@ -422,8 +463,10 @@ def main() -> None:
 
     # Configure principal types
     principal_types = args.principal_types
-    all_available_principal_types = ["behavioral", "anchoring", "availability", "confirmation",
-                                    "conservatism", "overconfidence", "prospect"]
+    all_available_principal_types = ["bayesian_choices", "behavioral_choices", "bayesian_martingale_choices",
+                                     "bayesian", "behavioral", "bayesian_belief", "behavioral_belief",
+                                     "anchoring", "availability", "confirmation",
+                                     "conservatism", "overconfidence", "prospect"]
     if "all" in principal_types:
         principal_types = all_available_principal_types
 

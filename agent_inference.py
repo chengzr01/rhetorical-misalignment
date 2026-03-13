@@ -125,6 +125,7 @@ def run_agent_inferences(
     save_interval: int = 10,
     skip_existing: bool = True,
     max_workers: int = 8,
+    max_cases: int | None = 100,
 ) -> list[Mapping[str, Any]]:
     """
     Run agent inferences on all contexts and save results, in parallel (concurrent).
@@ -137,10 +138,16 @@ def run_agent_inferences(
         save_interval: Save results every N iterations
         skip_existing: If True and output_path exists, load and return existing results
         max_workers: Number of parallel workers
+        max_cases: Maximum number of contexts to process. None means no limit.
+                   Default is 100.
 
     Returns:
         List of agent results
     """
+    if max_cases is not None and len(contexts) > max_cases:
+        print(f"Limiting to {max_cases} cases (from {len(contexts)} total)")
+        contexts = contexts[:max_cases]
+
     expected_total = len(contexts) * len(agent_configs)
 
     if skip_existing and output_path.exists():
@@ -365,6 +372,13 @@ def main() -> None:
         default=8,
         help="Number of parallel workers for agent inferences"
     )
+    parser.add_argument(
+        "--max-cases",
+        type=int,
+        default=100,
+        metavar="N",
+        help="Maximum number of cases to process (default: 100; use 0 for no limit)",
+    )
     args = parser.parse_args()
 
     # Setup client for agents
@@ -438,6 +452,7 @@ def main() -> None:
         save_interval=args.save_interval,
         skip_existing=not args.force,
         max_workers=args.max_workers,
+        max_cases=args.max_cases if args.max_cases > 0 else None,
     )
 
     print(f"\nAgent inferences complete: {len(agent_results)} results")

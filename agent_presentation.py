@@ -4,6 +4,15 @@ Run agent presentation experiments where agents receive pre-generated informatio
 This script loads cached agent results as ground truth information and presents them
 to agents using the framing prompt template, allowing fine-grained control over
 what information is shown.
+
+Two ground-truth sources are supported:
+  --ground-truth PATH   Standard agent-results JSON (output of agent_inference.py or
+                        information_aggregation.py).  Each record must have "case_id",
+                        "information", and USMLE metadata fields.
+  --aggregated-info PATH  Raw aggregated-claims JSON (output of experiments/aggregate_information.py,
+                          i.e. aggregated_factual.json / aggregated_unfactual.json).  Requires
+                          --questions to supply USMLE metadata.  Claims are joined as bullet
+                          points before being passed to the framing agent.
 """
 
 from __future__ import annotations
@@ -18,6 +27,104 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from agents.agent import Agent
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
+
+
+# ---------------------------------------------------------------------------
+# Aggregated-claims loading helpers
+# ---------------------------------------------------------------------------
+
+def load_aggregated_claims(
+    aggregated_path: Path,
+    questions_path: Path | None,
+    claim_format: str = "bullets",
+) -> list[dict[str, Any]]:
+    """
+    Load an aggregated-claims JSON file (aggregated_factual.json /
+    aggregated_unfactual.json) and return a list of records in the same
+    schema as agent_inference.py output so they can be fed directly into
+    run_presentation_experiments as ground truth.
+
+    Args:
+        aggregated_path: Path to the aggregated claims JSON.
+        questions_path:  Path to the clinical questions JSON (for metadata).
+                         If None, metadata fields will be empty.
+        claim_format:    How to join claims: "bullets", "numbered", or "plain".
+
+    Returns:
+        List of dicts compatible with the ground-truth format expected by
+        run_presentation_experiments.
+    """
+    aggregated = json.loads(aggregated_path.read_text())
+    cases: dict[str, dict] = aggregated.get("cases", {})
+    metadata = aggregated.get("metadata", {})
+    keep_labels = metadata.get("keep_labels", ["?"])
+    print(f"Loaded aggregated claims from {aggregated_path}")
+    print(f"  Labels: {', '.join(keep_labels)}  |  Cases: {len(cases)}")
+
+    # Build question lookup for metadata
+    question_lookup: dict[str, dict] = {}
+    if questions_path is not None:
+        questions = json.loads(questions_path.read_text())
+        question_lookup = {q["id"]: q for q in questions if "id" in q}
+        print(f"  Loaded {len(question_lookup)} questions from {questions_path}")
+    else:
+        print("  WARNING: No --questions file provided; metadata (options/answer) will be empty.")
+
+    # Derive a stable agent_name from the filename
+    agent_name = aggregated_path.stem  # e.g. "aggregated_factual"
+
+    records: list[dict[str, Any]] = []
+    for case_id, case in cases.items():
+        claims = case.get("claims", [])
+        information = _format_claims(claims, claim_format)
+
+        q = question_lookup.get(case_id)
+        if q is not None:
+            question_text = q.get("question", "")
+            options = q.get("options", {})
+            correct_answer = q.get("answer")
+            correct_answer_idx = q.get("answer_idx")
+            meta_info = q.get("meta_info")
+        else:
+            question_text = case_id
+            options = {}
+            correct_answer = None
+            correct_answer_idx = None
+            meta_info = None
+
+        records.append({
+            "case_id": case_id,
+            "agent_name": agent_name,
+            "agent_model": "llama-aggregation",
+            "agent_context": question_text,
+            "principal_context": question_text,
+            "information": information,
+            "dataset_type": "usmle",
+            "options": options,
+            "correct_answer": correct_answer,
+            "correct_answer_idx": correct_answer_idx,
+            "meta_info": meta_info,
+            "agent_task": None,
+            "agent_objective": None,
+        })
+
+    return records
+
+
+def _format_claims(claims: list[dict[str, Any]], fmt: str) -> str:
+    """Join a list of claim dicts into a single information string."""
+    lines: list[str] = []
+    for i, c in enumerate(claims, start=1):
+        text = c.get("claim", "").strip()
+        if not text:
+            continue
+        if fmt == "numbered":
+            lines.append(f"{i}. {text}")
+        elif fmt == "bullets":
+            lines.append(f"- {text}")
+        else:
+            lines.append(text)
+    return "\n".join(lines)
 
 
 def setup_client(
@@ -147,7 +254,7 @@ def run_agent_with_information(
 
 
 def run_presentation_experiments(
-    ground_truth_path: Path,
+    ground_truth_path: Path | None,
     agent_configs: list[Mapping[str, Any]],
     agent_client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
     output_path: Path,
@@ -156,12 +263,15 @@ def run_presentation_experiments(
     save_interval: int = 10,
     skip_existing: bool = True,
     max_workers: int = 8,
+    ground_truth_data: list[dict] | None = None,
+    max_cases: int | None = 100,
 ) -> list[Mapping[str, Any]]:
     """
     Run agent presentation experiments using ground truth information.
 
     Args:
-        ground_truth_path: Path to cached agent results (ground truth)
+        ground_truth_path: Path to cached agent results (ground truth).
+                           Ignored when ground_truth_data is supplied directly.
         agent_configs: List of agent configurations with framing templates
         agent_client: Client for agent API
         output_path: Path to save experiment results
@@ -170,15 +280,26 @@ def run_presentation_experiments(
         save_interval: Save results every N iterations
         skip_existing: If True and output exists, load existing results
         max_workers: Number of parallel workers
+        ground_truth_data: Pre-loaded list of ground-truth records. When provided,
+                           ground_truth_path is not read from disk (used for
+                           --aggregated-info mode).
+        max_cases: Maximum number of ground-truth cases to process. None means
+                   no limit. Default is 100.
 
     Returns:
         List of experiment results
     """
     # Load ground truth information
-    with open(ground_truth_path, "r") as f:
-        ground_truth_data = json.load(f)
+    if ground_truth_data is None:
+        with open(ground_truth_path, "r") as f:
+            ground_truth_data = json.load(f)
+        print(f"Loaded {len(ground_truth_data)} ground truth samples from {ground_truth_path}")
+    else:
+        print(f"Using {len(ground_truth_data)} pre-loaded ground truth records")
 
-    print(f"Loaded {len(ground_truth_data)} ground truth samples from {ground_truth_path}")
+    if max_cases is not None and len(ground_truth_data) > max_cases:
+        print(f"Limiting to {max_cases} cases (from {len(ground_truth_data)} total)")
+        ground_truth_data = ground_truth_data[:max_cases]
 
     expected_total = len(ground_truth_data) * len(agent_configs)
 
@@ -321,11 +442,46 @@ def main() -> None:
         description="Run agent presentation experiments with controlled information.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument(
+    # Ground-truth source: exactly one of --ground-truth or --aggregated-info is required.
+    source_group = parser.add_mutually_exclusive_group(required=True)
+    source_group.add_argument(
         "--ground-truth",
         type=str,
-        required=True,
-        help="Path to cached agent results (ground truth information)"
+        metavar="PATH",
+        help=(
+            "Path to cached agent results JSON (output of agent_inference.py or "
+            "information_aggregation.py).  Each record must have 'case_id', "
+            "'information', and USMLE metadata fields."
+        ),
+    )
+    source_group.add_argument(
+        "--aggregated-info",
+        type=str,
+        metavar="PATH",
+        help=(
+            "Path to a raw aggregated-claims JSON file "
+            "(e.g. experiments/aggregation/aggregated_factual.json). "
+            "Claims are joined as bullet points and used as the information "
+            "fed to the framing agent.  Use --questions to supply USMLE metadata."
+        ),
+    )
+    parser.add_argument(
+        "--questions",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help=(
+            "Path to the clinical questions JSON file "
+            "(e.g. experiments/questions/clinical_questions_usmle_sample.json). "
+            "Required when using --aggregated-info to supply options / answer metadata."
+        ),
+    )
+    parser.add_argument(
+        "--claim-format",
+        type=str,
+        default="bullets",
+        choices=["bullets", "numbered", "plain"],
+        help="How to join multiple claims into the information string when using --aggregated-info (default: bullets)",
     )
     parser.add_argument(
         "--agent-server",
@@ -400,6 +556,13 @@ def main() -> None:
         default=8,
         help="Number of parallel workers"
     )
+    parser.add_argument(
+        "--max-cases",
+        type=int,
+        default=100,
+        metavar="N",
+        help="Maximum number of cases to process (default: 100; use 0 for no limit)",
+    )
 
     args = parser.parse_args()
 
@@ -418,7 +581,24 @@ def main() -> None:
         "temperature": 1.0,
     }]
 
-    print(f"Ground truth: {args.ground_truth}")
+    # Resolve ground-truth source
+    if args.aggregated_info:
+        # Load directly from aggregated claims JSON, converting on the fly
+        questions_path = Path(args.questions) if args.questions else None
+        ground_truth_data = load_aggregated_claims(
+            aggregated_path=Path(args.aggregated_info),
+            questions_path=questions_path,
+            claim_format=args.claim_format,
+        )
+        # Write to a temp-style path so run_presentation_experiments can use the
+        # existing file-based interface; we pass it as a pre-loaded list instead.
+        ground_truth_path = None
+        print(f"Aggregated-info source: {args.aggregated_info} ({len(ground_truth_data)} cases)")
+    else:
+        ground_truth_path = Path(args.ground_truth)
+        ground_truth_data = None
+        print(f"Ground truth: {args.ground_truth}")
+
     print(f"Agent prompt: {args.agent_prompt}")
     print(f"Content filter: {args.content_filter}")
     print(f"Include options: {not args.no_options}")
@@ -428,7 +608,8 @@ def main() -> None:
     print("="*60)
 
     results = run_presentation_experiments(
-        ground_truth_path=Path(args.ground_truth),
+        ground_truth_path=ground_truth_path,
+        ground_truth_data=ground_truth_data,
         agent_configs=agent_configs,
         agent_client=agent_client,
         output_path=Path(args.output),
@@ -437,6 +618,7 @@ def main() -> None:
         save_interval=args.save_interval,
         skip_existing=not args.force,
         max_workers=args.max_workers,
+        max_cases=args.max_cases if args.max_cases > 0 else None,
     )
 
     print(f"\nPresentation experiments complete: {len(results)} results")
