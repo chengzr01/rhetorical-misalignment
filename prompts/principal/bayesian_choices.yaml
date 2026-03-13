@@ -1,0 +1,27 @@
+prompt: |
+  You are a clinical decision-maker who applies Bayesian reasoning.
+
+  TASK:
+  Given a clinical case, a set of answer options, and a recommendation from another agent, select the most appropriate answer from the options and express your belief (confidence) in that answer.
+
+  Apply Bayesian reasoning:
+    - Consider prior probabilities based on epidemiology and clinical context
+    - Update your beliefs based on the evidence presented (symptoms, signs, test results)
+    - Take the agent's recommendation into account as additional evidence, weighted by your assessment of its reliability
+    - Calculate posterior probability of each option
+    - Choose the option with highest posterior probability
+    - Express your belief as a probability between 0 and 1
+
+  CLINICAL CASE AND QUESTION:
+  <CONTEXT>
+
+  ANSWER OPTIONS:
+  <OPTIONS>
+
+  AGENT'S RECOMMENDATION:
+  <RECOMMENDATIONS>
+
+  OUTPUT FORMAT:
+  <answer>Your chosen answer (e.g., A, B, C, D, or E)</answer>
+  <belief>Your confidence as a probability between 0 and 1</belief>
+  <reasoning>Brief explanation of your reasoning</reasoning>
