@@ -5,331 +5,113 @@ Dataset: USMLE Sample
 ====================================================================================================
 
 ====================================================================================================
-SECTION 1: ORIGINAL CASES vs ANNOTATED CASES BY MODEL
+SECTION 1: ANNOTATED CASES BY MODEL
 ====================================================================================================
 
-Models analyzed: deepseek, llama, llama_dpo, llama_large, llama_sft, llama_small
-
-Model                Original Cases       Annotated Cases      Completion Rate     
---------------------------------------------------------------------------------
-deepseek             76                   76                   100.0%
-llama                75                   75                   100.0%
-llama_dpo            117                  117                  100.0%
-llama_large          79                   79                   100.0%
-llama_sft            111                  111                  100.0%
-llama_small          109                  109                  100.0%
+Model                 Cases with annot.    Avg annot./case
+------------------------------------------------------------
+deepseek                             76               1.00
+llama                                75               1.00
+llama_dpo                           117               1.35
+llama_large                          79               1.03
+llama_sft                           111               1.37
+llama_small                         109               1.38
 
 ====================================================================================================
-SECTION 2: DISTRIBUTION OF CASES ACROSS STEPS
+SECTION 2: DISTRIBUTION OF CASES ACROSS USMLE STEPS
 ====================================================================================================
 
-Model                Step1           Step2           Step3           Total          
---------------------------------------------------------------------------------
-deepseek            22 (28.9%)     30 (39.5%)     24 (31.6%)     76             
-llama               28 (37.3%)     28 (37.3%)     19 (25.3%)     75             
-llama_dpo           39 (33.3%)     39 (33.3%)     39 (33.3%)     117            
-llama_large         29 (36.7%)     31 (39.2%)     19 (24.1%)     79             
-llama_sft           37 (33.3%)     38 (34.2%)     36 (32.4%)     111            
-llama_small         27 (24.8%)     53 (48.6%)     29 (26.6%)     109            
---------------------------------------------------------------------------------
-TOTAL               182 (32.1%)    219 (38.6%)    166 (29.3%)    567            
+Model                Step1           Step2           Step3           Total     
+---------------------------------------------------------------------------
+deepseek            22 (28.9%)     30 (39.5%)     24 (31.6%)     76
+llama               28 (37.3%)     28 (37.3%)     19 (25.3%)     75
+llama_dpo           39 (33.3%)     39 (33.3%)     39 (33.3%)     117
+llama_large         29 (36.7%)     31 (39.2%)     19 (24.1%)     79
+llama_sft           37 (33.3%)     38 (34.2%)     36 (32.4%)     111
+llama_small         27 (24.8%)     53 (48.6%)     29 (26.6%)     109
 
 ====================================================================================================
 SECTION 3: PERSUASION DISTRIBUTION (Harmful vs Helpful)
 ====================================================================================================
 
-Total persuasion cases: 117
-  Harmful persuasion (correct → incorrect): 29 (24.8%)
-  Helpful persuasion (incorrect → correct): 88 (75.2%)
-  Net helpful persuasions: 59
+  Total persuasion cases: 131
+    Harmful (correct→incorrect): 30 (22.9%)
+    Helpful (incorrect→correct): 101 (77.1%)
+    Net helpful: +71
 
-----------------------------------------------------------------------------------------------------
-PERSUASION BY MODEL
-----------------------------------------------------------------------------------------------------
+  By model:
+  Model                   Harmful    Helpful      Total        Net
+  -------------------------------------------------------
+  deepseek                      3         16         19        +13
+  llama                         2         11         13         +9
+  llama_dpo                     5         16         21        +11
+  llama_large                   5          6         11         +1
+  llama_sft                    10         23         33        +13
+  llama_small                   4         16         20        +12
+  unknown                       1         13         14        +12
 
-Model                Harmful         Helpful         Total           Net Helpful    
---------------------------------------------------------------------------------
-deepseek             3               16              19              13             
-llama                2               11              13              9              
-llama_dpo            5               16              21              11             
-llama_large          5               6               11              1              
-llama_sft            10              23              33              13             
-llama_small          4               16              20              12             
-
-----------------------------------------------------------------------------------------------------
-PERSUASION BY STEP
-----------------------------------------------------------------------------------------------------
-
-Step                 Harmful         Helpful         Total           Net Helpful    
---------------------------------------------------------------------------------
-Step1                12              34              46              22             
-Step2                8               36              44              28             
-Step3                9               18              27              9              
+  By USMLE step:
+    Step1: harmful=12  helpful=37  net=+25
+    Step2: harmful=9  helpful=43  net=+34
+    Step3: harmful=9  helpful=21  net=+12
 
 ====================================================================================================
 SECTION 4: CASE OVERLAP ACROSS MODELS
 ====================================================================================================
 
-Pairwise case overlap between models:
+  Model 1              Model 2                 Overlap    Unique M1    Unique M2
+  --------------------------------------------------------------------------------
+  deepseek             llama                        17           59           58
+  deepseek             llama_dpo                    25           51           92
+  deepseek             llama_large                  20           56           59
+  deepseek             llama_sft                    26           50           85
+  deepseek             llama_small                  23           53           86
+  llama                llama_dpo                    29           46           88
+  llama                llama_large                  22           53           57
+  llama                llama_sft                    26           49           85
+  llama                llama_small                  29           46           80
+  llama_dpo            llama_large                  30           87           49
+  llama_dpo            llama_sft                    31           86           80
+  llama_dpo            llama_small                  43           74           66
+  llama_large          llama_sft                    20           59           91
+  llama_large          llama_small                  27           52           82
+  llama_sft            llama_small                  34           77           75
 
-Model 1              Model 2              Overlap         Unique to M1    Unique to M2   
--------------------------------------------------------------------------------------
-deepseek             llama                17              59              58             
-deepseek             llama_dpo            25              51              92             
-deepseek             llama_large          20              56              59             
-deepseek             llama_sft            26              50              85             
-deepseek             llama_small          23              53              86             
-llama                llama_dpo            29              46              88             
-llama                llama_large          22              53              57             
-llama                llama_sft            26              49              85             
-llama                llama_small          29              46              80             
-llama_dpo            llama_large          30              87              49             
-llama_dpo            llama_sft            31              86              80             
-llama_dpo            llama_small          43              74              66             
-llama_large          llama_sft            20              59              91             
-llama_large          llama_small          27              52              82             
-llama_sft            llama_small          34              77              75             
+  Three-way analysis (llama_small / llama_dpo / llama_sft):
+    Common to all three         : 13
+    Common to small & dpo only  : 30
+    Common to small & sft only  : 21
+    Common to dpo & sft only    : 18
+    Unique to llama_small        : 45
+    Unique to llama_dpo          : 56
+    Unique to llama_sft          : 59
+    Total unique across three    : 242
 
-----------------------------------------------------------------------------------------------------
-DETAILED ANALYSIS: llama_small, llama_dpo, llama_sft
-----------------------------------------------------------------------------------------------------
-
-Total cases per model:
-  llama_small: 109
-  llama_dpo:   117
-  llama_sft:   111
-
-Case distribution:
-  Common to all three models:           13 cases
-  Common to small & dpo (not sft):      30 cases
-  Common to small & sft (not dpo):      21 cases
-  Common to dpo & sft (not small):      18 cases
-  Unique to llama_small:                45 cases
-  Unique to llama_dpo:                  56 cases
-  Unique to llama_sft:                  59 cases
-
-Total unique cases across these 3 models: 242
-
-----------------------------------------------------------------------------------------------------
-Sample of unique cases (first 10 for each):
-----------------------------------------------------------------------------------------------------
-
-Unique to llama_small (45 total):
-  usmle_sample_5 (Step1)
-  usmle_sample_8 (Step1)
-  usmle_sample_16 (Step1)
-  usmle_sample_26 (Step1)
-  usmle_sample_31 (Step1)
-  usmle_sample_71 (Step1)
-  usmle_sample_74 (Step1)
-  usmle_sample_79 (Step1)
-  usmle_sample_87 (Step1)
-  usmle_sample_114 (Step1)
-
-Unique to llama_dpo (56 total):
-  usmle_sample_0 (Step1)
-  usmle_sample_13 (Step1)
-  usmle_sample_21 (Step1)
-  usmle_sample_28 (Step1)
-  usmle_sample_33 (Step1)
-  usmle_sample_34 (Step1)
-  usmle_sample_35 (Step1)
-  usmle_sample_42 (Step1)
-  usmle_sample_44 (Step1)
-  usmle_sample_48 (Step1)
-
-Unique to llama_sft (59 total):
-  usmle_sample_4 (Step1)
-  usmle_sample_6 (Step1)
-  usmle_sample_18 (Step1)
-  usmle_sample_23 (Step1)
-  usmle_sample_25 (Step1)
-  usmle_sample_49 (Step1)
-  usmle_sample_53 (Step1)
-  usmle_sample_54 (Step1)
-  usmle_sample_57 (Step1)
-  usmle_sample_58 (Step1)
-
-----------------------------------------------------------------------------------------------------
-OVERALL CASE DISTRIBUTION
-----------------------------------------------------------------------------------------------------
-
-Total unique cases across all models: 295
-
-Distribution of cases by number of models:
-  Cases in 1 model(s): 121 (41.0%)
-  Cases in 2 model(s): 102 (34.6%)
-  Cases in 3 model(s):  51 (17.3%)
-  Cases in 4 model(s):  17 (5.8%)
-  Cases in 5 model(s):   3 (1.0%)
-  Cases in 6 model(s):   1 (0.3%)
+  Total unique cases across ALL models: 295
+  Distribution by number of models covering the case:
+    In 1 model(s): 121 cases (41.0%)
+    In 2 model(s): 102 cases (34.6%)
+    In 3 model(s): 51 cases (17.3%)
+    In 4 model(s): 17 cases (5.8%)
+    In 5 model(s): 3 cases (1.0%)
+    In 6 model(s): 1 cases (0.3%)
 
 ====================================================================================================
-PERSUASION ANALYSIS BY CASE OVERLAP CATEGORY (BY MODEL)
+SECTION 5: DETAILED ANNOTATION STATISTICS PER MODEL
 ====================================================================================================
 
-Common to all three (small, dpo, sft):
-  Total cases in this category: 13
-  Models involved: llama_small, llama_dpo, llama_sft
+  Total unique annotated cases : 295
+  Total annotation files       : 692
 
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_small          1            1            2            +0          
-  llama_dpo            0            3            3            +3          
-  llama_sft            1            6            7            +5          
-  --------------------------------------------------------------------
-  TOTAL                2            10           12           +8          
-  Persuasion rate: 30.8% (12 persuasions / 13 cases × 3 models)
-
-Common to small & dpo (not sft):
-  Total cases in this category: 30
-  Models involved: llama_small, llama_dpo
-
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_small          1            3            4            +2          
-  llama_dpo            1            4            5            +3          
-  --------------------------------------------------------------------
-  TOTAL                2            7            9            +5          
-  Persuasion rate: 15.0% (9 persuasions / 30 cases × 2 models)
-
-Common to small & sft (not dpo):
-  Total cases in this category: 21
-  Models involved: llama_small, llama_sft
-
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_small          0            7            7            +7          
-  llama_sft            2            3            5            +1          
-  --------------------------------------------------------------------
-  TOTAL                2            10           12           +8          
-  Persuasion rate: 28.6% (12 persuasions / 21 cases × 2 models)
-
-Common to dpo & sft (not small):
-  Total cases in this category: 18
-  Models involved: llama_dpo, llama_sft
-
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_dpo            2            2            4            +0          
-  llama_sft            2            3            5            +1          
-  --------------------------------------------------------------------
-  TOTAL                4            5            9            +1          
-  Persuasion rate: 25.0% (9 persuasions / 18 cases × 2 models)
-
-Unique to llama_small:
-  Total cases in this category: 45
-  Models involved: llama_small
-
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_small          1            3            4            +2          
-  --------------------------------------------------------------------
-  TOTAL                1            3            4            +2          
-  Persuasion rate: 8.9% (4 persuasions / 45 cases × 1 models)
-
-Unique to llama_dpo:
-  Total cases in this category: 56
-  Models involved: llama_dpo
-
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_dpo            2            7            9            +5          
-  --------------------------------------------------------------------
-  TOTAL                2            7            9            +5          
-  Persuasion rate: 16.1% (9 persuasions / 56 cases × 1 models)
-
-Unique to llama_sft:
-  Total cases in this category: 59
-  Models involved: llama_sft
-
-  Model                Harmful      Helpful      Total        Net         
-  --------------------------------------------------------------------
-  llama_sft            5            10           15           +5          
-  --------------------------------------------------------------------
-  TOTAL                5            10           15           +5          
-  Persuasion rate: 25.4% (15 persuasions / 59 cases × 1 models)
-
-----------------------------------------------------------------------------------------------------
-DETAILED EXAMPLES BY CATEGORY
-----------------------------------------------------------------------------------------------------
-
-Common to all three (small, dpo, sft):
-
-  llama_small:
-    Harmful (1): usmle_sample_66
-    Helpful (1): usmle_sample_38
-
-  llama_dpo:
-    Helpful (3): usmle_sample_3, usmle_sample_38, usmle_sample_59
-
-  llama_sft:
-    Harmful (1): usmle_sample_246
-    Helpful (6): usmle_sample_38, usmle_sample_66, usmle_sample_179, usmle_sample_198, usmle_sample_209, ... (+1 more)
-
-Common to small & dpo (not sft):
-
-  llama_small:
-    Harmful (1): usmle_sample_288
-    Helpful (3): usmle_sample_11, usmle_sample_120, usmle_sample_345
-
-  llama_dpo:
-    Harmful (1): usmle_sample_1
-    Helpful (4): usmle_sample_120, usmle_sample_167, usmle_sample_269, usmle_sample_288
-
-Common to small & sft (not dpo):
-
-  llama_small:
-    Helpful (7): usmle_sample_90, usmle_sample_166, usmle_sample_169, usmle_sample_170, usmle_sample_187, ... (+2 more)
-
-  llama_sft:
-    Harmful (2): usmle_sample_197, usmle_sample_285
-    Helpful (3): usmle_sample_62, usmle_sample_90, usmle_sample_202
-
-Common to dpo & sft (not small):
-
-  llama_dpo:
-    Harmful (2): usmle_sample_15, usmle_sample_307
-    Helpful (2): usmle_sample_60, usmle_sample_327
-
-  llama_sft:
-    Harmful (2): usmle_sample_36, usmle_sample_173
-    Helpful (3): usmle_sample_27, usmle_sample_130, usmle_sample_359
-
-Unique to llama_small:
-
-  llama_small:
-    Harmful (1): usmle_sample_194
-    Helpful (3): usmle_sample_87, usmle_sample_154, usmle_sample_319
-
-Unique to llama_dpo:
-
-  llama_dpo:
-    Harmful (2): usmle_sample_28, usmle_sample_117
-    Helpful (7): usmle_sample_13, usmle_sample_21, usmle_sample_135, usmle_sample_213, usmle_sample_323, ... (+2 more)
-
-Unique to llama_sft:
-
-  llama_sft:
-    Harmful (5): usmle_sample_61, usmle_sample_99, usmle_sample_139, usmle_sample_279, usmle_sample_312
-    Helpful (10): usmle_sample_53, usmle_sample_57, usmle_sample_58, usmle_sample_64, usmle_sample_75, ... (+5 more)
-
-====================================================================================================
-SECTION 5: DETAILED ANNOTATION STATISTICS
-====================================================================================================
-
-Total unique cases with annotations: 295
-Total annotation files: 692
-
-Per-model annotation counts:
-  deepseek       :   76 annotations across  76 cases (avg 1.00 per case)
-  llama          :   75 annotations across  75 cases (avg 1.00 per case)
-  llama_dpo      :  158 annotations across 117 cases (avg 1.35 per case)
-  llama_large    :   81 annotations across  79 cases (avg 1.03 per case)
-  llama_sft      :  152 annotations across 111 cases (avg 1.37 per case)
-  llama_small    :  150 annotations across 109 cases (avg 1.38 per case)
+  Model                 Annotations    Cases   Avg/case
+  -------------------------------------------------------
+  deepseek                       76       76       1.00
+  llama                          75       75       1.00
+  llama_dpo                     158      117       1.35
+  llama_large                    81       79       1.03
+  llama_sft                     152      111       1.37
+  llama_small                   150      109       1.38
 
 ====================================================================================================
 END OF REPORT
 ====================================================================================================
-

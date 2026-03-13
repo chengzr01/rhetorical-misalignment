@@ -4,76 +4,40 @@ ANNOTATION STATUS BY CASE TYPE AND MODEL
 USMLE Sample Dataset
 ==========================================================================================
 
-Case Types:
-  - Both Accept: Bayesian decision = accept AND Behavioral decision = accept
-  - Bayesian Accept, Behavioral Reject: Bayesian = accept, Behavioral = reject
-  - Bayesian Reject, Behavioral Accept: Bayesian = reject, Behavioral = accept
-  - Both Reject: Bayesian decision = reject AND Behavioral decision = reject
+Decision type combinations: accept_accept | accept_reject | reject_accept | reject_reject
 
-==========================================================================================
-MODEL: Llama-3.1-8B-Instruct (llama_small)
-==========================================================================================
-  ⚠️  No principal file found for llama_small
+  ⚠  No principal file for llama_small
 
-==========================================================================================
-MODEL: Llama-3.3-70B-Instruct (llama)
-==========================================================================================
-  ⚠️  No principal file found for llama
+  ⚠  No principal file for llama
 
-==========================================================================================
-MODEL: Llama-3.1-405B-Instruct (llama_large)
-==========================================================================================
-  ⚠️  No principal file found for llama_large
+  ⚠  No principal file for llama_large
 
-==========================================================================================
-MODEL: Llama-3.1-Tulu-3-8B-DPO (llama_dpo)
-==========================================================================================
-  ⚠️  No principal file found for llama_dpo
+  ⚠  No principal file for llama_dpo
 
-==========================================================================================
-MODEL: Llama-3.1-Tulu-3-8B-SFT (llama_sft)
-==========================================================================================
-  ⚠️  No principal file found for llama_sft
+  ⚠  No principal file for llama_sft
 
-==========================================================================================
-MODEL: DeepSeek-V3.1 (deepseek)
-==========================================================================================
-  ⚠️  No principal file found for deepseek
+  ⚠  No principal file for deepseek
 
 
 ==========================================================================================
 SUMMARY TABLE - ANNOTATION STATUS BY CASE TYPE AND MODEL
 ==========================================================================================
 
-------------------------------------------------------------------------------------------
-DECISION TYPE: Both Accept
-------------------------------------------------------------------------------------------
-Model                           Cases  Not Ann    1 Ann    2 Ann   3+ Ann   Progress
-------------------------------------------------------------------------------------------
+  DECISION TYPE: Both Accept (Bayesian ✓, Behavioral ✓)
+  Model                           Cases    0-ann    1-ann    2-ann    3+ann   Progress
+  -------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------
-DECISION TYPE: Bayes Accept, Behav Reject
-------------------------------------------------------------------------------------------
-Model                           Cases  Not Ann    1 Ann    2 Ann   3+ Ann   Progress
-------------------------------------------------------------------------------------------
+  DECISION TYPE: Bayesian Accepts, Behavioral Rejects
+  Model                           Cases    0-ann    1-ann    2-ann    3+ann   Progress
+  -------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------
-DECISION TYPE: Bayes Reject, Behav Accept
-------------------------------------------------------------------------------------------
-Model                           Cases  Not Ann    1 Ann    2 Ann   3+ Ann   Progress
-------------------------------------------------------------------------------------------
+  DECISION TYPE: Bayesian Rejects, Behavioral Accepts
+  Model                           Cases    0-ann    1-ann    2-ann    3+ann   Progress
+  -------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------
-DECISION TYPE: Both Reject
-------------------------------------------------------------------------------------------
-Model                           Cases  Not Ann    1 Ann    2 Ann   3+ Ann   Progress
-------------------------------------------------------------------------------------------
+  DECISION TYPE: Both Reject (Bayesian ✗, Behavioral ✗)
+  Model                           Cases    0-ann    1-ann    2-ann    3+ann   Progress
+  -------------------------------------------------------------------------------------
 
 ==========================================================================================
-REPORT COMPLETE
-==========================================================================================
-
-Goal: 3 annotations per case
-Legend: ✗ = 0 annotations, ◐ = 1 annotation, ◑ = 2 annotations, ✓ = 3+ annotations
-
-
+Legend: ✗=0  ◐=1  ◑=2  ✓=3+ annotations  |  Goal: 3 annotations per case

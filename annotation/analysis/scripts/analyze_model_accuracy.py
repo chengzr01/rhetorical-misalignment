@@ -11,7 +11,7 @@ import statistics
 
 
 # Test results directory
-TESTS_DIR = '../../experiments/tests'
+TESTS_DIR = '../../../experiments/tests'
 
 # Model configurations
 MODELS = [

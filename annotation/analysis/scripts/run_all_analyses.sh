@@ -39,6 +39,7 @@ echo ""
 echo "4. Collecting Persuasion Examples"
 echo "----------------------------------"
 python collect_persuasion_examples.py
+echo "✓ Results saved to: $OUTPUT_DIR/persuasion_examples.{txt,json}"
 echo ""
 
 # Analyze by case type (Bayesian vs Behavioral decisions)

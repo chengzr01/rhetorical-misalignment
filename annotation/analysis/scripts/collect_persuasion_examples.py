@@ -36,7 +36,7 @@ def load_all_annotations():
 
 def load_all_cache_files():
     """Load all agent cache files that contain questions and model analysis"""
-    cache_dir = '../../experiments/cache/usmle_sample'
+    cache_dir = '../../../experiments/agents/usmle_sample'
     cache_data = {}
 
     if not os.path.exists(cache_dir):
@@ -532,7 +532,10 @@ def main():
     print("Step 4: Generating detailed report with questions and model analyses...")
     report = generate_report(cases_dict)
 
-    output_file = 'persuasion_examples.txt'
+    output_dir = '../outputs'
+    os.makedirs(output_dir, exist_ok=True)
+
+    output_file = os.path.join(output_dir, 'persuasion_examples.txt')
     with open(output_file, 'w') as f:
         f.write(report)
 
@@ -542,7 +545,7 @@ def main():
     print("\nStep 5: Generating JSON export...")
     json_data = generate_json_export(cases_dict)
 
-    json_file = 'persuasion_examples.json'
+    json_file = os.path.join(output_dir, 'persuasion_examples.json')
     with open(json_file, 'w') as f:
         json.dump(json_data, f, indent=2)
 

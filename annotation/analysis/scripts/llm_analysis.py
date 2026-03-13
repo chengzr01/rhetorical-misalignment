@@ -46,7 +46,7 @@ except ImportError:
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 DEFAULT_MODEL = "deepseek/deepseek-v3.2"
 DEFAULT_RESULTS_DIR = '../../results/usmle_sample'
-DEFAULT_CACHE_DIR = '../../experiments/cache/usmle_sample'
+DEFAULT_CACHE_DIR = '../../../experiments/agents/usmle_sample'
 
 TARGET_MODELS = {
     'llama-small': ['llama-3.1-8b-instruct', 'meta-llama/llama-3.1-8b-instruct'],

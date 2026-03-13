@@ -25,8 +25,8 @@ from collections import defaultdict
 from pathlib import Path
 
 
-DEFAULT_CASES_DIR = '../../experiments/cases/usmle_sample'
-DEFAULT_RESULTS_DIR = '../results/usmle_sample'
+DEFAULT_CASES_DIR = '../../../experiments/principals/usmle_sample'
+DEFAULT_RESULTS_DIR = '../../results/usmle_sample'
 
 # Unified model configuration used across all modes
 MODELS = [

@@ -25,7 +25,7 @@ from collections import defaultdict
 from datetime import datetime
 
 
-DEFAULT_RESULTS_DIR = '../results/usmle_sample'
+DEFAULT_RESULTS_DIR = '../../results/usmle_sample'
 
 
 # ─── Shared utilities ─────────────────────────────────────────────────────────
