@@ -3,16 +3,16 @@
 # Inference Runner Script for Clinical Questions (Agent + Principal)
 #
 # Usage:
-#   bash scripts/run.sh [agent_model_key] [dataset_key] [inference_mode]
+#   bash scripts/run_baseline.sh [agent_model_key] [dataset_key] [inference_mode]
 #
 #   agent_model_key:  deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | qwen | mistral
 #   dataset_key:      mimiciv_demo | usmle | usmle_sample
 #   inference_mode:   agent | full        # agent = agent only, full = agent + principal (default: agent)
 #
 # Examples:
-#   bash scripts/run.sh llama usmle_sample agent
-#   bash scripts/run.sh deepseek mimiciv_demo full
-#   AGENT_SERVER=sglang PRINCIPAL_MODEL=llama-dpo bash scripts/run.sh llama-dpo usmle full
+#   bash scripts/run_baseline.sh llama usmle_sample agents
+#   bash scripts/run_baseline.sh deepseek mimiciv_demo full
+#   AGENT_SERVER=sglang PRINCIPAL_MODEL=llama-dpo bash scripts/run_baseline.sh llama-dpo usmle full
 #
 # Environment variables (optional overrides):
 #   AGENT_SERVER, PRINCIPAL_SERVER, PRINCIPAL_MODEL, MAX_WORKERS, PRINCIPAL_TYPES, FORCE_RERUN, PRINCIPAL_WORKERS, etc.
@@ -38,8 +38,9 @@ PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-openrouter}"
 MAX_WORKERS="${MAX_WORKERS:-8}"
 FORCE_RERUN="${FORCE_RERUN:-false}"
 INFERENCE_MODE="${3:-agent}"  # agent or full
-PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian behavioral}"  # Space-separated list
+PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian_choices behavioral_choices}"  # Space-separated list
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
+MAX_CASES="${MAX_CASES:-100}"               # max cases to process (0 = no limit)
 
 
 # Dataset configurations
@@ -138,6 +139,7 @@ if [ -n "$SGLANG_PORT" ]; then
         --input "${INPUT_FILE}" \
         --output "${AGENT_OUTPUT}" \
         --max-workers "${MAX_WORKERS}" \
+        --max-cases "${MAX_CASES}" \
         ${FORCE_FLAG}
 else
     python agent_inference.py \
@@ -146,6 +148,7 @@ else
         --input "${INPUT_FILE}" \
         --output "${AGENT_OUTPUT}" \
         --max-workers "${MAX_WORKERS}" \
+        --max-cases "${MAX_CASES}" \
         ${FORCE_FLAG}
 fi
 

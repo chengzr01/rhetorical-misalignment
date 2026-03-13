@@ -7,16 +7,20 @@
 #
 #   agent_model_key:    deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | qwen | mistral
 #   dataset_key:        mimiciv_demo | usmle | usmle_sample
-#   ground_truth_key:   deepseek | deepseek-llama | llama | etc. (model to use as ground truth information)
+#   ground_truth_key:   deepseek | deepseek-llama | llama | etc.  (model-generated info)
+#                       factual_agg | unfactual_agg               (aggregated llama claims)
 #   inference_mode:     presentation | full  # presentation = agent presentation only, full = presentation + principal (default: presentation)
 #
 # Examples:
 #   bash scripts/run_framing.sh llama usmle_sample deepseek presentation
 #   bash scripts/run_framing.sh llama-dpo usmle_sample deepseek full
+#   bash scripts/run_framing.sh llama usmle_sample factual_agg presentation
+#   bash scripts/run_framing.sh llama usmle_sample unfactual_agg full
+#   CLAIM_FORMAT=numbered bash scripts/run_framing.sh llama usmle_sample factual_agg full
 #   AGENT_SERVER=sglang PRINCIPAL_MODEL=llama-dpo bash scripts/run_framing.sh llama-dpo usmle deepseek full
 #
 # Environment variables (optional overrides):
-#   AGENT_SERVER, PRINCIPAL_SERVER, PRINCIPAL_MODEL, MAX_WORKERS, PRINCIPAL_TYPES, FORCE_RERUN, PRINCIPAL_WORKERS, CONTENT_FILTER, etc.
+#   AGENT_SERVER, PRINCIPAL_SERVER, PRINCIPAL_MODEL, MAX_WORKERS, PRINCIPAL_TYPES, FORCE_RERUN, PRINCIPAL_WORKERS, CONTENT_FILTER, CLAIM_FORMAT, etc.
 #   (See below for all configurables.)
 #
 # This script configures and runs agent presentation (using pre-generated information as ground truth) and optionally principal inference.
@@ -43,6 +47,8 @@ PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian behavioral}"  # Space-separated lis
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
 CONTENT_FILTER="${CONTENT_FILTER:-full}"  # full, key_points, diagnosis_only, treatment_only, facts_only
 INCLUDE_OPTIONS="${INCLUDE_OPTIONS:-true}"  # true or false
+CLAIM_FORMAT="${CLAIM_FORMAT:-bullets}"     # bullets | numbered | plain  (aggregated-info mode only)
+MAX_CASES="${MAX_CASES:-100}"               # max cases to process (0 = no limit)
 
 
 # Dataset configurations
@@ -50,6 +56,12 @@ declare -A DATASET_MAP=(
     ["mimiciv_demo"]="experiments/questions/clinical_questions_mimiciv_demo.json"
     ["usmle"]="experiments/questions/clinical_questions_usmle.json"
     ["usmle_sample"]="experiments/questions/clinical_questions_usmle_sample.json"
+)
+
+# Aggregated-info ground truth sources (bypass MODEL_MAP lookup)
+declare -A AGGREGATED_MAP=(
+    ["factual_agg"]="experiments/aggregation/aggregated_factual.json"
+    ["unfactual_agg"]="experiments/aggregation/aggregated_unfactual.json"
 )
 
 # Parse arguments
@@ -72,12 +84,19 @@ if [ -z "$AGENT_MODEL" ]; then
     exit 1
 fi
 
-# Resolve ground truth model
-GROUND_TRUTH_MODEL="${MODEL_MAP[$GROUND_TRUTH_KEY]}"
-if [ -z "$GROUND_TRUTH_MODEL" ]; then
-    echo -e "${RED}Error: Unknown ground truth model '${GROUND_TRUTH_KEY}'${NC}"
-    echo "Available models: ${!MODEL_MAP[@]}"
-    exit 1
+# Resolve ground truth source: aggregated claims or model-generated
+IS_AGGREGATED=false
+if [ -n "${AGGREGATED_MAP[$GROUND_TRUTH_KEY]+x}" ]; then
+    IS_AGGREGATED=true
+    GROUND_TRUTH_MODEL="(aggregated llama claims)"
+else
+    GROUND_TRUTH_MODEL="${MODEL_MAP[$GROUND_TRUTH_KEY]}"
+    if [ -z "$GROUND_TRUTH_MODEL" ]; then
+        echo -e "${RED}Error: Unknown ground truth key '${GROUND_TRUTH_KEY}'${NC}"
+        echo "Model keys: ${!MODEL_MAP[@]}"
+        echo "Aggregated keys: ${!AGGREGATED_MAP[@]}"
+        exit 1
+    fi
 fi
 
 # Configure principal model (use deepseek by default, or override)
@@ -107,14 +126,23 @@ if [ -z "$INPUT_FILE" ]; then
 fi
 
 # Set ground truth path and output path
-GROUND_TRUTH_PATH="experiments/agents/${DATASET_KEY}/agent_${GROUND_TRUTH_KEY}.json"
+if [ "$IS_AGGREGATED" = "true" ]; then
+    GROUND_TRUTH_PATH="${AGGREGATED_MAP[$GROUND_TRUTH_KEY]}"
+    QUESTIONS_FILE="${DATASET_MAP[$DATASET_KEY]}"
+else
+    GROUND_TRUTH_PATH="experiments/agents/${DATASET_KEY}/agent_${GROUND_TRUTH_KEY}.json"
+fi
 AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/framing_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
 
 # Check if ground truth file exists
 if [ ! -f "$GROUND_TRUTH_PATH" ]; then
     echo -e "${RED}Error: Ground truth file not found: ${GROUND_TRUTH_PATH}${NC}"
-    echo -e "${YELLOW}Please run agent inference first to generate ground truth:${NC}"
-    echo -e "${YELLOW}  bash scripts/run.sh ${GROUND_TRUTH_KEY} ${DATASET_KEY} agent${NC}"
+    if [ "$IS_AGGREGATED" = "true" ]; then
+        echo -e "${YELLOW}Please run experiments/aggregate_information.py first to generate the aggregated claims file.${NC}"
+    else
+        echo -e "${YELLOW}Please run agent inference first to generate ground truth:${NC}"
+        echo -e "${YELLOW}  bash scripts/run_baseline.sh ${GROUND_TRUTH_KEY} ${DATASET_KEY} agent${NC}"
+    fi
     exit 1
 fi
 
@@ -130,6 +158,9 @@ if [ -n "$SGLANG_PORT" ]; then
 fi
 echo -e "Ground Truth:     ${GREEN}${GROUND_TRUTH_KEY}${NC} (${GROUND_TRUTH_MODEL})"
 echo -e "Ground Truth Path:${YELLOW}${GROUND_TRUTH_PATH}${NC}"
+if [ "$IS_AGGREGATED" = "true" ]; then
+    echo -e "Claim Format:     ${GREEN}${CLAIM_FORMAT}${NC}"
+fi
 echo -e "Dataset:          ${GREEN}${DATASET_KEY}${NC} (${INPUT_FILE})"
 echo -e "Content Filter:   ${GREEN}${CONTENT_FILTER}${NC}"
 echo -e "Include Options:  ${GREEN}${INCLUDE_OPTIONS}${NC}"
@@ -161,7 +192,26 @@ if [ "$INCLUDE_OPTIONS" = "false" ]; then
     OPTIONS_FLAG="--no-options"
 fi
 
-if [ -n "$SGLANG_PORT" ]; then
+if [ "$IS_AGGREGATED" = "true" ]; then
+    # Aggregated-info mode: pass raw claims JSON + questions file directly
+    SGLANG_FLAG=""
+    if [ -n "$SGLANG_PORT" ]; then
+        SGLANG_FLAG="--agent-sglang-port ${SGLANG_PORT}"
+    fi
+    python agent_presentation.py \
+        --aggregated-info "${GROUND_TRUTH_PATH}" \
+        --questions       "${QUESTIONS_FILE}" \
+        --claim-format    "${CLAIM_FORMAT}" \
+        --agent-server    "${AGENT_SERVER}" \
+        --agent-model     "${AGENT_MODEL}" \
+        --content-filter  "${CONTENT_FILTER}" \
+        --output          "${AGENT_OUTPUT}" \
+        --max-workers     "${MAX_WORKERS}" \
+        --max-cases       "${MAX_CASES}" \
+        ${SGLANG_FLAG} \
+        ${OPTIONS_FLAG} \
+        ${FORCE_FLAG}
+elif [ -n "$SGLANG_PORT" ]; then
     python agent_presentation.py \
         --ground-truth "${GROUND_TRUTH_PATH}" \
         --agent-server "${AGENT_SERVER}" \
@@ -170,6 +220,7 @@ if [ -n "$SGLANG_PORT" ]; then
         --content-filter "${CONTENT_FILTER}" \
         --output "${AGENT_OUTPUT}" \
         --max-workers "${MAX_WORKERS}" \
+        --max-cases "${MAX_CASES}" \
         ${OPTIONS_FLAG} \
         ${FORCE_FLAG}
 else
@@ -180,6 +231,7 @@ else
         --content-filter "${CONTENT_FILTER}" \
         --output "${AGENT_OUTPUT}" \
         --max-workers "${MAX_WORKERS}" \
+        --max-cases "${MAX_CASES}" \
         ${OPTIONS_FLAG} \
         ${FORCE_FLAG}
 fi
