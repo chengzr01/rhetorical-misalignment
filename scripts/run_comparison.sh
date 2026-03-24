@@ -49,7 +49,7 @@ NC='\033[0m' # No Color
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-openrouter}"
 MAX_WORKERS="${MAX_WORKERS:-8}"
 FORCE_RERUN="${FORCE_RERUN:-false}"
-PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian behavioral}"
+PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian_choices behavioral_choices}"
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
 CLAIM_VARIANTS="${CLAIM_VARIANTS:-factual unfactual all_claims}"
 
