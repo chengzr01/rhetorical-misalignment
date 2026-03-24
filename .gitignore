@@ -8,8 +8,8 @@ datasets/pmc/raw/*
 datasets/pmc/processed/*
 datasets/pmc/test/*
 
-experiments/input/*
-experiments/output/*
+experiments/agents/*
+experiments/principals/*
 
 logs/
 # Python
