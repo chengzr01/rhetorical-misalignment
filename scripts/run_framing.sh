@@ -48,7 +48,7 @@ PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
 CONTENT_FILTER="${CONTENT_FILTER:-full}"  # full, key_points, diagnosis_only, treatment_only, facts_only
 INCLUDE_OPTIONS="${INCLUDE_OPTIONS:-true}"  # true or false
 CLAIM_FORMAT="${CLAIM_FORMAT:-bullets}"     # bullets | numbered | plain  (aggregated-info mode only)
-MAX_CASES="${MAX_CASES:-100}"               # max cases to process (0 = no limit)
+MAX_CASES="${MAX_CASES:-0}"               # max cases to process (0 = no limit)
 
 
 # Dataset configurations
