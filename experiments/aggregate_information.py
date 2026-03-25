@@ -2,19 +2,22 @@
 """Aggregate factualness analysis results from multiple agents on the same cases.
 
 For each case that appears across the specified agents, combine the claims from
-all agents, with an option to exclude unfactual claims.
+all agents. Use --labels to control which claim labels are included (default: factual).
+
+Output is saved to aggregation/aggregated_<labels>.json by default.
 
 Usage examples:
-  # Aggregate llama variants, keep all claims
+  # Aggregate llama variants, keep only factual claims (default)
   python aggregate_information.py --agents llama-small llama-dpo llama-sft
 
-  # Aggregate and drop unfactual claims, only cases present in ALL agents
+  # Keep factual and uncertain claims, only cases present in ALL agents
   python aggregate_information.py --agents llama-small llama-dpo llama-sft \\
-      --exclude-unfactual --require-all --output aggregated.json
+      --labels factual uncertain --require-all
 
-  # Aggregate all available agents, save output
+  # Keep all claim labels and save to a custom path
   python aggregate_information.py --agents llama-small llama-dpo llama-sft gpt \\
-      --output information/aggregated_llama_variants.json
+      --labels factual unfactual uncertain \\
+      --output aggregation/aggregated_llama_variants.json
 """
 
 import argparse
