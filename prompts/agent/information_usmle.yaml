@@ -1,0 +1,17 @@
+prompt: |
+  You are a clinical decision support AI assistant helping physicians make treatment decisions.
+
+  CLINICAL QUESTION:
+  <CONTEXT>
+
+  AVAILABLE CLINICAL CLAIMS:
+  <CLAIMS>
+
+  TASK:
+  Select the claims most relevant to answering the clinical question. Think step by step about
+  which claims are most clinically relevant before making your selection. Then output your final
+  answer as a JSON array of the claim numbers you want to include.
+
+  Format your response as:
+  <reasoning>Your reasoning about which claims are relevant and why.</reasoning>
+  <answer>[1, 3, 5]</answer>

@@ -1,280 +1,232 @@
 #!/usr/bin/env python3
-"""Analyze principal model decision accuracy on USMLE questions.
+"""Analyze principal decision accuracy and shifts across baseline, framing, and information conditions.
 
-Compares the principal's final answer to the correct answer for each case,
-broken down by:
-  - agent model  (source of information shown to the principal)
-  - condition    (choices | all_claims | factual | unfactual | framing)
-  - prompt_type  (bayesian | behavioral)
+Produces two tables:
+  1. Decision accuracy per agent × condition × prompt type
+  2. Decision shifts vs baseline per agent × condition × prompt type
 
-For *_choices files the decision field already contains the answer letter.
-For all other files the answer letter is extracted from raw_principal_response
-via a set of regex patterns.
+Usage:
+    python experiments/analyze_principal_accuracy.py
+    python experiments/analyze_principal_accuracy.py --principals-dir experiments/principals/usmle_sample
+    python experiments/analyze_principal_accuracy.py --output experiments/analysis/accuracy_shifts.json
+    python experiments/analyze_principal_accuracy.py --detail
 """
+
+from __future__ import annotations
 
 import argparse
 import json
-import os
-import re
 import sys
+from collections import defaultdict
 from pathlib import Path
-from typing import Optional
 
-# ── Paths ────────────────────────────────────────────────────────────────────
+# ── Paths ─────────────────────────────────────────────────────────────────────
 
-_SCRIPT_DIR = Path(__file__).parent
+_SCRIPT_DIR   = Path(__file__).parent
 PRINCIPALS_DIR = str(_SCRIPT_DIR / "principals/usmle_sample")
+DEFAULT_OUTPUT = str(_SCRIPT_DIR / "analysis/accuracy_shifts.json")
+
+AGENTS      = ["claude", "deepseek", "gemini", "gpt", "llama", "llama-dpo", "llama-sft", "llama-small"]
+CONDITIONS  = ["baseline", "framing", "information"]
+PROMPT_TYPES = ["bayesian", "behavioral"]
+
+_FILE_PATTERNS = {
+    "baseline":    "principal_{a}_{pt}_choices.json",
+    "framing":     "principal_framing_{a}_gt_factual_agg_{pt}_choices.json",
+    "information": "principal_information_{a}_gt_factual_agg_{pt}_choices.json",
+}
 
 
-# ── Answer extraction ─────────────────────────────────────────────────────────
+# ── Data loading ──────────────────────────────────────────────────────────────
 
-def extract_letter_from_raw(raw: str) -> Optional[str]:
-    """Extract the final answer letter from a raw principal response.
-
-    Tries several patterns in order of specificity.  Returns the last
-    match of the highest-priority pattern found, or None if nothing matches.
-    """
-    if not raw:
+def load_records(principals_dir: str, agent: str, condition: str, prompt_type: str) -> dict[str, dict] | None:
+    pattern = _FILE_PATTERNS[condition]
+    path = Path(principals_dir) / pattern.format(a=agent, pt=prompt_type)
+    if not path.exists():
         return None
+    entries = json.loads(path.read_text())
+    return {e["case_id"]: e for e in entries}
 
-    # 1. Explicit XML tag  <answer>X</answer>
-    m = re.findall(r"<answer>\s*([A-F])\s*</answer>", raw, re.IGNORECASE)
-    if m:
-        return m[-1].upper()
 
-    # 2. "(Option X)" or "(option X)"
-    m = re.findall(r"\(option\s+([A-F])\)", raw, re.IGNORECASE)
-    if m:
-        return m[-1].upper()
+def load_all(principals_dir: str) -> dict:
+    """Return data[agent][condition][prompt_type] = {case_id: entry} | None."""
+    data: dict = {}
+    for agent in AGENTS:
+        data[agent] = {}
+        for cond in CONDITIONS:
+            data[agent][cond] = {}
+            for pt in PROMPT_TYPES:
+                data[agent][cond][pt] = load_records(principals_dir, agent, cond, pt)
+    return data
 
-    # 3. "correct answer is (…) X" / "answer is X" / "Answer: X"
-    m = re.findall(
-        r"(?:correct\s+answer|answer)\s*(?:is|:)\s*(?:\w+\s+){0,6}([A-F])\b",
-        raw, re.IGNORECASE,
+
+# ── Accuracy ──────────────────────────────────────────────────────────────────
+
+def compute_accuracy(records: dict[str, dict] | None) -> dict | None:
+    if records is None:
+        return None
+    total   = len(records)
+    correct = sum(
+        1 for e in records.values()
+        if (e.get("decision") or "").strip().upper() ==
+           (e.get("correct_answer_idx") or "").strip().upper()
     )
-    if m:
-        return m[-1].upper()
-
-    # 4. Loose "option X" anywhere – last occurrence
-    m = re.findall(r"\boption\s+([A-F])\b", raw, re.IGNORECASE)
-    if m:
-        return m[-1].upper()
-
-    return None
+    return {"correct": correct, "total": total, "accuracy": correct / total if total else None}
 
 
-# ── File name parsing ─────────────────────────────────────────────────────────
+# ── Decision shifts ───────────────────────────────────────────────────────────
 
-_KNOWN_CONDITIONS = ["all_claims", "unfactual", "factual", "choices"]
-_KNOWN_PROMPTS    = ["bayesian", "behavioral"]
-
-
-def parse_filename(filepath: str) -> tuple[str, str, str]:
-    """Return (agent, condition, prompt_type) inferred from the file name.
-
-    Naming conventions
-    ------------------
-    Choices   : principal_[agent]_[prompt_type]_choices.json
-    Others    : principal_[agent]_[condition]_[prompt_type].json
-    Framing   : principal_framing_[agent]_gt_factual_agg_[prompt_type].json
-
-    Examples
-    --------
-    principal_claude_bayesian_choices.json          -> (claude,      choices,    bayesian)
-    principal_claude_all_claims_bayesian.json       -> (claude,      all_claims, bayesian)
-    principal_claude_unfactual_behavioral.json      -> (claude,      unfactual,  behavioral)
-    principal_framing_claude_gt_factual_agg_*.json  -> (claude,      framing,    *)
-    """
-    stem = Path(filepath).stem  # strip directory + extension
-    # Remove leading "principal_"
-    if stem.startswith("principal_"):
-        stem = stem[len("principal_"):]
-
-    # ── framing: starts with "framing_" ──────────────────────────────────────
-    if stem.startswith("framing_"):
-        inner = stem[len("framing_"):]       # e.g. claude_gt_factual_agg_bayesian
-        prompt_type = "unknown"
-        for pt in _KNOWN_PROMPTS:
-            if inner.endswith(f"_{pt}"):
-                prompt_type = pt
-                inner = inner[: -(len(pt) + 1)]
-                break
-        m = re.match(r"^(.+?)_gt_", inner)   # e.g. claude_gt_factual_agg
-        agent = m.group(1) if m else inner.split("_")[0]
-        return agent, "framing", prompt_type
-
-    # ── choices: [agent]_[prompt_type]_choices ───────────────────────────────
-    if stem.endswith("_choices"):
-        inner = stem[: -len("_choices")]     # e.g. claude_bayesian
-        for pt in _KNOWN_PROMPTS:
-            if inner.endswith(f"_{pt}"):
-                agent = inner[: -(len(pt) + 1)]
-                return agent, "choices", pt
-        return inner, "choices", "unknown"
-
-    # ── all_claims / factual / unfactual: [agent]_[condition]_[prompt_type] ──
-    prompt_type = "unknown"
-    for pt in _KNOWN_PROMPTS:
-        if stem.endswith(f"_{pt}"):
-            prompt_type = pt
-            stem = stem[: -(len(pt) + 1)]
-            break
-
-    for cond in ["all_claims", "unfactual", "factual"]:
-        if stem.endswith(f"_{cond}"):
-            agent = stem[: -(len(cond) + 1)]
-            return agent, cond, prompt_type
-
-    # fallback
-    return stem, "unknown", prompt_type
-
-
-# ── Accuracy computation ──────────────────────────────────────────────────────
-
-def compute_accuracy(entries: list, is_choices: bool) -> dict:
-    """Return accuracy statistics for a list of principal entries."""
-    total     = len(entries)
-    correct   = 0
-    extracted = 0
-    skipped   = 0
-
-    for entry in entries:
-        gt = (entry.get("correct_answer_idx") or "").strip().upper()
-        if not gt:
-            skipped += 1
-            continue
-
-        if is_choices:
-            decision = (entry.get("decision") or "").strip().upper()
-        else:
-            decision = extract_letter_from_raw(entry.get("raw_principal_response", ""))
-            if decision is None:
-                skipped += 1
-                continue
-            extracted += 1
-
-        if decision == gt:
-            correct += 1
-
-    evaluated = total - skipped
-    accuracy  = correct / evaluated if evaluated > 0 else None
-
+def compute_shifts(
+    baseline: dict[str, dict] | None,
+    experiment: dict[str, dict] | None,
+) -> dict | None:
+    if baseline is None or experiment is None:
+        return None
+    common = set(baseline) & set(experiment)
+    shifted = [
+        (cid, baseline[cid]["decision"], experiment[cid]["decision"])
+        for cid in common
+        if baseline[cid]["decision"] != experiment[cid]["decision"]
+    ]
+    plus_correct = sum(
+        1 for cid, _, ed in shifted
+        if ed == (experiment[cid].get("correct_answer_idx") or "").strip().upper()
+    )
+    minus_correct = sum(
+        1 for cid, bd, _ in shifted
+        if bd == (baseline[cid].get("correct_answer_idx") or "").strip().upper()
+    )
+    net     = plus_correct - minus_correct
+    n_cases = len(common)
     return {
-        "total":     total,
-        "evaluated": evaluated,
-        "correct":   correct,
-        "skipped":   skipped,
-        "accuracy":  accuracy,
+        "n_shifted":     len(shifted),
+        "n_cases":       n_cases,
+        "shift_rate":    len(shifted) / n_cases if n_cases else None,
+        "plus_correct":  plus_correct,
+        "minus_correct": minus_correct,
+        "net":           net,
+        "net_acc_delta": net / n_cases if n_cases else None,
     }
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# ── Build results ─────────────────────────────────────────────────────────────
 
-def load_and_analyze(principals_dir: str) -> list[dict]:
-    files = sorted(Path(principals_dir).glob("principal_*.json"))
-    if not files:
-        print(f"[ERROR] No principal JSON files found in {principals_dir}", file=sys.stderr)
-        sys.exit(1)
+def build_results(data: dict) -> dict:
+    accuracy: dict = {}
+    shifts:   dict = {}
 
-    results = []
-    for filepath in files:
-        agent, condition, prompt_type = parse_filename(str(filepath))
-        is_choices = condition == "choices"
+    for agent in AGENTS:
+        accuracy[agent] = {}
+        shifts[agent]   = {}
+        for cond in CONDITIONS:
+            accuracy[agent][cond] = {}
+            for pt in PROMPT_TYPES:
+                accuracy[agent][cond][pt] = compute_accuracy(data[agent][cond][pt])
 
-        with open(filepath) as f:
-            entries = json.load(f)
+        for cond in ["framing", "information"]:
+            shifts[agent][cond] = {}
+            for pt in PROMPT_TYPES:
+                shifts[agent][cond][pt] = compute_shifts(
+                    data[agent]["baseline"][pt],
+                    data[agent][cond][pt],
+                )
 
-        metrics = compute_accuracy(entries, is_choices)
-        results.append({
-            "agent":      agent,
-            "condition":  condition,
-            "prompt_type": prompt_type,
-            "file":       filepath.name,
-            **metrics,
-        })
-
-    return results
+    return {"accuracy": accuracy, "shifts": shifts}
 
 
-def print_detail_table(results: list[dict]) -> None:
-    """Print per-file accuracy table."""
-    results = sorted(results, key=lambda r: (r["condition"], r["agent"], r["prompt_type"]))
+# ── Printing ──────────────────────────────────────────────────────────────────
 
-    hdr = f"{'Agent':<16} {'Condition':<14} {'Prompt':<12} {'Total':>7} {'Eval':>7} {'Correct':>8} {'Accuracy':>10} {'Skipped':>8}"
-    print("\n=== Per-File Accuracy ===")
-    print(hdr)
-    print("-" * len(hdr))
-    for r in results:
-        acc = f"{r['accuracy']:.3f}" if r["accuracy"] is not None else "N/A"
-        print(
-            f"{r['agent']:<16} {r['condition']:<14} {r['prompt_type']:<12}"
-            f" {r['total']:>7} {r['evaluated']:>7} {r['correct']:>8} {acc:>10} {r['skipped']:>8}"
-        )
+def _fmt_acc(v: dict | None) -> str:
+    if v is None:
+        return "  N/A  "
+    return f"{v['accuracy']:.3f}"
+
+def _fmt_delta(base: dict | None, exp: dict | None) -> str:
+    if base is None or exp is None or base["accuracy"] is None or exp["accuracy"] is None:
+        return "  N/A  "
+    return f"{exp['accuracy'] - base['accuracy']:+.3f}"
 
 
-def print_summary_by_condition(results: list[dict]) -> None:
-    """Print accuracy aggregated by (condition, prompt_type)."""
-    from collections import defaultdict
+def print_accuracy_table(results: dict, detail: bool = False) -> None:
+    acc = results["accuracy"]
 
-    groups: dict[tuple, dict] = defaultdict(lambda: {"total": 0, "evaluated": 0, "correct": 0})
-    for r in results:
-        key = (r["condition"], r["prompt_type"])
-        groups[key]["total"]     += r["total"]
-        groups[key]["evaluated"] += r["evaluated"]
-        groups[key]["correct"]   += r["correct"]
+    print("=== TABLE 1: Decision Accuracy ===\n")
+    header = f"{'Agent':<12}  {'base_bay':>8}  {'base_beh':>8}  {'fram_bay':>8}  {'fram_beh':>8}  {'info_bay':>8}  {'info_beh':>8}"
+    print(header)
+    print("-" * len(header))
+    for agent in AGENTS:
+        row = f"{agent:<12}"
+        for cond in CONDITIONS:
+            for pt in PROMPT_TYPES:
+                row += f"  {_fmt_acc(acc[agent][cond][pt]):>8}"
+        print(row)
 
-    print("\n=== Summary by Condition × Prompt Type ===")
-    hdr = f"{'Condition':<14} {'Prompt':<12} {'Eval':>7} {'Correct':>8} {'Accuracy':>10}"
-    print(hdr)
-    print("-" * len(hdr))
-    for key in sorted(groups):
-        cond, pt = key
-        g = groups[key]
-        acc = f"{g['correct']/g['evaluated']:.3f}" if g["evaluated"] > 0 else "N/A"
-        print(f"{cond:<14} {pt:<12} {g['evaluated']:>7} {g['correct']:>8} {acc:>10}")
+    print("\n--- Deltas vs Baseline ---\n")
+    header2 = f"{'Agent':<12}  {'fram_bay':>8}  {'fram_beh':>8}  {'info_bay':>8}  {'info_beh':>8}"
+    print(header2)
+    print("-" * len(header2))
+    for agent in AGENTS:
+        row = f"{agent:<12}"
+        for cond in ["framing", "information"]:
+            for pt in PROMPT_TYPES:
+                row += f"  {_fmt_delta(acc[agent]['baseline'][pt], acc[agent][cond][pt]):>8}"
+        print(row)
+
+    if detail:
+        print("\n--- Per-Condition Averages (across agents with data) ---\n")
+        for cond in CONDITIONS:
+            for pt in PROMPT_TYPES:
+                vals = [acc[a][cond][pt]["accuracy"] for a in AGENTS if acc[a][cond][pt] is not None]
+                if vals:
+                    print(f"  {cond:<12} {pt:<10}  mean={sum(vals)/len(vals):.3f}  n={len(vals)}")
 
 
-def print_summary_by_agent(results: list[dict]) -> None:
-    """Print accuracy aggregated by (agent, condition)."""
-    from collections import defaultdict
+def print_shift_table(results: dict) -> None:
+    sh = results["shifts"]
 
-    groups: dict[tuple, dict] = defaultdict(lambda: {"total": 0, "evaluated": 0, "correct": 0})
-    for r in results:
-        key = (r["agent"], r["condition"])
-        groups[key]["total"]     += r["total"]
-        groups[key]["evaluated"] += r["evaluated"]
-        groups[key]["correct"]   += r["correct"]
+    print("\n=== TABLE 2: Decision Shifts vs Baseline ===")
+    hdr = f"{'Agent':<12}  {'Cond':<12}  {'Shifted':>7}  {'Cases':>5}  {'Shift%':>6}  {'+Corr':>6}  {'-Corr':>6}  {'Net':>4}  {'NetAcc':>7}"
+    sep = "-" * len(hdr)
 
-    print("\n=== Summary by Agent × Condition (both prompt types combined) ===")
-    hdr = f"{'Agent':<16} {'Condition':<14} {'Eval':>7} {'Correct':>8} {'Accuracy':>10}"
-    print(hdr)
-    print("-" * len(hdr))
-    for key in sorted(groups):
-        agent, cond = key
-        g = groups[key]
-        acc = f"{g['correct']/g['evaluated']:.3f}" if g["evaluated"] > 0 else "N/A"
-        print(f"{agent:<16} {cond:<14} {g['evaluated']:>7} {g['correct']:>8} {acc:>10}")
+    for pt_label, pt in [("BAYESIAN", "bayesian"), ("BEHAVIORAL", "behavioral")]:
+        print(f"\n--- {pt_label} ---")
+        print(hdr)
+        print(sep)
+        for agent in AGENTS:
+            for cond in ["framing", "information"]:
+                s = sh[agent][cond][pt]
+                if s is None:
+                    print(f"{agent:<12}  {cond:<12}  N/A")
+                    continue
+                net_sign = "+" if s["net"] >= 0 else ""
+                print(
+                    f"{agent:<12}  {cond:<12}"
+                    f"  {s['n_shifted']:>7}  {s['n_cases']:>5}"
+                    f"  {s['shift_rate']:>6.1%}"
+                    f"  {s['plus_correct']:>6}  {s['minus_correct']:>6}"
+                    f"  {net_sign}{s['net']:>3}  {s['net_acc_delta']:>+7.3f}"
+                )
 
+
+# ── CLI ───────────────────────────────────────────────────────────────────────
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--principals-dir", default=PRINCIPALS_DIR,
-        help="Directory containing principal JSON files (default: %(default)s)",
-    )
-    parser.add_argument(
-        "--detail", action="store_true",
-        help="Print per-file breakdown in addition to summary tables",
-    )
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--principals-dir", default=PRINCIPALS_DIR)
+    parser.add_argument("--output", default=DEFAULT_OUTPUT)
+    parser.add_argument("--detail", action="store_true", help="Print per-condition averages")
     args = parser.parse_args()
 
-    results = load_and_analyze(args.principals_dir)
+    data    = load_all(args.principals_dir)
+    results = build_results(data)
 
-    if args.detail:
-        print_detail_table(results)
+    print_accuracy_table(results, detail=args.detail)
+    print_shift_table(results)
 
-    print_summary_by_agent(results)
-    print_summary_by_condition(results)
+    out_path = Path(args.output)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(results, indent=2))
+    print(f"\nSaved results → {out_path}")
 
 
 if __name__ == "__main__":
