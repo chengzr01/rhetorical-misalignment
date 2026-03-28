@@ -5,7 +5,7 @@
 # Usage:
 #   bash scripts/run_framing.sh [agent_model_key] [dataset_key] [ground_truth_key] [inference_mode]
 #
-#   agent_model_key:    deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | qwen | mistral
+#   agent_model_key:    deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | llama-base | qwen | mistral | olmo | olmo-sft | olmo-dpo | olmo-base
 #   dataset_key:        mimiciv_demo | usmle | usmle_sample
 #   ground_truth_key:   deepseek | deepseek-llama | llama | etc.  (model-generated info)
 #                       factual_agg | unfactual_agg               (aggregated llama claims)
@@ -109,9 +109,9 @@ if [ -z "$PRINCIPAL_MODEL" ]; then
 fi
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-${AGENT_SERVER}}"
 
-# Configure AGENT_SERVER and SGLANG_PORT using model config
+# Configure AGENT_SERVER and SGLANG_PORT using model config (env vars take precedence)
 AGENT_SERVER="${AGENT_SERVER:-$(get_model_server $AGENT_MODEL_KEY)}"
-SGLANG_PORT=$(get_agent_sglang_port $AGENT_MODEL_KEY)
+SGLANG_PORT="${SGLANG_PORT:-$(get_agent_sglang_port $AGENT_MODEL_KEY)}"
 
 # Configure PRINCIPAL_SERVER and port
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-$(get_model_server $PRINCIPAL_MODEL_KEY)}"

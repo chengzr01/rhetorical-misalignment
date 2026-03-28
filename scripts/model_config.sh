@@ -26,6 +26,14 @@ declare -A MODEL_MAP=(
     # HuggingFace models (require sglang server)
     ["llama-dpo"]="allenai/Llama-3.1-Tulu-3-8B-DPO"
     ["llama-sft"]="allenai/Llama-3.1-Tulu-3-8B-SFT"
+    ["llama-base"]="meta-llama/Llama-3.1-8B"
+    ["olmo"]="allenai/Olmo-3-7B-Instruct"
+    ["olmo-sft"]="allenai/Olmo-3-7B-Instruct-SFT"
+    ["olmo-dpo"]="allenai/Olmo-3-7B-Instruct-DPO"
+    ["olmo-base"]="allenai/Olmo-3-1025-7B"
+    ["olmo-large"]="allenai/Olmo-3.1-32B-Instruct"
+    ["olmo-large-sft"]="allenai/Olmo-3.1-32B-Instruct-SFT"
+    ["olmo-large-dpo"]="allenai/Olmo-3.1-32B-Instruct-DPO"
 )
 
 # Server configuration for each model
@@ -33,18 +41,42 @@ declare -A MODEL_MAP=(
 declare -A MODEL_SERVER=(
     ["llama-dpo"]="sglang"
     ["llama-sft"]="sglang"
+    ["llama-base"]="sglang"
+    ["olmo"]="sglang"
+    ["olmo-sft"]="sglang"
+    ["olmo-dpo"]="sglang"
+    ["olmo-base"]="sglang"
+    ["olmo-large"]="sglang"
+    ["olmo-large-sft"]="sglang"
+    ["olmo-large-dpo"]="sglang"
 )
 
-# Default sglang ports for agent models
+# Fixed sglang port per model — each model always runs on the same port regardless of role
+# (matches interface/sglang.sh MODEL_PORT assignments)
 declare -A AGENT_SGLANG_PORT=(
-    ["llama-dpo"]="30000"
-    ["llama-sft"]="30000"
+    ["llama-dpo"]="60000"
+    ["llama-sft"]="60001"
+    ["llama-base"]="60002"
+    ["olmo"]="60003"
+    ["olmo-sft"]="60004"
+    ["olmo-dpo"]="60005"
+    ["olmo-base"]="60006"
+    ["olmo-large"]="60007"
+    ["olmo-large-sft"]="60008"
+    ["olmo-large-dpo"]="60009"
 )
 
-# Default sglang ports for principal models (different from agent to avoid conflicts)
 declare -A PRINCIPAL_SGLANG_PORT=(
-    ["llama-dpo"]="30001"
-    ["llama-sft"]="30002"
+    ["llama-dpo"]="60000"
+    ["llama-sft"]="60001"
+    ["llama-base"]="60002"
+    ["olmo"]="60003"
+    ["olmo-sft"]="60004"
+    ["olmo-dpo"]="60005"
+    ["olmo-base"]="60006"
+    ["olmo-large"]="60007"
+    ["olmo-large-sft"]="60008"
+    ["olmo-large-dpo"]="60009"
 )
 
 # Helper function to get server for a model

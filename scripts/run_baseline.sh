@@ -5,7 +5,7 @@
 # Usage:
 #   bash scripts/run_baseline.sh [agent_model_key] [dataset_key] [inference_mode]
 #
-#   agent_model_key:  deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | qwen | mistral
+#   agent_model_key:  deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | llama-base | qwen | mistral | olmo | olmo-sft | olmo-dpo | olmo-base
 #   dataset_key:      mimiciv_demo | usmle | usmle_sample
 #   inference_mode:   agent | full        # agent = agent only, full = agent + principal (default: agent)
 #
@@ -40,7 +40,7 @@ FORCE_RERUN="${FORCE_RERUN:-false}"
 INFERENCE_MODE="${3:-agent}"  # agent or full
 PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian_choices behavioral_choices}"  # Space-separated list
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
-MAX_CASES="${MAX_CASES:-100}"               # max cases to process (0 = no limit)
+MAX_CASES="${MAX_CASES:-0}"               # max cases to process (0 = no limit)
 
 
 # Dataset configurations
@@ -79,9 +79,9 @@ if [ -z "$PRINCIPAL_MODEL" ]; then
 fi
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-${AGENT_SERVER}}"
 
-# Configure AGENT_SERVER and SGLANG_PORT using model config
+# Configure AGENT_SERVER and SGLANG_PORT using model config (env vars take precedence)
 AGENT_SERVER="${AGENT_SERVER:-$(get_model_server $AGENT_MODEL_KEY)}"
-SGLANG_PORT=$(get_agent_sglang_port $AGENT_MODEL_KEY)
+SGLANG_PORT="${SGLANG_PORT:-$(get_agent_sglang_port $AGENT_MODEL_KEY)}"
 
 # Configure PRINCIPAL_SERVER and port
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-$(get_model_server $PRINCIPAL_MODEL_KEY)}"
