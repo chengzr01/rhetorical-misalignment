@@ -8,9 +8,6 @@ datasets/pmc/raw/*
 datasets/pmc/processed/*
 datasets/pmc/test/*
 
-experiments/agents/*
-experiments/principals/*
-
 logs/
 # Python
 __pycache__/
