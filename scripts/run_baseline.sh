@@ -5,7 +5,7 @@
 # Usage:
 #   bash scripts/run_baseline.sh [agent_model_key] [dataset_key] [inference_mode]
 #
-#   agent_model_key:  deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | llama-base | qwen | mistral | olmo | olmo-sft | olmo-dpo | olmo-base
+#   agent_model_key:  deepseek | gemini | gpt | claude | deepseek-llama | llama | llama-small | llama-large | llama-dpo | llama-sft | llama-base | llama-medium-sft | llama-medium-dpo | qwen | mistral | olmo | olmo-sft | olmo-dpo | olmo-base
 #   dataset_key:      mimiciv_demo | usmle | usmle_sample
 #   inference_mode:   agent | full        # agent = agent only, full = agent + principal (default: agent)
 #

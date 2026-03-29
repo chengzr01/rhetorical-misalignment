@@ -34,6 +34,8 @@ declare -A MODEL_MAP=(
     ["olmo-large"]="allenai/Olmo-3.1-32B-Instruct"
     ["olmo-large-sft"]="allenai/Olmo-3.1-32B-Instruct-SFT"
     ["olmo-large-dpo"]="allenai/Olmo-3.1-32B-Instruct-DPO"
+    ["llama-medium-sft"]="allenai/Llama-3.1-Tulu-3-70B-SFT"
+    ["llama-medium-dpo"]="allenai/Llama-3.1-Tulu-3-70B-DPO"
 )
 
 # Server configuration for each model
@@ -49,6 +51,8 @@ declare -A MODEL_SERVER=(
     ["olmo-large"]="sglang"
     ["olmo-large-sft"]="sglang"
     ["olmo-large-dpo"]="sglang"
+    ["llama-medium-sft"]="sglang"
+    ["llama-medium-dpo"]="sglang"
 )
 
 # Fixed sglang port per model — each model always runs on the same port regardless of role
@@ -64,6 +68,8 @@ declare -A AGENT_SGLANG_PORT=(
     ["olmo-large"]="60007"
     ["olmo-large-sft"]="60008"
     ["olmo-large-dpo"]="60009"
+    ["llama-medium-sft"]="60010"
+    ["llama-medium-dpo"]="60011"
 )
 
 declare -A PRINCIPAL_SGLANG_PORT=(
@@ -77,6 +83,8 @@ declare -A PRINCIPAL_SGLANG_PORT=(
     ["olmo-large"]="60007"
     ["olmo-large-sft"]="60008"
     ["olmo-large-dpo"]="60009"
+    ["llama-medium-sft"]="60010"
+    ["llama-medium-dpo"]="60011"
 )
 
 # Helper function to get server for a model

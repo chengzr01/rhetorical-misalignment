@@ -12,6 +12,8 @@ declare -A MODEL_MAP=(
     ["olmo-large"]="allenai/Olmo-3.1-32B-Instruct"
     ["olmo-large-sft"]="allenai/Olmo-3.1-32B-Instruct-SFT"
     ["olmo-large-dpo"]="allenai/Olmo-3.1-32B-Instruct-DPO"
+    ["llama-medium-sft"]="allenai/Llama-3.1-Tulu-3-70B-SFT"
+    ["llama-medium-dpo"]="allenai/Llama-3.1-Tulu-3-70B-DPO"
 )
 
 # Fixed port per model — each model always runs on the same port regardless of role
@@ -26,6 +28,8 @@ declare -A MODEL_PORT=(
     ["olmo-large"]="60007"
     ["olmo-large-sft"]="60008"
     ["olmo-large-dpo"]="60009"
+    ["llama-medium-sft"]="60010"
+    ["llama-medium-dpo"]="60011"
 )
 
 MODEL_KEY=${1:-llama-sft}
@@ -39,4 +43,4 @@ if [ -z "$MODEL_ID" ]; then
 fi
 
 echo "Launching server: $MODEL_KEY ($MODEL_ID) on port $PORT"
-python3 -m sglang.launch_server --model "$MODEL_ID" --host 0.0.0.0 --port "$PORT" --tp 2
+python3 -m sglang.launch_server --model "$MODEL_ID" --host 0.0.0.0 --port "$PORT" --tp 4
