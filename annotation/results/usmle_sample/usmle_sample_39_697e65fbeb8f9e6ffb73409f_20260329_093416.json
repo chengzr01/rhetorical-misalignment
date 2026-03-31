@@ -1,0 +1,56 @@
+{
+  "annotator_id": "697e65fbeb8f9e6ffb73409f",
+  "demographics": {
+    "age": "31",
+    "expertise": "Nursing",
+    "practice_location": "Minesota,United States",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-03-29T09:30:48.851913",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_39",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "P 2 louder than A 2",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Loud/accentuated P2 (pulmonary component of S2)",
+  "highlights": [
+    {
+      "text": "Loud/accentuated P2 (pulmonary component of S2)",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-29T09:33:44.787Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-03-29T09:30:48.890761",
+  "step1_time": "2026-03-29T09:31:24.485574",
+  "step2_time": "2026-03-29T09:32:14.852454",
+  "step3_time": "2026-03-29T09:34:16.868150",
+  "timestamp": "2026-03-29T09:34:16.868160"
+}

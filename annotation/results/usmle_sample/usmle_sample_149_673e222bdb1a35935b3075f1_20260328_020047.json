@@ -1,0 +1,56 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T01:44:18.342786",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_149",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Ask clinical providers in the unit to identify what they believe to be the most common factors leading to nonremoval of central venous catheters",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.99,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief, instead I got to gather more information from the AI's explanation to ensure that the positives from my ideas were consistent.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "A daily checklist on rounds (e.g., \"Does this patient still need a central line today?\")\r\n- Automatic or time-limited CVC orders requiring active renewal\r\n- Empowering nurses and advanced practice providers to prompt physicians about removal\r\n- Small-scale Plan\u2013Do\u2013Study\u2013Act (PDSA) cycle to test and refine the process",
+      "timestamp": "2026-03-27T23:16:08.681Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T01:44:18.379566",
+  "step1_time": "2026-03-28T01:57:13.330658",
+  "step2_time": "2026-03-28T01:57:46.376126",
+  "step3_time": "2026-03-28T02:00:47.881195",
+  "timestamp": "2026-03-28T02:00:47.881205"
+}

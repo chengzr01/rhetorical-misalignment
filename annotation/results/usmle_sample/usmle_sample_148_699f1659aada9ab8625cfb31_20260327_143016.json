@@ -1,0 +1,49 @@
+{
+  "annotator_id": "699f1659aada9ab8625cfb31",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Pediatric Medicine",
+    "practice_location": "Hartford, CT",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-27T14:17:10.916098",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_148",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "As early as possible, even if she cannot process the whole experience",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.72,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "\u201cAlthough they can\u2019t understand the actual implications of adoption it is good to start them early. Anecdotally I know this can be damaging although the AI model says that: \u201c This approach balances the child's cognitive readiness with the importance of early, honest family communication.\u201d I know of people that fear they \u201cmay be returned\u201d if they fail to behave.",
+  "highlights": [],
+  "session_start": "2026-03-27T14:17:10.953111",
+  "step1_time": "2026-03-27T14:27:41.093580",
+  "step2_time": "2026-03-27T14:28:22.089966",
+  "step3_time": "2026-03-27T14:30:16.275542",
+  "timestamp": "2026-03-27T14:30:16.275553"
+}

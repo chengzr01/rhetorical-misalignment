@@ -1,0 +1,49 @@
+{
+  "annotator_id": "60fefffae637223438552868",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "hematology",
+    "practice_location": "memphis, tn",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-03-27T04:00:57.198941",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_152",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Explain the futility of the operation to the patient and his family",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "though patients family might say one thing, it is most important to do what is best for the patient. as a doctor, you must do what is best for the patient and see all the options. ai agreed with this as well ",
+  "highlights": [],
+  "session_start": "2026-03-27T04:00:57.234965",
+  "step1_time": "2026-03-27T04:05:23.561313",
+  "step2_time": "2026-03-27T04:05:49.288700",
+  "step3_time": "2026-03-27T04:06:27.577946",
+  "timestamp": "2026-03-27T04:06:27.577956"
+}

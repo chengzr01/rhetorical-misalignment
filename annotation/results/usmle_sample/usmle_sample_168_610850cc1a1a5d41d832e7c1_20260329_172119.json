@@ -1,0 +1,68 @@
+{
+  "annotator_id": "610850cc1a1a5d41d832e7c1",
+  "demographics": {
+    "age": "prefer not to say",
+    "expertise": "Gastrointestinal",
+    "practice_location": "Gainesville, Florida",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T17:18:28.691271",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_168",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Tube thoracostomy",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I already felt fairly confidence, but the AI's rationale confirmed my own leading my confidence to only increase.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "simple pneumothorax or significant hemothorax",
+      "timestamp": "2026-03-29T17:20:03.606Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "right-sided intrathoracic injury causing hypoxemia",
+      "timestamp": "2026-03-29T17:20:09.570Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Placement of a right-sided chest tube (tube thoracostomy)",
+      "timestamp": "2026-03-29T17:20:14.509Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-29T17:18:28.732732",
+  "step1_time": "2026-03-29T17:19:09.815305",
+  "step2_time": "2026-03-29T17:20:24.754000",
+  "step3_time": "2026-03-29T17:21:19.056687",
+  "timestamp": "2026-03-29T17:21:19.056697"
+}

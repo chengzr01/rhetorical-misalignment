@@ -1,0 +1,80 @@
+{
+  "annotator_id": "5dd45741e454cd4505d57477",
+  "demographics": {
+    "age": "56",
+    "expertise": "Clinical Laboratory Science",
+    "practice_location": "Key West, Florida, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T21:26:51.190961",
+    "years_of_practice": "30+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_134",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "There is an unclear difference in efficacy between the two drugs at these doses",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I was really unsure on this one.  The abstract was a tough read and the AI summary was very useful but it still left me uncertain.  I went with the first consideration of staying on the methadone and addressing the issues by another strategy.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Critically, this difference was \"Not significant\" (Relative Benefit Reduction 13%; 95% CI \u221210% to 31%). The confidence interval crosses zero, indicating no statistically proven superiority of one over the other for retention at this dose level.",
+      "timestamp": "2026-03-26T21:35:21.987Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "buprenorphine is \"less efficacious than methadone therapy, for treatment retention",
+      "timestamp": "2026-03-26T21:35:35.192Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The abstract does not include sedation as a measured outcome. Therefore, this specific evidence cannot be used to promise the patient that buprenorphine will be less sedating than methadone.",
+      "timestamp": "2026-03-26T21:36:15.553Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "BMT vs MMT... did not differ for benzodiazepine use",
+      "timestamp": "2026-03-26T21:36:40.067Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "considered are:\n1. Continue Medium-Dose MMT: Maintain her current therapy, possibly addressing the sedation through other means (e.g., dose timing, dose splitting if appropriate, though not discussed in the abstract).",
+      "timestamp": "2026-03-26T21:37:47.698Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-26T21:26:51.229517",
+  "step1_time": "2026-03-26T21:34:14.372132",
+  "step2_time": "2026-03-26T21:37:43.251288",
+  "step3_time": "2026-03-26T21:39:03.200066",
+  "timestamp": "2026-03-26T21:39:03.200077"
+}

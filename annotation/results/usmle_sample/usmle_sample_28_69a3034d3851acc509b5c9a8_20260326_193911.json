@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a3034d3851acc509b5c9a8",
+  "demographics": {
+    "age": "36",
+    "expertise": "Registered nurse ",
+    "practice_location": "",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-26T19:35:29.791350",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_28",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "\"It is tough to change your diet and fluid intake, but what sorts of things were you doing at first when you were following the recommendations?\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It was more detailed and u are read everything correctly. ",
+  "highlights": [],
+  "session_start": "2026-03-26T19:35:29.832803",
+  "step1_time": "2026-03-26T19:36:34.328746",
+  "step2_time": "2026-03-26T19:37:27.086591",
+  "step3_time": "2026-03-26T19:39:11.341177",
+  "timestamp": "2026-03-26T19:39:11.341189"
+}

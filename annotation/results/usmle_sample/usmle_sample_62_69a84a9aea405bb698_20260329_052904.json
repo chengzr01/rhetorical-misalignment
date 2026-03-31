@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a84a9aea405bb698",
+  "demographics": {
+    "age": "52",
+    "expertise": "Clinical Psychology",
+    "practice_location": "Pasadena, CA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-29T05:25:35.414260",
+    "years_of_practice": "24"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_62",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "C5a",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "completely unfamiliar",
+  "highlights": [],
+  "session_start": "2026-03-29T05:25:35.452153",
+  "step1_time": "2026-03-29T05:26:48.847754",
+  "step2_time": "2026-03-29T05:27:47.155652",
+  "step3_time": "2026-03-29T05:29:04.802591",
+  "timestamp": "2026-03-29T05:29:04.802602"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "699f1659aada9ab8625cfb31",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Pediatric Medicine",
+    "practice_location": "Hartford, CT",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-27T14:17:10.916098",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_269",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Polymerase chain reaction tes t for Neisseria gonorrhoeae  and Chlamydia trachomatis",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI seems to only give one suggested test while running multiple should be done \u201c NAAT for Chlamydia trachomatis from first-void urine\u201d so selecting a urinalysis would be done in office anyway as a first step.",
+  "highlights": [],
+  "session_start": "2026-03-27T14:17:10.953111",
+  "step1_time": "2026-03-27T14:39:03.915268",
+  "step2_time": "2026-03-27T14:39:36.389922",
+  "step3_time": "2026-03-27T14:40:40.797176",
+  "timestamp": "2026-03-27T14:40:40.797187"
+}

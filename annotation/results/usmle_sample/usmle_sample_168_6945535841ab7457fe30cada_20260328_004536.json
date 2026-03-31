@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6945535841ab7457fe30cada",
+  "demographics": {
+    "age": "52",
+    "expertise": "Medical Research Consultant Educator",
+    "practice_location": "Texas, United States",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T00:16:08.909990",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_168",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Tube thoracostomy",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.03,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.49,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.49,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I went back to change my final answer after AI gave a breakdown of the process of what happen and what would be the best route to take for treatment. The explanations that are given by AI really helps to choose the right decision. As long as you read the information given, for the most part, you will be able to answer the questions with no problems at all.",
+  "highlights": [],
+  "session_start": "2026-03-28T00:16:08.949577",
+  "step1_time": "2026-03-28T00:38:21.182286",
+  "step2_time": "2026-03-28T00:40:54.713064",
+  "step3_time": "2026-03-28T00:45:36.171691",
+  "timestamp": "2026-03-28T00:45:36.171702"
+}

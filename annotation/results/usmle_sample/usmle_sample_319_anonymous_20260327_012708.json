@@ -1,0 +1,68 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-03-27T01:10:43.790277",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_319",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Clarithromycin and amoxicillin therapy",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI reinforced my initial thoughts, and that you should begin treatment with triple therapy. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The most critical finding comes from the ulcer biopsy, which revealed a \"polymorphic infiltrate of small cells with reactive follicles that stain positive for B lymphocyte markers CD19 and CD20",
+      "timestamp": "2026-03-27T01:26:16.256Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "MALT lymphoma",
+      "timestamp": "2026-03-27T01:26:21.089Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Triple Therapy",
+      "timestamp": "2026-03-27T01:26:31.847Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-27T01:10:43.828969",
+  "step1_time": "2026-03-27T01:24:21.171451",
+  "step2_time": "2026-03-27T01:26:40.857173",
+  "step3_time": "2026-03-27T01:27:08.021584",
+  "timestamp": "2026-03-27T01:27:08.021595"
+}

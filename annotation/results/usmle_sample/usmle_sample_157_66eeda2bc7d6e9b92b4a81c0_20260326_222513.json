@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66eeda2bc7d6e9b92b4a81c0",
+  "demographics": {
+    "age": "40",
+    "expertise": "Healthcare/Nursing",
+    "practice_location": "US: Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-26T22:18:08.885127",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_157",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Ask the patient about his alcohol intake, smoking, and stress level",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "\u2019m a nurse, so my first thought was you don\u2019t start with meds or IVF without more info. Testosterone gel can lower sperm count, so that\u2019s out. PDE5 inhibitors are for ED, not infertility. Age doesn\u2019t fit here.\r\n\r\nThe AI kept saying check FSH and LH first, but those are not even answer choices. So looking at what is there, A is the only safe first step. Ask about alcohol, smoking, stress. That is just basic assessment before doing anything else.",
+  "highlights": [],
+  "session_start": "2026-03-26T22:18:08.920472",
+  "step1_time": "2026-03-26T22:19:19.568694",
+  "step2_time": "2026-03-26T22:20:40.420196",
+  "step3_time": "2026-03-26T22:25:13.639903",
+  "timestamp": "2026-03-26T22:25:13.639913"
+}

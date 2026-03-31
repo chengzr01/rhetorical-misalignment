@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f8c5a7ab4bdf6a3521cd9",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Family Medicine",
+    "practice_location": "Hampstead, NC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-28T16:44:45.570104",
+    "years_of_practice": "27"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_227",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Endometrial biopsy",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer and it was still wrong. i still believe an ultrasound is the next step. Not sure why you would do a biopsy when you have no radiography.",
+  "highlights": [],
+  "session_start": "2026-03-28T16:44:45.609508",
+  "step1_time": "2026-03-28T16:52:02.319990",
+  "step2_time": "2026-03-28T16:53:14.867483",
+  "step3_time": "2026-03-28T16:54:17.545623",
+  "timestamp": "2026-03-28T16:54:17.545632"
+}

@@ -1,0 +1,62 @@
+{
+  "annotator_id": "69a84a9aea5a405bb698",
+  "demographics": {
+    "age": "52",
+    "expertise": "Clinical Psychology",
+    "practice_location": "Pasadena, CA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-29T05:01:56.654632",
+    "years_of_practice": "24"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_173",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Biopsy of the vulva",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.12,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "reasoning": "The biopsy answer makes sense.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "uterine or cervical pathology) could not be completed due to patient discomfort.",
+      "timestamp": "2026-03-29T05:08:42.592Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Small, \"clean\" sacral decubitus ulcer: A possible but less likely source of the bleeding compared to the vulvar lesion.",
+      "timestamp": "2026-03-29T05:09:07.646Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-29T05:01:56.697980",
+  "step1_time": "2026-03-29T05:07:46.413133",
+  "step2_time": "2026-03-29T05:09:55.197173",
+  "step3_time": "2026-03-29T05:11:22.722960",
+  "timestamp": "2026-03-29T05:11:22.722970"
+}

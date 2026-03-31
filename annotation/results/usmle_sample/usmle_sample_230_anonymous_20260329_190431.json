@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "33",
+    "expertise": "60526cff1651517239360f77",
+    "practice_location": "Boston",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-03-29T19:02:05.744002",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_230",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Patients aged 45 years and older with hyperlipidemia and central obesity",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It is my fault that I missed out on the lower age group of the patient, and the central obesity.",
+  "highlights": [],
+  "session_start": "2026-03-29T19:02:05.786298",
+  "step1_time": "2026-03-29T19:03:41.001609",
+  "step2_time": "2026-03-29T19:04:01.822314",
+  "step3_time": "2026-03-29T19:04:31.471169",
+  "timestamp": "2026-03-29T19:04:31.471178"
+}

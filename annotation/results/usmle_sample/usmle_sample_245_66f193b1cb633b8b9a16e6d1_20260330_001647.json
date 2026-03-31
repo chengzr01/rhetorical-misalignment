@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66f193b1cb633b8b9a16e6d1",
+  "demographics": {
+    "age": "29",
+    "expertise": "Maternity & newborn",
+    "practice_location": "Utah",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:12:10.928653",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_245",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Explain that even if their son waits until marriage to have sex, he could still be exposed to HPV by his future partner",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.86,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not need to change my answer, but the facts in the AI response helped confirm my thinking",
+  "highlights": [],
+  "session_start": "2026-03-30T00:12:10.969006",
+  "step1_time": "2026-03-30T00:15:37.717762",
+  "step2_time": "2026-03-30T00:16:18.609251",
+  "step3_time": "2026-03-30T00:16:47.706462",
+  "timestamp": "2026-03-30T00:16:47.706471"
+}

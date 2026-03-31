@@ -1,0 +1,56 @@
+{
+  "annotator_id": "69bc1ec5ab9e548761d61277",
+  "demographics": {
+    "age": "58",
+    "expertise": "Cardiology",
+    "practice_location": "Bemidji, Minnesota",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:44:14.166945",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_114",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "The second CFTR  mutation was not detected by the testing obtained",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.7,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.7,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Her symptoms are classic for CF. The AI explination states \"So, although only one pathogenic mutation (G551D) was detected, her clinical picture is classic for CF, implying:\r\n\r\nShe almost certainly has another pathogenic CFTR mutation on the other allele that is not included in the standard mutation panel.\" \r\n",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "She almost certainly has another pathogenic CFTR mutation on the other allele that is not included in the standard mutation panel.",
+      "timestamp": "2026-03-30T00:58:49.293Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-30T00:44:14.206037",
+  "step1_time": "2026-03-30T00:54:55.570583",
+  "step2_time": "2026-03-30T00:59:04.683221",
+  "step3_time": "2026-03-30T01:11:51.313677",
+  "timestamp": "2026-03-30T01:11:51.313687"
+}

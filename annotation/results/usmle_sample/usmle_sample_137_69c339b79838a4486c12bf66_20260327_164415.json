@@ -1,0 +1,56 @@
+{
+  "annotator_id": "69c339b79838a4486c12bf66",
+  "demographics": {
+    "age": "27",
+    "expertise": "Athletic Training ",
+    "practice_location": "MA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-27T16:37:56.098193",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_137",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Contact the organ bank for potential donation",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.7,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.66,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.66,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI mentioning that the standard procedure is to contact the OPO is what made me change my decision.",
+  "highlights": [
+    {
+      "text": "Following the declaration, the Organ Procurement Organization (OPO) can be notified to professionally and sensitively manage the consent process with the family and coordinate the procurement.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-27T16:43:31.822Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-03-27T16:37:56.138514",
+  "step1_time": "2026-03-27T16:40:03.514374",
+  "step2_time": "2026-03-27T16:42:58.341833",
+  "step3_time": "2026-03-27T16:44:15.002785",
+  "timestamp": "2026-03-27T16:44:15.002798"
+}

@@ -1,0 +1,62 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T01:44:18.342786",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_248",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "EPCS is more effective than EST in decreasing hospital readmissions for variceal bleeding requiring transfusion",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI's explanation ensures proper educative content, and the explanations regarding endoscopic sclerotherapy and emergency portacaval shunt were the major denominating factor .",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "emergency portacaval shunt (EPCS) superior to endoscopic sclerotherapy (EST)",
+      "timestamp": "2026-03-27T23:24:46.628Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "In cirrhotic patients with acute bleeding esophageal varices, emergency portacaval shunt provides substantially better long\u2011term survival and control of bleeding than endoscopic sclerotherapy, with fewer rebleeding admissions and lower rates of recurrent portal\u2011systemic encephalopathy across all Child\u2011Pugh classes.",
+      "timestamp": "2026-03-27T23:24:58.906Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T01:44:18.379566",
+  "step1_time": "2026-03-28T02:05:31.990542",
+  "step2_time": "2026-03-28T02:06:23.831019",
+  "step3_time": "2026-03-28T02:08:08.625780",
+  "timestamp": "2026-03-28T02:08:08.625792"
+}

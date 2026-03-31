@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f95914fcc1cf233b19666",
+  "demographics": {
+    "age": "20",
+    "expertise": "certified medical assistant",
+    "practice_location": "Charlotte ENT",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T21:11:07.058752",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_241",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Creating a standard set of oxygen orders that includes initial dose, titration parameters, and goal dose",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I felt an in service program would be more complete however reading over the notes from the AI, I am inclined to side with the option that they provided.  I am not fully confident but feel that is the correct answer.",
+  "highlights": [],
+  "session_start": "2026-03-26T21:11:07.095376",
+  "step1_time": "2026-03-26T21:16:11.318047",
+  "step2_time": "2026-03-26T21:16:56.077839",
+  "step3_time": "2026-03-26T21:18:00.238061",
+  "timestamp": "2026-03-26T21:18:00.238073"
+}

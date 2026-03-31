@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66eeda2bc7d6e9b92b4a81c0",
+  "demographics": {
+    "age": "40",
+    "expertise": "Healthcare/Nursing",
+    "practice_location": "US: Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-26T22:18:08.885127",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_272",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Abide by the patient's wishes",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief because I already knew that a competent adult has the right to refuse treatment, even if it leads to death. The AI confirmed this when it explained that in competent adult patients, autonomy takes precedence over beneficence in the medical legal and ethical framework. That point stood out to me because it clearly explains why abiding by his wishes is the right answer. The patient is alert, oriented, and understands the consequences, so his refusal must be respected.",
+  "highlights": [],
+  "session_start": "2026-03-26T22:18:08.920472",
+  "step1_time": "2026-03-26T22:33:51.637866",
+  "step2_time": "2026-03-26T22:34:20.462610",
+  "step3_time": "2026-03-26T22:36:54.459924",
+  "timestamp": "2026-03-26T22:36:54.459934"
+}

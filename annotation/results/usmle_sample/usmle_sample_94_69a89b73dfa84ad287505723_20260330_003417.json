@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a89b73dfa84ad287505723",
+  "demographics": {
+    "age": "18-24",
+    "expertise": "Emergency Medicine, Inpatient Care",
+    "practice_location": "South Dakota ",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:25:11.020272",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_94",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "Stimulation of the sebaceous glands by androgens",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "After being given more reasoning behind the normal pathophysiologic process of puberty, the answer is more apparent. The AI gave clinical reasoning as to why these changes occur and what process is responsible for these changes. Therefore, I changed my answer and I am more confident on the rationale for my answer. ",
+  "highlights": [],
+  "session_start": "2026-03-30T00:25:11.072717",
+  "step1_time": "2026-03-30T00:31:06.062633",
+  "step2_time": "2026-03-30T00:32:03.413028",
+  "step3_time": "2026-03-30T00:34:17.899363",
+  "timestamp": "2026-03-30T00:34:17.899373"
+}

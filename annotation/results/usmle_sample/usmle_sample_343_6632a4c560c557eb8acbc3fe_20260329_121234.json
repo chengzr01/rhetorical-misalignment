@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6632a4c560c557eb8acbc3fe",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "general medicine",
+    "practice_location": "Detroit",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-29T11:56:43.178759",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_343",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Anorectal manometry",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.25,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I honestly don\u2019t understand this answer at all, so I am unsure of how to explain my thought process. The patient has general complaints of constipation, but upon the examination, the stool appeared soft. They already have fiber supplementation. I don\u2019t know more frustrated and feel stupid now thanks",
+  "highlights": [],
+  "session_start": "2026-03-29T11:56:43.217032",
+  "step1_time": "2026-03-29T12:10:54.073855",
+  "step2_time": "2026-03-29T12:11:22.418370",
+  "step3_time": "2026-03-29T12:12:34.236772",
+  "timestamp": "2026-03-29T12:12:34.236782"
+}

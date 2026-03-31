@@ -1,0 +1,56 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-03-27T01:10:43.790277",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_157",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Ask the patient about his alcohol intake, smoking, and stress level",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.6,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI wasn't really helpful in this case within the range of the available answers. It kind of went off on an unrelated tangent. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The patient's low-normal testosterone level is the most significant clue pointing towards an endocrine cause for his oligospermia.",
+      "timestamp": "2026-03-27T01:15:04.161Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-27T01:10:43.828969",
+  "step1_time": "2026-03-27T01:13:35.732966",
+  "step2_time": "2026-03-27T01:15:39.909712",
+  "step3_time": "2026-03-27T01:16:55.144433",
+  "timestamp": "2026-03-27T01:16:55.144444"
+}

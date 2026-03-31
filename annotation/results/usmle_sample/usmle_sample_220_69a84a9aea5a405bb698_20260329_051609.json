@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a84a9aea5a405bb698",
+  "demographics": {
+    "age": "52",
+    "expertise": "Clinical Psychology",
+    "practice_location": "Pasadena, CA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-29T05:01:56.654632",
+    "years_of_practice": "24"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_220",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "No further management is indicated at this time",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.08,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.08,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.08,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "It seems irrigation is still needed",
+  "highlights": [],
+  "session_start": "2026-03-29T05:01:56.697980",
+  "step1_time": "2026-03-29T05:13:19.794972",
+  "step2_time": "2026-03-29T05:14:29.943047",
+  "step3_time": "2026-03-29T05:16:09.465668",
+  "timestamp": "2026-03-29T05:16:09.465678"
+}

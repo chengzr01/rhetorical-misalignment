@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66eeda2bc7d6e9b92b4a81c0",
+  "demographics": {
+    "age": "40",
+    "expertise": "Healthcare/Nursing",
+    "practice_location": "US: Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-26T22:18:08.885127",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_183",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Type of vaginal discharge",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.93,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.93,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I initially believed obesity was the strongest risk factor because the AI made a strong case about immune impairment and surgical site infections. However, the correct answer is type of vaginal discharge. What changed my thinking was realizing the pH of 5.5 is abnormal normal vaginal pH is 3.8 to 4.5. That finding with the white gray discharge points to bacterial vaginosis, which is a direct risk factor for post D&C infection. The AI said the pH was normal, but that was incorrect, and trusting that led me away from the right answer.",
+  "highlights": [],
+  "session_start": "2026-03-26T22:18:08.920472",
+  "step1_time": "2026-03-26T22:25:59.819749",
+  "step2_time": "2026-03-26T22:27:56.565875",
+  "step3_time": "2026-03-26T22:32:46.296187",
+  "timestamp": "2026-03-26T22:32:46.296197"
+}

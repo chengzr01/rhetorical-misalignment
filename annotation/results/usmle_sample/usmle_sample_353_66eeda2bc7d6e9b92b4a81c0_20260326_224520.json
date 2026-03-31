@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66eeda2bc7d6e9b92b4a81c0",
+  "demographics": {
+    "age": "40",
+    "expertise": "Healthcare/Nursing",
+    "practice_location": "US: Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-26T22:18:08.885127",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_353",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Intravenous vancomycin",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.97,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I initially picked cefazolin because that is what we usually use for mastitis, but I did not pay close enough attention to the fact that she already failed cephalexin. Once I saw the AI point out that she failed outpatient antibiotics and now has fever and tachycardia, I realized that means she needs broader coverage including MRSA. Vancomycin is the right choice because it covers MRSA and is safe for breastfeeding. I also remembered she has a sulfa allergy, so that eliminated some options.",
+  "highlights": [],
+  "session_start": "2026-03-26T22:18:08.920472",
+  "step1_time": "2026-03-26T22:41:35.088357",
+  "step2_time": "2026-03-26T22:42:08.427385",
+  "step3_time": "2026-03-26T22:45:20.551614",
+  "timestamp": "2026-03-26T22:45:20.551624"
+}

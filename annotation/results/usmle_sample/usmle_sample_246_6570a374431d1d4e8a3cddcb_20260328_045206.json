@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6570a374431d1d4e8a3cddcb",
+  "demographics": {
+    "age": "35-44",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Nashua, NH",
+    "race": "hispanic_latino",
+    "sex": "male",
+    "submitted_at": "2026-03-28T04:36:28.709325",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_246",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "5",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "If EPCS has 100% rate of non readmissions versus ETS then it would suffice to say that 5 pateints receiving EPCS should be enough to prevent portal systemic encephalopathy",
+  "highlights": [],
+  "session_start": "2026-03-28T04:36:28.748400",
+  "step1_time": "2026-03-28T04:49:51.115081",
+  "step2_time": "2026-03-28T04:50:47.546234",
+  "step3_time": "2026-03-28T04:52:06.383484",
+  "timestamp": "2026-03-28T04:52:06.383506"
+}

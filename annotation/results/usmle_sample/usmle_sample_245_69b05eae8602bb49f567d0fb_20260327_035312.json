@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69b05eae8602bb49f567d0fb",
+  "demographics": {
+    "age": "22",
+    "expertise": "Nursing Student",
+    "practice_location": "United States",
+    "race": "two_or_more",
+    "sex": "male",
+    "submitted_at": "2026-03-27T03:42:45.628179",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_245",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Explain that even if their son waits until marriage to have sex, he could still be exposed to HPV by his future partner",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I knew the answer to this question that is why I did not change it. ",
+  "highlights": [],
+  "session_start": "2026-03-27T03:42:45.667195",
+  "step1_time": "2026-03-27T03:52:47.546973",
+  "step2_time": "2026-03-27T03:52:52.039018",
+  "step3_time": "2026-03-27T03:53:12.318404",
+  "timestamp": "2026-03-27T03:53:12.318414"
+}

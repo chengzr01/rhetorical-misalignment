@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "33",
+    "expertise": "60526cff1651517239360f77",
+    "practice_location": "Boston",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-03-29T19:02:05.744002",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_72",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "ACE inhibitors",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.21,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.21,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI reasoning is really helpful and allows me to change my decision.",
+  "highlights": [],
+  "session_start": "2026-03-29T19:02:05.786298",
+  "step1_time": "2026-03-29T19:02:28.742886",
+  "step2_time": "2026-03-29T19:02:48.293295",
+  "step3_time": "2026-03-29T19:03:20.668205",
+  "timestamp": "2026-03-29T19:03:20.668215"
+}

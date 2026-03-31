@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f95914fcc1cf233b19666",
+  "demographics": {
+    "age": "20",
+    "expertise": "certified medical assistant",
+    "practice_location": "Charlotte ENT",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T21:11:07.058752",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_344",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Transcutaneous pacing",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.07,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.73,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.95,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "I felt given the patient symptoms and history this is the best action.  The AI agreed with my treatment path and I feel confident this the the most appropriate next steps.",
+  "highlights": [],
+  "session_start": "2026-03-26T21:11:07.095376",
+  "step1_time": "2026-03-26T21:21:06.044527",
+  "step2_time": "2026-03-26T21:21:27.026069",
+  "step3_time": "2026-03-26T21:22:07.797492",
+  "timestamp": "2026-03-26T21:22:07.797502"
+}

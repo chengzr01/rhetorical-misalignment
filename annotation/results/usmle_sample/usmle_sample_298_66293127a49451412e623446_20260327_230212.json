@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66293127a49451412e623446",
+  "demographics": {
+    "age": "37",
+    "expertise": "Outpatient therapist ",
+    "practice_location": "Pennsylvania ",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-27T22:48:00.907330",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_298",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Contusion of the thoracic spinal cord",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The answer was not as easy to find, had to find key words.",
+  "highlights": [],
+  "session_start": "2026-03-27T22:48:00.944277",
+  "step1_time": "2026-03-27T22:58:29.760312",
+  "step2_time": "2026-03-27T23:01:34.781752",
+  "step3_time": "2026-03-27T23:02:12.675258",
+  "timestamp": "2026-03-27T23:02:12.675269"
+}

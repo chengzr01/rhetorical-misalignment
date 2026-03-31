@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f95914fcc1cf233b19666",
+  "demographics": {
+    "age": "20",
+    "expertise": "certified medical assistant",
+    "practice_location": "Charlotte ENT",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T21:11:07.058752",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_140",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Hepatocellular carcinoma",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.1,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I felt pretty strongly with my answer but AI gave me the confidence I was correct.  The bloodwork and symptoms were telling and pointing to that choice.",
+  "highlights": [],
+  "session_start": "2026-03-26T21:11:07.095376",
+  "step1_time": "2026-03-26T21:13:59.826140",
+  "step2_time": "2026-03-26T21:14:28.262856",
+  "step3_time": "2026-03-26T21:15:15.328572",
+  "timestamp": "2026-03-26T21:15:15.328583"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a65d6081cd78adb07c6255",
+  "demographics": {
+    "age": "33",
+    "expertise": "cardiology",
+    "practice_location": "uS",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-28T03:25:15.009935",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_166",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "X-rays of the left hand and wrist",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I thought testing her blood would help figure out if any of her numbers are off.",
+  "highlights": [],
+  "session_start": "2026-03-28T03:25:15.058288",
+  "step1_time": "2026-03-28T03:32:41.692123",
+  "step2_time": "2026-03-28T03:34:16.938565",
+  "step3_time": "2026-03-28T03:34:46.524501",
+  "timestamp": "2026-03-28T03:34:46.524512"
+}

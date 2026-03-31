@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a857ce5fa73a195640ed5e",
+  "demographics": {
+    "age": "36",
+    "expertise": "Registered Nurse",
+    "practice_location": "Virginia, United Stares",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T16:51:04.619951",
+    "years_of_practice": "16 "
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_8",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Reassure the patient that her chance of becoming addicted to narcotics is minuscule",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Based on what I already know about opioids and trauma. I knew it was appropriate for her to take the morphine and knew that she needed education on narcotics and addiction. The AI response gave a great multi step explanation and plan and reassured my decision ",
+  "highlights": [],
+  "session_start": "2026-03-29T16:51:04.661857",
+  "step1_time": "2026-03-29T16:56:15.590541",
+  "step2_time": "2026-03-29T16:57:39.033756",
+  "step3_time": "2026-03-29T16:58:50.625607",
+  "timestamp": "2026-03-29T16:58:50.625616"
+}

@@ -1,0 +1,68 @@
+{
+  "annotator_id": "69b0b8a2adb0a49e29de3cc1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Physical Therapy",
+    "practice_location": "Denver",
+    "race": "white",
+    "sex": "",
+    "submitted_at": "2026-03-28T16:21:23.587440",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_188",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Measurement of serum follicle-stimulating hormone concentration",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.2,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.2,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.2,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I changed my answer because I do not have a strong conviction as this is not my primary area of expertise. The AI led me to change my answer because it pushed me to think of possible pregnancy first. However, I was still guessing.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Order a pregnancy test (urine or serum \u03b2-hCG).",
+      "timestamp": "2026-03-28T16:27:18.024Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Clinical suspicion: perimenopause/early menopausal transition vs other causes of secondary amenorrhea (most importantly pregnancy).",
+      "timestamp": "2026-03-28T16:27:46.304Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The standard first step in evaluating secondary amenorrhea is pregnancy testing (urine or serum \u03b2-hCG), even if the patient reports contraceptive use or tubal ligation.",
+      "timestamp": "2026-03-28T16:28:01.180Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T16:21:23.631039",
+  "step1_time": "2026-03-28T16:26:53.904470",
+  "step2_time": "2026-03-28T16:28:20.159427",
+  "step3_time": "2026-03-28T16:29:21.484009",
+  "timestamp": "2026-03-28T16:29:21.484019"
+}

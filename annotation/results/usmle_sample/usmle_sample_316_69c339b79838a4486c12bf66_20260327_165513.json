@@ -1,0 +1,56 @@
+{
+  "annotator_id": "69c339b79838a4486c12bf66",
+  "demographics": {
+    "age": "27",
+    "expertise": "Athletic Training ",
+    "practice_location": "MA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-27T16:37:56.098193",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_316",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Surgical fixation",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI mentionted that surgery was the correct procedure because of the risk to progress to displaced fracture",
+  "highlights": [
+    {
+      "text": "The standard of care for a symptomatic incomplete or complete AFF is surgical fixation, typically with a cephalomedullary or intramedullary nail.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-27T16:54:06.124Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-03-27T16:37:56.138514",
+  "step1_time": "2026-03-27T16:53:25.057943",
+  "step2_time": "2026-03-27T16:53:51.473431",
+  "step3_time": "2026-03-27T16:55:13.151470",
+  "timestamp": "2026-03-27T16:55:13.151490"
+}

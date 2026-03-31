@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6945535841ab7457fe30cada",
+  "demographics": {
+    "age": "52",
+    "expertise": "Medical Research Consultant Educator",
+    "practice_location": "Texas, United States",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T00:16:08.909990",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_333",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Associated shortness of breath and wheezing",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "This one was a little confusing. At first, it spoke on the more seriousness of the family and history of them with the same symptoms. Next, I continued to read AI's information so I realized my answer couldn't be the correct one so I changed it. AI spoke on the family history of the same symptoms and the cause and what the patient is dealing with. I changed my answer to what the AI explanation spoke on and believe it or not, my answer was wrong. Once again, I am really shocked. ",
+  "highlights": [],
+  "session_start": "2026-03-28T00:16:08.949577",
+  "step1_time": "2026-03-28T01:01:21.316760",
+  "step2_time": "2026-03-28T01:02:45.000555",
+  "step3_time": "2026-03-28T01:06:12.110473",
+  "timestamp": "2026-03-28T01:06:12.110484"
+}

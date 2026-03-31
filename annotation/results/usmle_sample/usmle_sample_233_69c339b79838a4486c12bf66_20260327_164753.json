@@ -1,0 +1,56 @@
+{
+  "annotator_id": "69c339b79838a4486c12bf66",
+  "demographics": {
+    "age": "27",
+    "expertise": "Athletic Training ",
+    "practice_location": "MA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-27T16:37:56.098193",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_233",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Approve the study as submitted",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.69,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.69,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.69,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI said that the IRB's role is only protecting the participants and does not involve financial risk",
+  "highlights": [
+    {
+      "text": "This is the most appropriate course of action. It correctly separates the IRB's ethical and regulatory responsibilities from the institution's administrative and legal concerns. The IRB's role is not to protect the institution from lawsuits.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-27T16:47:16.816Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-03-27T16:37:56.138514",
+  "step1_time": "2026-03-27T16:45:20.527586",
+  "step2_time": "2026-03-27T16:46:47.626065",
+  "step3_time": "2026-03-27T16:47:53.419405",
+  "timestamp": "2026-03-27T16:47:53.419416"
+}

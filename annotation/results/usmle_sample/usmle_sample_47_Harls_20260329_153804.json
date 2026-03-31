@@ -1,0 +1,49 @@
+{
+  "annotator_id": "Harls",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Exotic medicine ",
+    "practice_location": "NJ, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T15:35:28.385178",
+    "years_of_practice": "3.5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_47",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "0.67",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.2,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.2,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.2,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "From working in medicine I can used PPV to determine if the tumor was likely positive with a tumor. ",
+  "highlights": [],
+  "session_start": "2026-03-29T15:35:28.425204",
+  "step1_time": "2026-03-29T15:36:10.537671",
+  "step2_time": "2026-03-29T15:36:32.079992",
+  "step3_time": "2026-03-29T15:38:04.207802",
+  "timestamp": "2026-03-29T15:38:04.207812"
+}

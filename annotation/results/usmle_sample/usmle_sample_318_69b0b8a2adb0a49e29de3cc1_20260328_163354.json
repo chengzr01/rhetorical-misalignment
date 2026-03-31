@@ -1,0 +1,62 @@
+{
+  "annotator_id": "69b0b8a2adb0a49e29de3cc1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Physical Therapy",
+    "practice_location": "Denver",
+    "race": "white",
+    "sex": "",
+    "submitted_at": "2026-03-28T16:21:23.587440",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_318",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Resection of the nodule",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.22,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.79,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI helped break down the possible courses of intervention and what made the most sense and was feasible.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "This is a patient with a high likelihood of isolated pulmonary metastasis from colorectal cancer.",
+      "timestamp": "2026-03-28T16:33:06.469Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Proceed with surgical resection (pulmonary metastasectomy), typically via wedge resection of the solitary lung nodule.",
+      "timestamp": "2026-03-28T16:33:20.893Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T16:21:23.631039",
+  "step1_time": "2026-03-28T16:32:53.419265",
+  "step2_time": "2026-03-28T16:33:28.557562",
+  "step3_time": "2026-03-28T16:33:54.713932",
+  "timestamp": "2026-03-28T16:33:54.713942"
+}

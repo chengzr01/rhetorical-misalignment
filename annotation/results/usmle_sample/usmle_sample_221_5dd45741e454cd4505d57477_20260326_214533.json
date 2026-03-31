@@ -1,0 +1,62 @@
+{
+  "annotator_id": "5dd45741e454cd4505d57477",
+  "demographics": {
+    "age": "56",
+    "expertise": "Clinical Laboratory Science",
+    "practice_location": "Key West, Florida, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T21:26:51.190961",
+    "years_of_practice": "30+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_221",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Pulmonary infarction",
+  "correct_answer_idx": "H",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.17,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "H",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "H",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I chose PE first but the AI summary supported that PI occurs first, prior to PE",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The constellation of findings points overwhelmingly toward a specific diagnosis. The clinical presentation (acute pleuritic pain, hemoptysis) in a patient with major risk factors for VTE is highly suspicious for PE. The presence of a Hampton's Hump on imaging is a classic, albeit uncommon, sign that is highly specific for pulmonary infarction.",
+      "timestamp": "2026-03-26T21:43:55.775Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Most Likely Diagnosis: Pulmonary Infarction secondary to Pulmonary Embolism",
+      "timestamp": "2026-03-26T21:44:22.193Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-26T21:26:51.229517",
+  "step1_time": "2026-03-26T21:42:40.992997",
+  "step2_time": "2026-03-26T21:44:18.314179",
+  "step3_time": "2026-03-26T21:45:33.982130",
+  "timestamp": "2026-03-26T21:45:33.982142"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66f193b1cb633b8b9a16e6d1",
+  "demographics": {
+    "age": "29",
+    "expertise": "Maternity & newborn",
+    "practice_location": "Utah",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:12:10.928653",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_347",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "CT scan of the chest",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.18,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.91,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I already suspected needing a CT and the AI confirmed that in the recommendations. It is the gold standard diagnosis and is timely.",
+  "highlights": [],
+  "session_start": "2026-03-30T00:12:10.969006",
+  "step1_time": "2026-03-30T00:20:48.959019",
+  "step2_time": "2026-03-30T00:21:17.455325",
+  "step3_time": "2026-03-30T00:22:02.689978",
+  "timestamp": "2026-03-30T00:22:02.689989"
+}

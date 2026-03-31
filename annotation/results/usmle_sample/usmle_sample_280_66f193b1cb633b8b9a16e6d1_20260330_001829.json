@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66f193b1cb633b8b9a16e6d1",
+  "demographics": {
+    "age": "29",
+    "expertise": "Maternity & newborn",
+    "practice_location": "Utah",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:12:10.928653",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_280",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Pulmonary embolism",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.3,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI indicated the exact recommendation based on the findings.",
+  "highlights": [],
+  "session_start": "2026-03-30T00:12:10.969006",
+  "step1_time": "2026-03-30T00:17:46.774789",
+  "step2_time": "2026-03-30T00:18:09.094838",
+  "step3_time": "2026-03-30T00:18:29.039161",
+  "timestamp": "2026-03-30T00:18:29.039170"
+}

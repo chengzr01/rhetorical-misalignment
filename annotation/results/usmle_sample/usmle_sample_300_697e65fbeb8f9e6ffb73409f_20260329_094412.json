@@ -1,0 +1,62 @@
+{
+  "annotator_id": "697e65fbeb8f9e6ffb73409f",
+  "demographics": {
+    "age": "31",
+    "expertise": "Nursing",
+    "practice_location": "Minesota,United States",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-03-29T09:30:48.851913",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_300",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Opioids",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Incarceration removes access to opioids and classic withdrawal syndrome presentation",
+  "highlights": [
+    {
+      "text": "Incarceration removes access to opioids",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-29T09:43:28.230Z",
+      "step": "step3"
+    },
+    {
+      "text": "Classic withdrawal syndrome presentation",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-29T09:43:35.638Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-03-29T09:30:48.890761",
+  "step1_time": "2026-03-29T09:42:06.654947",
+  "step2_time": "2026-03-29T09:42:33.838612",
+  "step3_time": "2026-03-29T09:44:12.950384",
+  "timestamp": "2026-03-29T09:44:12.950393"
+}
