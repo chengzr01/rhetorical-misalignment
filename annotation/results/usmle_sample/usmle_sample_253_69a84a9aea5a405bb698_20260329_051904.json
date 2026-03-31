@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a84a9aea5a405bb698",
+  "demographics": {
+    "age": "52",
+    "expertise": "Clinical Psychology",
+    "practice_location": "Pasadena, CA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-29T05:01:56.654632",
+    "years_of_practice": "24"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_253",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Attempt to contact the mother for permission to treat before proceeding",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.57,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.57,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.57,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "They are a minor and there has to be consent",
+  "highlights": [],
+  "session_start": "2026-03-29T05:01:56.697980",
+  "step1_time": "2026-03-29T05:17:26.203862",
+  "step2_time": "2026-03-29T05:18:10.025777",
+  "step3_time": "2026-03-29T05:19:04.138210",
+  "timestamp": "2026-03-29T05:19:04.138220"
+}

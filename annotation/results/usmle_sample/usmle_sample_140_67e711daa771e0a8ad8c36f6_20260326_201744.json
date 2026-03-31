@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67e711daa771e0a8ad8c36f6",
+  "demographics": {
+    "age": "28",
+    "expertise": "Healthcare",
+    "practice_location": "New York/ United States of America ",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-26T20:09:38.601977",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_140",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Hepatocellular carcinoma",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.82,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "My confidence in selecting hepatocellular carcinoma (HCC) increased after considering the AI's detailed explanation of the natural history of chronic hepatitis B (CHB) and its complications. Specifically, the AI pointed out that \"Chronic inflammation \u2192 hepatocellular necrosis \u2192 fibrosis \u2192 cirrhosis \u2192 HCC\", which is the well-established pathway for progression of CHB without treatment.\r\n\r\nThe fact that the patient has several risk factors for progression, such as being male, potentially having a high viral load (suggested by elevated transaminases), and being from an endemic region like China, further reinforces the likelihood of HCC developing as a complication of chronic hepatitis B. The AI\u2019s mention of cirrhosis leading to HCC was particularly influential because cirrhosis is an intermediary stage that greatly increases the risk of HCC, which is the final complication in untreated chronic HBV infection.",
+  "highlights": [],
+  "session_start": "2026-03-26T20:09:38.636615",
+  "step1_time": "2026-03-26T20:14:56.600184",
+  "step2_time": "2026-03-26T20:16:18.990365",
+  "step3_time": "2026-03-26T20:17:44.076688",
+  "timestamp": "2026-03-26T20:17:44.076697"
+}

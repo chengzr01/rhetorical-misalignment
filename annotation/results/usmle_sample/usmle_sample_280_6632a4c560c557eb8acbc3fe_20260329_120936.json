@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6632a4c560c557eb8acbc3fe",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "general medicine",
+    "practice_location": "Detroit",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-29T11:56:43.178759",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_280",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Pulmonary embolism",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "My initial instinct was thinking that there would be an acute exacerbation of CHF, but then the lungs were clear. Because of VTE and Virkus triad it just made sense to consider an acute PE.",
+  "highlights": [],
+  "session_start": "2026-03-29T11:56:43.217032",
+  "step1_time": "2026-03-29T12:07:45.638294",
+  "step2_time": "2026-03-29T12:08:39.971303",
+  "step3_time": "2026-03-29T12:09:36.740753",
+  "timestamp": "2026-03-29T12:09:36.740763"
+}

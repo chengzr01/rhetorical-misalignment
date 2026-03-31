@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695ff38ddb46ec007d427ac5",
+  "demographics": {
+    "age": "63",
+    "expertise": "medicine",
+    "practice_location": "United States",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-27T17:09:48.179236",
+    "years_of_practice": "11"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_234",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Oxycodone therapy",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change the answer. I chose C because the patient's generalized itching without primary skin lesions is most consistent with an opioid side effect. The AI explanation confirmed that this was the best fit.",
+  "highlights": [],
+  "session_start": "2026-03-27T17:09:48.215531",
+  "step1_time": "2026-03-27T17:20:40.493333",
+  "step2_time": "2026-03-27T17:21:05.306223",
+  "step3_time": "2026-03-27T17:24:03.646051",
+  "timestamp": "2026-03-27T17:24:03.646061"
+}

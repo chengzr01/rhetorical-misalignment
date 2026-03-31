@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69b37d42378c672c56abb20b",
+  "demographics": {
+    "age": "41",
+    "expertise": "Internal Medicine ",
+    "practice_location": "Southern Pines, NC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T23:26:26.249939",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_135",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Inclusion of trials with an intervention duration of 2 weeks",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.44,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI's explanation definitely played a role. The text above was a bit hard to read because of how it was laid out and I think I missed reading that time frame of the studies in the first section. This is also not a condition that I have experience with so the explanation about the duration of maintenance from AI was really helpful here. That makes the most sense of all of the answer given as to why there could be an issue with the study. ",
+  "highlights": [],
+  "session_start": "2026-03-26T23:26:26.284872",
+  "step1_time": "2026-03-26T23:29:11.207585",
+  "step2_time": "2026-03-26T23:30:38.237421",
+  "step3_time": "2026-03-26T23:34:16.429732",
+  "timestamp": "2026-03-26T23:34:16.429742"
+}

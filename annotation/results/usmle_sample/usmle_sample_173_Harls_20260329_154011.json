@@ -1,0 +1,49 @@
+{
+  "annotator_id": "Harls",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Exotic medicine ",
+    "practice_location": "NJ, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T15:35:28.385178",
+    "years_of_practice": "3.5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_173",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Biopsy of the vulva",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Because of the patient's age and discomfort, the best and fastest method for results would be biopsy. It is better to remove and send out a piece of tissue sample rather than perform unnecessary diagnostics. ",
+  "highlights": [],
+  "session_start": "2026-03-29T15:35:28.425204",
+  "step1_time": "2026-03-29T15:39:14.111630",
+  "step2_time": "2026-03-29T15:39:19.192053",
+  "step3_time": "2026-03-29T15:40:11.308970",
+  "timestamp": "2026-03-29T15:40:11.308980"
+}

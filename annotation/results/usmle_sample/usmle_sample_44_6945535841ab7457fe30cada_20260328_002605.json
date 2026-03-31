@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6945535841ab7457fe30cada",
+  "demographics": {
+    "age": "52",
+    "expertise": "Medical Research Consultant Educator",
+    "practice_location": "Texas, United States",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T00:16:08.909990",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_44",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "\"Thank you for waiting. How can I help you today?\"",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my answer but kept it instead because I knew that was the right and correct answer.",
+  "highlights": [],
+  "session_start": "2026-03-28T00:16:08.949577",
+  "step1_time": "2026-03-28T00:19:34.429336",
+  "step2_time": "2026-03-28T00:25:18.585367",
+  "step3_time": "2026-03-28T00:26:05.247677",
+  "timestamp": "2026-03-28T00:26:05.247687"
+}

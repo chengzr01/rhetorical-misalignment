@@ -1,0 +1,49 @@
+{
+  "annotator_id": "61128a785cde987fd0b18ac8",
+  "demographics": {
+    "age": "24",
+    "expertise": "Progressive Care ",
+    "practice_location": "Orlando, Fl",
+    "race": "two_or_more",
+    "sex": "female",
+    "submitted_at": "2026-03-28T14:30:48.906836",
+    "years_of_practice": "1"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_256",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Echocardiography",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.94,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn't change my belief because this is something I already know from practice and the AI rational didn't affect my decision",
+  "highlights": [],
+  "session_start": "2026-03-28T14:30:48.948192",
+  "step1_time": "2026-03-28T14:37:43.630343",
+  "step2_time": "2026-03-28T14:37:49.222443",
+  "step3_time": "2026-03-28T14:38:12.767629",
+  "timestamp": "2026-03-28T14:38:12.767640"
+}

@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a1c68c04b01b54ac96d443",
+  "demographics": {
+    "age": "26",
+    "expertise": "Emergency department",
+    "practice_location": "Reading, PA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T02:13:44.408905",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_259",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Hemoglobin A 1c",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.73,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.73,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The patient has multiple risk factors and findings suggestive of undiagnosed diabetes, so HbA1c is the most appropriate next step to confirm chronic hyperglycemia and assess long-term glycemic control.",
+  "highlights": [],
+  "session_start": "2026-03-28T02:13:44.446252",
+  "step1_time": "2026-03-28T02:27:02.288416",
+  "step2_time": "2026-03-28T02:27:13.220813",
+  "step3_time": "2026-03-28T02:27:45.454883",
+  "timestamp": "2026-03-28T02:27:45.454893"
+}

@@ -1,0 +1,74 @@
+{
+  "annotator_id": "69b0b8a2adb0a49e29de3cc1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Physical Therapy",
+    "practice_location": "Denver",
+    "race": "white",
+    "sex": "",
+    "submitted_at": "2026-03-28T16:21:23.587440",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_278",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Inhibition of \u03b2 1-adrenergic receptors",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The AI helped me to change my answer by breaking down the expected symptoms for each type of overdose. By seeing it laid out clearly it became apparent that there was likely an overdose of cardiac medication, not opioids.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "History: major depressive disorder, chronic back pain (fluoxetine, acetaminophen/codeine). She lives with a mother who has hypertension and congestive heart failure \u2192 likely has cardiovascular medications at home.",
+      "timestamp": "2026-03-28T16:30:31.586Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "This constellation is classic for a cardiodepressant overdose rather than a pure CNS depressant or opioid overdose.",
+      "timestamp": "2026-03-28T16:30:49.271Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Given the available information and common prescribing patterns in CHF, beta-blocker overdose is the most likely.",
+      "timestamp": "2026-03-28T16:31:07.543Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Competitive inhibition of \u03b2-adrenergic receptors (particularly \u03b2\u2081 receptors in the heart), leading to decreased heart rate and contractility.",
+      "timestamp": "2026-03-28T16:31:16.469Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T16:21:23.631039",
+  "step1_time": "2026-03-28T16:30:21.563079",
+  "step2_time": "2026-03-28T16:31:26.994609",
+  "step3_time": "2026-03-28T16:32:18.490370",
+  "timestamp": "2026-03-28T16:32:18.490380"
+}

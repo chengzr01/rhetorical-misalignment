@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6945535841ab7457fe30cada",
+  "demographics": {
+    "age": "52",
+    "expertise": "Medical Research Consultant Educator",
+    "practice_location": "Texas, United States",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T00:16:08.909990",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_87",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "G 1",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.03,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.43,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.43,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did change my answer and the reason being is because after reading the information and the breakdown from AI, I understood it better. Without AI breaking it down, I definitely would have gotten the answer wrong. The AI information is really helpful when you are unsure.",
+  "highlights": [],
+  "session_start": "2026-03-28T00:16:08.949577",
+  "step1_time": "2026-03-28T00:28:53.085259",
+  "step2_time": "2026-03-28T00:31:48.804287",
+  "step3_time": "2026-03-28T00:34:44.207711",
+  "timestamp": "2026-03-28T00:34:44.207721"
+}

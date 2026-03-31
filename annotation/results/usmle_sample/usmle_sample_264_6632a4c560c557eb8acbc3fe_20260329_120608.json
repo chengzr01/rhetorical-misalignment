@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6632a4c560c557eb8acbc3fe",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "general medicine",
+    "practice_location": "Detroit",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-29T11:56:43.178759",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_264",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Vertebrobasilar",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.9,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Interesting. I usually associate the symptoms that were presented with as with a middle cerebral artery stroke, but the vertebral Basil makes sense given the nausea and vomiting before hand, and it being very vestibular based.",
+  "highlights": [],
+  "session_start": "2026-03-29T11:56:43.217032",
+  "step1_time": "2026-03-29T12:04:58.813174",
+  "step2_time": "2026-03-29T12:05:20.525024",
+  "step3_time": "2026-03-29T12:06:08.684516",
+  "timestamp": "2026-03-29T12:06:08.684526"
+}

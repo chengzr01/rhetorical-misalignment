@@ -1,0 +1,49 @@
+{
+  "annotator_id": "60fefffae637223438552868",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "hematology",
+    "practice_location": "memphis, tn",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-03-27T04:00:57.198941",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_25",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "\"You sound upset. Tell me a little more about that.\"",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "i feelboth statements were similar but i see how the AI statement choice is better. it sounds more empathic towards teh patient",
+  "highlights": [],
+  "session_start": "2026-03-27T04:00:57.234965",
+  "step1_time": "2026-03-27T04:01:28.838747",
+  "step2_time": "2026-03-27T04:01:54.788007",
+  "step3_time": "2026-03-27T04:02:34.552499",
+  "timestamp": "2026-03-27T04:02:34.552508"
+}

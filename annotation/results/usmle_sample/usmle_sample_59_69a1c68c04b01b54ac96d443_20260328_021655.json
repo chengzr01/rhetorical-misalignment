@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a1c68c04b01b54ac96d443",
+  "demographics": {
+    "age": "26",
+    "expertise": "Emergency department",
+    "practice_location": "Reading, PA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T02:13:44.408905",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_59",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "The patient's DMD carrier status is uncertain because of random X inactivation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.83,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.99,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.99,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "DMD is a recessive linked disorder that causes mutations on the X chromoome",
+  "highlights": [],
+  "session_start": "2026-03-28T02:13:44.446252",
+  "step1_time": "2026-03-28T02:14:54.982701",
+  "step2_time": "2026-03-28T02:15:34.334714",
+  "step3_time": "2026-03-28T02:16:55.069676",
+  "timestamp": "2026-03-28T02:16:55.069686"
+}

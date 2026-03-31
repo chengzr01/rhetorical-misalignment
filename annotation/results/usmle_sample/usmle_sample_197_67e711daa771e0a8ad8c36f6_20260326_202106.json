@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67e711daa771e0a8ad8c36f6",
+  "demographics": {
+    "age": "28",
+    "expertise": "Healthcare",
+    "practice_location": "New York/ United States of America ",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-26T20:09:38.601977",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_197",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Premature closure",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "In this case, the premature closure error occurred when the physician quickly attributed the patient's symptoms to gastroenteritis based on the clinical context (fever, vomiting, and previous similar cases) without adequately considering other serious differential diagnoses. The physician failed to investigate further, especially in light of the patient\u2019s underlying medical conditions, such as cerebral palsy and situs inversus, which predispose her to intestinal volvulus.\r\n\r\n",
+  "highlights": [],
+  "session_start": "2026-03-26T20:09:38.636615",
+  "step1_time": "2026-03-26T20:20:27.402701",
+  "step2_time": "2026-03-26T20:20:42.328342",
+  "step3_time": "2026-03-26T20:21:06.270690",
+  "timestamp": "2026-03-26T20:21:06.270700"
+}

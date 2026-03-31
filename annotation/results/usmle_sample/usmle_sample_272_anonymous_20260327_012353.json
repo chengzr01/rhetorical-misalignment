@@ -1,0 +1,62 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "",
+    "expertise": "",
+    "practice_location": "",
+    "race": "",
+    "sex": "",
+    "submitted_at": "2026-03-27T01:10:43.790277",
+    "years_of_practice": ""
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_272",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Abide by the patient's wishes",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.75,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 0.85,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I came to a similar conclusion as the AI. The patient is clear and not delusional in any way, so they have the decision making capacity to refuse medical intervention. ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The patient is described as \"alert and fully oriented.\"",
+      "timestamp": "2026-03-27T01:22:29.321Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "His refusal is consistent and based on his past negative experience, not on a delusion or lack of understanding.",
+      "timestamp": "2026-03-27T01:22:41.142Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-27T01:10:43.828969",
+  "step1_time": "2026-03-27T01:22:00.940441",
+  "step2_time": "2026-03-27T01:23:04.245704",
+  "step3_time": "2026-03-27T01:23:53.940619",
+  "timestamp": "2026-03-27T01:23:53.940629"
+}

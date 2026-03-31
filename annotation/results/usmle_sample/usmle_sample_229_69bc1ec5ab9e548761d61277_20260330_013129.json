@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69bc1ec5ab9e548761d61277",
+  "demographics": {
+    "age": "58",
+    "expertise": "Cardiology",
+    "practice_location": "Bemidji, Minnesota",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:44:14.166945",
+    "years_of_practice": "20+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_229",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Explain to the patient that because her advance directive is confusing, discussing her options would be helpful",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Answer \"C\" was the only appropriate answer in regards to patients rights and medical management. Her DNR order was specific to CPR but did not address pulmonary collaps or Intubation. The right course of action would be for the medical team to establish a clear understanding of the patient's wishes and revise her advanced directives to reflect her wishes. The AI explanation did not play a role in my decision making process. ",
+  "highlights": [],
+  "session_start": "2026-03-30T00:44:14.206037",
+  "step1_time": "2026-03-30T01:17:40.123611",
+  "step2_time": "2026-03-30T01:20:55.376852",
+  "step3_time": "2026-03-30T01:31:29.762630",
+  "timestamp": "2026-03-30T01:31:29.762639"
+}

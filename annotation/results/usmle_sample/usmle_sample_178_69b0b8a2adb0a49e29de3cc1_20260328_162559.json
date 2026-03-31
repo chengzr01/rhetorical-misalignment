@@ -1,0 +1,74 @@
+{
+  "annotator_id": "69b0b8a2adb0a49e29de3cc1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Physical Therapy",
+    "practice_location": "Denver",
+    "race": "white",
+    "sex": "",
+    "submitted_at": "2026-03-28T16:21:23.587440",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_178",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Levothyroxine therapy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.21,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.61,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.61,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I am not very familiar with newborn care. I have no working basis to go from so I took a guess, but the rationale provided by the AI made sense, so I went with it.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "In neonates, congenital hypothyroidism is often asymptomatic in the first days/weeks of life because of maternal T4 in utero and sometimes residual thyroid function. A normal physical exam does not rule it out.",
+      "timestamp": "2026-03-28T16:24:38.500Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "The working diagnosis is congenital hypothyroidism, until proven otherwise.",
+      "timestamp": "2026-03-28T16:24:49.374Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "A low FT4 in a newborn, especially with elevated TSH, is an indication for immediate treatment, even if the infant appears clinically well.",
+      "timestamp": "2026-03-28T16:25:01.477Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Immediate initiation of levothyroxine therapy.",
+      "timestamp": "2026-03-28T16:25:07.782Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T16:21:23.631039",
+  "step1_time": "2026-03-28T16:24:11.619162",
+  "step2_time": "2026-03-28T16:25:17.262471",
+  "step3_time": "2026-03-28T16:25:59.899060",
+  "timestamp": "2026-03-28T16:25:59.899070"
+}

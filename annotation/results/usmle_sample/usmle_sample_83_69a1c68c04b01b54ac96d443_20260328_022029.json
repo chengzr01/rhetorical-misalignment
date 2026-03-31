@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a1c68c04b01b54ac96d443",
+  "demographics": {
+    "age": "26",
+    "expertise": "Emergency department",
+    "practice_location": "Reading, PA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T02:13:44.408905",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_83",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Adenylyl cyclase",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.43,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "A",
+    "answer_belief": 0.49,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "A",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "the patient has a basal skull fracture and the lab results show increased serum osmolality and reduced urine osmolality making it a direct presentation of diabetes inspidus",
+  "highlights": [],
+  "session_start": "2026-03-28T02:13:44.446252",
+  "step1_time": "2026-03-28T02:18:02.849048",
+  "step2_time": "2026-03-28T02:18:16.874873",
+  "step3_time": "2026-03-28T02:20:29.649867",
+  "timestamp": "2026-03-28T02:20:29.649877"
+}

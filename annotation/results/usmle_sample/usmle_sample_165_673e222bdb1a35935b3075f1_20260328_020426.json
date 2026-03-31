@@ -1,0 +1,62 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T01:44:18.342786",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_165",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "No diagnostic testing indicated  x-ray",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.67,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The clinical reasoning behind the Ottawa knee and ankle rules clearly showed great insights and significant solutions to problems.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Ottawa knee rules indicate knee radiographs if ANY of the following:\r\n- Age \u2265 55 years\r\n- Isolated tenderness of patella\r\n- Tenderness at head of fibula\r\n- Inability to flex to 90\u00b0\r\n- Inability to bear weight (4 steps) immediately and in ED",
+      "timestamp": "2026-03-27T23:20:32.899Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "No patellar tenderness.\r\n- No fibular head tenderness",
+      "timestamp": "2026-03-27T23:20:39.135Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T01:44:18.379566",
+  "step1_time": "2026-03-28T02:01:39.815030",
+  "step2_time": "2026-03-28T02:02:05.151155",
+  "step3_time": "2026-03-28T02:04:26.861071",
+  "timestamp": "2026-03-28T02:04:26.861081"
+}

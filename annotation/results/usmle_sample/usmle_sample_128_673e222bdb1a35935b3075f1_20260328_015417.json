@@ -1,0 +1,62 @@
+{
+  "annotator_id": "673e222bdb1a35935b3075f1",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Chicago, IL.",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T01:44:18.342786",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_128",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Surgical biopsy of the oral lesion",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.68,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.68,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.68,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The proper and concise explanation of the aspect of 'leukoplakia' by the AI system helped me in making a decision. The whitish content is also connected to the illness.",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "White patch/plaque on oral mucosa",
+      "timestamp": "2026-03-27T23:09:26.651Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Leukoplakia",
+      "timestamp": "2026-03-27T23:09:56.344Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-28T01:44:18.379566",
+  "step1_time": "2026-03-28T01:50:25.250591",
+  "step2_time": "2026-03-28T01:51:22.291187",
+  "step3_time": "2026-03-28T01:54:17.775727",
+  "timestamp": "2026-03-28T01:54:17.775736"
+}

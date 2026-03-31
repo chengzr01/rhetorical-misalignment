@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a1c68c04b01b54ac96d443",
+  "demographics": {
+    "age": "26",
+    "expertise": "Emergency department",
+    "practice_location": "Reading, PA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T02:13:44.408905",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_176",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Provide palliative therapy only",
+  "correct_answer_idx": "D",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.89,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "the presented patient has decision making capacity and thus his explicit removal overrides the daughter's insistence as intubation will violate his autonomy ",
+  "highlights": [],
+  "session_start": "2026-03-28T02:13:44.446252",
+  "step1_time": "2026-03-28T02:21:33.832700",
+  "step2_time": "2026-03-28T02:21:48.036295",
+  "step3_time": "2026-03-28T02:23:59.173563",
+  "timestamp": "2026-03-28T02:23:59.173572"
+}

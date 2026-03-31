@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69b37d42378c672c56abb20b",
+  "demographics": {
+    "age": "41",
+    "expertise": "Internal Medicine ",
+    "practice_location": "Southern Pines, NC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T23:26:26.249939",
+    "years_of_practice": "9"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_329",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Refer the patient to an allergist for further evaluation",
+  "correct_answer_idx": "E",
+  "step1": {
+    "answer": "E",
+    "answer_belief": 0.72,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.45,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.45,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "AI did not change my answer in this case because she had been dealing with the pain for quite a while so it was not an emergency situation meaning there was time to further investigate the cause of the reaction. It is likely that she was mildly allergic to one of the -caines as they are most widely used, but as they differ in their structure a bit, it would be hard to know if the reaction would be the same or worse because we don't know what was used. Without knowing what the reaction was from and given that there is the luxury of time with this case it is best to figure out why the reaction is occurring and not just guessing as to what may or may not be used in this case and risk a possible worse reaction. The one she had initially was minor but in some cases repeat exposure to an allergen can worsen to anaphylaxis. ",
+  "highlights": [],
+  "session_start": "2026-03-26T23:26:26.284872",
+  "step1_time": "2026-03-26T23:55:44.593325",
+  "step2_time": "2026-03-26T23:56:58.653998",
+  "step3_time": "2026-03-27T00:01:58.816931",
+  "timestamp": "2026-03-27T00:01:58.816942"
+}

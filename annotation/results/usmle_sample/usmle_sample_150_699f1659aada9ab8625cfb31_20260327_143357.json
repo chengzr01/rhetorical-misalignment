@@ -1,0 +1,49 @@
+{
+  "annotator_id": "699f1659aada9ab8625cfb31",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Pediatric Medicine",
+    "practice_location": "Hartford, CT",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-27T14:17:10.916098",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_150",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Endoscopy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.65,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "E",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "E",
+    "answer_belief": 0.65,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "According to the AI; \u201cIf test is negative: Consider functional dyspepsia; trial of PPI; dietary modifications; consider endoscopy if symptoms persist despite treatment\u201d I don\u2019t know of the description gives enough data for the AI to make a sound medical decision.\r\n",
+  "highlights": [],
+  "session_start": "2026-03-27T14:17:10.953111",
+  "step1_time": "2026-03-27T14:31:04.183056",
+  "step2_time": "2026-03-27T14:31:53.992232",
+  "step3_time": "2026-03-27T14:33:57.217171",
+  "timestamp": "2026-03-27T14:33:57.217181"
+}

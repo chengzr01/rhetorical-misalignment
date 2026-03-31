@@ -1,0 +1,49 @@
+{
+  "annotator_id": "66eeda2bc7d6e9b92b4a81c0",
+  "demographics": {
+    "age": "40",
+    "expertise": "Healthcare/Nursing",
+    "practice_location": "US: Florida",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-26T22:18:08.885127",
+    "years_of_practice": "12"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_330",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Bupivacaine femoral nerve block",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.98,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I initially thought about monitoring or oxygen, but the AI helped me see that the real problem is opioid-induced respiratory depression. The sentence that stood out was about the conflict between pain control and respiratory safety. That made me realize giving more opioids or just watching him with monitors does not fix the cause. A femoral nerve block treats the pain without making his breathing worse, which is what he actually needs. So I changed my answer to B.",
+  "highlights": [],
+  "session_start": "2026-03-26T22:18:08.920472",
+  "step1_time": "2026-03-26T22:37:20.122074",
+  "step2_time": "2026-03-26T22:37:47.051752",
+  "step3_time": "2026-03-26T22:40:54.689228",
+  "timestamp": "2026-03-26T22:40:54.689238"
+}

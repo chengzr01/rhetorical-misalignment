@@ -1,0 +1,49 @@
+{
+  "annotator_id": "Harls",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Exotic medicine ",
+    "practice_location": "NJ, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T15:35:28.385178",
+    "years_of_practice": "3.5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_206",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Azithromycin",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.19,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.19,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.19,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Because of the patient's symptoms, I would assume this is somewhat related to whopping cough and would prescribe an antibiotic. ",
+  "highlights": [],
+  "session_start": "2026-03-29T15:35:28.425204",
+  "step1_time": "2026-03-29T15:43:13.094990",
+  "step2_time": "2026-03-29T15:43:38.725547",
+  "step3_time": "2026-03-29T15:44:05.199908",
+  "timestamp": "2026-03-29T15:44:05.199919"
+}

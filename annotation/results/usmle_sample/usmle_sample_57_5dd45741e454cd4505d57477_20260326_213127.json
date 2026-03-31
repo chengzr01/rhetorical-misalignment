@@ -1,0 +1,68 @@
+{
+  "annotator_id": "5dd45741e454cd4505d57477",
+  "demographics": {
+    "age": "56",
+    "expertise": "Clinical Laboratory Science",
+    "practice_location": "Key West, Florida, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-26T21:26:51.190961",
+    "years_of_practice": "30+"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_57",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Ingestion of soil",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I did not change my belief, I was 100% confident in my diagnosis.  The other options would have presented with an onset of different symptoms.  ",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "earthworm-like\"",
+      "timestamp": "2026-03-26T21:29:43.034Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "soil-transmitted helminths",
+      "timestamp": "2026-03-26T21:29:59.928Z",
+      "step": "step2"
+    },
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "Most Likely Diagnosis: A",
+      "timestamp": "2026-03-26T21:30:08.754Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-26T21:26:51.229517",
+  "step1_time": "2026-03-26T21:28:59.330315",
+  "step2_time": "2026-03-26T21:30:18.287913",
+  "step3_time": "2026-03-26T21:31:27.174762",
+  "timestamp": "2026-03-26T21:31:27.174772"
+}

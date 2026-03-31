@@ -1,0 +1,49 @@
+{
+  "annotator_id": "6570a374431d1d4e8a3cddcb",
+  "demographics": {
+    "age": "35-44",
+    "expertise": "Emergency Medicine",
+    "practice_location": "Nashua, NH",
+    "race": "hispanic_latino",
+    "sex": "male",
+    "submitted_at": "2026-03-28T04:36:28.709325",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_339",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "In 5 years",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.8,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "She is a low risk patient with no concerns on her last cytology exam and does not exhibit any high risk behavior that would warrant repeating this test sooner. ",
+  "highlights": [],
+  "session_start": "2026-03-28T04:36:28.748400",
+  "step1_time": "2026-03-28T04:54:23.740270",
+  "step2_time": "2026-03-28T04:54:52.518742",
+  "step3_time": "2026-03-28T04:55:33.490981",
+  "timestamp": "2026-03-28T04:55:33.490991"
+}

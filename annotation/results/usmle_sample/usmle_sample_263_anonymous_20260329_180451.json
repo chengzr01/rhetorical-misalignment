@@ -1,0 +1,49 @@
+{
+  "annotator_id": "anonymous",
+  "demographics": {
+    "age": "39",
+    "expertise": "Mental Health Counseling ",
+    "practice_location": "Charleston, South Carolina ",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T17:46:20.984712",
+    "years_of_practice": "4"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_263",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "\"Tell me what your greatest concerns are.\"",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I don't understand the rationale of the correct answer. My final answer almost exactly reflects the rationale for most appropriate response given by doctor.",
+  "highlights": [],
+  "session_start": "2026-03-29T17:46:21.023620",
+  "step1_time": "2026-03-29T18:00:38.691636",
+  "step2_time": "2026-03-29T18:01:09.558643",
+  "step3_time": "2026-03-29T18:04:51.501577",
+  "timestamp": "2026-03-29T18:04:51.501587"
+}

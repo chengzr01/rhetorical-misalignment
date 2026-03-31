@@ -1,0 +1,49 @@
+{
+  "annotator_id": "Harls",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "Exotic medicine ",
+    "practice_location": "NJ, USA",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-29T15:35:28.385178",
+    "years_of_practice": "3.5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_342",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Bulbar weakness",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.02,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.12,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.12,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I can assume because of her inability to use motor skills properly, it is likely to be related to bulbar weakness. ",
+  "highlights": [],
+  "session_start": "2026-03-29T15:35:28.425204",
+  "step1_time": "2026-03-29T15:45:14.788337",
+  "step2_time": "2026-03-29T15:45:36.027388",
+  "step3_time": "2026-03-29T15:46:17.629117",
+  "timestamp": "2026-03-29T15:46:17.629127"
+}

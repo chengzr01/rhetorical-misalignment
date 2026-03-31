@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a84a9aea5a405bb69805cb",
+  "demographics": {
+    "age": "52",
+    "expertise": "Clinical Psychologist",
+    "practice_location": "Pasadena, CA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-29T05:44:56.137035",
+    "years_of_practice": "24"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gemini",
+  "case_id": "usmle_sample_130",
+  "agent_name": "default_agent",
+  "agent_model": "google/gemini-2.5-pro",
+  "correct_answer": "Physical therapy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Physical therapy will help the patient avoid falling",
+  "highlights": [],
+  "session_start": "2026-03-29T05:44:56.178484",
+  "step1_time": "2026-03-29T05:45:46.973978",
+  "step2_time": "2026-03-29T05:46:02.332332",
+  "step3_time": "2026-03-29T05:47:15.836523",
+  "timestamp": "2026-03-29T05:47:15.836533"
+}

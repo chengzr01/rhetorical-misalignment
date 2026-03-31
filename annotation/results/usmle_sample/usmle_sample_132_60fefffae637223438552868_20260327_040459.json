@@ -1,0 +1,62 @@
+{
+  "annotator_id": "60fefffae637223438552868",
+  "demographics": {
+    "age": "25-34",
+    "expertise": "hematology",
+    "practice_location": "memphis, tn",
+    "race": "asian",
+    "sex": "female",
+    "submitted_at": "2026-03-27T04:00:57.198941",
+    "years_of_practice": "3"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "gpt",
+  "case_id": "usmle_sample_132",
+  "agent_name": "default_agent",
+  "agent_model": "openai/gpt-5.1",
+  "correct_answer": "Administration of epinephrine",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "A",
+    "answer_belief": 0.5,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "because of his fall, there are many options to chose from. in this case, he has a muscular injury, so epinephrine is the best use here",
+  "highlights": [
+    {
+      "text": "Administer intramuscular epinephrine immediately",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-27T04:04:41.336Z",
+      "step": "step3"
+    },
+    {
+      "text": "IM epinephrine for treatment of anaphylaxis.",
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "timestamp": "2026-03-27T04:04:44.438Z",
+      "step": "step3"
+    }
+  ],
+  "session_start": "2026-03-27T04:00:57.234965",
+  "step1_time": "2026-03-27T04:03:46.153771",
+  "step2_time": "2026-03-27T04:04:05.192066",
+  "step3_time": "2026-03-27T04:04:59.163209",
+  "timestamp": "2026-03-27T04:04:59.163221"
+}

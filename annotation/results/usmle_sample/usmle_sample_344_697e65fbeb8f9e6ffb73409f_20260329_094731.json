@@ -1,0 +1,56 @@
+{
+  "annotator_id": "697e65fbeb8f9e6ffb73409f",
+  "demographics": {
+    "age": "31",
+    "expertise": "Nursing",
+    "practice_location": "Minesota,United States",
+    "race": "black_african_american",
+    "sex": "male",
+    "submitted_at": "2026-03-29T09:30:48.851913",
+    "years_of_practice": "5"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_344",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Transcutaneous pacing",
+  "correct_answer_idx": "F",
+  "step1": {
+    "answer": "F",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "F",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "F",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "Critical finding is a bradycardia of 30 beats per minute",
+  "highlights": [
+    {
+      "context": "\ud83e\udd16 AI's Clinical Reasoning",
+      "text": "critical finding is the rate of 30/min",
+      "timestamp": "2026-03-29T09:46:10.444Z",
+      "step": "step2"
+    }
+  ],
+  "session_start": "2026-03-29T09:30:48.890761",
+  "step1_time": "2026-03-29T09:45:24.072982",
+  "step2_time": "2026-03-29T09:46:29.631331",
+  "step3_time": "2026-03-29T09:47:31.993232",
+  "timestamp": "2026-03-29T09:47:31.993242"
+}

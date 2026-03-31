@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a89b73dfa84ad287505723",
+  "demographics": {
+    "age": "18-24",
+    "expertise": "Emergency Medicine, Inpatient Care",
+    "practice_location": "South Dakota ",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-30T00:25:11.020272",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "deepseek",
+  "case_id": "usmle_sample_148",
+  "agent_name": "default_agent",
+  "agent_model": "deepseek/deepseek-chat-v3.1",
+  "correct_answer": "As early as possible, even if she cannot process the whole experience",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I had previous understanding of the timeline of informing children of adoption. However, the AI gave more rationale to my answer. I am able to better articulate why other options are not appropriate. ",
+  "highlights": [],
+  "session_start": "2026-03-30T00:25:11.072717",
+  "step1_time": "2026-03-30T00:35:16.340898",
+  "step2_time": "2026-03-30T00:35:48.320513",
+  "step3_time": "2026-03-30T00:36:32.659024",
+  "timestamp": "2026-03-30T00:36:32.659034"
+}

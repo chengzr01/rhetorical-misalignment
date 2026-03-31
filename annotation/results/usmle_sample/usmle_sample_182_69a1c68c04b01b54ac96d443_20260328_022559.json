@@ -1,0 +1,49 @@
+{
+  "annotator_id": "69a1c68c04b01b54ac96d443",
+  "demographics": {
+    "age": "26",
+    "expertise": "Emergency department",
+    "practice_location": "Reading, PA",
+    "race": "black_african_american",
+    "sex": "female",
+    "submitted_at": "2026-03-28T02:13:44.408905",
+    "years_of_practice": "2"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_182",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Small vessel disease",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.14,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.07,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.07,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The CT shows a hyperdense lesion in the right putamen . The patient has uncontrolled hypertension (174/109 mm Hg), which strongly supports this.",
+  "highlights": [],
+  "session_start": "2026-03-28T02:13:44.446252",
+  "step1_time": "2026-03-28T02:24:53.712848",
+  "step2_time": "2026-03-28T02:25:06.656234",
+  "step3_time": "2026-03-28T02:25:59.363924",
+  "timestamp": "2026-03-28T02:25:59.363934"
+}

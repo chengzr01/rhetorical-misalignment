@@ -1,0 +1,49 @@
+{
+  "annotator_id": "695f8c5a7ab4bdf6a3521cd9",
+  "demographics": {
+    "age": "45-54",
+    "expertise": "Family Medicine",
+    "practice_location": "Hampstead, NC",
+    "race": "white",
+    "sex": "female",
+    "submitted_at": "2026-03-28T16:44:45.570104",
+    "years_of_practice": "27"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_178",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Levothyroxine therapy",
+  "correct_answer_idx": "B",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.34,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "B",
+    "answer_belief": 1.0,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": true,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "The clinical reasoning made me change my decision.",
+  "highlights": [],
+  "session_start": "2026-03-28T16:44:45.609508",
+  "step1_time": "2026-03-28T16:48:52.445051",
+  "step2_time": "2026-03-28T16:49:46.442003",
+  "step3_time": "2026-03-28T16:50:15.279934",
+  "timestamp": "2026-03-28T16:50:15.279943"
+}

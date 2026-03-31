@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67e711daa771e0a8ad8c36f6",
+  "demographics": {
+    "age": "28",
+    "expertise": "Healthcare",
+    "practice_location": "New York/ United States of America ",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-26T20:09:38.601977",
+    "years_of_practice": "6"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_89",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "50%",
+  "correct_answer_idx": "C",
+  "step1": {
+    "answer": "C",
+    "answer_belief": 0.5,
+    "is_correct": true
+  },
+  "step2": {
+    "answer": "C",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step3": {
+    "answer": "C",
+    "answer_belief": 0.81,
+    "is_correct": true
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": false
+  },
+  "reasoning": "I didn\u2019t change my initial belief but reaffirmed it after reviewing the details of the couple's genetic makeup and the possible offspring combinations. The AI\u2019s explanation helped clarify the potential genetic outcomes by breaking down the inheritance patterns:\r\n\r\n\"Crossing them:\r\n\r\nWoman \u2013\u03b1 \u00d7 Man \u2013\u03b1 \u2192 offspring: \u2013\u03b1 / \u2013\u03b1 \u2192 two-gene deletion \u2705\r\n\r\nWoman \u03b1\u03b1 \u00d7 Man \u2013\u03b1 \u2192 offspring: \u03b1\u03b1 / \u2013\u03b1 \u2192 one-gene deletion\"\r\n\r\nThis part of the explanation clearly laid out the probabilities for each possible offspring genotype. Since there was a 50% chance of the offspring inheriting the two-gene deletion, it confirmed my belief that the correct answer is 50% (C).",
+  "highlights": [],
+  "session_start": "2026-03-26T20:09:38.636615",
+  "step1_time": "2026-03-26T20:11:01.275207",
+  "step2_time": "2026-03-26T20:11:14.381233",
+  "step3_time": "2026-03-26T20:13:25.864891",
+  "timestamp": "2026-03-26T20:13:25.864902"
+}

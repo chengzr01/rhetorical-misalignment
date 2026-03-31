@@ -1,0 +1,49 @@
+{
+  "annotator_id": "67e072da6334afcc7043ae4a",
+  "demographics": {
+    "age": "48",
+    "expertise": "Medicine",
+    "practice_location": "USA",
+    "race": "white",
+    "sex": "male",
+    "submitted_at": "2026-03-28T10:24:30.026367",
+    "years_of_practice": "7"
+  },
+  "dataset": "usmle_sample",
+  "model_key": "claude",
+  "case_id": "usmle_sample_35",
+  "agent_name": "default_agent",
+  "agent_model": "anthropic/claude-haiku-4.5",
+  "correct_answer": "Baroreceptor output",
+  "correct_answer_idx": "A",
+  "step1": {
+    "answer": "D",
+    "answer_belief": 0.84,
+    "is_correct": false
+  },
+  "step2": {
+    "answer": "D",
+    "answer_belief": 0.93,
+    "is_correct": false
+  },
+  "step3": {
+    "answer": "D",
+    "answer_belief": 0.79,
+    "is_correct": false
+  },
+  "step1_to_step2_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "step2_to_step3_changes": {
+    "answer_changed": false,
+    "answer_belief_changed": true
+  },
+  "reasoning": "with attention",
+  "highlights": [],
+  "session_start": "2026-03-28T10:24:30.065739",
+  "step1_time": "2026-03-28T10:26:24.432133",
+  "step2_time": "2026-03-28T10:26:31.964473",
+  "step3_time": "2026-03-28T10:26:48.669754",
+  "timestamp": "2026-03-28T10:26:48.669765"
+}
