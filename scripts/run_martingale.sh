@@ -37,6 +37,7 @@ NC='\033[0m'
 DATASET_KEY="${1:-usmle_sample}"
 NUM_PERMUTATIONS="${2:-10}"
 PRINCIPAL_MODEL_KEY="${3:-deepseek}"
+AGENT_KEY="${4:-}"          # optional: tag for per-agent runs (e.g. claude, deepseek)
 
 # Configurable overrides
 PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-openrouter}"
@@ -73,10 +74,18 @@ PRINCIPAL_SERVER="${PRINCIPAL_SERVER:-$(get_model_server $PRINCIPAL_MODEL_KEY)}"
 PRINCIPAL_SGLANG_PORT="${PRINCIPAL_SGLANG_PORT:-$(get_principal_sglang_port $PRINCIPAL_MODEL_KEY)}"
 
 # Paths
-AGGREGATED_INFO="experiments/aggregation/aggregated_factual.json"
-PERMUTATIONS_FILE="experiments/agents/${DATASET_KEY}/martingale_permutations_k${NUM_PERMUTATIONS}.json"
-PRINCIPAL_OUTPUT="experiments/principals/${DATASET_KEY}/principal_martingale_k${NUM_PERMUTATIONS}.json"
-ANALYSIS_OUTPUT="experiments/principals/${DATASET_KEY}/martingale_analysis_k${NUM_PERMUTATIONS}.json"
+# AGGREGATED_INFO can be overridden via env var for per-agent runs
+AGGREGATED_INFO="${AGGREGATED_INFO:-experiments/aggregation/aggregated_factual.json}"
+
+# Optional suffix to distinguish per-agent output files (e.g. "_claude", "_deepseek")
+_AGENT_SUFFIX=""
+if [ -n "$AGENT_KEY" ]; then
+    _AGENT_SUFFIX="_${AGENT_KEY}"
+fi
+
+PERMUTATIONS_FILE="experiments/agents/${DATASET_KEY}/martingale_permutations${_AGENT_SUFFIX}_k${NUM_PERMUTATIONS}.json"
+PRINCIPAL_OUTPUT="experiments/principals/${DATASET_KEY}/principal_martingale${_AGENT_SUFFIX}_k${NUM_PERMUTATIONS}.json"
+ANALYSIS_OUTPUT="experiments/principals/${DATASET_KEY}/martingale_analysis${_AGENT_SUFFIX}_k${NUM_PERMUTATIONS}.json"
 
 # Validate aggregated info exists
 if [ ! -f "$AGGREGATED_INFO" ]; then
@@ -90,6 +99,7 @@ echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Martingale Reliability Test${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo -e "Dataset:              ${GREEN}${DATASET_KEY}${NC}"
+echo -e "Agent key:            ${GREEN}${AGENT_KEY:-<default>}${NC}"
 echo -e "Num permutations (K): ${GREEN}${NUM_PERMUTATIONS}${NC}"
 echo -e "Claim format:         ${GREEN}${CLAIM_FORMAT}${NC}"
 echo -e "Random seed:          ${GREEN}${SEED}${NC}"

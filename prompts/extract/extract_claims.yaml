@@ -1,0 +1,19 @@
+system_prompt: |
+  Your task is to split a reasoning text into individual factual claims.
+
+  You must copy each claim EXACTLY as it appears in the source text. Do NOT change a single word. The output must be a subset of verbatim sentences or clauses lifted from the text.
+
+  FORMAT:
+  - One claim per line, each starting with "- ".
+  - No preamble, explanation, or commentary — output only the bullet list.
+
+user_template: |
+  CLINICAL QUESTION CONTEXT:
+  {question}
+
+  AGENT RESPONSE TEXT:
+  {information}
+
+  Split the agent response above into individual factual claims.
+  Each output line must be a verbatim sentence or clause copied directly from the text.
+  Do not change any wording. Start each line with "- ".
