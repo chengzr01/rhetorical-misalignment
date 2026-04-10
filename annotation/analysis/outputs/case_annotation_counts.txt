@@ -10,7 +10,7 @@ SECTION 1: ANNOTATED CASES BY MODEL
 
 Model                 Cases with annot.    Avg annot./case
 ------------------------------------------------------------
-deepseek                             76               1.00
+deepseek                             81               1.00
 llama                                75               1.00
 llama_dpo                           117               1.35
 llama_large                          79               1.03
@@ -23,7 +23,7 @@ SECTION 2: DISTRIBUTION OF CASES ACROSS USMLE STEPS
 
 Model                Step1           Step2           Step3           Total     
 ---------------------------------------------------------------------------
-deepseek            22 (28.9%)     30 (39.5%)     24 (31.6%)     76
+deepseek            24 (29.6%)     32 (39.5%)     25 (30.9%)     81
 llama               28 (37.3%)     28 (37.3%)     19 (25.3%)     75
 llama_dpo           39 (33.3%)     39 (33.3%)     39 (33.3%)     117
 llama_large         29 (36.7%)     31 (39.2%)     19 (24.1%)     79
@@ -61,11 +61,11 @@ SECTION 4: CASE OVERLAP ACROSS MODELS
 
   Model 1              Model 2                 Overlap    Unique M1    Unique M2
   --------------------------------------------------------------------------------
-  deepseek             llama                        17           59           58
-  deepseek             llama_dpo                    25           51           92
-  deepseek             llama_large                  20           56           59
-  deepseek             llama_sft                    26           50           85
-  deepseek             llama_small                  23           53           86
+  deepseek             llama                        18           63           57
+  deepseek             llama_dpo                    26           55           91
+  deepseek             llama_large                  21           60           58
+  deepseek             llama_sft                    27           54           84
+  deepseek             llama_small                  23           58           86
   llama                llama_dpo                    29           46           88
   llama                llama_large                  22           53           57
   llama                llama_sft                    26           49           85
@@ -87,12 +87,12 @@ SECTION 4: CASE OVERLAP ACROSS MODELS
     Unique to llama_sft          : 59
     Total unique across three    : 242
 
-  Total unique cases across ALL models: 295
+  Total unique cases across ALL models: 298
   Distribution by number of models covering the case:
-    In 1 model(s): 121 cases (41.0%)
-    In 2 model(s): 102 cases (34.6%)
-    In 3 model(s): 51 cases (17.3%)
-    In 4 model(s): 17 cases (5.8%)
+    In 1 model(s): 124 cases (41.6%)
+    In 2 model(s): 100 cases (33.6%)
+    In 3 model(s): 53 cases (17.8%)
+    In 4 model(s): 17 cases (5.7%)
     In 5 model(s): 3 cases (1.0%)
     In 6 model(s): 1 cases (0.3%)
 
@@ -100,12 +100,12 @@ SECTION 4: CASE OVERLAP ACROSS MODELS
 SECTION 5: DETAILED ANNOTATION STATISTICS PER MODEL
 ====================================================================================================
 
-  Total unique annotated cases : 295
-  Total annotation files       : 692
+  Total unique annotated cases : 298
+  Total annotation files       : 697
 
   Model                 Annotations    Cases   Avg/case
   -------------------------------------------------------
-  deepseek                       76       76       1.00
+  deepseek                       81       81       1.00
   llama                          75       75       1.00
   llama_dpo                     158      117       1.35
   llama_large                    81       79       1.03

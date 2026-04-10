@@ -1,0 +1,294 @@
+
+================================================================================
+BELIEF CHANGE ANALYSIS — GENERAL CHARACTERISATION
+================================================================================
+
+  Total persuasion cases : 175
+  Harmful (C→I)          : 32
+  Helpful (I→C)          : 143
+
+--------------------------------------------------------------------------------
+1a. BELIEF CHANGE DISTRIBUTION (all persuasion cases)
+--------------------------------------------------------------------------------
+
+  When a human changed their answer after seeing AI:
+    Overall Δbelief: n=175  mean=+0.185  median=+0.100  stdev=0.271  min=-0.560  max=+1.000
+
+  Direction breakdown:
+    Increased  : 106 / 175 (60.6%)
+    Decreased  :  13 / 175 (7.4%)
+    Unchanged  :  56 / 175 (32.0%)
+      Among increases: n=106  mean=+0.337  median=+0.305  stdev=0.229  min=+0.020  max=+1.000
+      Among decreases: n=13  mean=-0.251  median=-0.200  stdev=0.181  min=-0.560  max=-0.040
+
+  Histogram (all cases, n=175):
+    ≤ −0.30  (large decrease): ███░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 (  2.9%)
+    −0.30–−0.10 (moderate ↓): ███░░░░░░░░░░░░░░░░░░░░░░░░░░░   5 (  2.9%)
+    −0.10–0.00  (small ↓): ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░   3 (  1.7%)
+     0.00       (unchanged): ██████████████████████████████  56 ( 32.0%)
+     0.00–0.10  (small ↑): ████████████░░░░░░░░░░░░░░░░░░  22 ( 12.6%)
+     0.10–0.30  (moderate ↑): ████████████████░░░░░░░░░░░░░░  30 ( 17.1%)
+    ≥  0.30    (large ↑): █████████████████████████████░  54 ( 30.9%)
+
+--------------------------------------------------------------------------------
+1b. HARMFUL vs. HELPFUL PERSUASION — BELIEF CHANGE PATTERNS
+--------------------------------------------------------------------------------
+
+  Harmful (C→I)  (n=32)
+    Δbelief: n=32  mean=+0.086  median=+0.025  stdev=0.170  min=-0.200  max=+0.550
+    Direction: ↑53.1%  ↓12.5%  =34.4%
+
+  Helpful (I→C)  (n=143)
+    Δbelief: n=143  mean=+0.208  median=+0.140  stdev=0.284  min=-0.560  max=+1.000
+    Direction: ↑62.2%  ↓6.3%  =31.5%
+
+--------------------------------------------------------------------------------
+1c. INITIAL CONFIDENCE (step1_belief) AS PERSUASION MODERATOR
+--------------------------------------------------------------------------------
+
+  Does initial confidence predict susceptibility to harmful persuasion?
+
+  Confidence band                           N  Mean Δbelief     %↑     %↓
+  ------------------------------------------------------------------------
+  Low confidence   (0.0–0.40)              11       +0.101  54.5%   9.1%
+  Medium confidence(0.40–0.70)             15       +0.116  60.0%   0.0%
+  High confidence  (0.70–1.0)               6       -0.018  33.3%  50.0%
+
+  Does initial confidence predict susceptibility to helpful persuasion?
+
+  Confidence band                           N  Mean Δbelief     %↑     %↓
+  ------------------------------------------------------------------------
+  Low confidence   (0.0–0.40)              65       +0.368  87.7%   0.0%
+  Medium confidence(0.40–0.70)             60       +0.100  43.3%  11.7%
+  High confidence  (0.70–1.0)              18       -0.013  33.3%  11.1%
+
+--------------------------------------------------------------------------------
+1d. KEY PATTERNS — ANSWER CHANGE vs. CONFIDENCE TRAJECTORY
+--------------------------------------------------------------------------------
+
+  Note: All cases in persuasion_examples.json changed their answer (that is
+  the definition of persuasion). Within those, we look at whether confidence
+  went up, down, or stayed the same after the AI response.
+  
+  Harmful (C→I):
+    Changed answer AND became more confident  : 17/32 (53.1%)
+    Changed answer BUT became less confident  : 4/32 (12.5%)
+    Changed answer, confidence unchanged      : 11/32 (34.4%)
+
+  Helpful (I→C):
+    Changed answer AND became more confident  : 89/143 (62.2%)
+    Changed answer BUT became less confident  : 9/143 (6.3%)
+    Changed answer, confidence unchanged      : 45/143 (31.5%)
+
+
+--------------------------------------------------------------------------------
+1e. BELIEF CHANGE BY AI MODEL
+--------------------------------------------------------------------------------
+
+  Model                                    Harmful N   Mean Δ Helpful N   Mean Δ    Net Δ
+  ----------------------------------------------------------------------------------------
+  Llama-3.1-Tulu-3-8B-DPO                          5  +0.098        16  +0.146  +0.048
+  Llama-3.1-Tulu-3-8B-SFT                         10  +0.063        23  +0.197  +0.134
+  claude-haiku-4.5                                 1  +0.000        16  +0.355  +0.355
+  deepseek-chat-v3.1                               3  +0.307        18  +0.212  -0.094
+  gemini-2.5-pro                                   0    +nan        16  +0.189    +nan
+  gpt-5.1                                          2  +0.125        21  +0.249  +0.124
+  llama-3.1-405b-instruct                          5  +0.116         6  +0.375  +0.259
+  llama-3.1-8b-instruct                            4  -0.058        16  +0.114  +0.171
+  llama-3.3-70b-instruct                           2  +0.050        11  +0.091  +0.041
+
+================================================================================
+BELIEF CHANGE ANALYSIS — RELATIONSHIP WITH PERSUASIVE EXAMPLES
+================================================================================
+
+--------------------------------------------------------------------------------
+2a. HIGHLIGHTS — DID ANNOTATION ENGAGEMENT PREDICT BELIEF CHANGE?
+--------------------------------------------------------------------------------
+
+  Annotators could highlight passages from the AI response they found notable.
+  We check whether highlighting correlates with larger belief shifts.
+
+  Harmful (C→I):
+      With highlights    (n=12): n=12  mean=+0.115  median=+0.060  stdev=0.179  min=-0.160  max=+0.500
+      Without highlights (n=20): n=20  mean=+0.068  median=+0.015  stdev=0.167  min=-0.200  max=+0.550
+    Mean highlights per highlighted case: 3.3
+
+  Helpful (I→C):
+      With highlights    (n=39): n=39  mean=+0.237  median=+0.140  stdev=0.316  min=-0.490  max=+1.000
+      Without highlights (n=104): n=104  mean=+0.196  median=+0.130  stdev=0.272  min=-0.560  max=+1.000
+    Mean highlights per highlighted case: 2.0
+
+  Highlight count vs. |Δbelief| (all persuasion cases):
+    0 highlights: n=124  mean |Δbelief|=0.211
+    1 highlights: n= 26  mean |Δbelief|=0.225
+    2–3 highlights: n= 15  mean |Δbelief|=0.306
+    4+ highlights: n= 10  mean |Δbelief|=0.236
+
+--------------------------------------------------------------------------------
+2b. ANNOTATOR REASONING — THEMES BEHIND BELIEF CHANGE
+--------------------------------------------------------------------------------
+
+  Reasoning themes across all persuasion cases (multi-label):
+
+  Theme                                   N      %    Mean Δ   Harmful  Helpful
+  --------------------------------------------------------------------------------
+  AI authority / trust                  103  58.9%    +0.234        16       87
+  Other / unclassified                   58  33.1%    +0.120        10       48
+  Misleading detail                      22  12.6%    +0.129         4       18
+  Evidence / reasoning cited             19  10.9%    +0.306         3       16
+  Self-doubt                             15   8.6%    +0.145         7        8
+  Acknowledged AI error                   6   3.4%    +0.172         4        2
+  No / vague reasoning                    3   1.7%    +0.150         2        1
+
+--------------------------------------------------------------------------------
+2c. CASES WITH vs. WITHOUT ANNOTATOR REASONING
+--------------------------------------------------------------------------------
+
+  Harmful (C→I):
+      Provided reasoning    (n=30): n=30  mean=+0.088  median=+0.025  stdev=0.175  min=-0.200  max=+0.550
+      No reasoning provided (n=2): n=2  mean=+0.055  median=+0.055  stdev=0.078  min=+0.000  max=+0.110
+
+  Helpful (I→C):
+      Provided reasoning    (n=142): n=142  mean=+0.207  median=+0.135  stdev=0.285  min=-0.560  max=+1.000
+      No reasoning provided (n=1): n=1  mean=+0.340  median=+0.340  stdev=0.000  min=+0.340  max=+0.340
+
+
+--------------------------------------------------------------------------------
+2d. DEMOGRAPHICS — WHO IS MOST SUSCEPTIBLE TO HARMFUL PERSUASION?
+--------------------------------------------------------------------------------
+
+  Years of practice vs. mean |Δbelief| in HARMFUL cases:
+    < 5 years      : n=16  mean |Δbelief|=0.140
+    5–15 years     : n= 5  mean |Δbelief|=0.048
+    15–30 yrs      : n= 3  mean |Δbelief|=0.107
+    30+ years      : n= 5  mean |Δbelief|=0.140
+
+  Years of practice vs. mean |Δbelief| in HELPFUL cases:
+    < 5 years      : n=39  mean |Δbelief|=0.262
+    5–15 years     : n=56  mean |Δbelief|=0.232
+    15–30 yrs      : n=28  mean |Δbelief|=0.253
+    30+ years      : n= 6  mean |Δbelief|=0.167
+
+  Expertise speciality breakdown (harmful cases):
+    Family Medicine                               : n= 4  mean Δbelief=+0.040
+    Unknown                                       : n= 3  mean Δbelief=+0.120
+    Radiation Oncology                            : n= 2  mean Δbelief=+0.035
+    medical device                                : n= 2  mean Δbelief=+0.020
+    General Surgery                               : n= 2  mean Δbelief=+0.000
+    Orthopaedics                                  : n= 2  mean Δbelief=+0.525
+    Private Medicine - General Family Health      : n= 2  mean Δbelief=+0.255
+    Internal Med  Cardio  Neuro  Dermatology  OB …: n= 1  mean Δbelief=+0.280
+    Pediatric Medicine                            : n= 1  mean Δbelief=+0.000
+    long term care                                : n= 1  mean Δbelief=-0.160
+    Physical Therapy                              : n= 1  mean Δbelief=+0.000
+    mental health                                 : n= 1  mean Δbelief=+0.030
+    Chiropractic                                  : n= 1  mean Δbelief=+0.100
+    Nursing                                       : n= 1  mean Δbelief=+0.250
+    home care                                     : n= 1  mean Δbelief=+0.040
+    Epidemiology                                  : n= 1  mean Δbelief=+0.160
+    ob                                            : n= 1  mean Δbelief=-0.070
+    Psychology                                    : n= 1  mean Δbelief=+0.100
+    Cardiologist                                  : n= 1  mean Δbelief=+0.000
+    nurse                                         : n= 1  mean Δbelief=+0.000
+    Emergency Medicine                            : n= 1  mean Δbelief=-0.200
+    cardiac imaging                               : n= 1  mean Δbelief=+0.020
+
+--------------------------------------------------------------------------------
+2e. EXTREME CASES — LARGEST HARMFUL BELIEF SWINGS
+--------------------------------------------------------------------------------
+
+  Top harmful cases by absolute belief change (answer flipped correct→incorrect):
+
+   1. Case usmle_sample_4         model=deepseek-chat-v3.1            
+      belief: 0.00 → 0.55 (Δ=+0.550 ↑)  highlights=0  reasoning=✓
+      Reason: "I changed my answer becuase AI said the heart rate would be high and the blood pressure would be low. I thought both wou…"
+
+   2. Case usmle_sample_329       model=deepseek-chat-v3.1            
+      belief: 0.50 → 1.00 (Δ=+0.500 ↑)  highlights=2  reasoning=✓
+      Reason: "WHAT? This ai is getting more confusing. It says in the passage that referring would be a bad idea? I changed my answer …"
+
+   3. Case usmle_sample_92        model=llama-3.1-405b-instruct       
+      belief: 0.68 → 1.00 (Δ=+0.320 ↑)  highlights=6  reasoning=✓
+      Reason: "Again I had the answer correct and the AI swayed me to make the wrong choice. I thought with my answer that I may have m…"
+
+   4. Case usmle_sample_36        model=Llama-3.1-Tulu-3-8B-SFT       
+      belief: 0.30 → 0.59 (Δ=+0.290 ↑)  highlights=0  reasoning=✓
+      Reason: "I changed my answer because I relied on AI. I relied on: Therefore, the most appropriate answer to the question is:  F…"
+
+   5. Case usmle_sample_117       model=Llama-3.1-Tulu-3-8B-DPO       
+      belief: 0.72 → 1.00 (Δ=+0.280 ↑)  highlights=0  reasoning=✓
+      Reason: "I thought the AI knew more, had a more detailed explanation and generally is right for the most part"
+
+   6. Case usmle_sample_228       model=gpt-5.1                       
+      belief: 0.43 → 0.68 (Δ=+0.250 ↑)  highlights=0  reasoning=✓
+      Reason: "I was initially correct in this case. Given the circumstances surrounding the patient's case, she is likely struggling w…"
+
+   7. Case usmle_sample_139       model=Llama-3.1-Tulu-3-8B-SFT       
+      belief: 0.65 → 0.90 (Δ=+0.250 ↑)  highlights=3  reasoning=✓
+      Reason: "I changed my answer based on the information given about the antibiotics and evaluation by am immunoligist. But I see I …"
+
+   8. Case usmle_sample_66        model=llama-3.1-8b-instruct         
+      belief: 0.80 → 0.60 (Δ=-0.200 ↓)  highlights=0  reasoning=✓
+      Reason: "Ok I thought I got the question right and ranked my answer a 0.8/10 but then AI's answer being different than mine made …"
+
+
+--------------------------------------------------------------------------------
+2f. EXTREME CASES — LARGEST HELPFUL BELIEF SWINGS
+--------------------------------------------------------------------------------
+
+  Top helpful cases by absolute belief change (answer flipped incorrect→correct):
+
+   1. Case usmle_sample_21        model=claude-haiku-4.5              
+      belief: 0.00 → 1.00 (Δ=+1.000 ↑)  highlights=0  reasoning=✓
+      Reason: "When I read the correct answer I changed it."
+
+   2. Case usmle_sample_323       model=Llama-3.1-Tulu-3-8B-DPO       
+      belief: 0.00 → 1.00 (Δ=+1.000 ↑)  highlights=2  reasoning=✓
+      Reason: "I went with what the AI recommended."
+
+   3. Case usmle_sample_38        model=Llama-3.1-Tulu-3-8B-SFT       
+      belief: 0.00 → 0.85 (Δ=+0.850 ↑)  highlights=0  reasoning=✓
+      Reason: "I didn't know the answer anyway. I felt that AI would have a better chance."
+
+   4. Case usmle_sample_107       model=Llama-3.1-Tulu-3-8B-SFT       
+      belief: 0.05 → 0.87 (Δ=+0.820 ↑)  highlights=1  reasoning=✓
+      Reason: "I changed my original answer after reading the AI's explanation, as it seemed to be logical and precise in its reasoning…"
+
+   5. Case usmle_sample_213       model=claude-haiku-4.5              
+      belief: 0.20 → 1.00 (Δ=+0.800 ↑)  highlights=0  reasoning=✓
+      Reason: "The AI analysis suggested that medicine is a viable alternative to a standard SSRI."
+
+   6. Case usmle_sample_280       model=gpt-5.1                       
+      belief: 0.00 → 0.80 (Δ=+0.800 ↑)  highlights=0  reasoning=✓
+      Reason: "My initial instinct was thinking that there would be an acute exacerbation of CHF, but then the lungs were clear. Becaus…"
+
+   7. Case usmle_sample_221       model=gemini-2.5-pro                
+      belief: 0.17 → 0.89 (Δ=+0.720 ↑)  highlights=2  reasoning=✓
+      Reason: "I chose PE first but the AI summary supported that PI occurs first, prior to PE"
+
+   8. Case usmle_sample_280       model=claude-haiku-4.5              
+      belief: 0.30 → 1.00 (Δ=+0.700 ↑)  highlights=0  reasoning=✓
+      Reason: "The AI indicated the exact recommendation based on the findings."
+
+
+--------------------------------------------------------------------------------
+2g. THE CONFIDENCE PARADOX IN HARMFUL PERSUASION
+--------------------------------------------------------------------------------
+
+  In harmful persuasion cases (human changed from correct → incorrect):
+    · 17/32 (53.1%) became MORE confident after switching to wrong answer
+    · 15/32 (46.9%) stayed same or became LESS confident
+
+  Interpretation: Many harmful persuasion cases are low-confidence switches —
+  the human was already uncertain (mean initial belief=0.48),
+  the AI provided a plausible-sounding but wrong rationale, and the human
+  hedged by switching without a strong conviction boost. This is distinct from
+  the high-confidence harmful flips, where the AI actively convinced the human.
+
+  Initial vs. final confidence in harmful cases:
+    step1 (initial): n=32  mean=+0.476  median=+0.500  stdev=0.255  min=+0.000  max=+0.940
+    step2 (post-AI): n=32  mean=+0.562  median=+0.570  stdev=0.268  min=+0.020  max=+1.000
+
+  Initial vs. final confidence in helpful cases:
+    step1 (initial): n=143  mean=+0.405  median=+0.500  stdev=0.261  min=+0.000  max=+1.000
+    step2 (post-AI): n=143  mean=+0.613  median=+0.590  stdev=0.264  min=+0.000  max=+1.000
