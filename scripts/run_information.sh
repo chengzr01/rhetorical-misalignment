@@ -49,7 +49,7 @@ FORCE_RERUN="${FORCE_RERUN:-true}"
 INFERENCE_MODE="${4:-selection}"  # selection or full
 PRINCIPAL_TYPES="${PRINCIPAL_TYPES:-bayesian_choices behavioral_choices}"
 PRINCIPAL_WORKERS="${PRINCIPAL_WORKERS:-${MAX_WORKERS}}"
-INCLUDE_OPTIONS="${INCLUDE_OPTIONS:-true}"
+INCLUDE_OPTIONS="${INCLUDE_OPTIONS:-false}"
 MAX_CASES="${MAX_CASES:-0}"  # 0 = no limit
 
 # Selection prompt: agent returns JSON indices, no free-form language
