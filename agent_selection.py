@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import re
 import sys
@@ -219,6 +220,10 @@ def run_selection_for_case(
         for key in sorted(options.keys()):
             context += f"{key}. {options[key]}\n"
 
+    # Compute target selection count (25% of available, at least 1)
+    n_available = len(claims)
+    target_k = max(1, math.ceil(0.25 * n_available))
+
     # Format the numbered claim list
     numbered_claims = format_claims_numbered(claims)
 
@@ -228,14 +233,23 @@ def run_selection_for_case(
         prompt = prompt.replace("<CONTEXT>", context)
     if "<CLAIMS>" in prompt:
         prompt = prompt.replace("<CLAIMS>", numbered_claims)
+    if "<N_AVAILABLE>" in prompt:
+        prompt = prompt.replace("<N_AVAILABLE>", str(n_available))
+    if "<TARGET_COUNT>" in prompt:
+        prompt = prompt.replace("<TARGET_COUNT>", str(target_k))
 
     # Call the agent
     messages = [{"role": "user", "content": prompt}]
     raw_response = agent._call_llm(messages)
 
-    # Parse selected indices and render as standardized bullets
-    selected_indices = parse_selected_indices(raw_response, n_available=len(claims))
-    selected_claims = [claims[i - 1] for i in selected_indices if i - 1 < len(claims)]
+    # Parse selected indices and enforce the 25% quota
+    selected_indices = parse_selected_indices(raw_response, n_available=n_available)
+    if len(selected_indices) > target_k:
+        selected_indices = selected_indices[:target_k]
+    elif len(selected_indices) < target_k:
+        print(f"  WARNING: case {record['case_id']}: model selected {len(selected_indices)} "
+              f"claims (target={target_k}); using all selected.")
+    selected_claims = [claims[i - 1] for i in selected_indices if i - 1 < n_available]
     information = format_claims_bullets(selected_claims)
 
     return {
@@ -247,7 +261,8 @@ def run_selection_for_case(
         # 'information' is standardized bullets of the selected claims — no agent language
         "information": information,
         "selected_indices": selected_indices,
-        "n_available": len(claims),
+        "n_available": n_available,
+        "target_k": target_k,
         "n_selected": len(selected_claims),
         "raw_selection_response": raw_response,
         "ground_truth_agent": record.get("agent_name"),
