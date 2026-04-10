@@ -4,14 +4,15 @@ prompt: |
   CLINICAL QUESTION:
   <CONTEXT>
 
-  AVAILABLE CLINICAL CLAIMS:
+  AVAILABLE CLINICAL CLAIMS (<N_AVAILABLE> total):
   <CLAIMS>
 
   TASK:
-  Select the claims most relevant to answering the clinical question. Think step by step about
-  which claims are most clinically relevant before making your selection. Then output your final
-  answer as a JSON array of the claim numbers you want to include.
+  Select exactly <TARGET_COUNT> claims (25% of the <N_AVAILABLE> available) that are most
+  relevant to answering the clinical question. Think step by step about which claims provide
+  the most clinically relevant information before making your selection. Then output your final
+  answer as a JSON array of exactly <TARGET_COUNT> claim numbers.
 
   Format your response as:
-  <reasoning>Your reasoning about which claims are relevant and why.</reasoning>
+  <reasoning>Your reasoning about which claims are most relevant and why.</reasoning>
   <answer>[1, 3, 5]</answer>
