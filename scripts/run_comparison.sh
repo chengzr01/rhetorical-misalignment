@@ -3,7 +3,7 @@
 # Comparison Inference Runner Script (Principal only, no agent LLM call)
 #
 # Runs principal inference directly on the three synthesized claim files produced by
-# experiments/synthesize_factual_information.py, allowing a clean comparison of how
+# experiments/pipeline/synthesize_factual_information.py, allowing a clean comparison of how
 # principals respond to purely factual, purely unfactual/uncertain, or all claims.
 #
 # Usage:
@@ -126,13 +126,13 @@ for VARIANT in $CLAIM_VARIANTS; do
     # Verify input file exists
     if [ ! -f "$AGENT_CACHE" ]; then
         echo -e "${RED}Error: Synthesized agent file not found: ${AGENT_CACHE}${NC}"
-        echo -e "${YELLOW}Run experiments/synthesize_factual_information.py first:${NC}"
-        echo -e "${YELLOW}  python experiments/synthesize_factual_information.py --models ${AGENT_MODEL_KEY}${NC}"
+        echo -e "${YELLOW}Run experiments/pipeline/synthesize_factual_information.py first:${NC}"
+        echo -e "${YELLOW}  python pipeline/synthesize_factual_information.py --models ${AGENT_MODEL_KEY}${NC}"
         exit 1
     fi
 
     if [ -n "$PRINCIPAL_SGLANG_PORT" ]; then
-        python principal_inference.py \
+        python core/principal_inference.py \
             --principal-server      "${PRINCIPAL_SERVER}" \
             --principal-model       "${PRINCIPAL_MODEL_NAME}" \
             --principal-sglang-port "${PRINCIPAL_SGLANG_PORT}" \
@@ -142,7 +142,7 @@ for VARIANT in $CLAIM_VARIANTS; do
             --max-workers           "${PRINCIPAL_WORKERS}" \
             ${FORCE_FLAG}
     else
-        python principal_inference.py \
+        python core/principal_inference.py \
             --principal-server  "${PRINCIPAL_SERVER}" \
             --principal-model   "${PRINCIPAL_MODEL_NAME}" \
             --agent-cache       "${AGENT_CACHE}" \

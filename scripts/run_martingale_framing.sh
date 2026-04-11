@@ -152,7 +152,7 @@ for AGENT in "${AGENT_LIST[@]}"; do
         echo -e "${YELLOW}  Skipping extraction — output already exists: ${AGGREGATED_OUT}${NC}"
         echo -e "${YELLOW}  Set FORCE_RERUN=true to re-extract.${NC}\n"
     else
-        python experiments/extract_agent_claims.py \
+        python pipeline/extract_agent_claims.py \
             --input      "${FRAMING_FILE}" \
             --output     "${AGGREGATED_OUT}" \
             --agent-key  "${AGENT}" \

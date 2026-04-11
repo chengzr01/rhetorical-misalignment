@@ -132,7 +132,7 @@ if [ "$FORCE_RERUN" = "true" ]; then
 fi
 
 if [ -n "$SGLANG_PORT" ]; then
-    python agent_inference.py \
+    python core/agent_inference.py \
         --agent-server "${AGENT_SERVER}" \
         --agent-model "${AGENT_MODEL}" \
         --agent-sglang-port "${SGLANG_PORT}" \
@@ -142,7 +142,7 @@ if [ -n "$SGLANG_PORT" ]; then
         --max-cases "${MAX_CASES}" \
         ${FORCE_FLAG}
 else
-    python agent_inference.py \
+    python core/agent_inference.py \
         --agent-server "${AGENT_SERVER}" \
         --agent-model "${AGENT_MODEL}" \
         --input "${INPUT_FILE}" \
@@ -171,7 +171,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}Running principal inference...${NC}\n"
 
     if [ -n "$PRINCIPAL_SGLANG_PORT" ]; then
-        python principal_inference.py \
+        python core/principal_inference.py \
             --principal-server "${PRINCIPAL_SERVER}" \
             --principal-model "${PRINCIPAL_MODEL}" \
             --principal-sglang-port "${PRINCIPAL_SGLANG_PORT}" \
@@ -181,7 +181,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
             --max-workers "${PRINCIPAL_WORKERS}" \
             ${FORCE_FLAG}
     else
-        python principal_inference.py \
+        python core/principal_inference.py \
             --principal-server "${PRINCIPAL_SERVER}" \
             --principal-model "${PRINCIPAL_MODEL}" \
             --agent-cache "${AGENT_OUTPUT}" \

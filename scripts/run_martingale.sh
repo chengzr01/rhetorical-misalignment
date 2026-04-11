@@ -90,7 +90,7 @@ ANALYSIS_OUTPUT="experiments/principals/${DATASET_KEY}/martingale_analysis${_AGE
 # Validate aggregated info exists
 if [ ! -f "$AGGREGATED_INFO" ]; then
     echo -e "${RED}Error: Aggregated claims not found: ${AGGREGATED_INFO}${NC}"
-    echo -e "${YELLOW}Please run experiments/aggregate_information.py first.${NC}"
+    echo -e "${YELLOW}Please run experiments/pipeline/aggregate_information.py first.${NC}"
     exit 1
 fi
 
@@ -126,7 +126,7 @@ if [ "${MAX_CASES}" -gt 0 ]; then
     MAX_CASES_FLAG="--max-cases ${MAX_CASES}"
 fi
 
-python experiments/generate_permutations.py \
+python pipeline/generate_permutations.py \
     --aggregated-info "${AGGREGATED_INFO}" \
     --questions       "${QUESTIONS_FILE}" \
     --num-permutations "${NUM_PERMUTATIONS}" \
@@ -149,7 +149,7 @@ echo -e "${GREEN}✓ Permutations generated${NC}\n"
 echo -e "${BLUE}[STAGE 2] Running principal inference on permutations...${NC}\n"
 
 if [ -n "$PRINCIPAL_SGLANG_PORT" ]; then
-    python principal_inference.py \
+    python core/principal_inference.py \
         --principal-server     "${PRINCIPAL_SERVER}" \
         --principal-model      "${PRINCIPAL_MODEL}" \
         --principal-sglang-port "${PRINCIPAL_SGLANG_PORT}" \
@@ -159,7 +159,7 @@ if [ -n "$PRINCIPAL_SGLANG_PORT" ]; then
         --max-workers          "${MAX_WORKERS}" \
         ${FORCE_FLAG}
 else
-    python principal_inference.py \
+    python core/principal_inference.py \
         --principal-server  "${PRINCIPAL_SERVER}" \
         --principal-model   "${PRINCIPAL_MODEL}" \
         --agent-cache       "${PERMUTATIONS_FILE}" \
@@ -184,7 +184,7 @@ echo -e "${BLUE}[STAGE 3] Analyzing martingale reliability...${NC}\n"
 # principal_inference.py appends the principal type to the output filename
 PRINCIPAL_RESULTS="${PRINCIPAL_OUTPUT%.json}_bayesian_martingale_choices.json"
 
-python experiments/analyze_martingale.py \
+python pipeline/compute_martingale.py \
     --input  "${PRINCIPAL_RESULTS}" \
     --output "${ANALYSIS_OUTPUT}" \
     ${FORCE_FLAG}

@@ -106,7 +106,7 @@ echo -e "${BLUE}========================================${NC}\n"
 
 # Build command arguments
 CMD_ARGS=(
-    "experiments/test_usmle_sample.py"
+    "pipeline/test_usmle_sample.py"
     "--model" "${MODEL}"
     "--backend" "${SELECTED_BACKEND}"
     "--temperature" "${TEMPERATURE}"

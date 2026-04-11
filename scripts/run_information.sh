@@ -142,7 +142,7 @@ AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/information_${AGENT_MODEL_KEY}_g
 if [ ! -f "$GROUND_TRUTH_PATH" ]; then
     echo -e "${RED}Error: Ground truth file not found: ${GROUND_TRUTH_PATH}${NC}"
     if [ "$IS_AGGREGATED" = "true" ]; then
-        echo -e "${YELLOW}Please run experiments/aggregate_information.py first to generate the aggregated claims file.${NC}"
+        echo -e "${YELLOW}Please run experiments/pipeline/aggregate_information.py first to generate the aggregated claims file.${NC}"
     else
         echo -e "${YELLOW}Please run agent inference first to generate ground truth:${NC}"
         echo -e "${YELLOW}  bash scripts/run_baseline.sh ${GROUND_TRUTH_KEY} ${DATASET_KEY} agent${NC}"
@@ -204,7 +204,7 @@ if [ "$IS_AGGREGATED" = "true" ]; then
     if [ -n "$SGLANG_PORT" ]; then
         SGLANG_FLAG="--agent-sglang-port ${SGLANG_PORT}"
     fi
-    python agent_selection.py \
+    python core/agent_selection.py \
         --aggregated-info "${GROUND_TRUTH_PATH}" \
         --questions       "${QUESTIONS_FILE}" \
         --agent-server    "${AGENT_SERVER}" \
@@ -217,7 +217,7 @@ if [ "$IS_AGGREGATED" = "true" ]; then
         ${OPTIONS_FLAG} \
         ${FORCE_FLAG}
 elif [ -n "$SGLANG_PORT" ]; then
-    python agent_selection.py \
+    python core/agent_selection.py \
         --ground-truth    "${GROUND_TRUTH_PATH}" \
         --agent-server    "${AGENT_SERVER}" \
         --agent-model     "${AGENT_MODEL}" \
@@ -229,7 +229,7 @@ elif [ -n "$SGLANG_PORT" ]; then
         ${OPTIONS_FLAG} \
         ${FORCE_FLAG}
 else
-    python agent_selection.py \
+    python core/agent_selection.py \
         --ground-truth    "${GROUND_TRUTH_PATH}" \
         --agent-server    "${AGENT_SERVER}" \
         --agent-model     "${AGENT_MODEL}" \
@@ -261,7 +261,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}Running principal inference...${NC}\n"
 
     if [ -n "$PRINCIPAL_SGLANG_PORT" ]; then
-        python principal_inference.py \
+        python core/principal_inference.py \
             --principal-server      "${PRINCIPAL_SERVER}" \
             --principal-model       "${PRINCIPAL_MODEL}" \
             --principal-sglang-port "${PRINCIPAL_SGLANG_PORT}" \
@@ -271,7 +271,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
             --max-workers           "${PRINCIPAL_WORKERS}" \
             ${FORCE_FLAG}
     else
-        python principal_inference.py \
+        python core/principal_inference.py \
             --principal-server  "${PRINCIPAL_SERVER}" \
             --principal-model   "${PRINCIPAL_MODEL}" \
             --agent-cache       "${AGENT_OUTPUT}" \
