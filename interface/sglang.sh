@@ -43,4 +43,4 @@ if [ -z "$MODEL_ID" ]; then
 fi
 
 echo "Launching server: $MODEL_KEY ($MODEL_ID) on port $PORT"
-python3 -m sglang.launch_server --model "$MODEL_ID" --host 0.0.0.0 --port "$PORT" --tp 4
+python3 -m sglang.launch_server --model "$MODEL_ID" --host 0.0.0.0 --port "$PORT" --tp 1
