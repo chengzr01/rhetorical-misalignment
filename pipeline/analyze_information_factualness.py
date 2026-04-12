@@ -27,8 +27,9 @@ from openai import OpenAI
 # ── Defaults ────────────────────────────────────────────────────────────────
 
 _SCRIPT_DIR = Path(__file__).parent
-AGENTS_DIR = str(_SCRIPT_DIR / "agents/usmle_sample")
-OUTPUT_DIR = str(_SCRIPT_DIR / "information")
+_PROJECT_DIR = _SCRIPT_DIR.parent
+AGENTS_DIR = str(_PROJECT_DIR / "experiments/agents/usmle_sample")
+OUTPUT_DIR = str(_PROJECT_DIR / "experiments/information")
 OPENROUTER_MODEL = "deepseek/deepseek-chat-v3.1"
 HEADERS = {
     "HTTP-Referer": "https://github.com/persuasive-misalignment",

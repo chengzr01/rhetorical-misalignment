@@ -27,8 +27,9 @@ from pathlib import Path
 from typing import Dict, List, Optional, Set
 
 _SCRIPT_DIR = Path(__file__).parent
-INFORMATION_DIR = str(_SCRIPT_DIR / "information")
-AGGREGATION_DIR = str(_SCRIPT_DIR / "aggregation")
+_PROJECT_DIR = _SCRIPT_DIR.parent
+INFORMATION_DIR = str(_PROJECT_DIR / "experiments/information")
+AGGREGATION_DIR = str(_PROJECT_DIR / "experiments/aggregation")
 
 
 def load_factualness_file(information_dir: str, agent_name: str) -> Optional[Dict]:
