@@ -41,6 +41,7 @@ from typing import Any
 import yaml
 from tqdm import tqdm
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from agents.agent import Agent
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 

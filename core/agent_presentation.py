@@ -24,7 +24,9 @@ from pathlib import Path
 from typing import Any, Mapping
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import sys
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from agents.agent import Agent
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 
@@ -533,12 +535,6 @@ def main() -> None:
         help="Output path for presentation experiment results"
     )
     parser.add_argument(
-        "--skip-existing",
-        action="store_true",
-        default=True,
-        help="Skip experiments if cache exists (default: True)"
-    )
-    parser.add_argument(
         "--force",
         action="store_true",
         default=False,
@@ -559,9 +555,9 @@ def main() -> None:
     parser.add_argument(
         "--max-cases",
         type=int,
-        default=100,
+        default=0,
         metavar="N",
-        help="Maximum number of cases to process (default: 100; use 0 for no limit)",
+        help="Maximum number of cases to process (0 = no limit)",
     )
 
     args = parser.parse_args()

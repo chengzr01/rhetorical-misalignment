@@ -13,7 +13,9 @@ from pathlib import Path
 from typing import Any, Mapping
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import sys
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from agents.agent import Agent
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 

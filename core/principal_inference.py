@@ -13,7 +13,9 @@ from pathlib import Path
 from typing import Any, Mapping
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import sys
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from agents.principal import Principal
 from interface.client import NvidiaChatClient, OpenRouterChatClient, SGLangChatClient
 
@@ -277,9 +279,6 @@ def run_principal_inferences(
                 if key not in completed_keys:
                     tasks.append((agent_result, principal))
 
-    total_iterations = len(tasks)
-    progress_bar = tqdm(total=total_iterations, desc="Running principal inferences")
-
     def run_one_principal_decision(agent_result, principal):
         # Get principal_context, fallback to agent_context, fallback to context
         principal_context = agent_result.get("principal_context") or agent_result.get("agent_context") or agent_result.get("context", "")
@@ -327,12 +326,11 @@ def run_principal_inferences(
             futures.append(executor.submit(run_one_principal_decision, agent_result, principal))
 
         iteration_count = 0
-        for future in tqdm(as_completed(futures), total=len(futures), desc="Processing principal results"):
+        for future in tqdm(as_completed(futures), total=len(futures), desc="Running principal inferences"):
             result = future.result()
             principal_name = result["principal_name"]
             results_by_principal[principal_name].append(result)
             iteration_count += 1
-            progress_bar.update(1)
 
             # Save at intervals - save each principal type separately
             if save_interval > 0 and iteration_count % save_interval == 0:
@@ -341,7 +339,6 @@ def run_principal_inferences(
                         output_file = principal_to_config[principal_name]["output_path"]
                         with open(output_file, "w") as f:
                             json.dump(results, f, indent=2)
-        progress_bar.close()
 
     # Final save - save each principal type to its own file
     for principal_name, results in results_by_principal.items():
@@ -420,12 +417,6 @@ def main() -> None:
         type=int,
         default=8,
         help="Number of parallel workers for principal inferences"
-    )
-    parser.add_argument(
-        "--skip-existing",
-        action="store_true",
-        default=True,
-        help="Skip principal inferences if output exists (default: True)"
     )
     parser.add_argument(
         "--force",
