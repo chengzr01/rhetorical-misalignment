@@ -58,7 +58,10 @@ declare -A DATASET_MAP=(
     ["usmle_sample"]="experiments/questions/clinical_questions_usmle_sample.json"
 )
 
-# Aggregated-info ground truth sources (bypass MODEL_MAP lookup)
+# Aggregated-info ground truth sources (bypass MODEL_MAP lookup).
+# Keys not listed here are resolved dynamically as
+#   experiments/aggregation/aggregated_<key>.json
+# so e.g. "gemini_factual_neutral" works without explicit registration.
 declare -A AGGREGATED_MAP=(
     ["factual_agg"]="experiments/aggregation/aggregated_factual.json"
     ["unfactual_agg"]="experiments/aggregation/aggregated_unfactual.json"
@@ -84,11 +87,16 @@ if [ -z "$AGENT_MODEL" ]; then
     exit 1
 fi
 
-# Resolve ground truth source: aggregated claims or model-generated
+# Resolve ground truth source: aggregated claims or model-generated.
+# Priority: explicit AGGREGATED_MAP entry → dynamic aggregation file → MODEL_MAP.
 IS_AGGREGATED=false
 if [ -n "${AGGREGATED_MAP[$GROUND_TRUTH_KEY]+x}" ]; then
     IS_AGGREGATED=true
-    GROUND_TRUTH_MODEL="(aggregated llama claims)"
+    GROUND_TRUTH_MODEL="(aggregated claims)"
+elif [ -f "experiments/aggregation/aggregated_${GROUND_TRUTH_KEY}.json" ]; then
+    IS_AGGREGATED=true
+    AGGREGATED_MAP["$GROUND_TRUTH_KEY"]="experiments/aggregation/aggregated_${GROUND_TRUTH_KEY}.json"
+    GROUND_TRUTH_MODEL="(aggregated claims: ${GROUND_TRUTH_KEY})"
 else
     GROUND_TRUTH_MODEL="${MODEL_MAP[$GROUND_TRUTH_KEY]}"
     if [ -z "$GROUND_TRUTH_MODEL" ]; then
