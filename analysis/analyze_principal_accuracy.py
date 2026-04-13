@@ -38,9 +38,9 @@ CONDITIONS  = ["baseline", "framing", "information"]
 PROMPT_TYPES = ["bayesian", "behavioral"]
 
 _FILE_PATTERNS = {
-    "baseline":    "principal_{a}_{pt}_choices.json",
-    "framing":     "principal_framing_{a}_gt_factual_agg_{pt}_choices.json",
-    "information": "principal_information_{a}_gt_factual_agg_{pt}_choices.json",
+    "baseline":    "baseline/principal_{a}_{pt}_choices.json",
+    "framing":     "framing/principal_framing_{a}_gt_factual_agg_{pt}_choices.json",
+    "information": "information/principal_information_{a}_gt_factual_agg_{pt}_choices.json",
 }
 
 

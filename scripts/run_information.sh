@@ -142,9 +142,9 @@ if [ "$IS_AGGREGATED" = "true" ]; then
     GROUND_TRUTH_PATH="${AGGREGATED_MAP[$GROUND_TRUTH_KEY]}"
     QUESTIONS_FILE="${DATASET_MAP[$DATASET_KEY]}"
 else
-    GROUND_TRUTH_PATH="experiments/agents/${DATASET_KEY}/agent_${GROUND_TRUTH_KEY}.json"
+    GROUND_TRUTH_PATH="experiments/agents/${DATASET_KEY}/baseline/agent_${GROUND_TRUTH_KEY}.json"
 fi
-AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/information_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
+AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/information/information_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
 
 # Check if ground truth file exists
 if [ ! -f "$GROUND_TRUTH_PATH" ]; then
@@ -264,7 +264,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}[STAGE 2] Principal Inference${NC}"
     echo -e "${BLUE}========================================${NC}\n"
 
-    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/principal_information_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
+    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/information/principal_information_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
 
     echo -e "${BLUE}Running principal inference...${NC}\n"
 

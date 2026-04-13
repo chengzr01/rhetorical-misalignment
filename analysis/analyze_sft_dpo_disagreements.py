@@ -74,7 +74,7 @@ SYNTHESIS_SYSTEM = (
 
 def _load_agent_info(agent: str, prompt_type: str) -> dict[str, dict]:
     """Return {case_id: entry} for a specific agent model and prompt type."""
-    path = PRINCIPALS_DIR / f"principal_{agent}_{prompt_type}_choices.json"
+    path = PRINCIPALS_DIR / f"baseline/principal_{agent}_{prompt_type}_choices.json"
     if not path.exists():
         raise FileNotFoundError(path)
     return {e["case_id"]: e for e in json.loads(path.read_text())}

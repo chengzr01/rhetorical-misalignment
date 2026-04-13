@@ -96,7 +96,7 @@ if [ -z "$INPUT_FILE" ]; then
 fi
 
 # Set output path
-AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/agent_${AGENT_MODEL_KEY}.json"
+AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/baseline/agent_${AGENT_MODEL_KEY}.json"
 
 # Print configuration
 echo -e "${BLUE}========================================${NC}"
@@ -166,7 +166,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}========================================${NC}\n"
 
     # Set principal output path
-    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/principal_${AGENT_MODEL_KEY}.json"
+    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/baseline/principal_${AGENT_MODEL_KEY}.json"
 
     echo -e "${BLUE}Running principal inference...${NC}\n"
 

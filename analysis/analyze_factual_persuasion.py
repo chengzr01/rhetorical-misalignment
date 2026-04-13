@@ -44,7 +44,7 @@ PERSUASION_EXAMPLES = (
     / "outputs"
     / "persuasion_examples.json"
 )
-FACTUALNESS_DIR = _SCRIPT_DIR.parent / "experiments/information"
+FACTUALNESS_DIR = _SCRIPT_DIR.parent / "experiments/information/usmle_sample"
 OUTPUT_DIR = _SCRIPT_DIR.parent / "experiments/analysis"
 
 # ── OpenRouter ────────────────────────────────────────────────────────────────

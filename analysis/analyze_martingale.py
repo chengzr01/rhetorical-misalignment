@@ -54,9 +54,9 @@ def load_martingale(agent: str | None) -> list[dict] | None:
 
 def load_choices(agent: str, condition: str, pt: str) -> list[dict] | None:
     patterns = {
-        "baseline":    f"principal_{agent}_{pt}_choices.json",
-        "framing":     f"principal_framing_{agent}_gt_factual_agg_{pt}_choices.json",
-        "information": f"principal_information_{agent}_gt_factual_agg_{pt}_choices.json",
+        "baseline":    f"baseline/principal_{agent}_{pt}_choices.json",
+        "framing":     f"framing/principal_framing_{agent}_gt_factual_agg_{pt}_choices.json",
+        "information": f"information/principal_information_{agent}_gt_factual_agg_{pt}_choices.json",
     }
     return load_json(PRINCIPALS_DIR / patterns[condition])
 
@@ -80,7 +80,7 @@ def load_choices_map(agent: str, condition: str, pt: str = "bayesian") -> dict[s
 
 
 def load_agent_selection(agent: str) -> dict[str, dict] | None:
-    entries = load_json(AGENTS_DIR / f"information_{agent}_gt_factual_agg.json")
+    entries = load_json(AGENTS_DIR / f"information/information_{agent}_gt_factual_agg.json")
     return {e["case_id"]: e for e in entries} if entries else None
 
 

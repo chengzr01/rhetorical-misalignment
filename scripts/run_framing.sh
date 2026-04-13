@@ -138,9 +138,9 @@ if [ "$IS_AGGREGATED" = "true" ]; then
     GROUND_TRUTH_PATH="${AGGREGATED_MAP[$GROUND_TRUTH_KEY]}"
     QUESTIONS_FILE="${DATASET_MAP[$DATASET_KEY]}"
 else
-    GROUND_TRUTH_PATH="experiments/agents/${DATASET_KEY}/agent_${GROUND_TRUTH_KEY}.json"
+    GROUND_TRUTH_PATH="experiments/agents/${DATASET_KEY}/baseline/agent_${GROUND_TRUTH_KEY}.json"
 fi
-AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/framing_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
+AGENT_OUTPUT="experiments/agents/${DATASET_KEY}/framing/framing_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
 
 # Check if ground truth file exists
 if [ ! -f "$GROUND_TRUTH_PATH" ]; then
@@ -258,7 +258,7 @@ if [ "$INFERENCE_MODE" = "full" ]; then
     echo -e "${BLUE}========================================${NC}\n"
 
     # Set principal output path
-    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/principal_framing_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
+    PRINCIPAL_OUTPUT_BASE="experiments/principals/${DATASET_KEY}/framing/principal_framing_${AGENT_MODEL_KEY}_gt_${GROUND_TRUTH_KEY}.json"
 
     echo -e "${BLUE}Running principal inference...${NC}\n"
 

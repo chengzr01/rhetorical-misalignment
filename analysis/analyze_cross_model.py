@@ -21,7 +21,7 @@ from openai import OpenAI
 
 
 ANALYSIS_FILE = "experiments/analysis/usmle_sample_decision_making_analysis.json"
-AGENTS_DIR = "experiments/agents/usmle_sample"
+AGENTS_DIR = "experiments/agents/usmle_sample/framing"
 OUTPUT_FILE = "experiments/analysis/cross_model_agent_feature_analysis.json"
 SUMMARY_FILE = "experiments/analysis/cross_model_agent_feature_analysis_summary.md"
 AGENT_NAMES = ["framing_llama-dpo_gt_deepseek", "framing_llama-sft_gt_deepseek", "framing_llama-small_gt_deepseek"]
