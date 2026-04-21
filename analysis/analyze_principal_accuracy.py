@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -67,6 +68,38 @@ def load_all(principals_dir: str) -> dict:
     return data
 
 
+# ── Decision parsing ──────────────────────────────────────────────────────────
+
+def parse_decision(raw: str | None, options: dict) -> str | None:
+    """Normalise a principal decision string to a single option letter.
+
+    Handles:
+      - Plain letters already matching an option key  ("B", "F")
+      - Full-text answers prefixed with the letter    ("C. Pulmonary Hypoplasia")
+    Returns None for empty / truly unparseable responses.
+    """
+    if not raw:
+        return None
+    d = raw.strip().upper()
+    if not d:
+        return None
+    if d in options:
+        return d
+    m = re.match(r'^([A-Z])[.\s:]', d)
+    if m and m.group(1) in options:
+        return m.group(1)
+    return None
+
+
+def get_decision(entry: dict) -> str | None:
+    return parse_decision(entry.get("decision"), entry.get("options") or {})
+
+
+def get_correct(entry: dict) -> str | None:
+    v = (entry.get("correct_answer_idx") or "").strip().upper()
+    return v if v else None
+
+
 # ── Accuracy ──────────────────────────────────────────────────────────────────
 
 def compute_accuracy(records: dict[str, dict] | None) -> dict | None:
@@ -75,8 +108,7 @@ def compute_accuracy(records: dict[str, dict] | None) -> dict | None:
     total   = len(records)
     correct = sum(
         1 for e in records.values()
-        if (e.get("decision") or "").strip().upper() ==
-           (e.get("correct_answer_idx") or "").strip().upper()
+        if get_decision(e) is not None and get_decision(e) == get_correct(e)
     )
     return {"correct": correct, "total": total, "accuracy": correct / total if total else None}
 
@@ -92,19 +124,18 @@ def compute_shifts(
     common = set(baseline) & set(experiment)
     shifted = [
         (cid,
-         (baseline[cid]["decision"] or "").strip().upper(),
-         (experiment[cid]["decision"] or "").strip().upper())
+         get_decision(baseline[cid]),
+         get_decision(experiment[cid]))
         for cid in common
-        if (baseline[cid]["decision"] or "").strip().upper() !=
-           (experiment[cid]["decision"] or "").strip().upper()
+        if get_decision(baseline[cid]) != get_decision(experiment[cid])
     ]
     plus_correct = sum(
         1 for cid, _, ed in shifted
-        if ed == (experiment[cid].get("correct_answer_idx") or "").strip().upper()
+        if ed is not None and ed == get_correct(experiment[cid])
     )
     minus_correct = sum(
         1 for cid, bd, _ in shifted
-        if bd == (baseline[cid].get("correct_answer_idx") or "").strip().upper()
+        if bd is not None and bd == get_correct(baseline[cid])
     )
     net     = plus_correct - minus_correct
     n_cases = len(common)
@@ -133,20 +164,19 @@ def compute_disagreements(
         return None
     disagreed = [
         cid for cid in common
-        if (bayesian[cid]["decision"] or "").strip().upper() !=
-           (behavioral[cid]["decision"] or "").strip().upper()
+        if get_decision(bayesian[cid]) != get_decision(behavioral[cid])
     ]
     n = len(common)
     # Among disagreements, count cases where Bayesian was right / Behavioral was right
     bay_right = sum(
         1 for cid in disagreed
-        if (bayesian[cid]["decision"] or "").strip().upper() ==
-           (bayesian[cid].get("correct_answer_idx") or "").strip().upper()
+        if get_decision(bayesian[cid]) is not None
+        and get_decision(bayesian[cid]) == get_correct(bayesian[cid])
     )
     beh_right = sum(
         1 for cid in disagreed
-        if (behavioral[cid]["decision"] or "").strip().upper() ==
-           (behavioral[cid].get("correct_answer_idx") or "").strip().upper()
+        if get_decision(behavioral[cid]) is not None
+        and get_decision(behavioral[cid]) == get_correct(behavioral[cid])
     )
     return {
         "n_disagreed":       len(disagreed),
