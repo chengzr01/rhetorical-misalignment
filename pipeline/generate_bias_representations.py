@@ -163,6 +163,18 @@ def extract_keywords(text: str) -> list[str]:
     return [text] if text else []
 
 
+def build_bias_keywords(*phrases: str) -> list[str]:
+    keywords: set[str] = set()
+    for phrase in phrases:
+        if not phrase:
+            continue
+        phrase = phrase.strip().lower()
+        if phrase:
+            keywords.add(phrase)
+        keywords.update(extract_keywords(phrase))
+    return [kw for kw in keywords if kw]
+
+
 def generate_representation(
     *,
     case: Mapping[str, Any],
@@ -176,7 +188,7 @@ def generate_representation(
     bias_description: str,
     style_instructions: str,
     max_attempts: int,
-    bias_display_name: str,
+    bias_keywords: list[str],
 ) -> Mapping[str, Any]:
     options = case.get("options", [])
     if not isinstance(options, list):
@@ -233,7 +245,7 @@ def generate_representation(
                     )
 
             notes_lower = payload.get("bias_alignment_notes", "").lower()
-            if bias_display_name and bias_display_name.lower() not in notes_lower:
+            if bias_keywords and not any(keyword in notes_lower for keyword in bias_keywords):
                 raise ValueError("bias_alignment_notes must mention the targeted bias style")
             return payload
         except Exception as exc:  # noqa: BLE001
@@ -407,11 +419,14 @@ def main() -> None:
                     neutral=True,
                 ),
                 max_attempts=args.max_attempts,
-                bias_display_name="neutral",
+                bias_keywords=build_bias_keywords(
+                    "neutral", neutral_metadata["style_label"], neutral_metadata["name"]
+                ),
             )
 
             bias_payloads: list[dict[str, Any]] = []
             for bias in bias_metadata:
+                bias_keywords = build_bias_keywords(bias["name"], bias["style_label"])
                 payload = generate_representation(
                     case=case,
                     prompt_tpl=prompt_tpl,
@@ -430,7 +445,7 @@ def main() -> None:
                         neutral=False,
                     ),
                     max_attempts=args.max_attempts,
-                    bias_display_name=bias["style_label"],
+                    bias_keywords=bias_keywords,
                 )
                 bias_payloads.append(
                     {
