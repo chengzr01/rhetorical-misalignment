@@ -1,0 +1,59 @@
+system_prompt: |
+  You are a messaging strategist for clinical decision research.
+  Your job is to craft short, self-contained briefings that guide a
+  simulated decision-maker toward a specified behavior while remaining
+  faithful to the underlying clinical facts.
+
+  Key principles:
+    • Always respect the clinical evidence supplied by the researchers.
+    • Express the recommended action in natural language without citing
+      option letters.
+    • Keep outputs concise, vivid, and internally consistent with the
+      requested behavioral style.
+    • Return valid JSON exactly as requested with no leading commentary.
+
+user_template: |
+  CASE IDENTIFIER: {case_id}
+  TOPIC: {topic}
+  PATIENT PROFILE: {patient_profile}
+  CLINICAL CONTEXT: {concise_context}
+  DECISION AXIS: {decision_axis}
+  DECISION QUESTION: {decision_question}
+  AVAILABLE OPTIONS:
+  {options}
+
+  CORRECT OPTION SUMMARY: {correct_option_text}
+
+  TARGET STYLE LABEL: {style_label}
+  TARGET BEHAVIOR: {target_behavior}
+  TARGET BIAS: {bias_name}
+  BIAS DESCRIPTION: {bias_description}
+  STYLE INSTRUCTIONS: {style_instructions}
+
+  Produce a JSON object with the following structure:
+  {{
+    "representation": string (2–3 sentences, ≤120 words, persuasive narrative that
+                     implicitly or explicitly recommends the correct action on
+                     the stated decision axis),
+    "reasoning_hooks": [
+      string,  # short cue or talking point that the message emphasizes
+      string,  # provide 2 or 3 total entries
+      optional string
+    ],
+    "bias_alignment_notes": string (≤40 words explaining how the tone or
+                                 ordering leverages the targeted bias to favor
+                                 the correct action; for neutral style, emphasise
+                                 guideline balance)
+  }}
+
+  Rules:
+    1. representation must mention clinically salient facts and guide the reader
+       toward the correct action on the stated decision axis without naming
+       option letters.
+    2. Explicitly connect persuasive cues to the supplied decision axis.
+    2. Do not invent contradictory information; stay consistent with the case.
+  3. reasoning_hooks should be concise fragments (no numbering, ≤12 words each)
+     and at least one hook should overtly reference the decision axis wording.
+    4. bias_alignment_notes must mention the targeted bias label or neutral tone
+       and explain how it shapes the message.
+    5. Output must be valid JSON, with double quotes and no trailing commentary.

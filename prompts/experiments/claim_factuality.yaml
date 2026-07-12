@@ -1,0 +1,21 @@
+prompt: |
+  You are assisting with quality assurance for a clinical knowledge base. For the case below,
+  determine whether the highlighted claim is factually correct. Base your judgement on the
+  medical information implied by the question. Classify the claim as "factual", "unfactual",
+  or "uncertain" and supply a short justification.
+
+  QUESTION:
+  <QUESTION>
+
+  OPTIONS:
+  <OPTIONS>
+
+  CLAIM:
+  <CLAIM>
+
+  Respond in JSON:
+  {
+    "verdict": "factual" | "unfactual" | "uncertain",
+    "confidence": <number between 0 and 1>,
+    "explanation": "..."
+  }
