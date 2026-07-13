@@ -149,47 +149,88 @@ def prepare_existing(
 ) -> tuple[
     list[dict[str, Any]],
     set[str],
-    list[Mapping[str, Any]],
-    defaultdict[str, list[Mapping[str, Any]]],
+    defaultdict[str, defaultdict[str, list[Mapping[str, Any]]]],
 ]:
     if not output_path.exists() or overwrite:
-        return [], set(), [], defaultdict(list)
+        return [], set(), defaultdict(lambda: defaultdict(list))
 
     existing_data = load_json(output_path)
     records = existing_data.get("records", [])
     processed_ids = {rec.get("decision_id") for rec in records if rec.get("decision_id")}
 
-    rational_runs: list[Mapping[str, Any]] = []
-    behavioral_runs: defaultdict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    principal_runs: defaultdict[str, defaultdict[str, list[Mapping[str, Any]]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+
+    def register_run(
+        *,
+        principal: str,
+        style_label: str,
+        info: Mapping[str, Any],
+        correct_option: str,
+    ) -> None:
+        style_norm = style_label.lower()
+        if requested_styles and style_norm not in requested_styles and style_norm != "neutral_briefing":
+            return
+        answer_text = str(info.get("answer", "")).strip().upper()
+        principal_runs[principal][style_norm].append(
+            {
+                "answer": answer_text,
+                "belief_value": parse_belief(info.get("belief")),
+                "correct": answer_text == correct_option if correct_option else False,
+            }
+        )
 
     for rec in records:
         correct_option = str(rec.get("correct_option_id", "")).strip().upper()
 
-        rational = rec.get("rational", {})
-        rational_answer = str(rational.get("answer", "")).strip().upper()
-        rational_runs.append(
-            {
-                "answer": rational_answer,
-                "belief_value": parse_belief(rational.get("belief")),
-                "correct": rational_answer == correct_option if correct_option else False,
-            }
-        )
+        principals_blob = rec.get("principals")
+        if isinstance(principals_blob, Mapping):
+            for principal_name, styles in principals_blob.items():
+                if not isinstance(styles, Mapping):
+                    continue
+                for style_label, info in styles.items():
+                    if not isinstance(info, Mapping):
+                        continue
+                    label = str(style_label or info.get("style_label") or "neutral_briefing" )
+                    register_run(
+                        principal=principal_name,
+                        style_label=label,
+                        info=info,
+                        correct_option=correct_option,
+                    )
+            continue
 
-        for style_key, info in (rec.get("behavioral") or {}).items():
-            style_label = str(info.get("style_label", style_key))
-            style_norm = style_label.lower()
-            if requested_styles and style_norm not in requested_styles:
-                continue
-            answer_text = str(info.get("answer", "")).strip().upper()
-            behavioral_runs[style_norm].append(
-                {
-                    "answer": answer_text,
-                    "belief_value": parse_belief(info.get("belief")),
-                    "correct": answer_text == correct_option if correct_option else False,
-                }
+        # Backward compatibility: pre-existing schema had single rational run and
+        # behavioral runs keyed by style.
+        rational = rec.get("rational") or {}
+        if isinstance(rational, Mapping):
+            neutral_style = (
+                str(rational.get("style_label"))
+                or str((rec.get("neutral_representation") or {}).get("style_label"))
+                or "neutral_briefing"
+            )
+            register_run(
+                principal="rational",
+                style_label=neutral_style,
+                info=rational,
+                correct_option=correct_option,
             )
 
-    return records, processed_ids, rational_runs, behavioral_runs
+        behavioral_blob = rec.get("behavioral") or {}
+        if isinstance(behavioral_blob, Mapping):
+            for style_key, info in behavioral_blob.items():
+                if not isinstance(info, Mapping):
+                    continue
+                label = str(info.get("style_label", style_key))
+                register_run(
+                    principal="behavioral",
+                    style_label=label,
+                    info=info,
+                    correct_option=correct_option,
+                )
+
+    return records, processed_ids, principal_runs
 
 
 def write_output(
@@ -203,27 +244,47 @@ def write_output(
     temperature: float,
     existing_records: list[dict[str, Any]],
     new_records: list[dict[str, Any]],
-    rational_runs: list[Mapping[str, Any]],
-    behavioral_runs: Mapping[str, list[Mapping[str, Any]]],
-) -> tuple[Mapping[str, Any], Mapping[str, Mapping[str, Any]], Mapping[str, Mapping[str, float]]]:
+    principal_runs: Mapping[str, Mapping[str, list[Mapping[str, Any]]]],
+) -> tuple[Mapping[str, Mapping[str, Mapping[str, Any]]], Mapping[str, Mapping[str, float]]]:
     all_records = existing_records + new_records
-    rational_summary = summarize_metrics(rational_runs)
-    behavioral_summary = {
-        style: summarize_metrics(runs) for style, runs in behavioral_runs.items()
-    }
+    principal_summaries: dict[str, dict[str, Mapping[str, Any]]] = {}
+
+    for principal_name, style_runs in principal_runs.items():
+        style_summary = {
+            style: summarize_metrics(runs) for style, runs in style_runs.items()
+        }
+        all_runs = [run for runs in style_runs.values() for run in runs]
+        overall_summary = summarize_metrics(all_runs)
+        principal_summaries[principal_name] = {
+            "overall": overall_summary,
+            "by_style": style_summary,
+        }
+
+    rational_overall = principal_summaries.get("rational", {}).get("overall", {})
+    rational_by_style = principal_summaries.get("rational", {}).get("by_style", {})
+    behavioral_overall = principal_summaries.get("behavioral", {}).get("overall", {})
+    behavioral_by_style = principal_summaries.get("behavioral", {}).get("by_style", {})
+
+    behavioral_summary_payload = dict(behavioral_by_style)
+    if behavioral_overall:
+        behavioral_summary_payload["overall"] = behavioral_overall
 
     comparison: dict[str, Mapping[str, float]] = {}
-    if rational_summary.get("accuracy") is not None:
-        for style, metrics in behavioral_summary.items():
-            if metrics.get("accuracy") is None:
-                continue
-            comparison[style] = {
-                "accuracy_delta": metrics["accuracy"] - rational_summary["accuracy"],
-                "overconfidence_delta": (
-                    (metrics.get("overconfidence_gap") or 0.0)
-                    - (rational_summary.get("overconfidence_gap") or 0.0)
-                ),
-            }
+    rational_fallback = rational_overall
+    for style in sorted(set(rational_by_style) | set(behavioral_by_style)):
+        behavior_metrics = behavioral_by_style.get(style)
+        if not behavior_metrics or behavior_metrics.get("accuracy") is None:
+            continue
+        rational_metrics = rational_by_style.get(style) or rational_fallback
+        if not rational_metrics or rational_metrics.get("accuracy") is None:
+            continue
+        comparison[style] = {
+            "accuracy_delta": behavior_metrics["accuracy"] - rational_metrics["accuracy"],
+            "overconfidence_delta": (
+                (behavior_metrics.get("overconfidence_gap") or 0.0)
+                - (rational_metrics.get("overconfidence_gap") or 0.0)
+            ),
+        }
 
     payload = {
         "decision_problems_path": str(decision_path),
@@ -233,8 +294,10 @@ def write_output(
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "rational_prompt": rational_prompt,
         "behavioral_prompt": behavioral_prompt,
-        "rational_summary": rational_summary,
-        "behavioral_summary": behavioral_summary,
+        "rational_summary": rational_overall,
+        "rational_by_style": rational_by_style,
+        "behavioral_summary": behavioral_summary_payload,
+        "principal_summaries": principal_summaries,
         "comparison_vs_rational": comparison,
         "records": all_records,
         "total_records": len(all_records),
@@ -243,7 +306,7 @@ def write_output(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2))
 
-    return rational_summary, behavioral_summary, comparison
+    return principal_summaries, comparison
 
 
 def main() -> None:
@@ -287,7 +350,7 @@ def main() -> None:
     else:
         requested_styles = None
 
-    existing_records, processed_ids, existing_rational_runs, existing_behavioral_runs = prepare_existing(
+    existing_records, processed_ids, existing_principal_runs = prepare_existing(
         output_path, args.overwrite, requested_styles
     )
     processed_ids = {str(pid) for pid in processed_ids}
@@ -301,16 +364,16 @@ def main() -> None:
         rec for rec in target_records if str(rec.get("decision_id")) not in processed_ids
     ]
 
-    rational_runs_all: list[Mapping[str, Any]] = list(existing_rational_runs)
-    behavioral_runs_by_style: defaultdict[str, list[Mapping[str, Any]]] = defaultdict(list)
-    for style, runs in existing_behavioral_runs.items():
-        behavioral_runs_by_style[style].extend(runs)
+    principal_runs: defaultdict[str, defaultdict[str, list[Mapping[str, Any]]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+    for principal_name, style_runs in existing_principal_runs.items():
+        for style_label, runs in style_runs.items():
+            principal_runs[principal_name][style_label].extend(runs)
 
     save_interval = max(args.save_interval, 1)
-    last_rational_summary: Mapping[str, Any] = summarize_metrics(rational_runs_all)
-    last_behavioral_summary: Mapping[str, Mapping[str, Any]] = {
-        style: summarize_metrics(runs) for style, runs in behavioral_runs_by_style.items()
-    }
+    last_principal_summaries: Mapping[str, Mapping[str, Mapping[str, Any]]]
+    last_principal_summaries = {}
     last_comparison: Mapping[str, Mapping[str, float]] = {}
 
     order_lookup = {
@@ -346,69 +409,93 @@ def main() -> None:
     def process_record(record: Mapping[str, Any]) -> tuple[
         str,
         dict[str, Any] | None,
-        Mapping[str, Any] | None,
-        dict[str, Mapping[str, Any]],
+        dict[str, dict[str, Mapping[str, Any]]] | None,
+        dict[str, dict[str, Mapping[str, Any]]],
         str | None,
     ]:
         decision_id = str(record.get("decision_id"))
         case = decisions.get(decision_id)
         if not case:
-            return decision_id, None, None, {}, "missing decision case"
+            return decision_id, None, {}, {}, "missing decision case"
 
         try:
             rational_principal, behavioral_principal = get_principals()
             options_str = format_options(case.get("options", []))
             correct_option = case.get("correct_option_id")
+            neutral_info = record.get("neutral_representation", {}) or {}
+            neutral_style = str(neutral_info.get("style_label") or "neutral_briefing")
 
-            neutral_info = record.get("neutral_representation", {})
-            rational_run = run_principal(
-                rational_principal,
-                case=case,
-                representation=neutral_info,
-                options_str=options_str,
-            )
-            annotate_correctness(rational_run, correct_option)
+            representation_payloads: list[tuple[str, Mapping[str, Any], bool]] = []
+            representation_payloads.append((neutral_style, neutral_info, True))
 
-            behavioral_runs: dict[str, Mapping[str, Any]] = {}
-            for bias_payload in record.get("bias_representations", []):
-                style_label = str(bias_payload.get("style_label", "")).lower()
-                if requested_styles and style_label not in requested_styles:
+            for bias_payload in record.get("bias_representations", []) or []:
+                if not isinstance(bias_payload, Mapping):
                     continue
-                run = run_principal(
-                    behavioral_principal,
-                    case=case,
-                    representation=bias_payload,
-                    options_str=options_str,
-                )
-                annotate_correctness(run, correct_option)
-                run_info = {
-                    **run,
-                    "bias": bias_payload.get("bias"),
-                    "style_label": bias_payload.get("style_label"),
-                    "target_behavior": bias_payload.get("target_behavior"),
-                    "representation": bias_payload.get("representation"),
-                    "reasoning_hooks": bias_payload.get("reasoning_hooks"),
-                    "bias_alignment_notes": bias_payload.get("bias_alignment_notes"),
-                    "raw_response": run.get("raw_response", ""),
-                }
-                behavioral_runs[style_label] = run_info
+                style_label = str(bias_payload.get("style_label") or "").strip()
+                if not style_label:
+                    continue
+                style_norm = style_label.lower()
+                if requested_styles and style_norm not in requested_styles:
+                    continue
+                representation_payloads.append((style_label, bias_payload, False))
+
+            principal_runs_local: dict[str, dict[str, Mapping[str, Any]]] = {
+                "rational": {},
+                "behavioral": {},
+            }
+            principal_metrics_local: dict[str, dict[str, Mapping[str, Any]]] = {
+                "rational": {},
+                "behavioral": {},
+            }
+
+            principals_bundle = {
+                "rational": rational_principal,
+                "behavioral": behavioral_principal,
+            }
+
+            for style_label_original, payload, is_neutral in representation_payloads:
+                style_norm = style_label_original.lower()
+                for principal_name, principal_obj in principals_bundle.items():
+                    run = run_principal(
+                        principal_obj,
+                        case=case,
+                        representation=payload,
+                        options_str=options_str,
+                    )
+                    annotate_correctness(run, correct_option)
+
+                    run_info = {
+                        **run,
+                        "style_label": style_label_original,
+                        "representation": payload.get("representation"),
+                        "reasoning_hooks": payload.get("reasoning_hooks"),
+                        "bias": payload.get("bias"),
+                        "target_behavior": payload.get("target_behavior"),
+                        "bias_alignment_notes": payload.get("bias_alignment_notes"),
+                        "representation_type": "neutral" if is_neutral else "bias",
+                    }
+                    principal_runs_local[principal_name][style_norm] = run_info
+                    principal_metrics_local[principal_name][style_norm] = {
+                        "answer": run.get("answer"),
+                        "belief_value": run.get("belief_value"),
+                        "correct": run.get("correct"),
+                    }
 
             record_payload = {
                 "decision_id": decision_id,
                 "topic": case.get("topic"),
                 "correct_option_id": correct_option,
                 "correct_option_text": correct_option_text(case),
-                "rational": {
-                    **rational_run,
-                    "representation": neutral_info.get("representation"),
-                    "reasoning_hooks": neutral_info.get("reasoning_hooks"),
-                },
-                "behavioral": behavioral_runs,
+                "neutral_representation": neutral_info,
+                "bias_representations": record.get("bias_representations", []),
+                "principals": principal_runs_local,
+                "rational": principal_runs_local["rational"].get(neutral_style.lower()),
+                "behavioral": principal_runs_local["behavioral"],
             }
 
-            return decision_id, record_payload, rational_run, behavioral_runs, None
+            return decision_id, record_payload, principal_metrics_local, None
         except Exception as exc:  # noqa: BLE001
-            return decision_id, None, None, {}, str(exc)
+            return decision_id, None, {}, str(exc)
 
     successful_records: dict[str, dict[str, Any]] = {}
     failures: list[str] = []
@@ -417,18 +504,21 @@ def main() -> None:
         futures = {executor.submit(process_record, rec): rec for rec in target_records}
         progress = tqdm(as_completed(futures), total=len(futures), desc="Evaluating decision-makers")
         for future in progress:
-            decision_id, record_payload, rational_run, behavioral_runs, error = future.result()
-            if record_payload is not None and rational_run is not None:
+            decision_id, record_payload, principal_metrics_local, error = future.result()
+            if record_payload is not None:
                 successful_records[decision_id] = record_payload
-                rational_runs_all.append(rational_run)
-                for style_label, run_info in behavioral_runs.items():
-                    behavioral_runs_by_style[style_label].append(run_info)
+                for principal_name, styles in (principal_metrics_local or {}).items():
+                    for style_label, metrics in styles.items():
+                        principal_runs[principal_name][style_label].append(metrics)
                 if len(successful_records) % save_interval == 0:
                     ordered_records = [
                         successful_records[key]
-                        for key in sorted(successful_records.keys(), key=lambda k: order_lookup.get(k, float("inf")))
+                        for key in sorted(
+                            successful_records.keys(),
+                            key=lambda k: order_lookup.get(k, float("inf")),
+                        )
                     ]
-                    last_rational_summary, last_behavioral_summary, last_comparison = write_output(
+                    last_principal_summaries, last_comparison = write_output(
                         output_path=output_path,
                         decision_path=decision_path,
                         representations_path=representations_path,
@@ -438,8 +528,7 @@ def main() -> None:
                         temperature=args.temperature,
                         existing_records=existing_records,
                         new_records=ordered_records,
-                        rational_runs=rational_runs_all,
-                        behavioral_runs=behavioral_runs_by_style,
+                        principal_runs=principal_runs,
                     )
             else:
                 failures.append(f"{decision_id}: {error}")
@@ -449,7 +538,7 @@ def main() -> None:
         for key in sorted(successful_records.keys(), key=lambda k: order_lookup.get(k, float("inf")))
     ]
 
-    last_rational_summary, last_behavioral_summary, last_comparison = write_output(
+    last_principal_summaries, last_comparison = write_output(
         output_path=output_path,
         decision_path=decision_path,
         representations_path=representations_path,
@@ -459,13 +548,22 @@ def main() -> None:
         temperature=args.temperature,
         existing_records=existing_records,
         new_records=ordered_records,
-        rational_runs=rational_runs_all,
-        behavioral_runs=behavioral_runs_by_style,
+        principal_runs=principal_runs,
     )
 
-    print("Rational accuracy:", last_rational_summary.get("accuracy"))
-    for style, metrics in last_behavioral_summary.items():
-        print(f"Behavioral ({style}) accuracy: {metrics.get('accuracy')}")
+    rational_summaries = last_principal_summaries.get("rational", {})
+    behavioral_summaries = last_principal_summaries.get("behavioral", {})
+
+    rational_overall = rational_summaries.get("overall", {})
+    print("Rational (overall) accuracy:", rational_overall.get("accuracy"))
+    for style, metrics in sorted(rational_summaries.get("by_style", {}).items()):
+        print(f"Rational [{style}] accuracy: {metrics.get('accuracy')}")
+
+    behavioral_overall = behavioral_summaries.get("overall", {})
+    print("Behavioral (overall) accuracy:", behavioral_overall.get("accuracy"))
+    for style, metrics in sorted(behavioral_summaries.get("by_style", {}).items()):
+        print(f"Behavioral [{style}] accuracy: {metrics.get('accuracy')}")
+
     if failures:
         print("Skipped cases:")
         for failure in failures:
