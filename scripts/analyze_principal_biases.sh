@@ -6,10 +6,12 @@
 # Usage:
 #   bash scripts/analyze_principal_biases.sh [model_key ...] [-- python args]
 #
-# By default the script annotates DeepSeek principals.  Provide one or more
-# model keys (matching scripts/run_baseline.sh) to target other principal
-# outputs, or export MODEL_KEYS="deepseek claude".  Any remaining arguments
-# (or anything following a literal --) are forwarded to
+# By default the script annotates DeepSeek, GPT, Claude, Gemini, LLaMA, and
+# related principal models. Only the baseline *_bayesian_choices.json and
+# *_behavioral_choices.json files are analyzed, since they contain the full
+# case sets. Provide one or more model keys (matching scripts/run_baseline.sh)
+# to narrow the selection, or export MODEL_KEYS="deepseek claude". Any
+# remaining arguments (or anything following a literal --) are forwarded to
 # pipeline/analyze_principal_biases.py.
 #
 # Examples:
@@ -29,6 +31,7 @@ source "$SCRIPT_DIR/model_config.sh"
 ANNOTATOR_MODEL="${BIAS_ANNOTATOR_MODEL:-deepseek/deepseek-chat-v3.1}"
 ANNOTATION_MAX_WORKERS="${ANNOTATION_MAX_WORKERS:-4}"
 RESUME_ANNOTATIONS="${RESUME_ANNOTATIONS:-true}"
+TARGET_SUFFIXES=(bayesian_choices behavioral_choices)
 
 # Split positional arguments into model keys and passthrough Python args.
 declare -a SELECTED_KEYS=()
@@ -91,15 +94,31 @@ BASE_INPUT_DIR="$REPO_ROOT/experiments/principals/usmle_sample/baseline"
 BASE_OUTPUT_DIR="$REPO_ROOT/experiments/analysis/bias_annotations/usmle_sample/baseline"
 
 for key in "${UNIQUE_KEYS[@]}"; do
-  glob="principal_${key}_*.json"
-  echo "→ Annotating principals for model '${key}' (glob: ${glob}) using ${ANNOTATOR_MODEL}" >&2
+  declare -a INPUT_FILES=()
+  for suffix in "${TARGET_SUFFIXES[@]}"; do
+    candidate="$BASE_INPUT_DIR/principal_${key}_${suffix}.json"
+    if [[ -f "$candidate" ]]; then
+      INPUT_FILES+=("$candidate")
+    else
+      echo "[WARN] Missing baseline file: ${candidate}" >&2
+    fi
+  done
+
+  if [[ ${#INPUT_FILES[@]} -eq 0 ]]; then
+    echo "[WARN] No baseline principal files found for model '${key}'. Skipping." >&2
+    continue
+  fi
+
+  echo "→ Annotating principals for model '${key}' (files: ${INPUT_FILES[*]}) using ${ANNOTATOR_MODEL}" >&2
+
   args=(
     "$REPO_ROOT/pipeline/analyze_principal_biases.py"
     --input-dir "$BASE_INPUT_DIR"
     --output-dir "$BASE_OUTPUT_DIR"
-    --glob "$glob"
     --model "$ANNOTATOR_MODEL"
     --max-workers "$ANNOTATION_MAX_WORKERS"
+    --input
+    "${INPUT_FILES[@]}"
   )
   if [[ "$RESUME_ANNOTATIONS" == "true" ]]; then
     args+=(--resume)
@@ -107,5 +126,6 @@ for key in "${UNIQUE_KEYS[@]}"; do
   if [[ ${#PYTHON_ARGS[@]} -gt 0 ]]; then
     args+=("${PYTHON_ARGS[@]}")
   fi
+
   python "${args[@]}"
 done
