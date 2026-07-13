@@ -1,0 +1,744 @@
+{
+  "model": "google/gemini-2.5-pro",
+  "temperature": 0.0,
+  "elicit_belief": true,
+  "metrics": {
+    "total": 37,
+    "correct": 35,
+    "incorrect": 0,
+    "no_answer": 2,
+    "accuracy": 0.9459459459459459,
+    "step1": {
+      "total": 37,
+      "correct": 35,
+      "accuracy": 0.9459459459459459
+    },
+    "step2": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "step3": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "belief": {
+      "total_with_belief": 36,
+      "no_belief": 1,
+      "mean_belief": 0.9580555555555557,
+      "mean_belief_correct": 0.9577142857142856,
+      "mean_belief_incorrect": 0.97
+    }
+  },
+  "results": [
+    {
+      "id": "usmle_sample_0",
+      "question": "A 67-year-old woman with a history of congenital bicuspid aortic valve is hospitalized with a 2-day history of fever and chills. Her only medication is lisinopril. On examination, her temperature is 38.0\u00b0C (100.4\u00b0F) and cardiac auscultation reveals a grade 3/6 systolic murmur loudest at the second right intercostal space. Blood cultures are positive for penicillin-susceptible viridans streptococci. A second antibiotic, which acts synergistically with penicillin, is added to her regimen to potentially reduce the length of therapy. What is the most likely mechanism by which this second antibiotic exerts its effect on the bacteria?",
+      "options": {
+        "A": "Binding to DNA-dependent RNA polymerase",
+        "B": "Binding to the 30S ribosomal protein",
+        "C": "Competition with p-aminobenzoic acid",
+        "D": "Inhibition of dihydrofolate reductase",
+        "E": "Inhibition of DNA gyrase"
+      },
+      "correct_answer": "Binding to the 30S ribosomal protein",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Binding to the 30S ribosomal protein",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_1",
+      "question": "A 12-year-old girl presents for evaluation of jaundice that has occurred intermittently over the past two months. On examination, jaundice is the only abnormal finding. Laboratory results reveal a total bilirubin of 3 mg/dL, with a direct bilirubin of 1 mg/dL. Serum haptoglobin, AST, and ALT levels are all normal. There is no history of trauma or toxic exposures. Which of the following is the most likely associated finding in this patient?",
+      "options": {
+        "A": "Decreased activity of UDP glucuronosyltransferase",
+        "B": "Gallstones",
+        "C": "Increased hemolysis",
+        "D": "Increased serum alkaline phosphatase activity",
+        "E": "Ineffective erythropoiesis"
+      },
+      "correct_answer": "Decreased activity of UDP glucuronosyltransferase",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Decreased activity of UDP glucuronosyltransferase",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_2",
+      "question": "A guinea pig intestinal smooth muscle strip is treated with drug X in a muscle bath experiment. The following changes in muscle tension are observed after administration of various agonists:\n\nAgonist: Vehicle; Tension before drug X: 6.0 g; Tension after drug X: 6.1 g\nAgonist: Acetylcholine; Tension before drug X: 11.3 g; Tension after drug X: 18.5 g\nAgonist: Norepinephrine; Tension before drug X: 4.1 g; Tension after drug X: 4.2 g\n\nBased on these data, the effects of drug X are most similar to which class of pharmacological agents?",
+      "options": {
+        "A": "\u03b11-Adrenergic antagonist",
+        "B": "\u03b2-Adrenergic antagonist",
+        "C": "Cholinesterase inhibitor",
+        "D": "Monoamine oxidase inhibitor",
+        "E": "Muscarinic antagonist"
+      },
+      "correct_answer": "Cholinesterase inhibitor",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Cholinesterase inhibitor",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_3",
+      "question": "A 30-year-old woman presents for a routine prenatal visit at 28 weeks of gestation. Her obstetric history is significant for one prior spontaneous abortion at 12 weeks. She is currently gravida 2, para 0, aborta 1. Vital signs and uterine size are normal for gestational age. Fetal ultrasound reveals a normal male fetus. Maternal blood typing is O, Rh-negative, while the father is B, Rh-positive. Based on this information, administration of which agent is indicated?",
+      "options": {
+        "D": "Generation of IgM antibodies from fixing complement in the fetus",
+        "A": "Development of natural killer cells",
+        "B": "Development of polycythemia",
+        "C": "Formation of antibodies to RhD",
+        "E": "Immunosuppression caused by RhD on erythrocytes from the fetus"
+      },
+      "correct_answer": "Formation of antibodies to RhD",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Formation of antibodies to RhD",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_4",
+      "question": "A 55-year-old man with a history of hypertension and end-stage renal disease on hemodialysis presents to the emergency department with a 4-hour history of dyspnea and altered mental status. An electrocardiogram reveals low voltage and electrical alternans. Which of the following findings is most likely to be present on his physical examination?",
+      "options": {
+        "A": "85/60 120 increased  increased",
+        "B": "85/60 120 increased  normal",
+        "C": "85/60 120 normal  normal",
+        "D": "120/80 80 increased  increased",
+        "E": "120/80 80 normal  increased",
+        "F": "120/80 80 normal  normal"
+      },
+      "correct_answer": "85/60 120 increased  increased",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "85/60 120 increased  increased",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_5",
+      "question": "A 52-year-old woman with newly diagnosed type 2 diabetes mellitus starts a medication. After one month of treatment, laboratory studies indicate a reduction in hepatic glucose production and an enhancement of glucose uptake and use in peripheral tissues. Which medication was most likely initiated?",
+      "options": {
+        "A": "Acarbose",
+        "B": "Glyburide",
+        "C": "Metformin",
+        "D": "Nateglinide",
+        "E": "Repaglinide"
+      },
+      "correct_answer": "Metformin",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Metformin",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_6",
+      "question": "A 44-year-old man with no symptoms is diagnosed with HIV infection discovered during a pre-donation blood screening. Laboratory studies from the screening visit are as follows:\nHemoglobin: 10 g/dL\nHematocrit: 30%\nLeukocyte count: 4600/mm\u00b3\nPlatelet count: 15,000/mm\u00b3\nProthrombin time: 12 sec (INR 1.1)\nPartial thromboplastin time: 23 sec\nWhich of the following physical examination findings is this patient most likely to exhibit?",
+      "options": {
+        "A": "Deep venous thrombosis",
+        "B": "Hemarthrosis",
+        "C": "Petechiae",
+        "D": "Subungual hemorrhage",
+        "E": "Visceral hematoma"
+      },
+      "correct_answer": "Petechiae",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Petechiae",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_7",
+      "question": "A 23-year-old female with aplastic anemia receives a high-dose course of rabbit antithymocyte globulin. Approximately ten days following treatment, she presents with fever, swollen lymph nodes, joint pain, and a rash on her palms and soles. What is the most probable etiology for this clinical picture?",
+      "options": {
+        "A": "Cytokine secretion by natural killer cells",
+        "B": "Eosinophil degranulation",
+        "C": "Immune complex deposition in tissues",
+        "D": "Polyclonal T-lymphocyte activation",
+        "E": "Widespread apoptosis of B lymphocytes"
+      },
+      "correct_answer": "Immune complex deposition in tissues",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Immune complex deposition in tissues",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_8",
+      "question": "A 42-year-old woman undergoes multiple surgical procedures, including repair of a perforated small bowel, facial fractures, and a left femur fracture following major trauma. Thirty-six hours after surgery, while awake but not fully alert, she expresses concern about developing an addiction to the morphine she is receiving via a patient-controlled pump for pain, despite having no history of substance use. Her alcohol intake is minimal. What is the most suitable initial step for the physician to take?",
+      "options": {
+        "A": "Reassure the patient that her chance of becoming addicted to narcotics is minuscule",
+        "B": "Maintain the morphine, but periodically administer intravenous naloxone",
+        "C": "Switch the patient to oral acetaminophen as soon as she can take medication orally",
+        "D": "Switch the patient to intramuscular lorazepam",
+        "E": "Switch the patient to intravenous phenobarbital"
+      },
+      "correct_answer": "Reassure the patient that her chance of becoming addicted to narcotics is minuscule",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Reassure the patient that her chance of becoming addicted to narcotics is minuscule",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_9",
+      "question": "A 22-year-old healthy woman presents with a 4-day history of a pruritic, erythematous rash on her right arm. She reports no significant medical history or current medications but notes recent use of a new hair dye. Vital signs are within normal limits. Physical examination of the affected forearm reveals the findings shown. Which ligand-receptor interaction was most critical for the proliferation of T lymphocytes at the site of this rash?",
+      "options": {
+        "A": "CD2 on T lymphocytes \u2192 inte rcellular adhesion molecule (ICAM)-3 on epidermal Langerhans cells",
+        "B": "CD28 on T lymphocytes \u2192 CD80 on epidermal Langerhans cells",
+        "C": "CD40L on T lymphocytes \u2192 CD40 on epidermal Langerhans cells",
+        "D": "CD45 on T lymphocytes \u2192 CD28 on epidermal Langerhans cells",
+        "E": "Lymphocyte function-associated antigen- 1 on T lymphocytes \u2192 ICAM1 on epidermal Langerhans cells"
+      },
+      "correct_answer": "CD28 on T lymphocytes \u2192 CD80 on epidermal Langerhans cells",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "CD28 on T lymphocytes \u2192 CD80 on epidermal Langerhans cells",
+      "correct": true,
+      "response": "This patient is presenting with classic signs and symptoms of allergic contact dermatitis, a Type IV hypersensitivity reaction. The pathogenesis involves a T-cell mediated immune response to a hapten (in this case, a chemical in the hair dye) that has bound to self-proteins in the skin.\n\nHere's a breakdown of the process and the roles of the molecules listed in the options:\n\n1.  **Sensitization and Elicitation:** The hapten-protein complex is taken up by antigen-presenting cells (APCs) in the epidermis, primarily Langerhans cells. These cells process the antigen and present it on MHC class II molecules to naive CD4+ T helper cells in regional lymph nodes (sensitization phase). Upon re-exposure (elicitation phase), memory T cells in the skin are activated by the Langerhans cells presenting the antigen.\n\n2.  **T-cell Activation:** Full activation and proliferation of T lymphocytes require two distinct signals from the APC:\n    *   **Signal 1 (Antigen-specific):** The T-cell receptor (TCR) on the T lymphocyte binds to the antigen-MHC complex on the surface of the Langerhans cell.\n    *   **Signal 2 (Co-stimulation):** This is a non-antigen-specific signal required for T-cell proliferation, differentiation, and survival. Without this second signal, the T cell may become anergic (unresponsive) or undergo apoptosis.\n\n3.  **Evaluating the Options:**\n    *   **A. CD2 on T lymphocytes \u2192 intercellular adhesion molecule (ICAM)-3 on epidermal Langerhans cells:** CD2 is an adhesion molecule on T cells that binds to LFA-3 (CD58) on APCs. This interaction helps stabilize the cell-cell contact but is not the primary co-stimulatory signal for proliferation.\n    *   **B. CD28 on T lymphocytes \u2192 CD80 on epidermal Langerhans cells:** This is the quintessential co-stimulatory signal (Signal 2). The interaction between CD28 on the T cell and its ligands, B7-1 (CD80) or B7-2 (CD86), on the APC is critical for inducing T-cell proliferation, primarily through the production of IL-2. Activated Langerhans cells upregulate CD80 and CD86, making them potent activators of T cells. This interaction is the most critical for T-cell proliferation.\n    *   **C. CD40L on T lymphocytes \u2192 CD40 on epidermal Langerhans cells:** This interaction is important but typically occurs after initial T-cell activation. The activated T cell expresses CD40L, which then binds to CD40 on the APC. This \"licenses\" the APC to become more effective, for instance, by upregulating CD80/CD86, thereby amplifying the T-cell response. It is not the initial, critical signal for T-cell proliferation itself.\n    *   **D. CD45 on T lymphocytes \u2192 CD28 on epidermal Langerhans cells:** This is incorrect. CD45 is a protein tyrosine phosphatase on T cells involved in TCR signaling. CD28 is also on T cells, not Langerhans cells.\n    *   **E. Lymphocyte function-associated antigen-1 (LFA-1) on T lymphocytes \u2192 ICAM-1 on epidermal Langerhans cells:** This is a crucial adhesion interaction that stabilizes the immunological synapse between the T cell and the APC, allowing for sustained signaling. However, like the CD2/LFA-3 interaction, it is considered an adhesion signal, not the primary co-stimulatory signal that drives proliferation.\n\n**Conclusion:** The most critical ligand-receptor interaction for the *proliferation* of T lymphocytes is the co-stimulatory signal provided by the binding of CD28 on the T cell to CD80 (or CD86) on the Langerhans cell.\n\n<answer>B</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_10",
+      "question": "During a study of muscle metabolism, hyperglycemia and hyperinsulinemia are induced in six healthy volunteers. Analysis of resting muscle biopsy samples reveals markedly elevated malonyl-CoA levels. Which metabolic process is most likely being directly inhibited by this rise in malonyl-CoA?",
+      "options": {
+        "A": "Fatty acid oxidation",
+        "B": "Fatty acid synthesis",
+        "C": "Gluconeogenesis",
+        "D": "Glycogenolysis",
+        "E": "Glycolysis",
+        "F": "Oxidative phosphorylation"
+      },
+      "correct_answer": "Fatty acid oxidation",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Fatty acid oxidation",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_11",
+      "question": "A new tyrosine kinase inhibitor is being investigated for its efficacy against chronic myeloid leukemia in blast crisis. In the investigation, all participants receive the drug at assigned doses ranging from 300 to 1000 mg/day, with cohorts of six to eight patients per dose level. The primary outcome is the assessment of antileukemic activity, measured by serial complete blood counts and bone marrow examinations over one year. Which of the following best characterizes this study design?",
+      "options": {
+        "A": "Case-control study",
+        "B": "Crossover study",
+        "C": "Open-labeled clinical trial",
+        "D": "Randomized clinical trial",
+        "E": "Single-blind, randomized, controlled trial"
+      },
+      "correct_answer": "Open-labeled clinical trial",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Open-labeled clinical trial",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_12",
+      "question": "A 63-year-old man presents with a 4-day history of progressive left calf pain and swelling, along with a 1-month history of worsening upper midthoracic back pain and an unintentional 9-kg weight loss. His medical history is unremarkable, and he takes only ibuprofen. Vital signs are normal. Physical exam reveals palpable lower extremity pulses and is otherwise unremarkable. Thoracic spine x-ray is normal. Abdominal CT demonstrates a 3-cm pancreatic body mass with liver metastases and superior mesenteric artery encasement. Left lower extremity ultrasonography reveals a femoropopliteal deep vein thrombosis. Which of the following is the most likely underlying cause of these findings?",
+      "options": {
+        "A": "Carcinoid syndrome",
+        "B": "Hypercoagulability from advanced malignancy",
+        "C": "Multiple endocrine neoplasia",
+        "D": "Splenic artery aneurysm and embolic disease of the left lower extremity",
+        "E": "Superior mesenteric artery syndrome"
+      },
+      "correct_answer": "Hypercoagulability from advanced malignancy",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Hypercoagulability from advanced malignancy",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_13",
+      "question": "A 40-year-old woman is evaluated for a 6-month history of hirsutism and secondary amenorrhea of 4 months' duration. Her vital signs are normal, and her BMI is 26 kg/m\u00b2. Examination reveals temporal hair recession, coarse facial hair, and clitoromegaly. Laboratory studies show an elevated serum testosterone level, but normal serum androstenedione, dehydroepiandrosterone, and urinary 17-ketosteroid levels. Pelvic ultrasonography reveals a 12-cm ovarian mass. Which of the following is the most likely diagnosis for this mass?",
+      "options": {
+        "B": "Ovarian carcinoid",
+        "C": "Sertoli-Leydig tumor",
+        "D": "Teratoma",
+        "E": "Thecoma"
+      },
+      "correct_answer": "Sertoli-Leydig tumor",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Sertoli-Leydig tumor",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_14",
+      "question": "A 35-year-old man presents with a 2-day history of pain and swelling in his right arm following a scrape from a tree branch. He has a temperature of 38.3\u00b0C (101\u00b0F). On examination, the right forearm shows a fluctuant, erythematous lesion at the injury site with significant tenderness to palpation and surrounding edema. What is the most likely primary pathophysiologic mechanism responsible for the edema?",
+      "options": {
+        "A": "Degranulation of eosinophils",
+        "B": "Disruption of vascular basement membranes",
+        "C": "Increased hydrostatic pressure",
+        "D": "Release of thromboxane",
+        "E": "Separation of endothelial junctions"
+      },
+      "correct_answer": "Separation of endothelial junctions",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Separation of endothelial junctions",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_15",
+      "question": "A 12-year-old boy presents with a 2-month history of headaches and 6 days of nausea and vomiting. Physical examination reveals bilateral papilledema and a broad-based gait. An MRI demonstrates a pineal region tumor causing brain stem compression and hydrocephalus. Which of the following oculomotor functions is most likely impaired?",
+      "options": {
+        "A": "Abduction",
+        "B": "Horizontal pursuit",
+        "C": "Optokinetic nystagmus",
+        "D": "Upward gaze",
+        "E": "Vestibulo-ocular reflex"
+      },
+      "correct_answer": "Upward gaze",
+      "correct_answer_idx": "D",
+      "predicted_answer_idx": "D",
+      "predicted_answer": "Upward gaze",
+      "correct": true,
+      "response": "<answer>D</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_16",
+      "question": "A 52-year-old man presents to the emergency department with a 1-day history of nausea, vomiting, and right-sided abdominal pain that radiates to the back. He reports no fever or urinary frequency. His past medical history includes type 2 diabetes mellitus, hyperlipidemia, hypertension, and atrial fibrillation. His medications are atorvastatin, glyburide, hydrochlorothiazide, lisinopril, and warfarin. He has a 35-pack-year smoking history but quit 6 months ago, and he denies recent alcohol or illicit drug use. He is 188 cm tall and weighs 109 kg (BMI 31 kg/m\u00b2). Vital signs are temperature 36.4\u00b0C, pulse 88/min, respirations 20/min, and blood pressure 165/92 mm Hg. Oxygen saturation on room air is 96%. Examination reveals tenderness in the right upper quadrant and flank without rebound or guarding. An abdominal CT scan with and without contrast demonstrates an enlarged right kidney with wedge-shaped hypodense areas and no nephrolithiasis. What is the most significant predisposing risk factor for this patient's condition?",
+      "options": {
+        "A": "Atrial fibrillation",
+        "B": "Hyperlipidemia",
+        "C": "Hypertension",
+        "D": "Past smoking history",
+        "E": "Type 2 diabetes mellitus"
+      },
+      "correct_answer": "Atrial fibrillation",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Atrial fibrillation",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_17",
+      "question": "A 24-year-old male presents with a 2-day history of an erythematous, pruritic rash affecting his buttocks and lower extremities. He reports returning from a Caribbean cruise 4 days ago, where he swam in the ship\u2019s pool and utilized the hot tub. The patient appears well, with normal vital signs. Physical examination reveals the findings shown in the provided image. In which of the following sites did the infectious agent responsible for these manifestations most likely initiate proliferation?",
+      "options": {
+        "A": "Apocrine gland",
+        "B": "Dermis",
+        "C": "Eccrine gland",
+        "D": "Hair follicle",
+        "E": "Sebaceous gland"
+      },
+      "correct_answer": "Hair follicle",
+      "correct_answer_idx": "D",
+      "predicted_answer_idx": "D",
+      "predicted_answer": "Hair follicle",
+      "correct": true,
+      "response": "<answer>D</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_18",
+      "question": "A 45-year-old man with no significant past medical history presents with a 3-week history of worsening epigastric burning discomfort and unintentional weight loss of 4.5 kg (10 lb). The pain is worse at night and typically begins 1 to 3 hours after eating. He reports similar but milder symptoms over the past year. On examination, there is deep epigastric tenderness. Stool is positive for occult blood. Upper endoscopy reveals a 3-cm actively bleeding gastric antral ulcer. A photomicrograph of Steiner silver-stained gastric mucosa biopsy (400x magnification) taken near the ulcer is provided. Which of the following mechanisms is most likely responsible for this condition?",
+      "options": {
+        "A": "Elaboration of proteases and urease with local tissue destruction",
+        "B": "Hyperacidity and gastric ulcer development",
+        "C": "Ingestion of preformed toxins in contaminated well water",
+        "D": "Spirochete invasion of gastric cells"
+      },
+      "correct_answer": "Elaboration of proteases and urease with local tissue destruction",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Elaboration of proteases and urease with local tissue destruction",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_19",
+      "question": "A 14-year-old male presents to the emergency department following blunt trauma from a baseball bat to the lateral aspect of his leg just inferior to the knee. Physical examination reveals an inability to dorsiflex the foot. Which nerve is most probably affected?",
+      "options": {
+        "A": "Common fibular (peroneal)",
+        "B": "Femoral",
+        "C": "Obturator",
+        "D": "Sural",
+        "E": "Tibial"
+      },
+      "correct_answer": "Common fibular (peroneal)",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Common fibular (peroneal)",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_20",
+      "question": "A 26-year-old woman presents to the emergency department with severe back and abdominal pain for 8 hours, accompanied by mild persistent vaginal bleeding. Abdominal ultrasonography reveals a ruptured 2-cm ectopic pregnancy in the ampullary portion of the fallopian tube. Into which anatomical space will the fluid from this rupture most likely accumulate?",
+      "options": {
+        "A": "Lesser peritoneal cavity",
+        "B": "Mesometrium",
+        "C": "Pouch of Douglas",
+        "D": "Uterine cavity",
+        "E": "Vagina"
+      },
+      "correct_answer": "Pouch of Douglas",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Pouch of Douglas",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_21",
+      "question": "A 46-year-old female with active ankylosing spondylitis continues to have symptoms despite trials of multiple NSAIDs and sulfasalazine. Which cytokine's inhibition would be the most suitable next therapeutic target?",
+      "options": {
+        "A": "CD20",
+        "B": "Cyclooxygenase-2",
+        "C": "Cytotoxic T-lymphocyte antigen 4",
+        "D": "Epidermal growth factor",
+        "E": "Interleukin-1 (IL-1 )",
+        "F": "Tumor necrosis factor \u03b1"
+      },
+      "correct_answer": "Tumor necrosis factor \u03b1",
+      "correct_answer_idx": "F",
+      "predicted_answer_idx": null,
+      "predicted_answer": null,
+      "correct": false,
+      "response": "<answer>F</answer>\n<belief>0.97</belief>",
+      "meta_info": "step1",
+      "belief": 0.97
+    },
+    {
+      "id": "usmle_sample_22",
+      "question": "A 55-year-old man presents with a 2-week history of recurrent, widespread blisters. On examination, lesions are most abundant in flexural regions such as the axillae and groin. The blisters are not easily ruptured, and no oral lesions are noted. Which adhesion failure is most likely responsible for these findings?",
+      "options": {
+        "A": "Basement membrane",
+        "B": "Dermal papillae",
+        "C": "Langerhans cells",
+        "D": "Melanocytes",
+        "E": "Merkel cells"
+      },
+      "correct_answer": "Basement membrane",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Basement membrane",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_23",
+      "question": "A 17-year-old female presents to the emergency department after being discovered unresponsive near an empty acetaminophen bottle. The ingestion is estimated to have occurred 12 hours prior to arrival. Laboratory studies reveal a significantly elevated serum acetaminophen level. Following administration of activated charcoal and acetylcysteine, the patient develops jaundice and has an AST of 3000 U/L approximately two days later. What is the most likely cause of the jaundice?",
+      "options": {
+        "A": "Activation of biliverdin reductase",
+        "B": "Decreased bilirubin conjugation",
+        "C": "Decreased generation of urobilinogen",
+        "D": "Increased hemolysis",
+        "E": "Increased serum glutathione concentration"
+      },
+      "correct_answer": "Decreased bilirubin conjugation",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Decreased bilirubin conjugation",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_24",
+      "question": "A 72-year-old frail woman presents with a 3-day history of fever, dyspnea, dysphagia, chest pain, and cough. On examination, she is tachypneic with bilaterally equal pulses. Chest percussion reveals dullness over the right lower lung field. Arterial blood gas analysis demonstrates hypoxemia and a low PCO2. A chest radiograph shows opacification in the right lower lung zone. What is the most likely etiology?",
+      "options": {
+        "A": "Alveolar proteinosis",
+        "B": "Aspiration",
+        "C": "Cigarette smoking",
+        "D": "Emphysema",
+        "E": "Vasculitis"
+      },
+      "correct_answer": "Aspiration",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": null,
+      "predicted_answer": null,
+      "correct": false,
+      "response": null,
+      "meta_info": "step1",
+      "belief": null
+    },
+    {
+      "id": "usmle_sample_25",
+      "question": "A 62-year-old man is hospitalized for assessment of abdominal pain. Throughout the interview, his replies are limited to single words and occasionally sarcastic remarks. He avoids eye contact and frowns while stating that he has already been asked these questions multiple times. What is the most appropriate next step for the physician?",
+      "options": {
+        "A": "\"Can you tell me more about your abdominal pain?\"",
+        "B": "\"I understand that you do not feel well, but I need to get a history here.\"",
+        "C": "\"I'll come back once you've calmed down, and we can talk more then.\"",
+        "D": "\"Listen, if you choose not to cooperate, I'm not going to be able to help you.\"",
+        "E": "\"You sound upset. Tell me a little more about that.\""
+      },
+      "correct_answer": "\"You sound upset. Tell me a little more about that.\"",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "\"You sound upset. Tell me a little more about that.\"",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_26",
+      "question": "A 54-year-old man presents with a 3-month history of syncopal episodes and fatigue that interferes with his daily activities. His medical history is significant for a myocardial infarction 12 years prior. Vital signs reveal a heart rate of 40/min, respiratory rate of 18/min, and blood pressure of 138/85 mm Hg. On physical exam, cannon a waves are noted. An ECG demonstrates a P-wave rate of 90/min and an R-wave rate of 40/min, with dissociation between the atrial and ventricular activity. What is the most likely diagnosis?",
+      "options": {
+        "A": "First-degree atrioventricular block",
+        "B": "Right bundle branch block",
+        "C": "Second-degree atrioventricular block, type I",
+        "D": "Second-degree atrioventricular block, type II",
+        "E": "Third-degree atrioventricular block"
+      },
+      "correct_answer": "Third-degree atrioventricular block",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Third-degree atrioventricular block",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.99</belief>",
+      "meta_info": "step1",
+      "belief": 0.99
+    },
+    {
+      "id": "usmle_sample_27",
+      "question": "A 42-year-old woman presents for a routine health assessment. She reports feeling generally well, with intermittent constipation, abdominal discomfort, and mild fatigue. Her past medical history includes treatment for a renal calculus 10 years ago and a diagnosis of a \"lazy gallbladder.\" Vital signs show a pulse of 82/min and blood pressure of 150/80 mm Hg. Physical examination is otherwise unremarkable. Laboratory results are as follows:\n- Erythrocyte count: 3 million/mm\u00b3\n- Serum K\u207a: 4.5 mEq/L\n- Serum Cl\u207b: 107 mEq/L\n- Serum Ca\u00b2\u207a: 12 mg/dL\n- Serum phosphorus: 2.2 mg/dL\n- Alkaline phosphatase: 95 U/L\nWhich of the following locations is the most likely site of a small, well-defined nodule responsible for this patient's condition?",
+      "options": {
+        "A": "Adrenal gland",
+        "B": "Anterior pituitary gland",
+        "C": "Gallbladder",
+        "D": "Kidney",
+        "E": "Parathyroid gland",
+        "F": "Thymus"
+      },
+      "correct_answer": "Parathyroid gland",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Parathyroid gland",
+      "correct": true,
+      "response": "This patient's presentation is a classic case of primary hyperparathyroidism. Let's break down the evidence:\n\n1.  **Symptoms:** The patient's symptoms of constipation, abdominal discomfort (\"groans\"), and fatigue (\"psychiatric overtones\") are common, nonspecific symptoms of hypercalcemia.\n2.  **Past Medical History:** A history of a renal calculus (\"stones\") is a major clue, as hypercalcemia leads to hypercalciuria, which predisposes to kidney stone formation.\n3.  **Physical Examination:** Hypertension can be associated with hypercalcemia.\n4.  **Laboratory Findings:** This is the most definitive evidence.\n    *   **Hypercalcemia:** Serum Ca\u00b2\u207a is elevated at 12 mg/dL (normal range is typically 8.5-10.2 mg/dL).\n    *   **Hypophosphatemia:** Serum phosphorus is low at 2.2 mg/dL (normal range is typically 2.5-4.5 mg/dL).\n    *   **Elevated Chloride:** The serum Cl\u207b is at the upper limit of normal (107 mEq/L). A high chloride-to-phosphate ratio (>33) is suggestive of primary hyperparathyroidism. In this case, 107 / 2.2 = 48.6, which strongly supports the diagnosis.\n    *   **Anemia:** The low erythrocyte count may be related to the \"anemia of chronic disease\" or mild bone marrow suppression from high parathyroid hormone (PTH) levels.\n\nThe combination of high serum calcium and low serum phosphorus is the hallmark of excess parathyroid hormone (PTH). PTH increases calcium levels by promoting bone resorption and increasing renal reabsorption of calcium. It lowers phosphorus levels by inhibiting its reabsorption in the proximal renal tubules (phosphaturic effect).\n\nThe most common cause of primary hyperparathyroidism (in about 80-85% of cases) is a single, benign tumor called a parathyroid adenoma. This is a small, well-defined nodule located in one of the four parathyroid glands, which are situated in the neck, typically behind the thyroid gland.\n\nLet's evaluate the other options:\n*   **A. Adrenal gland:** Tumors here cause conditions like Cushing's syndrome or pheochromocytoma, which do not present with this specific electrolyte pattern.\n*   **B. Anterior pituitary gland:** A pituitary adenoma could be part of an MEN 1 syndrome (which includes hyperparathyroidism), but the nodule directly responsible for the hypercalcemia is in the parathyroid gland, not the pituitary.\n*   **C. Gallbladder:** Gallbladder pathology does not cause hypercalcemia.\n*   **D. Kidney:** While renal cell carcinoma can cause hypercalcemia (via PTHrP), it's a feature of malignancy, and primary hyperparathyroidism is a much more common cause of mild, chronic hypercalcemia in an outpatient setting. Also, chronic kidney disease causes *secondary* hyperparathyroidism, which is characterized by hypocalcemia (or normal calcium) and hyperphosphatemia.\n*   **F. Thymus:** Thymic tumors are not a primary cause of hypercalcemia, although very rarely an ectopic parathyroid adenoma can be located in the mediastinum near the thymus. However, the parathyroid gland itself is the fundamental location.\n\nTherefore, the most likely site of the small, well-defined nodule (adenoma) causing this patient's primary hyperparathyroidism is a parathyroid gland.\n\n<answer>E</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_28",
+      "question": "A 68-year-old woman with end-stage renal disease on hemodialysis for one year presents for a follow-up visit. She has had multiple recent hospitalizations for fluid overload secondary to nonadherence with her dietary regimen. She expresses frustration, stating, \"I am tired of being on dialysis. Sticking to the restrictions is very difficult.\" What is the most suitable first statement for the physician to make?",
+      "options": {
+        "A": "\"I imagine being on dialysis is frustrating, but you don't want to die from kidney disease, do you?\"",
+        "B": "\"I know that this is challenging, but do you remember how difficult it is to be hospitalized?\"",
+        "C": "\"It is tough to change your diet and fluid intake, but what sorts of things were you doing at first when you were following the recommendations?\"",
+        "D": "\"Making these changes is so difficult. Can you imagine how good you will feel once you make the changes again?\"",
+        "E": "\"This is very hard to do, but you may have an easier time if you met with the dietician again.\""
+      },
+      "correct_answer": "\"It is tough to change your diet and fluid intake, but what sorts of things were you doing at first when you were following the recommendations?\"",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "\"It is tough to change your diet and fluid intake, but what sorts of things were you doing at first when you were following the recommendations?\"",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_29",
+      "question": "A researcher performs Southern blot analysis on DNA from various tissues. The DNA is first digested with a restriction enzyme, then separated by gel electrophoresis, and finally transferred to a membrane. The membrane is hybridized with a cDNA probe specific for a single immunoglobulin constant region. A diagram illustrates the resulting band patterns. Assuming the procedure was technically sound, these results are most consistent with which biological process?",
+      "options": {
+        "A": "Affinity maturation",
+        "B": "Apoptosis",
+        "C": "Gene rearrangement",
+        "D": "RNA splicing",
+        "E": "Somatic hypermutation"
+      },
+      "correct_answer": "Gene rearrangement",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Gene rearrangement",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_30",
+      "question": "A 17-year-old adolescent with primary amenorrhea is noted on physical exam to have a typical female body habitus, normal breast development, and unremarkable external genitalia. She is found to have absence of axillary and pubic hair and declines a pelvic or rectal examination. What is the most probable underlying cause for these findings?",
+      "options": {
+        "A": "Androgen insensitivity",
+        "B": "Congenital adrenal hyperplasia",
+        "C": "Ectodermal dysplasia",
+        "D": "A psychiatric disorder",
+        "E": "A sex chromosome mosaicism"
+      },
+      "correct_answer": "Androgen insensitivity",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Androgen insensitivity",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_31",
+      "question": "A 16-year-old male presents with a 3-day history of abdominal discomfort, emesis, and reduced food intake. The pain, initially localized to the right side, is now diffuse. He is febrile at 38.8\u00b0C (101.8\u00b0F), with a pulse of 100/min, respiratory rate of 20/min, and blood pressure of 143/83 mm Hg. Abdominal exam reveals guarding and diffuse rebound tenderness without palpable masses. CT imaging demonstrates a perforated appendix. Which organism is most likely identified in analysis of this patient's peritoneal fluid?",
+      "options": {
+        "A": "Candida albicans",
+        "B": "Citrobacter freundii",
+        "C": "Escherichia coli",
+        "D": "Staphylococcus aureus",
+        "E": "Streptococcus pneumoniae"
+      },
+      "correct_answer": "Escherichia coli",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Escherichia coli",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_32",
+      "question": "A 45-year-old woman presents with a 6-month history of amenorrhea accompanied by hot flashes, night sweats, and sleep disturbances. She believes she is in menopause and inquires about pharmacologic management for her symptoms. Physical examination is unremarkable, and a urine pregnancy test is negative. After the physician explains that hormone therapy is a potential option and reviews the associated risks, which of the following is the most suitable next statement from the physician?",
+      "options": {
+        "A": "\"Could you tell me your thoughts about the hormone treatment option we have discussed?\"",
+        "B": "\"I have many patients with similar symptoms, and everyone responds to hormone therapy differently.\"",
+        "C": "\"I will give you some written information to review, and then I can answer any remaining questions.\"",
+        "D": "\"If your symptoms are really severe, the risk of hormone therapy may be worth it.\u201d",
+        "E": "\"Would you like me to tell you what I think you should do?\""
+      },
+      "correct_answer": "\"Could you tell me your thoughts about the hormone treatment option we have discussed?\"",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "\"Could you tell me your thoughts about the hormone treatment option we have discussed?\"",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_33",
+      "question": "A randomized trial evaluates the incidence of gastrointestinal adverse effects in children with pertussis treated with azithromycin versus erythromycin. Among 100 enrolled children, 50 are assigned to each treatment. Vomiting occurs in 5 patients receiving azithromycin and in 15 patients receiving erythromycin. Which of the following most accurately indicates the absolute risk reduction for vomiting in the azithromycin group?",
+      "options": {
+        "A": "0.1",
+        "B": "0.2",
+        "C": "0.33",
+        "D": "0.67",
+        "E": "0.8"
+      },
+      "correct_answer": "0.2",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "0.2",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>1.0</belief>",
+      "meta_info": "step1",
+      "belief": 1.0
+    },
+    {
+      "id": "usmle_sample_34",
+      "question": "A 34-year-old female with a decade-long history of hepatitis C infection presents with a one-month history of worsening fatigue. Vital signs are normal. On examination, the liver is not palpable. Laboratory results are as follows:\n- Albumin: 3 g/dL\n- Total bilirubin: 1.8 mg/dL\n- Alkaline phosphatase: 115 U/L\n- AST: 53 U/L\n- ALT: 48 U/L\nLiver biopsy reveals focal hepatocellular injury with lymphocytic infiltration and early fibrosis. What is the most probable mechanism for the persistent hepatocyte damage in this individual?",
+      "options": {
+        "A": "Foreign peptides bound to class I MHC molecules are recognized by CD4+ T lymphocytes",
+        "B": "Foreign peptides bound to class I MHC molecules are recognized by CD8+ T lymphocytes",
+        "C": "Foreign peptides bound to class II MHC molecules are recognized by CD8+ T lymphocytes",
+        "D": "Self-peptides bound to class I MHC molecules are recognized by CD8+ T lymphocytes",
+        "E": "Self-peptides bound to class II MHC molecules are recognized by CD4+ T lymphocytes"
+      },
+      "correct_answer": "Foreign peptides bound to class I MHC molecules are recognized by CD8+ T lymphocytes",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Foreign peptides bound to class I MHC molecules are recognized by CD8+ T lymphocytes",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_35",
+      "question": "A 50-year-old woman presents for a follow-up visit. She has had blood pressure readings of 145/100 mm Hg and 145/95 mm Hg at prior appointments. Current vital signs include a pulse of 75/min, respirations of 15/min, and a blood pressure of 150/95 mm Hg. The remainder of the physical examination is unremarkable. If no treatment is initiated, which parameter is most likely to decline in this patient?",
+      "options": {
+        "A": "Baroreceptor output",
+        "B": "Left ventricular stiffness during diastole",
+        "C": "Left ventricular stroke work",
+        "D": "Left ventricular wall thickness",
+        "E": "Myocardial oxygen consumption"
+      },
+      "correct_answer": "Baroreceptor output",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Baroreceptor output",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_36",
+      "question": "A 62-year-old man with a known diagnosis of chronic inflammatory interstitial pneumonitis undergoes a follow-up evaluation. Pulmonary function tests are performed, followed by a biopsy of the involved lung tissue. Which of the following patterns of alveolar cell population changes is most likely to be seen on analysis of this biopsy specimen compared to that of a healthy individual?\nType I Pneumocytes  Type II Pneumocytes  Fibroblasts",
+      "options": {
+        "A": "\u2191 \u2191 \u2191",
+        "B": "\u2191 \u2191 \u2193",
+        "C": "\u2191 \u2193 \u2191",
+        "D": "\u2191 \u2193 \u2193",
+        "E": "\u2193 \u2191 \u2191",
+        "F": "\u2193 \u2191 \u2193",
+        "G": "\u2193 \u2193 \u2191",
+        "H": "\u2193 \u2193 \u2193"
+      },
+      "correct_answer": "\u2193 \u2191 \u2191",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "\u2193 \u2191 \u2191",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    }
+  ]
+}

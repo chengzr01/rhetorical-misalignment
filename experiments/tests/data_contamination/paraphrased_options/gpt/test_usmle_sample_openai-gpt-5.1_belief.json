@@ -1,0 +1,744 @@
+{
+  "model": "openai/gpt-5.1",
+  "temperature": 0.0,
+  "elicit_belief": true,
+  "metrics": {
+    "total": 37,
+    "correct": 32,
+    "incorrect": 3,
+    "no_answer": 2,
+    "accuracy": 0.8648648648648649,
+    "step1": {
+      "total": 37,
+      "correct": 32,
+      "accuracy": 0.8648648648648649
+    },
+    "step2": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "step3": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "belief": {
+      "total_with_belief": 37,
+      "no_belief": 0,
+      "mean_belief": 0.8994594594594595,
+      "mean_belief_correct": 0.9025,
+      "mean_belief_incorrect": 0.8800000000000001
+    }
+  },
+  "results": [
+    {
+      "id": "usmle_sample_0",
+      "question": "A 67-year-old woman with congenital bicuspid aortic valve is admitted to the hospital because of a 2-day history of\nfever and chills. Current medication is lisinopril. Temperature is 38.0\u00b0C (100.4\u00b0F), pulse is 90/min, respirations are\n20/min, and blood pressure is 110/70 mm Hg. Cardiac examination shows a grade 3/6 systolic murmur that is best\nheard over the second right intercostal space. Blood culture grows viridans streptococci susceptible to penicillin. In\naddition to penicillin, an antibiotic synergistic to penicillin is administered that may help shorten the duration of this\npatient's drug treatment. Which of the following is the most likely mechanism of action of this additional antibiotic\non bacteria?",
+      "options": {
+        "A": "Inhibition of bacterial DNA-dependent RNA polymerase",
+        "B": "Inhibition of protein synthesis by attachment to the 30S ribosomal subunit",
+        "C": "Inhibition of bacterial folate synthesis by acting as a structural analog of para-aminobenzoic acid",
+        "D": "Preventing the conversion of dihydrofolate to tetrahydrofolate",
+        "E": "Inhibition of bacterial DNA topoisomerase II"
+      },
+      "correct_answer": "Inhibition of protein synthesis by attachment to the 30S ribosomal subunit",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Inhibition of protein synthesis by attachment to the 30S ribosomal subunit",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    },
+    {
+      "id": "usmle_sample_1",
+      "question": "A 12-year-old girl is brought to the physician because of a 2-month history of intermittent yellowing of the eyes and\nskin. Physical examination shows no abnormalities except for jaundice. Her serum total bilirubin concentration is\n3 mg/dL, with a direct component of 1 mg/dL. Serum studies show a haptoglobin concentration and AST and ALT\nactivities that are within the reference ranges. There is no evidence of injury or exposure to toxins. Which of the\nfollowing additional findings is most likely in this patient?",
+      "options": {
+        "A": "Reduced function of UDP glucuronosyltransferase",
+        "B": "Presence of cholelithiasis",
+        "C": "Evidence of accelerated red blood cell destruction",
+        "D": "Elevated serum alkaline phosphatase level",
+        "E": "Increased destruction of erythroid precursors in the bone marrow"
+      },
+      "correct_answer": "Reduced function of UDP glucuronosyltransferase",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Reduced function of UDP glucuronosyltransferase",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    },
+    {
+      "id": "usmle_sample_2",
+      "question": "During an experiment, drug X is added to a muscle bath containing a strip of guinea pig intestinal smooth muscle.\nAgonists are added to the bath, and the resultant effects on muscle tension are shown in the table.\nAgonist  Muscle Tension Before Drug X (g)  Muscle Tension After Drug X (g)  \nVehicle  6.0 6.1 \nAcetylcholine  11.3 18.5 \nNorepinephrine  4.1 4.2 \nWhich of the following types of drugs is most likely to produce effects most similar to those of drug X?",
+      "options": {
+        "A": "\u03b11-Adrenergic receptor blocker",
+        "B": "\u03b2-Adrenergic receptor blocker",
+        "C": "Acetylcholinesterase inhibitor",
+        "D": "Monoamine oxidase inhibitor",
+        "E": "A medication that blocks muscarinic receptors"
+      },
+      "correct_answer": "Acetylcholinesterase inhibitor",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Acetylcholinesterase inhibitor",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.86</belief>",
+      "meta_info": "step1",
+      "belief": 0.86
+    },
+    {
+      "id": "usmle_sample_3",
+      "question": "A 30-year-old woman, gravida 2, para 0, aborta 1, at 28 weeks' gestation comes to the office for a prenatal visit. She\nhas had one previous pregnancy resulting in a spontaneous abortion at 12 weeks' gestation. Today, her vital signs are\nwithin normal limits. Physical examination shows a uterus consistent in size with a 28-week gestation. Fetal\nultrasonography shows a male fetus with no abnormalities. Her blood group is O, Rh-negative. The father's blood\ngroup is B, Rh-positive. The physician recommends administration of Rh o",
+      "options": {
+        "A": "Formation of cytotoxic lymphocytes",
+        "B": "Onset of erythrocytosis",
+        "C": "Development of anti-D antibodies",
+        "D": "Formation of IgM antibodies through complement activation in the fetus",
+        "E": "Immune suppression resulting from fetal erythrocyte RhD antigen exposure"
+      },
+      "correct_answer": "Development of anti-D antibodies",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Development of anti-D antibodies",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.97</belief>",
+      "meta_info": "step1",
+      "belief": 0.97
+    },
+    {
+      "id": "usmle_sample_4",
+      "question": "A 55-year-old man is brought to the emergency department because of shortness of breath and confusion for\n4 hours. He has hypertension and chronic kidney disease requiring hemodialysis. An ECG shows low voltage with\nelectrical alternans. Physical examination is most likely to show which of the following findings?\nBlood Pressure  Jugular Venous  Pulsus  \n(mm Hg)  Pulse (/min)  Pressure  Paradoxus",
+      "options": {
+        "A": "Hypotension with tachycardia, elevated jugular venous pressure, and pulsus paradoxus",
+        "B": "85/60, heart rate 120, elevated jugular venous pressure, no pulsus paradoxus",
+        "C": "85/60  120  typical  typical",
+        "D": "120/80  80  elevated  present",
+        "E": "120/80, 80, normal, increased",
+        "F": "Systolic and diastolic blood pressure of 120/80 mm Hg, a heart rate of 80 beats per minute, an unremarkable jugular venous pressure, and an absence of pulsus paradoxus."
+      },
+      "correct_answer": "Hypotension with tachycardia, elevated jugular venous pressure, and pulsus paradoxus",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": null,
+      "predicted_answer": null,
+      "correct": false,
+      "response": "<answer>letter</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    },
+    {
+      "id": "usmle_sample_5",
+      "question": "A 52-year-old woman begins pharmacotherapy after being diagnosed with type 2 diabetes mellitus. Four weeks\nlater, her hepatic glucose output is decreased, and target tissue glucose uptake and utilization are increased. Which\nof the following drugs was most likely prescribed for this patient?",
+      "options": {
+        "A": "An alpha-glucosidase inhibitor",
+        "B": "Glyburide",
+        "C": "A medication from the biguanide class",
+        "D": "Nateglinide",
+        "E": "Repaglinide"
+      },
+      "correct_answer": "A medication from the biguanide class",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "A medication from the biguanide class",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_6",
+      "question": "An asymptomatic 44-year-old man is found to have HIV infection during routine screening prior to donating blood.\nA complete blood count done at the time of the screening shows:\nHemoglobin  10 g/dL  \nHematocrit  30% \nLeukocyte count  4600/mm3 \nPlatelet count  15,000/mm3 \nProthrombin time  12 sec (INR=1.1)  \nPartial thromboplastin time  23 sec  \nWhich of the following physical findings is most likely in this patient?",
+      "options": {
+        "A": "Evidence of a thrombus in a lower extremity vein",
+        "B": "Joint space hemorrhage",
+        "C": "Petechial rash",
+        "D": "Splinter hemorrhages beneath the fingernails",
+        "E": "Internal hemorrhage"
+      },
+      "correct_answer": "Petechial rash",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Petechial rash",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.97</belief>",
+      "meta_info": "step1",
+      "belief": 0.97
+    },
+    {
+      "id": "usmle_sample_7",
+      "question": "A 23-year-old woman with bone marrow failure is treated with a large dose of rabbit antithymocyte globulin. Ten\ndays later, she develops fever, lymphadenopathy, arthralgias, and erythema on her hands and feet. Which of the\nfollowing is the most likely cause of these symptoms?",
+      "options": {
+        "A": "Activation of natural killer cells leading to cytokine release",
+        "B": "Release of eosinophil granule contents",
+        "C": "Deposition of immune complexes within tissues",
+        "D": "Diffuse, non-specific stimulation of T-cells",
+        "E": "Diffuse programmed cell death affecting B cells"
+      },
+      "correct_answer": "Deposition of immune complexes within tissues",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Deposition of immune complexes within tissues",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    },
+    {
+      "id": "usmle_sample_8",
+      "question": "After being severely beaten and sustaining a gunshot wound to the abdomen, a 42-year-old woman undergoes\nresection of a perforated small bowel. During the operation, plastic reconstruction of facial fractures, and open\nreduction and internal fixation of the left femur are also done. Thirty-six hours postoperatively, she is awake but not\ncompletely alert. She is receiving intravenous morphine via a patient-controlled pump. She says that she needs the\nmorphine to treat her pain, but she is worried that she is becoming addicted. She has no history of substance use\ndisorder. She drinks one to two glasses of wine weekly. Which of the following initial actions by the physician is\nmost appropriate?",
+      "options": {
+        "A": "Reassure the patient that the risk of developing a substance use disorder from her current analgesic regimen is extremely low",
+        "B": "Continue morphine therapy while intermittently giving intravenous naloxone",
+        "C": "Transition the patient to oral acetaminophen once she is able to tolerate oral medications",
+        "D": "Change the patient's pain management to lorazepam administered intramuscularly",
+        "E": "Change the patient's analgesic regimen to intravenous phenobarbital"
+      },
+      "correct_answer": "Reassure the patient that the risk of developing a substance use disorder from her current analgesic regimen is extremely low",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Reassure the patient that the risk of developing a substance use disorder from her current analgesic regimen is extremely low",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_9",
+      "question": "A 22-year-old woman comes to the office because of a 4-day history of an itchy, red rash on her right arm. She has\nno history of major medical illness and takes no medications. She says she has recently used a new hair dye. She is\n165 cm (5 ft 5 in) tall and weighs 61 kg (135 lb); BMI is 23 kg/m2. Her temperature is 37.0\u00b0C (98.6\u00b0F), pulse is\n70/min. respirations are 22/min, and blood pressure is 115/70 mm Hg. Examination of the right forearm shows the\nfindings in the photograph. Which of the following ligand \u2192 receptor pairs most likely played a primary role in the\nproliferation of the T lymphocytes present at the site of the rash in this patient?",
+      "options": {
+        "A": "T lymphocyte CD2 binding to ICAM-3 expressed by epidermal Langerhans cells",
+        "B": "CD80 on epidermal Langerhans cells binding to CD28 on T lymphocytes",
+        "C": "CD40 ligand expressed by T lymphocytes \u2192 CD40 receptor on epidermal Langerhans cells",
+        "D": "CD28 on T lymphocytes \u2192 CD45 on epidermal Langerhans cells",
+        "E": "Lymphocyte function-associated antigen-1 on T lymphocytes binding to intercellular adhesion molecule 1 on epidermal Langerhans cells"
+      },
+      "correct_answer": "CD80 on epidermal Langerhans cells binding to CD28 on T lymphocytes",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "CD80 on epidermal Langerhans cells binding to CD28 on T lymphocytes",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.8</belief>",
+      "meta_info": "step1",
+      "belief": 0.8
+    },
+    {
+      "id": "usmle_sample_10",
+      "question": "Six healthy subjects participate in a study of muscle metabolism during which hyperglycemia and hyperinsulinemia\nis induced. Muscle biopsy specimens obtained from the subjects during the resting state show significantly increased\nconcentrations of malonyl-CoA. The increased malonyl-CoA concentration most likely directly inhibits which of the\nfollowing processes in these subjects?",
+      "options": {
+        "A": "\u03b2-oxidation of fatty acids",
+        "B": "The synthesis of fatty acids",
+        "C": "The production of glucose from non-carbohydrate precursors",
+        "D": "Breakdown of glycogen into glucose",
+        "E": "The breakdown of glucose into pyruvate",
+        "F": "The process of oxidative phosphorylation"
+      },
+      "correct_answer": "\u03b2-oxidation of fatty acids",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "\u03b2-oxidation of fatty acids",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.95</belief>",
+      "meta_info": "step1",
+      "belief": 0.95
+    },
+    {
+      "id": "usmle_sample_11",
+      "question": "Over 1 year, a study is conducted to assess the antileukemic activity of a new tyrosine kinase inhibitor in patients\nwith chronic myeloid leukemia in blast crisis. All patients enrolled in the study are informed that they would be\ntreated with the tyrosine kinase inhibitor. They are assigned to successive dose cohorts of 300 to 1000 mg/day of the\ndrug. Six to eight patients are assigned to each dose. Treatment efficacy is determined based on the results of\ncomplete blood counts and bone marrow assessments conducted regularly throughout the study. This study is best\ndescribed as which of the following?",
+      "options": {
+        "A": "Cohort study with retrospective analysis",
+        "B": "Study with alternating treatment phases",
+        "C": "Unblinded clinical trial",
+        "D": "A trial with random allocation of participants",
+        "E": "Single-masked, randomized, controlled clinical investigation"
+      },
+      "correct_answer": "Unblinded clinical trial",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Unblinded clinical trial",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.86</belief>",
+      "meta_info": "step1",
+      "belief": 0.86
+    },
+    {
+      "id": "usmle_sample_12",
+      "question": "A 63-year-old man is brought to the emergency department because of a 4-day history of increasingly severe left leg\npain and swelling of his left calf. He also has a 1-month history of increasingly severe upper midthoracic back pain.\nDuring this time, he has had a 9- kg (20-lb) weight loss despite no change in appetite. He has no history of major\nmedical illness. His only medication is ibuprofen. He is 180 cm (5 ft 11 in) tall and weighs 82 kg (180 lb); BMI is\n25 kg/m2. His vital signs are within normal limits. On examination, lower extremity pulses are palpable bilaterally.\nThe remainder of the physical examination shows no abnormalities. An x-ray of the thoracic spine shows no\nabnormalities. A CT scan of the abdomen shows a 3-cm mass in the body of the pancreas; there are liver metastases\nand encasement of the superior mesenteric artery. Ultrasonography of the left lower extremity shows a\nfemoropopl iteal venous clot. Which of the following is the most likely cause of this patient\u2019s symptoms?",
+      "options": {
+        "A": "Pancreatic neuroendocrine tumor causing carcinoid syndrome",
+        "B": "Hypercoagulable state secondary to widespread cancer",
+        "C": "An underlying multiple endocrine neoplasia syndrome",
+        "D": "Pancreatic mass and lower extremity deep venous thrombosis",
+        "E": "Compression of the duodenum by the superior mesenteric artery"
+      },
+      "correct_answer": "Hypercoagulable state secondary to widespread cancer",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Hypercoagulable state secondary to widespread cancer",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_13",
+      "question": "A 40-year-old woman comes to the physician because of a 6-month history of increased facial hair growth. Her last\nmenstrual period was 4 months ago. She is 165 cm (5 ft 5 in) tall and weighs 70 kg (154 lb); BMI is 26 kg/m2. Her\npulse is 80/min, and blood pressure is 130/82 mm Hg. Physical examination shows temporal balding and coarse dark\nhair on the upper lip and chin. Pelvic examination shows clitoral enlargement. Her serum testosterone concentration\nis increased. Serum concentrations of androstenedione, dehydroepiandrosterone, and urinary 17-ketosteroids are\nwithin the reference ranges. Ultrasonography of the pelvis shows a 12-cm ovarian mass. Which of the following best\ndescribes this mass?\n(A)Granulosa tumor",
+      "options": {
+        "B": "Carcinoid tumor of the ovary",
+        "C": "Sertoli-Leydig cell tumor",
+        "D": "A mature cystic teratoma",
+        "E": "A thecoma"
+      },
+      "correct_answer": "Sertoli-Leydig cell tumor",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Sertoli-Leydig cell tumor",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.92</belief>",
+      "meta_info": "step1",
+      "belief": 0.92
+    },
+    {
+      "id": "usmle_sample_14",
+      "question": "A 35-year-old man comes to the physician because of pain and swelling of his right arm where he scraped it on a\ntree branch 2 days ago. His temperature is 38.3\u00b0C (101\u00b0F). Examination of the right forearm shows edema around a\nfluctuant erythematous lesion at the site of trauma. The area is extremely tender to palpation. Which of the following\nis most likely the primary mechanism of the development of edema in this patient?",
+      "options": {
+        "A": "Release of granular contents from eosinophils",
+        "B": "Damage to the structural integrity of the capillary basement membrane",
+        "C": "Elevated intravascular pressure forcing fluid into the interstitium",
+        "D": "Thromboxane-mediated vascular effects",
+        "E": "Increased vascular permeability due to disruption of intercellular endothelial adhesions"
+      },
+      "correct_answer": "Increased vascular permeability due to disruption of intercellular endothelial adhesions",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Increased vascular permeability due to disruption of intercellular endothelial adhesions",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.94</belief>",
+      "meta_info": "step1",
+      "belief": 0.94
+    },
+    {
+      "id": "usmle_sample_15",
+      "question": "A 12-year-old boy is brought to the physician because of a 2-month history of headaches and a 6-day history of\nnausea and vomiting. Funduscopic examination shows bilateral papilledema. He walks with a broad-based gait. An\nMRI of the brain shows a tumor in the pineal region compressing the brain stem and leading to hydrocephalus. This\npatient most likely has impairment of which of the following oculomotor functions?",
+      "options": {
+        "A": "Lateral movement of the eye",
+        "B": "Horizontal tracking of objects",
+        "C": "Ability to suppress the slow phase of nystagmus induced by tracking a moving visual field",
+        "D": "Impaired conjugate elevation of the eyes",
+        "E": "Caloric reflex response"
+      },
+      "correct_answer": "Impaired conjugate elevation of the eyes",
+      "correct_answer_idx": "D",
+      "predicted_answer_idx": "D",
+      "predicted_answer": "Impaired conjugate elevation of the eyes",
+      "correct": true,
+      "response": "<answer>D</answer>\n<belief>0.85</belief>",
+      "meta_info": "step1",
+      "belief": 0.85
+    },
+    {
+      "id": "usmle_sample_16",
+      "question": "A 52-year-old man comes to the emergency department because of a 1-day history of nausea, vomiting, and right-\nsided abdominal pain that radiates to his back. He has not had fever or increased urinary frequency. He has a history\nof type 2 diabetes mellitus, hyperlipidemia, hypertension, and atrial fibrillation. Current medications are\natorvastatin, glyburide, hydrochlorothiazide, lisinopril, and warfarin. He smoked 1\u00bd packs of cigarettes daily for 35\nyears until he quit 6 months ago. He has had no recent alcoholic beverage or illicit drug use. He is 188 cm (6 ft 2 in)\ntall and weighs 109 kg (240 lb); BMI is 31 kg/m2. Temperature is 36.4\u00b0C (97.6\u00b0F), pulse is 88/min, respirations are\n20/min, and blood pressure is 165/92 mm Hg. Pulse oximetry on room air shows an oxygen saturation of\n96%. Physical examination discloses right upper quadrant and flank tenderness but no rebound tenderness or\nguarding. CT scan of the abdomen with and without contrast shows an enlarged right kidney and wedge-shaped\nareas of hypodensity; there is no evidence of nephrolithiasis. Which of the following is the strongest predisposing\nrisk factor for this patient's condition?",
+      "options": {
+        "A": "Atrial fibrillation as a preexisting condition",
+        "B": "Dyslipidemia",
+        "C": "Elevated blood pressure",
+        "D": "History of tobacco use",
+        "E": "Diabetes mellitus type 2"
+      },
+      "correct_answer": "Atrial fibrillation as a preexisting condition",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Atrial fibrillation as a preexisting condition",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.9</belief>",
+      "meta_info": "step1",
+      "belief": 0.9
+    },
+    {
+      "id": "usmle_sample_17",
+      "question": "A 24-year-old man comes to the office because of a 2-day history of a red, itchy rash on his buttocks and legs. Four\ndays ago, he returned from a cruise to the Caribbean, during which he swam in the ship\u2019s pool and used the hot tub.\nHe appears well. His vital signs are within normal limits. Physical examination shows the findings in the\nphotograph. The infectious agent causing these findings most likely began to proliferate in which of the following\nlocations?",
+      "options": {
+        "A": "Apocrine sweat gland",
+        "B": "Subcutaneous tissue",
+        "C": "Sweat gland",
+        "D": "The pilosebaceous unit",
+        "E": "Sebaceous follicle"
+      },
+      "correct_answer": "The pilosebaceous unit",
+      "correct_answer_idx": "D",
+      "predicted_answer_idx": "D",
+      "predicted_answer": "The pilosebaceous unit",
+      "correct": true,
+      "response": "<answer>D</answer>\n<belief>0.91</belief>",
+      "meta_info": "step1",
+      "belief": 0.91
+    },
+    {
+      "id": "usmle_sample_18",
+      "question": "An otherwise healthy 45-year-old man comes to the physician because of a 3-week history of progressive epigastric\nheartburn and a 4.5-kg (10-lb) weight loss. The pain tends to be more severe at night and occurs 1 to 3 hours after\nmeals during the day. He has had similar episodes with lesser intensity during the past year. Abdominal examination\nshows tenderness to deep palpation. Test of the stool for occult blood is positive. Endoscopy shows a bleeding 3-cm\nulcer in the antrum of the stomach. A photomicrograph of Steiner silver-stained tissue (400x) from a biopsy of the\ngastric mucosa adjacent to the ulcer is shown. Which of the following processes is most likely to be involved?",
+      "options": {
+        "A": "Production of proteases and urease leading to localized tissue damage",
+        "B": "Increased gastric acid production and duodenogastric reflux",
+        "C": "Consumption of toxins produced in contaminated well water prior to ingestion",
+        "D": "Bacterial invasion of gastric mucosal cells by a spiral-shaped organism"
+      },
+      "correct_answer": "Production of proteases and urease leading to localized tissue damage",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Production of proteases and urease leading to localized tissue damage",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.92</belief>",
+      "meta_info": "step1",
+      "belief": 0.92
+    },
+    {
+      "id": "usmle_sample_19",
+      "question": "A 14-year-old boy is brought to the emergency department after being hit with a baseball bat on the lateral side of\nhis leg immediately below the knee. He is unable to dorsiflex his foot. Which of the following nerves is most likely\ninjured?",
+      "options": {
+        "A": "Common fibular nerve",
+        "B": "Common fibular",
+        "C": "Common peroneal",
+        "D": "The sural nerve",
+        "E": "Common peroneal"
+      },
+      "correct_answer": "Common fibular nerve",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Common peroneal",
+      "correct": false,
+      "response": "<answer>C</answer>\n<belief>0.98</belief>",
+      "meta_info": "step1",
+      "belief": 0.98
+    },
+    {
+      "id": "usmle_sample_20",
+      "question": "A 26-year-old woman is brought to the emergency department because of an 8-hour history of severe back and\nabdominal pain and mild but persistent vaginal bleeding. Ultrasonography of the abdomen shows a 2-cm ectopic\npregnancy in the ampulla. The ampulla has ruptured into the surrounding tissue. Fluid from this rupture will most\nlikely be found in which of the following locations?",
+      "options": {
+        "A": "Posterior to the stomach and anterior to the pancreas",
+        "B": "The broad ligament of the uterus",
+        "C": "The rectouterine pouch",
+        "D": "Uterine lumen",
+        "E": "Vaginal canal"
+      },
+      "correct_answer": "The rectouterine pouch",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "The rectouterine pouch",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    },
+    {
+      "id": "usmle_sample_21",
+      "question": "A 46-year-old woman with active ankylosing spondylitis comes to the office for a follow-up examination. The use \nof various conventional nonsteroidal anti-inflammatory drugs has been ineffective. Sulfasalazine treatment also has \nnot resulted in improvement. The most appropriate next step in treatment is administration of a drug that inhibits  \nwhich of the following?",
+      "options": {
+        "A": "A medication that blocks the activity of CD20",
+        "B": "An agent that selectively targets the cyclooxygenase-2 enzyme",
+        "C": "CTLA-4 blockade",
+        "D": "Inhibition of epidermal growth factor receptor",
+        "E": "A medication that blocks interleukin-1 (IL-1) activity",
+        "F": "A monoclonal antibody targeting tumor necrosis factor-alpha"
+      },
+      "correct_answer": "A monoclonal antibody targeting tumor necrosis factor-alpha",
+      "correct_answer_idx": "F",
+      "predicted_answer_idx": null,
+      "predicted_answer": null,
+      "correct": false,
+      "response": "<answer>F</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    },
+    {
+      "id": "usmle_sample_22",
+      "question": "A 55-year-old man comes to the physician because of a 2-week history of recurrent, widespread blister formation.  \nPhysical examination shows lesions that are most numerous in the flexural areas including the axillae and groin. The \nblisters do not break easily, and there are no oral lesions. These blisters are most likely the result of adhesion failure  \ninvolving which of the following?",
+      "options": {
+        "A": "Basement membrane zone",
+        "B": "The papillary dermis",
+        "C": "Histiocytes of the dermal-epidermal junction",
+        "D": "Cells responsible for skin pigmentation",
+        "E": "Merkel cells"
+      },
+      "correct_answer": "Basement membrane zone",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Basement membrane zone",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.96</belief>",
+      "meta_info": "step1",
+      "belief": 0.96
+    },
+    {
+      "id": "usmle_sample_23",
+      "question": "A 17-year-old girl is brought to the emergency department 30 minutes after her boyfriend found her unconscious next \nto an empty bottle of acetaminophen. It is suspected that she ingested the tablets approximately 12 hours ago. Her \nserum acetaminophen concentration is markedly increased. Treatment with activated charcoal and acetylcysteine is \ninitiated. Approximately 48 hours later, the patient develops jaundice, and her serum AST activity is 3000 U/L. \nWhich of the following best explains the jaundice in this patient?",
+      "options": {
+        "A": "Increased activity of the enzyme converting biliverdin to bilirubin",
+        "B": "Impaired hepatic conjugation of bilirubin",
+        "C": "Reduced production of urobilinogen",
+        "D": "Excessive breakdown of red blood cells",
+        "E": "Elevated glutathione levels in the blood"
+      },
+      "correct_answer": "Impaired hepatic conjugation of bilirubin",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Impaired hepatic conjugation of bilirubin",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.88</belief>",
+      "meta_info": "step1",
+      "belief": 0.88
+    },
+    {
+      "id": "usmle_sample_24",
+      "question": "A 72-year-old woman comes to the physician because of a 3-day history of fever, shortness of breath, difficulty  \nswallowing, chest pain, and cough. She is frail. Physical examination shows tachypnea and equal pulses bilaterally.  \nPercussion of the chest shows dullness over the right lower lung field. Laboratory studies show arterial hypoxemia  \nand decreased PCO 2. A chest x-ray shows an area of opacification in the lower region of the right lung. Which of the \nfollowing is the most likely cause of this patient's condition?",
+      "options": {
+        "A": "Pulmonary alveolar proteinosis",
+        "B": "Inhalation of oropharyngeal or gastric contents",
+        "C": "Tobacco use",
+        "D": "Chronic obstructive pulmonary disease with predominant alveolar destruction",
+        "E": "Inflammation of the blood vessels"
+      },
+      "correct_answer": "Inhalation of oropharyngeal or gastric contents",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Inhalation of oropharyngeal or gastric contents",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.86</belief>",
+      "meta_info": "step1",
+      "belief": 0.86
+    },
+    {
+      "id": "usmle_sample_25",
+      "question": "A 62-year-old man is admitted to the hospital for evaluation of abdominal pain. During the interview, he responds to\nthe questions with a single word and sometimes with sarcastic answers. He does not engage in eye contact, and he\nfrowns as he tells the physician that this is the third time he has been asked these questions. Which of the following\nis the most appropriate response by the physician?",
+      "options": {
+        "A": "Please describe your abdominal discomfort in greater detail.",
+        "B": "I recognize you are uncomfortable, but obtaining your medical history is essential at this time.",
+        "C": "I understand you're frustrated. I'll give you some time and return when you're ready to discuss this further.",
+        "D": "I understand your frustration, but my ability to provide you with the best care depends on your cooperation.",
+        "E": "You seem distressed. Could you elaborate on what you're feeling?"
+      },
+      "correct_answer": "You seem distressed. Could you elaborate on what you're feeling?",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "I understand you're frustrated. I'll give you some time and return when you're ready to discuss this further.",
+      "correct": false,
+      "response": "<answer>C</answer>\n<belief>0.72</belief>",
+      "meta_info": "step1",
+      "belief": 0.72
+    },
+    {
+      "id": "usmle_sample_26",
+      "question": "A 54-year-old man comes to the physician because of episodes of fainting for 3 months. He also has had difficulty\nperforming daily tasks because he is easily fatigued. He had a myocardial infarction 12 years ago. His pulse is\n40/min, respirations are 18/min, and blood pressure is 138/85 mm Hg. Physical examination shows evidence of\ncannon a waves. An ECG shows a P-wave rate of 90/min, and an R-wave rate of 40/min, with no apparent relation\nbetween the two. Which of the following is the most likely diagnosis?",
+      "options": {
+        "A": "Prolongation of the PR interval on electrocardiogram",
+        "B": "Left bundle branch block",
+        "C": "Mobitz type I atrioventricular block",
+        "D": "Mobitz type II atrioventricular block",
+        "E": "Complete atrioventricular dissociation"
+      },
+      "correct_answer": "Complete atrioventricular dissociation",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Complete atrioventricular dissociation",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.99</belief>",
+      "meta_info": "step1",
+      "belief": 0.99
+    },
+    {
+      "id": "usmle_sample_27",
+      "question": "A 42-year-old woman comes to the physician for a routine examination. She says that she has felt well except for\noccasional episodes of constipation, abdominal discomfort, and mild fatigue. She was treated for a renal calculus 10\nyears ago and was told she had a \"lazy gallbladder.\" Her pulse is 82/min, and blood pressure is 150/80 mm Hg.\nPhysical examination shows no other abnormalities. Laboratory studies show:\nErythrocyte count  3 million/mm3 \nSerum  \nK+ 4.5 mEq/L  \nCl\u2013 107 mEq/L  \nCa2+ 12 mg/dL  \nPhosphorus  2.2 mg/dL  \nAlkaline phosphatase  95 U/L  \nThe most likely cause of this patient's condition is a small, well-defined nodule in which of the following locations?",
+      "options": {
+        "A": "Adrenal cortex",
+        "B": "Posterior to the optic chiasm",
+        "C": "Gallbladder wall",
+        "D": "Renal parenchyma",
+        "E": "Parathyroid adenoma",
+        "F": "Mediastinal mass in the anterior compartment"
+      },
+      "correct_answer": "Parathyroid adenoma",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Parathyroid adenoma",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.99</belief>",
+      "meta_info": "step1",
+      "belief": 0.99
+    },
+    {
+      "id": "usmle_sample_28",
+      "question": "A 68-year-old woman with end-stage renal disease comes to the office for a follow-up examination. She has\nrequired hemodialysis for the past year. Initially, she did well, but within the past 3 months, she has been admitted to\nthe hospital for fluid overload because of poor adherence to fluid and salt restrictions. She says, \"I'm so sick of being\non dialysis. Following the restrictions is really hard.\" Which of the following is the most appropriate initial response\nby the physician?",
+      "options": {
+        "A": "I understand this must be very difficult, but continuing with your treatment is essential to prevent complications from your kidney condition.",
+        "B": "I understand this is difficult, but do you recall how hard it was when you were admitted to the hospital?",
+        "C": "I understand these dietary and fluid restrictions can be challenging. What strategies were you using initially when you were successfully adhering to the recommendations?",
+        "D": "You have been struggling with the restrictions; let's focus on how much better you'll feel if you can get back on track.",
+        "E": "It is understandable that this is difficult; perhaps revisiting the dietary plan with the nutritionist could make adherence less challenging."
+      },
+      "correct_answer": "I understand these dietary and fluid restrictions can be challenging. What strategies were you using initially when you were successfully adhering to the recommendations?",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "I understand these dietary and fluid restrictions can be challenging. What strategies were you using initially when you were successfully adhering to the recommendations?",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.66</belief>",
+      "meta_info": "step1",
+      "belief": 0.66
+    },
+    {
+      "id": "usmle_sample_29",
+      "question": "During an experiment, a Southern blot analysis is done by digesting DNA samples with a single restriction\nendonuclease, separating the digestion products by gel electrophoresis, and transferring them to a filter. The\ninvestigator probes the filter by exposing it to a cDNA clone that encodes a single immunoglobulin-constant region.\nThe figure shows the resulting pattern with DNA samples isolated from different organs. Assuming there were no\ntechnical errors, the Southern blot analysis results demonstrate which of the following processes?",
+      "options": {
+        "A": "Somatic hypermutation",
+        "B": "Programmed cell death",
+        "C": "Somatic recombination of immunoglobulin genes",
+        "D": "Alternative splicing of RNA",
+        "E": "Somatic mutation occurring after antigen exposure"
+      },
+      "correct_answer": "Somatic recombination of immunoglobulin genes",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Somatic recombination of immunoglobulin genes",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.82</belief>",
+      "meta_info": "step1",
+      "belief": 0.82
+    },
+    {
+      "id": "usmle_sample_30",
+      "question": "A 17-year-old girl has never had a menstrual period. Physical examination shows a normal female body habitus,\nnormal breast development, and normal appearing external genitalia. She has no axillary or pubic hair. The patient\nrefuses to have a pelvic or rectal examination. Which of the following is the most likely explanation for the clinical\npresentation?",
+      "options": {
+        "A": "Complete androgen insensitivity syndrome",
+        "B": "Androgen insensitivity syndrome",
+        "C": "A developmental disorder affecting tissues derived from the ectodermal germ layer",
+        "D": "An underlying psychological condition",
+        "E": "Mosaicism involving the sex chromosomes"
+      },
+      "correct_answer": "Complete androgen insensitivity syndrome",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "Complete androgen insensitivity syndrome",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.86</belief>",
+      "meta_info": "step1",
+      "belief": 0.86
+    },
+    {
+      "id": "usmle_sample_31",
+      "question": "A 16-year-old boy is brought to the physician because of a 3-day history of abdominal pain and vomiting; he also\nhas had decreased appetite during this period. The pain was initially on the right but now has become generalized.\nHis temperature is 38.8\u00b0C (101.8\u00b0F), pulse is 100/min, respirations are 20/min, and blood pressure is\n143/83 mm Hg. Abdominal examination shows guarding with diffuse rebound tenderness. There are no palpable\nmasses. A CT scan of the abdomen shows a perforated appendix. Examination of peritoneal fluid from this patient\nwill most likely show which of the following organisms?",
+      "options": {
+        "A": "*Candida albicans* would be the most likely organism identified.",
+        "B": "Citrobacter species",
+        "C": "Escherichia coli",
+        "D": "Streptococcus anginosus group",
+        "E": "Streptococcus pneumoniae"
+      },
+      "correct_answer": "Escherichia coli",
+      "correct_answer_idx": "C",
+      "predicted_answer_idx": "C",
+      "predicted_answer": "Escherichia coli",
+      "correct": true,
+      "response": "<answer>C</answer>\n<belief>0.72</belief>",
+      "meta_info": "step1",
+      "belief": 0.72
+    },
+    {
+      "id": "usmle_sample_32",
+      "question": "A 45-year-old woman comes to the office because of a 6-month history of hot flashes, night sweats, and insomnia.\nShe has not had a menstrual period during this time. She thinks she is going through menopause and asks the\nphysician if there are any medications that will alleviate her symptoms. Physical examination shows no\nabnormalities. The result of a urine pregnancy test is negative. The physician explains that hormone therapy likely\nwill help and explains the risks to the patient. Which of the following is the next most appropriate physician\nstatement?",
+      "options": {
+        "A": "What are your thoughts on the hormone therapy option we've reviewed?",
+        "B": "Patients with comparable symptoms often exhibit varying responses to hormone therapy.",
+        "C": "I will provide you with educational materials to review, and then we can address any additional questions you may have.",
+        "D": "Given the severity of your symptoms, the benefits of hormone therapy could potentially outweigh the associated risks.",
+        "E": "Shall I provide you with my recommendation on how to proceed?"
+      },
+      "correct_answer": "What are your thoughts on the hormone therapy option we've reviewed?",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "A",
+      "predicted_answer": "What are your thoughts on the hormone therapy option we've reviewed?",
+      "correct": true,
+      "response": "<answer>A</answer>\n<belief>0.84</belief>",
+      "meta_info": "step1",
+      "belief": 0.84
+    },
+    {
+      "id": "usmle_sample_33",
+      "question": "A randomized controlled trial is conducted to assess the risk for development of gastrointestinal adverse effects\nusing azithromycin compared with erythromycin in the treatment of pertussis in children. Of the 100 children with\npertussis enrolled, 50 receive azithromycin, and 50 receive erythromycin. Results show vomiting among 5 patients\nin the azithromycin group, compared with 15 patients in the erythromycin group. Which of the following best\nrepresents the absolute risk reduction for vomiting among patients in the azithromycin group?",
+      "options": {
+        "A": "0.10",
+        "B": "0.20",
+        "C": "20%",
+        "D": "20%",
+        "E": "20%"
+      },
+      "correct_answer": "0.20",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "0.20",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.99</belief>",
+      "meta_info": "step1",
+      "belief": 0.99
+    },
+    {
+      "id": "usmle_sample_34",
+      "question": "A 34-year-old woman with a 10-year history of hepatitis C comes to the physician because of progressive fatigue\nduring the past month. Her vital signs are within normal limits. Physical examination shows that the liver is not\npalpable. Serum studies show:\nAlbumin  3 g/dL  \nTotal bilirubin  1.8 mg/dL  \nAlkaline phosphatase  115 U/L  \nAST  53 U/L  \nALT  48 U/L  \nA liver biopsy specimen shows focal areas of hepatocellular injury with infiltration of lymphocytes and early \nfibrosis. Which of the following mechanisms is the most likely cause of the ongoing hepatocyte injury in this \npatient?",
+      "options": {
+        "A": "Recognition of foreign peptides presented by class I major histocompatibility complex molecules by CD4+ T lymphocytes",
+        "B": "CD8+ T lymphocytes identify foreign peptides presented by class I MHC molecules",
+        "C": "Class II MHC molecule-bound foreign peptides are identified by CD8+ T lymphocytes",
+        "D": "CD8+ T lymphocytes identify hepatocytes by interacting with self-peptides presented on class I MHC molecules.",
+        "E": "CD4+ T lymphocytes recognize antigens presented by class II major histocompatibility complex molecules on self-peptides"
+      },
+      "correct_answer": "CD8+ T lymphocytes identify foreign peptides presented by class I MHC molecules",
+      "correct_answer_idx": "B",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "CD8+ T lymphocytes identify foreign peptides presented by class I MHC molecules",
+      "correct": true,
+      "response": "<answer>B</answer>\n<belief>0.9</belief>",
+      "meta_info": "step1",
+      "belief": 0.9
+    },
+    {
+      "id": "usmle_sample_35",
+      "question": "A 50-year-old woman comes to the physician for a follow-up examination. Her blood pressure was 145/100 mm Hg\nand 145/95 mm Hg, respectively, at two previous visits. Today, her pulse is 75/min, respirations are 15/min, and\nblood pressure is 150/95 mm Hg. Physical examination shows no other abnormalities. If left untreated, which of the\nfollowing is most likely to decrease in this patient?",
+      "options": {
+        "A": "Baroreceptor firing rate",
+        "B": "Left ventricular compliance",
+        "C": "Left ventricular stroke work",
+        "D": "Left ventricular wall thickness",
+        "E": "Myocardial oxygen demand"
+      },
+      "correct_answer": "Baroreceptor firing rate",
+      "correct_answer_idx": "A",
+      "predicted_answer_idx": "B",
+      "predicted_answer": "Left ventricular compliance",
+      "correct": false,
+      "response": "<answer>B</answer>\n<belief>0.84</belief>",
+      "meta_info": "step1",
+      "belief": 0.84
+    },
+    {
+      "id": "usmle_sample_36",
+      "question": "A 62-year-old man comes to the physician for a follow-up examination after he was diagnosed with chronic\ninflammatory interstitial pneumonitis. Following pulmonary function testing, a biopsy specimen of the affected area\nof the lungs is obtained. Compared with a healthy man, analysis of this patient's biopsy specimen is most likely to\nshow which of the following patterns of changes in the cell populations of alveoli?\nType I Pneumocytes  Type II Pneumocytes  Fibroblasts",
+      "options": {
+        "A": "Increased numbers of type I pneumocytes, type II pneumocytes, and fibroblasts",
+        "B": "Increased numbers of type I pneumocytes, increased numbers of type II pneumocytes, and decreased numbers of fibroblasts",
+        "C": "Increased type I pneumocytes, decreased type II pneumocytes, and increased fibroblasts",
+        "D": "Increased Type I pneumocytes, decreased Type II pneumocytes, and decreased fibroblasts",
+        "E": "Decreased, increased, increased",
+        "F": "Decreased, Increased, Decreased",
+        "G": "Decreased type I pneumocytes, decreased type II pneumocytes, and increased fibroblasts",
+        "H": "Decreased numbers of type I pneumocytes, type II pneumocytes, and fibroblasts"
+      },
+      "correct_answer": "Decreased, increased, increased",
+      "correct_answer_idx": "E",
+      "predicted_answer_idx": "E",
+      "predicted_answer": "Decreased, increased, increased",
+      "correct": true,
+      "response": "<answer>E</answer>\n<belief>0.93</belief>",
+      "meta_info": "step1",
+      "belief": 0.93
+    }
+  ]
+}
