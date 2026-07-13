@@ -51,6 +51,8 @@ ELICIT_BELIEF="${ELICIT_BELIEF:-true}"
 PROMPT_FILE="${PROMPT_FILE:-prompts/experiments/elicit.yaml}"
 MAX_WORKERS_OVERRIDE="${MAX_WORKERS:-}"
 SGLANG_PORT_OVERRIDE="${SGLANG_PORT:-}"
+CASE_LIMIT_OVERRIDE="${CASE_LIMIT:-}"
+CASE_LIMIT_FRACTION="${CASE_LIMIT_FRACTION:-0.10}"
 
 # Worker configuration per model (mirrors run_test.sh defaults)
 declare -A WORKER_MAP=(
@@ -135,6 +137,11 @@ echo -e "Option paraphrase model:   ${GREEN}${PARAPHRASE_OPTIONS_MODEL}${NC}"
 echo -e "Evaluation models:        ${GREEN}${MODEL_KEYS[*]}${NC}"
 echo -e "Prompt file:              ${GREEN}${PROMPT_FILE}${NC}"
 echo -e "Temperature:              ${GREEN}${TEMPERATURE}${NC}"
+if [[ -n "$CASE_LIMIT_OVERRIDE" ]]; then
+    echo -e "Case limit:              ${GREEN}${CASE_LIMIT_OVERRIDE}${NC}"
+else
+    echo -e "Case limit fraction:     ${GREEN}${CASE_LIMIT_FRACTION}${NC}"
+fi
 
 OPENROUTER_KEY_PRESENT="${OPENROUTER_API_KEY+x}"
 if [[ -z "$OPENROUTER_KEY_PRESENT" ]]; then
@@ -242,6 +249,48 @@ if [[ ${#DATASET_LABELS[@]} -eq 0 ]]; then
     exit 1
 fi
 
+# Determine dataset sizes and compute limits for evaluation
+declare -A DATASET_TOTAL_MAP=()
+declare -A DATASET_LIMIT_MAP=()
+
+for idx in "${!DATASET_LABELS[@]}"; do
+    VARIANT_KEY="${DATASET_LABELS[$idx]}"
+    DATASET_PATH="${DATASET_FILES[$idx]}"
+    IFS=':' read -r DATASET_TOTAL DATASET_DEFAULT_LIMIT <<< "$(
+        python3 - "$DATASET_PATH" "$CASE_LIMIT_FRACTION" <<'PY'
+import json
+import math
+import sys
+
+path = sys.argv[1]
+fraction = float(sys.argv[2])
+
+with open(path, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+if isinstance(data, list):
+    total = len(data)
+elif isinstance(data, dict):
+    total = len(data.get("questions", []))
+else:
+    total = 0
+
+if total == 0:
+    limit = 0
+else:
+    limit = min(total, max(1, math.ceil(total * fraction)))
+
+print(f"{total}:{limit}")
+PY
+    )"
+    DATASET_TOTAL_MAP["$VARIANT_KEY"]="$DATASET_TOTAL"
+    if [[ -n "$CASE_LIMIT_OVERRIDE" ]]; then
+        DATASET_LIMIT_MAP["$VARIANT_KEY"]="$CASE_LIMIT_OVERRIDE"
+    else
+        DATASET_LIMIT_MAP["$VARIANT_KEY"]="$DATASET_DEFAULT_LIMIT"
+    fi
+done
+
 print_header "Evaluation"
 RESULT_PATHS=()
 
@@ -286,6 +335,15 @@ for MODEL_KEY in "${MODEL_KEYS[@]}"; do
         mkdir -p "$MODEL_TEST_DIR"
 
         echo -e "${BLUE}  → Evaluating ${DESCRIPTION}${NC}"
+        LIMIT_TO_USE="${DATASET_LIMIT_MAP[$VARIANT_KEY]:-}"
+        TOTAL_CASES="${DATASET_TOTAL_MAP[$VARIANT_KEY]:-}"
+        if [[ -n "$LIMIT_TO_USE" ]]; then
+            if [[ -n "$TOTAL_CASES" ]]; then
+                echo -e "    Limiting to ${GREEN}${LIMIT_TO_USE}${NC} of ${TOTAL_CASES} cases"
+            else
+                echo -e "    Limiting to ${GREEN}${LIMIT_TO_USE}${NC} cases"
+            fi
+        fi
         TEST_ARGS=(
             "pipeline/test_usmle_sample.py"
             "--input" "$DATASET_PATH"
@@ -301,6 +359,9 @@ for MODEL_KEY in "${MODEL_KEYS[@]}"; do
         fi
         if [[ "$BACKEND_TO_USE" == "sglang" && -n "$MODEL_SGLANG_PORT" ]]; then
             TEST_ARGS+=("--sglang-port" "$MODEL_SGLANG_PORT")
+        fi
+        if [[ -n "$LIMIT_TO_USE" && "$LIMIT_TO_USE" != "0" ]]; then
+            TEST_ARGS+=("--limit" "$LIMIT_TO_USE")
         fi
 
         (cd "$REPO_ROOT" && python3 "${TEST_ARGS[@]}")
