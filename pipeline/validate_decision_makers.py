@@ -66,7 +66,7 @@ def parse_belief(value: str | None) -> float | None:
 
 def build_context(case: Mapping[str, Any], representation: Mapping[str, Any]) -> str:
     hooks = representation.get("reasoning_hooks", [])
-    hooks_text = "; ".join(str(h).strip()) if hooks else ""
+    hooks_text = "; ".join(str(h).strip() for h in hooks if h) if hooks else ""
     context_parts = [
         f"Patient Summary: {case.get('patient_profile', '')}",
         f"Scenario: {case.get('concise_context', '')}",
