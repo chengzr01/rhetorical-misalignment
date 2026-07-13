@@ -1,0 +1,1078 @@
+{
+  "generated_at": "2026-07-13T10:08:48.937092+00:00",
+  "input_dir": "/Users/chengzirui/Desktop/Research/Project/RhetoricalMisalignment/rhetorical-misalignment/experiments/analysis/bias_annotations/usmle_sample/baseline",
+  "scenario_count": 2,
+  "total_cases": 5783,
+  "bias_counts": {
+    "Overconfidence": 3603,
+    "Anchoring": 2767,
+    "Availability Heuristic": 2757,
+    "Confirmation Bias": 1935,
+    "Loss Aversion & Framing Effects": 319,
+    "Conservatism": 173,
+    "Framing Effects": 15,
+    "Premature Closure": 3,
+    "Premature closure": 2
+  },
+  "bias_prevalence": {
+    "Overconfidence": 0.623033,
+    "Anchoring": 0.478471,
+    "Availability Heuristic": 0.476742,
+    "Confirmation Bias": 0.334601,
+    "Loss Aversion & Framing Effects": 0.055162,
+    "Conservatism": 0.029915,
+    "Framing Effects": 0.002594,
+    "Premature Closure": 0.000519,
+    "Premature closure": 0.000346
+  },
+  "avg_biases_per_case": 2.001383,
+  "top_cooccurrences": [
+    {
+      "bias_pair": [
+        "Anchoring",
+        "Availability Heuristic"
+      ],
+      "count": 2562,
+      "rate": 0.443023
+    },
+    {
+      "bias_pair": [
+        "Availability Heuristic",
+        "Overconfidence"
+      ],
+      "count": 2129,
+      "rate": 0.368148
+    },
+    {
+      "bias_pair": [
+        "Anchoring",
+        "Overconfidence"
+      ],
+      "count": 2116,
+      "rate": 0.3659
+    },
+    {
+      "bias_pair": [
+        "Availability Heuristic",
+        "Confirmation Bias"
+      ],
+      "count": 1644,
+      "rate": 0.284282
+    },
+    {
+      "bias_pair": [
+        "Anchoring",
+        "Confirmation Bias"
+      ],
+      "count": 1638,
+      "rate": 0.283244
+    },
+    {
+      "bias_pair": [
+        "Confirmation Bias",
+        "Overconfidence"
+      ],
+      "count": 1461,
+      "rate": 0.252637
+    },
+    {
+      "bias_pair": [
+        "Anchoring",
+        "Loss Aversion & Framing Effects"
+      ],
+      "count": 307,
+      "rate": 0.053087
+    },
+    {
+      "bias_pair": [
+        "Availability Heuristic",
+        "Loss Aversion & Framing Effects"
+      ],
+      "count": 307,
+      "rate": 0.053087
+    },
+    {
+      "bias_pair": [
+        "Loss Aversion & Framing Effects",
+        "Overconfidence"
+      ],
+      "count": 216,
+      "rate": 0.037351
+    },
+    {
+      "bias_pair": [
+        "Confirmation Bias",
+        "Loss Aversion & Framing Effects"
+      ],
+      "count": 167,
+      "rate": 0.028878
+    }
+  ],
+  "scenarios": {
+    "bayesian_choices": {
+      "total_cases": 2889,
+      "annotated_cases": 2889,
+      "bias_counts": {
+        "Overconfidence": 1363,
+        "Confirmation Bias": 228,
+        "Conservatism": 91,
+        "Anchoring": 47,
+        "Availability Heuristic": 30,
+        "Premature Closure": 2,
+        "Premature closure": 2
+      },
+      "bias_prevalence": {
+        "Overconfidence": 0.47179,
+        "Confirmation Bias": 0.07892,
+        "Conservatism": 0.031499,
+        "Anchoring": 0.016269,
+        "Availability Heuristic": 0.010384,
+        "Premature Closure": 0.000692,
+        "Premature closure": 0.000692
+      },
+      "avg_biases_per_case": 0.610246,
+      "top_cooccurrences": [
+        {
+          "bias_pair": [
+            "Confirmation Bias",
+            "Overconfidence"
+          ],
+          "count": 62,
+          "rate": 0.021461
+        },
+        {
+          "bias_pair": [
+            "Confirmation Bias",
+            "Conservatism"
+          ],
+          "count": 27,
+          "rate": 0.009346
+        },
+        {
+          "bias_pair": [
+            "Anchoring",
+            "Confirmation Bias"
+          ],
+          "count": 23,
+          "rate": 0.007961
+        },
+        {
+          "bias_pair": [
+            "Anchoring",
+            "Overconfidence"
+          ],
+          "count": 9,
+          "rate": 0.003115
+        },
+        {
+          "bias_pair": [
+            "Anchoring",
+            "Availability Heuristic"
+          ],
+          "count": 5,
+          "rate": 0.001731
+        }
+      ],
+      "cooccurrence_rates": {
+        "Confirmation Bias__Overconfidence": 0.021461,
+        "Confirmation Bias__Conservatism": 0.009346,
+        "Anchoring__Confirmation Bias": 0.007961,
+        "Anchoring__Overconfidence": 0.003115,
+        "Anchoring__Availability Heuristic": 0.001731,
+        "Anchoring__Conservatism": 0.001731,
+        "Availability Heuristic__Confirmation Bias": 0.001038,
+        "Availability Heuristic__Overconfidence": 0.001038,
+        "Availability Heuristic__Premature Closure": 0.000692,
+        "Availability Heuristic__Conservatism": 0.000346,
+        "Availability Heuristic__Premature closure": 0.000346,
+        "Confirmation Bias__Premature Closure": 0.000346,
+        "Conservatism__Overconfidence": 0.000346
+      },
+      "models": {
+        "claude": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_claude_bayesian_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Overconfidence": 195,
+            "Anchoring": 6,
+            "Confirmation Bias": 16,
+            "Conservatism": 5,
+            "Availability Heuristic": 4
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.5386740331491713,
+            "Anchoring": 0.016574585635359115,
+            "Confirmation Bias": 0.04419889502762431,
+            "Conservatism": 0.013812154696132596,
+            "Availability Heuristic": 0.011049723756906077
+          },
+          "avg_biases_per_case": 0.6243,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 195,
+              "prevalence": 0.5386740331491713
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 16,
+              "prevalence": 0.04419889502762431
+            },
+            {
+              "bias": "Anchoring",
+              "count": 6,
+              "prevalence": 0.016574585635359115
+            },
+            {
+              "bias": "Conservatism",
+              "count": 5,
+              "prevalence": 0.013812154696132596
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 4,
+              "prevalence": 0.011049723756906077
+            }
+          ]
+        },
+        "deepseek": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_deepseek_bayesian_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Overconfidence": 193,
+            "Confirmation Bias": 27,
+            "Availability Heuristic": 6,
+            "Conservatism": 9,
+            "Anchoring": 6
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.5331491712707183,
+            "Confirmation Bias": 0.07458563535911603,
+            "Availability Heuristic": 0.016574585635359115,
+            "Conservatism": 0.024861878453038673,
+            "Anchoring": 0.016574585635359115
+          },
+          "avg_biases_per_case": 0.6657,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 193,
+              "prevalence": 0.5331491712707183
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 27,
+              "prevalence": 0.07458563535911603
+            },
+            {
+              "bias": "Conservatism",
+              "count": 9,
+              "prevalence": 0.024861878453038673
+            },
+            {
+              "bias": "Anchoring",
+              "count": 6,
+              "prevalence": 0.016574585635359115
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 6,
+              "prevalence": 0.016574585635359115
+            }
+          ]
+        },
+        "gemini": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_gemini_bayesian_choices_bias_annotations.json",
+          "total_cases": 360,
+          "annotated_cases": 360,
+          "bias_counts": {
+            "Overconfidence": 209,
+            "Confirmation Bias": 25,
+            "Conservatism": 6,
+            "Availability Heuristic": 2,
+            "Premature closure": 1,
+            "Anchoring": 2
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.5805555555555556,
+            "Confirmation Bias": 0.06944444444444445,
+            "Conservatism": 0.016666666666666666,
+            "Availability Heuristic": 0.005555555555555556,
+            "Premature closure": 0.002777777777777778,
+            "Anchoring": 0.005555555555555556
+          },
+          "avg_biases_per_case": 0.6806,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 209,
+              "prevalence": 0.5805555555555556
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 25,
+              "prevalence": 0.06944444444444445
+            },
+            {
+              "bias": "Conservatism",
+              "count": 6,
+              "prevalence": 0.016666666666666666
+            },
+            {
+              "bias": "Anchoring",
+              "count": 2,
+              "prevalence": 0.005555555555555556
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 2,
+              "prevalence": 0.005555555555555556
+            }
+          ]
+        },
+        "gpt": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_gpt_bayesian_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Overconfidence": 205,
+            "Confirmation Bias": 16,
+            "Conservatism": 8,
+            "Availability Heuristic": 2,
+            "Anchoring": 4
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.5662983425414365,
+            "Confirmation Bias": 0.04419889502762431,
+            "Conservatism": 0.022099447513812154,
+            "Availability Heuristic": 0.0055248618784530384,
+            "Anchoring": 0.011049723756906077
+          },
+          "avg_biases_per_case": 0.6492,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 205,
+              "prevalence": 0.5662983425414365
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 16,
+              "prevalence": 0.04419889502762431
+            },
+            {
+              "bias": "Conservatism",
+              "count": 8,
+              "prevalence": 0.022099447513812154
+            },
+            {
+              "bias": "Anchoring",
+              "count": 4,
+              "prevalence": 0.011049723756906077
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 2,
+              "prevalence": 0.0055248618784530384
+            }
+          ]
+        },
+        "llama-dpo": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama-dpo_bayesian_choices_bias_annotations.json",
+          "total_cases": 361,
+          "annotated_cases": 361,
+          "bias_counts": {
+            "Overconfidence": 144,
+            "Anchoring": 8,
+            "Conservatism": 17,
+            "Confirmation Bias": 31,
+            "Availability Heuristic": 5,
+            "Premature Closure": 1
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.3988919667590028,
+            "Anchoring": 0.0221606648199446,
+            "Conservatism": 0.04709141274238227,
+            "Confirmation Bias": 0.08587257617728532,
+            "Availability Heuristic": 0.013850415512465374,
+            "Premature Closure": 0.002770083102493075
+          },
+          "avg_biases_per_case": 0.5706,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 144,
+              "prevalence": 0.3988919667590028
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 31,
+              "prevalence": 0.08587257617728532
+            },
+            {
+              "bias": "Conservatism",
+              "count": 17,
+              "prevalence": 0.04709141274238227
+            },
+            {
+              "bias": "Anchoring",
+              "count": 8,
+              "prevalence": 0.0221606648199446
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 5,
+              "prevalence": 0.013850415512465374
+            }
+          ]
+        },
+        "llama-sft": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama-sft_bayesian_choices_bias_annotations.json",
+          "total_cases": 358,
+          "annotated_cases": 358,
+          "bias_counts": {
+            "Overconfidence": 124,
+            "Confirmation Bias": 41,
+            "Anchoring": 5,
+            "Conservatism": 16,
+            "Availability Heuristic": 3,
+            "Premature Closure": 1
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.3463687150837989,
+            "Confirmation Bias": 0.11452513966480447,
+            "Anchoring": 0.013966480446927373,
+            "Conservatism": 0.0446927374301676,
+            "Availability Heuristic": 0.008379888268156424,
+            "Premature Closure": 0.002793296089385475
+          },
+          "avg_biases_per_case": 0.5307,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 124,
+              "prevalence": 0.3463687150837989
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 41,
+              "prevalence": 0.11452513966480447
+            },
+            {
+              "bias": "Conservatism",
+              "count": 16,
+              "prevalence": 0.0446927374301676
+            },
+            {
+              "bias": "Anchoring",
+              "count": 5,
+              "prevalence": 0.013966480446927373
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 3,
+              "prevalence": 0.008379888268156424
+            }
+          ]
+        },
+        "llama-small": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama-small_bayesian_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Overconfidence": 148,
+            "Confirmation Bias": 39,
+            "Conservatism": 16,
+            "Anchoring": 11,
+            "Availability Heuristic": 4,
+            "Premature closure": 1
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.4088397790055249,
+            "Confirmation Bias": 0.10773480662983426,
+            "Conservatism": 0.04419889502762431,
+            "Anchoring": 0.03038674033149171,
+            "Availability Heuristic": 0.011049723756906077,
+            "Premature closure": 0.0027624309392265192
+          },
+          "avg_biases_per_case": 0.605,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 148,
+              "prevalence": 0.4088397790055249
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 39,
+              "prevalence": 0.10773480662983426
+            },
+            {
+              "bias": "Conservatism",
+              "count": 16,
+              "prevalence": 0.04419889502762431
+            },
+            {
+              "bias": "Anchoring",
+              "count": 11,
+              "prevalence": 0.03038674033149171
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 4,
+              "prevalence": 0.011049723756906077
+            }
+          ]
+        },
+        "llama": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama_bayesian_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Overconfidence": 145,
+            "Conservatism": 14,
+            "Confirmation Bias": 33,
+            "Anchoring": 5,
+            "Availability Heuristic": 4
+          },
+          "bias_prevalence": {
+            "Overconfidence": 0.4005524861878453,
+            "Conservatism": 0.03867403314917127,
+            "Confirmation Bias": 0.09116022099447514,
+            "Anchoring": 0.013812154696132596,
+            "Availability Heuristic": 0.011049723756906077
+          },
+          "avg_biases_per_case": 0.5552,
+          "top_biases": [
+            {
+              "bias": "Overconfidence",
+              "count": 145,
+              "prevalence": 0.4005524861878453
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 33,
+              "prevalence": 0.09116022099447514
+            },
+            {
+              "bias": "Conservatism",
+              "count": 14,
+              "prevalence": 0.03867403314917127
+            },
+            {
+              "bias": "Anchoring",
+              "count": 5,
+              "prevalence": 0.013812154696132596
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 4,
+              "prevalence": 0.011049723756906077
+            }
+          ]
+        }
+      }
+    },
+    "behavioral_choices": {
+      "total_cases": 2894,
+      "annotated_cases": 2894,
+      "bias_counts": {
+        "Availability Heuristic": 2727,
+        "Anchoring": 2720,
+        "Overconfidence": 2240,
+        "Confirmation Bias": 1707,
+        "Loss Aversion & Framing Effects": 319,
+        "Conservatism": 82,
+        "Framing Effects": 15,
+        "Premature Closure": 1
+      },
+      "bias_prevalence": {
+        "Availability Heuristic": 0.942294,
+        "Anchoring": 0.939876,
+        "Overconfidence": 0.774015,
+        "Confirmation Bias": 0.589841,
+        "Loss Aversion & Framing Effects": 0.110228,
+        "Conservatism": 0.028334,
+        "Framing Effects": 0.005183,
+        "Premature Closure": 0.000346
+      },
+      "avg_biases_per_case": 3.390117,
+      "top_cooccurrences": [
+        {
+          "bias_pair": [
+            "Anchoring",
+            "Availability Heuristic"
+          ],
+          "count": 2557,
+          "rate": 0.883552
+        },
+        {
+          "bias_pair": [
+            "Availability Heuristic",
+            "Overconfidence"
+          ],
+          "count": 2126,
+          "rate": 0.734623
+        },
+        {
+          "bias_pair": [
+            "Anchoring",
+            "Overconfidence"
+          ],
+          "count": 2107,
+          "rate": 0.728058
+        },
+        {
+          "bias_pair": [
+            "Availability Heuristic",
+            "Confirmation Bias"
+          ],
+          "count": 1641,
+          "rate": 0.567035
+        },
+        {
+          "bias_pair": [
+            "Anchoring",
+            "Confirmation Bias"
+          ],
+          "count": 1615,
+          "rate": 0.558051
+        }
+      ],
+      "cooccurrence_rates": {
+        "Anchoring__Availability Heuristic": 0.883552,
+        "Availability Heuristic__Overconfidence": 0.734623,
+        "Anchoring__Overconfidence": 0.728058,
+        "Availability Heuristic__Confirmation Bias": 0.567035,
+        "Anchoring__Confirmation Bias": 0.558051,
+        "Confirmation Bias__Overconfidence": 0.483414,
+        "Anchoring__Loss Aversion & Framing Effects": 0.106082,
+        "Availability Heuristic__Loss Aversion & Framing Effects": 0.106082,
+        "Loss Aversion & Framing Effects__Overconfidence": 0.074637,
+        "Confirmation Bias__Loss Aversion & Framing Effects": 0.057706,
+        "Anchoring__Conservatism": 0.027989,
+        "Availability Heuristic__Conservatism": 0.024879,
+        "Conservatism__Overconfidence": 0.01935,
+        "Confirmation Bias__Conservatism": 0.017623,
+        "Conservatism__Loss Aversion & Framing Effects": 0.007947,
+        "Anchoring__Framing Effects": 0.005183,
+        "Availability Heuristic__Framing Effects": 0.005183,
+        "Confirmation Bias__Framing Effects": 0.002073,
+        "Framing Effects__Overconfidence": 0.001037,
+        "Availability Heuristic__Premature Closure": 0.000346
+      },
+      "models": {
+        "claude": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_claude_behavioral_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Anchoring": 347,
+            "Availability Heuristic": 342,
+            "Confirmation Bias": 200,
+            "Overconfidence": 287,
+            "Loss Aversion & Framing Effects": 30,
+            "Framing Effects": 2,
+            "Conservatism": 1
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.9585635359116023,
+            "Availability Heuristic": 0.9447513812154696,
+            "Confirmation Bias": 0.5524861878453039,
+            "Overconfidence": 0.7928176795580111,
+            "Loss Aversion & Framing Effects": 0.08287292817679558,
+            "Framing Effects": 0.0055248618784530384,
+            "Conservatism": 0.0027624309392265192
+          },
+          "avg_biases_per_case": 3.3398,
+          "top_biases": [
+            {
+              "bias": "Anchoring",
+              "count": 347,
+              "prevalence": 0.9585635359116023
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 342,
+              "prevalence": 0.9447513812154696
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 287,
+              "prevalence": 0.7928176795580111
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 200,
+              "prevalence": 0.5524861878453039
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 30,
+              "prevalence": 0.08287292817679558
+            }
+          ]
+        },
+        "deepseek": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_deepseek_behavioral_choices_bias_annotations.json",
+          "total_cases": 361,
+          "annotated_cases": 361,
+          "bias_counts": {
+            "Anchoring": 310,
+            "Availability Heuristic": 344,
+            "Overconfidence": 274,
+            "Confirmation Bias": 219,
+            "Loss Aversion & Framing Effects": 19,
+            "Conservatism": 8,
+            "Framing Effects": 1
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.8587257617728532,
+            "Availability Heuristic": 0.9529085872576177,
+            "Overconfidence": 0.7590027700831025,
+            "Confirmation Bias": 0.6066481994459834,
+            "Loss Aversion & Framing Effects": 0.05263157894736842,
+            "Conservatism": 0.0221606648199446,
+            "Framing Effects": 0.002770083102493075
+          },
+          "avg_biases_per_case": 3.2548,
+          "top_biases": [
+            {
+              "bias": "Availability Heuristic",
+              "count": 344,
+              "prevalence": 0.9529085872576177
+            },
+            {
+              "bias": "Anchoring",
+              "count": 310,
+              "prevalence": 0.8587257617728532
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 274,
+              "prevalence": 0.7590027700831025
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 219,
+              "prevalence": 0.6066481994459834
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 19,
+              "prevalence": 0.05263157894736842
+            }
+          ]
+        },
+        "gemini": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_gemini_behavioral_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Anchoring": 319,
+            "Availability Heuristic": 341,
+            "Overconfidence": 291,
+            "Confirmation Bias": 204,
+            "Loss Aversion & Framing Effects": 33,
+            "Conservatism": 7,
+            "Framing Effects": 1
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.8812154696132597,
+            "Availability Heuristic": 0.9419889502762431,
+            "Overconfidence": 0.8038674033149171,
+            "Confirmation Bias": 0.56353591160221,
+            "Loss Aversion & Framing Effects": 0.09116022099447514,
+            "Conservatism": 0.019337016574585635,
+            "Framing Effects": 0.0027624309392265192
+          },
+          "avg_biases_per_case": 3.3039,
+          "top_biases": [
+            {
+              "bias": "Availability Heuristic",
+              "count": 341,
+              "prevalence": 0.9419889502762431
+            },
+            {
+              "bias": "Anchoring",
+              "count": 319,
+              "prevalence": 0.8812154696132597
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 291,
+              "prevalence": 0.8038674033149171
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 204,
+              "prevalence": 0.56353591160221
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 33,
+              "prevalence": 0.09116022099447514
+            }
+          ]
+        },
+        "gpt": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_gpt_behavioral_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Anchoring": 341,
+            "Confirmation Bias": 210,
+            "Overconfidence": 291,
+            "Availability Heuristic": 342,
+            "Loss Aversion & Framing Effects": 39,
+            "Conservatism": 7,
+            "Premature Closure": 1,
+            "Framing Effects": 3
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.9419889502762431,
+            "Confirmation Bias": 0.580110497237569,
+            "Overconfidence": 0.8038674033149171,
+            "Availability Heuristic": 0.9447513812154696,
+            "Loss Aversion & Framing Effects": 0.10773480662983426,
+            "Conservatism": 0.019337016574585635,
+            "Premature Closure": 0.0027624309392265192,
+            "Framing Effects": 0.008287292817679558
+          },
+          "avg_biases_per_case": 3.4088,
+          "top_biases": [
+            {
+              "bias": "Availability Heuristic",
+              "count": 342,
+              "prevalence": 0.9447513812154696
+            },
+            {
+              "bias": "Anchoring",
+              "count": 341,
+              "prevalence": 0.9419889502762431
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 291,
+              "prevalence": 0.8038674033149171
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 210,
+              "prevalence": 0.580110497237569
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 39,
+              "prevalence": 0.10773480662983426
+            }
+          ]
+        },
+        "llama-dpo": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama-dpo_behavioral_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Anchoring": 355,
+            "Availability Heuristic": 341,
+            "Confirmation Bias": 199,
+            "Loss Aversion & Framing Effects": 52,
+            "Overconfidence": 272,
+            "Conservatism": 12,
+            "Framing Effects": 2
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.9806629834254144,
+            "Availability Heuristic": 0.9419889502762431,
+            "Confirmation Bias": 0.5497237569060773,
+            "Loss Aversion & Framing Effects": 0.143646408839779,
+            "Overconfidence": 0.7513812154696132,
+            "Conservatism": 0.03314917127071823,
+            "Framing Effects": 0.0055248618784530384
+          },
+          "avg_biases_per_case": 3.4061,
+          "top_biases": [
+            {
+              "bias": "Anchoring",
+              "count": 355,
+              "prevalence": 0.9806629834254144
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 341,
+              "prevalence": 0.9419889502762431
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 272,
+              "prevalence": 0.7513812154696132
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 199,
+              "prevalence": 0.5497237569060773
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 52,
+              "prevalence": 0.143646408839779
+            }
+          ]
+        },
+        "llama-sft": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama-sft_behavioral_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Anchoring": 348,
+            "Availability Heuristic": 344,
+            "Confirmation Bias": 221,
+            "Overconfidence": 276,
+            "Loss Aversion & Framing Effects": 56,
+            "Framing Effects": 1,
+            "Conservatism": 11
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.9613259668508287,
+            "Availability Heuristic": 0.9502762430939227,
+            "Confirmation Bias": 0.6104972375690608,
+            "Overconfidence": 0.7624309392265194,
+            "Loss Aversion & Framing Effects": 0.15469613259668508,
+            "Framing Effects": 0.0027624309392265192,
+            "Conservatism": 0.03038674033149171
+          },
+          "avg_biases_per_case": 3.4724,
+          "top_biases": [
+            {
+              "bias": "Anchoring",
+              "count": 348,
+              "prevalence": 0.9613259668508287
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 344,
+              "prevalence": 0.9502762430939227
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 276,
+              "prevalence": 0.7624309392265194
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 221,
+              "prevalence": 0.6104972375690608
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 56,
+              "prevalence": 0.15469613259668508
+            }
+          ]
+        },
+        "llama-small": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama-small_behavioral_choices_bias_annotations.json",
+          "total_cases": 362,
+          "annotated_cases": 362,
+          "bias_counts": {
+            "Anchoring": 354,
+            "Availability Heuristic": 340,
+            "Confirmation Bias": 224,
+            "Overconfidence": 270,
+            "Loss Aversion & Framing Effects": 42,
+            "Conservatism": 15,
+            "Framing Effects": 5
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.9779005524861878,
+            "Availability Heuristic": 0.9392265193370166,
+            "Confirmation Bias": 0.6187845303867403,
+            "Overconfidence": 0.7458563535911602,
+            "Loss Aversion & Framing Effects": 0.11602209944751381,
+            "Conservatism": 0.04143646408839779,
+            "Framing Effects": 0.013812154696132596
+          },
+          "avg_biases_per_case": 3.453,
+          "top_biases": [
+            {
+              "bias": "Anchoring",
+              "count": 354,
+              "prevalence": 0.9779005524861878
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 340,
+              "prevalence": 0.9392265193370166
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 270,
+              "prevalence": 0.7458563535911602
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 224,
+              "prevalence": 0.6187845303867403
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 42,
+              "prevalence": 0.11602209944751381
+            }
+          ]
+        },
+        "llama": {
+          "path": "experiments/analysis/bias_annotations/usmle_sample/baseline/principal_llama_behavioral_choices_bias_annotations.json",
+          "total_cases": 361,
+          "annotated_cases": 361,
+          "bias_counts": {
+            "Anchoring": 346,
+            "Availability Heuristic": 333,
+            "Confirmation Bias": 230,
+            "Overconfidence": 279,
+            "Loss Aversion & Framing Effects": 48,
+            "Conservatism": 21
+          },
+          "bias_prevalence": {
+            "Anchoring": 0.9584487534626038,
+            "Availability Heuristic": 0.9224376731301939,
+            "Confirmation Bias": 0.6371191135734072,
+            "Overconfidence": 0.7728531855955678,
+            "Loss Aversion & Framing Effects": 0.1329639889196676,
+            "Conservatism": 0.05817174515235457
+          },
+          "avg_biases_per_case": 3.482,
+          "top_biases": [
+            {
+              "bias": "Anchoring",
+              "count": 346,
+              "prevalence": 0.9584487534626038
+            },
+            {
+              "bias": "Availability Heuristic",
+              "count": 333,
+              "prevalence": 0.9224376731301939
+            },
+            {
+              "bias": "Overconfidence",
+              "count": 279,
+              "prevalence": 0.7728531855955678
+            },
+            {
+              "bias": "Confirmation Bias",
+              "count": 230,
+              "prevalence": 0.6371191135734072
+            },
+            {
+              "bias": "Loss Aversion & Framing Effects",
+              "count": 48,
+              "prevalence": 0.1329639889196676
+            }
+          ]
+        }
+      }
+    }
+  }
+}

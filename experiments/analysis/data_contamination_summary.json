@@ -1,0 +1,245 @@
+{
+  "generated_by": "pipeline/summarize_data_contamination.py",
+  "records": [
+    {
+      "file_name": "test_usmle_sample_openai-gpt-5.1_belief.json",
+      "model": "openai/gpt-5.1",
+      "original": {
+        "total": 362,
+        "correct": 314,
+        "incorrect": 15,
+        "no_answer": 33,
+        "accuracy": 0.8674033149171271
+      },
+      "variant": "paraphrased_questions",
+      "variant_metrics": {
+        "total": 37,
+        "correct": 34,
+        "incorrect": 2,
+        "no_answer": 1,
+        "accuracy": 0.918918918918919
+      },
+      "accuracy_delta": 0.05151560400179189
+    },
+    {
+      "file_name": "test_usmle_sample_openai-gpt-5.1_belief.json",
+      "model": "openai/gpt-5.1",
+      "original": {
+        "total": 362,
+        "correct": 314,
+        "incorrect": 15,
+        "no_answer": 33,
+        "accuracy": 0.8674033149171271
+      },
+      "variant": "paraphrased_options",
+      "variant_metrics": {
+        "total": 37,
+        "correct": 32,
+        "incorrect": 3,
+        "no_answer": 2,
+        "accuracy": 0.8648648648648649
+      },
+      "accuracy_delta": -0.0025384500522621645
+    },
+    {
+      "file_name": "test_usmle_sample_anthropic-claude-haiku-4.5_belief.json",
+      "model": "anthropic/claude-haiku-4.5",
+      "original": {
+        "total": 362,
+        "correct": 306,
+        "incorrect": 48,
+        "no_answer": 8,
+        "accuracy": 0.8453038674033149
+      },
+      "variant": "paraphrased_questions",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 307,
+        "incorrect": 44,
+        "no_answer": 11,
+        "accuracy": 0.8480662983425414
+      },
+      "accuracy_delta": 0.002762430939226568
+    },
+    {
+      "file_name": "test_usmle_sample_anthropic-claude-haiku-4.5_belief.json",
+      "model": "anthropic/claude-haiku-4.5",
+      "original": {
+        "total": 362,
+        "correct": 306,
+        "incorrect": 48,
+        "no_answer": 8,
+        "accuracy": 0.8453038674033149
+      },
+      "variant": "paraphrased_options",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 293,
+        "incorrect": 58,
+        "no_answer": 11,
+        "accuracy": 0.8093922651933702
+      },
+      "accuracy_delta": -0.035911602209944715
+    },
+    {
+      "file_name": "test_usmle_sample_meta-llama-llama-3.3-70b-instruct_belief.json",
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "original": {
+        "total": 362,
+        "correct": 296,
+        "incorrect": 55,
+        "no_answer": 11,
+        "accuracy": 0.8176795580110497
+      },
+      "variant": "paraphrased_questions",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 293,
+        "incorrect": 58,
+        "no_answer": 11,
+        "accuracy": 0.8093922651933702
+      },
+      "accuracy_delta": -0.008287292817679592
+    },
+    {
+      "file_name": "test_usmle_sample_meta-llama-llama-3.3-70b-instruct_belief.json",
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "original": {
+        "total": 362,
+        "correct": 296,
+        "incorrect": 55,
+        "no_answer": 11,
+        "accuracy": 0.8176795580110497
+      },
+      "variant": "paraphrased_options",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 283,
+        "incorrect": 71,
+        "no_answer": 8,
+        "accuracy": 0.7817679558011049
+      },
+      "accuracy_delta": -0.035911602209944826
+    },
+    {
+      "file_name": "test_usmle_sample_meta-llama-llama-3.1-8b-instruct_belief.json",
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "original": {
+        "total": 362,
+        "correct": 196,
+        "incorrect": 146,
+        "no_answer": 20,
+        "accuracy": 0.5414364640883977
+      },
+      "variant": "paraphrased_questions",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 185,
+        "incorrect": 146,
+        "no_answer": 31,
+        "accuracy": 0.511049723756906
+      },
+      "accuracy_delta": -0.03038674033149169
+    },
+    {
+      "file_name": "test_usmle_sample_meta-llama-llama-3.1-8b-instruct_belief.json",
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "original": {
+        "total": 362,
+        "correct": 196,
+        "incorrect": 146,
+        "no_answer": 20,
+        "accuracy": 0.5414364640883977
+      },
+      "variant": "paraphrased_options",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 169,
+        "incorrect": 173,
+        "no_answer": 20,
+        "accuracy": 0.46685082872928174
+      },
+      "accuracy_delta": -0.074585635359116
+    },
+    {
+      "file_name": "test_usmle_sample_google-gemini-2.5-pro_belief.json",
+      "model": "google/gemini-2.5-pro",
+      "original": {
+        "total": 362,
+        "correct": 338,
+        "incorrect": 14,
+        "no_answer": 10,
+        "accuracy": 0.9337016574585635
+      },
+      "variant": "paraphrased_questions",
+      "variant_metrics": {
+        "total": 37,
+        "correct": 35,
+        "incorrect": 0,
+        "no_answer": 2,
+        "accuracy": 0.9459459459459459
+      },
+      "accuracy_delta": 0.01224428848738246
+    },
+    {
+      "file_name": "test_usmle_sample_google-gemini-2.5-pro_belief.json",
+      "model": "google/gemini-2.5-pro",
+      "original": {
+        "total": 362,
+        "correct": 338,
+        "incorrect": 14,
+        "no_answer": 10,
+        "accuracy": 0.9337016574585635
+      },
+      "variant": "paraphrased_options",
+      "variant_metrics": {
+        "total": 37,
+        "correct": 34,
+        "incorrect": 1,
+        "no_answer": 2,
+        "accuracy": 0.918918918918919
+      },
+      "accuracy_delta": -0.014782738539644513
+    },
+    {
+      "file_name": "test_usmle_sample_deepseek-deepseek-chat-v3.1_belief.json",
+      "model": "deepseek-deepseek-chat-v3.1",
+      "original": {
+        "total": 362,
+        "correct": 308,
+        "incorrect": 54,
+        "no_answer": 11,
+        "accuracy": 0.850828729281768
+      },
+      "variant": "paraphrased_questions",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 300,
+        "incorrect": 51,
+        "no_answer": 11,
+        "accuracy": 0.8287292817679558
+      },
+      "accuracy_delta": -0.02209944751381221
+    },
+    {
+      "file_name": "test_usmle_sample_deepseek-deepseek-chat-v3.1_belief.json",
+      "model": "deepseek-deepseek-chat-v3.1",
+      "original": {
+        "total": 362,
+        "correct": 308,
+        "incorrect": 54,
+        "no_answer": 11,
+        "accuracy": 0.850828729281768
+      },
+      "variant": "paraphrased_options",
+      "variant_metrics": {
+        "total": 362,
+        "correct": 298,
+        "incorrect": 56,
+        "no_answer": 8,
+        "accuracy": 0.8232044198895028
+      },
+      "accuracy_delta": -0.027624309392265234
+    }
+  ]
+}
