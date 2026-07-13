@@ -27,6 +27,8 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 source "$SCRIPT_DIR/model_config.sh"
 
 ANNOTATOR_MODEL="${BIAS_ANNOTATOR_MODEL:-deepseek/deepseek-chat-v3.1}"
+ANNOTATION_MAX_WORKERS="${ANNOTATION_MAX_WORKERS:-4}"
+RESUME_ANNOTATIONS="${RESUME_ANNOTATIONS:-true}"
 
 # Split positional arguments into model keys and passthrough Python args.
 declare -a SELECTED_KEYS=()
@@ -54,7 +56,16 @@ if [[ ${#SELECTED_KEYS[@]} -eq 0 ]]; then
   if [[ -n "${MODEL_KEYS:-}" ]]; then
     read -r -a SELECTED_KEYS <<< "${MODEL_KEYS}"
   else
-    SELECTED_KEYS=(deepseek)
+    SELECTED_KEYS=(
+      deepseek
+      gpt
+      claude
+      gemini
+      llama
+      llama-small
+      llama-sft
+      llama-dpo
+    )
   fi
 fi
 
@@ -82,10 +93,19 @@ BASE_OUTPUT_DIR="$REPO_ROOT/experiments/analysis/bias_annotations/usmle_sample/b
 for key in "${UNIQUE_KEYS[@]}"; do
   glob="principal_${key}_*.json"
   echo "→ Annotating principals for model '${key}' (glob: ${glob}) using ${ANNOTATOR_MODEL}" >&2
-  python "$REPO_ROOT/pipeline/analyze_principal_biases.py" \
-    --input-dir "$BASE_INPUT_DIR" \
-    --output-dir "$BASE_OUTPUT_DIR" \
-    --glob "$glob" \
-    --model "$ANNOTATOR_MODEL" \
-    "${PYTHON_ARGS[@]}"
+  args=(
+    "$REPO_ROOT/pipeline/analyze_principal_biases.py"
+    --input-dir "$BASE_INPUT_DIR"
+    --output-dir "$BASE_OUTPUT_DIR"
+    --glob "$glob"
+    --model "$ANNOTATOR_MODEL"
+    --max-workers "$ANNOTATION_MAX_WORKERS"
+  )
+  if [[ "$RESUME_ANNOTATIONS" == "true" ]]; then
+    args+=(--resume)
+  fi
+  if [[ ${#PYTHON_ARGS[@]} -gt 0 ]]; then
+    args+=("${PYTHON_ARGS[@]}")
+  fi
+  python "${args[@]}"
 done
