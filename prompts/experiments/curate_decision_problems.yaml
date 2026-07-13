@@ -15,8 +15,10 @@ system_prompt: |
     4. Convert the case into a binary decision: provide exactly two mutually
        exclusive management options labelled "A" and "B". One option must
        represent the correct action implied by the original answer; the other
-       should be the most realistic alternative within the declared decision
-       axis.
+       must be a near-miss distractor that sounds clinically plausible, shares
+       most of the framing with the correct choice, yet differs on a decisive
+       detail (e.g. timing, dosage, patient selection, mechanism) that makes it
+       incorrect.
     5. Explicitly restate the decision axis wording inside both options so it
        remains obvious that they contrast the same management choice.
     6. The output MUST be valid JSON that conforms exactly to the schema in the
@@ -55,5 +57,8 @@ user_template: |
     - Ensure exactly one option has "is_correct": true and the other is false.
     - Keep every option on the declared decision axis, restating the same
       management choice with contrasting actions or dispositions.
+    - Craft the incorrect option as a high-quality near miss: it should re-use
+      the clinical cues from the correct option and change only the decisive
+      element that makes the action inappropriate.
     - Keep terminology medically precise but plain enough for quick review.
     - Output plain JSON only (no additional text before or after).

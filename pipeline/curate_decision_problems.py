@@ -48,6 +48,35 @@ DEFAULT_PROMPT_PATH = (
 DEFAULT_MODEL = "anthropic/claude-haiku-4-5"
 
 
+NEAR_MISS_STOPWORDS = {
+    "the",
+    "and",
+    "for",
+    "with",
+    "without",
+    "patient",
+    "patients",
+    "option",
+    "treatment",
+    "therapy",
+    "management",
+    "strategy",
+    "approach",
+    "dose",
+    "dosing",
+    "daily",
+    "per",
+    "or",
+    "via",
+    "route",
+    "risk",
+    "plan",
+    "first",
+    "line",
+    "choice",
+}
+
+
 def load_prompt(path: Path) -> Mapping[str, str]:
     data = yaml.safe_load(path.read_text())
     if "system_prompt" not in data or "user_template" not in data:
@@ -89,6 +118,19 @@ def count_words(text: str) -> int:
     return len(text.strip().split())
 
 
+def normalize_text(text: str) -> str:
+    return re.sub(r"\s+", " ", text.strip().lower())
+
+
+def option_tokens(text: str) -> set[str]:
+    tokens = {
+        tok
+        for tok in re.split(r"[^a-z0-9]+", text.lower())
+        if len(tok) >= 3 and tok not in NEAR_MISS_STOPWORDS
+    }
+    return tokens
+
+
 def validate_curated_payload(payload: Mapping[str, Any]) -> None:
     required_str_fields = [
         "topic",
@@ -128,6 +170,8 @@ def validate_curated_payload(payload: Mapping[str, Any]) -> None:
     seen_ids: set[str] = set()
     correct_count = 0
     false_count = 0
+    option_texts: dict[str, str] = {}
+    option_token_sets: dict[str, set[str]] = {}
     for opt in options:
         if not isinstance(opt, Mapping):
             raise ValueError("Each option must be an object")
@@ -146,6 +190,8 @@ def validate_curated_payload(payload: Mapping[str, Any]) -> None:
             raise ValueError(
                 f"Option {opt_id} must restate the decision_axis wording"
             )
+        option_texts[opt_id] = opt["text"].strip()
+        option_token_sets[opt_id] = option_tokens(opt["text"])
         if not isinstance(opt.get("is_correct"), bool):
             raise ValueError("Option is_correct must be boolean")
         if opt["is_correct"]:
@@ -156,6 +202,28 @@ def validate_curated_payload(payload: Mapping[str, Any]) -> None:
         raise ValueError("Binary options must include one true and one false choice")
     if payload["correct_option_id"] not in seen_ids:
         raise ValueError("correct_option_id must match one of the option ids")
+
+    correct_option_id = payload["correct_option_id"]
+    incorrect_option_id = next(opt_id for opt_id in seen_ids if opt_id != correct_option_id)
+    correct_text = normalize_text(option_texts[correct_option_id])
+    incorrect_text = normalize_text(option_texts[incorrect_option_id])
+    if correct_text == incorrect_text:
+        raise ValueError("Options must differ beyond the truth value")
+
+    correct_tokens = option_token_sets[correct_option_id]
+    incorrect_tokens = option_token_sets[incorrect_option_id]
+    if not correct_tokens or not incorrect_tokens:
+        raise ValueError("Options must contain clinically meaningful tokens")
+
+    overlap = correct_tokens & incorrect_tokens
+    if not overlap:
+        raise ValueError("Near-miss distractor must share core clinical cues with correct option")
+    min_token_count = min(len(correct_tokens), len(incorrect_tokens))
+    if min_token_count and (len(overlap) / min_token_count) < 0.4:
+        raise ValueError("Distractor must substantially overlap with correct option to qualify as near-miss")
+    symmetric_diff = correct_tokens ^ incorrect_tokens
+    if not symmetric_diff:
+        raise ValueError("Near-miss distractor must differ on at least one decisive cue")
 
 
 def curate_single_case(
