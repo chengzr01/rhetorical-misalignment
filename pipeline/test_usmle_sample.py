@@ -15,7 +15,7 @@ import os
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Callable, Dict, List
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import yaml
@@ -220,15 +220,29 @@ def test_single_question(
     return result
 
 
+def questions_match_cached(
+    question_data: Dict[str, Any], cached_result: Dict[str, Any]
+) -> bool:
+    """Check whether a cached evaluation matches the current question payload."""
+    return (
+        cached_result.get("question") == question_data.get("question")
+        and cached_result.get("options") == question_data.get("options")
+        and cached_result.get("correct_answer_idx") == question_data.get("answer_idx")
+    )
+
+
 def run_tests(
     questions: List[Dict[str, Any]],
     client: NvidiaChatClient | OpenRouterChatClient | SGLangChatClient,
     model: str,
     prompt_template: str,
     temperature: float = 0.0,
-    max_workers: int = 4,
+    max_workers: int = 8,
     limit: int | None = None,
     elicit_belief: bool = False,
+    existing_results: Dict[str, Dict[str, Any]] | None = None,
+    save_interval: int = 0,
+    checkpoint_callback: Callable[[List[Dict[str, Any]]], None] | None = None,
 ) -> List[Dict[str, Any]]:
     """
     Run tests on all questions.
@@ -249,16 +263,55 @@ def run_tests(
     if limit:
         questions = questions[:limit]
 
-    results = []
+    existing_results = existing_results or {}
+    ordered_ids: List[str] = []
+    results_by_id: Dict[str, Dict[str, Any]] = {}
+    to_process: List[Dict[str, Any]] = []
+    reused = 0
 
-    print(f"Testing {len(questions)} questions with {max_workers} workers...")
+    for question in questions:
+        question_id = question.get("id")
+        if question_id is None:
+            raise ValueError("Each question must have an 'id'")
+        question_key = str(question_id)
+        ordered_ids.append(question_key)
+        cached = existing_results.get(question_key)
+        if cached and questions_match_cached(question, cached):
+            results_by_id[question_key] = cached
+            reused += 1
+        else:
+            to_process.append(question)
+
+    if to_process:
+        print(
+            f"Testing {len(to_process)} questions with {max_workers} workers (reused {reused} cached results)..."
+        )
+    else:
+        print(f"Using cached results for all {reused} questions; no API calls needed.")
+        return [results_by_id[qid] for qid in ordered_ids]
+
+    def build_error_result(question: Dict[str, Any], error_message: str) -> Dict[str, Any]:
+        result: Dict[str, Any] = {
+            "id": question.get("id"),
+            "question": question.get("question"),
+            "options": question.get("options"),
+            "correct_answer": question.get("answer"),
+            "correct_answer_idx": question.get("answer_idx"),
+            "predicted_answer_idx": None,
+            "predicted_answer": None,
+            "correct": False,
+            "response": None,
+            "error": error_message,
+            "meta_info": question.get("meta_info"),
+        }
+        if elicit_belief:
+            result["belief"] = None
+        return result
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # To avoid race conditions when clients (e.g., SGLangChatClient) are not thread safe,
-        # create a client per worker if using SGLang backend
         if isinstance(client, SGLangChatClient):
-            # To avoid accidental request mixing (see @sglang-inference-15607459.err 149–155), initialize one client per thread
-            def test_q_with_client(q):
+
+            def job_func(q: Dict[str, Any]) -> Dict[str, Any]:
                 thread_client = SGLangChatClient(port=client._port, base_url=client._base_url)
                 return test_single_question(
                     q,
@@ -266,31 +319,64 @@ def run_tests(
                     model,
                     prompt_template,
                     temperature,
-                    elicit_belief
+                    elicit_belief,
                 )
-            job_func = test_q_with_client
+
         else:
-            # Thread-safe clients
-            def job_func(q):
+
+            def job_func(q: Dict[str, Any]) -> Dict[str, Any]:
                 return test_single_question(
                     q,
                     client,
                     model,
                     prompt_template,
                     temperature,
-                    elicit_belief
+                    elicit_belief,
                 )
 
-        future_to_question = {
-            executor.submit(job_func, question): question
-            for question in questions
+        futures = {
+            executor.submit(job_func, question): question for question in to_process
         }
 
-        for future in tqdm(as_completed(future_to_question), total=len(questions), desc="Testing"):
-            result = future.result()
-            results.append(result)
+        processed_since_checkpoint = 0
+        with tqdm(total=len(futures), desc="Testing") as progress:
+            for future in as_completed(futures):
+                question = futures[future]
+                try:
+                    result = future.result()
+                except Exception as exc:  # noqa: BLE001
+                    result = build_error_result(question, str(exc))
+                result_id = result.get("id")
+                if result_id is None:
+                    raise ValueError("Each result must include an 'id'")
+                result_key = str(result_id)
+                results_by_id[result_key] = result
+                processed_since_checkpoint += 1
+                progress.update(1)
+                if (
+                    checkpoint_callback is not None
+                    and save_interval > 0
+                    and processed_since_checkpoint >= save_interval
+                ):
+                    ordered_results = [
+                        results_by_id[qid] for qid in ordered_ids if qid in results_by_id
+                    ]
+                    checkpoint_callback(ordered_results)
+                    processed_since_checkpoint = 0
 
-    return results
+        if (
+            checkpoint_callback is not None
+            and save_interval > 0
+            and processed_since_checkpoint > 0
+        ):
+            ordered_results = [results_by_id[qid] for qid in ordered_ids if qid in results_by_id]
+            checkpoint_callback(ordered_results)
+
+    missing = [qid for qid in ordered_ids if qid not in results_by_id]
+    if missing:
+        raise RuntimeError(f"Missing test results for ids: {missing[:10]}")
+
+    return [results_by_id[qid] for qid in ordered_ids]
 
 
 def calculate_accuracy(results: List[Dict[str, Any]], elicit_belief: bool = False) -> Dict[str, Any]:
@@ -397,6 +483,51 @@ def generate_output_filename(model: str, output_dir: Path, elicit_belief: bool =
     suffix = "_belief" if elicit_belief else ""
     filename = f"test_usmle_sample_{safe_model_name}{suffix}.json"
     return output_dir / filename
+
+
+def load_cached_results(path: Path) -> Dict[str, Dict[str, Any]]:
+    """Load cached evaluation results keyed by question id."""
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text())
+    except json.JSONDecodeError:
+        return {}
+
+    if isinstance(data, dict):
+        results = data.get("results") or []
+    elif isinstance(data, list):
+        results = data
+    else:
+        return {}
+
+    cache: Dict[str, Dict[str, Any]] = {}
+    for item in results:
+        qid = item.get("id")
+        if qid is None:
+            continue
+        cache[str(qid)] = item
+    return cache
+
+
+def save_results_json(
+    *,
+    output_path: Path,
+    model: str,
+    temperature: float,
+    elicit_belief: bool,
+    results: List[Dict[str, Any]],
+    metrics: Dict[str, Any],
+) -> None:
+    payload = {
+        "model": model,
+        "temperature": temperature,
+        "elicit_belief": elicit_belief,
+        "metrics": metrics,
+        "results": results,
+    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(payload, indent=2))
 
 
 def analyze_existing_results(results_path: Path) -> None:
@@ -512,7 +643,7 @@ def main() -> None:
     parser.add_argument(
         "--max-workers",
         type=int,
-        default=4,
+        default=8,
         help="Number of parallel workers"
     )
     parser.add_argument(
@@ -520,6 +651,17 @@ def main() -> None:
         type=int,
         default=None,
         help="Limit number of questions to test (for debugging)"
+    )
+    parser.add_argument(
+        "--save-interval",
+        type=int,
+        default=10,
+        help="Save partial results every N new evaluations (0 disables)"
+    )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Recompute all questions even if cached results exist"
     )
     parser.add_argument(
         "--elicit-belief",
@@ -558,6 +700,37 @@ def main() -> None:
         sglang_base_url=args.sglang_base_url,
     )
 
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = generate_output_filename(
+        args.model, output_dir, elicit_belief=args.elicit_belief
+    )
+
+    cached_results: Dict[str, Dict[str, Any]] = {}
+    if not args.overwrite:
+        cached_results = load_cached_results(output_path)
+        if cached_results:
+            print(f"Loaded {len(cached_results)} cached results from {output_path}")
+
+    def write_checkpoint(partial_results: List[Dict[str, Any]]) -> None:
+        metrics_partial = calculate_accuracy(
+            partial_results, elicit_belief=args.elicit_belief
+        )
+        save_results_json(
+            output_path=output_path,
+            model=args.model,
+            temperature=args.temperature,
+            elicit_belief=args.elicit_belief,
+            results=partial_results,
+            metrics=metrics_partial,
+        )
+        print(
+            f"Saved checkpoint with {len(partial_results)} evaluated questions → {output_path}"
+        )
+
+    save_interval = max(args.save_interval, 0)
+    checkpoint_callback = write_checkpoint if save_interval > 0 else None
+
     # Run tests
     print(f"\nTesting model: {args.model}")
     print(f"Temperature: {args.temperature}")
@@ -573,6 +746,9 @@ def main() -> None:
         max_workers=args.max_workers,
         limit=args.limit,
         elicit_belief=args.elicit_belief,
+        existing_results=None if args.overwrite else cached_results,
+        save_interval=save_interval,
+        checkpoint_callback=checkpoint_callback,
     )
 
     # Calculate accuracy
@@ -581,22 +757,14 @@ def main() -> None:
     # Print results
     print_metrics(metrics, args.model, elicit_belief=args.elicit_belief)
 
-    # Save detailed results
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    
-    output_path = generate_output_filename(args.model, output_dir, elicit_belief=args.elicit_belief)
-
-    output_data = {
-        "model": args.model,
-        "temperature": args.temperature,
-        "elicit_belief": args.elicit_belief,
-        "metrics": metrics,
-        "results": results,
-    }
-
-    with open(output_path, "w") as f:
-        json.dump(output_data, f, indent=2)
+    save_results_json(
+        output_path=output_path,
+        model=args.model,
+        temperature=args.temperature,
+        elicit_belief=args.elicit_belief,
+        results=results,
+        metrics=metrics,
+    )
 
     print(f"\nDetailed results saved to: {output_path}")
 

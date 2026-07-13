@@ -29,7 +29,7 @@ if [[ $# -gt 0 ]]; then
 elif [[ -n "${EVAL_MODEL_KEYS:-}" ]]; then
     read -r -a MODEL_KEYS <<< "${EVAL_MODEL_KEYS}"
 else
-    MODEL_KEYS=(deepseek)
+    MODEL_KEYS=(llama llama-small)
 fi
 
 if [[ ${#MODEL_KEYS[@]} -eq 0 ]]; then
