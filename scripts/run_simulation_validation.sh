@@ -52,11 +52,13 @@ CURATION_OUTPUT="${CURATION_OUTPUT:-experiments/decision_problems/usmle_rhetoric
 CURATION_MODEL="${CURATION_MODEL:-anthropic/claude-haiku-4-5}"
 CURATION_TEMPERATURE="${CURATION_TEMPERATURE:-0.2}"
 CURATION_SAVE_INTERVAL="${CURATION_SAVE_INTERVAL:-5}"
+CURATION_THREADS="${CURATION_THREADS:-8}"
 
 REPRESENTATION_OUTPUT="${REPRESENTATION_OUTPUT:-experiments/decision_problems/usmle_bias_representations.json}"
 REPRESENTATION_MODEL="${REPRESENTATION_MODEL:-deepseek/deepseek-chat-v3.1}"
 REPRESENTATION_TEMPERATURE="${REPRESENTATION_TEMPERATURE:-0.2}"
 REPRESENTATION_SAVE_INTERVAL="${REPRESENTATION_SAVE_INTERVAL:-5}"
+REPRESENTATION_THREADS="${REPRESENTATION_THREADS:-8}"
 
 SENSITIVITY_OUTPUT="${SENSITIVITY_OUTPUT:-experiments/analysis/bias_sensitivity_summary.json}"
 SENSITIVITY_FILTERED_REPRESENTATIONS="${SENSITIVITY_FILTERED_REPRESENTATIONS:-experiments/decision_problems/usmle_bias_representations_filtered.json}"
@@ -70,6 +72,7 @@ VALIDATION_MODEL="${VALIDATION_MODEL:-deepseek/deepseek-chat-v3.1}"
 VALIDATION_TEMPERATURE="${VALIDATION_TEMPERATURE:-0.2}"
 VALIDATION_SAVE_INTERVAL="${VALIDATION_SAVE_INTERVAL:-5}"
 VALIDATION_REPRESENTATIONS="${VALIDATION_REPRESENTATIONS:-$SENSITIVITY_FILTERED_REPRESENTATIONS}"
+VALIDATION_THREADS="${VALIDATION_THREADS:-8}"
 
 # ── Step 1: Curate decision problems ─────────────────────────────────────
 
@@ -81,6 +84,7 @@ declare -a CURATE_ARGS=(
   "--model" "$CURATION_MODEL"
   "--temperature" "$CURATION_TEMPERATURE"
   "--save-interval" "$CURATION_SAVE_INTERVAL"
+  "--threads" "$CURATION_THREADS"
 )
 
 if [ -n "${CURATION_MAX_PROBLEMS:-}" ]; then
@@ -91,6 +95,9 @@ if [ -n "${CURATION_START_INDEX:-}" ]; then
 fi
 if [ "${CURATION_OVERWRITE:-false}" = "true" ]; then
   CURATE_ARGS+=("--overwrite")
+fi
+if [ -n "${CURATION_CACHE:-}" ]; then
+  CURATE_ARGS+=("--cache-path" "$CURATION_CACHE")
 fi
 
 python pipeline/curate_decision_problems.py "${CURATE_ARGS[@]}"
@@ -107,6 +114,7 @@ declare -a REPRESENT_ARGS=(
   "--model" "$REPRESENTATION_MODEL"
   "--temperature" "$REPRESENTATION_TEMPERATURE"
   "--save-interval" "$REPRESENTATION_SAVE_INTERVAL"
+  "--threads" "$REPRESENTATION_THREADS"
 )
 
 if [ -n "${REPRESENTATION_MAX_CASES:-}" ]; then
@@ -121,6 +129,9 @@ fi
 if [ -n "${REPRESENTATION_BIASES:-}" ]; then
   # shellcheck disable=SC2206
   REPRESENT_ARGS+=("--biases" ${REPRESENTATION_BIASES})
+fi
+if [ -n "${REPRESENTATION_CACHE:-}" ]; then
+  REPRESENT_ARGS+=("--cache-path" "$REPRESENTATION_CACHE")
 fi
 
 python pipeline/generate_bias_representations.py "${REPRESENT_ARGS[@]}"
@@ -149,6 +160,9 @@ fi
 if [ "${SENSITIVITY_OVERWRITE:-false}" = "true" ]; then
   SENSITIVITY_ARGS+=("--overwrite")
 fi
+if [ -n "${SENSITIVITY_CACHE:-}" ]; then
+  SENSITIVITY_ARGS+=("--cache-path" "$SENSITIVITY_CACHE")
+fi
 
 python pipeline/evaluate_bias_sensitivity.py "${SENSITIVITY_ARGS[@]}"
 
@@ -165,6 +179,7 @@ declare -a VALIDATE_ARGS=(
   "--model" "$VALIDATION_MODEL"
   "--temperature" "$VALIDATION_TEMPERATURE"
   "--save-interval" "$VALIDATION_SAVE_INTERVAL"
+  "--threads" "$VALIDATION_THREADS"
 )
 
 if [ -n "${VALIDATION_MAX_CASES:-}" ]; then
@@ -179,6 +194,9 @@ fi
 if [ -n "${VALIDATION_BIASES:-}" ]; then
   # shellcheck disable=SC2206
   VALIDATE_ARGS+=("--biases" ${VALIDATION_BIASES})
+fi
+if [ -n "${VALIDATION_CACHE:-}" ]; then
+  VALIDATE_ARGS+=("--cache-path" "$VALIDATION_CACHE")
 fi
 
 python pipeline/validate_decision_makers.py "${VALIDATE_ARGS[@]}"

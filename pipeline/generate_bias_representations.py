@@ -271,10 +271,10 @@ def enrich_cases_with_correct_option(cases: list[dict[str, Any]]) -> None:
         case["_correct_option_text"] = correct_text
 
 
-def prepare_existing(output_path: Path, overwrite: bool) -> tuple[list[dict[str, Any]], set[str]]:
-    if not output_path.exists() or overwrite:
+def prepare_existing(cache_path: Path, overwrite: bool) -> tuple[list[dict[str, Any]], set[str]]:
+    if not cache_path.exists() or overwrite:
         return [], set()
-    existing_data = load_json(output_path)
+    existing_data = load_json(cache_path)
     records = existing_data.get("records", [])
     seen = {rec.get("decision_id") for rec in records if rec.get("decision_id")}
     return records, seen
@@ -283,6 +283,7 @@ def prepare_existing(output_path: Path, overwrite: bool) -> tuple[list[dict[str,
 def write_output(
     *,
     output_path: Path,
+    cache_path: Path | None,
     decision_path: Path,
     prompt_path: Path,
     bias_prompt_path: Path,
@@ -308,6 +309,9 @@ def write_output(
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2))
+    if cache_path is not None and cache_path != output_path:
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(payload, indent=2))
 
 
 def main() -> None:
@@ -325,6 +329,10 @@ def main() -> None:
     parser.add_argument("--save-interval", type=int, default=5)
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--threads", type=int, default=8, help="Parallel workers for generation")
+    parser.add_argument(
+        "--cache-path",
+        help="Optional cache location reused across runs to skip completed cases",
+    )
 
     args = parser.parse_args()
 
@@ -336,6 +344,7 @@ def main() -> None:
     prompt_path = Path(args.prompt_path)
     bias_prompt_path = Path(args.bias_prompt)
     output_path = Path(args.output)
+    cache_path = Path(args.cache_path) if args.cache_path else output_path
 
     decision_blob = load_json(decision_path)
     cases = decision_blob.get("records", [])
@@ -356,7 +365,7 @@ def main() -> None:
         if missing:
             raise ValueError(f"Requested bias names not found: {sorted(missing)}")
 
-    existing_records, processed_ids = prepare_existing(output_path, args.overwrite)
+    existing_records, processed_ids = prepare_existing(cache_path, args.overwrite)
 
     start = max(args.start_index, 0)
     if start >= len(cases):
@@ -495,6 +504,7 @@ def main() -> None:
                     ordered = [successful[key] for key in sorted(successful.keys())]
                     write_output(
                         output_path=output_path,
+                        cache_path=cache_path,
                         decision_path=decision_path,
                         prompt_path=prompt_path,
                         bias_prompt_path=bias_prompt_path,
@@ -512,6 +522,7 @@ def main() -> None:
     if ordered:
         write_output(
             output_path=output_path,
+            cache_path=cache_path,
             decision_path=decision_path,
             prompt_path=prompt_path,
             bias_prompt_path=bias_prompt_path,

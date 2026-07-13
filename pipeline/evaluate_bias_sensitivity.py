@@ -11,6 +11,7 @@ file for downstream simulator validation.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -55,6 +56,72 @@ JSON_INSTRUCTIONS = (
     "Use the full 0-1 range where 0 means no appreciable bias pressure and 1 "
     "means extremely strong bias pressure."
 )
+
+CACHE_VERSION = 1
+
+
+def default_cache_path(summary_path: Path) -> Path:
+    return summary_path.with_name(f"{summary_path.stem}_cache.json")
+
+
+def build_cache_key(decision_id: str, style_label: str) -> str:
+    return f"{decision_id.strip()}::{style_label.strip().lower()}"
+
+
+def representation_fingerprint(
+    decision_id: str, style_label: str, representation: Mapping[str, Any]
+) -> str:
+    hasher = hashlib.sha256()
+    hasher.update(decision_id.strip().encode("utf-8"))
+    hasher.update(style_label.strip().lower().encode("utf-8"))
+    rep_text = str(representation.get("representation", "")).strip()
+    hasher.update(rep_text.encode("utf-8"))
+    hooks = representation.get("reasoning_hooks") or []
+    if isinstance(hooks, Iterable):
+        for hook in hooks:
+            hasher.update(str(hook).strip().encode("utf-8"))
+    bias_name = representation.get("bias") or representation.get("style_label") or ""
+    hasher.update(str(bias_name).strip().lower().encode("utf-8"))
+    return hasher.hexdigest()
+
+
+def load_evaluation_cache(path: Path, overwrite: bool) -> dict[str, Any]:
+    if overwrite or not path.exists():
+        return {"version": CACHE_VERSION, "entries": {}}
+    try:
+        data = json.loads(path.read_text())
+    except json.JSONDecodeError:
+        return {"version": CACHE_VERSION, "entries": {}}
+    if data.get("version") != CACHE_VERSION:
+        return {"version": CACHE_VERSION, "entries": {}}
+    entries = data.get("entries")
+    if not isinstance(entries, dict):
+        entries = {}
+    return {"version": CACHE_VERSION, "entries": entries}
+
+
+def save_evaluation_cache(path: Path, cache: Mapping[str, Any]) -> None:
+    payload = {
+        "version": CACHE_VERSION,
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "entries": cache.get("entries", {}),
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2))
+
+
+def get_cached_evaluation(
+    cache_entries: Mapping[str, Any], key: str, fingerprint: str
+) -> Mapping[str, Any] | None:
+    entry = cache_entries.get(key)
+    if not isinstance(entry, Mapping):
+        return None
+    if entry.get("representation_hash") != fingerprint:
+        return None
+    evaluation = entry.get("evaluation")
+    if isinstance(evaluation, Mapping):
+        return dict(evaluation)
+    return None
 
 
 def load_json(path: Path) -> Any:
@@ -199,6 +266,11 @@ def main() -> None:
     parser.add_argument("--start-index", type=int, default=0)
     parser.add_argument("--threads", type=int, default=DEFAULT_THREADS)
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument(
+        "--cache-path",
+        type=Path,
+        help="Optional JSON cache file for per-representation sensitivity scores",
+    )
 
     args = parser.parse_args()
 
@@ -233,72 +305,175 @@ def main() -> None:
             f"Filtered representations {filtered_output} already exists. Pass --overwrite to overwrite."
         )
 
-    client = OpenRouterChatClient(api_key=api_key)
+    cache_path = args.cache_path if args.cache_path else default_cache_path(summary_output)
+    cache_data = load_evaluation_cache(cache_path, args.overwrite)
+    cache_entries: dict[str, Any] = dict(cache_data.get("entries", {}))
+    cache_hits = 0
+    cache_misses = 0
+    cache_updated = False
 
-    thread_local_bundle: threading.local = threading.local()
+    thread_local_client: threading.local = threading.local()
 
     def get_client() -> OpenRouterChatClient:
-        local_client = getattr(thread_local_bundle, "client", None)
+        local_client = getattr(thread_local_client, "client", None)
         if local_client is None:
-            thread_local_bundle.client = client
-            return client
+            local_client = OpenRouterChatClient(api_key=api_key)
+            thread_local_client.client = local_client
         return local_client
 
     evaluations: list[Mapping[str, Any]] = []
     case_metrics: defaultdict[str, list[Mapping[str, Any]]] = defaultdict(list)
 
-    def process_record(record: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    def register_result(
+        *,
+        decision_id: str,
+        case: Mapping[str, Any],
+        bias_payload: Mapping[str, Any],
+        evaluation: Mapping[str, Any],
+    ) -> None:
+        entry = {
+            "decision_id": decision_id,
+            "topic": case.get("topic"),
+            "style_label": bias_payload.get("style_label"),
+            "bias": bias_payload.get("bias"),
+            "sensitivity_score": evaluation.get("sensitivity_score"),
+            "confidence": evaluation.get("confidence"),
+            "rationale": evaluation.get("rationale"),
+            "representation_type": "bias",
+            "representation": bias_payload.get("representation"),
+        }
+        evaluations.append(entry)
+        case_metrics[decision_id].append(entry)
+
+    def register_error(
+        *,
+        decision_id: str,
+        case: Mapping[str, Any] | None,
+        bias_payload: Mapping[str, Any] | None,
+        message: str,
+    ) -> None:
+        evaluations.append(
+            {
+                "decision_id": decision_id,
+                "topic": (case or {}).get("topic"),
+                "style_label": (bias_payload or {}).get("style_label"),
+                "bias": (bias_payload or {}).get("bias"),
+                "error": message,
+                "representation_type": "bias",
+            }
+        )
+
+    work_items: list[dict[str, Any]] = []
+
+    for record in target_records:
         decision_id = str(record.get("decision_id"))
         case = decisions.get(decision_id)
         if not case:
-            raise ValueError(f"Decision {decision_id} missing from decision problems file")
-        results: list[Mapping[str, Any]] = []
-        for bias_payload in record.get("bias_representations", []) or []:
+            register_error(
+                decision_id=decision_id,
+                case=None,
+                bias_payload=None,
+                message="Decision missing from decision problems file",
+            )
+            continue
+
+        bias_payloads = record.get("bias_representations", []) or []
+        for bias_payload in bias_payloads:
             if not isinstance(bias_payload, Mapping):
                 continue
+            style_label = str(bias_payload.get("style_label") or "").strip()
+            if not style_label:
+                register_error(
+                    decision_id=decision_id,
+                    case=case,
+                    bias_payload=bias_payload,
+                    message="Missing style_label on representation",
+                )
+                continue
+
+            representation_text = str(bias_payload.get("representation", "")).strip()
+            if not representation_text:
+                register_error(
+                    decision_id=decision_id,
+                    case=case,
+                    bias_payload=bias_payload,
+                    message="Representation text empty",
+                )
+                continue
+
+            cache_key = build_cache_key(decision_id, style_label)
+            fingerprint = representation_fingerprint(decision_id, style_label, bias_payload)
+            cached_eval = get_cached_evaluation(cache_entries, cache_key, fingerprint)
+            if cached_eval is not None:
+                cache_hits += 1
+                register_result(
+                    decision_id=decision_id,
+                    case=case,
+                    bias_payload=bias_payload,
+                    evaluation=cached_eval,
+                )
+                continue
+
+            cache_misses += 1
+            work_items.append(
+                {
+                    "key": cache_key,
+                    "decision_id": decision_id,
+                    "case": case,
+                    "bias_payload": bias_payload,
+                    "fingerprint": fingerprint,
+                }
+            )
+
+    def process_item(item: dict[str, Any]) -> tuple[dict[str, Any], Mapping[str, Any] | None, str | None]:
+        try:
             evaluator = get_client()
             evaluation = evaluate_representation(
                 client=evaluator,
                 model=args.model,
                 temperature=args.temperature,
-                case=case,
-                representation=bias_payload,
+                case=item["case"],
+                representation=item["bias_payload"],
             )
-            payload = {
-                "decision_id": decision_id,
-                "topic": case.get("topic"),
-                "style_label": bias_payload.get("style_label"),
-                "bias": bias_payload.get("bias"),
-                "sensitivity_score": evaluation["sensitivity_score"],
-                "confidence": evaluation["confidence"],
-                "rationale": evaluation["rationale"],
-                "representation_type": "bias",
-                "representation": bias_payload.get("representation"),
-            }
-            results.append(payload)
-        return results
+            return item, evaluation, None
+        except Exception as exc:  # noqa: BLE001
+            return item, None, str(exc)
 
-    with ThreadPoolExecutor(max_workers=max(1, args.threads)) as executor:
-        future_to_record = {
-            executor.submit(process_record, rec): rec for rec in target_records
-        }
-        for future in tqdm(as_completed(future_to_record), total=len(future_to_record), desc="Scoring bias sensitivity"):
-            record = future_to_record[future]
-            decision_id = str(record.get("decision_id"))
-            try:
-                record_evals = future.result()
-            except Exception as exc:  # noqa: BLE001
-                evaluations.append(
-                    {
-                        "decision_id": decision_id,
-                        "topic": decisions.get(decision_id, {}).get("topic"),
-                        "error": str(exc),
+    if work_items:
+        with ThreadPoolExecutor(max_workers=max(1, args.threads)) as executor:
+            future_to_item = {executor.submit(process_item, item): item for item in work_items}
+            for future in tqdm(
+                as_completed(future_to_item),
+                total=len(future_to_item),
+                desc="Scoring bias sensitivity",
+            ):
+                item, evaluation, error = future.result()
+                decision_id = item["decision_id"]
+                bias_payload = item["bias_payload"]
+                case = item["case"]
+                if evaluation is not None:
+                    register_result(
+                        decision_id=decision_id,
+                        case=case,
+                        bias_payload=bias_payload,
+                        evaluation=evaluation,
+                    )
+                    cache_entries[item["key"]] = {
+                        "representation_hash": item["fingerprint"],
+                        "evaluation": evaluation,
+                        "updated_at": datetime.now(timezone.utc).isoformat(),
                     }
-                )
-                continue
-            evaluations.extend(record_evals)
-            for entry in record_evals:
-                case_metrics[entry["decision_id"]].append(entry)
+                    cache_updated = True
+                else:
+                    register_error(
+                        decision_id=decision_id,
+                        case=case,
+                        bias_payload=bias_payload,
+                        message=error or "Unknown error",
+                    )
+
+    cache_data["entries"] = cache_entries
+    save_evaluation_cache(cache_path, cache_data)
 
     case_summaries: list[Mapping[str, Any]] = []
     for decision_id, metrics in case_metrics.items():
@@ -347,6 +522,13 @@ def main() -> None:
             "top_cases": args.top_cases,
             "start_index": args.start_index,
             "max_cases": args.max_cases,
+        },
+        "cache": {
+            "path": str(cache_path),
+            "hits": cache_hits,
+            "misses": cache_misses,
+            "entries": len(cache_entries),
+            "updated": cache_updated,
         },
         "evaluations": evaluations,
         "case_rankings": ranked_cases,

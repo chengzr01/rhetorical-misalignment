@@ -297,11 +297,11 @@ def build_output_record(
 
 
 def prepare_existing(
-    output_path: Path, overwrite: bool
+    cache_path: Path, overwrite: bool
 ) -> tuple[list[dict[str, Any]], set[str]]:
-    if not output_path.exists() or overwrite:
+    if not cache_path.exists() or overwrite:
         return [], set()
-    existing = json.loads(output_path.read_text())
+    existing = json.loads(cache_path.read_text())
     records = existing.get("records", [])
     seen = {r.get("source_question_id") for r in records if r.get("source_question_id")}
     return records, seen
@@ -310,6 +310,7 @@ def prepare_existing(
 def write_output(
     *,
     output_path: Path,
+    cache_path: Path | None,
     questions_path: Path,
     prompt_path: Path,
     model: str,
@@ -329,6 +330,9 @@ def write_output(
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2))
+    if cache_path is not None and cache_path != output_path:
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(payload, indent=2))
 
 
 def main() -> None:
@@ -350,6 +354,10 @@ def main() -> None:
     parser.add_argument("--save-interval", type=int, default=5)
     parser.add_argument("--threads", type=int, default=8, help="Parallel workers for curation")
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument(
+        "--cache-path",
+        help="Optional path storing cached decision problems for resume support",
+    )
 
     args = parser.parse_args()
 
@@ -360,10 +368,11 @@ def main() -> None:
     questions_path = Path(args.questions_path)
     prompt_path = Path(args.prompt_path)
     output_path = Path(args.output)
+    cache_path = Path(args.cache_path) if args.cache_path else output_path
 
     questions = load_questions(questions_path)
     prompt = load_prompt(prompt_path)
-    existing_records, seen_sources = prepare_existing(output_path, args.overwrite)
+    existing_records, seen_sources = prepare_existing(cache_path, args.overwrite)
 
     start = max(args.start_index, 0)
     if start >= len(questions):
@@ -439,6 +448,7 @@ def main() -> None:
                     ordered_records = [successful_records[key] for key in sorted(successful_records.keys())]
                     write_output(
                         output_path=output_path,
+                        cache_path=cache_path,
                         questions_path=questions_path,
                         prompt_path=prompt_path,
                         model=args.model,
@@ -453,6 +463,7 @@ def main() -> None:
     if ordered_records:
         write_output(
             output_path=output_path,
+            cache_path=cache_path,
             questions_path=questions_path,
             prompt_path=prompt_path,
             model=args.model,

@@ -143,7 +143,7 @@ def summarize_metrics(runs: list[Mapping[str, Any]]) -> Mapping[str, Any]:
 
 
 def prepare_existing(
-    output_path: Path,
+    cache_path: Path,
     overwrite: bool,
     requested_styles: set[str] | None,
 ) -> tuple[
@@ -151,10 +151,10 @@ def prepare_existing(
     set[str],
     defaultdict[str, defaultdict[str, list[Mapping[str, Any]]]],
 ]:
-    if not output_path.exists() or overwrite:
+    if not cache_path.exists() or overwrite:
         return [], set(), defaultdict(lambda: defaultdict(list))
 
-    existing_data = load_json(output_path)
+    existing_data = load_json(cache_path)
     records = existing_data.get("records", [])
     processed_ids = {rec.get("decision_id") for rec in records if rec.get("decision_id")}
 
@@ -236,6 +236,7 @@ def prepare_existing(
 def write_output(
     *,
     output_path: Path,
+    cache_path: Path | None,
     decision_path: Path,
     representations_path: Path,
     rational_prompt: str,
@@ -305,6 +306,9 @@ def write_output(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2))
+    if cache_path is not None and cache_path != output_path:
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(payload, indent=2))
 
     return principal_summaries, comparison
 
@@ -324,6 +328,10 @@ def main() -> None:
     parser.add_argument("--save-interval", type=int, default=5)
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--threads", type=int, default=8, help="Parallel workers for validation")
+    parser.add_argument(
+        "--cache-path",
+        help="Optional cache location for previously evaluated principal runs",
+    )
 
     args = parser.parse_args()
 
@@ -334,6 +342,7 @@ def main() -> None:
     decision_path = Path(args.decision_problems)
     representations_path = Path(args.representations)
     output_path = Path(args.output)
+    cache_path = Path(args.cache_path) if args.cache_path else output_path
 
     decision_data = load_json(decision_path)
     decisions = {str(rec.get("id")): rec for rec in decision_data.get("records", [])}
@@ -351,7 +360,7 @@ def main() -> None:
         requested_styles = None
 
     existing_records, processed_ids, existing_principal_runs = prepare_existing(
-        output_path, args.overwrite, requested_styles
+        cache_path, args.overwrite, requested_styles
     )
     processed_ids = {str(pid) for pid in processed_ids}
 
@@ -520,6 +529,7 @@ def main() -> None:
                     ]
                     last_principal_summaries, last_comparison = write_output(
                         output_path=output_path,
+                        cache_path=cache_path,
                         decision_path=decision_path,
                         representations_path=representations_path,
                         rational_prompt=str(args.rational_prompt),
@@ -540,6 +550,7 @@ def main() -> None:
 
     last_principal_summaries, last_comparison = write_output(
         output_path=output_path,
+        cache_path=cache_path,
         decision_path=decision_path,
         representations_path=representations_path,
         rational_prompt=str(args.rational_prompt),
