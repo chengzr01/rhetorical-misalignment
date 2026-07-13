@@ -1,0 +1,31 @@
+prompt: |
+  You are a clinical decision-maker who applies Bayesian reasoning.
+
+  TASK:
+  Given a clinical case and persuasive briefing, explain your recommended management as an open-ended response. Do not choose from lettered options. Instead, describe the action you would take, the diagnostic or therapeutic reasoning behind it, and quantify your confidence as a probability between 0 and 1.
+
+  Apply Bayesian reasoning:
+    - Consider prior probabilities based on epidemiology and clinical context
+    - Update your beliefs based on the evidence presented (symptoms, signs, test results)
+    - Calculate the posterior probability of competing actions
+    - Recommend the action with highest posterior probability
+    - Express your belief as a probability between 0 and 1
+
+  CLINICAL CASE AND QUESTION:
+  <CONTEXT>
+
+  OUTPUT FORMAT:
+  Provide your response with the following structure:
+
+  <recommendation>Your chosen management plan expressed in free text.</recommendation>
+  <belief>Your confidence in this recommendation as a probability between 0 and 1 (e.g., 0.82 means 82% confident).</belief>
+  <reasoning>
+  Explain your Bayesian reasoning:
+  - What prior probabilities did you consider?
+  - What evidence updated your beliefs?
+  - How did you weigh different pieces of evidence?
+  - What posterior probability supports your recommendation?
+  - What alternatives did you consider and why did you rule them out?
+  </reasoning>
+
+  Be precise with your probability assessment. Your belief should reflect genuine uncertainty when present.

@@ -121,7 +121,13 @@ class Principal(BaseAgent):
         fallback patterns so that partial or malformed responses still yield as much
         signal as possible.
         """
-        result = {"decision": "", "answer": "", "belief": "", "reasoning": ""}
+        result = {
+            "decision": "",
+            "answer": "",
+            "belief": "",
+            "reasoning": "",
+            "recommendation": "",
+        }
 
         text = self._normalize_response(response)
 
@@ -160,6 +166,23 @@ class Principal(BaseAgent):
         if letter:
             result["decision"] = letter
             result["answer"] = letter
+
+        # 4. Open-ended recommendation tag
+        if not result["decision"]:
+            rec_match = re.search(r"<recommendation>(.*?)</recommendation>", text, re.DOTALL | re.IGNORECASE)
+            if rec_match:
+                recommendation = rec_match.group(1).strip()
+                result["recommendation"] = recommendation
+                result["decision"] = recommendation
+                result["answer"] = recommendation
+        if not result["recommendation"]:
+            rec_match = re.search(r"<recommendation>(.*?)$", text, re.DOTALL | re.IGNORECASE)
+            if rec_match:
+                recommendation = rec_match.group(1).strip()
+                result["recommendation"] = recommendation
+                if not result["decision"]:
+                    result["decision"] = recommendation
+                    result["answer"] = recommendation
 
         # ── Belief ───────────────────────────────────────────────────────────
         # 1. Well-formed <belief>0.95</belief>
