@@ -58,14 +58,22 @@ REPRESENTATION_MODEL="${REPRESENTATION_MODEL:-deepseek/deepseek-chat-v3.1}"
 REPRESENTATION_TEMPERATURE="${REPRESENTATION_TEMPERATURE:-0.2}"
 REPRESENTATION_SAVE_INTERVAL="${REPRESENTATION_SAVE_INTERVAL:-5}"
 
+SENSITIVITY_OUTPUT="${SENSITIVITY_OUTPUT:-experiments/analysis/bias_sensitivity_summary.json}"
+SENSITIVITY_FILTERED_REPRESENTATIONS="${SENSITIVITY_FILTERED_REPRESENTATIONS:-experiments/decision_problems/usmle_bias_representations_filtered.json}"
+SENSITIVITY_MODEL="${SENSITIVITY_MODEL:-deepseek/deepseek-chat-v3.1}"
+SENSITIVITY_TEMPERATURE="${SENSITIVITY_TEMPERATURE:-0.2}"
+SENSITIVITY_TOP_CASES="${SENSITIVITY_TOP_CASES:-60}"
+SENSITIVITY_THREADS="${SENSITIVITY_THREADS:-4}"
+
 VALIDATION_OUTPUT="${VALIDATION_OUTPUT:-experiments/analysis/decision_maker_validation.json}"
 VALIDATION_MODEL="${VALIDATION_MODEL:-deepseek/deepseek-chat-v3.1}"
 VALIDATION_TEMPERATURE="${VALIDATION_TEMPERATURE:-0.2}"
 VALIDATION_SAVE_INTERVAL="${VALIDATION_SAVE_INTERVAL:-5}"
+VALIDATION_REPRESENTATIONS="${VALIDATION_REPRESENTATIONS:-$SENSITIVITY_FILTERED_REPRESENTATIONS}"
 
 # ── Step 1: Curate decision problems ─────────────────────────────────────
 
-log "Step 1/3: Curating decision problems"
+log "Step 1/4: Curating decision problems"
 
 declare -a CURATE_ARGS=(
   "--questions-path" "$CURATION_QUESTIONS_PATH"
@@ -89,7 +97,7 @@ python pipeline/curate_decision_problems.py "${CURATE_ARGS[@]}"
 
 # ── Step 2: Generate bias representations ────────────────────────────────
 
-log "Step 2/3: Generating bias-aligned representations"
+log "Step 2/4: Generating bias-aligned representations"
 
 declare -a REPRESENT_ARGS=(
   "--decision-problems" "$CURATION_OUTPUT"
@@ -117,13 +125,40 @@ fi
 
 python pipeline/generate_bias_representations.py "${REPRESENT_ARGS[@]}"
 
-# ── Step 3: Validate decision makers ─────────────────────────────────────
+# ── Step 3: Score bias sensitivity and filter cases ───────────────────────
 
-log "Step 3/3: Evaluating rational vs behavioral principals"
+log "Step 3/4: Scoring bias sensitivity for bias representations"
+
+declare -a SENSITIVITY_ARGS=(
+  "--decision-problems" "$CURATION_OUTPUT"
+  "--representations" "$REPRESENTATION_OUTPUT"
+  "--summary-output" "$SENSITIVITY_OUTPUT"
+  "--filtered-representations" "$SENSITIVITY_FILTERED_REPRESENTATIONS"
+  "--model" "$SENSITIVITY_MODEL"
+  "--temperature" "$SENSITIVITY_TEMPERATURE"
+  "--top-cases" "$SENSITIVITY_TOP_CASES"
+  "--threads" "$SENSITIVITY_THREADS"
+)
+
+if [ -n "${SENSITIVITY_MAX_CASES:-}" ]; then
+  SENSITIVITY_ARGS+=("--max-cases" "$SENSITIVITY_MAX_CASES")
+fi
+if [ -n "${SENSITIVITY_START_INDEX:-}" ]; then
+  SENSITIVITY_ARGS+=("--start-index" "$SENSITIVITY_START_INDEX")
+fi
+if [ "${SENSITIVITY_OVERWRITE:-false}" = "true" ]; then
+  SENSITIVITY_ARGS+=("--overwrite")
+fi
+
+python pipeline/evaluate_bias_sensitivity.py "${SENSITIVITY_ARGS[@]}"
+
+# ── Step 4: Validate decision makers ─────────────────────────────────────
+
+log "Step 4/4: Evaluating rational vs behavioral principals"
 
 declare -a VALIDATE_ARGS=(
   "--decision-problems" "$CURATION_OUTPUT"
-  "--representations" "$REPRESENTATION_OUTPUT"
+  "--representations" "$VALIDATION_REPRESENTATIONS"
   "--output" "$VALIDATION_OUTPUT"
   "--rational-prompt" "prompts/principal/bayesian_belief.yaml"
   "--behavioral-prompt" "prompts/principal/behavioral_belief.yaml"
@@ -148,4 +183,4 @@ fi
 
 python pipeline/validate_decision_makers.py "${VALIDATE_ARGS[@]}"
 
-log "Pipeline complete. Results written to ${VALIDATION_OUTPUT}"
+log "Pipeline complete. Validation results: ${VALIDATION_OUTPUT} | Bias sensitivity summary: ${SENSITIVITY_OUTPUT}"

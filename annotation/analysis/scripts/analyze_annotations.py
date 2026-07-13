@@ -19,8 +19,11 @@ Usage:
 import argparse
 import csv
 import json
+import math
 import os
+import re
 import statistics
+from typing import Optional
 from collections import defaultdict
 from datetime import datetime
 
@@ -51,6 +54,57 @@ def calculate_belief_change(before, after):
     if before is None or after is None:
         return None
     return after - before
+
+
+def _wilson_ci(successes: int, n: int, z: float = 1.96) -> tuple:
+    """Wilson score interval for a binomial proportion."""
+    if n == 0:
+        return (0.0, 0.0)
+    phat = successes / n
+    denom = 1 + (z ** 2) / n
+    center = phat + (z ** 2) / (2 * n)
+    margin = z * math.sqrt((phat * (1 - phat) + (z ** 2) / (4 * n)) / n)
+    lower = max(0.0, (center - margin) / denom)
+    upper = min(1.0, (center + margin) / denom)
+    return (lower, upper)
+
+
+def _cohens_h(p1: float, p2: float) -> float:
+    """Effect size for difference between two proportions."""
+    eps = 1e-12
+    p1 = min(max(p1, eps), 1 - eps)
+    p2 = min(max(p2, eps), 1 - eps)
+    return 2 * math.asin(math.sqrt(p1)) - 2 * math.asin(math.sqrt(p2))
+
+
+def _parse_years_of_practice(value) -> Optional[float]:
+    """Extract a numeric years-of-practice value from free-form text."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    match = re.search(r"\d+(?:\.\d+)?", text)
+    if match:
+        try:
+            return float(match.group(0))
+        except ValueError:
+            return None
+    return None
+
+
+def _pearson_correlation(xs, ys):
+    n = len(xs)
+    if n < 2 or n != len(ys):
+        return None
+    mean_x = statistics.mean(xs)
+    mean_y = statistics.mean(ys)
+    cov = sum((x - mean_x) * (y - mean_y) for x, y in zip(xs, ys))
+    var_x = sum((x - mean_x) ** 2 for x in xs)
+    var_y = sum((y - mean_y) ** 2 for y in ys)
+    if var_x <= 0 or var_y <= 0:
+        return None
+    return cov / math.sqrt(var_x * var_y)
 
 
 def _section(title: str, width: int = 80) -> None:
@@ -196,6 +250,8 @@ def run_stats(annotations: list) -> None:
     else:
         print("\n  No demographic information available (all anonymous).")
 
+    _print_career_years_analysis(annotations)
+
     print("\n" + "=" * 80)
 
 
@@ -246,6 +302,8 @@ def run_compare(annotations: list) -> None:
         name = (model[:47] + '...') if len(model) > 50 else model
         print(f"{name:<50} {m:>5} {chg:>8.1f}% {c2i:>5.1f}% {i2c:>5.1f}% {i2c - c2i:>+6.1f}%")
     print("\n  C→I = Correct → Incorrect (harmful)   I→C = Incorrect → Correct (helpful)")
+
+    _print_rate_statistics(model_stats)
 
     _print_belief_change_tables(model_stats)
 
@@ -322,6 +380,264 @@ def _print_model_detail(model: str, stats: dict) -> None:
               f"  ={len(unc) / len(bcs) * 100:.1f}%"
               + (f"  (mean↑={statistics.mean(inc):.3f}" if inc else "")
               + (f"  mean↓={statistics.mean(dec):.3f})" if dec else ""))
+
+
+def _aggregate_rate_totals(model_stats: dict, keys: list) -> dict:
+    totals = {k: 0 for k in keys}
+    totals['n'] = 0
+    for stats in model_stats.values():
+        totals['n'] += stats['n']
+        for key in keys:
+            totals[key] += stats.get(key, 0)
+    return totals
+
+
+def _print_rate_statistics(model_stats: dict) -> None:
+    metrics = [
+        ('answer_changed', 'Answer change'),
+        ('correct_to_incorrect', 'C→I (harmful)'),
+        ('incorrect_to_correct', 'I→C (helpful)'),
+    ]
+    totals = _aggregate_rate_totals(model_stats, [m[0] for m in metrics])
+    if totals['n'] == 0:
+        return
+
+    _section("DECISION CHANGE RATES: CONFIDENCE INTERVALS AND EFFECT SIZES")
+    print(f"\n{'Model':<45} {'Metric':<20} {'Rate':>7} {'95% CI':>20} {'h vs rest':>11}")
+    print("-" * 105)
+
+    for model, stats in sorted(model_stats.items(), key=lambda x: x[1]['n'], reverse=True):
+        n = stats['n']
+        if n == 0:
+            continue
+        rows = []
+        for key, label in metrics:
+            count = stats.get(key, 0)
+            rate = count / n
+            ci_low, ci_high = _wilson_ci(count, n)
+            rest_n = totals['n'] - n
+            rest_count = totals[key] - count
+            if rest_n > 0 and rest_count >= 0:
+                rest_rate = rest_count / rest_n if rest_n else 0.0
+                effect = _cohens_h(rate, rest_rate)
+                effect_str = f"{effect:+.3f}"
+            else:
+                effect_str = "n/a"
+            rows.append((label, rate, ci_low, ci_high, effect_str))
+
+        name = (model[:42] + '...') if len(model) > 45 else model
+        for idx, (label, rate, ci_low, ci_high, effect_str) in enumerate(rows):
+            model_col = name if idx == 0 else ''
+            ci_str = f"[{ci_low * 100:.1f}%, {ci_high * 100:.1f}%]"
+            print(f"{model_col:<45} {label:<20} {rate * 100:>6.1f}% {ci_str:>20} {effect_str:>11}")
+
+    overall_rows = []
+    for key, label in metrics:
+        count = totals[key]
+        rate = count / totals['n']
+        ci_low, ci_high = _wilson_ci(count, totals['n'])
+        ci_str = f"[{ci_low * 100:.1f}%, {ci_high * 100:.1f}%]"
+        overall_rows.append((label, rate, ci_str))
+
+    print("-" * 105)
+    for label, rate, ci_str in overall_rows:
+        print(f"{'Overall':<45} {label:<20} {rate * 100:>6.1f}% {ci_str:>20} {'—':>11}")
+
+
+def _print_career_years_analysis(annotations: list) -> None:
+    annotated_years = []
+    annotator_years = {}
+    for a in annotations:
+        years = _parse_years_of_practice(a.get('demographics', {}).get('years_of_practice'))
+        if years is None:
+            continue
+        annotated_years.append((a, years))
+        annotator_id = a.get('annotator_id')
+        if annotator_id and annotator_id not in annotator_years:
+            annotator_years[annotator_id] = years
+
+    if not annotated_years and not annotator_years:
+        _section("CAREER EXPERIENCE ANALYSIS")
+        print("\n  No years-of-practice data found in demographics.")
+        return
+
+    _section("CAREER EXPERIENCE ANALYSIS")
+
+    def _summary(values):
+        if not values:
+            return None
+        return {
+            'n': len(values),
+            'mean': statistics.mean(values),
+            'median': statistics.median(values),
+            'stdev': statistics.stdev(values) if len(values) > 1 else 0.0,
+            'min': min(values),
+            'max': max(values),
+        }
+
+    annotator_summary = _summary(list(annotator_years.values()))
+    annotation_summary = _summary([years for _, years in annotated_years])
+
+    if annotator_summary:
+        s = annotator_summary
+        print(f"\n  Unique annotators with years reported : {s['n']}")
+        print(f"    mean={s['mean']:.1f}  median={s['median']:.1f}"
+              f"  stdev={s['stdev']:.1f}  min={s['min']:.1f}  max={s['max']:.1f}")
+    if annotation_summary:
+        s = annotation_summary
+        print(f"\n  Annotation-level entries (with repeats): {s['n']}")
+        print(f"    mean={s['mean']:.1f}  median={s['median']:.1f}"
+              f"  stdev={s['stdev']:.1f}  min={s['min']:.1f}  max={s['max']:.1f}")
+
+    bins = [
+        ("<2 yrs", lambda y: y < 2),
+        ("2–5 yrs", lambda y: 2 <= y < 5),
+        ("5–10 yrs", lambda y: 5 <= y < 10),
+        ("10–20 yrs", lambda y: 10 <= y < 20),
+        ("20+ yrs", lambda y: y >= 20),
+    ]
+
+    change_data = {
+        'answer_change': [],
+        'harmful': [],
+        'helpful': [],
+    }
+    for ann, yrs in annotated_years:
+        change = ann.get('step1_to_step2_changes', {}).get('answer_changed', False)
+        s1 = ann.get('step1', {})
+        s2 = ann.get('step2', {})
+        s1c = s1.get('is_correct')
+        s2c = s2.get('is_correct')
+        harmful = bool(change and (s1c is True) and (s2c is False))
+        helpful = bool(change and (s1c is False) and (s2c is True))
+        change_data['answer_change'].append((yrs, 1 if change else 0))
+        change_data['harmful'].append((yrs, 1 if harmful else 0))
+        change_data['helpful'].append((yrs, 1 if helpful else 0))
+
+    band_results = []
+    for label, predicate in bins:
+        subset = [(ann, yrs) for ann, yrs in annotated_years if predicate(yrs)]
+        row = {'label': label, 'n': len(subset)}
+        if subset:
+            row['mean_years'] = statistics.mean([yrs for _, yrs in subset])
+            acc_rows = {}
+            for step in ['step1', 'step2', 'step3']:
+                total = 0
+                correct = 0
+                for ann, _ in subset:
+                    is_correct = ann.get(step, {}).get('is_correct')
+                    if is_correct is None:
+                        continue
+                    total += 1
+                    if is_correct:
+                        correct += 1
+                acc = (correct / total * 100) if total else float('nan')
+                acc_rows[step] = (acc, total)
+            change_count = 0
+            harmful_count = 0
+            helpful_count = 0
+            for ann, _ in subset:
+                change_flag = ann.get('step1_to_step2_changes', {}).get('answer_changed', False)
+                if change_flag:
+                    change_count += 1
+                    s1c = ann.get('step1', {}).get('is_correct')
+                    s2c = ann.get('step2', {}).get('is_correct')
+                    if s1c is True and s2c is False:
+                        harmful_count += 1
+                    elif s1c is False and s2c is True:
+                        helpful_count += 1
+            row['accuracy'] = acc_rows
+            row['change'] = {
+                'answer_change': (change_count, len(subset)),
+                'harmful': (harmful_count, len(subset)),
+                'helpful': (helpful_count, len(subset)),
+            }
+        else:
+            row['mean_years'] = None
+            row['accuracy'] = {step: (float('nan'), 0) for step in ['step1', 'step2', 'step3']}
+            row['change'] = {k: (0, 0) for k in ['answer_change', 'harmful', 'helpful']}
+        band_results.append(row)
+
+    print("\n  Accuracy by experience band (annotation-level):")
+    header = ("    Band", "n", "Step1 acc", "Step2 acc", "Step3 acc", "Mean yrs")
+    print(f"  {header[0]:<12} {header[1]:>4} {header[2]:>11} {header[3]:>11} {header[4]:>11} {header[5]:>10}")
+    print(f"  {'-' * 64}")
+    for row in band_results:
+        label = row['label']
+        n = row['n']
+        mean_years = row['mean_years']
+        s1, s2, s3 = (row['accuracy'][step] for step in ['step1', 'step2', 'step3'])
+        if n == 0:
+            print(f"  {label:<12}    0 {'-' * 42}")
+        else:
+            print(
+                f"  {label:<12} {n:>4} "
+                f"{(f'{s1[0]:5.1f}%/{s1[1]}' if s1[1] else '   n/a '):>11} "
+                f"{(f'{s2[0]:5.1f}%/{s2[1]}' if s2[1] else '   n/a '):>11} "
+                f"{(f'{s3[0]:5.1f}%/{s3[1]}' if s3[1] else '   n/a '):>11} "
+                f"{mean_years:>10.1f}"
+            )
+
+    print("\n  Decision-change rates by experience band (Step 1 → Step 2):")
+    header_change = ("    Band", "n", "Ans change", "C→I", "I→C")
+    print(f"  {header_change[0]:<12} {header_change[1]:>4} {header_change[2]:>13} {header_change[3]:>8} {header_change[4]:>8}")
+    print(f"  {'-' * 58}")
+    for row in band_results:
+        label = row['label']
+        n = row['n']
+        chg = row['change']['answer_change']
+        harmful = row['change']['harmful']
+        helpful = row['change']['helpful']
+        if n == 0:
+            print(f"  {label:<12}    0 {'-' * 41}")
+            continue
+        count_chg, total_chg = chg
+        count_harm, total_harm = harmful
+        count_help, total_help = helpful
+        chg_rate = count_chg / total_chg * 100 if total_chg else float('nan')
+        harm_rate = count_harm / total_harm * 100 if total_harm else float('nan')
+        help_rate = count_help / total_help * 100 if total_help else float('nan')
+        chg_str = f"{chg_rate:5.1f}%/{count_chg}" if not math.isnan(chg_rate) else "   n/a "
+        harm_str = f"{harm_rate:5.1f}%/{count_harm}" if not math.isnan(harm_rate) else "   n/a "
+        help_str = f"{help_rate:5.1f}%/{count_help}" if not math.isnan(help_rate) else "   n/a "
+        print(f"  {label:<12} {n:>4} {chg_str:>13} {harm_str:>8} {help_str:>8}")
+
+    corr_results = {}
+    for step in ['step1', 'step2', 'step3']:
+        xs = []
+        ys = []
+        for ann, yrs in annotated_years:
+            is_correct = ann.get(step, {}).get('is_correct')
+            if is_correct is None:
+                continue
+            xs.append(yrs)
+            ys.append(1 if is_correct else 0)
+        corr = _pearson_correlation(xs, ys)
+        corr_results[step] = (corr, len(xs))
+
+    print("\n  Pearson correlation between years of practice and accuracy:")
+    for step, (corr, n) in corr_results.items():
+        label = {'step1': 'Initial', 'step2': 'After AI', 'step3': 'After truth'}[step]
+        if corr is None:
+            print(f"    {label:<12}: insufficient data (n={n})")
+        else:
+            print(f"    {label:<12}: r={corr:+.3f}  (n={n})")
+
+    change_corr_labels = {
+        'answer_change': 'Answer change',
+        'harmful': 'C→I (harmful)',
+        'helpful': 'I→C (helpful)',
+    }
+    print("\n  Pearson correlation between years of practice and decision changes:")
+    for key, label in change_corr_labels.items():
+        xs = [yrs for yrs, _ in change_data[key]]
+        ys = [flag for _, flag in change_data[key]]
+        corr = _pearson_correlation(xs, ys)
+        n = len(xs)
+        if corr is None:
+            print(f"    {label:<16}: insufficient data (n={n})")
+        else:
+            print(f"    {label:<16}: r={corr:+.3f}  (n={n})")
 
 
 def _print_belief_change_tables(model_stats: dict) -> None:
