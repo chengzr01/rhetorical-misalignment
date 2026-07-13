@@ -5,7 +5,7 @@
 # Paraphrasing requires OpenRouter access (OPENROUTER_API_KEY).
 #
 # Usage: bash scripts/check_data_contamination.sh [model_key ...]
-#   - Without arguments evaluates default set: deepseek, gpt, claude
+#   - Without arguments evaluates default set: deepseek
 #   - You can also set EVAL_MODEL_KEYS="deepseek llama" to override.
 #
 
@@ -29,7 +29,7 @@ if [[ $# -gt 0 ]]; then
 elif [[ -n "${EVAL_MODEL_KEYS:-}" ]]; then
     read -r -a MODEL_KEYS <<< "${EVAL_MODEL_KEYS}"
 else
-    MODEL_KEYS=(deepseek gpt claude)
+    MODEL_KEYS=(deepseek)
 fi
 
 if [[ ${#MODEL_KEYS[@]} -eq 0 ]]; then
@@ -84,6 +84,7 @@ PARAPHRASE_TEMPERATURE="${PARAPHRASE_TEMPERATURE:-0.5}"
 PARAPHRASE_MAX_WORKERS="${PARAPHRASE_MAX_WORKERS:-4}"
 PARAPHRASE_RESUME="${PARAPHRASE_RESUME:-true}"
 PARAPHRASE_FORCE="${PARAPHRASE_FORCE:-false}"
+PARAPHRASE_CHECKPOINT_INTERVAL="${PARAPHRASE_CHECKPOINT_INTERVAL:-10}"
 
 PARAPHRASE_OPTIONS_MODEL="${PARAPHRASE_OPTIONS_MODEL:-$PARAPHRASE_MODEL}"
 PARAPHRASE_OPTIONS_PROMPT="${PARAPHRASE_OPTIONS_PROMPT:-prompts/paraphrase/paraphrase_option.yaml}"
@@ -91,6 +92,7 @@ PARAPHRASE_OPTIONS_TEMPERATURE="${PARAPHRASE_OPTIONS_TEMPERATURE:-$PARAPHRASE_TE
 PARAPHRASE_OPTIONS_MAX_WORKERS="${PARAPHRASE_OPTIONS_MAX_WORKERS:-$PARAPHRASE_MAX_WORKERS}"
 PARAPHRASE_OPTIONS_RESUME="${PARAPHRASE_OPTIONS_RESUME:-true}"
 PARAPHRASE_OPTIONS_FORCE="${PARAPHRASE_OPTIONS_FORCE:-false}"
+PARAPHRASE_OPTIONS_CHECKPOINT_INTERVAL="${PARAPHRASE_OPTIONS_CHECKPOINT_INTERVAL:-10}"
 
 SKIP_QUESTION_PARAPHRASE="${SKIP_PARAPHRASE:-false}"
 SKIP_OPTION_PARAPHRASE="${SKIP_OPTION_PARAPHRASE:-${SKIP_PERMUTE:-false}}"
@@ -143,25 +145,32 @@ fi
 # Paraphrased question variant
 # ------------------------------------------------------------------
 if [[ "$SKIP_QUESTION_PARAPHRASE" != "true" ]]; then
-    echo -e "\n${BLUE}Generating paraphrased question dataset...${NC}"
-    PARAPHRASE_ARGS=(
-        "pipeline/paraphrase_usmle_questions.py"
-        "--input" "$INPUT_DATASET"
-        "--output" "$PARAPHRASED_DATASET"
-        "--model" "$PARAPHRASE_MODEL"
-        "--temperature" "$PARAPHRASE_TEMPERATURE"
-        "--max-workers" "$PARAPHRASE_MAX_WORKERS"
-    )
-    if [[ -n "${PARAPHRASE_PROMPT:-}" ]]; then
-        PARAPHRASE_ARGS+=("--prompt" "$PARAPHRASE_PROMPT")
+    if [[ -f "$PARAPHRASED_DATASET" && "$PARAPHRASE_RESUME" == "true" && "$PARAPHRASE_FORCE" != "true" ]]; then
+        echo -e "\n${YELLOW}Paraphrased question dataset already exists; skipping regeneration (set PARAPHRASE_FORCE=true to rebuild).${NC}"
+    else
+        echo -e "\n${BLUE}Generating paraphrased question dataset...${NC}"
+        PARAPHRASE_ARGS=(
+            "pipeline/paraphrase_usmle_questions.py"
+            "--input" "$INPUT_DATASET"
+            "--output" "$PARAPHRASED_DATASET"
+            "--model" "$PARAPHRASE_MODEL"
+            "--temperature" "$PARAPHRASE_TEMPERATURE"
+            "--max-workers" "$PARAPHRASE_MAX_WORKERS"
+        )
+        if [[ -n "${PARAPHRASE_PROMPT:-}" ]]; then
+            PARAPHRASE_ARGS+=("--prompt" "$PARAPHRASE_PROMPT")
+        fi
+        if [[ "$PARAPHRASE_RESUME" == "true" ]]; then
+            PARAPHRASE_ARGS+=("--resume")
+        fi
+        if [[ "$PARAPHRASE_FORCE" == "true" ]]; then
+            PARAPHRASE_ARGS+=("--force")
+        fi
+        if [[ -n "$PARAPHRASE_CHECKPOINT_INTERVAL" ]]; then
+            PARAPHRASE_ARGS+=("--checkpoint-interval" "$PARAPHRASE_CHECKPOINT_INTERVAL")
+        fi
+        (cd "$REPO_ROOT" && python3 "${PARAPHRASE_ARGS[@]}")
     fi
-    if [[ "$PARAPHRASE_RESUME" == "true" ]]; then
-        PARAPHRASE_ARGS+=("--resume")
-    fi
-    if [[ "$PARAPHRASE_FORCE" == "true" ]]; then
-        PARAPHRASE_ARGS+=("--force")
-    fi
-    (cd "$REPO_ROOT" && python3 "${PARAPHRASE_ARGS[@]}")
 else
     echo -e "\n${YELLOW}Skipping question paraphrasing (SKIP_PARAPHRASE=true).${NC}"
 fi
@@ -174,23 +183,30 @@ fi
 # Paraphrased option variant (no shuffling)
 # ------------------------------------------------------------------
 if [[ "$SKIP_OPTION_PARAPHRASE" != "true" ]]; then
-    echo -e "\n${BLUE}Generating paraphrased option dataset...${NC}"
-    OPTION_ARGS=(
-        "pipeline/paraphrase_usmle_options.py"
-        "--input" "$INPUT_DATASET"
-        "--output" "$OPTIONS_PARAPHRASED_DATASET"
-        "--model" "$PARAPHRASE_OPTIONS_MODEL"
-        "--prompt" "$PARAPHRASE_OPTIONS_PROMPT"
-        "--temperature" "$PARAPHRASE_OPTIONS_TEMPERATURE"
-        "--max-workers" "$PARAPHRASE_OPTIONS_MAX_WORKERS"
-    )
-    if [[ "$PARAPHRASE_OPTIONS_RESUME" == "true" ]]; then
-        OPTION_ARGS+=("--resume")
+    if [[ -f "$OPTIONS_PARAPHRASED_DATASET" && "$PARAPHRASE_OPTIONS_RESUME" == "true" && "$PARAPHRASE_OPTIONS_FORCE" != "true" ]]; then
+        echo -e "\n${YELLOW}Paraphrased option dataset already exists; skipping regeneration (set PARAPHRASE_OPTIONS_FORCE=true to rebuild).${NC}"
+    else
+        echo -e "\n${BLUE}Generating paraphrased option dataset...${NC}"
+        OPTION_ARGS=(
+            "pipeline/paraphrase_usmle_options.py"
+            "--input" "$INPUT_DATASET"
+            "--output" "$OPTIONS_PARAPHRASED_DATASET"
+            "--model" "$PARAPHRASE_OPTIONS_MODEL"
+            "--prompt" "$PARAPHRASE_OPTIONS_PROMPT"
+            "--temperature" "$PARAPHRASE_OPTIONS_TEMPERATURE"
+            "--max-workers" "$PARAPHRASE_OPTIONS_MAX_WORKERS"
+        )
+        if [[ "$PARAPHRASE_OPTIONS_RESUME" == "true" ]]; then
+            OPTION_ARGS+=("--resume")
+        fi
+        if [[ "$PARAPHRASE_OPTIONS_FORCE" == "true" ]]; then
+            OPTION_ARGS+=("--force")
+        fi
+        if [[ -n "$PARAPHRASE_OPTIONS_CHECKPOINT_INTERVAL" ]]; then
+            OPTION_ARGS+=("--checkpoint-interval" "$PARAPHRASE_OPTIONS_CHECKPOINT_INTERVAL")
+        fi
+        (cd "$REPO_ROOT" && python3 "${OPTION_ARGS[@]}")
     fi
-    if [[ "$PARAPHRASE_OPTIONS_FORCE" == "true" ]]; then
-        OPTION_ARGS+=("--force")
-    fi
-    (cd "$REPO_ROOT" && python3 "${OPTION_ARGS[@]}")
 else
     echo -e "\n${YELLOW}Skipping option paraphrasing (SKIP_OPTION_PARAPHRASE=true).${NC}"
 fi

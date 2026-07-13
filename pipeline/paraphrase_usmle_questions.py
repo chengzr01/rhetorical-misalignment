@@ -24,6 +24,7 @@ import json
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import Lock
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
@@ -134,6 +135,8 @@ def paraphrase_questions(
     model: str,
     temperature: float,
     max_workers: int,
+    checkpoint_path: Path | None,
+    checkpoint_interval: int,
 ) -> List[Dict[str, Any]]:
     # Collect work items and inject already-finished records
     completed: Dict[str, Dict[str, Any]] = {}
@@ -151,10 +154,23 @@ def paraphrase_questions(
                 continue
         to_process.append(record)
 
+    ordered_ids = [record.get("id") for record in questions]
+
     if to_process:
         print(f"Paraphrasing {len(to_process)} questions using {model} (T={temperature})…")
     else:
         print("All questions already paraphrased; skipping API calls.")
+
+    checkpoint_lock = Lock()
+
+    def write_checkpoint() -> None:
+        if checkpoint_path is None:
+            return
+        ordered_records = [completed[qid] for qid in ordered_ids if qid in completed]
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+        checkpoint_path.write_text(
+            json.dumps(ordered_records, indent=2, ensure_ascii=False)
+        )
 
     if to_process:
         client = OpenRouterChatClient()
@@ -170,11 +186,24 @@ def paraphrase_questions(
                 ): record.get("id")
                 for record in to_process
             }
-            for future in tqdm(as_completed(futures), total=len(futures), desc="Paraphrasing"):
-                qid, rewritten = future.result()
-                completed[qid] = rewritten
+            with tqdm(total=len(futures), desc="Paraphrasing") as progress:
+                processed_since_checkpoint = 0
+                for future in as_completed(futures):
+                    qid, rewritten = future.result()
+                    completed[qid] = rewritten
+                    processed_since_checkpoint += 1
+                    progress.update(1)
+                    if (
+                        checkpoint_path is not None
+                        and processed_since_checkpoint >= checkpoint_interval
+                    ):
+                        with checkpoint_lock:
+                            write_checkpoint()
+                        processed_since_checkpoint = 0
+                if checkpoint_path is not None and processed_since_checkpoint > 0:
+                    with checkpoint_lock:
+                        write_checkpoint()
 
-    ordered_ids = [record.get("id") for record in questions]
     missing = [qid for qid in ordered_ids if qid not in completed]
     if missing:
         raise RuntimeError(f"Missing paraphrased records for ids: {missing[:10]}")
@@ -216,6 +245,8 @@ def main() -> None:
                         help="Ignore existing output even when --resume is supplied")
     parser.add_argument("--limit", type=int, default=None,
                         help="Process only the first N questions (debugging)")
+    parser.add_argument("--checkpoint-interval", type=int, default=10,
+                        help="Write partial results every N new paraphrases (0 disables)")
 
     args = parser.parse_args()
 
@@ -244,6 +275,10 @@ def main() -> None:
         model=args.model,
         temperature=args.temperature,
         max_workers=args.max_workers,
+        checkpoint_path=(
+            args.output if args.checkpoint_interval and args.checkpoint_interval > 0 else None
+        ),
+        checkpoint_interval=max(args.checkpoint_interval, 1),
     )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
