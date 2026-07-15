@@ -69,6 +69,17 @@ def _wilson_ci(successes: int, n: int, z: float = 1.96) -> tuple:
     return (lower, upper)
 
 
+def _wald_ci(successes: int, n: int, z: float = 1.96) -> tuple:
+    """Wald interval and standard error for a binomial proportion."""
+    if n == 0:
+        return (0.0, 0.0, 0.0)
+    phat = successes / n
+    se = math.sqrt(phat * (1 - phat) / n)
+    lower = max(0.0, phat - z * se)
+    upper = min(1.0, phat + z * se)
+    return (lower, upper, se)
+
+
 def _cohens_h(p1: float, p2: float) -> float:
     """Effect size for difference between two proportions."""
     eps = 1e-12
@@ -406,6 +417,9 @@ def _print_rate_statistics(model_stats: dict) -> None:
     print(f"\n{'Model':<45} {'Metric':<20} {'Rate':>7} {'95% CI':>20} {'h vs rest':>11}")
     print("-" * 105)
 
+    per_model_rows = {}
+    model_order = []
+
     for model, stats in sorted(model_stats.items(), key=lambda x: x[1]['n'], reverse=True):
         n = stats['n']
         if n == 0:
@@ -415,6 +429,7 @@ def _print_rate_statistics(model_stats: dict) -> None:
             count = stats.get(key, 0)
             rate = count / n
             ci_low, ci_high = _wilson_ci(count, n)
+            wald_low, wald_high, se = _wald_ci(count, n)
             rest_n = totals['n'] - n
             rest_count = totals[key] - count
             if rest_n > 0 and rest_count >= 0:
@@ -423,25 +438,67 @@ def _print_rate_statistics(model_stats: dict) -> None:
                 effect_str = f"{effect:+.3f}"
             else:
                 effect_str = "n/a"
-            rows.append((label, rate, ci_low, ci_high, effect_str))
+            rows.append({
+                'label': label,
+                'rate': rate,
+                'wilson': (ci_low, ci_high),
+                'wald': (wald_low, wald_high),
+                'se': se,
+                'effect': effect_str,
+            })
 
         name = (model[:42] + '...') if len(model) > 45 else model
-        for idx, (label, rate, ci_low, ci_high, effect_str) in enumerate(rows):
+        for idx, row in enumerate(rows):
             model_col = name if idx == 0 else ''
+            ci_low, ci_high = row['wilson']
             ci_str = f"[{ci_low * 100:.1f}%, {ci_high * 100:.1f}%]"
-            print(f"{model_col:<45} {label:<20} {rate * 100:>6.1f}% {ci_str:>20} {effect_str:>11}")
+            print(f"{model_col:<45} {row['label']:<20} {row['rate'] * 100:>6.1f}% {ci_str:>20} {row['effect']:>11}")
+
+        per_model_rows[model] = rows
+        model_order.append(model)
 
     overall_rows = []
     for key, label in metrics:
         count = totals[key]
         rate = count / totals['n']
         ci_low, ci_high = _wilson_ci(count, totals['n'])
-        ci_str = f"[{ci_low * 100:.1f}%, {ci_high * 100:.1f}%]"
-        overall_rows.append((label, rate, ci_str))
+        wald_low, wald_high, se = _wald_ci(count, totals['n'])
+        overall_rows.append({
+            'label': label,
+            'rate': rate,
+            'wilson': (ci_low, ci_high),
+            'wald': (wald_low, wald_high),
+            'se': se,
+        })
 
     print("-" * 105)
-    for label, rate, ci_str in overall_rows:
-        print(f"{'Overall':<45} {label:<20} {rate * 100:>6.1f}% {ci_str:>20} {'—':>11}")
+    for row in overall_rows:
+        ci_low, ci_high = row['wilson']
+        ci_str = f"[{ci_low * 100:.1f}%, {ci_high * 100:.1f}%]"
+        print(f"{'Overall':<45} {row['label']:<20} {row['rate'] * 100:>6.1f}% {ci_str:>20} {'—':>11}")
+
+    _section("DECISION CHANGE RATES: WALD MEAN ± STANDARD ERROR")
+    print(f"\n{'Model':<45} {'Metric':<20} {'Mean ± SE':>18} {'Wald 95% CI':>20}")
+    print("-" * 105)
+
+    for model in model_order:
+        rows = per_model_rows.get(model, [])
+        if not rows:
+            continue
+        name = (model[:42] + '...') if len(model) > 45 else model
+        for idx, row in enumerate(rows):
+            model_col = name if idx == 0 else ''
+            mean_se = f"{row['rate'] * 100:5.1f}% ± {row['se'] * 100:4.1f}%"
+            wald_low, wald_high = row['wald']
+            wald_ci = f"[{wald_low * 100:.1f}%, {wald_high * 100:.1f}%]"
+            print(f"{model_col:<45} {row['label']:<20} {mean_se:>18} {wald_ci:>20}")
+
+    print("-" * 105)
+    for row in overall_rows:
+        mean_se = f"{row['rate'] * 100:5.1f}% ± {row['se'] * 100:4.1f}%"
+        wald_low, wald_high = row['wald']
+        wald_ci = f"[{wald_low * 100:.1f}%, {wald_high * 100:.1f}%]"
+        print(f"{'Overall':<45} {row['label']:<20} {mean_se:>18} {wald_ci:>20}")
 
 
 def _print_career_years_analysis(annotations: list) -> None:
